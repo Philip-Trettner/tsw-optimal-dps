@@ -19,4 +19,5 @@ HEADERS += \
     Skills.hh \
     Weapon.hh \
     Augment.hh \
-    Augments.hh
+    Augments.hh \
+    Skillset.hh

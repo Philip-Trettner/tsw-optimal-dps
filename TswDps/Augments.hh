@@ -35,6 +35,24 @@ struct Augments
         a.addDamage = .15;
         return a;
     }
+    static Augment Robust()
+    {
+        Augment a{"Robust"};
+        a.addHP = 250;
+        return a;
+    }
+    static Augment Accurate()
+    {
+        Augment a{"Accurate"};
+        a.addAttackRating = 150;
+        return a;
+    }
+    static Augment Mending()
+    {
+        Augment a{"Mending"};
+        a.addHealRating = 150;
+        return a;
+    }
     static Augment empty() { return {}; }
 private:
     Augments() = delete;

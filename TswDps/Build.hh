@@ -16,4 +16,7 @@ public:
     void loadPistolShotgunHairTrigger();
 
     void dump();
+    
+    void woodcutterDetailed();    
+    float woodcutterPenChance(float penChance);
 };

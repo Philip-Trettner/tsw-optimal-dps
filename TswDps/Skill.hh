@@ -4,12 +4,18 @@
 
 #include "Weapon.hh"
 
-enum class Subtype {
+enum class SubType {
     None,
     Burst,
     Strike,
     Focus,
     Frenzy
+};
+
+enum class DmgType {
+    Melee,
+    Magic,
+    Ranged
 };
 
 struct Skill
@@ -19,5 +25,6 @@ struct Skill
     float time;
     int hits;
     float baseDmg;
-    Subtype subtype;
+    SubType subtype;
+    DmgType dmgtype;
 };
