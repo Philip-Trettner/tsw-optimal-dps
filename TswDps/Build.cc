@@ -9,25 +9,26 @@ Build::Build()
 
 void Build::loadPistolShotgunHairTrigger()
 {
-    rotation = {
-        Skills::HairTrigger(),  //
-        Skills::OutForAKill(1), //
-        Skills::HairTrigger(),  //
-        Skills::HairTrigger(),  //
-        Skills::HairTrigger(),  //
-        Skills::HairTrigger(),  //
-        Skills::OutForAKill(4), //
-        Skills::Shootout(),     //
+    skills = {
+        { // skills
+          Skills::Pistol::HairTrigger(),
+          Skills::Shotgun::OutForAKill(),
+          Skills::Pistol::Shootout(),
+          Skills::Shotgun::Bombardment(),
+        },
+        { // augs
+          Augments::Brutal(),
+          Augments::Piercing(),
+          Augments::Ferocious(),
+          Augments::Fierce(),
+        },
+        { // passives
+
+        }
     };
-    augments = {
-        Augments::Brutal(),    //
-        Augments::Fierce(),    //
-        Augments::Brutal(),    //
-        Augments::Brutal(),    //
-        Augments::Brutal(),    //
-        Augments::Brutal(),    //
-        Augments::Fierce(),    //
-        Augments::Ferocious(), //
+
+    rotation = {
+        0, 1, 0, 0, 0, 0, 1, 2
     };
 }
 
@@ -38,7 +39,7 @@ void Build::dump()
     std::cout << "Rotation: " << std::endl;
     for (auto i = 0u; i < rotation.size(); ++i)
     {
-        std::cout << "  - " << rotation[i].name << " [" << augments[i].name << "]" << std::endl;
+        std::cout << "  - " << skills.skills[rotation[i]].name << " [" << skills.augments[rotation[i]].name << "]" << std::endl;
     }
 }
 
@@ -48,12 +49,13 @@ void Build::woodcutterDetailed()
     for (auto pen = 0; pen <= 100; ++pen)
     {
         auto wcChance = woodcutterPenChance(pen / 100.f);
-        std::cout << "  " << pen << "%: " << std::endl;
+        std::cout << "  " << pen << "%: +" << wcChance * 100.f - pen << "%" << std::endl;
         
     }
 }
 
 float Build::woodcutterPenChance(float penChance)
 {
-    
+   (void)penChance;
+    return -1; // TODO
 }

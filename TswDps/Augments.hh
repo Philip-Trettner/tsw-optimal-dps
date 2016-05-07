@@ -7,32 +7,32 @@ struct Augments
     static Augment Brutal()
     {
         Augment a{"Brutal"};
-        a.addCritChance = .075;
+        a.addCritChance = .075f;
         return a;
     }
     static Augment Fierce()
     {
         Augment a{"Fierce"};
-        a.addCritChance = .05;
-        a.addPenChance = .05;
+        a.addCritChance = .05f;
+        a.addPenChance = .05f;
         return a;
     }
     static Augment Piercing()
     {
         Augment a{"Piercing"};
-        a.addPenChance = .075;
+        a.addPenChance = .075f;
         return a;
     }
     static Augment Ferocious()
     {
         Augment a{"Ferocious"};
-        a.addCritDamage = .15;
+        a.addCritDamage = .15f;
         return a;
     }
     static Augment Grievous()
     {
         Augment a{"Grievous"};
-        a.addDamage = .15;
+        a.addDamage = .15f;
         return a;
     }
     static Augment Robust()

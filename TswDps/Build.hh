@@ -3,13 +3,15 @@
 #include "common.hh"
 
 #include "Skill.hh"
+#include "Skillset.hh"
 #include "Augment.hh"
 
 class Build
 {
 public:
-    vector<Skill> rotation;
-    vector<Augment> augments; // corresponds to rotation
+    Skillset skills;
+
+    vector<int> rotation;
 
     Build();
 
