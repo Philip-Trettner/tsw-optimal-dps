@@ -10,7 +10,8 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cc \
-    Build.cc
+    Build.cc \
+    Stats.cc
 
 HEADERS += \
     Build.hh \
@@ -22,4 +23,8 @@ HEADERS += \
     Augments.hh \
     Skillset.hh \
     Passive.hh \
-    Types.hh
+    Types.hh \
+    Passives.hh \
+    Stats.hh \
+    Potions.hh \
+    EnemyInfo.hh

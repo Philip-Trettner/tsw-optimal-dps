@@ -19,3 +19,7 @@ enum class SkillType {
     Builder,
     Consumer
 };
+
+enum class PassiveType {
+    None,
+};
