@@ -41,14 +41,34 @@ struct Stats
     float finalDmgMultiplier = -1; // is > 1 (e.g. 1.5 for 50% additive dmg)
 
     void update(EnemyInfo const& enemy);
-
 };
 
 inline Stats operator+(Stats const& l, Stats const& r)
 {
     Stats s;
     s.health = l.health + r.health;
+    s.attackRating = l.attackRating + r.attackRating;
+    s.healRating = l.healRating + r.healRating;
 
-    // TODO: continue
+    s.weaponPower = l.weaponPower + r.weaponPower;
+
+    s.hitRating = l.hitRating + r.hitRating;
+    s.critRating = l.critRating + r.critRating;
+    s.critPowerRating = l.critPowerRating + r.critPowerRating;
+    s.penRating = l.penRating + r.penRating;
+
+    s.blockRating = l.blockRating + r.blockRating;
+    s.physProtRating = l.physProtRating + r.physProtRating;
+    s.magProtRating = l.magProtRating + r.magProtRating;
+    s.evadeRating = l.evadeRating + r.evadeRating;
+    s.defenceRating = l.defenceRating + r.defenceRating;
+
+    s.addedCritChance = l.addedCritChance + r.addedCritChance;
+    s.addedCritPower = l.addedCritPower + r.addedCritPower;
+    s.addedPenChance = l.addedPenChance + r.addedPenChance;
+
+    s.additiveDamage = l.additiveDamage + r.additiveDamage;
+    s.multiplicativeDamage = l.multiplicativeDamage + r.multiplicativeDamage;
+
     return s;
 }

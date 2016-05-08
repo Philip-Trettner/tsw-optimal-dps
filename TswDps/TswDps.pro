@@ -11,7 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cc \
     Build.cc \
-    Stats.cc
+    Stats.cc \
+    Simulation.cc
 
 HEADERS += \
     Build.hh \
@@ -27,4 +28,7 @@ HEADERS += \
     Passives.hh \
     Stats.hh \
     Potions.hh \
-    EnemyInfo.hh
+    EnemyInfo.hh \
+    Simulation.hh \
+    Rotation.hh \
+    Signet.hh

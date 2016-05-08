@@ -12,5 +12,9 @@ enum class Weapon
 
     Rifle,
     Pistol,
-    Shotgun
+    Shotgun,
+
+    Aux,
+
+    Count
 };
