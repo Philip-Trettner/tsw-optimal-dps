@@ -2,6 +2,7 @@
 #include "EnemyInfo.hh"
 
 #include <cmath>
+#include <iostream>
 
 void Stats::update(const EnemyInfo &enemy)
 {
@@ -13,4 +14,12 @@ void Stats::update(const EnemyInfo &enemy)
     finalDmgMultiplier = (1 + additiveDamage) * (1 + multiplicativeDamage);
 
     // TODO: block, evade, glance?
+}
+
+void Stats::dumpDpsGlyphs() const
+{
+    std::cout << "hit:  " << hitRating << std::endl;
+    std::cout << "crit: " << critRating << std::endl;
+    std::cout << "cpow: " << critPowerRating << std::endl;
+    std::cout << "pen:  " << penRating << std::endl;
 }

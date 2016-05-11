@@ -12,7 +12,9 @@ TEMPLATE = app
 SOURCES += main.cc \
     Build.cc \
     Stats.cc \
-    Simulation.cc
+    Simulation.cc \
+    utils.cc \
+    Gear.cc
 
 HEADERS += \
     Build.hh \
@@ -31,4 +33,6 @@ HEADERS += \
     EnemyInfo.hh \
     Simulation.hh \
     Rotation.hh \
-    Signet.hh
+    Signet.hh \
+    utils.hh \
+    Gear.hh
