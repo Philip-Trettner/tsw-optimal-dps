@@ -23,6 +23,12 @@ Gear::Gear()
     pieces[WeaponRight].slot = Slot::Weapon;
 }
 
+void Gear::setGear(PrimaryStat stat, Gear::TalismanQuality q)
+{
+    for (auto i = Gear::Head; i <= Gear::MinorRight; ++i)
+        pieces[i].set(stat, q);
+}
+
 Stats Gear::gearStats() const
 {
     Stats s;
@@ -220,11 +226,147 @@ Stats Gear::splitStatOf(Gear::Slot slot, Rating r)
 void Gear::Piece::fix(Rating r)
 {
     status = SlotStatus::Fixed;
-    stats = singleStatOf(slot, r);
+    auto s = stats.getPrimaryPart();
+    stats = singleStatOf(slot, r) + s;
 }
 
 void Gear::Piece::fix(Rating r1, Rating r2)
 {
     status = SlotStatus::Fixed;
-    stats = splitStatOf(slot, r1) + splitStatOf(slot, r2);
+    auto s = stats.getPrimaryPart();
+    stats = splitStatOf(slot, r1) + splitStatOf(slot, r2) + s;
+}
+
+void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
+{
+    stats.attackRating = 0;
+    stats.healRating = 0;
+    stats.health = 0;
+
+    int val = 0;
+
+    switch (q)
+    {
+    case TalismanQuality::QL10_5:
+        switch (slot)
+        {
+        case Slot::Head:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 1077;
+                break;
+            case PrimaryStat::HP:
+                val = 3021;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Major:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 972;
+                break;
+            case PrimaryStat::HP:
+                val = 2728;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Minor:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 625;
+                break;
+            case PrimaryStat::HP:
+                val = 1754;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Weapon:
+            val = 510;
+            break;
+        default:
+            assert(0);
+        }
+        break;
+
+    case TalismanQuality::QL11:
+        switch (slot)
+        {
+        case Slot::Head:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 1144;
+                break;
+            case PrimaryStat::HP:
+                val = 3186;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Major:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 1033;
+                break;
+            case PrimaryStat::HP:
+                val = 2877;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Minor:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 664;
+                break;
+            case PrimaryStat::HP:
+                val = 1850;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Weapon:
+            val = 528;
+            break;
+        default:
+            assert(0);
+        }
+        break;
+
+    default:
+        assert(0);
+    }
+
+    switch (stat)
+    {
+    case PrimaryStat::Attack:
+        stats.attackRating = val;
+        break;
+    case PrimaryStat::Heal:
+        stats.healRating = val;
+        break;
+    case PrimaryStat::HP:
+        stats.health = val;
+        break;
+    }
 }

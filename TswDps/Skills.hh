@@ -46,6 +46,7 @@ public:
             s.hits = 4;
             s.subtype = SubType::Focus;
             s.dmgScaling = 0.16093f;
+            s.channeling = true;
             return s;
         }
 
@@ -57,6 +58,7 @@ public:
             s.dmgScaling = 0.54241f;
             s.dmgScaling5 = 0.81461f;
             s.cooldownIn60th = 60 * 4;
+            s.channeling = true;
             return s;
         }
 
@@ -85,6 +87,7 @@ public:
         {
             auto s = skill("Single Barrel", SkillType::Builder);
             s.timeIn60th = 60;
+            s.casttimeIn60th = 30;
             s.hits = 1;
             s.dmgScaling = 0.68050f;
             return s;

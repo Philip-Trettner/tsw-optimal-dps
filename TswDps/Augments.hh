@@ -7,50 +7,53 @@ struct Augments
     static Augment Brutal()
     {
         Augment a{"Brutal"};
-        a.addCritChance = .075f;
+        a.bonusStats.addedCritChance = .075f;
         return a;
     }
     static Augment Fierce()
     {
         Augment a{"Fierce"};
-        a.addCritChance = .05f;
-        a.addPenChance = .05f;
+        a.bonusStats.addedCritChance = .05f;
+        a.bonusStats.addedPenChance = .05f;
         return a;
     }
     static Augment Piercing()
     {
         Augment a{"Piercing"};
-        a.addPenChance = .075f;
+        a.bonusStats.addedPenChance = .075f;
         return a;
     }
     static Augment Ferocious()
     {
         Augment a{"Ferocious"};
-        a.addCritDamage = .15f;
+        a.bonusStats.addedCritPower = .15f;
         return a;
     }
     static Augment Grievous()
     {
         Augment a{"Grievous"};
-        a.addDamage = .15f;
+        a.bonusStats.additiveDamage = .15f;
         return a;
     }
     static Augment Robust()
     {
         Augment a{"Robust"};
-        a.addHP = 250;
+        a.bonusStats.health = 250;
+        a.affectEverything = true;
         return a;
     }
     static Augment Accurate()
     {
         Augment a{"Accurate"};
-        a.addAttackRating = 150;
+        a.bonusStats.attackRating = 150;
+        a.affectEverything = true;
         return a;
     }
     static Augment Mending()
     {
         Augment a{"Mending"};
-        a.addHealRating = 150;
+        a.bonusStats.healRating = 150;
+        a.affectEverything = true;
         return a;
     }
     static Augment empty() { return {}; }

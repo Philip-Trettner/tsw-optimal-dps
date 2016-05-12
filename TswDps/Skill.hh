@@ -16,11 +16,13 @@ struct Skill
     DmgType dmgtype;
     SkillType skilltype;
 
-    int timeIn60th = 0;     ///< 60 = 1s, 150 = 2.5s, 0 = no GCD
-    int cooldownIn60th = 0; ///< 0 = no CD
-    int hits = 0;           ///< 0 = not damaging ability
+    int timeIn60th = 0;      ///< 60 = 1s, 150 = 2.5s, 0 = no GCD
+    int casttimeIn60th = 0;  ///< 0 = no casttime, casttime and CD are parallel
+    int cooldownIn60th = 0;  ///< 0 = no CD
+    int hits = 0;            ///< 0 = not damaging ability
+    bool channeling = false; ///< if true, hits are channeled equally over time
 
-    float dmgScaling;       ///< dmgScaling * combat power = base dmg
+    float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
     float dmgScaling5 = -1; ///< scaling at 5 resources
 
     // 1.0  for no penalty
@@ -33,6 +35,8 @@ struct Skill
         assert(hits > 0 && "only for damaging abilities");
         switch (timeIn60th / hits)
         {
+        case 120:
+        case 90:
         case 60:
             return 1.0f;
         case 30:

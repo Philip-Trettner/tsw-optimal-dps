@@ -1,12 +1,13 @@
 #pragma once
 
+#include "common.hh"
 #include "Skill.hh"
 #include "Augment.hh"
 #include "Passive.hh"
 
 struct Skillset
 {
-    Skill skills[8];
-    Augment augments[8];
-    Passive passives[8];
+    Skill skills[SKILL_CNT];
+    Augment augments[SKILL_CNT];
+    Passive passives[SKILL_CNT];
 };

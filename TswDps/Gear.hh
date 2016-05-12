@@ -32,6 +32,12 @@ struct Gear
         Weapon
     };
 
+    enum class TalismanQuality
+    {
+        QL10_5,
+        QL11
+    };
+
     struct Piece
     {
         SlotStatus status;
@@ -43,13 +49,22 @@ struct Gear
         void fix(Rating r);
         /// fixes this piece to a 50-50 stat split
         void fix(Rating r1, Rating r2);
+
+        /// sets the primary stat of this talisman
+        void set(PrimaryStat stat, TalismanQuality q);
     };
 
     // all gear pieces except aux
     // head -> major -> minor -> weapon
     std::array<Piece, 1 + 3 + 3 + 2> pieces;
 
+    Weapon leftWeapon;
+    Weapon rightWeapon;
+
     Gear();
+
+    /// sets all gear pieces at once
+    void setGear(PrimaryStat stat, TalismanQuality q);
 
     /// Returns stat sum without weapons
     Stats gearStats() const;

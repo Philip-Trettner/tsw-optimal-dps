@@ -1,6 +1,7 @@
 #include "Build.hh"
 
 #include "Skills.hh"
+#include "Passives.hh"
 #include "Augments.hh"
 
 Build::Build()
@@ -23,7 +24,7 @@ void Build::loadPistolShotgunHairTrigger()
           Augments::Fierce(),
         },
         { // passives
-
+          Passives::Hammer::Brawler(),
         }
     };
 

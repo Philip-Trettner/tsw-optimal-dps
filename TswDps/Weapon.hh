@@ -2,6 +2,8 @@
 
 enum class Weapon
 {
+    None,
+
     Blade,
     Fist,
     Hammer,

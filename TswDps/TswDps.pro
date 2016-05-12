@@ -14,7 +14,8 @@ SOURCES += main.cc \
     Stats.cc \
     Simulation.cc \
     utils.cc \
-    Gear.cc
+    Gear.cc \
+    CombatLog.cc
 
 HEADERS += \
     Build.hh \
@@ -35,4 +36,9 @@ HEADERS += \
     Rotation.hh \
     Signet.hh \
     utils.hh \
-    Gear.hh
+    Gear.hh \
+    Signets.hh \
+    CombatLog.hh \
+    Effect.hh
+
+linux:QMAKE_CXXFLAGS += -Wno-unused-parameter

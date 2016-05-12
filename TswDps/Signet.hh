@@ -1,9 +1,21 @@
 #pragma once
 
-#include "Stats.hh"
+#include "common.hh"
+#include "Types.hh"
+#include "Passive.hh"
 
-struct Signet {
-    Stats statIncrease;
-    bool weaponSpecific = false;
-    // TODO ???
+enum class SignetSlot
+{
+    Head,
+    Major,
+    Minor,
+    HeadWeapon
+};
+
+struct Signet
+{
+    SignetSlot slot;
+    Passive effect;
+
+    string const& name() const { return effect.name; }
 };

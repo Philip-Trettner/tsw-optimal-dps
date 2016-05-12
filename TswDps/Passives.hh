@@ -20,7 +20,7 @@ private:
         {
             Passive p;
             p.name = name;
-            p.weapon = weapon;
+            p.weaponType = weapon;
             p.dmgtype = dmgtype;
             p.passivetype = passivetype;
             return p;
@@ -33,8 +33,24 @@ public:
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
-    {
+    {        
+        static Passive DeadOnTarget()
+        {
+            auto p = passive("Dead On Target", PassiveType::None);
 
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = .10f;
+
+            return p;
+        }
+    };
+
+    struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
+    {
+    };
+
+    struct Blade : private Base<Weapon::Blade, DmgType::Melee>
+    {
     };
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
@@ -51,11 +67,27 @@ public:
         {
             auto p = passive("Brawler", PassiveType::None);
 
+            p.bonusStats.addedCritPower = .15f;
 
             return p;
         }
     };
 
+    struct Fist : private Base<Weapon::Fist, DmgType::Melee>
+    {
+    };
+
+    struct Blood : private Base<Weapon::Blood, DmgType::Magic>
+    {
+    };
+
+    struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
+    {
+    };
+
+    struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
+    {
+    };
 
 private:
     Passives() = delete;

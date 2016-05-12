@@ -18,6 +18,13 @@ enum class Rating
     Defence
 };
 
+enum class PrimaryStat
+{
+    Attack,
+    Heal,
+    HP
+};
+
 struct Stats
 {
     // ratings
@@ -60,6 +67,19 @@ struct Stats
 
     /// dumps hit, crit, crit power, pen
     void dumpDpsGlyphs() const;
+    /// dumps ar, hit, crit, crit power, pen
+    void dumpDpsStats(bool updateWithEmpty = true);
+
+    /// returns AR, HR, HP, WP part
+    Stats getPrimaryPart() const
+    {
+        Stats s;
+        s.attackRating = attackRating;
+        s.healRating = healRating;
+        s.health = health;
+        s.weaponPower = weaponPower;
+        return s;
+    }
 };
 
 // custom specialization of std::hash can be injected in namespace std

@@ -9,6 +9,7 @@ enum class SubType {
 };
 
 enum class DmgType {
+    None,
     Melee,
     Magic,
     Ranged

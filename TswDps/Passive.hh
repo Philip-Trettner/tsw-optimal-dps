@@ -9,9 +9,12 @@
 struct Passive
 {
     string name;
-    Weapon weapon;
-    DmgType dmgtype;
-    PassiveType passivetype;
+    Weapon weaponType = Weapon::None; ///< for classification
+    DmgType dmgtype = DmgType::None;
+    PassiveType passivetype = PassiveType::None;
+    bool restrictWeapon = false; ///< if true, only weaponType weapons benefit from this passive
 
     Stats bonusStats;
+
+    bool triggers = false;
 };
