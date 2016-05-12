@@ -12,7 +12,7 @@ void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, flo
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60 << "] '";
     std::cout << name << "' hit for " << dmg << " (";
     if (critical && penetrated)
-        std::cout << "crit-pen";
+        std::cout << "CRIT-PEN";
     else if (critical)
         std::cout << "critical";
     else if (penetrated)

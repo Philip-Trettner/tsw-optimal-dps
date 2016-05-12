@@ -162,22 +162,22 @@ inline Stats operator+(Stats const& l, Stats const& r)
 inline Stats operator*(Stats const& l, float f)
 {
     Stats s;
-    s.health = l.health * f;
-    s.attackRating = l.attackRating * f;
-    s.healRating = l.healRating * f;
+    s.health = static_cast<int>(l.health * f);
+    s.attackRating = static_cast<int>(l.attackRating * f);
+    s.healRating = static_cast<int>(l.healRating * f);
 
-    s.weaponPower = l.weaponPower * f;
+    s.weaponPower = static_cast<int>(l.weaponPower * f);
 
-    s.hitRating = l.hitRating * f;
-    s.critRating = l.critRating * f;
-    s.critPowerRating = l.critPowerRating * f;
-    s.penRating = l.penRating * f;
+    s.hitRating = static_cast<int>(l.hitRating * f);
+    s.critRating = static_cast<int>(l.critRating * f);
+    s.critPowerRating = static_cast<int>(l.critPowerRating * f);
+    s.penRating = static_cast<int>(l.penRating * f);
 
-    s.blockRating = l.blockRating * f;
-    s.physProtRating = l.physProtRating * f;
-    s.magProtRating = l.magProtRating * f;
-    s.evadeRating = l.evadeRating * f;
-    s.defenceRating = l.defenceRating * f;
+    s.blockRating = static_cast<int>(l.blockRating * f);
+    s.physProtRating = static_cast<int>(l.physProtRating * f);
+    s.magProtRating = static_cast<int>(l.magProtRating * f);
+    s.evadeRating = static_cast<int>(l.evadeRating * f);
+    s.defenceRating = static_cast<int>(l.defenceRating * f);
 
     s.addedCritChance = l.addedCritChance * f;
     s.addedCritPower = l.addedCritPower * f;

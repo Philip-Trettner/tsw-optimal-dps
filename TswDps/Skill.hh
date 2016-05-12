@@ -25,6 +25,10 @@ struct Skill
     float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
     float dmgScaling5 = -1; ///< scaling at 5 resources
 
+    int fixedConsumerResources = 0; ///< 0 = consumes all and uses dmgScaling5
+
+    bool buildPrimaryOnly = false; ///< if true and builder, only builds for current weapon
+
     // 1.0  for no penalty
     // ??   for 2 hits per sec
     // 0.8  for 3 hits per sec

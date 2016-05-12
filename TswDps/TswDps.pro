@@ -42,3 +42,7 @@ HEADERS += \
     Effect.hh
 
 linux:QMAKE_CXXFLAGS += -Wno-unused-parameter
+msvc {
+    QMAKE_CXXFLAGS += /wd4100
+    QMAKE_CXXFLAGS_WARN_ON -= -w34100
+}

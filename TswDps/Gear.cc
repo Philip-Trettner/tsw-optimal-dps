@@ -25,8 +25,8 @@ Gear::Gear()
 
 void Gear::setGear(PrimaryStat stat, Gear::TalismanQuality q)
 {
-    for (auto i = Gear::Head; i <= Gear::MinorRight; ++i)
-        pieces[i].set(stat, q);
+    for (auto& p : pieces)
+        p.set(stat, q);
 }
 
 Stats Gear::gearStats() const
@@ -357,16 +357,19 @@ void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
         assert(0);
     }
 
-    switch (stat)
-    {
-    case PrimaryStat::Attack:
-        stats.attackRating = val;
-        break;
-    case PrimaryStat::Heal:
-        stats.healRating = val;
-        break;
-    case PrimaryStat::HP:
-        stats.health = val;
-        break;
-    }
+    if (slot == Slot::Weapon)
+        stats.weaponPower = val;
+    else
+        switch (stat)
+        {
+        case PrimaryStat::Attack:
+            stats.attackRating = val;
+            break;
+        case PrimaryStat::Heal:
+            stats.healRating = val;
+            break;
+        case PrimaryStat::HP:
+            stats.health = val;
+            break;
+        }
 }

@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
     // for (auto const& s : g.enumerateGearStats({Rating::Crit, Rating::CritPower}, true))
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
-    VerboseLog log;
+    CombatLog log;
+    //VerboseLog log;
     Simulation s;
     s.log = &log;
 
@@ -79,5 +80,31 @@ int main(int argc, char *argv[])
     s.dumpSkillStats();
     std::cout << std::endl;
 
+    /*
+    s.lowVarianceMode = false;
+    std::cout << "normal:" << std::endl;
+    for (int r = 0; r < 10; ++r)
+    {
+        s.resetStats();
+        for (int i = 0; i < 10000; ++i)
+            s.simulate(20 * 60);
+        std::cout << "dps: " <<  s.totalDPS() << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "low variance:" << std::endl;
+    s.lowVarianceMode = true;
+    for (int r = 0; r < 10; ++r)
+    {
+        s.resetStats();
+        for (int i = 0; i < 1; ++i)
+            s.simulate(20 * 60);
+        std::cout << "dps: " <<  s.totalDPS() << std::endl;
+    }
+    std::cout << std::endl;
+    */
+
     s.simulate(20 * 60);
+    std::cout << std::endl;
+    s.dumpBriefReport();
 }

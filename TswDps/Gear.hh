@@ -63,7 +63,7 @@ struct Gear
 
     Gear();
 
-    /// sets all gear pieces at once
+    /// sets all gear pieces at once (includes weapons)
     void setGear(PrimaryStat stat, TalismanQuality q);
 
     /// Returns stat sum without weapons

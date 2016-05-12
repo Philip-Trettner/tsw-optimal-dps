@@ -20,3 +20,16 @@ enum class Weapon
 
     Count
 };
+
+inline bool startsWithResources(Weapon w)
+{
+    switch (w)
+    {
+    case Weapon::Blade:
+    case Weapon::Fist:
+    case Weapon::Hammer:
+        return true;
+    default:
+        return false;
+    }
+}

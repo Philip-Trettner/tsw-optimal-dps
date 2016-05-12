@@ -6,6 +6,7 @@
 
 enum class SignetSlot
 {
+    None,
     Head,
     Major,
     Minor,
@@ -14,7 +15,7 @@ enum class SignetSlot
 
 struct Signet
 {
-    SignetSlot slot;
+    SignetSlot slot = SignetSlot::None;
     Passive effect;
 
     string const& name() const { return effect.name; }
