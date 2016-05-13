@@ -112,7 +112,7 @@ void Simulation::init()
 
         // extract trigger passives
         for (auto const& passive : passives)
-            if (passive.triggers)
+            if (passive.trigger != Trigger::None)
                 triggers.push_back(passive);
 
         skillStats[i] = s;

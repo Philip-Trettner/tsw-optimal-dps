@@ -9,7 +9,7 @@
 #include "Augments.hh"
 #include "Passives.hh"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     (void)argc;
     (void)argv;
@@ -18,29 +18,30 @@ int main(int argc, char *argv[])
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
     CombatLog log;
-    //VerboseLog log;
+    // VerboseLog log;
     Simulation s;
     s.log = &log;
 
-    s.skills = {
-        { // skills
-          Skills::Pistol::HairTrigger(),
-          Skills::Shotgun::OutForAKill(),
-          Skills::Pistol::Shootout(),
-          Skills::Shotgun::Bombardment(),
-        },
-        { // augs
-          Augments::Brutal(),
-          Augments::Piercing(),
-          Augments::Ferocious(),
-          Augments::Fierce(),
-          Augments::Accurate(),
-        },
-        { // passives
-          Passives::Hammer::Brawler(),
-          Passives::Shotgun::DeadOnTarget(),
-        }
-    };
+    s.skills = {{
+                    // skills
+                    Skills::Pistol::HairTrigger(),  //
+                    Skills::Shotgun::OutForAKill(), //
+                    Skills::Pistol::Shootout(),     //
+                    Skills::Shotgun::Bombardment(), //
+                },
+                {
+                    // augs
+                    Augments::Brutal(),    //
+                    Augments::Piercing(),  //
+                    Augments::Ferocious(), //
+                    Augments::Fierce(),    //
+                    Augments::Accurate(),  //
+                },
+                {
+                    // passives
+                    Passives::Hammer::Brawler(),       //
+                    Passives::Shotgun::DeadOnTarget(), //
+                }};
 
     s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
 

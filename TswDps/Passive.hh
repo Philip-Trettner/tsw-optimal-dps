@@ -5,6 +5,15 @@
 #include "Types.hh"
 #include "Weapon.hh"
 #include "Stats.hh"
+#include "Effect.hh"
+
+enum class Trigger
+{
+    None,
+    Hit,
+    Crit,
+    Pen,
+};
 
 struct Passive
 {
@@ -16,5 +25,7 @@ struct Passive
 
     Stats bonusStats;
 
-    bool triggers = false;
+    Trigger trigger = Trigger::None;
+    float triggerChance = 1.f;
+    Effect effect; ///< trigger effect
 };

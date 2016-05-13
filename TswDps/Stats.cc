@@ -15,9 +15,8 @@ void Stats::update(const EnemyInfo &enemy)
 
     // TODO: block, evade, glance?
 
-    finalCombatPower = float(attackRating < 5200
-            ? (375 - 600 / (exp(attackRating / 1400) + 1)) * (1 + weaponPower / 375)
-            : 204.38 + .5471 * weaponPower + (.00008 * weaponPower + .0301) * attackRating);
+    finalCombatPower = float(attackRating < 5200 ? (375 - 600 / (exp(attackRating / 1400) + 1)) * (1 + weaponPower / 375)
+                                                 : 204.38 + .5471 * weaponPower + (.00008 * weaponPower + .0301) * attackRating);
 }
 
 void Stats::dumpDpsGlyphs() const

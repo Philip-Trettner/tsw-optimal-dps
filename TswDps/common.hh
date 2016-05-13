@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include <cassert>
 
 #define SKILL_CNT (8)
 

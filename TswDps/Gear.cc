@@ -25,7 +25,7 @@ Gear::Gear()
 
 void Gear::setGear(PrimaryStat stat, Gear::TalismanQuality q)
 {
-    for (auto& p : pieces)
+    for (auto &p : pieces)
         p.set(stat, q);
 }
 
