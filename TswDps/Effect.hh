@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.hh"
+#include "Stats.hh"
 #include <sstream>
 
 #define MAKE_EFFECT_ENUM(...)                                                  \
@@ -36,6 +37,8 @@
 MAKE_EFFECT_ENUM(
     // signets
     Laceration,
+    Abuse,
+    Aggression,
 
     // general passives
     MinorPenetrationChance,
@@ -46,10 +49,19 @@ MAKE_EFFECT_ENUM(
     CritPowerRating,
 
     // specific passives
+    TwistTheKnife,
+    Lethality,
     );
 
 struct Effect
 {
     string name;
     EffectSlot slot;
+
+    Stats bonusStats;
+
+    bool oncePerAbility = false;
+    int maxStacks = 1;
+    int cooldownIn60th = 60;
+    int timeIn60th = -1;
 };

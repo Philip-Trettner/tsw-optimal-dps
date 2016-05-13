@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Signet.hh"
+#include "Effects.hh"
 
 struct Signets
 {
@@ -15,19 +16,52 @@ private:
         {
             Signet p;
             p.slot = slot;
-            p.effect.name = name;
+            p.passive.name = name;
             return p;
         }
     };
 
 public:
+    struct HeadWeapon : private Base<SignetSlot::HeadWeapon>
+    {
+        static Signet Laceration()
+        {
+            auto p = signet("Laceration");
+
+            p.passive.trigger = Trigger::Crit;
+            p.passive.effect = Effects::Signet::Laceration();
+
+            return p;
+        }
+        static Signet Abuse()
+        {
+            auto p = signet("Abuse");
+
+            p.passive.trigger = Trigger::Hit;
+            p.passive.triggerChance = 0.10f;
+            p.passive.effect = Effects::Signet::Abuse();
+
+            return p;
+        }
+        static Signet Aggression()
+        {
+            auto p = signet("Aggression");
+
+            p.passive.trigger = Trigger::Hit;
+            p.passive.triggerChance = 0.15f;
+            p.passive.effect = Effects::Signet::Aggression();
+
+            return p;
+        }
+    };
+
     struct Major : private Base<SignetSlot::Major>
     {
         static Signet Violence()
         {
             auto p = signet("Violence");
 
-            p.effect.bonusStats.attackRating = 141;
+            p.passive.bonusStats.attackRating = 141;
 
             return p;
         }
@@ -39,7 +73,7 @@ public:
         {
             auto p = signet("Issue 1.5%");
 
-            p.effect.bonusStats.multiplicativeDamage = 1.5f / 100;
+            p.passive.bonusStats.multiplicativeDamage = 1.5f / 100;
 
             return p;
         }

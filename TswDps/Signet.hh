@@ -16,7 +16,7 @@ enum class SignetSlot
 struct Signet
 {
     SignetSlot slot = SignetSlot::None;
-    Passive effect;
+    Passive passive;
 
-    string const& name() const { return effect.name; }
+    string const& name() const { return passive.name; }
 };

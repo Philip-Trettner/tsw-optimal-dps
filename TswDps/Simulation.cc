@@ -46,7 +46,7 @@ void Simulation::init()
         {
             auto const& wp = skill.weapon == gear.leftWeapon ? gear.pieces[Gear::WeaponLeft] : gear.pieces[Gear::WeaponRight];
             s = s + wp.stats;
-            passives.push_back(wp.signet.effect);
+            passives.push_back(wp.signet.passive);
             skillWeaponIdx[i] = skill.weapon == gear.leftWeapon ? 0 : 1;
         }
         else
@@ -71,7 +71,7 @@ void Simulation::init()
             // add signets
             if (p.signet.slot != SignetSlot::None)
             {
-                passives.push_back(p.signet.effect);
+                passives.push_back(p.signet.passive);
 
                 // sanity
                 switch (p.slot)
@@ -101,6 +101,9 @@ void Simulation::init()
             if (passive.restrictWeapon && passive.weaponType != skill.weapon)
                 continue; // passive does not apply to this weapon
 
+            if (passive.restrictType != SkillType::None && passive.restrictType != skill.skilltype)
+                continue; // passive does not appyl to this skill type
+
             // add passive stats
             s = s + passive.bonusStats;
         }
@@ -113,7 +116,10 @@ void Simulation::init()
         // extract trigger passives
         for (auto const& passive : passives)
             if (passive.trigger != Trigger::None)
+            {
                 triggers.push_back(passive);
+                effects[(int)passive.effect.slot] = passive.effect;
+            }
 
         skillStats[i] = s;
         skillTriggers[i] = triggers;
@@ -130,6 +136,12 @@ void Simulation::simulate(int totalTimeIn60th)
     currentTime = 0;
     for (auto i = 0; i < SKILL_CNT; ++i)
         skillCDs[i] = 0;
+    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+    {
+        effectTime[i] = 0;
+        effectCD[i] = 0;
+        effectStacks[i] = 0;
+    }
     weaponResources[0] = startsWithResources(gear.leftWeapon) ? 5 : 0;
     weaponResources[1] = startsWithResources(gear.rightWeapon) ? 5 : 0;
     if (resetStatsAtStart)
@@ -202,7 +214,7 @@ void Simulation::simulate(int totalTimeIn60th)
             }
 
             // actual full hit
-            fullHit(baseStats, scaling, penCritPenalty, &skill, nullptr);
+            fullHit(baseStats, scaling, penCritPenalty, hitIdx == 0, &skill, nullptr);
         }
 
         // consumers
@@ -248,43 +260,106 @@ void Simulation::dumpSkillStats()
 
 void Simulation::dumpBriefReport()
 {
-    std::cout << "Dmg:  " << totalDmg << " over " << totalTimeAccum / 60.f << " sec" << std::endl;
-    std::cout << "DPS:  " << totalDPS() << std::endl;
-    std::cout << "Hits: " << totalHits << std::endl;
-    std::cout << "Pens: " << totalPens << " (" << totalPens * 100.f / totalHits << "%)"<< std::endl;
-    std::cout << "Pens: " << totalCrits << " (" << totalCrits * 100.f / totalHits << "%)"<< std::endl;
+    std::cout << "Dmg:   " << totalDmg << " over " << totalTimeAccum / 60.f << " sec" << std::endl;
+    std::cout << "DPS:   " << totalDPS() << std::endl;
+    std::cout << "Hits:  " << totalHits << std::endl;
+    std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)"<< std::endl;
+    std::cout << "Crits: " << totalCrits << " (" << totalCrits * 100.f / totalHits << "%)"<< std::endl;
 }
 
-void Simulation::fullHit(const Stats &baseStats, float dmgScaling, float penCritPenalty, Skill const* srcSkill, Passive const* srcPassive)
+void Simulation::fullHit(const Stats &baseStats, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Passive const* srcPassive)
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
     auto stats = baseStats;
-    // TODO: add currently running effects
+    // add currently running effects
+    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+        if (effectStacks[i] > 1)
+            stats = stats + effects[i].bonusStats * (float)effectStacks[i];
+        else if (effectStacks[i] == 1)
+            stats = stats + effects[i].bonusStats;
     stats.update(enemyInfo);
 
+    bool isCrit, isPen;
+    rawHit(stats, dmgScaling, penCritPenalty,&isCrit, &isPen, srcSkill, srcPassive);
+
+    // effects trigger AFTER the hit
+    for (auto const& passive : skillTriggers[currentWeapon])
+    {
+        auto const& effect = passive.effect;
+        auto slot = (int)effect.slot;
+        assert(effect.slot < EffectSlot::Count);
+
+        // once per ability can only proc at start (for now)
+        if (effect.oncePerAbility && !startOfAbility)
+            continue;
+
+        // on CD
+        if (effectCD[slot] > 0)
+            continue;
+
+        // on hit
+        //if (false && passive.trigger == Trigger::Hit)
+        //     continue;
+
+        // on crit
+        if (!isCrit && passive.trigger == Trigger::Crit)
+            continue;
+
+        // on pen
+        if (!isPen && passive.trigger == Trigger::Pen)
+            continue;
+
+        // on crit-pen
+        if (!(isCrit && isPen) && passive.trigger == Trigger::CritPen)
+            continue;
+
+        // x% chance to trigger
+        if (passive.triggerChance < 1.0f && dice(random) > passive.triggerChance)
+            continue;
+
+        // actually procced
+        assert(effects[slot].slot == effect.slot && "inconsistent effect mapping");
+        effectTime[slot] = effect.timeIn60th;
+        effectCD[slot] = effect.cooldownIn60th;
+        effectStacks[slot] += 1;
+        if (effectStacks[slot] > effect.maxStacks)
+            effectStacks[slot] = effect.maxStacks;
+        else
+        {
+            // log (only on new stack)
+            if (log)
+                log->logEffectStart(this, currentTime, effect.slot);
+        }
+    }
+}
+
+void Simulation::rawHit(const Stats &actualStats, float dmgScaling, float penCritPenalty, bool *isCrit, bool *isPen, const Skill *srcSkill, const Passive *srcPassive)
+{
+    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
+
     // crit an pen calculation
-    float critChance = stats.finalCritChance * penCritPenalty;
-    float penChance = stats.finalPenChance * penCritPenalty;
-    float critPower = stats.finalCritPower;
+    float critChance = actualStats.finalCritChance * penCritPenalty;
+    float penChance = actualStats.finalPenChance * penCritPenalty;
+    float critPower = actualStats.finalCritPower;
 
-    float dmg = stats.finalCombatPower * dmgScaling;
+    float dmg = actualStats.finalCombatPower * dmgScaling;
 
-    bool isCrit = dice(random) < critChance;
-    bool isPen = dice(random) < penChance;
+    *isCrit = dice(random) < critChance;
+    *isPen = dice(random) < penChance;
 
     if (!lowVarianceMode)
     {
-        if (isCrit)
+        if (*isCrit)
             dmg *= 1.0f + critPower;
 
-        if (isPen)
+        if (*isPen)
             dmg *= 1.0f + enemyInfo.penPower;
     }
     else
     {
-        dmg *= 1.0f + critChance * critPower;
-        dmg *= 1.0f + penChance * enemyInfo.penPower;
+        dmg *= 1.0f + fmin(critChance, 1.0f) * critPower;
+        dmg *= 1.0f + fmin(penChance, 1.0f) * enemyInfo.penPower;
     }
 
     // 10% base variance in each dir
@@ -294,21 +369,18 @@ void Simulation::fullHit(const Stats &baseStats, float dmgScaling, float penCrit
     // add hit
     totalDmg += dmg;
     totalHits += 1;
-    if (isCrit)
+    if (*isCrit)
         totalCrits += 1;
-    if (isPen)
+    if (*isPen)
         totalPens += 1;
 
     // log
     if (log)
-        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcPassive->name, dmg, isCrit, isPen);
+        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcPassive->name, dmg, *isCrit, *isPen, actualStats);
 }
 
 void Simulation::advanceTime(int timeIn60th)
-{
-    currentTime += timeIn60th;
-    totalTimeAccum += timeIn60th;
-
+{    
     // reduce skill CDs
     for (auto& cd : skillCDs)
     {
@@ -316,8 +388,50 @@ void Simulation::advanceTime(int timeIn60th)
         if (cd < 0)
             cd = 0;
     }
+    // reduce effect CDs
+    for (auto& cd : effectCD)
+    {
+        cd -= timeIn60th;
+        if (cd < 0)
+            cd = 0;
+    }
 
-    // TODO: process passives
+    // process passives
+    while (timeIn60th > 0)
+    {
+        // calc time to next event
+        auto delta = timeIn60th;
+        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+            if (effectTime[i] > 0 && effectTime[i] < delta)
+                delta = effectTime[i];
+
+        // actually advance time
+        currentTime += delta;
+        totalTimeAccum += delta;
+        timeIn60th -= delta;
+
+        // update running effects
+        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+            if (effectTime[i] > 0)
+            {
+                effectTime[i] -= delta;
+
+                // effect ended
+                if (effectTime[i] == 0)
+                {
+                    // loose a stack
+                    effectStacks[i] -= 1;
+
+                    // refresh time if stacks left
+                    if (effectStacks[i] > 0)
+                        effectTime[i] = effects[i].timeIn60th;
+
+                    // log
+                    if (log)
+                        log->logEffectEnd(this, currentTime, (EffectSlot)i);
+                }
+            }
+    }
 }
 
 void Simulation::addResource(bool currentOnly)

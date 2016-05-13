@@ -8,6 +8,7 @@
 #include "Rotation.hh"
 #include "Gear.hh"
 #include "EnemyInfo.hh"
+#include "Effect.hh"
 
 struct CombatLog;
 
@@ -66,6 +67,11 @@ private: // run-time TRANSIENT data
     int currentTime;
     // skill cooldowns
     int skillCDs[SKILL_CNT];
+    // effect time, CD, stacks
+    int effectTime[(int)EffectSlot::Count];
+    int effectCD[(int)EffectSlot::Count];
+    int effectStacks[(int)EffectSlot::Count];
+    Effect effects[(int)EffectSlot::Count];
     // resources for both weapons
     int weaponResources[2];
     // currently equipped weapon (0 = left, 1 = right, -1 = aux)
@@ -73,7 +79,8 @@ private: // run-time TRANSIENT data
     // random
     std::default_random_engine random;
 
-    void fullHit(Stats const& baseStats, float dmgScaling, float penCritPenalty, Skill const* srcSkill, Passive const* srcPassive);
+    void fullHit(Stats const& baseStats, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Passive const* srcPassive);
+    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool *isCrit, bool *isPen, Skill const* srcSkill, Passive const* srcPassive);
 
     void advanceTime(int timeIn60th);
 

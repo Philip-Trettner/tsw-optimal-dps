@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Passive.hh"
+#include "Effects.hh"
 
 /**
  * @brief Passive library
@@ -30,6 +31,16 @@ private:
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
+        static Passive SealTheDeal()
+        {
+            auto p = passive("Seal The Deal", PassiveType::None);
+
+            p.restrictType = SkillType::Consumer;
+            p.bonusStats.addedCritChance = 5 / 100.f;
+            p.bonusStats.additiveDamage = 20 / 100.f;
+
+            return p;
+        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
@@ -47,10 +58,28 @@ public:
 
     struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
     {
+        static Passive Lethality()
+        {
+            auto p = passive("Lethality", PassiveType::None);
+
+            p.trigger = Trigger::Hit;
+            p.effect = Effects::Passive::Lethality();
+
+            return p;
+        }
     };
 
     struct Blade : private Base<Weapon::Blade, DmgType::Melee>
     {
+        static Passive TwistTheKnife()
+        {
+            auto p = passive("Twist The Knife", PassiveType::None);
+
+            p.trigger = Trigger::Pen;
+            p.effect = Effects::Passive::TwistTheKnife();
+
+            return p;
+        }
     };
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
@@ -79,6 +108,15 @@ public:
 
     struct Blood : private Base<Weapon::Blood, DmgType::Magic>
     {
+        static Passive IronMaiden()
+        {
+            auto p = passive("Iron Maiden", PassiveType::None);
+
+            p.trigger = Trigger::Pen;
+            p.effect = Effects::Generic::MinorPenetrationChance();
+
+            return p;
+        }
     };
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>

@@ -39,7 +39,8 @@ HEADERS += \
     Gear.hh \
     Signets.hh \
     CombatLog.hh \
-    Effect.hh
+    Effect.hh \
+    Effects.hh
 
 linux {
     QMAKE_CXXFLAGS += -Wno-unused-parameter
