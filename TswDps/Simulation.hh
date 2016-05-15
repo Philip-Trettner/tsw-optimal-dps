@@ -81,8 +81,14 @@ private: // run-time TRANSIENT data
 
     void fullHit(Stats const& baseStats, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Passive const* srcPassive);
     void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool *isCrit, bool *isPen, Skill const* srcSkill, Passive const* srcPassive);
+    void procEffect(Stats const& actualStats, Passive const& passive);
+    void procEffect(Stats const& actualStats, EffectSlot effectSlot);
 
     void advanceTime(int timeIn60th);
 
     void addResource(bool currentOnly); ///< to current weapon
+
+    // has to be done for non-direct effects like the EF buff
+    void registerEffect(Effect const& e);
+    void registerEffects();
 };

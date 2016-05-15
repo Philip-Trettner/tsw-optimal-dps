@@ -1,26 +1,29 @@
 #include <iostream>
 
+#include "Augments.hh"
+#include "Build.hh"
+#include "CombatLog.hh"
+#include "Gear.hh"
+#include "Passives.hh"
 #include "Signets.hh"
 #include "Simulation.hh"
-#include "Build.hh"
-#include "Gear.hh"
-#include "CombatLog.hh"
 #include "Skills.hh"
-#include "Augments.hh"
-#include "Passives.hh"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     (void)argc;
     (void)argv;
 
-    // for (auto const& s : g.enumerateGearStats({Rating::Crit, Rating::CritPower}, true))
+    const bool dpsTest = false;
+
+    // for (auto const& s : g.enumerateGearStats({Rating::Crit,
+    // Rating::CritPower}, true))
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
-    // CombatLog log;
     VerboseLog log;
     Simulation s;
-    //s.log = &log;
+    if (!dpsTest)
+        s.log = &log;
 
     s.skills = {{
                     // skills
@@ -34,23 +37,24 @@ int main(int argc, char* argv[])
                     // augs
                     Augments::Brutal(),    //
                     Augments::Piercing(),  //
-                    Augments::Fierce(), //
-                    Augments::Grievous(),    //
+                    Augments::Ferocious(), //
+                    Augments::Grievous(),  //
                     Augments::Accurate(),  //
                 },
                 {
                     // passives
-                    Passives::Hammer::Brawler(),       //
-                    Passives::Shotgun::DeadOnTarget(), //
-                    Passives::Blood::IronMaiden(),     //
-                    Passives::Blade::TwistTheKnife(),  //
-                    Passives::Rifle::Lethality(),      //
-                    Passives::Pistol::SealTheDeal(),   //
+                    Passives::Hammer::Brawler(),           //
+                    Passives::Shotgun::DeadOnTarget(),     //
+                    Passives::Blood::IronMaiden(),         //
+                    Passives::Blade::TwistTheKnife(),      //
+                    Passives::Rifle::Lethality(),          //
+                    Passives::Pistol::SealTheDeal(),       //
+                    Passives::Elemental::ElementalForce(), //
                 }};
 
-    s.rotation = FixedRotation::create({4, 1, 4, 4, 4, 4, 1, 2});
+    s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
 
-    auto& g = s.gear;
+    auto &g = s.gear;
 
     // stats
     g.setGear(PrimaryStat::Attack, Gear::TalismanQuality::QL11);
@@ -118,12 +122,17 @@ int main(int argc, char* argv[])
         std::cout << std::endl;
     }*/
 
-    s.lowVarianceMode = true;
-    while (s.totalTimeAccum < 1000 * 1000 * 60)
-        s.simulate(5 * 60 * 60);
-    s.dumpBriefReport();
-
-    //s.simulate(20 * 60);
-    //std::cout << std::endl;
-    //s.dumpBriefReport();
+    if (dpsTest)
+    {
+        s.lowVarianceMode = true;
+        while (s.totalTimeAccum < 500 * 1000 * 60)
+            s.simulate(20 * 60);
+        s.dumpBriefReport();
+    }
+    else
+    {
+        s.simulate(20 * 60);
+        std::cout << std::endl;
+        s.dumpBriefReport();
+    }
 }

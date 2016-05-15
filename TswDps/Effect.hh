@@ -1,8 +1,8 @@
 #pragma once
 
-#include "common.hh"
-#include "Stats.hh"
 #include <sstream>
+#include "Stats.hh"
+#include "common.hh"
 
 #define MAKE_EFFECT_ENUM(...)                                                  \
     enum class EffectSlot                                                      \
@@ -17,21 +17,21 @@
         {                                                                      \
             string s = #__VA_ARGS__;                                           \
             std::ostringstream tmp;                                            \
-            for (auto i = 0u; i < s.size(); ++i)                                \
+            for (auto i = 0u; i < s.size(); ++i)                               \
             {                                                                  \
                 if (isspace(s[i]))                                             \
                     continue;                                                  \
-                else if (s[i] == ',')                                        \
+                else if (s[i] == ',')                                          \
                 {                                                              \
                     vals.push_back(tmp.str());                                 \
                     tmp.str(string());                                         \
                 }                                                              \
                 else                                                           \
-                    tmp << s[i];                                             \
+                    tmp << s[i];                                               \
             }                                                                  \
             vals.push_back(tmp.str());                                         \
         }                                                                      \
-        return vals[(int)slot];                                                \
+        return vals[(size_t)slot];                                             \
     }
 
 MAKE_EFFECT_ENUM(
@@ -51,12 +51,17 @@ MAKE_EFFECT_ENUM(
     // specific passives
     TwistTheKnife,
     Lethality,
+    ElementalForceStacks,
+    ElementalForceBuff,
+
+    //
     );
 
 struct Effect
 {
     string name;
-    EffectSlot slot;
+    EffectSlot slot = EffectSlot::Count;
+    EffectSlot blockedSlot = EffectSlot::Count; // if < Count, this effect cannot trigger if that effect is running
 
     Stats bonusStats;
 
@@ -64,4 +69,6 @@ struct Effect
     int maxStacks = 1;
     int cooldownIn60th = 60;
     int timeIn60th = -1;
+
+    EffectSlot triggerOnMaxStacks = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
 };

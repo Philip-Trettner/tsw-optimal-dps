@@ -63,7 +63,7 @@ public:
             auto p = passive("Lethality", PassiveType::None);
 
             p.trigger = Trigger::Hit;
-            p.effect = Effects::Passive::Lethality();
+            p.effect = EffectSlot::Lethality;
 
             return p;
         }
@@ -76,7 +76,7 @@ public:
             auto p = passive("Twist The Knife", PassiveType::None);
 
             p.trigger = Trigger::Pen;
-            p.effect = Effects::Passive::TwistTheKnife();
+            p.effect = EffectSlot::TwistTheKnife;
 
             return p;
         }
@@ -113,7 +113,7 @@ public:
             auto p = passive("Iron Maiden", PassiveType::None);
 
             p.trigger = Trigger::Pen;
-            p.effect = Effects::Generic::MinorPenetrationChance();
+            p.effect = EffectSlot::MinorPenetrationChance;
 
             return p;
         }
@@ -125,6 +125,15 @@ public:
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
     {
+        static Passive ElementalForce()
+        {
+            auto p = passive("Elemental Force", PassiveType::None);
+
+            p.trigger = Trigger::FinishActivation;
+            p.effect = EffectSlot::ElementalForceStacks;
+
+            return p;
+        }
     };
 
 private:

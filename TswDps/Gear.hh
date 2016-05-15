@@ -8,15 +8,15 @@
 
 struct Gear
 {
-    static const int Head = 0;
-    static const int MajorLeft = 1;
-    static const int MajorMid = 2;
-    static const int MajorRight = 3;
-    static const int MinorLeft = 4;
-    static const int MinorMid = 5;
-    static const int MinorRight = 6;
-    static const int WeaponLeft = 7;
-    static const int WeaponRight = 8;
+    static const size_t Head = 0;
+    static const size_t MajorLeft = 1;
+    static const size_t MajorMid = 2;
+    static const size_t MajorRight = 3;
+    static const size_t MinorLeft = 4;
+    static const size_t MinorMid = 5;
+    static const size_t MinorRight = 6;
+    static const size_t WeaponLeft = 7;
+    static const size_t WeaponRight = 8;
 
     enum class SlotStatus
     {

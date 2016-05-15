@@ -2,10 +2,10 @@
 
 #include "common.hh"
 
+#include "Effect.hh"
+#include "Stats.hh"
 #include "Types.hh"
 #include "Weapon.hh"
-#include "Stats.hh"
-#include "Effect.hh"
 
 enum class Trigger
 {
@@ -13,7 +13,8 @@ enum class Trigger
     Hit,
     Crit,
     Pen,
-    CritPen
+    CritPen,
+    FinishActivation
 };
 
 struct Passive
@@ -22,12 +23,12 @@ struct Passive
     Weapon weaponType = Weapon::None; ///< for classification
     DmgType dmgtype = DmgType::None;
     PassiveType passivetype = PassiveType::None;
-    bool restrictWeapon = false; ///< if true, only weaponType weapons benefit from this passive
+    bool restrictWeapon = false;              ///< if true, only weaponType weapons benefit from this passive
     SkillType restrictType = SkillType::None; ///< if non-none, restricts this passive to a given skill type
 
     Stats bonusStats;
 
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
-    Effect effect; ///< trigger effect
+    EffectSlot effect; ///< trigger effect
 };

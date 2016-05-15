@@ -91,6 +91,28 @@ public:
 
             return e;
         }
+
+        static Effect ElementalForceStacks()
+        {
+            auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
+
+            e.timeIn60th = 60 * 60; // dummy
+            e.maxStacks = 5;
+            e.cooldownIn60th = 0; // no CD (on finish activation)
+            e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;
+            e.blockedSlot = EffectSlot::ElementalForceBuff;
+
+            return e;
+        }
+        static Effect ElementalForceBuff()
+        {
+            auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
+
+            e.timeIn60th = 5 * 60;
+            e.bonusStats.addedCritChance = 20 / 100.f;
+
+            return e;
+        }
     };
 
 private:

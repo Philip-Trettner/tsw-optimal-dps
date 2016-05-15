@@ -29,7 +29,7 @@ public:
             auto p = signet("Laceration");
 
             p.passive.trigger = Trigger::Crit;
-            p.passive.effect = Effects::Signet::Laceration();
+            p.passive.effect = EffectSlot::Laceration;
 
             return p;
         }
@@ -39,7 +39,7 @@ public:
 
             p.passive.trigger = Trigger::Hit;
             p.passive.triggerChance = 0.10f;
-            p.passive.effect = Effects::Signet::Abuse();
+            p.passive.effect = EffectSlot::Abuse;
 
             return p;
         }
@@ -49,7 +49,7 @@ public:
 
             p.passive.trigger = Trigger::Hit;
             p.passive.triggerChance = 0.15f;
-            p.passive.effect = Effects::Signet::Aggression();
+            p.passive.effect = EffectSlot::Aggression;
 
             return p;
         }
