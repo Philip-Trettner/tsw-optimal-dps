@@ -44,15 +44,11 @@ int main(int argc, char *argv[])
                 {
                     // passives
                     Passives::Hammer::Brawler(),           //
-                    Passives::Shotgun::DeadOnTarget(),     //
                     Passives::Blood::IronMaiden(),         //
-                    Passives::Blade::TwistTheKnife(),      //
-                    Passives::Rifle::Lethality(),          //
-                    Passives::Pistol::SealTheDeal(),       //
                     Passives::Elemental::ElementalForce(), //
                 }};
 
-    s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
+    //s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
 
     auto &g = s.gear;
 

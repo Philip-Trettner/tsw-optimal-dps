@@ -356,37 +356,41 @@ void Simulation::procEffect(const Stats& actualStats, EffectSlot effectSlot)
 
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
-    effectTime[slot] = effect.timeIn60th;
     effectCD[slot] = effect.cooldownIn60th;
-    effectStacks[slot] += 1;
-    if (effectStacks[slot] > effect.maxStacks)
+    if (effect.timeIn60th > 0)
     {
-        effectStacks[slot] = effect.maxStacks;
-    }
-    else
-    {
-        // log (only on new stack)
-        if (log)
-            log->logEffectStart(this, currentTime, effect.slot);
-    }
+        effectTime[slot] = effect.timeIn60th;
+        effectStacks[slot] += 1;
+        if (effectStacks[slot] > effect.maxStacks)
+        {
+            effectStacks[slot] = effect.maxStacks;
+        }
+        else
+        {
+            // log (only on new stack)
+            if (log)
+                log->logEffectStart(this, currentTime, effect.slot);
+        }
 
-    // trigger on max stacks
-    if (effect.triggerOnMaxStacks < EffectSlot::Count && effectStacks[slot] == effect.maxStacks)
-    {
-        // remove all old stacks
-        if (log)
-            while (effectStacks[slot] > 0)
-            {
-                if (log)
-                    log->logEffectEnd(this, currentTime, effect.slot);
-                effectStacks[slot]--;
-            }
-        effectStacks[slot] = 0;
-        effectTime[slot] = 0;
+        // trigger on max stacks
+        if (effect.triggerOnMaxStacks < EffectSlot::Count && effectStacks[slot] == effect.maxStacks)
+        {
+            // remove all old stacks
+            if (log)
+                while (effectStacks[slot] > 0)
+                {
+                    if (log)
+                        log->logEffectEnd(this, currentTime, effect.slot);
+                    effectStacks[slot]--;
+                }
+            effectStacks[slot] = 0;
+            effectTime[slot] = 0;
 
-        // gain new effect
-        procEffect(actualStats, effect.triggerOnMaxStacks);
+            // gain new effect
+            procEffect(actualStats, effect.triggerOnMaxStacks);
+        }
     }
+    else assert(effectTime[slot] == 0);
 }
 
 void Simulation::rawHit(

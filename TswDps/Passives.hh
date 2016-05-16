@@ -41,6 +41,15 @@ public:
 
             return p;
         }
+
+        static Passive DoubleUp()
+        {
+            auto p = passive("Double Up", PassiveType::None);
+
+            p.restrictWeapon = true;
+
+            return p;
+        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>

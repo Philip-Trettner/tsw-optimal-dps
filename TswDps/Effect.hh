@@ -54,6 +54,16 @@ MAKE_EFFECT_ENUM(
     ElementalForceStacks,
     ElementalForceBuff,
 
+    // procs
+    SuddenReturn,
+    OneInTheChamber,
+    Thunderstruck,
+    FortunateStrike,
+
+    // weapon skills
+    DoubleUp,
+    Calamity,
+
     //
     );
 
@@ -68,7 +78,8 @@ struct Effect
     bool oncePerAbility = false;
     int maxStacks = 1;
     int cooldownIn60th = 60;
-    int timeIn60th = -1;
+    int timeIn60th = 0; // 0 = no stacks, only applies once (for procs)
 
-    EffectSlot triggerOnMaxStacks = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
+    EffectSlot triggerOnMaxStacks
+        = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
 };
