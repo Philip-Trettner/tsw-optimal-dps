@@ -6,6 +6,7 @@
 #include "CombatLog.hh"
 
 #include "Effects.hh"
+#include "Passives.hh"
 
 void Simulation::resetStats()
 {
@@ -97,7 +98,12 @@ void Simulation::init()
             }
         }
 
+        // calculate proc stats in parallel
+        Stats ps = s;
+
         // TODO: add weapon skill passive
+        passives.push_back(Passives::Chaos::Calamity());
+        passives.push_back(Passives::Pistol::DoubleUp());
 
         // add passives
         for (auto const& passive : skills.passives)
@@ -112,6 +118,14 @@ void Simulation::init()
 
             // add passive stats
             s = s + passive.bonusStats;
+
+            // ... for procs (e.g. 1.5% signets)
+            if (passive.affectsProcs())
+                ps = ps + passive.bonusStats;
+
+            // extract trigger passives
+            if (passive.trigger != Trigger::None)
+                triggers.push_back(passive);
         }
 
         // calc multihit penalty
@@ -119,12 +133,8 @@ void Simulation::init()
         if (skill.hits > 0)
             skillPenCritPenalty[i] = skill.multiHitPenalty();
 
-        // extract trigger passives
-        for (auto const& passive : passives)
-            if (passive.trigger != Trigger::None)
-                triggers.push_back(passive);
-
         skillStats[i] = s;
+        procStats[i] = ps;
         skillTriggers[i] = triggers;
     }
 }
@@ -166,7 +176,8 @@ void Simulation::simulate(int totalTimeIn60th)
             assert(skillCDs[idx] == 0);
         }
 
-        auto const& baseStats = skillStats[idx];
+        auto const& baseStat = skillStats[idx];
+        auto const& procStat = procStats[idx];
 
         auto remainingTime = skill.timeIn60th;
 
@@ -217,7 +228,7 @@ void Simulation::simulate(int totalTimeIn60th)
             }
 
             // actual full hit
-            fullHit(baseStats, scaling, penCritPenalty, hitIdx == 0, &skill, nullptr);
+            fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, &skill, nullptr);
         }
 
         // consumers
@@ -238,7 +249,7 @@ void Simulation::simulate(int totalTimeIn60th)
             if (passive.trigger != Trigger::FinishActivation)
                 continue;
 
-            procEffect(baseStats, passive);
+            procEffect(procStat, passive, -1);
         }
 
         // advance remaining time
@@ -276,23 +287,27 @@ void Simulation::dumpBriefReport()
     std::cout << "Dmg:   " << totalDmg << " over " << totalTimeAccum / 60.f << " sec" << std::endl;
     std::cout << "DPS:   " << totalDPS() << std::endl;
     std::cout << "Hits:  " << totalHits << std::endl;
-    std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)" << std::endl;
     std::cout << "Crits: " << totalCrits << " (" << totalCrits * 100.f / totalHits << "%)" << std::endl;
+    std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)" << std::endl;
 }
 
-void Simulation::fullHit(const Stats& baseStats, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Passive const* srcPassive)
+void Simulation::fullHit(const Stats& baseStats,
+                         Stats const& procStat,
+                         float dmgScaling,
+                         float penCritPenalty,
+                         bool startOfAbility,
+                         Skill const* srcSkill,
+                         Effect const* srcEffect)
 {
-    auto stats = baseStats;
-    // add currently running effects
-    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
-        if (effectStacks[i] > 1)
-            stats = stats + effects[i].bonusStats * (float)effectStacks[i];
-        else if (effectStacks[i] == 1)
-            stats = stats + effects[i].bonusStats;
+    auto stats = baseStats; // copy
+    applyEffects(stats,
+                 srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype,          //
+                 srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit, //
+                 srcSkill ? srcSkill->subtype : SubType::None);
     stats.update(enemyInfo);
 
     bool isCrit, isPen;
-    rawHit(stats, dmgScaling, penCritPenalty, &isCrit, &isPen, srcSkill, srcPassive);
+    rawHit(stats, dmgScaling, penCritPenalty, &isCrit, &isPen, srcSkill, srcEffect);
 
     // effects trigger AFTER the hit
     for (auto const& passive : skillTriggers[currentWeapon])
@@ -329,11 +344,11 @@ void Simulation::fullHit(const Stats& baseStats, float dmgScaling, float penCrit
         if (!(isCrit && isPen) && passive.trigger == Trigger::CritPen)
             continue;
 
-        procEffect(stats, passive);
+        procEffect(procStat, passive, dmgScaling);
     }
 }
 
-void Simulation::procEffect(const Stats& actualStats, const Passive& passive)
+void Simulation::procEffect(const Stats& procStats, const Passive& passive, float originalHitScaling)
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
@@ -341,10 +356,10 @@ void Simulation::procEffect(const Stats& actualStats, const Passive& passive)
     if (passive.triggerChance < 1.0f && dice(random) > passive.triggerChance)
         return;
 
-    procEffect(actualStats, passive.effect);
+    procEffect(procStats, passive.effect, originalHitScaling);
 }
 
-void Simulation::procEffect(const Stats& actualStats, EffectSlot effectSlot)
+void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float originalHitScaling)
 {
     auto slot = (size_t)effectSlot;
     auto const& effect = effects[slot];
@@ -387,14 +402,34 @@ void Simulation::procEffect(const Stats& actualStats, EffectSlot effectSlot)
             effectTime[slot] = 0;
 
             // gain new effect
-            procEffect(actualStats, effect.triggerOnMaxStacks);
+            procEffect(procStats, effect.triggerOnMaxStacks, originalHitScaling);
         }
     }
-    else assert(effectTime[slot] == 0);
+    else
+        assert(effectTime[slot] == 0);
+
+    // proc dmg
+    if (effect.procDmgScaling > 0)
+    {
+        auto stats = procStats; // copy
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None);
+        stats.update(enemyInfo);
+        bool isCrit, isPen;
+        rawHit(stats, effect.procDmgScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
+    }
+    if (effect.procDmgPercentage > 0)
+    {
+        assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
+        auto stats = procStats; // copy
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None);
+        stats.update(enemyInfo);
+        bool isCrit, isPen;
+        rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
+    }
 }
 
 void Simulation::rawHit(
-    const Stats& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, const Skill* srcSkill, const Passive* srcPassive)
+    const Stats& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, const Skill* srcSkill, const Effect* srcEffect)
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
@@ -436,7 +471,7 @@ void Simulation::rawHit(
 
     // log
     if (log)
-        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcPassive->name, dmg, *isCrit, *isPen, actualStats);
+        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, actualStats);
 }
 
 void Simulation::advanceTime(int timeIn60th)
@@ -509,6 +544,23 @@ void Simulation::addResource(bool currentOnly)
             ++weaponResources[1 - currentWeapon];
 }
 
+void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype)
+{
+    // TODO: check if Lethality etc. affect procs
+
+    // add currently running effects
+    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+    {
+        if (skilltype == SkillType::Proc && !effects[i].affectProcs)
+            continue; // not all effects affect procs
+
+        if (effectStacks[i] > 1)
+            stats = stats + effects[i].bonusStats * (float)effectStacks[i];
+        else if (effectStacks[i] == 1)
+            stats = stats + effects[i].bonusStats;
+    }
+}
+
 void Simulation::registerEffect(const Effect& e)
 {
     assert(e.slot < EffectSlot::Count && "invalid effect");
@@ -529,4 +581,12 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::Abuse());
     registerEffect(Effects::Signet::Aggression());
     registerEffect(Effects::Signet::Laceration());
+
+    registerEffect(Effects::Proc::FortunateStrike());
+    registerEffect(Effects::Proc::OneInTheChamber());
+    registerEffect(Effects::Proc::SuddenReturn());
+    registerEffect(Effects::Proc::Thunderstruck());
+
+    registerEffect(Effects::WeaponSkill::Calamity());
+    registerEffect(Effects::WeaponSkill::DoubleUp());
 }

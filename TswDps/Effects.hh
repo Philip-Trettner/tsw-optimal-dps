@@ -41,6 +41,8 @@ public:
             e.timeIn60th = 5 * 60;
             e.bonusStats.additiveDamage = 24 / 100.f;
 
+            e.affectProcs = false; // ??? TEST ME
+
             return e;
         }
         static Effect Aggression()
@@ -50,6 +52,8 @@ public:
             e.cooldownIn60th = 9 * 60;
             e.timeIn60th = 6 * 60;
             e.bonusStats.additiveDamage = 15 / 100.f;
+
+            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }
@@ -68,6 +72,69 @@ public:
         }
     };
 
+    struct WeaponSkill : private Base
+    {
+        static Effect DoubleUp()
+        {
+            auto e = effect("Double Up", EffectSlot::DoubleUp);
+
+            e.dmgtype = DmgType::Ranged;
+            e.procDmgPercentage = 0.50f;
+
+            return e;
+        }
+
+        static Effect Calamity()
+        {
+            auto e = effect("Calamity", EffectSlot::Calamity);
+
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = 0.47749f;
+
+            return e;
+        }
+    };
+
+    struct Proc : private Base
+    {
+        static Effect Thunderstruck()
+        {
+            auto e = effect("Thunderstruck", EffectSlot::Thunderstruck);
+
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = 0.55195f;
+
+            return e;
+        }
+        static Effect SuddenReturn()
+        {
+            auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
+
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = 0.36830f;
+
+            return e;
+        }
+        static Effect FortunateStrike()
+        {
+            auto e = effect("Fortunate Strike", EffectSlot::FortunateStrike);
+
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = 0.92024f;
+
+            return e;
+        }
+        static Effect OneInTheChamber()
+        {
+            auto e = effect("One In The Chamber", EffectSlot::OneInTheChamber);
+
+            e.dmgtype = DmgType::Ranged;
+            e.procDmgScaling = 0.36830f;
+
+            return e;
+        }
+    };
+
     struct Passive : private Base
     {
         static Effect TwistTheKnife()
@@ -77,6 +144,8 @@ public:
             e.timeIn60th = 10 * 60;
             e.maxStacks = 3;
             e.bonusStats.additiveDamage = 4 / 100.f;
+
+            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }
@@ -88,6 +157,8 @@ public:
             e.timeIn60th = 10 * 60;
             e.maxStacks = 10;
             e.bonusStats.additiveDamage = 1.25f / 100.f;
+
+            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }
@@ -104,6 +175,7 @@ public:
 
             return e;
         }
+
         static Effect ElementalForceBuff()
         {
             auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);

@@ -18,7 +18,9 @@ enum class DmgType {
 enum class SkillType {
     None,
     Builder,
-    Consumer
+    Consumer,
+    PassiveFullHit,
+    Proc
 };
 
 enum class PassiveType {

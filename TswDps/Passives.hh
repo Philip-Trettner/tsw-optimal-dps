@@ -47,6 +47,19 @@ public:
             auto p = passive("Double Up", PassiveType::None);
 
             p.restrictWeapon = true;
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 0.15f;
+            p.effect = EffectSlot::DoubleUp;
+
+            return p;
+        }
+
+        static Passive OneInTheChamber()
+        {
+            auto p = passive("One In The Chamber", PassiveType::None);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::OneInTheChamber;
 
             return p;
         }
@@ -89,6 +102,27 @@ public:
 
             return p;
         }
+
+        static Passive SuddenReturn()
+        {
+            auto p = passive("Sudden Return", PassiveType::None);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::SuddenReturn;
+
+            return p;
+        }
+
+        static Passive FortunateStrike()
+        {
+            auto p = passive("Fortunate Strike", PassiveType::None);
+
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 0.10f;
+            p.effect = EffectSlot::FortunateStrike;
+
+            return p;
+        }
     };
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
@@ -97,6 +131,8 @@ public:
         {
             auto p = passive("Thunderstruck", PassiveType::None);
 
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::Thunderstruck;
 
             return p;
         }
@@ -130,6 +166,17 @@ public:
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
     {
+        static Passive Calamity()
+        {
+            auto p = passive("Calamity", PassiveType::None);
+
+            p.restrictWeapon = true;
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 0.15f;
+            p.effect = EffectSlot::Calamity;
+
+            return p;
+        }
     };
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>

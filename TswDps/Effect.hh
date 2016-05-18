@@ -4,6 +4,8 @@
 #include "Stats.hh"
 #include "common.hh"
 
+#include "Types.hh"
+
 #define MAKE_EFFECT_ENUM(...)                                                  \
     enum class EffectSlot                                                      \
     {                                                                          \
@@ -82,4 +84,11 @@ struct Effect
 
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
+
+    DmgType dmgtype = DmgType::None; // for vulnerabilities
+
+    float procDmgScaling = 0.f;    // if > 0, triggers a proc dmg hit everytime this effect is applied
+    float procDmgPercentage = 0.f; // if > 0, triggers a proc hit depending on the original hit
+
+    bool affectProcs = true;
 };

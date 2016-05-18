@@ -14,16 +14,20 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = false;
+    const bool dpsTest = true;
 
     // for (auto const& s : g.enumerateGearStats({Rating::Crit,
     // Rating::CritPower}, true))
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
-    VerboseLog log;
-    Simulation s;
+    AggregateLog log;
+    VerboseLog vlog;
+    StatLog slog;
     if (!dpsTest)
-        s.log = &log;
+        log.logs.push_back(&vlog);
+    log.logs.push_back(&slog);
+    Simulation s;
+    s.log = &log;
 
     s.skills = {{
                     // skills
@@ -46,9 +50,14 @@ int main(int argc, char *argv[])
                     Passives::Hammer::Brawler(),           //
                     Passives::Blood::IronMaiden(),         //
                     Passives::Elemental::ElementalForce(), //
+                    Passives::Pistol::OneInTheChamber(),   //
+                    Passives::Blade::SuddenReturn(),       //
+                    Passives::Blade::FortunateStrike(),    //
+                    Passives::Hammer::Thunderstruck(),     //
                 }};
 
-    //s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
+    // s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
+    s.rotation = FixedRotation::create({0});
 
     auto &g = s.gear;
 
@@ -131,4 +140,7 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
         s.dumpBriefReport();
     }
+
+    std::cout << std::endl;
+    slog.dump(&s);
 }

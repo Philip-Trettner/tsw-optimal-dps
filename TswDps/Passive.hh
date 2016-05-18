@@ -31,4 +31,13 @@ struct Passive
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
     EffectSlot effect; ///< trigger effect
+
+    bool affectsProcs() const
+    {
+        if (restrictType != SkillType::None)
+            return false;
+        if (restrictWeapon)
+            return false;
+        return true;
+    }
 };

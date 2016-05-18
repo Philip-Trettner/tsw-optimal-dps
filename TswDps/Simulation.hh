@@ -16,9 +16,9 @@ struct Simulation
 {
     // common setup
     CombatLog* log = nullptr;
-    bool warnOnWait = true;       ///< warns if sim waits for a CD
-    bool lowVarianceMode = false; ///< if true, tries to reduce variance per sim
-    bool resetStatsAtStart = false;      ///< if true, resets stats at the start of each "simulate"
+    bool warnOnWait = true;         ///< warns if sim waits for a CD
+    bool lowVarianceMode = false;   ///< if true, tries to reduce variance per sim
+    bool resetStatsAtStart = false; ///< if true, resets stats at the start of each "simulate"
 
     // gear, skills, rotation
     Skillset skills;
@@ -53,8 +53,10 @@ struct Simulation
 
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
-    // includes multi-hit penalty
+    // does NOT include multi-hit penalty
     Stats skillStats[SKILL_CNT];
+    Stats procStats[SKILL_CNT]; // basically proc base stats depending on weapon, does not include multi-hit penalties
+                                // or non-proc affecting passives
     // weapon index per skill (-1 for aux)
     int skillWeaponIdx[SKILL_CNT];
     // penalties for multi hit and stuff
@@ -79,14 +81,16 @@ private: // run-time TRANSIENT data
     // random
     std::default_random_engine random;
 
-    void fullHit(Stats const& baseStats, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Passive const* srcPassive);
-    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool *isCrit, bool *isPen, Skill const* srcSkill, Passive const* srcPassive);
-    void procEffect(Stats const& actualStats, Passive const& passive);
-    void procEffect(Stats const& actualStats, EffectSlot effectSlot);
+    void fullHit(Stats const& baseStats, Stats const& procStat, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Effect const* srcEffect);
+    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
+    void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
+    void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
 
     void advanceTime(int timeIn60th);
 
     void addResource(bool currentOnly); ///< to current weapon
+
+    void applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype);
 
     // has to be done for non-direct effects like the EF buff
     void registerEffect(Effect const& e);
