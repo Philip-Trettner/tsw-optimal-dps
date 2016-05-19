@@ -261,7 +261,7 @@ void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
 
     switch (q)
     {
-    case TalismanQuality::QL10_5:
+    case TalismanQuality::QL10_9:
         switch (slot)
         {
         case Slot::Head:

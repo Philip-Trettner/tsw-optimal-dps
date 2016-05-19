@@ -66,7 +66,7 @@ public:
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
-    {        
+    {
         static Passive DeadOnTarget()
         {
             auto p = passive("Dead On Target", PassiveType::None);
@@ -215,6 +215,7 @@ public:
         }
     };
 
+    static Passive empty() { return Passive(); }
 private:
     Passives() = delete;
 };

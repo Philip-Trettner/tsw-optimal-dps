@@ -9,6 +9,8 @@ struct Stats;
 
 struct CombatLog
 {
+    bool skillsOnly = false;
+
     virtual ~CombatLog();
 
     // is called whenever a skill is activated

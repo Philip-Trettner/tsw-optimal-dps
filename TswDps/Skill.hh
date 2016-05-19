@@ -6,6 +6,7 @@
 
 #include "Types.hh"
 #include "Weapon.hh"
+#include "Passive.hh"
 
 struct Skill
 {
@@ -25,9 +26,17 @@ struct Skill
     float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
     float dmgScaling5 = -1; ///< scaling at 5 resources
 
+    float chanceForScaleInc = 0; ///< chance to increase base scaling
+    float scaleIncPerc = 0;      ///< amount of base scale inc if proc
+
     int fixedConsumerResources = 0; ///< 0 = consumes all and uses dmgScaling5
 
     bool buildPrimaryOnly = false; ///< if true and builder, only builds for current weapon
+
+    bool animaDeviation = false;
+    DmgType appliesVulnerability = DmgType::None; ///< if non-None, applies EVS
+
+    Passive passive; ///< built-in passive
 
     // 1.0  for no penalty
     // ??   for 2 hits per sec

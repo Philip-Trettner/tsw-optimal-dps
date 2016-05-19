@@ -32,11 +32,15 @@ struct Passive
     float triggerChance = 1.f;
     EffectSlot effect; ///< trigger effect
 
+    bool skillPassive = false; ///< if true, this is a builtin passive of a skill (Automatically set)
+
     bool affectsProcs() const
     {
         if (restrictType != SkillType::None)
             return false;
         if (restrictWeapon)
+            return false;
+        if (skillPassive)
             return false;
         return true;
     }

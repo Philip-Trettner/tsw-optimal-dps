@@ -61,14 +61,6 @@ public:
             s.channeling = true;
             return s;
         }
-
-        static Skill DeadlyAim()
-        {
-            auto s = skill("Deadly Aim", SkillType::None);
-            s.timeIn60th = 0;
-            // ... ???
-            return s;
-        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
@@ -121,17 +113,113 @@ public:
             // ... ???
             return s;
         }
+    };
 
-        static Skill BreachingShot()
+    struct Rifle : private Base<Weapon::Chaos, DmgType::Ranged>
+    {
+        static Skill Shellshocker()
         {
-            auto s = skill("Breaching Shot", SkillType::None);
-            s.timeIn60th = 0;
-            // ... ???
+            auto s = skill("Shellshocker", SkillType::None);
+            s.timeIn60th = 2 * 60;
+            s.hits = 8;
+            s.dmgScaling = 0.86664f;
+            s.cooldownIn60th = 25 * 60;
+            s.channeling = true;
+            s.animaDeviation = true;
+            s.appliesVulnerability = DmgType::Melee;
             return s;
         }
     };
 
+    struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
+    {
+        static Skill RunRampant()
+        {
+            auto s = skill("Run Rampant", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.hits = 3;
+            s.subtype = SubType::Burst;
+            s.dmgScaling = 0.20648f;
+            return s;
+        }
+        static Skill FourHorsemen()
+        {
+            auto s = skill("Four Horsemen", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 4;
+            s.subtype = SubType::Burst;
+            s.dmgScaling = 0.27796f;
+            s.dmgScaling5 = 0.44870f;
+            return s;
+        }
 
+        static Skill AmorFati()
+        {
+            auto s = skill("Amor Fati", SkillType::None);
+            s.cooldownIn60th = 60 * 60;
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::AmorFati;
+            return s;
+        }
+    };
+
+    struct Blood : private Base<Weapon::Blood, DmgType::Magic>
+    {
+    };
+
+    struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
+    {
+    };
+
+    struct Blade : private Base<Weapon::Blade, DmgType::Melee>
+    {
+    };
+
+    struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
+    {
+    };
+
+    struct Fist : private Base<Weapon::Fist, DmgType::Melee>
+    {
+        static Skill SeeRed()
+        {
+            auto s = skill("See Red", SkillType::None);
+            s.timeIn60th = 4 * 60;
+            s.hits = 20;
+            s.dmgScaling = 0.43282f;
+            s.cooldownIn60th = 25 * 60;
+            s.channeling = true;
+            s.animaDeviation = true;
+            s.appliesVulnerability = DmgType::Magic;
+            return s;
+        }
+
+        static Skill Reckless()
+        {
+            auto s = skill("Reckless", SkillType::None);
+            s.cooldownIn60th = 40 * 60;
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::Reckless;
+            return s;
+        }
+    };
+
+    struct Chainsaw : private Base<Weapon::Aux, DmgType::None>
+    {
+        static Skill Timber()
+        {
+            auto s = skill("Timber", SkillType::None);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.cooldownIn60th = 15 * 60;
+            s.dmgScaling = 2.99004f;
+            s.chanceForScaleInc = 0.33f;
+            s.scaleIncPerc = .45f;
+            return s;
+        }
+    };
+
+    static Skill empty() { return Skill(); }
 private:
     Skills() = delete;
 };

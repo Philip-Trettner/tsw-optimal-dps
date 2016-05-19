@@ -8,6 +8,7 @@
 
 #include "Effects.hh"
 #include "Passives.hh"
+#include "Signets.hh"
 
 void Simulation::resetStats()
 {
@@ -117,6 +118,14 @@ void Simulation::init()
         passives.push_back(Passives::Pistol::DoubleUp());
         passives.push_back(Passives::Elemental::ElementalOverload());
 
+        // skill passive
+        {
+            auto p = skill.passive;
+            p.skillPassive = true;
+            p.name = skill.name + " [passive]";
+            passives.push_back(p);
+        }
+
         // add passives
         for (auto const& passive : skills.passives)
             passives.push_back(passive);
@@ -153,6 +162,7 @@ void Simulation::init()
 
 void Simulation::simulate(int totalTimeIn60th)
 {
+    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
     assert(rotation && "no rotation set");
 
     // reset sim
@@ -179,6 +189,7 @@ void Simulation::simulate(int totalTimeIn60th)
         auto idx = rotation->nextSkill(currentTime, *this);
         assert(idx >= 0 && idx < SKILL_CNT);
         auto const& skill = skills.skills[idx];
+        currentSkill = idx;
 
         // log skill
         if (log)
@@ -216,6 +227,9 @@ void Simulation::simulate(int totalTimeIn60th)
             assert(0);
         }
 
+        // apply CD
+        skillCDs[idx] = skill.cooldownIn60th;
+
         // casttime
         advanceTime(skill.casttimeIn60th);
         remainingTime -= skill.casttimeIn60th;
@@ -232,6 +246,14 @@ void Simulation::simulate(int totalTimeIn60th)
         {
             float a = (resources - 1.f) / (5.f - 1.f);
             scaling += (skill.dmgScaling5 - skill.dmgScaling) * a;
+        }
+        // chance to do more dmg (timber)
+        if (skill.chanceForScaleInc > 0)
+        {
+            if (lowVarianceMode)
+                scaling *= 1 + skill.chanceForScaleInc * skill.scaleIncPerc;
+            else if (dice(random) < skill.chanceForScaleInc)
+                scaling *= 1 + skill.scaleIncPerc;
         }
 
         // actually do skill
@@ -260,7 +282,7 @@ void Simulation::simulate(int totalTimeIn60th)
             addResource(skill.buildPrimaryOnly);
 
         // effects trigger AFTER the hit
-        for (auto const& passive : skillTriggers[currentWeapon])
+        for (auto const& passive : skillTriggers[idx])
         {
             // finish activation
             if (passive.trigger != Trigger::FinishActivation)
@@ -342,6 +364,26 @@ void Simulation::analyzePassiveContribution(int maxTime)
         skills.passives[i] = passive;
     }
 
+    // WC
+    if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
+    {
+        auto piece = gear.pieces[Gear::MajorMid];
+        gear.pieces[Gear::MajorMid].signet = Signets::Major::Violence();
+        gear.pieces[Gear::MajorMid].set(PrimaryStat::Attack, Gear::TalismanQuality::QL11);
+
+        init();
+        resetStats();
+        simulate(maxTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(4);
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+                  << "% from Woodcutters (vs. purple Violence and QL11)" << std::endl;
+
+        gear.pieces[Gear::MajorMid] = piece;
+    }
+
     log = savLog;
     lowVarianceMode = savMode;
 }
@@ -364,8 +406,18 @@ void Simulation::fullHit(const Stats& baseStats,
     bool isCrit, isPen;
     rawHit(stats, dmgScaling, penCritPenalty, &isCrit, &isPen, srcSkill, srcEffect);
 
+    // special hit effects
+    for (auto i = 0u; i < (int)EffectSlot::Count; ++i)
+    {
+        auto const& effect = effects[i];
+
+        // reset on pen
+        if (isPen && effect.resetOnPen && effectStacks[i] > 0)
+            resetEffect((EffectSlot)i);
+    }
+
     // effects trigger AFTER the hit
-    for (auto const& passive : skillTriggers[currentWeapon])
+    for (auto const& passive : skillTriggers[currentSkill])
     {
         auto slot = (size_t)passive.effect;
         auto const& effect = effects[slot];
@@ -393,6 +445,10 @@ void Simulation::fullHit(const Stats& baseStats,
 
         // on pen
         if (!isPen && passive.trigger == Trigger::Pen)
+            continue;
+
+        // blocked by pen
+        if (isPen && effect.resetOnPen)
             continue;
 
         // on crit-pen
@@ -446,15 +502,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         if (effect.triggerOnMaxStacks < EffectSlot::Count && effectStacks[slot] == effect.maxStacks)
         {
             // remove all old stacks
-            if (log)
-                while (effectStacks[slot] > 0)
-                {
-                    if (log)
-                        log->logEffectEnd(this, currentTime, effect.slot);
-                    effectStacks[slot]--;
-                }
-            effectStacks[slot] = 0;
-            effectTime[slot] = 0;
+            resetEffect(effect.slot);
 
             // gain new effect
             procEffect(procStats, effect.triggerOnMaxStacks, originalHitScaling);
@@ -631,6 +679,22 @@ void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype
     }
 }
 
+void Simulation::resetEffect(EffectSlot slot)
+{
+    auto idx = (size_t)slot;
+
+    // remove all old stacks
+    if (log)
+        while (effectStacks[idx] > 0)
+        {
+            if (log)
+                log->logEffectEnd(this, currentTime, slot);
+            effectStacks[idx]--;
+        }
+    effectStacks[idx] = 0;
+    effectTime[idx] = 0;
+}
+
 void Simulation::registerEffect(const Effect& e)
 {
     assert(e.slot < EffectSlot::Count && "invalid effect");
@@ -660,6 +724,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::Abuse());
     registerEffect(Effects::Signet::Aggression());
     registerEffect(Effects::Signet::Laceration());
+    registerEffect(Effects::Signet::MothersWrathBuff());
+    registerEffect(Effects::Signet::MothersWrathStacks());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());
@@ -670,4 +736,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
     registerEffect(Effects::WeaponSkill::ElementalOverload());
+
+    registerEffect(Effects::SkillPassive::Reckless());
+    registerEffect(Effects::SkillPassive::AmorFati());
 }

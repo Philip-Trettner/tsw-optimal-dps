@@ -21,7 +21,8 @@ void VerboseLog::logSkill(Simulation *sim, int timeIn60th, int skillIdx)
 
 void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, float dmg, bool critical, bool penetrated, const Stats &stats)
 {
-    return;
+    if (skillsOnly)
+        return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60 << "] '";
     std::cout << name << "' hit for " << dmg << " (";
@@ -39,7 +40,8 @@ void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, flo
 
 void VerboseLog::logEffectStart(Simulation *sim, int timeIn60th, EffectSlot slot)
 {
-    return;
+    if (skillsOnly)
+        return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
               << "] You gain '";
@@ -48,7 +50,8 @@ void VerboseLog::logEffectStart(Simulation *sim, int timeIn60th, EffectSlot slot
 
 void VerboseLog::logEffectEnd(Simulation *sim, int timeIn60th, EffectSlot slot)
 {
-    return;
+    if (skillsOnly)
+        return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
               << "] You lose '";

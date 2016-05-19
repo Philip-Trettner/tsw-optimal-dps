@@ -57,6 +57,31 @@ public:
 
             return e;
         }
+
+        static Effect MothersWrathStacks()
+        {
+            auto e = effect("Mother's Wrath Stacks", EffectSlot::MothersWrathStacks);
+
+            e.timeIn60th = 60 * 60; // dummy
+            e.maxStacks = 5;
+            e.resetOnPen = true;
+            e.cooldownIn60th = 0; // no CD
+            e.triggerOnMaxStacks = EffectSlot::MothersWrathBuff;
+            e.blockedSlot = EffectSlot::MothersWrathBuff;
+
+            return e;
+        }
+
+        static Effect MothersWrathBuff()
+        {
+            auto e = effect("Mother's Wrath Buff", EffectSlot::MothersWrathBuff);
+
+            e.timeIn60th = 3 * 60;
+            e.cooldownIn60th = 6 * 60;
+            e.bonusStats.addedPenChance = 40 / 100.f;
+
+            return e;
+        }
     };
 
     struct Generic : private Base
@@ -229,6 +254,32 @@ public:
             e.timeIn60th = 5 * 60;
             e.cooldownIn60th = 5 * 60;
             e.bonusStats.addedCritChance = 20 / 100.f;
+
+            return e;
+        }
+    };
+
+    struct SkillPassive : private Base
+    {
+        static Effect Reckless()
+        {
+            auto e = effect("Reckless", EffectSlot::Reckless);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.additiveDamage = 20 / 100.f;
+
+            e.affectProcs = false; // ??? TEST ME
+
+            return e;
+        }
+        static Effect AmorFati()
+        {
+            auto e = effect("Amor Fati", EffectSlot::AmorFati);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.additiveDamage = 10 / 100.f;
+
+            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }

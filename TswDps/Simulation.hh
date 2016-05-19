@@ -26,7 +26,7 @@ struct Simulation
     Gear gear;
     Stats potionStats;
     EnemyInfo enemyInfo;
-    int buffAt = 3;                  ///< initial buff timing
+    int buffAt = 5;                  ///< initial buff timing
     int dabsCDIn60th = 60 * 60;      ///< DABS are fired every x seconds
     int dabsVarianceIn60th = 5 * 60; ///< DABS may be delayed up to y seconds
 
@@ -64,7 +64,11 @@ struct Simulation
     /// returns true if skill is off CD
     bool isSkillReady(int idx) const { return skillCDs[idx] == 0; }
     /// returns the amount of resources for a given weapon
-    int resourcesFor(Weapon w) const { return w == gear.leftWeapon ? weaponResources[0] : w == gear.rightWeapon ? weaponResources[1] : -1; }
+    int resourcesFor(Weapon w) const
+    {
+        return w == gear.leftWeapon ? weaponResources[0] : w == gear.rightWeapon ? weaponResources[1] : -1;
+    }
+
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
     // does NOT include multi-hit penalty
@@ -94,6 +98,8 @@ private: // run-time TRANSIENT data
     int weaponResources[2];
     // currently equipped weapon (0 = left, 1 = right, -1 = aux)
     int currentWeapon;
+    // currently used skill
+    int currentSkill;
     // random
     std::default_random_engine random;
 
@@ -113,6 +119,9 @@ private: // run-time TRANSIENT data
     void addResource(bool currentOnly); ///< to current weapon
 
     void applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype);
+
+    /// resets a complete effect
+    void resetEffect(EffectSlot slot);
 
     // has to be done for non-direct effects like the EF buff
     void registerEffect(Effect const& e);

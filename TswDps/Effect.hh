@@ -41,6 +41,8 @@ MAKE_EFFECT_ENUM(
     Laceration,
     Abuse,
     Aggression,
+    MothersWrathStacks,
+    MothersWrathBuff,
 
     // general passives
     MinorPenetrationChance,
@@ -55,6 +57,10 @@ MAKE_EFFECT_ENUM(
     Lethality,
     ElementalForceStacks,
     ElementalForceBuff,
+
+    // skill passives
+    Reckless,
+    AmorFati,
 
     // procs
     SuddenReturn,
@@ -85,6 +91,8 @@ struct Effect
     int maxStacks = 1;
     int cooldownIn60th = 60;
     int timeIn60th = 0; // 0 = no stacks, only applies once (for procs)
+
+    bool resetOnPen = false; //< if true, resets effect on pen
 
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
