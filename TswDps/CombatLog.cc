@@ -5,13 +5,23 @@
 #include <algorithm>
 
 #include <iostream>
+#include <iomanip>
 
 CombatLog::~CombatLog()
 {
 }
 
+void VerboseLog::logSkill(Simulation *sim, int timeIn60th, int skillIdx)
+{
+    auto frac = (timeIn60th % 60) * 100 / 60;
+    std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
+              << "] You activate '";
+    std::cout << sim->skills.skills[skillIdx].name << "'." << std::endl;
+}
+
 void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, float dmg, bool critical, bool penetrated, const Stats &stats)
 {
+    return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60 << "] '";
     std::cout << name << "' hit for " << dmg << " (";
@@ -29,6 +39,7 @@ void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, flo
 
 void VerboseLog::logEffectStart(Simulation *sim, int timeIn60th, EffectSlot slot)
 {
+    return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
               << "] You gain '";
@@ -37,6 +48,7 @@ void VerboseLog::logEffectStart(Simulation *sim, int timeIn60th, EffectSlot slot
 
 void VerboseLog::logEffectEnd(Simulation *sim, int timeIn60th, EffectSlot slot)
 {
+    return;
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
               << "] You lose '";
@@ -60,7 +72,7 @@ void StatLog::dump(Simulation *sim)
         auto const &s = kvp.second;
         std::cout << "  - ";
         std::cout.width(4);
-        std::cout << std::right << int(s.totalDmg * 1000 / totalDmg) / 10.;
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(s.totalDmg * 1000 / totalDmg) / 10.;
         std::cout << "% '" << kvp.first << "' (" << s.hits << " hits, " << int(s.crits * 1000. / s.hits) / 10.
                   << "% crits, " << int(s.pens * 1000. / s.hits) / 10. << "% pens)" << std::endl;
     }

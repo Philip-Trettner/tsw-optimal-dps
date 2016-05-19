@@ -49,6 +49,10 @@ struct Gear
         void fix(Rating r);
         /// fixes this piece to a 50-50 stat split
         void fix(Rating r1, Rating r2);
+        /// sets the inital rating but makes this a free piece
+        void free(Rating r);
+        /// sets the inital rating but makes this a free piece
+        void free(Rating r1, Rating r2);
 
         /// sets the primary stat of this talisman
         void set(PrimaryStat stat, TalismanQuality q);

@@ -9,5 +9,5 @@ struct Skillset
 {
     Skill skills[SKILL_CNT];
     Augment augments[SKILL_CNT];
-    Passive passives[SKILL_CNT];
+    std::vector<Passive> passives;
 };

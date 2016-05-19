@@ -8,13 +8,17 @@
 #include "Signets.hh"
 #include "Simulation.hh"
 #include "Skills.hh"
+#include "Builds.hh"
 
 int main(int argc, char *argv[])
 {
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = true;
+    const bool dpsTest = false;
+
+    const int burstFight = 13 * 60;
+    const bool longRun = false;
 
     // for (auto const& s : g.enumerateGearStats({Rating::Crit,
     // Rating::CritPower}, true))
@@ -29,7 +33,7 @@ int main(int argc, char *argv[])
     Simulation s;
     s.log = &log;
 
-    s.skills = {{
+    /*s.skills = {{
                     // skills
                     Skills::Pistol::HairTrigger(),  //
                     Skills::Shotgun::OutForAKill(), //
@@ -47,17 +51,23 @@ int main(int argc, char *argv[])
                 },
                 {
                     // passives
-                    Passives::Hammer::Brawler(),           //
+                    Passives::Hammer::Brawler(), //
+                    // Passives::Blade::TwistTheKnife(),      //
                     Passives::Blood::IronMaiden(),         //
                     Passives::Elemental::ElementalForce(), //
                     Passives::Pistol::OneInTheChamber(),   //
                     Passives::Blade::SuddenReturn(),       //
                     Passives::Blade::FortunateStrike(),    //
                     Passives::Hammer::Thunderstruck(),     //
+                    // Passives::Chaos::Gnosis(),             //
                 }};
 
-    // s.rotation = FixedRotation::create({0, 1, 0, 0, 0, 0, 1, 2});
-    s.rotation = FixedRotation::create({0});
+    s.rotation = FixedRotation::create({0, 0, 0, 0, 0, 1, 0, 2, 1});*/
+
+    s.skills = Builds::procHairtriggerOnly();
+    s.rotation = DefaultRotation::create();
+
+    // s.rotation = FixedRotation::create({0});
 
     auto &g = s.gear;
 
@@ -66,12 +76,13 @@ int main(int argc, char *argv[])
 
     g.pieces[Gear::Head].fix(Rating::Hit);
     g.pieces[Gear::MajorLeft].fix(Rating::Pen);
+    g.pieces[Gear::MajorMid].fix(Rating::CritPower); // WC
     g.pieces[Gear::MajorRight].fix(Rating::Pen);
     g.pieces[Gear::MinorLeft].fix(Rating::Hit);
 
-    g.pieces[Gear::MajorMid].fix(Rating::CritPower);
-    g.pieces[Gear::MinorMid].fix(Rating::Crit);
-    g.pieces[Gear::MinorRight].fix(Rating::Crit);
+
+    g.pieces[Gear::MinorMid].free(Rating::Crit);
+    g.pieces[Gear::MinorRight].free(Rating::Crit);
 
     // signets
     g.pieces[Gear::Head].signet = Signets::HeadWeapon::Laceration();
@@ -86,10 +97,10 @@ int main(int argc, char *argv[])
 
     // weapons
     g.leftWeapon = Weapon::Pistol;
-    g.pieces[Gear::WeaponLeft].fix(Rating::Crit);
+    g.pieces[Gear::WeaponLeft].free(Rating::Crit);
     g.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
     g.rightWeapon = Weapon::Shotgun;
-    g.pieces[Gear::WeaponRight].fix(Rating::Crit);
+    g.pieces[Gear::WeaponRight].free(Rating::Crit);
     g.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
 
     std::cout << "Base gear stats:" << std::endl;
@@ -127,20 +138,31 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
     }*/
 
+    const int maxTime = 100 * 1000 * 60;
+
     if (dpsTest)
     {
         s.lowVarianceMode = true;
-        while (s.totalTimeAccum < 500 * 1000 * 60)
-            s.simulate(20 * 60);
+        if (longRun)
+            s.simulate(100 * 1000 * 60);
+        else
+            while (s.totalTimeAccum < maxTime)
+                s.simulate(burstFight);
         s.dumpBriefReport();
     }
     else
     {
-        s.simulate(20 * 60);
+        s.simulate(burstFight);
         std::cout << std::endl;
         s.dumpBriefReport();
     }
 
     std::cout << std::endl;
     slog.dump(&s);
+
+    if (dpsTest)
+    {
+        std::cout << std::endl;
+        s.analyzePassiveContribution(maxTime);
+    }
 }

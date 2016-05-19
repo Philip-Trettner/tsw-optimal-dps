@@ -237,6 +237,20 @@ void Gear::Piece::fix(Rating r1, Rating r2)
     stats = splitStatOf(slot, r1) + splitStatOf(slot, r2) + s;
 }
 
+void Gear::Piece::free(Rating r)
+{
+    status = SlotStatus::Free;
+    auto s = stats.getPrimaryPart();
+    stats = singleStatOf(slot, r) + s;
+}
+
+void Gear::Piece::free(Rating r1, Rating r2)
+{
+    status = SlotStatus::Free;
+    auto s = stats.getPrimaryPart();
+    stats = splitStatOf(slot, r1) + splitStatOf(slot, r2) + s;
+}
+
 void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
 {
     stats.attackRating = 0;

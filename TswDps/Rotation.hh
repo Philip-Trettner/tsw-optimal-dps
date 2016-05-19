@@ -40,3 +40,21 @@ struct FixedRotation : Rotation
         return r;
     }
 };
+
+/// smart-ish rotation
+/// not super optimized
+/// tries to consume during buffs
+/// tries to build 5
+/// skill priority is CD skill > consumer > builder (arbitrated by order)
+struct DefaultRotation : Rotation
+{
+    int maxWaitingForBuffs = 5 * 60; ///< in 60th
+
+    int nextSkill(int timeIn60th, Simulation const& sim) override;
+    void reset() override;
+
+    static std::shared_ptr<DefaultRotation> create()
+    {
+        return std::make_shared<DefaultRotation>();
+    }
+};

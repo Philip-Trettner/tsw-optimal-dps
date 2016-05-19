@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <iomanip>
 
 #include "CombatLog.hh"
 
@@ -58,11 +59,6 @@ void Simulation::init()
         else
             assert(0 && "used skill for non-equipped weapon");
 
-        // add aug(s)
-        for (auto a = 0; a < SKILL_CNT; ++a)
-            if (skills.augments[a].affectEverything || i == a)
-                s = s + skills.augments[a].bonusStats;
-
         // add potion
         s = s + potionStats;
 
@@ -99,11 +95,27 @@ void Simulation::init()
         }
 
         // calculate proc stats in parallel
+        // proc stats are
+        //  - gear stats
+        //  - potions
+        //  - "affecting all" augs
+        //  - "affecting procs" passives
         Stats ps = s;
+
+        // add aug(s)
+        for (auto a = 0; a < SKILL_CNT; ++a)
+        {
+            if (skills.augments[a].affectEverything || i == a)
+                s = s + skills.augments[a].bonusStats;
+
+            if (skills.augments[a].affectEverything)
+                ps = ps + skills.augments[a].bonusStats;
+        }
 
         // TODO: add weapon skill passive
         passives.push_back(Passives::Chaos::Calamity());
         passives.push_back(Passives::Pistol::DoubleUp());
+        passives.push_back(Passives::Elemental::ElementalOverload());
 
         // add passives
         for (auto const& passive : skills.passives)
@@ -147,6 +159,7 @@ void Simulation::simulate(int totalTimeIn60th)
     random.seed((uint32_t)std::chrono::system_clock::now().time_since_epoch().count());
     rotation->reset();
     currentTime = 0;
+    dabsTime = buffAt * 60;
     for (auto i = 0; i < SKILL_CNT; ++i)
         skillCDs[i] = 0;
     for (auto i = 0; i < (int)EffectSlot::Count; ++i)
@@ -166,6 +179,10 @@ void Simulation::simulate(int totalTimeIn60th)
         auto idx = rotation->nextSkill(currentTime, *this);
         assert(idx >= 0 && idx < SKILL_CNT);
         auto const& skill = skills.skills[idx];
+
+        // log skill
+        if (log)
+            log->logSkill(this, currentTime, idx);
 
         // wait for CD
         if (skillCDs[idx] > 0)
@@ -291,6 +308,44 @@ void Simulation::dumpBriefReport()
     std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)" << std::endl;
 }
 
+void Simulation::analyzePassiveContribution(int maxTime)
+{
+    auto savMode = lowVarianceMode;
+    auto savLog = log;
+    log = nullptr;
+    lowVarianceMode = true;
+
+    std::cout << "Passive Analysis:" << std::endl;
+
+    init();
+    resetStats();
+    simulate(maxTime);
+    auto startDPS = totalDPS();
+
+    for (auto i = 0u; i < skills.passives.size(); ++i)
+    {
+        auto passive = skills.passives[i];
+        if (passive.name.empty())
+            continue;
+        skills.passives[i] = Passive();
+
+        init();
+        resetStats();
+        simulate(maxTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(4);
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+                  << "% from '" << passive.name << "'" << std::endl;
+
+        skills.passives[i] = passive;
+    }
+
+    log = savLog;
+    lowVarianceMode = savMode;
+}
+
 void Simulation::fullHit(const Stats& baseStats,
                          Stats const& procStat,
                          float dmgScaling,
@@ -366,7 +421,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     assert(effect.slot < EffectSlot::Count && "effect not registered");
 
     // blocked by other effect
-    if (effect.blockedSlot < EffectSlot::Count && effectStacks[(int)effect.blockedSlot] > 0)
+    if (effect.blockedSlot < EffectSlot::Count && effectCD[(int)effect.blockedSlot] > 0)
         return;
 
     // actually procced
@@ -438,7 +493,10 @@ void Simulation::rawHit(
     float penChance = actualStats.finalPenChance * penCritPenalty;
     float critPower = actualStats.finalCritPower;
 
-    float dmg = actualStats.finalCombatPower * dmgScaling;
+    float vulnerability = 1 + enemyInfo.baseVulnerability;
+    // TODO: add RANGED/MELEE/MAGIC vuln.
+
+    float dmg = actualStats.finalCombatPower * dmgScaling * actualStats.finalDmgMultiplier * vulnerability;
 
     *isCrit = dice(random) < critChance;
     *isPen = dice(random) < penChance;
@@ -499,11 +557,14 @@ void Simulation::advanceTime(int timeIn60th)
         for (auto i = 0; i < (int)EffectSlot::Count; ++i)
             if (effectTime[i] > 0 && effectTime[i] < delta)
                 delta = effectTime[i];
+        if (dabsTime < delta)
+            delta = dabsTime;
 
         // actually advance time
         currentTime += delta;
         totalTimeAccum += delta;
         timeIn60th -= delta;
+        dabsTime -= delta;
 
         // update running effects
         for (auto i = 0; i < (int)EffectSlot::Count; ++i)
@@ -526,6 +587,15 @@ void Simulation::advanceTime(int timeIn60th)
                         log->logEffectEnd(this, currentTime, (EffectSlot)i);
                 }
             }
+
+        // check buffs
+        if (dabsTime == 0)
+        {
+            std::uniform_int_distribution<int> cd(dabsCDIn60th, dabsCDIn60th + dabsVarianceIn60th);
+            dabsTime = cd(random);
+            procEffect(Stats(), EffectSlot::MajorCriticalChance, -1);
+            procEffect(Stats(), EffectSlot::MajorPenetrationChance, -1);
+        }
     }
 }
 
@@ -571,7 +641,16 @@ void Simulation::registerEffect(const Effect& e)
 
 void Simulation::registerEffects()
 {
+    static bool doneOnce = false;
+    if (doneOnce)
+        return;
+    else
+        doneOnce = true;
+
     registerEffect(Effects::Generic::MinorPenetrationChance());
+    registerEffect(Effects::Generic::MajorPenetrationChance());
+    registerEffect(Effects::Generic::MinorCriticalChance());
+    registerEffect(Effects::Generic::MajorCriticalChance());
 
     registerEffect(Effects::Passive::ElementalForceBuff());
     registerEffect(Effects::Passive::ElementalForceStacks());
@@ -586,7 +665,9 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::OneInTheChamber());
     registerEffect(Effects::Proc::SuddenReturn());
     registerEffect(Effects::Proc::Thunderstruck());
+    registerEffect(Effects::Proc::Gnosis());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
+    registerEffect(Effects::WeaponSkill::ElementalOverload());
 }

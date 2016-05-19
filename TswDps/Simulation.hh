@@ -26,6 +26,9 @@ struct Simulation
     Gear gear;
     Stats potionStats;
     EnemyInfo enemyInfo;
+    int buffAt = 3;                  ///< initial buff timing
+    int dabsCDIn60th = 60 * 60;      ///< DABS are fired every x seconds
+    int dabsVarianceIn60th = 5 * 60; ///< DABS may be delayed up to y seconds
 
     // brief stats
     double totalDmg = 0.0f;
@@ -51,6 +54,17 @@ struct Simulation
     /// dumps brief report of last finished simulation
     void dumpBriefReport();
 
+    /// Analyzes the total dmg increase of each passive
+    void analyzePassiveContribution(int maxTime = 100 * 1000 * 60);
+
+    /// next dabs in 60th
+    int nextDABS() const { return dabsTime; }
+    /// checks if a given effect is active
+    bool isEffectActive(EffectSlot slot) const { return effectStacks[(int)slot] > 0; }
+    /// returns true if skill is off CD
+    bool isSkillReady(int idx) const { return skillCDs[idx] == 0; }
+    /// returns the amount of resources for a given weapon
+    int resourcesFor(Weapon w) const { return w == gear.leftWeapon ? weaponResources[0] : w == gear.rightWeapon ? weaponResources[1] : -1; }
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
     // does NOT include multi-hit penalty
@@ -67,6 +81,8 @@ private: // run-time INIT data
 private: // run-time TRANSIENT data
     // current time in 60th
     int currentTime;
+    // buff time
+    int dabsTime;
     // skill cooldowns
     int skillCDs[SKILL_CNT];
     // effect time, CD, stacks
@@ -81,7 +97,13 @@ private: // run-time TRANSIENT data
     // random
     std::default_random_engine random;
 
-    void fullHit(Stats const& baseStats, Stats const& procStat, float dmgScaling, float penCritPenalty, bool startOfAbility, Skill const* srcSkill, Effect const* srcEffect);
+    void fullHit(Stats const& baseStats,
+                 Stats const& procStat,
+                 float dmgScaling,
+                 float penCritPenalty,
+                 bool startOfAbility,
+                 Skill const* srcSkill,
+                 Effect const* srcEffect);
     void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
     void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
     void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);

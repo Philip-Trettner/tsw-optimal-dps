@@ -177,6 +177,17 @@ public:
 
             return p;
         }
+
+        static Passive Gnosis()
+        {
+            auto p = passive("Gnosis", PassiveType::None);
+
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 0.333f;
+            p.effect = EffectSlot::Gnosis;
+
+            return p;
+        }
     };
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
@@ -187,6 +198,18 @@ public:
 
             p.trigger = Trigger::FinishActivation;
             p.effect = EffectSlot::ElementalForceStacks;
+
+            return p;
+        }
+
+        static Passive ElementalOverload()
+        {
+            auto p = passive("Elemental Overload", PassiveType::None);
+
+            p.restrictWeapon = true;
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 0.333f;
+            p.effect = EffectSlot::ElementalOverload;
 
             return p;
         }

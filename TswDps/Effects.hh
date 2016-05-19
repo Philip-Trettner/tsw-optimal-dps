@@ -70,6 +70,33 @@ public:
 
             return e;
         }
+        static Effect MinorCriticalChance()
+        {
+            auto e = effect("Minor Critical Chance", EffectSlot::MinorCriticalChance);
+
+            e.timeIn60th = 8 * 60;
+            e.bonusStats.addedCritChance = 10 / 100.f;
+
+            return e;
+        }
+        static Effect MajorPenetrationChance()
+        {
+            auto e = effect("Major Penetration Chance", EffectSlot::MajorPenetrationChance);
+
+            e.timeIn60th = 8 * 60;
+            e.bonusStats.addedPenChance = 45 / 100.f;
+
+            return e;
+        }
+        static Effect MajorCriticalChance()
+        {
+            auto e = effect("Major Critical Chance", EffectSlot::MajorCriticalChance);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.addedCritChance = 40 / 100.f;
+
+            return e;
+        }
     };
 
     struct WeaponSkill : private Base
@@ -90,6 +117,16 @@ public:
 
             e.dmgtype = DmgType::Magic;
             e.procDmgScaling = 0.47749f;
+
+            return e;
+        }
+
+        static Effect ElementalOverload()
+        {
+            auto e = effect("Elemental Overload", EffectSlot::ElementalOverload);
+
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = 0.13600f;
 
             return e;
         }
@@ -130,6 +167,15 @@ public:
 
             e.dmgtype = DmgType::Ranged;
             e.procDmgScaling = 0.36830f;
+
+            return e;
+        }
+        static Effect Gnosis()
+        {
+            auto e = effect("Gnosis", EffectSlot::Gnosis);
+
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = 0.27895f;
 
             return e;
         }
@@ -181,6 +227,7 @@ public:
             auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
 
             e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 5 * 60;
             e.bonusStats.addedCritChance = 20 / 100.f;
 
             return e;

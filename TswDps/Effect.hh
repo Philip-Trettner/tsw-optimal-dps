@@ -61,10 +61,14 @@ MAKE_EFFECT_ENUM(
     OneInTheChamber,
     Thunderstruck,
     FortunateStrike,
+    LiveWireStack,
+    LiveWireBuff,
+    Gnosis,
 
     // weapon skills
     DoubleUp,
     Calamity,
+    ElementalOverload,
 
     //
     );
@@ -73,7 +77,7 @@ struct Effect
 {
     string name;
     EffectSlot slot = EffectSlot::Count;
-    EffectSlot blockedSlot = EffectSlot::Count; // if < Count, this effect cannot trigger if that effect is running
+    EffectSlot blockedSlot = EffectSlot::Count; // if < Count, this effect cannot trigger if that effect has Cooldown!
 
     Stats bonusStats;
 
