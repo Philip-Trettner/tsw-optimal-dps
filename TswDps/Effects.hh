@@ -62,7 +62,7 @@ public:
         {
             auto e = effect("Mother's Wrath Stacks", EffectSlot::MothersWrathStacks);
 
-            e.timeIn60th = 60 * 60; // dummy
+            e.timeIn60th = INF_TIME;
             e.maxStacks = 5;
             e.resetOnPen = true;
             e.cooldownIn60th = 0; // no CD
@@ -155,6 +155,32 @@ public:
 
             return e;
         }
+
+        static Effect MomentumStack()
+        {
+            auto e = effect("Momentum Stack", EffectSlot::MomentumStack);
+
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 5;
+            e.triggerOnMaxStacks = EffectSlot::MomentumBuff;
+            e.blockedSlot = EffectSlot::MomentumBuff;
+            e.restrictToWeapon = Weapon::Hammer;
+            e.affectProcs = false;
+
+            return e;
+        }
+
+        static Effect MomentumBuff()
+        {
+            auto e = effect("Momentum Buff", EffectSlot::MomentumBuff);
+
+            e.timeIn60th = INF_TIME;
+            e.bonusStats.additiveDamage = 40 / 100.f;
+            e.restrictToWeapon = Weapon::Hammer;
+            e.consumedAfterHit = true;
+
+            return e;
+        }
     };
 
     struct Proc : private Base
@@ -238,7 +264,7 @@ public:
         {
             auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
 
-            e.timeIn60th = 60 * 60; // dummy
+            e.timeIn60th = INF_TIME;
             e.maxStacks = 5;
             e.cooldownIn60th = 0; // no CD (on finish activation)
             e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;

@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = true;
+    const bool dpsTest = false;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;
@@ -39,8 +39,9 @@ int main(int argc, char *argv[])
         s.buffAt = 100000;
 
     // Builds::procHairtriggerOnly(s);
-    //Builds::procBurstChaosRifle(s);
-    Builds::procBurstChaosFist(s);
+    // Builds::procBurstChaosRifle(s);
+    // Builds::procBurstChaosFist(s);
+    Builds::hammerTest(s);
 
     auto &g = s.gear;
 

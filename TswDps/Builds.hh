@@ -10,6 +10,35 @@
 
 struct Builds
 {
+    static void hammerTest(Simulation& sim)
+    {
+        sim.rotation = DefaultRotation::create();
+
+        sim.skills = {{
+                          // skills
+                          Skills::Hammer::Smash(), //
+                          Skills::Hammer::MoltenSteel(), //
+                      },
+                      {
+                          // augs
+                          Augments::Brutal(), //
+                          Augments::Ferocious(), //
+                      },
+                      {
+                          // passives
+                          Passives::Hammer::Brawler(),           //
+                          Passives::Blood::IronMaiden(),         //
+                          Passives::Elemental::ElementalForce(), //
+                      }};
+
+        // weapons
+        sim.gear.leftWeapon = Weapon::Hammer;
+        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
+
+        sim.gear.rightWeapon = Weapon::Shotgun;
+        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+    }
+
     static void procHairtriggerOnly(Simulation& sim)
     {
         sim.rotation = DefaultRotation::create();

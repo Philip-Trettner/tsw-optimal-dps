@@ -64,9 +64,9 @@ void Simulation::init()
         s = s + potionStats;
 
         // add gear
-        for (auto i = Gear::Head; i <= Gear::MinorRight; ++i)
+        for (auto gi = Gear::Head; gi <= Gear::MinorRight; ++gi)
         {
-            auto const& p = gear.pieces[i];
+            auto const& p = gear.pieces[gi];
 
             // add all talisman stats
             s = s + p.stats;
@@ -117,6 +117,7 @@ void Simulation::init()
         passives.push_back(Passives::Chaos::Calamity());
         passives.push_back(Passives::Pistol::DoubleUp());
         passives.push_back(Passives::Elemental::ElementalOverload());
+        passives.push_back(Passives::Hammer::Momentum());
 
         // skill passive
         {
@@ -267,7 +268,7 @@ void Simulation::simulate(int totalTimeIn60th)
             }
 
             // actual full hit
-            fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, &skill, nullptr);
+            fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
         }
 
         // consumers
@@ -393,6 +394,7 @@ void Simulation::fullHit(const Stats& baseStats,
                          float dmgScaling,
                          float penCritPenalty,
                          bool startOfAbility,
+                         bool endOfAbility,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
@@ -400,7 +402,8 @@ void Simulation::fullHit(const Stats& baseStats,
     applyEffects(stats,
                  srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype,          //
                  srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit, //
-                 srcSkill ? srcSkill->subtype : SubType::None);
+                 srcSkill ? srcSkill->subtype : SubType::None,
+                 srcSkill ? srcSkill->weapon : Weapon::None);
     stats.update(enemyInfo);
 
     bool isCrit, isPen;
@@ -457,6 +460,39 @@ void Simulation::fullHit(const Stats& baseStats,
 
         procEffect(procStat, passive, dmgScaling);
     }
+
+    // consumed after hit
+    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+    {
+        if (effectStacks[i] == 0)
+            continue;
+
+        // cannot consume the same time it was gained
+        if (effectTime[i] == effects[i].timeIn60th)
+            continue;
+
+        // lose one stack after each hit (or at end of ability)
+        if (effects[i].consumedAfterHit ||
+            (effects[i].consumedAfterAbility && endOfAbility))
+        {
+            // cannot trigger the same time it was (re)gained
+            if (effectTime[i] == effects[i].timeIn60th)
+                continue;
+
+            --effectStacks[i];
+            if (log)
+                log->logEffectEnd(this, currentTime, (EffectSlot)i);
+
+            // refresh time
+            if (effectStacks[i] > 0)
+                effectTime[i] = effects[i].timeIn60th;
+            else // or reset it
+            {
+                effectTime[i] = 0;
+                effectCD[i] = 0;
+            }
+        }
+    }
 }
 
 void Simulation::procEffect(const Stats& procStats, const Passive& passive, float originalHitScaling)
@@ -477,7 +513,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     assert(effect.slot < EffectSlot::Count && "effect not registered");
 
     // blocked by other effect
-    if (effect.blockedSlot < EffectSlot::Count && effectCD[(int)effect.blockedSlot] > 0)
+    if (effect.blockedSlot < EffectSlot::Count && (effectCD[(int)effect.blockedSlot] > 0 || effectStacks[(int)effect.blockedSlot] > 0))
         return;
 
     // actually procced
@@ -515,7 +551,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     if (effect.procDmgScaling > 0)
     {
         auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None);
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
         stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
@@ -524,7 +560,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     {
         assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
         auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None);
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
         stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
@@ -662,7 +698,7 @@ void Simulation::addResource(bool currentOnly)
             ++weaponResources[1 - currentWeapon];
 }
 
-void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype)
+void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon)
 {
     // TODO: check if Lethality etc. affect procs
 
@@ -671,6 +707,10 @@ void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype
     {
         if (skilltype == SkillType::Proc && !effects[i].affectProcs)
             continue; // not all effects affect procs
+
+        if (effects[i].restrictToWeapon != Weapon::None &&
+            weapon != effects[i].restrictToWeapon)
+            continue; // does not affect this weapon
 
         if (effectStacks[i] > 1)
             stats = stats + effects[i].bonusStats * (float)effectStacks[i];
@@ -736,6 +776,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
     registerEffect(Effects::WeaponSkill::ElementalOverload());
+    registerEffect(Effects::WeaponSkill::MomentumStack());
+    registerEffect(Effects::WeaponSkill::MomentumBuff());
 
     registerEffect(Effects::SkillPassive::Reckless());
     registerEffect(Effects::SkillPassive::AmorFati());

@@ -108,6 +108,7 @@ private: // run-time TRANSIENT data
                  float dmgScaling,
                  float penCritPenalty,
                  bool startOfAbility,
+                 bool endOfAbility,
                  Skill const* srcSkill,
                  Effect const* srcEffect);
     void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
@@ -118,7 +119,7 @@ private: // run-time TRANSIENT data
 
     void addResource(bool currentOnly); ///< to current weapon
 
-    void applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype);
+    void applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon);
 
     /// resets a complete effect
     void resetEffect(EffectSlot slot);

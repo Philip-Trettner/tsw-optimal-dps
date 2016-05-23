@@ -145,6 +145,16 @@ public:
 
             return p;
         }
+
+        static Passive Momentum()
+        {
+            auto p = passive("Momentum", PassiveType::None);
+
+            p.trigger = Trigger::Hit;
+            p.effect = EffectSlot::MomentumStack;
+
+            return p;
+        }
     };
 
     struct Fist : private Base<Weapon::Fist, DmgType::Melee>

@@ -6,6 +6,8 @@
 
 #include "Types.hh"
 
+#include "Weapon.hh"
+
 #define MAKE_EFFECT_ENUM(...)                                                  \
     enum class EffectSlot                                                      \
     {                                                                          \
@@ -75,6 +77,8 @@ MAKE_EFFECT_ENUM(
     DoubleUp,
     Calamity,
     ElementalOverload,
+    MomentumStack,
+    MomentumBuff,
 
     //
     );
@@ -102,5 +106,10 @@ struct Effect
     float procDmgScaling = 0.f;    // if > 0, triggers a proc dmg hit everytime this effect is applied
     float procDmgPercentage = 0.f; // if > 0, triggers a proc hit depending on the original hit
 
-    bool affectProcs = true;
+    bool affectProcs = true; // if true, bonus stats affect procs
+
+    Weapon restrictToWeapon = Weapon::None; // if non-None, only affects the specified weapon type
+
+    bool consumedAfterHit = false; // if true, 1 stack is consumed after next hit
+    bool consumedAfterAbility = false; // if true, 1 stack is consumed after next ability
 };

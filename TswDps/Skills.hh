@@ -177,6 +177,27 @@ public:
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
     {
+        static Skill Smash()
+        {
+            auto s = skill("Smash", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = 0.64427f;
+            return s;
+        }
+
+        static Skill MoltenSteel()
+        {
+            auto s = skill("Molten Steel", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = 1.14856f;
+            s.dmgScaling5 = 2.27330f;
+            s.passive.bonusStats.addedCritChance = 30 / 100.f;
+            s.passive.bonusStats.addedCritPower = 15 / 100.f;
+
+            return s;
+        }
     };
 
     struct Fist : private Base<Weapon::Fist, DmgType::Melee>

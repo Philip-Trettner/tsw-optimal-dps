@@ -88,6 +88,11 @@ public:
         }
     };
 
+    static Signet empty()
+    {
+        return Signet();
+    }
+
 private:
     Signets() = delete;
 };
