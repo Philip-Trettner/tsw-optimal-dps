@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Skills.hh"
 #include "Augments.hh"
 #include "Passives.hh"
-#include "Skillset.hh"
-#include "Simulation.hh"
 #include "Rotation.hh"
 #include "Signets.hh"
+#include "Simulation.hh"
+#include "Skills.hh"
+#include "Skillset.hh"
 
 struct Builds
 {
@@ -22,6 +22,7 @@ struct Builds
                           Skills::Shotgun::PointBlank(),      //
                           Skills::Hammer::FullMomentum(),     //
                           Skills::Shotgun::LockStockBarrel(), //
+                          Skills::Chainsaw::Timber(),         //
                       },
                       {
                           // augs
@@ -35,18 +36,22 @@ struct Builds
                       },
                       {
                           // passives
-                          Passives::Hammer::Brawler(),           //
+                          // Passives::Hammer::Brawler(),           //
+                          Passives::Blade::SuddenReturn(),       //
                           Passives::Blood::IronMaiden(),         //
                           Passives::Elemental::ElementalForce(), //
-                          Passives::Pistol::SealTheDeal(),       //
+                          Passives::Blade::TwistTheKnife(),      //
+                          Passives::Rifle::Lethality(),          //
+                          Passives::Hammer::Thunderstruck(),     //
+                          Passives::Pistol::OneInTheChamber(),   //
                       }};
 
         // weapons
         sim.gear.leftWeapon = Weapon::Hammer;
-        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
+        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
 
         sim.gear.rightWeapon = Weapon::Shotgun;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::empty();
+        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
     }
 
     static void procHairtriggerOnly(Simulation& sim)

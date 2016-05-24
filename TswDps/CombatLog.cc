@@ -59,6 +59,53 @@ void VerboseLog::logEffectEnd(Simulation *sim, int timeIn60th, EffectSlot slot)
     std::cout << to_string(slot) << "'." << std::endl;
 }
 
+void VerboseLog::logResource(Simulation *sim, int timeIn60th, Weapon weapon, int amount)
+{
+    if (skillsOnly)
+        return;
+    if (!logResources)
+        return;
+
+    auto frac = (timeIn60th % 60) * 100 / 60;
+    std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
+              << "] You gain ";
+    std::cout << amount << " resource(s) for ";
+    switch (weapon)
+    {
+    case Weapon::Blade:
+        std::cout << "Blade";
+        break;
+    case Weapon::Hammer:
+        std::cout << "Hammer";
+        break;
+    case Weapon::Fist:
+        std::cout << "Fist";
+        break;
+
+    case Weapon::Chaos:
+        std::cout << "Chaos";
+        break;
+    case Weapon::Blood:
+        std::cout << "Blood";
+        break;
+    case Weapon::Elemental:
+        std::cout << "Elemental";
+        break;
+
+    case Weapon::Rifle:
+        std::cout << "Rifle";
+        break;
+    case Weapon::Pistol:
+        std::cout << "Pistol";
+        break;
+    case Weapon::Shotgun:
+        std::cout << "Shotgun";
+        break;
+    }
+
+    std::cout << "." << std::endl;
+}
+
 void StatLog::dump(Simulation *sim)
 {
     std::vector<std::pair<string, DmgStat>> stats;

@@ -83,6 +83,8 @@ private: // run-time INIT data
     std::vector<Passive> skillTriggers[SKILL_CNT];
 
 private: // run-time TRANSIENT data
+    // unique hit id for FULL hits only
+    int currHitOrSkillID;
     // current time in 60th
     int currentTime;
     // buff time
@@ -93,6 +95,7 @@ private: // run-time TRANSIENT data
     int effectTime[(int)EffectSlot::Count];
     int effectCD[(int)EffectSlot::Count];
     int effectStacks[(int)EffectSlot::Count];
+    int effectHitID[(int)EffectSlot::Count]; // id of hit that applied this effect
     Effect effects[(int)EffectSlot::Count];
     // resources for both weapons
     int weaponResources[2];

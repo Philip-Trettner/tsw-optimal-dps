@@ -188,7 +188,7 @@ public:
 
             e.timeIn60th = 20 * 60;
             e.consumedAfterAbility = true;
-            e.gainOnConsume = EffectSlot::LockStockBarrel;
+            e.gainOnConsume = EffectSlot::LockStockBarrelGain;
             e.restrictToWeapon = Weapon::Shotgun;
             e.restrictToSkillType = SkillType::Consumer;
 

@@ -51,4 +51,7 @@ linux {
 msvc {
     QMAKE_CXXFLAGS += /wd4100
     QMAKE_CXXFLAGS_WARN_ON -= -w34100
+
+    INCLUDEPATH += "C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt"
+    LIBS += "C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\ucrt\x64\ucrtd.lib"
 }

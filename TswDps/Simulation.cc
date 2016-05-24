@@ -1,8 +1,8 @@
 #include "Simulation.hh"
 
 #include <chrono>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 #include "CombatLog.hh"
 
@@ -173,6 +173,7 @@ void Simulation::simulate(int totalTimeIn60th)
     assert(rotation && "no rotation set");
 
     // reset sim
+    currHitOrSkillID = 0;
     random.seed((uint32_t)std::chrono::system_clock::now().time_since_epoch().count());
     rotation->reset();
     currentTime = 0;
@@ -199,6 +200,9 @@ void Simulation::simulate(int totalTimeIn60th)
         assert(idx >= 0 && idx < SKILL_CNT);
         auto const& skill = skills.skills[idx];
         currentSkill = idx;
+
+        // inc skill id
+        ++currHitOrSkillID;
 
         // log skill
         if (log)
@@ -265,6 +269,23 @@ void Simulation::simulate(int totalTimeIn60th)
                 scaling *= 1 + skill.scaleIncPerc;
         }
 
+        // consumers
+        if (skill.skilltype == SkillType::Consumer)
+        {
+            assert(currentWeapon >= 0 && "aux consumer??");
+
+            auto resBefore = weaponResources[currentWeapon];
+
+            // TODO: fixed res consumers
+            if (skill.fixedConsumerResources > 0)
+                weaponResources[currentWeapon] -= skill.fixedConsumerResources;
+            else
+                weaponResources[currentWeapon] = 0;
+
+            if (log)
+                log->logResource(this, currentTime, skill.weapon, weaponResources[currentWeapon] - resBefore);
+        }
+
         // actually do skill
         for (auto hitIdx = 0; hitIdx < skill.hits; ++hitIdx)
         {
@@ -277,13 +298,6 @@ void Simulation::simulate(int totalTimeIn60th)
 
             // actual full hit
             fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
-        }
-
-        // consumers
-        if (skill.skilltype == SkillType::Consumer)
-        {
-            assert(currentWeapon >= 0 && "aux consumer??");
-            weaponResources[currentWeapon] = 0;
         }
 
         // channeling builders
@@ -299,6 +313,9 @@ void Simulation::simulate(int totalTimeIn60th)
 
             procEffect(procStat, passive, -1);
         }
+
+        // inc skill id
+        ++currHitOrSkillID;
 
         // advance remaining time
         advanceTime(remainingTime);
@@ -406,6 +423,8 @@ void Simulation::fullHit(const Stats& baseStats,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
+    ++currHitOrSkillID; // increase hit id
+
     auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
     auto dmgtype = srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype;
     auto skilltype = srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit;
@@ -477,8 +496,8 @@ void Simulation::fullHit(const Stats& baseStats,
         if (effectStacks[i] == 0)
             continue;
 
-        // cannot consume the same time it was gained
-        if (effectTime[i] == effect.timeIn60th)
+        // cannot trigger from the same hit it was (re)gained
+        if (effectHitID[i] == currHitOrSkillID)
             continue;
 
         // wrong weapon type
@@ -492,10 +511,6 @@ void Simulation::fullHit(const Stats& baseStats,
         // lose one stack after each hit (or at end of ability)
         if (effect.consumedAfterHit || (effect.consumedAfterAbility && endOfAbility))
         {
-            // cannot trigger the same time it was (re)gained
-            if (effectTime[i] == effect.timeIn60th)
-                continue; // TODO: FIXME!!
-
             --effectStacks[i];
             if (log)
                 log->logEffectEnd(this, currentTime, (EffectSlot)i);
@@ -549,6 +564,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
     effectCD[slot] = effect.cooldownIn60th;
+    effectHitID[slot] = currHitOrSkillID;
     if (effect.timeIn60th > 0)
     {
         effectTime[slot] = effect.timeIn60th;
@@ -752,12 +768,22 @@ void Simulation::addResource(bool currentOnly)
 
     // build primary
     if (weaponResources[currentWeapon] < 5)
+    {
         ++weaponResources[currentWeapon];
+
+        if (log)
+            log->logResource(this, currentTime, currentWeapon == 0 ? gear.leftWeapon : gear.rightWeapon, 1);
+    }
 
     // build secondary
     if (!currentOnly)
         if (weaponResources[1 - currentWeapon] < 5)
+        {
             ++weaponResources[1 - currentWeapon];
+
+            if (log)
+                log->logResource(this, currentTime, currentWeapon == 1 ? gear.leftWeapon : gear.rightWeapon, 1);
+        }
 }
 
 void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon)

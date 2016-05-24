@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = false;
+    const bool dpsTest = true;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;
@@ -34,6 +34,9 @@ int main(int argc, char *argv[])
     log.logs.push_back(&slog);
     Simulation s;
     s.log = &log;
+
+    if (longRun && dpsTest)
+        s.enemyInfo.allVulnerabilities = true;
 
     if (!buffs)
         s.buffAt = 100000;

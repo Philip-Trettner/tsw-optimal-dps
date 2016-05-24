@@ -3,14 +3,13 @@
 #include "common.hh"
 
 #include "Effect.hh"
+#include "Weapon.hh"
 
 struct Simulation;
 struct Stats;
 
 struct CombatLog
 {
-    bool skillsOnly = false;
-
     virtual ~CombatLog();
 
     // is called whenever a skill is activated
@@ -23,14 +22,21 @@ struct CombatLog
     virtual void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) {}
     // is called for every stack lost
     virtual void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) {}
+
+    // is called whenever resources are gained or lost
+    virtual void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) {}
 };
 
 struct VerboseLog : CombatLog
 {
+    bool skillsOnly = false;
+    bool logResources = false;
+
     void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override;
     void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats, float vulnMultiplier) override;
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) override;
+    void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) override;
 };
 
 struct StatLog : CombatLog
@@ -82,5 +88,10 @@ struct AggregateLog : CombatLog
     {
         for (auto log : logs)
             log->logEffectEnd(sim, timeIn60th, slot);
+    }
+    void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) override
+    {
+        for (auto log : logs)
+            log->logResource(sim, timeIn60th, weapon, amount);
     }
 };
