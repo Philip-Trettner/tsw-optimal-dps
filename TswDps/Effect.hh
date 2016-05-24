@@ -73,7 +73,7 @@ MAKE_EFFECT_ENUM(
     Thunderstruck,
     FortunateStrike,
     LiveWireStack,
-    LiveWireBuff,
+    LiveWireProc,
     Gnosis,
 
     // weapon skills

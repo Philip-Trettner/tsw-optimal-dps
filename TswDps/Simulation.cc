@@ -58,7 +58,10 @@ void Simulation::init()
             skillWeaponIdx[i] = skill.weapon == gear.leftWeapon ? 0 : 1;
         }
         else
+        {
+            std::cout << "skill " << (int)skill.weapon << " vs " << (int)gear.leftWeapon << " & " << (int)gear.rightWeapon << std::endl;
             assert(0 && "used skill for non-equipped weapon");
+        }
 
         // add potion
         s = s + potionStats;

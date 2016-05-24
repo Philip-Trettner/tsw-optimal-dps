@@ -12,7 +12,7 @@ struct Skill
 {
     string name;
 
-    Weapon weapon;
+    Weapon weapon = Weapon::None;
     SubType subtype = SubType::None;
     DmgType dmgtype;
     SkillType skilltype;

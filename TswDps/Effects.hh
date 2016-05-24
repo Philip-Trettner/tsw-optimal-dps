@@ -252,6 +252,31 @@ public:
 
             return e;
         }
+
+        static Effect LiveWireStack()
+        {
+            auto e = effect("Live Wire Stack", EffectSlot::LiveWireStack);
+
+            // TODO: proper once per ability
+            e.cooldownIn60th = 0;
+            e.timeIn60th = 9 * 60;
+            e.consumedAfterAbility = true;
+            e.gainOnConsume = EffectSlot::LiveWireStack;
+            e.restrictToWeapon = Weapon::Shotgun;
+            e.restrictToSkillType = SkillType::Consumer;
+
+            return e;
+        }
+
+        static Effect LiveWireProc()
+        {
+            auto e = effect("Live Wire Proc", EffectSlot::LiveWireProc);
+
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = 1.10389f;
+
+            return e;
+        }
     };
 
     struct Passive : private Base
