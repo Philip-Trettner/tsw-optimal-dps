@@ -159,6 +159,12 @@ void Simulation::init()
         procStats[i] = ps;
         skillTriggers[i] = triggers;
     }
+
+    // init vulnerabilities
+    vulnDmg[(int)DmgType::None] = 0.f;
+    vulnDmg[(int)DmgType::Melee] = 25 / 100.f;
+    vulnDmg[(int)DmgType::Magic] = 20 / 100.f;
+    vulnDmg[(int)DmgType::Ranged] = 20 / 100.f;
 }
 
 void Simulation::simulate(int totalTimeIn60th)
@@ -179,6 +185,8 @@ void Simulation::simulate(int totalTimeIn60th)
         effectCD[i] = 0;
         effectStacks[i] = 0;
     }
+    for (auto i = 0; i < (int)DmgType::Count; ++i)
+        vulnTime[i] = enemyInfo.allVulnerabilities ? totalTimeIn60th + 1 : 0;
     weaponResources[0] = startsWithResources(gear.leftWeapon) ? 5 : 0;
     weaponResources[1] = startsWithResources(gear.rightWeapon) ? 5 : 0;
     if (resetStatsAtStart)
@@ -398,16 +406,16 @@ void Simulation::fullHit(const Stats& baseStats,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
+    auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
+    auto dmgtype = srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype;
+    auto skilltype = srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit;
+    auto subtype = srcSkill ? srcSkill->subtype : SubType::None;
     auto stats = baseStats; // copy
-    applyEffects(stats,
-                 srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype,          //
-                 srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit, //
-                 srcSkill ? srcSkill->subtype : SubType::None,
-                 srcSkill ? srcSkill->weapon : Weapon::None);
+    applyEffects(stats, dmgtype, skilltype, subtype, weapon);
     stats.update(enemyInfo);
 
     bool isCrit, isPen;
-    rawHit(stats, dmgScaling, penCritPenalty, &isCrit, &isPen, srcSkill, srcEffect);
+    rawHit(stats, dmgScaling, penCritPenalty, dmgtype, &isCrit, &isPen, srcSkill, srcEffect);
 
     // special hit effects
     for (auto i = 0u; i < (int)EffectSlot::Count; ++i)
@@ -464,20 +472,29 @@ void Simulation::fullHit(const Stats& baseStats,
     // consumed after hit
     for (auto i = 0; i < (int)EffectSlot::Count; ++i)
     {
+        auto const& effect = effects[i];
+
         if (effectStacks[i] == 0)
             continue;
 
         // cannot consume the same time it was gained
-        if (effectTime[i] == effects[i].timeIn60th)
+        if (effectTime[i] == effect.timeIn60th)
+            continue;
+
+        // wrong weapon type
+        if (effect.restrictToWeapon != Weapon::None && weapon != effect.restrictToWeapon)
+            continue;
+
+        // wrong skill type
+        if (effect.restrictToSkillType != SkillType::None && skilltype != effect.restrictToSkillType)
             continue;
 
         // lose one stack after each hit (or at end of ability)
-        if (effects[i].consumedAfterHit ||
-            (effects[i].consumedAfterAbility && endOfAbility))
+        if (effect.consumedAfterHit || (effect.consumedAfterAbility && endOfAbility))
         {
             // cannot trigger the same time it was (re)gained
-            if (effectTime[i] == effects[i].timeIn60th)
-                continue;
+            if (effectTime[i] == effect.timeIn60th)
+                continue; // TODO: FIXME!!
 
             --effectStacks[i];
             if (log)
@@ -485,13 +502,25 @@ void Simulation::fullHit(const Stats& baseStats,
 
             // refresh time
             if (effectStacks[i] > 0)
-                effectTime[i] = effects[i].timeIn60th;
+                effectTime[i] = effect.timeIn60th;
             else // or reset it
             {
                 effectTime[i] = 0;
                 effectCD[i] = 0;
             }
+
+            // gain on consume
+            if (effect.gainOnConsume != EffectSlot::Count)
+                procEffect(procStat, effect.gainOnConsume, dmgScaling);
         }
+    }
+
+    // vulnerability
+    if (srcSkill && srcSkill->appliesVulnerability != DmgType::None && startOfAbility)
+    {
+        int v = (int)srcSkill->appliesVulnerability;
+        if (vulnTime[v] < 15 * 60)
+            vulnTime[v] = 15 * 60;
     }
 }
 
@@ -513,7 +542,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     assert(effect.slot < EffectSlot::Count && "effect not registered");
 
     // blocked by other effect
-    if (effect.blockedSlot < EffectSlot::Count && (effectCD[(int)effect.blockedSlot] > 0 || effectStacks[(int)effect.blockedSlot] > 0))
+    if (effect.blockedSlot < EffectSlot::Count
+        && (effectCD[(int)effect.blockedSlot] > 0 || effectStacks[(int)effect.blockedSlot] > 0))
         return;
 
     // actually procced
@@ -554,7 +584,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
         stats.update(enemyInfo);
         bool isCrit, isPen;
-        rawHit(stats, effect.procDmgScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
+        rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
     }
     if (effect.procDmgPercentage > 0)
     {
@@ -563,12 +593,35 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
         stats.update(enemyInfo);
         bool isCrit, isPen;
-        rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, &isCrit, &isPen, nullptr, &effect);
+        rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+    }
+
+    // gain resources
+    for (auto r = 0; r < effect.gainResources; ++r)
+        addResource(true);
+
+    // gain other stacks
+    if (effect.gainEffectStacks != EffectSlot::Count)
+    {
+        if (effect.gainEffectStacksTo > 0)
+        {
+            auto stacks = effect.gainEffectStacksTo - effectStacks[(int)effect.gainEffectStacks];
+            while (stacks-- > 0)
+                procEffect(procStats, effect.gainEffectStacks, originalHitScaling);
+        }
+        else
+            assert(0 && "invalid");
     }
 }
 
-void Simulation::rawHit(
-    const Stats& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, const Skill* srcSkill, const Effect* srcEffect)
+void Simulation::rawHit(const Stats& actualStats,
+                        float dmgScaling,
+                        float penCritPenalty,
+                        DmgType dmgType,
+                        bool* isCrit,
+                        bool* isPen,
+                        const Skill* srcSkill,
+                        const Effect* srcEffect)
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
@@ -578,7 +631,8 @@ void Simulation::rawHit(
     float critPower = actualStats.finalCritPower;
 
     float vulnerability = 1 + enemyInfo.baseVulnerability;
-    // TODO: add RANGED/MELEE/MAGIC vuln.
+    if (vulnTime[(int)dmgType] > 0)
+        vulnerability += vulnDmg[(int)dmgType];
 
     float dmg = actualStats.finalCombatPower * dmgScaling * actualStats.finalDmgMultiplier * vulnerability;
 
@@ -613,7 +667,7 @@ void Simulation::rawHit(
 
     // log
     if (log)
-        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, actualStats);
+        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, actualStats, vulnerability);
 }
 
 void Simulation::advanceTime(int timeIn60th)
@@ -649,6 +703,14 @@ void Simulation::advanceTime(int timeIn60th)
         totalTimeAccum += delta;
         timeIn60th -= delta;
         dabsTime -= delta;
+
+        // reduce vulnerabilities
+        for (auto& t : vulnTime)
+        {
+            t -= delta;
+            if (t < 0)
+                t = 0;
+        }
 
         // update running effects
         for (auto i = 0; i < (int)EffectSlot::Count; ++i)
@@ -708,8 +770,7 @@ void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype
         if (skilltype == SkillType::Proc && !effects[i].affectProcs)
             continue; // not all effects affect procs
 
-        if (effects[i].restrictToWeapon != Weapon::None &&
-            weapon != effects[i].restrictToWeapon)
+        if (effects[i].restrictToWeapon != Weapon::None && weapon != effects[i].restrictToWeapon)
             continue; // does not affect this weapon
 
         if (effectStacks[i] > 1)
@@ -778,7 +839,10 @@ void Simulation::registerEffects()
     registerEffect(Effects::WeaponSkill::ElementalOverload());
     registerEffect(Effects::WeaponSkill::MomentumStack());
     registerEffect(Effects::WeaponSkill::MomentumBuff());
+    registerEffect(Effects::WeaponSkill::LockStockBarrel());
+    registerEffect(Effects::WeaponSkill::LockStockBarrelGain());
 
     registerEffect(Effects::SkillPassive::Reckless());
     registerEffect(Effects::SkillPassive::AmorFati());
+    registerEffect(Effects::SkillPassive::FullMomentum());
 }

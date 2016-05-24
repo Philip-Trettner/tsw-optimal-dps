@@ -12,7 +12,9 @@ enum class DmgType {
     None,
     Melee,
     Magic,
-    Ranged
+    Ranged,
+
+    Count
 };
 
 enum class SkillType {

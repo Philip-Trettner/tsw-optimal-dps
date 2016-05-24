@@ -181,6 +181,28 @@ public:
 
             return e;
         }
+
+        static Effect LockStockBarrel()
+        {
+            auto e = effect("Lock, Stock & Barrel", EffectSlot::LockStockBarrel);
+
+            e.timeIn60th = 20 * 60;
+            e.consumedAfterAbility = true;
+            e.gainOnConsume = EffectSlot::LockStockBarrel;
+            e.restrictToWeapon = Weapon::Shotgun;
+            e.restrictToSkillType = SkillType::Consumer;
+
+            return e;
+        }
+
+        static Effect LockStockBarrelGain()
+        {
+            auto e = effect("Lock, Stock & Barrel (Gain)", EffectSlot::LockStockBarrelGain);
+
+            e.gainResources = 5;
+
+            return e;
+        }
     };
 
     struct Proc : private Base
@@ -306,6 +328,17 @@ public:
             e.bonusStats.additiveDamage = 10 / 100.f;
 
             e.affectProcs = false; // ??? TEST ME
+
+            return e;
+        }
+
+        static Effect FullMomentum()
+        {
+            auto e = effect("Full Momentum", EffectSlot::FullMomentum);
+
+            e.gainResources = 5;
+            e.gainEffectStacks = EffectSlot::MomentumStack;
+            e.gainEffectStacksTo = 5;
 
             return e;
         }

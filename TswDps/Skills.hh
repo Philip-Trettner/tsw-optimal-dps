@@ -96,6 +96,55 @@ public:
             return s;
         }
 
+        static Skill SureShot()
+        {
+            auto s = skill("Sure Shot", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = 1.19608f;
+            s.dmgScaling5 = 2.36832f;
+            s.cooldownIn60th = 60 * 4;
+            return s;
+        }
+
+        /// Assumes close range
+        static Skill RagingBullet()
+        {
+            auto s = skill("Raging Bullet", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.subtype = SubType::Strike;
+            s.dmgScaling = 1.21607f;
+            s.dmgScaling5 = 2.40732f;
+            s.cooldownIn60th = 60 * 4;
+            return s;
+        }
+
+        static Skill PointBlank()
+        {
+            auto s = skill("Point Blank", SkillType::None);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = 4.60022f;
+            s.cooldownIn60th = 60 * 25;
+
+            s.animaDeviation = true;
+            s.appliesVulnerability = DmgType::Melee;
+            return s;
+        }
+
+        static Skill Kneecapper()
+        {
+            auto s = skill("Kneecapper", SkillType::None);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = 4.60022f;
+            s.cooldownIn60th = 60 * 25;
+
+            s.animaDeviation = true;
+            return s;
+        }
+
         static Skill Bombardment()
         {
             auto s = skill("Bombardment", SkillType::None);
@@ -108,9 +157,10 @@ public:
 
         static Skill LockStockBarrel()
         {
-            auto s = skill("Lock, Stock, Barrel", SkillType::None);
-            s.timeIn60th = 0;
-            // ... ???
+            auto s = skill("Lock, Stock & Barrel", SkillType::None);
+            s.cooldownIn60th = 30 * 60;
+            s.passive.effect = EffectSlot::LockStockBarrel;
+            s.passive.trigger = Trigger::FinishActivation;
             return s;
         }
     };
@@ -125,8 +175,10 @@ public:
             s.dmgScaling = 0.86664f;
             s.cooldownIn60th = 25 * 60;
             s.channeling = true;
+
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Melee;
+
             return s;
         }
     };
@@ -196,6 +248,15 @@ public:
             s.passive.bonusStats.addedCritChance = 30 / 100.f;
             s.passive.bonusStats.addedCritPower = 15 / 100.f;
 
+            return s;
+        }
+
+        static Skill FullMomentum()
+        {
+            auto s = skill("Full Momentum", SkillType::None);
+            s.cooldownIn60th = 30 * 60;
+            s.passive.effect = EffectSlot::FullMomentum;
+            s.passive.trigger = Trigger::FinishActivation;
             return s;
         }
     };

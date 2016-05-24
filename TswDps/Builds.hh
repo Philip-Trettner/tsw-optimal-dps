@@ -16,19 +16,29 @@ struct Builds
 
         sim.skills = {{
                           // skills
-                          Skills::Hammer::Smash(), //
-                          Skills::Hammer::MoltenSteel(), //
+                          Skills::Hammer::Smash(),            //
+                          Skills::Shotgun::RagingBullet(),    //
+                          Skills::Hammer::MoltenSteel(),      //
+                          Skills::Shotgun::PointBlank(),      //
+                          Skills::Hammer::FullMomentum(),     //
+                          Skills::Shotgun::LockStockBarrel(), //
                       },
                       {
                           // augs
-                          Augments::Brutal(), //
+                          Augments::Brutal(),    //
+                          Augments::Focused(),   //
                           Augments::Ferocious(), //
+                          Augments::Fierce(),    //
+                          Augments::empty(),     //
+                          Augments::empty(),     //
+                          Augments::empty(),     //
                       },
                       {
                           // passives
                           Passives::Hammer::Brawler(),           //
                           Passives::Blood::IronMaiden(),         //
                           Passives::Elemental::ElementalForce(), //
+                          Passives::Pistol::SealTheDeal(),       //
                       }};
 
         // weapons
@@ -36,7 +46,7 @@ struct Builds
         sim.gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
 
         sim.gear.rightWeapon = Weapon::Shotgun;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+        sim.gear.pieces[Gear::WeaponRight].signet = Signets::empty();
     }
 
     static void procHairtriggerOnly(Simulation& sim)

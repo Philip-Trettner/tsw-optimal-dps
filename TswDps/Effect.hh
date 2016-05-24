@@ -63,6 +63,9 @@ MAKE_EFFECT_ENUM(
     // skill passives
     Reckless,
     AmorFati,
+    FullMomentum,
+    LockStockBarrel,
+    LockStockBarrelGain,
 
     // procs
     SuddenReturn,
@@ -108,8 +111,16 @@ struct Effect
 
     bool affectProcs = true; // if true, bonus stats affect procs
 
-    Weapon restrictToWeapon = Weapon::None; // if non-None, only affects the specified weapon type
+    Weapon restrictToWeapon = Weapon::None;          // if non-None, only affects the specified weapon type
+    SkillType restrictToSkillType = SkillType::None; // if non-None, only affects the specified skill type
 
-    bool consumedAfterHit = false; // if true, 1 stack is consumed after next hit
-    bool consumedAfterAbility = false; // if true, 1 stack is consumed after next ability
+    bool consumedAfterHit = false;                // if true, 1 stack is consumed after next hit
+    bool consumedAfterAbility = false;            // if true, 1 stack is consumed after next ability
+    EffectSlot gainOnConsume = EffectSlot::Count; // if non-Count, gains a stack of a given effect after consumed
+
+    int gainResources = 0; // gain resources for active resource
+
+    EffectSlot gainEffectStacks
+        = EffectSlot::Count;    // if non-Count, gains stacks of a given effect when this one gains them
+    int gainEffectStacksTo = 0; // if > 0, sets stack to a given value
 };

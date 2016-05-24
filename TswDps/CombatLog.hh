@@ -16,7 +16,7 @@ struct CombatLog
     // is called whenever a skill is activated
     virtual void logSkill(Simulation* sim, int timeIn60th, int skillIdx) {}
     // is called for every active, passive, signet hit
-    virtual void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats)
+    virtual void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats, float vulnMultiplier)
     {
     }
     // is called for every stack gained
@@ -28,7 +28,7 @@ struct CombatLog
 struct VerboseLog : CombatLog
 {
     void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override;
-    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats) override;
+    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats, float vulnMultiplier) override;
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) override;
 };
@@ -45,7 +45,7 @@ struct StatLog : CombatLog
 
     std::map<std::string, DmgStat> dmgs;
 
-    virtual void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats)
+    virtual void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats, float vulnMultiplier)
     {
         auto& s = dmgs[name];
         s.totalDmg += dmg;
@@ -68,10 +68,10 @@ struct AggregateLog : CombatLog
         for (auto log : logs)
             log->logSkill(sim, timeIn60th, skillIdx);
     }
-    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats) override
+    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, Stats const& stats, float vulnMultiplier) override
     {
         for (auto log : logs)
-            log->logHit(sim, timeIn60th, name, dmg, critical, penetrated, stats);
+            log->logHit(sim, timeIn60th, name, dmg, critical, penetrated, stats, vulnMultiplier);
     }
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override
     {

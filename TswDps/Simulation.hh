@@ -100,6 +100,9 @@ private: // run-time TRANSIENT data
     int currentWeapon;
     // currently used skill
     int currentSkill;
+    // vulnerabilities
+    int vulnTime[(int)DmgType::Count];
+    float vulnDmg[(int)DmgType::Count];
     // random
     std::default_random_engine random;
 
@@ -111,7 +114,7 @@ private: // run-time TRANSIENT data
                  bool endOfAbility,
                  Skill const* srcSkill,
                  Effect const* srcEffect);
-    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
+    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, DmgType dmgType, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
     void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
     void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
 

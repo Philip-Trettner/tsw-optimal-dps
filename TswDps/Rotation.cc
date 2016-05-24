@@ -30,7 +30,18 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
                 skills[i].skilltype != SkillType::Consumer && //
                 skills[i].skilltype != SkillType::Builder &&  //
                 sim.isSkillReady(i))
+            {
+                // special skills
+                switch (skills[i].passive.effect)
+                {
+                case EffectSlot::FullMomentum:
+                    if (sim.resourcesFor(Weapon::Hammer) > 0)
+                        continue; // don't FM on full resources
+                default:
+                    break;
+                }
                 return i;
+            }
 
     // consumer @ 5
     for (int i = 0; i < SKILL_CNT; ++i)
