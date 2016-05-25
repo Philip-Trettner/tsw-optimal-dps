@@ -226,6 +226,17 @@ public:
 
             return p;
         }
+
+        static Passive LiveWire()
+        {
+            auto p = passive("Live Wire", PassiveType::None);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::LiveWireStack;
+            p.abilityBlockedEffect = EffectSlot::LiveWireProc;
+
+            return p;
+        }
     };
 
     static Passive empty() { return Passive(); }

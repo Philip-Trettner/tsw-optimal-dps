@@ -30,7 +30,10 @@ struct Passive
 
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
-    EffectSlot effect; ///< trigger effect
+    EffectSlot effect = EffectSlot::Count; ///< trigger effect
+
+    EffectSlot abilityBlockedEffect
+        = EffectSlot::Count; ///< cannot trigger if it's the same ability as the blocked effect
 
     bool skillPassive = false; ///< if true, this is a builtin passive of a skill (Automatically set)
 

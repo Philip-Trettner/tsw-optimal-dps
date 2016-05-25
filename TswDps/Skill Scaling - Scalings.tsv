@@ -185,7 +185,7 @@ Elemental	Active
 	Overload	0.56088	561		565	968.6	1%	3%	20	2x + final over 3s, MELEE
 	Overload final	5.60285	5603		5644	968.6	1%	3%		
 	Passive									
-	Live Wire	1.10389	1104		1112	968.6	1%	3%		next hit after crit
+	Live Wire Proc	1.10389	1104		1112	968.6	1%	3%		next hit after crit
 	Elemental Overload	0.13600	136		137	968.6	1%	3%		33% chance
 										
 Aux	Active									

@@ -75,7 +75,10 @@ void SkillTable::loadSkillTable(const string &filename)
 float SkillTable::scaling(const string &name)
 {
     if (!sName2Scaling.count(name))
+    {
         std::cerr << "No skill entry found for " << name << std::endl;
+        assert(0);
+    }
 
     return (float)sName2Scaling[name];
 }

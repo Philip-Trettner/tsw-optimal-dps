@@ -114,6 +114,7 @@ struct Effect
     Weapon restrictToWeapon = Weapon::None;          // if non-None, only affects the specified weapon type
     SkillType restrictToSkillType = SkillType::None; // if non-None, only affects the specified skill type
 
+    bool cannotConsumeSameAbility = false;        // if true, cannot be consumed in same ability
     bool consumedAfterHit = false;                // if true, 1 stack is consumed after next hit
     bool consumedAfterAbility = false;            // if true, 1 stack is consumed after next ability
     EffectSlot gainOnConsume = EffectSlot::Count; // if non-Count, gains a stack of a given effect after consumed

@@ -74,7 +74,8 @@ struct Builds
                           Passives::Pistol::OneInTheChamber(),   //
                           Passives::Blade::SuddenReturn(),       //
                           Passives::Blade::FortunateStrike(),    //
-                          Passives::Hammer::Thunderstruck(),     //
+                          //Passives::Elemental::LiveWire(),       //
+                          Passives::Hammer::Thunderstruck(),       //
                       }};
 
         // weapons

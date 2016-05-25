@@ -255,13 +255,11 @@ public:
         {
             auto e = effect("Live Wire Stack", EffectSlot::LiveWireStack);
 
-            // TODO: proper once per ability
             e.cooldownIn60th = 0;
             e.timeIn60th = 9 * 60;
-            e.consumedAfterAbility = true;
-            e.gainOnConsume = EffectSlot::LiveWireStack;
-            e.restrictToWeapon = Weapon::Shotgun;
-            e.restrictToSkillType = SkillType::Consumer;
+            e.consumedAfterHit = true;
+            e.gainOnConsume = EffectSlot::LiveWireProc;
+            e.cannotConsumeSameAbility = true;
 
             return e;
         }
@@ -335,8 +333,6 @@ public:
             e.timeIn60th = 10 * 60;
             e.bonusStats.additiveDamage = 20 / 100.f;
 
-            e.affectProcs = false; // ??? TEST ME
-
             return e;
         }
         static Effect AmorFati()
@@ -345,8 +341,6 @@ public:
 
             e.timeIn60th = 10 * 60;
             e.bonusStats.additiveDamage = 10 / 100.f;
-
-            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }

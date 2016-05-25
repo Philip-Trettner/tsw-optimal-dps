@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = false;
+    const bool dpsTest = true;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     g.pieces[Gear::Head].signet = Signets::HeadWeapon::Laceration();
 
     g.pieces[Gear::MajorLeft].signet = Signets::Major::Violence();
-    g.pieces[Gear::MajorMid].signet = Signets::Major::WoodcuttersWrath();
+    //g.pieces[Gear::MajorMid].signet = Signets::Major::WoodcuttersWrath();
     g.pieces[Gear::MajorRight].signet = Signets::Major::Violence();
 
     g.pieces[Gear::MinorLeft].signet = Signets::Minor::Issue1p5();

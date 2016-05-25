@@ -507,6 +507,10 @@ void Simulation::fullHit(const Stats& baseStats,
         if (effectHitID[i] == currHitID)
             continue;
 
+        // optionally: cannot conume on same ability
+        if (effect.cannotConsumeSameAbility && effectSkillID[i] == currSkillID)
+            continue;
+
         // wrong weapon type
         if (effect.restrictToWeapon != Weapon::None && weapon != effect.restrictToWeapon)
             continue;
@@ -554,6 +558,10 @@ void Simulation::procEffect(const Stats& procStats, const Passive& passive, floa
     if (passive.triggerChance < 1.0f && dice(random) > passive.triggerChance)
         return;
 
+    // blocked by effect ability
+    if (passive.abilityBlockedEffect != EffectSlot::Count && currSkillID == effectSkillID[(int)passive.abilityBlockedEffect])
+        return;
+
     procEffect(procStats, passive.effect, originalHitScaling);
 }
 
@@ -571,7 +579,11 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
     effectCD[slot] = effect.cooldownIn60th;
-    effectHitID[slot] = currHitID;
+    if (effectStacks[slot] < effect.maxStacks)
+    {
+        effectHitID[slot] = currHitID;
+        effectSkillID[slot] = currSkillID;
+    }
     if (effect.timeIn60th > 0)
     {
         effectTime[slot] = effect.timeIn60th;
@@ -868,6 +880,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::SuddenReturn());
     registerEffect(Effects::Proc::Thunderstruck());
     registerEffect(Effects::Proc::Gnosis());
+    registerEffect(Effects::Proc::LiveWireProc());
+    registerEffect(Effects::Proc::LiveWireStack());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
