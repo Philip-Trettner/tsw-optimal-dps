@@ -1,7 +1,9 @@
 #pragma once
 
-#include "Passive.hh"
 #include "Effects.hh"
+#include "Passive.hh"
+
+#include "SkillTable.hh"
 
 /**
  * @brief Passive library
@@ -27,7 +29,7 @@ private:
             return p;
         }
     };
-
+    static float scaling(std::string const& name) { return SkillTable::scaling(name); }
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
@@ -152,6 +154,7 @@ public:
 
             p.trigger = Trigger::Hit;
             p.effect = EffectSlot::MomentumStack;
+            p.restrictWeapon = true;
 
             return p;
         }

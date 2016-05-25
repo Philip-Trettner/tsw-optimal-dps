@@ -11,8 +11,6 @@ struct Skills
 {
 public:
 
-    static void loadSkillTable(std::string const& filename);
-
 private:
     template <Weapon weapon, DmgType dmgtype>
     struct Base
@@ -30,8 +28,6 @@ private:
             return s;
         }
     };
-
-    static std::map<std::string, double> sName2Scaling;
 
     static float scaling(std::string const& name);
 

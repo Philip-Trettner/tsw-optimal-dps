@@ -17,7 +17,8 @@ SOURCES += main.cc \
     Gear.cc \
     CombatLog.cc \
     Rotation.cc \
-    Skills.cc
+    Skills.cc \
+    SkillTable.cc
 
 HEADERS += \
     Build.hh \
@@ -43,7 +44,8 @@ HEADERS += \
     CombatLog.hh \
     Effect.hh \
     Effects.hh \
-    Builds.hh
+    Builds.hh \
+    SkillTable.hh
 
 linux {
     QMAKE_CXXFLAGS += -Wno-unused-parameter

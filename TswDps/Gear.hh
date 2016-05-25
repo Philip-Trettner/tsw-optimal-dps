@@ -62,7 +62,9 @@ struct Gear
     // head -> major -> minor -> weapon
     std::array<Piece, 1 + 3 + 3 + 2> pieces;
 
+    /// Left hand weapon
     Weapon leftWeapon;
+    /// Right hand weapon
     Weapon rightWeapon;
 
     Gear();

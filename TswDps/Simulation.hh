@@ -84,7 +84,9 @@ private: // run-time INIT data
 
 private: // run-time TRANSIENT data
     // unique hit id for FULL hits only
-    int currHitOrSkillID;
+    int currHitID;
+    // unique id for each skill used
+    int currSkillID;
     // current time in 60th
     int currentTime;
     // buff time
@@ -96,6 +98,7 @@ private: // run-time TRANSIENT data
     int effectCD[(int)EffectSlot::Count];
     int effectStacks[(int)EffectSlot::Count];
     int effectHitID[(int)EffectSlot::Count]; // id of hit that applied this effect
+    int effectSkillID[(int)EffectSlot::Count]; // id of skill that applied this effect
     Effect effects[(int)EffectSlot::Count];
     // resources for both weapons
     int weaponResources[2];

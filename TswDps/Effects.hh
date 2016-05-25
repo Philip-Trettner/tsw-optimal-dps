@@ -2,6 +2,8 @@
 
 #include "Effect.hh"
 
+#include "SkillTable.hh"
+
 struct Effects
 {
 private:
@@ -18,7 +20,7 @@ private:
             return e;
         }
     };
-
+    static float scaling(std::string const& name) { return SkillTable::scaling(name); }
 public:
     struct Signet : private Base
     {
@@ -137,7 +139,7 @@ public:
             auto e = effect("Calamity", EffectSlot::Calamity);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = 0.47749f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -147,7 +149,7 @@ public:
             auto e = effect("Elemental Overload", EffectSlot::ElementalOverload);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = 0.13600f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -208,7 +210,7 @@ public:
             auto e = effect("Thunderstruck", EffectSlot::Thunderstruck);
 
             e.dmgtype = DmgType::Melee;
-            e.procDmgScaling = 0.55195f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -217,7 +219,7 @@ public:
             auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
 
             e.dmgtype = DmgType::Melee;
-            e.procDmgScaling = 0.36830f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -226,16 +228,16 @@ public:
             auto e = effect("Fortunate Strike", EffectSlot::FortunateStrike);
 
             e.dmgtype = DmgType::Melee;
-            e.procDmgScaling = 0.92024f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
         static Effect OneInTheChamber()
         {
-            auto e = effect("One In The Chamber", EffectSlot::OneInTheChamber);
+            auto e = effect("One in the Chamber", EffectSlot::OneInTheChamber);
 
             e.dmgtype = DmgType::Ranged;
-            e.procDmgScaling = 0.36830f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -244,7 +246,7 @@ public:
             auto e = effect("Gnosis", EffectSlot::Gnosis);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = 0.27895f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }
@@ -269,7 +271,7 @@ public:
             auto e = effect("Live Wire Proc", EffectSlot::LiveWireProc);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = 1.10389f;
+            e.procDmgScaling = scaling(e.name);
 
             return e;
         }

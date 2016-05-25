@@ -176,7 +176,8 @@ void Simulation::simulate(int totalTimeIn60th)
     assert(rotation && "no rotation set");
 
     // reset sim
-    currHitOrSkillID = 0;
+    currHitID = 0;
+    currSkillID = 0;
     random.seed((uint32_t)std::chrono::system_clock::now().time_since_epoch().count());
     rotation->reset();
     currentTime = 0;
@@ -188,6 +189,8 @@ void Simulation::simulate(int totalTimeIn60th)
         effectTime[i] = 0;
         effectCD[i] = 0;
         effectStacks[i] = 0;
+        effectHitID[i] = -1;
+        effectSkillID[i] = -1;
     }
     for (auto i = 0; i < (int)DmgType::Count; ++i)
         vulnTime[i] = enemyInfo.allVulnerabilities ? totalTimeIn60th + 1 : 0;
@@ -204,8 +207,9 @@ void Simulation::simulate(int totalTimeIn60th)
         auto const& skill = skills.skills[idx];
         currentSkill = idx;
 
-        // inc skill id
-        ++currHitOrSkillID;
+        // inc skill and hit (for non-hit abilities) id
+        ++currHitID;
+        ++currSkillID;
 
         // log skill
         if (log)
@@ -318,7 +322,7 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // inc skill id
-        ++currHitOrSkillID;
+        ++currHitID;
 
         // advance remaining time
         advanceTime(remainingTime);
@@ -426,7 +430,7 @@ void Simulation::fullHit(const Stats& baseStats,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
-    ++currHitOrSkillID; // increase hit id
+    ++currHitID; // increase hit id
 
     auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
     auto dmgtype = srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype;
@@ -500,7 +504,7 @@ void Simulation::fullHit(const Stats& baseStats,
             continue;
 
         // cannot trigger from the same hit it was (re)gained
-        if (effectHitID[i] == currHitOrSkillID)
+        if (effectHitID[i] == currHitID)
             continue;
 
         // wrong weapon type
@@ -567,7 +571,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
     effectCD[slot] = effect.cooldownIn60th;
-    effectHitID[slot] = currHitOrSkillID;
+    effectHitID[slot] = currHitID;
     if (effect.timeIn60th > 0)
     {
         effectTime[slot] = effect.timeIn60th;

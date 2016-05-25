@@ -9,10 +9,11 @@
 #include "Simulation.hh"
 #include "Skills.hh"
 #include "Builds.hh"
+#include "SkillTable.hh"
 
 int main(int argc, char *argv[])
 {
-    Skills::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
 
     (void)argc;
     (void)argv;
@@ -118,7 +119,7 @@ int main(int argc, char *argv[])
     {
         s.lowVarianceMode = true;
         if (longRun)
-            s.simulate(100 * 1000 * 60);
+            s.simulate(maxTime);
         else
             while (s.totalTimeAccum < maxTime)
                 s.simulate(burstFight);
