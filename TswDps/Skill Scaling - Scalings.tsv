@@ -1,0 +1,198 @@
+Tree	Name	Scaling	Dmg @1k CP	Capturing:	Dmg	Combat Power	World Dom	Dmg Signets	CD	Note
+Pistol	Active									
+	Hair Trigger	0.16093	161		162	977.3	0%	3%		4 hits, focus
+	The Business	0.21458	215		216	977.3	0%	3%		3 hits
+	Big 45 @1	1.75339	1753		1765	977.3	0%	3%		
+	Big 45 @5	3.02498	3025		3045	977.3	0%	3%		
+	Shootout @1	0.54241	542		546	977.3	0%	3%	4	5 hits, focus, 2.5s
+	Shootout @5	0.81461	815		820	977.3	0%	3%	4	
+	Dirty Tricks	4.60022	4600		4634	968.6	1%	3%	25	AD, hindered
+	Collaboration	0.61647	616		621	968.6	1%	3%		
+	Bond, Strong Bond @1	0.23924	239		241	968.6	1%	3%	4	10 hits, 3s
+	Bond, Strong Bond @5	0.38120	381		384	968.6	1%	3%	4	
+	Area Drone	0.46757	468		471	968.6	1%	3%	4	5 times, 5s
+	Bullet Ballet	0.57974	580		584	968.6	1%	3%	20	10 hits, 2s, MELEE
+	Bullet Ballet @1	0.27597	276		278	968.6	1%	3%		final hit
+	Bullet Ballet @5	1.44836	1448		1459	968.6	1%	3%		final hit
+	Marked	2.17304	2173		2189	968.6	1%	3%	30	1.5s
+	Start & Finish 1st	0.30278	303		305	968.6	1%	3%	4	1st hit
+	Start & Finish @1	0.92223	922		929	968.6	1%	3%	4	2nd hit
+	Start & Finish @5	2.00924	2009		2024	968.6	1%	3%	4	
+	Gun Crazy 3xA	0.27994	280		282	968.6	1%	3%	20	10 hits, 3s, MAGIC
+	Gun Crazy 3xB	0.46657	467		470	968.6	1%	3%		next 3
+	Gun Crazy 3xC	0.81700	817		823	968.6	1%	3%		next 3
+	Gun Crazy Final	2.31103	2311		2328	968.6	1%	3%		final hit (additional)
+	Passive									
+	One in the Chamber	0.36830	368		371	968.6	1%	3%		on crit
+										
+Shotgun	Active									
+	Bombardment	0.98477	985		992	968.6	1%	3%	30	every 2.5s for 20s
+	Takedown	1.56166	1562		1572	977.3	0%	3%		
+	Striker	0.64374	644		648	977.3	0%	3%		strike
+	Single Barrel	0.68050	680		685	977.3	0%	3%		
+	Out for a Kill @1	1.19608	1196		1204	977.3	0%	3%	4	
+	Out for a Kill @5	2.36832	2368		2384	977.3	0%	3%	4	
+	Sure Shot @1	1.19608	1196		1204	977.3	0%	3%	4	
+	Sure Shot @5	2.36832	2368		2384	977.3	0%	3%	4	
+	Powder Burn	0.64427	644		649	968.6	1%	3%		strike
+	Kneecapper	4.60022	4600		4634	968.6	1%	3%	25	AD, hindered
+	Shotgun Turret @1	0.18762	188		189	968.6	1%	3%	10	once per sec, 5s, blast
+	Shotgun Turret @5	0.37227	372		375	968.6	1%	3%	10	once per sec, 5s, blast
+	Point Blank	4.60022	4600		4634	968.6	1%	3%	25	AD, MELEE
+	Raging Bullet A @1	1.21607	1216		1225	968.6	1%	3%	4	<3m
+	Raging Bullet A @5	2.40732	2407		2425	968.6	1%	3%	4	<3m
+	Raging Bullet B @1	1.13665	1137		1145	968.6	1%	3%	4	3-9m
+	Raging Bullet B @5	2.24948	2249		2266	968.6	1%	3%	4	3-9m
+	Raging Bullet C @1	1.02249	1022		1030	968.6	1%	3%	4	>9m
+	Raging Bullet C @5	2.02513	2025		2040	968.6	1%	3%	4	>9m
+	Shotgun Wedding	0.86465	865		871	968.6	1%	3%	20	5x in 2.5s, 25% more dmg per hit (up to 100%), MAGIC
+	CQC	0.03474	35		35	968.6	1%	3%		
+										
+Rifle	Active									
+	Anima Shot	0.50628	506		510	968.6	1%	3%		
+	Fire in the Hole @1	0.60952	610		614	968.6	1%	3%	4	2 TIMES!!
+	Fire in the Hole @5	1.20813	1208		1217	968.6	1%	3%	4	
+	Safety Off	0.21443	214		216	968.6	1%	3%		3x Burst
+	Trigger Happy	0.64427	644		649	968.6	1%	3%		
+	Slow the Advance	3.67997	3680		3707	968.6	1%	3%	25	AD, Hindered
+	Slow the Advance Dot	0.13104	131		132	968.6	1%	3%		per sec, 8s
+	Anima Burst	0.13997	140		141	968.6	1%	3%		3x Burst
+	Transfuse Anima @1	1.04235	1042		1050	968.6	1%	3%		
+	Transfuse Anima @5	2.24948	2249		2266	968.6	1%	3%		
+	Shellshocker	0.86664	867		873	968.6	1%	3%	25	8x over 2s, AD, Hindered, MELEE
+	Three Round Burst @1	0.39907	399		402	968.6	1%	3%	4	3x burst
+	Three Round Burst @5	0.78920	789		795	968.6	1%	3%	4	
+	Where it Hurts @1	1.19423	1194		1203	968.6	1%	3%	12	afflict -> hindered
+	Where it Hurts @5	2.40136	2401		2419	968.6	1%	3%		
+	Red Mist	5.79643	5796		5839	968.6	1%	3%	20	2s, MAGIC
+										
+Blade	Active									
+	Delicate Strike	0.64427	644		649	968.6	1%	3%		
+	Balanced Blade @1	0.59761	598		602	968.6	1%	3%		
+	Balanced Blade @5	1.18430	1184		1193	968.6	1%	3%		
+	Dancing Blade @1	0.54301	543		547	968.6	1%	3%		5x over 2.5s, Focus
+	Dancing Blade @5	0.81501	815		821	968.6	1%	3%		
+	Stunning Swirl	4.60022	4600		4634	968.6	1%	3%	20	RANGED
+	Grass Cutter	0.68001	680		685	968.6	1%	3%		
+	Four Seasons	0.52514	525		529	968.6	1%	3%	20	4x + final over 2.5s, pen, MAGIC
+	Four Seasons Final	3.02082	3021		3043	968.6	1%	3%	20	
+	Binding Wounds @1	1.19621	1196		1205	968.6	1%	3%		
+	Binding Wounds @5	2.36860	2369		2386	968.6	1%	3%		
+	Sling Blade	1.23989	1240		1249	968.6	1%	3%		
+	The Art of War	4.36991	4370		4402	968.6	1%	3%	35	
+	Passive									
+	Steel Echo	0.41396	414		417	968.6	1%	3%	60	for 10s per hit, FULL HIT
+	Flight of Daggers	0.55195	552		556	968.6	1%	3%		after 5 hits (multihit?)
+	Sudden Return	0.36830	368		371	968.6	1%	3%		on pen
+	Fortunate Strike	0.92024	920		927	968.6	1%	3%		10% per hit
+	Two Cuts	0.13600	136		137	968.6	1%	3%		
+										
+Hammer	Active									
+	Smash	0.64427	644		649	968.6	1%	3%		
+	Haymaker @1	1.19621	1196		1205	968.6	1%	3%		strike
+	Haymaker @5	2.36860	2369		2386	968.6	1%	3%		
+	Shockwave	4.60022	4600		4634	968.6	1%	3%	25	MAGIC, impair
+	Grand Slam	0.68993	690		695	968.6	1%	3%		
+	Backhanded	0.73560	736		741	968.6	1%	3%	5	build 2 on 0 res
+	Molten Steel @1	1.14856	1149		1157	968.6	1%	3%		15% crit dmg, 30% crit chance
+	Molten Steel @5	2.27330	2273		2290	968.6	1%	3%		
+	Bone Breaker @1	1.26273	1263		1272	968.6	1%	3%		
+	Bone Breaker @5	2.50064	2501		2519	968.6	1%	3%		
+	Eruption	4.36991	4370		4402	968.6	1%	3%	25	impair, RANGED
+	Stone's Throw	1.51388	1514		1525	968.6	1%	3%	15	
+	Raging Volcano	1.33420	1334		1344	968.6	1%	3%	30	5x+ final in 6s
+	Raging Volcano Final	2.65848	2658		2678	968.6	1%	3%		
+	Raging Volcano Effect	0.38616	386		389	968.6	1%	3%		
+	Epicentre	0.26560	266		266	963	1%	3%	20	4 stacks, 5s dot
+	Passive									
+	Thunderstruck	0.55195	552		556	968.6	1%	3%		on crit
+										
+Fist	Active									
+	Claw	0.64427	644		649	968.6	1%	3%		
+	Prev on the Weak	0.21443	214		216	968.6	1%	3%		3x burst
+	Go for the Throat	2.30011	2300		2317	968.6	1%	3%	25	AD, impair
+	Go for the Throat Afflict	0.23031	230		232	968.6	1%	3%		10s
+	Wild at Heart @1	1.16842	1168		1177	968.6	1%	3%		
+	Wild at Heart @5	2.22367	2224		2240	968.6	1%	3%		
+	One-Two 1st	0.32164	322		324	968.6	1%	3%		Burst
+	One-Two @1	0.84678	847		853	968.6	1%	3%		
+	One-Two @5	1.90104	1901		1915	968.6	1%	3%		(passive + 25%)
+	Tear Em Up @1	1.09794	1098		1106	968.6	1%	3%		10% dmg for 4s
+	Tear Em Up @5	2.08965	2090		2105	968.6	1%	3%		
+	See Red	0.43282	433		436	968.6	1%	3%	25	20x over 4s, AD, MAGIC, BUG! AD does not work
+	Gore	2.30011	2300		2317	968.6	1%	3%	20	RANGED
+	Gore Afflict	0.45962	460		463	968.6	1%	3%		refresh on non-glance
+	Fired Up	3.26812	3268		2706	819.8	1%	0%	20	
+	Inner Spark @1	0.10507	105		87	819.8	1%	0%		with passive
+	Inner Spark @5	0.21015	210		174	819.8	1%	0%		
+										
+Blood	Active									
+	Boiling Blood	0.64427	644		649	968.6	1%	3%		
+	Blood Spike	1.17338	1173		1182	968.6	1%	3%		1.5s, 2 res
+	Blood Spike Afflict	0.10622	106		107	968.6	1%	3%		10x in 5s
+	Blood Spike Hit	2.50064	2501		2519	968.6	1%	3%		if afflicted, instead
+	Cardiac Arrest	4.60022	4600		4634	968.6	1%	3%	25	AD, impair, MELEE
+	Exsanguinate	0.81501	815		821	968.6	1%	3%		5x over 2.5s, focus
+	Bloodline	0.15486	155		156	968.6	1%	3%		4x, focus
+	Bloodshot	1.72037	1720		1733	968.6	1%	3%		
+	Plague	0.86465	865		871	968.6	1%	3%	20	1.5s, 6x over 12s, RANGED
+	Passive									
+	Gross Anatomy	0.27597	276		278	968.6	1%	3%		:(
+	Arterial Pulse	0.18365	184		185	968.6	1%	3%		
+										
+Chaos	Active									
+	Hand of Change	0.64427	644		649	968.6	1%	3%		entropy
+	Call for Eris 1st	0.92024	920		927	968.6	1%	3%		burst (res x)
+	Call for Eris @1	0.28987	290		292	968.6	1%	3%		
+	Call for Eris @5	0.31270	313		315	968.6	1%	3%		
+	Schism @1	1.11183	1112		1120	968.6	1%	3%		
+	Schism @5	2.20282	2203		2219	968.6	1%	3%		
+	Schism @1 low	1.37590	1376		1386	968.6	1%	3%		<35%
+	Schism @5 low	2.72399	2724		2744	968.6	1%	3%		
+	Domino Effect	3.91028	3910		3939	968.6	1%	3%	25	
+	Paradox	1.14956	1150		1158	968.6	1%	3%	10	
+	Four Horsemen @1	0.27796	278		280	968.6	1%	3%		4x burst
+	Four Horsemen @5	0.44870	449		452	968.6	1%	3%		??? seems a bit low
+	Pulling the Strings @1	1.14956	1150		1158	968.6	1%	3%		
+	Pulling the Strings @5	2.32195	2322		2339	968.6	1%	3%		
+	Prisoner of Fate	2.01520	2015		2030	968.6	1%	3%	20	5x over 5s, AD
+	Prisoner of Fate low	2.85702	2857		2878	968.6	1%	3%	20	
+	Eye of Pandemonium	3.67997	3680		3707	968.6	1%	3%	25	AD, impair, hindered
+	Eye of Pandemonium 2ndary	0.18365	184		185	968.6	1%	3%		10x over 10s
+	Run Rampant	0.20648	206		208	968.6	1%	3%		3x burst
+	Suffering and Solace @1	1.19621	1196		1205	968.6	1%	3%		
+	Suffering and Solace @5	2.36860	2369		2386	968.6	1%	3%		
+	Gravitational Anomaly	2.33684	2337		2354	968.6	1%	3%	25	3x over 3s, impair
+	Passive									
+	Gnosis	0.27895	279		281	968.6	1%	3%		33% on weakened (MULTHIT TEST -> seems to be per hit but at most once per sec)
+	From the Abyss	0.66214	662		667	968.6	1%	3%		every 3 hits (MULTIHIT TEST -> once per ability)
+	Calamity	0.47749	477		481	968.6	1%	3%		15% (MULTIHIT TEST!)
+										
+Elemental	Active									
+	Shock	0.64427	644		649	968.6	1%	3%		
+	Combust	2.27926	2279		2296	968.6	1%	3%		1 res if hindered, 1.5s unless passive
+	Molten Earth	4.60022	4600		4634	968.6	1%	3%		AD, hindered
+	Thor's Hammer	3.39308	3393		3418	968.6	1%	3%		2s, strike
+	Electrical Bolt	0.64427	644		649	968.6	1%	3%		2 res if hindered enemy
+	Flame Strike	1.67768	1678		1690	968.6	1%	3%		2 res, strike
+	Blaze	2.66940	2669		2689	968.6	1%	3%		3 res, 1.5s
+	Power Line	0.18365	184		185	968.6	1%	3%	20	10x over 10s, RANGED
+	Power Line Detonation	2.99004	2990		3012	968.6	1%	3%		up to x3 (or x2?)
+	Whiteout	0.33156	332		334	968.6	1%	3%	25	16x over 8s
+	Hard Reset	4.63695	4637		4671	968.6	1%	3%	35	2s, crit, AD
+	Ignition	0.64427	644		649	968.6	1%	3%		strike
+	Fire Manifestation	0.67107	671		676	968.6	1%	3%	10	2 res, 4x over 10s
+	Overload	0.56088	561		565	968.6	1%	3%	20	2x + final over 3s, MELEE
+	Overload final	5.60285	5603		5644	968.6	1%	3%		
+	Passive									
+	Live Wire	1.10389	1104		1112	968.6	1%	3%		next hit after crit
+	Elemental Overload	0.13600	136		137	968.6	1%	3%		33% chance
+										
+Aux	Active									
+	Timber	2.99004	2990		3012	968.6	1%	3%		without augur!
+	The Carver's Art	0.16082	161		162	968.6	1%	3%		15x over 3s
+	Scorched Earth	0.24962	250		250	963	1%	3%	25	.5s casttime, 20x over 6s
+	Incendiary Expertise	0.11383	114		114	963	1%	3%		7x over 7s, +10% each sec (flamethrower passive)
+										
+Anima Deviations										
+	Anima Deviation	0.74089	741		-	-				Averaged

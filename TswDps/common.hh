@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vector>
-#include <string>
+#include <cassert>
 #include <iostream>
 #include <map>
-#include <cassert>
+#include <string>
+#include <vector>
 
 #define SKILL_CNT (8)
 
@@ -40,4 +40,21 @@ inline void printTable(vector<string> const& header, vector<vector<float>> const
         }
         oss << endl;
     }
+}
+
+/// Returns the path of the given file without trailing /
+inline std::string pathOf(std::string const& filename)
+{
+    auto minPosA = filename.rfind('/');
+    if (minPosA == std::string::npos)
+        minPosA = 0;
+
+    auto minPosB = filename.rfind('\\');
+    if (minPosB == std::string::npos)
+        minPosB = 0;
+
+    auto minPos = minPosA < minPosB ? minPosB : minPosA;
+    if (minPos == 0)
+        return "";
+    return filename.substr(0, minPos);
 }

@@ -12,10 +12,12 @@
 
 int main(int argc, char *argv[])
 {
+    Skills::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = true;
+    const bool dpsTest = false;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;

@@ -16,7 +16,8 @@ SOURCES += main.cc \
     utils.cc \
     Gear.cc \
     CombatLog.cc \
-    Rotation.cc
+    Rotation.cc \
+    Skills.cc
 
 HEADERS += \
     Build.hh \

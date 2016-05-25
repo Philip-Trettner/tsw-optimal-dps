@@ -9,6 +9,10 @@
  */
 struct Skills
 {
+public:
+
+    static void loadSkillTable(std::string const& filename);
+
 private:
     template <Weapon weapon, DmgType dmgtype>
     struct Base
@@ -27,6 +31,10 @@ private:
         }
     };
 
+    static std::map<std::string, double> sName2Scaling;
+
+    static float scaling(std::string const& name);
+
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
@@ -35,7 +43,7 @@ public:
             auto s = skill("The Business", SkillType::Builder);
             s.timeIn60th = 60;
             s.hits = 3;
-            s.dmgScaling = 0.21458f;
+            s.dmgScaling = scaling(s.name);
             return s;
         }
 
@@ -45,7 +53,7 @@ public:
             s.timeIn60th = 60;
             s.hits = 4;
             s.subtype = SubType::Focus;
-            s.dmgScaling = 0.16093f;
+            s.dmgScaling = scaling(s.name);
             s.channeling = true;
             return s;
         }
@@ -55,8 +63,8 @@ public:
             auto s = skill("Shootout", SkillType::Consumer);
             s.timeIn60th = 150;
             s.hits = 5;
-            s.dmgScaling = 0.54241f;
-            s.dmgScaling5 = 0.81461f;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
             s.cooldownIn60th = 60 * 4;
             s.channeling = true;
             return s;
@@ -71,7 +79,7 @@ public:
             s.timeIn60th = 60;
             s.hits = 1;
             s.subtype = SubType::Strike;
-            s.dmgScaling = 0.64374f;
+            s.dmgScaling = scaling(s.name);
             return s;
         }
 
@@ -81,7 +89,7 @@ public:
             s.timeIn60th = 60;
             s.casttimeIn60th = 30;
             s.hits = 1;
-            s.dmgScaling = 0.68050f;
+            s.dmgScaling = scaling(s.name);
             return s;
         }
 
@@ -90,8 +98,8 @@ public:
             auto s = skill("Out for a Kill", SkillType::Consumer);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 1.19608f;
-            s.dmgScaling5 = 2.36832f;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
             s.cooldownIn60th = 60 * 4;
             return s;
         }
@@ -101,8 +109,8 @@ public:
             auto s = skill("Sure Shot", SkillType::Consumer);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 1.19608f;
-            s.dmgScaling5 = 2.36832f;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
             s.cooldownIn60th = 60 * 4;
             return s;
         }
@@ -114,8 +122,8 @@ public:
             s.timeIn60th = 60;
             s.hits = 1;
             s.subtype = SubType::Strike;
-            s.dmgScaling = 1.21607f;
-            s.dmgScaling5 = 2.40732f;
+            s.dmgScaling = scaling(s.name + " A @1");
+            s.dmgScaling5 = scaling(s.name + " A @5");
             s.cooldownIn60th = 60 * 4;
             return s;
         }
@@ -125,7 +133,7 @@ public:
             auto s = skill("Point Blank", SkillType::None);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 4.60022f;
+            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 60 * 25;
 
             s.animaDeviation = true;
@@ -138,7 +146,7 @@ public:
             auto s = skill("Kneecapper", SkillType::None);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 4.60022f;
+            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 60 * 25;
 
             s.animaDeviation = true;
@@ -150,7 +158,7 @@ public:
             auto s = skill("Bombardment", SkillType::None);
             s.timeIn60th = 60;
             // ... ???
-            s.dmgScaling = 1.47226f;
+            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 60 * 30;
             return s;
         }
@@ -172,7 +180,7 @@ public:
             auto s = skill("Shellshocker", SkillType::None);
             s.timeIn60th = 2 * 60;
             s.hits = 8;
-            s.dmgScaling = 0.86664f;
+            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 25 * 60;
             s.channeling = true;
 
@@ -191,7 +199,7 @@ public:
             s.timeIn60th = 60;
             s.hits = 3;
             s.subtype = SubType::Burst;
-            s.dmgScaling = 0.20648f;
+            s.dmgScaling = scaling(s.name);
             return s;
         }
         static Skill FourHorsemen()
@@ -200,8 +208,8 @@ public:
             s.timeIn60th = 60;
             s.hits = 4;
             s.subtype = SubType::Burst;
-            s.dmgScaling = 0.27796f;
-            s.dmgScaling5 = 0.44870f;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
             return s;
         }
 
@@ -234,7 +242,7 @@ public:
             auto s = skill("Smash", SkillType::Builder);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 0.64427f;
+            s.dmgScaling = scaling(s.name);
             return s;
         }
 
@@ -243,8 +251,8 @@ public:
             auto s = skill("Molten Steel", SkillType::Consumer);
             s.timeIn60th = 60;
             s.hits = 1;
-            s.dmgScaling = 1.14856f;
-            s.dmgScaling5 = 2.27330f;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
             s.passive.bonusStats.addedCritChance = 30 / 100.f;
             s.passive.bonusStats.addedCritPower = 15 / 100.f;
 
@@ -268,7 +276,7 @@ public:
             auto s = skill("See Red", SkillType::None);
             s.timeIn60th = 4 * 60;
             s.hits = 20;
-            s.dmgScaling = 0.43282f;
+            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 25 * 60;
             s.channeling = true;
             s.animaDeviation = true;
@@ -294,7 +302,7 @@ public:
             s.timeIn60th = 60;
             s.hits = 1;
             s.cooldownIn60th = 15 * 60;
-            s.dmgScaling = 2.99004f;
+            s.dmgScaling = scaling(s.name);
             s.chanceForScaleInc = 0.33f;
             s.scaleIncPerc = .45f;
             return s;
@@ -305,3 +313,4 @@ public:
 private:
     Skills() = delete;
 };
+
