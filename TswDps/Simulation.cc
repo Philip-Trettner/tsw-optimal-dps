@@ -601,7 +601,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     {
         auto stats = procStats; // copy
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        stats.update(enemyInfo);
+        stats.additiveDamage = 0.f; // procs don't get additive dmg
+        stats.update(enemyInfo);        
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
     }
@@ -610,6 +611,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
         auto stats = procStats; // copy
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+        stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);

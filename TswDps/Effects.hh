@@ -41,8 +41,6 @@ public:
             e.timeIn60th = 5 * 60;
             e.bonusStats.additiveDamage = 24 / 100.f;
 
-            e.affectProcs = false; // ??? TEST ME
-
             return e;
         }
         static Effect Aggression()
@@ -52,8 +50,6 @@ public:
             e.cooldownIn60th = 9 * 60;
             e.timeIn60th = 6 * 60;
             e.bonusStats.additiveDamage = 15 / 100.f;
-
-            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }
@@ -289,8 +285,6 @@ public:
             e.maxStacks = 3;
             e.bonusStats.additiveDamage = 4 / 100.f;
 
-            e.affectProcs = false; // ??? TEST ME
-
             return e;
         }
 
@@ -301,8 +295,6 @@ public:
             e.timeIn60th = 10 * 60;
             e.maxStacks = 10;
             e.bonusStats.additiveDamage = 1.25f / 100.f;
-
-            e.affectProcs = false; // ??? TEST ME
 
             return e;
         }

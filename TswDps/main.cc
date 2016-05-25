@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool dpsTest = false;
+    const bool dpsTest = true;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;

@@ -101,6 +101,9 @@ void VerboseLog::logResource(Simulation *sim, int timeIn60th, Weapon weapon, int
     case Weapon::Shotgun:
         std::cout << "Shotgun";
         break;
+
+    default:
+        break;
     }
 
     std::cout << "." << std::endl;

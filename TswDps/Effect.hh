@@ -109,7 +109,7 @@ struct Effect
     float procDmgScaling = 0.f;    // if > 0, triggers a proc dmg hit everytime this effect is applied
     float procDmgPercentage = 0.f; // if > 0, triggers a proc hit depending on the original hit
 
-    bool affectProcs = true; // if true, bonus stats affect procs
+    bool affectProcs = true; // if true, bonus stats affect procs (additive dmg does not affect it anyways)
 
     Weapon restrictToWeapon = Weapon::None;          // if non-None, only affects the specified weapon type
     SkillType restrictToSkillType = SkillType::None; // if non-None, only affects the specified skill type
