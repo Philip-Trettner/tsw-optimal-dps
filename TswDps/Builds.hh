@@ -59,6 +59,43 @@ struct Builds
         return b;
     }
 
+	static Build currTest()
+	{
+		Build b;
+		b.rotation = DefaultRotation::create();
+
+		b.skills = { {
+				// skills
+				Skills::Rifle::SafetyOff(), //
+				Skills::Rifle::ThreeRoundBurst(), //
+				Skills::Rifle::Shellshocker(), //
+			},
+			{
+				// augs
+				Augments::Brutal(), //
+			},
+			{
+				// passives
+				Passives::Hammer::Brawler(),           //
+				Passives::Blood::IronMaiden(),         //
+				Passives::Elemental::ElementalForce(), //
+				Passives::Pistol::OneInTheChamber(),   //
+				Passives::Blade::SuddenReturn(),       //
+				Passives::Blade::FortunateStrike(),    //
+				Passives::Elemental::LiveWire(),   //
+			} };
+
+		// gear
+		b.gear.loadStandardDpsGear();
+
+		b.gear.leftWeapon = Weapon::Chaos;
+		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+		b.gear.rightWeapon = Weapon::Rifle;
+		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+		return b;
+	}
+
     static Build procHairtriggerOnly()
     {
         Build b;

@@ -12,7 +12,11 @@ std::vector<Skill> Skills::all()
     return {
         Pistol::TheBusiness(), //
         Pistol::HairTrigger(), //
-        Pistol::Shootout(),    //
+		Pistol::Shootout(),    //
+		Pistol::Collaboration(),    //
+		Pistol::Big45(),    //
+		Pistol::DirtyTricks(),    //
+		Pistol::BondStrongBond(),    //
 
         Shotgun::Striker(),         //
         Shotgun::SingleBarrel(),    //
@@ -21,8 +25,13 @@ std::vector<Skill> Skills::all()
         Shotgun::PointBlank(),      //
         Shotgun::Kneecapper(),      //
         Shotgun::LockStockBarrel(), //
+        Shotgun::Takedown(), //
 
-        Rifle::Shellshocker(), //
+		Rifle::Shellshocker(), //
+		Rifle::SafetyOff(), //
+		Rifle::TriggerHappy(), //
+		Rifle::ThreeRoundBurst(), //
+		Rifle::RedMist(), //
 
         Chaos::RunRampant(),   //
         Chaos::FourHorsemen(), //

@@ -33,14 +33,24 @@ private:
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
-        static Skill TheBusiness()
-        {
-            auto s = skill("The Business", SkillType::Builder);
-            s.timeIn60th = 60;
-            s.hits = 3;
-            s.dmgScaling = scaling(s.name);
-            return s;
-        }
+		static Skill TheBusiness()
+		{
+			auto s = skill("The Business", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 3;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+
+		static Skill Collaboration()
+		{
+			auto s = skill("Collaboration", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
 
         static Skill HairTrigger()
         {
@@ -53,17 +63,52 @@ public:
             return s;
         }
 
-        static Skill Shootout()
-        {
-            auto s = skill("Shootout", SkillType::Consumer);
-            s.timeIn60th = 150;
-            s.hits = 5;
-            s.dmgScaling = scaling(s.name + " @1");
-            s.dmgScaling5 = scaling(s.name + " @5");
-            s.cooldownIn60th = 60 * 4;
-            s.channeling = true;
-            return s;
-        }
+		static Skill Shootout()
+		{
+			auto s = skill("Shootout", SkillType::Consumer);
+			s.timeIn60th = 150;
+			s.hits = 5;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.cooldownIn60th = 60 * 4;
+			s.channeling = true;
+			return s;
+		}
+
+		static Skill BondStrongBond()
+		{
+			auto s = skill("Bond, Strong Bond", SkillType::Consumer);
+			s.timeIn60th = 3 * 60;
+			s.hits = 10;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.cooldownIn60th = 60 * 4;
+			s.channeling = true;
+			return s;
+		}
+
+		static Skill Big45()
+		{
+			auto s = skill("Big 45", SkillType::Consumer);
+			s.casttimeIn60th = 90; // TODO: CD passive
+			s.timeIn60th = 90; // TODO: CD passive
+			s.cooldownIn60th = 60 * 4;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+
+		static Skill DirtyTricks()
+		{
+			auto s = skill("Dirty Tricks", SkillType::Elite);
+			s.cooldownIn60th = 25 * 60;
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.animaDeviation = true;
+			return s;
+		}
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
@@ -99,16 +144,26 @@ public:
             return s;
         }
 
-        static Skill SureShot()
-        {
-            auto s = skill("Sure Shot", SkillType::Consumer);
-            s.timeIn60th = 60;
-            s.hits = 1;
-            s.dmgScaling = scaling(s.name + " @1");
-            s.dmgScaling5 = scaling(s.name + " @5");
-            s.cooldownIn60th = 60 * 4;
-            return s;
-        }
+		static Skill SureShot()
+		{
+			auto s = skill("Sure Shot", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.cooldownIn60th = 60 * 4;
+			return s;
+		}
+
+		static Skill Takedown()
+		{
+			auto s = skill("Takedown", SkillType::None);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 60 * 25;
+			return s;
+		}
 
         /// Assumes close range
         static Skill RagingBullet()
@@ -171,20 +226,67 @@ public:
 
     struct Rifle : private Base<Weapon::Chaos, DmgType::Ranged>
     {
-        static Skill Shellshocker()
-        {
-            auto s = skill("Shellshocker", SkillType::Elite);
-            s.timeIn60th = 2 * 60;
-            s.hits = 8;
-            s.dmgScaling = scaling(s.name);
-            s.cooldownIn60th = 25 * 60;
-            s.channeling = true;
+		static Skill SafetyOff()
+		{
+			auto s = skill("Safety Off", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = 60;
+			s.hits = 3;
+			s.subtype = SubType::Burst;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
 
-            s.animaDeviation = true;
-            s.appliesVulnerability = DmgType::Melee;
+		static Skill TriggerHappy()
+		{
+			auto s = skill("Trigger Happy", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
 
-            return s;
-        }
+		static Skill Shellshocker()
+		{
+			auto s = skill("Shellshocker", SkillType::Elite);
+			s.timeIn60th = 2 * 60;
+			s.hits = 8;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 25 * 60;
+			s.channeling = true;
+
+			s.animaDeviation = true;
+			s.appliesVulnerability = DmgType::Melee;
+
+			return s;
+		}
+
+		static Skill RedMist()
+		{
+			auto s = skill("Red Mist", SkillType::Elite);
+			s.timeIn60th = 2 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 20 * 60;
+			s.channeling = true;
+
+			s.appliesVulnerability = DmgType::Magic;
+
+			return s;
+		}
+		
+		static Skill ThreeRoundBurst()
+		{
+			auto s = skill("Three Round Burst", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 3;
+			s.cooldownIn60th = 4 * 60;
+			s.subtype = SubType::Burst;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
     };
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>

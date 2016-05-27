@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool optimization = true;
+    const bool optimization = false;
 
-    const bool dpsTest = true;
+    const bool dpsTest = false;
 
     const int burstFight = 13 * 60;
     const bool longRun = true;
@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = 100000;
 
-    s.loadBuild(Builds::procHairtriggerOnly());
+	s.loadBuild(Builds::currTest());
+	//s.loadBuild(Builds::procHairtriggerOnly());
     // s.loadBuild(Builds::procBurstChaosRifle());
     // s.loadBuild(Builds::procBurstChaosFist());
     // s.loadBuild(Builds::hammerTest());

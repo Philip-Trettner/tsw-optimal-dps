@@ -57,9 +57,11 @@ struct Skill
         case 30:
             return 0.85f; // ???
         case 20:
-            return 0.8f;
-        case 15:
-            return 0.75f;
+            return 0.8f; // ???
+		case 18:
+			return 0.725f;
+		case 15:
+			return 0.75f;
         case 12:
             return 0.7f; // ???
         default:

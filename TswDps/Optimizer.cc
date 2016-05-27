@@ -3,10 +3,14 @@
 #include "Skills.hh"
 #include "Augments.hh"
 #include "Passives.hh"
+#include "Signets.hh"
 
 #include <algorithm>
 
 #include <chrono>
+
+#include <thread>
+#include <mutex>
 
 Optimizer::Optimizer()
 {
@@ -57,6 +61,8 @@ void Optimizer::run(int generations)
 
     allDpsAugments = Augments::allDpsAugs();
 
+	allHeadWeaponSignets = Signets::HeadWeapon::all();
+
     // generations
     for (auto g = 0; g < generations; ++g)
     {
@@ -68,19 +74,57 @@ void Optimizer::run(int generations)
         std::vector<Build> newBuilds;
         generateNewBuilds(newBuildsPerGen, newBuilds);
 
-        for (auto const& b : newBuilds)
-        {
-            if (knownBuilds.count(b))
-                continue; // build already known
+		// preprocess
+		std::cout << "from " << newBuilds.size() << " to ";
+		for (auto i = (int)newBuilds.size() - 1; i >= 0; --i)
+		{
+			auto const& b = newBuilds[i];
+			if (knownBuilds.count(b))
+				newBuilds.erase(begin(newBuilds) + i);
+			else knownBuilds.insert(b);
+		}
+		std::cout  << newBuilds.size() << std::endl;
 
-            // add to active build
-            activeBuilds.push_back(std::make_pair(evaluate(b), b));
+		// MT
+		auto nowEval = std::chrono::system_clock::now();
+		std::mutex m;
+		std::vector<std::thread> threads;
+		auto threadFunc = [&]()
+		{
+			while (true) 
+			{
+				// get a build
+				m.lock();
+				if (newBuilds.empty()) // finished?
+				{
+					m.unlock();
+					return;
+				}
+				auto b = newBuilds[newBuilds.size() - 1];
+				newBuilds.erase(newBuilds.begin() + (newBuilds.size() - 1));
+				m.unlock();
 
-            // mark as known
-            knownBuilds.insert(b);
-        }
+				// evaluate
+				auto res = std::make_pair(evaluate(b), b);
+
+				// report results
+				m.lock();
+				activeBuilds.push_back(res);
+				m.unlock();
+			}
+		};
+
+		// start threads
+		for (auto i = 0; i < 8; ++i)
+			threads.push_back(std::thread(threadFunc));
+
+		// stop threads
+		for (auto i = 0; i < 8; ++i)
+			threads[i].join();
+		secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - nowEval).count();
 
         // sort builds by dps
+		std::cout << activeBuilds.size() << " after calc" << std::endl;
         sort(begin(activeBuilds), end(activeBuilds), [](std::pair<double, Build> const& l, std::pair<double, Build> const& r)
              {
                  return l.first > r.first;
@@ -103,8 +147,6 @@ void Optimizer::run(int generations)
 
 double Optimizer::evaluate(const Build& b)
 {
-    auto now = std::chrono::system_clock::now();
-
     auto sim = refSim;
     sim.loadBuild(b);
     if (useLowVariance)
@@ -119,13 +161,12 @@ double Optimizer::evaluate(const Build& b)
         sim.simulate(timePerFight);
     }
 
-    secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - now).count();
     return sim.totalDPS();
 }
 
 void Optimizer::generateNewBuilds(int count, std::vector<Build>& builds)
 {
-    std::uniform_int_distribution<int> randomBuildIdx(0, activeBuilds.size() - 1);
+    std::uniform_int_distribution<int> randomBuildIdx(0, (int)activeBuilds.size() - 1);
     std::uniform_int_distribution<int> randomBuildChanges(1, maxBuildChanges);
     std::uniform_int_distribution<int> randomChange(0, (int)BuildChange::Count - 1);
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
@@ -163,7 +204,9 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
     std::uniform_int_distribution<int> randomSkill(0, maxActives - 1);
-    std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
+	std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
+	std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
+	std::uniform_int_distribution<int> randomNeck(0, 2);
 
     auto b = build;
 
@@ -290,16 +333,74 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
         case BuildChange::SignetChange:
-            // TODO
+            while (!changed)
+            {
+				auto idx = randomElement(headWeaponGearSlots);
+
+				b.gear.pieces[idx].signet = randomElement(allHeadWeaponSignets);
+				changed = true;
+            }
             break;
         case BuildChange::SignetSwitch:
-            // TODO
+			while (!changed)
+			{
+				auto idx1 = randomElement(headWeaponGearSlots);
+				auto idx2 = randomElement(headWeaponGearSlots);
+
+				if (idx1 == idx2)
+					continue;
+
+				auto tmp = b.gear.pieces[idx1].signet;
+				b.gear.pieces[idx1].signet = b.gear.pieces[idx2].signet;
+				b.gear.pieces[idx2].signet = tmp;
+				changed = true;
+			}
             break;
         case BuildChange::NeckTalisman:
-            // TODO
+			while (!changed)
+			{
+				auto type = randomNeck(random);
+
+				// TODO!
+				switch (type)
+				{
+				case 0: // normal
+					break;
+				case 1: // woodcutters
+					break;
+				case 2: // egon
+					break;
+				}
+
+				changed = true;
+			}
             break;
         case BuildChange::StatChange:
-            // TODO
+			while (!changed)
+			{
+				auto idx = randomGearSlot(random);
+				if (b.gear.pieces[idx].status != Gear::SlotStatus::Free)
+					continue;
+
+				assert(!freeRatings.empty());
+				if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
+				{
+					b.gear.pieces[idx].free(randomElement(freeRatings));
+				}
+				else
+				{
+					Rating r1, r2;
+					do
+					{
+						r1 = randomElement(freeRatings);
+						r2 = randomElement(freeRatings);
+					} while (r1 == r2);
+
+					b.gear.pieces[idx].free(r1);
+					b.gear.pieces[idx].free(r2);
+					changed = true;
+				}
+			}
             break;
         case BuildChange::Augment:
             while (!changed)

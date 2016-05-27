@@ -35,9 +35,9 @@ public: // settings
     Simulation refSim;
 
     /// testing time overall (per build)
-    int timePerTest = 2 * 3600 * 60;
+    int timePerTest = 3 * 3600 * 60;
     /// time per individual fight
-    int timePerFight = 10 * 60 * 60; // 10 min fights
+	int timePerFight = 10 * 60 * 60; // 10 min fights
 
     /// # active skills
     int maxActives = 7;
@@ -54,7 +54,7 @@ public: // tweaks
     size_t maxActiveBuilds = 50;
 
     /// Number of new builds per generation
-    size_t newBuildsPerGen = 50;
+    int newBuildsPerGen = 50;
 
     /// if true, forces low variance on sim
     bool useLowVariance = true;
@@ -69,7 +69,7 @@ public:
     Optimizer();
 
     /// Runs the optimization for a number of generations
-    void run(int generations = 100);
+    void run(int generations = 50);
 
     /// get the best builds
     std::vector<std::pair<double, Build>> const& getTopBuilds() const { return activeBuilds; }
@@ -84,7 +84,11 @@ private: // "Library"
     std::vector<Passive> allNonElitePassives;
     std::vector<Passive> allElitePassives;
 
-    std::vector<Augment> allDpsAugments;
+	std::vector<Augment> allDpsAugments;
+
+	std::vector<Signet> allHeadWeaponSignets;
+
+	std::vector<size_t> headWeaponGearSlots = { Gear::Head, Gear::WeaponLeft, Gear::WeaponRight };
 
 private: // Transient data
     /// timing
@@ -112,7 +116,7 @@ private: // Transient data
     template <typename T>
     T const& randomElement(std::vector<T> const& elements)
     {
-        std::uniform_int_distribution<int> randIdx(0, elements.size() - 1);
+        std::uniform_int_distribution<int> randIdx(0, (int)elements.size() - 1);
         return elements[randIdx(random)];
     }
 

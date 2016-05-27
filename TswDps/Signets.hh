@@ -53,6 +53,15 @@ public:
 
             return p;
         }
+
+		static std::vector<Signet> all()
+        {
+			return{
+				Laceration(),
+				Abuse(),
+				Aggression()
+			};
+        }
     };
 
     struct Major : private Base<SignetSlot::Major>
