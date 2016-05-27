@@ -89,6 +89,10 @@ private: // run-time INIT data
     // all passives that could !trigger! for this skill
     std::vector<Passive> skillTriggers[SKILL_CNT];
 
+	// AD 
+	Effect animaDeviationEffect;
+	float animaDeviationScaling = -1;
+
 private: // run-time TRANSIENT data
     // unique hit id for FULL hits only
     int currHitID;

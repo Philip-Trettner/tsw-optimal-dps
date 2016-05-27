@@ -38,6 +38,10 @@ Build Simulation::build() const
 
 void Simulation::init()
 {
+	// AD
+	animaDeviationEffect.name = "Anima Deviation";
+	animaDeviationScaling = SkillTable::scaling("Anima Deviation");
+
     // register effects
     registerEffects();
 
@@ -308,14 +312,22 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // actually do skill
-        for (auto hitIdx = 0; hitIdx < skill.hits; ++hitIdx)
-        {
-            // if channeling, advance time first
-            if (skill.channeling)
-            {
-                advanceTime(skill.timeIn60th / skill.hits);
-                remainingTime -= skill.timeIn60th / skill.hits;
-            }
+		for (auto hitIdx = 0; hitIdx < skill.hits; ++hitIdx)
+		{
+			// if channeling, advance time first
+			if (skill.channeling)
+			{
+				advanceTime(skill.timeIn60th / skill.hits);
+				remainingTime -= skill.timeIn60th / skill.hits;
+			}
+
+			// anima deviation
+			if (hitIdx == 0 && skill.animaDeviation)
+			{
+				// BUG: AD cannot crit currently
+				bool adCrit, adPen;
+				rawHit(baseStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
+			}
 
             // actual full hit
             fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
