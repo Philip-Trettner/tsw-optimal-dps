@@ -4,59 +4,80 @@
 #include "Passives.hh"
 #include "Augments.hh"
 
-Build::Build()
+
+#include <iostream>
+
+namespace
 {
+string shortStatDump(Stats const& s, bool withBase = true)
+{
+    string ss;
+    if (s.attackRating > 0 && withBase)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.attackRating) + " AR";
+    if (s.penRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.penRating) + " Pen";
+    if (s.critRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critRating) + " CR";
+    if (s.critPowerRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critPowerRating) + " CP";
+    return ss;
+}
+string shortStatDump(Gear::Piece const& p)
+{
+    return shortStatDump(p.stats, false);
+}
 }
 
-void Build::loadPistolShotgunHairTrigger()
+void Build::shortDump() const
 {
-    skills = {
-        { // skills
-          Skills::Pistol::HairTrigger(),
-          Skills::Shotgun::OutForAKill(),
-          Skills::Pistol::Shootout(),
-          Skills::Shotgun::Bombardment(),
-        },
-        { // augs
-          Augments::Brutal(),
-          Augments::Piercing(),
-          Augments::Ferocious(),
-          Augments::Fierce(),
-        },
-        { // passives
-          Passives::Hammer::Brawler(),
+    std::cout << "Actives:  ";
+    auto first = true;
+    for (auto i = 0; i < SKILL_CNT; ++i)
+    {
+        auto const& s = skills.skills[i];
+        if (!s.name.empty())
+        {
+            if (first)
+                first = false;
+            else
+                std::cout << ", ";
+            std::cout << s.name;
+            if (!skills.augments[i].name.empty())
+                std::cout << " [" << skills.augments[i].name << "]";
         }
-    };
-
-    rotation = {
-        0, 1, 0, 0, 0, 0, 1, 2
-    };
-}
-
-void Build::dump()
-{
-    std::cout << "BUILD DUMP" << std::endl;
-
-    std::cout << "Rotation: " << std::endl;
-    for (auto i = 0u; i < rotation.size(); ++i)
-    {
-        std::cout << "  - " << skills.skills[rotation[i]].name << " [" << skills.augments[rotation[i]].name << "]" << std::endl;
     }
-}
+    std::cout << std::endl;
 
-void Build::woodcutterDetailed()
-{
-    std::cout << "Woodcutter Experiment" << std::endl;
-    for (auto pen = 0; pen <= 100; ++pen)
-    {
-        auto wcChance = woodcutterPenChance(pen / 100.f);
-        std::cout << "  " << pen << "%: +" << wcChance * 100.f - pen << "%" << std::endl;
-        
-    }
-}
+    std::cout << "Passives: ";
+    first = true;
+    for (auto const& s : skills.passives)
+        if (!s.name.empty())
+        {
+            if (first)
+                first = false;
+            else
+                std::cout << ", ";
+            std::cout << s.name;
+        }
+    std::cout << std::endl;
 
-float Build::woodcutterPenChance(float penChance)
-{
-   (void)penChance;
-    return -1; // TODO
+    std::cout << "Gear:     ";
+    auto s = gear.gearStats();
+    std::cout << s.attackRating << " AR, ";
+    std::cout << s.penRating << " Pen, ";
+    std::cout << s.critRating << " CR, ";
+    std::cout << s.critPowerRating << " CP" << std::endl;
+
+    std::cout << "Weapons:  ";
+    std::cout << shortStatDump(gear.pieces[Gear::WeaponLeft]) << " for " << to_string(gear.leftWeapon) << ", ";
+    std::cout << shortStatDump(gear.pieces[Gear::WeaponRight]) << " for " << to_string(gear.rightWeapon);
+    std::cout << std::endl;
+
+    std::cout << "Signets:  ";
+    std::cout << gear.pieces[Gear::Head].signet.name() << " on Head, ";
+    std::cout << gear.pieces[Gear::WeaponLeft].signet.name() << " on " << to_string(gear.leftWeapon) << ", ";
+    std::cout << gear.pieces[Gear::WeaponRight].signet.name() << " on " << to_string(gear.rightWeapon);
+    std::cout << std::endl;
+
+    // TODO: potion?
 }

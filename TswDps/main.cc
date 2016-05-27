@@ -10,6 +10,7 @@
 #include "Skills.hh"
 #include "Builds.hh"
 #include "SkillTable.hh"
+#include "Optimizer.hh"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,8 @@ int main(int argc, char *argv[])
 
     (void)argc;
     (void)argv;
+
+    const bool optimization = true;
 
     const bool dpsTest = true;
 
@@ -28,6 +31,8 @@ int main(int argc, char *argv[])
     // Rating::CritPower}, true))
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
+    Optimizer optimizer;
+
     AggregateLog log;
     VerboseLog vlog;
     vlog.skillsOnly = !true;
@@ -35,52 +40,50 @@ int main(int argc, char *argv[])
     if (!dpsTest)
         log.logs.push_back(&vlog);
     log.logs.push_back(&slog);
-    Simulation s;
+    Simulation &s = optimizer.refSim;
     s.log = &log;
 
-    if (longRun && dpsTest)
+    if (longRun && (dpsTest || optimization))
         s.enemyInfo.allVulnerabilities = true;
 
     if (!buffs)
         s.buffAt = 100000;
 
-    Builds::procHairtriggerOnly(s);
-    // Builds::procBurstChaosRifle(s);
-    // Builds::procBurstChaosFist(s);
-    // Builds::hammerTest(s);
+    s.loadBuild(Builds::procHairtriggerOnly());
+    // s.loadBuild(Builds::procBurstChaosRifle());
+    // s.loadBuild(Builds::procBurstChaosFist());
+    // s.loadBuild(Builds::hammerTest());
 
-    auto &g = s.gear;
-
-    // stats
-    g.setGear(PrimaryStat::Attack, Gear::TalismanQuality::QL11);
-
-    g.pieces[Gear::Head].fix(Rating::Hit);
-    g.pieces[Gear::MajorLeft].fix(Rating::Pen);
-    g.pieces[Gear::MajorMid].fix(Rating::CritPower); // WC
-    g.pieces[Gear::MajorMid].set(PrimaryStat::Attack, Gear::TalismanQuality::QL10_9);
-    g.pieces[Gear::MajorRight].fix(Rating::Pen);
-    g.pieces[Gear::MinorLeft].fix(Rating::Hit);
-
-    g.pieces[Gear::MinorMid].free(Rating::Crit);
-    g.pieces[Gear::MinorRight].free(Rating::Crit);
-
-    // signets
-    g.pieces[Gear::Head].signet = Signets::HeadWeapon::Laceration();
-
-    g.pieces[Gear::MajorLeft].signet = Signets::Major::Violence();
-    //g.pieces[Gear::MajorMid].signet = Signets::Major::WoodcuttersWrath();
-    g.pieces[Gear::MajorRight].signet = Signets::Major::Violence();
-
-    g.pieces[Gear::MinorLeft].signet = Signets::Minor::Issue1p5();
-    g.pieces[Gear::MinorMid].signet = Signets::Minor::Issue1p5();
-    g.pieces[Gear::MinorRight].signet = Signets::Minor::Issue1p5();
-
-    g.pieces[Gear::WeaponLeft].free(Rating::Crit);
-    g.pieces[Gear::WeaponRight].free(Rating::Crit);
+    std::cout << "Build:" << std::endl;
+    s.build().shortDump();
+    std::cout << std::endl;
 
     std::cout << "Base gear stats:" << std::endl;
-    g.gearStats().dumpDpsStats();
+    s.gear.gearStats().dumpDpsStats();
     std::cout << std::endl;
+
+    if (optimization)
+    {
+        optimizer.run();
+
+        auto const& builds = optimizer.getTopBuilds();
+        int cnt = 5;
+        std::cout << std::endl;
+        std::cout << "Top " << cnt << " builds:" << std::endl;
+        std::cout << std::endl;
+        for (auto const &kvp : builds)
+        {
+            std::cout << kvp.first << " DPS" << std::endl;
+            kvp.second.shortDump();
+            std::cout << std::endl;
+
+            --cnt;
+            if (cnt <= 0)
+                break;
+        }
+
+        return 0;
+    }
 
     s.init();
 

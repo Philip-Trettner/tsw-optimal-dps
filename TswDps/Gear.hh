@@ -67,6 +67,9 @@ struct Gear
     /// Right hand weapon
     Weapon rightWeapon;
 
+    /// default dps gear (for now)
+    void loadStandardDpsGear();
+
     Gear();
 
     /// sets all gear pieces at once (includes weapons)
@@ -92,3 +95,44 @@ struct Gear
     /// returns a 50% stat for a given rating
     static Stats splitStatOf(Slot slot, Rating r);
 };
+
+// custom specialization of std::hash can be injected in namespace std
+namespace std
+{
+template <>
+struct hash<Gear>
+{
+    size_t operator()(Gear const& g) const
+    {
+        size_t h = 0x851bc4;
+
+        for (auto const& p : g.pieces)
+        {
+            hash_combine(h, p.signet.name());
+            hash_combine(h, p.stats);
+        }
+
+        return h;
+    }
+};
+}
+
+inline bool operator==(Gear const& l, Gear const& r)
+{
+    for (auto i = Gear::Head; i <= Gear::WeaponRight; ++i)
+    {
+        auto const& pl = l.pieces[i];
+        auto const& pr = r.pieces[i];
+
+        if (pl.signet.name() != pr.signet.name())
+            return false;
+        if (pl.stats != pr.stats)
+            return false;
+    }
+
+    return true;
+}
+inline bool operator!=(Gear const& l, Gear const& r)
+{
+    return !(l == r);
+}

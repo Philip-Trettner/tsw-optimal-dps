@@ -2,7 +2,50 @@
 
 #include <cassert>
 
+#include "Signets.hh"
+
 #include <unordered_set>
+
+void Gear::loadStandardDpsGear()
+{
+    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+
+    // Head
+    pieces[Head].fix(Rating::Hit);
+    pieces[Head].signet = Signets::HeadWeapon::Laceration();
+
+    // Finger
+    pieces[MajorLeft].fix(Rating::Pen);
+    pieces[MajorLeft].signet = Signets::Major::Violence();
+
+    // Neck (WC)
+    pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    pieces[MajorMid].fix(Rating::CritPower);
+    pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+
+    // Wrist
+    pieces[MajorRight].fix(Rating::Pen);
+    pieces[MajorRight].signet = Signets::Major::Violence();
+
+    // Luck
+    pieces[MinorLeft].fix(Rating::Hit);
+    pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
+
+    // Waist
+    pieces[MinorMid].free(Rating::Crit);
+    pieces[MinorMid].signet = Signets::Minor::Issue1p5();
+
+    // Occult
+    pieces[MinorRight].free(Rating::Crit);
+    pieces[MinorRight].signet = Signets::Minor::Issue1p5();
+
+    // Weapons
+    pieces[WeaponLeft].free(Rating::Crit);
+    pieces[WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+    pieces[WeaponRight].free(Rating::Crit);
+    pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
+}
 
 Gear::Gear()
 {

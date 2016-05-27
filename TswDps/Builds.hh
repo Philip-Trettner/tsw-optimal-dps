@@ -10,161 +10,178 @@
 
 struct Builds
 {
-    static void hammerTest(Simulation& sim)
+    static Build hammerTest()
     {
-        sim.rotation = DefaultRotation::create();
+        Build b;
+        b.rotation = DefaultRotation::create();
 
-        sim.skills = {{
-                          // skills
-                          Skills::Hammer::Smash(),            //
-                          Skills::Shotgun::RagingBullet(),    //
-                          Skills::Hammer::MoltenSteel(),      //
-                          Skills::Shotgun::PointBlank(),      //
-                          Skills::Hammer::FullMomentum(),     //
-                          Skills::Shotgun::LockStockBarrel(), //
-                          Skills::Chainsaw::Timber(),         //
-                      },
-                      {
-                          // augs
-                          Augments::Brutal(),    //
-                          Augments::Focused(),   //
-                          Augments::Ferocious(), //
-                          Augments::Fierce(),    //
-                          Augments::empty(),     //
-                          Augments::empty(),     //
-                          Augments::empty(),     //
-                      },
-                      {
-                          // passives
-                          // Passives::Hammer::Brawler(),           //
-                          Passives::Blade::SuddenReturn(),       //
-                          Passives::Blood::IronMaiden(),         //
-                          Passives::Elemental::ElementalForce(), //
-                          Passives::Blade::TwistTheKnife(),      //
-                          Passives::Rifle::Lethality(),          //
-                          Passives::Hammer::Thunderstruck(),     //
-                          Passives::Pistol::OneInTheChamber(),   //
-                      }};
+        b.skills = {{
+                        // skills
+                        Skills::Hammer::Smash(),            //
+                        Skills::Shotgun::RagingBullet(),    //
+                        Skills::Hammer::MoltenSteel(),      //
+                        Skills::Shotgun::PointBlank(),      //
+                        Skills::Hammer::FullMomentum(),     //
+                        Skills::Shotgun::LockStockBarrel(), //
+                        Skills::Chainsaw::Timber(),         //
+                    },
+                    {
+                        // augs
+                        Augments::Brutal(),    //
+                        Augments::Focused(),   //
+                        Augments::Ferocious(), //
+                        Augments::Fierce(),    //
+                        Augments::empty(),     //
+                        Augments::empty(),     //
+                        Augments::empty(),     //
+                    },
+                    {
+                        // passives
+                        // Passives::Hammer::Brawler(),           //
+                        Passives::Blade::SuddenReturn(),       //
+                        Passives::Blood::IronMaiden(),         //
+                        Passives::Elemental::ElementalForce(), //
+                        Passives::Blade::TwistTheKnife(),      //
+                        Passives::Rifle::Lethality(),          //
+                        Passives::Hammer::Thunderstruck(),     //
+                        Passives::Pistol::OneInTheChamber(),   //
+                    }};
 
-        // weapons
-        sim.gear.leftWeapon = Weapon::Hammer;
-        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
+        // gear
+        b.gear.loadStandardDpsGear();
 
-        sim.gear.rightWeapon = Weapon::Shotgun;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+        b.gear.leftWeapon = Weapon::Hammer;
+        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
+
+        b.gear.rightWeapon = Weapon::Shotgun;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+
+        return b;
     }
 
-    static void procHairtriggerOnly(Simulation& sim)
+    static Build procHairtriggerOnly()
     {
-        sim.rotation = DefaultRotation::create();
+        Build b;
+        b.rotation = DefaultRotation::create();
 
-        sim.skills = {{
-                          // skills
-                          Skills::Pistol::HairTrigger(), //
-                      },
-                      {
-                          // augs
-                          Augments::Brutal(), //
-                      },
-                      {
-                          // passives
-                          Passives::Hammer::Brawler(),           //
-                          Passives::Blood::IronMaiden(),         //
-                          Passives::Elemental::ElementalForce(), //
-                          Passives::Pistol::OneInTheChamber(),   //
-                          Passives::Blade::SuddenReturn(),       //
-                          Passives::Blade::FortunateStrike(),    //
-                          //Passives::Elemental::LiveWire(),       //
-                          Passives::Hammer::Thunderstruck(),       //
-                      }};
+        b.skills = {{
+                        // skills
+                        Skills::Pistol::HairTrigger(), //
+                    },
+                    {
+                        // augs
+                        Augments::Brutal(), //
+                    },
+                    {
+                        // passives
+                        Passives::Hammer::Brawler(),           //
+                        Passives::Blood::IronMaiden(),         //
+                        Passives::Elemental::ElementalForce(), //
+                        Passives::Pistol::OneInTheChamber(),   //
+                        Passives::Blade::SuddenReturn(),       //
+                        Passives::Blade::FortunateStrike(),    //
+                        // Passives::Elemental::LiveWire(),       //
+                        Passives::Hammer::Thunderstruck(), //
+                    }};
 
-        // weapons
-        sim.gear.leftWeapon = Weapon::Pistol;
-        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+        // gear
+        b.gear.loadStandardDpsGear();
 
-        sim.gear.rightWeapon = Weapon::Shotgun;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+        b.gear.leftWeapon = Weapon::Pistol;
+        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+        b.gear.rightWeapon = Weapon::Shotgun;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+        return b;
     }
 
-    static void procBurstChaosRifle(Simulation& sim)
+    static Build procBurstChaosRifle()
     {
-        sim.rotation = DefaultRotation::create();
+        Build b;
+        b.rotation = DefaultRotation::create();
 
-        sim.skills = {{
-                          // skills
-                          Skills::Chaos::RunRampant(),   //
-                          Skills::Chaos::FourHorsemen(), //
-                          Skills::Rifle::Shellshocker(), //
-                      },
-                      {
-                          // augs
-                          Augments::Brutal(),  //
-                          Augments::Focused(), //
-                          Augments::Fierce(),  //
-                      },
-                      {
-                          // passives
-                          Passives::Hammer::Brawler(),           //
-                          Passives::Blood::IronMaiden(),         //
-                          Passives::Elemental::ElementalForce(), //
-                          Passives::Pistol::OneInTheChamber(),   //
-                          Passives::Blade::SuddenReturn(),       //
-                          Passives::Blade::FortunateStrike(),    //
-                          Passives::Hammer::Thunderstruck(),     //
-                      }};
+        b.skills = {{
+                        // skills
+                        Skills::Chaos::RunRampant(),   //
+                        Skills::Chaos::FourHorsemen(), //
+                        Skills::Rifle::Shellshocker(), //
+                    },
+                    {
+                        // augs
+                        Augments::Brutal(),  //
+                        Augments::Focused(), //
+                        Augments::Fierce(),  //
+                    },
+                    {
+                        // passives
+                        Passives::Hammer::Brawler(),           //
+                        Passives::Blood::IronMaiden(),         //
+                        Passives::Elemental::ElementalForce(), //
+                        Passives::Pistol::OneInTheChamber(),   //
+                        Passives::Blade::SuddenReturn(),       //
+                        Passives::Blade::FortunateStrike(),    //
+                        Passives::Hammer::Thunderstruck(),     //
+                    }};
 
-        // weapons
-        sim.gear.leftWeapon = Weapon::Chaos;
-        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+        // gear
+        b.gear.loadStandardDpsGear();
 
-        sim.gear.rightWeapon = Weapon::Rifle;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+        b.gear.leftWeapon = Weapon::Chaos;
+        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+        b.gear.rightWeapon = Weapon::Rifle;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+        return b;
     }
 
-    static void procBurstChaosFist(Simulation& sim)
+    static Build procBurstChaosFist()
     {
-        sim.rotation = DefaultRotation::create();
+        Build b;
+        b.rotation = DefaultRotation::create();
 
-        sim.skills = {{
-                          // skills
-                          Skills::Chaos::RunRampant(),   //
-                          Skills::Chaos::FourHorsemen(), //
-                          Skills::Fist::Reckless(),      //
-                          Skills::Chaos::AmorFati(),     //
-                          Skills::Fist::SeeRed(),        //
-                          Skills::empty(),               //
-                          Skills::empty(),               //
-                          Skills::Chainsaw::Timber(),    //
-                      },
-                      {
-                          // augs
-                          Augments::Brutal(),   //
-                          Augments::Focused(),  //
-                          Augments::Accurate(), //
-                          Augments::empty(),    //
-                          Augments::Fierce(),   //
-                          Augments::empty(),    //
-                          Augments::empty(),    //
-                      },
-                      {
-                          // passives
-                          // Passives::Hammer::Brawler(),           //
-                          Passives::Chaos::Gnosis(),             //
-                          Passives::Blood::IronMaiden(),         //
-                          Passives::Elemental::ElementalForce(), //
-                          Passives::Pistol::OneInTheChamber(),   //
-                          Passives::Blade::SuddenReturn(),       //
-                          Passives::Blade::FortunateStrike(),    //
-                          Passives::Hammer::Thunderstruck(),     //
-                          Passives::empty(),                     //
-                      }};
+        b.skills = {{
+                        // skills
+                        Skills::Chaos::RunRampant(),   //
+                        Skills::Chaos::FourHorsemen(), //
+                        Skills::Fist::Reckless(),      //
+                        Skills::Chaos::AmorFati(),     //
+                        Skills::Fist::SeeRed(),        //
+                        Skills::empty(),               //
+                        Skills::empty(),               //
+                        Skills::Chainsaw::Timber(),    //
+                    },
+                    {
+                        // augs
+                        Augments::Brutal(),   //
+                        Augments::Focused(),  //
+                        Augments::Accurate(), //
+                        Augments::empty(),    //
+                        Augments::Fierce(),   //
+                        Augments::empty(),    //
+                        Augments::empty(),    //
+                    },
+                    {
+                        // passives
+                        // Passives::Hammer::Brawler(),           //
+                        Passives::Chaos::Gnosis(),             //
+                        Passives::Blood::IronMaiden(),         //
+                        Passives::Elemental::ElementalForce(), //
+                        Passives::Pistol::OneInTheChamber(),   //
+                        Passives::Blade::SuddenReturn(),       //
+                        Passives::Blade::FortunateStrike(),    //
+                        Passives::Hammer::Thunderstruck(),     //
+                        Passives::empty(),                     //
+                    }};
 
-        // weapons
-        sim.gear.leftWeapon = Weapon::Chaos;
-        sim.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+        // gear
+        b.gear.loadStandardDpsGear();
 
-        sim.gear.rightWeapon = Weapon::Fist;
-        sim.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+        b.gear.leftWeapon = Weapon::Chaos;
+        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+        b.gear.rightWeapon = Weapon::Fist;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+        return b;
     }
 
 private:

@@ -21,10 +21,14 @@ enum class SkillType {
     None,
     Builder,
     Consumer,
+    Elite,
     PassiveFullHit,
     Proc
 };
 
 enum class PassiveType {
     None,
+
+    Skill,
+    Elite
 };

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "common.hh"
 #include <functional>
 
 struct EnemyInfo;
@@ -88,17 +89,9 @@ namespace std
 template <>
 struct hash<Stats>
 {
-    template <typename T>
-    void hash_combine(size_t& seed, T const& v) const
+    size_t operator()(Stats const& s) const
     {
-        seed ^= std::hash<T>()(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-    }
-
-    typedef Stats argument_type;
-    typedef std::size_t result_type;
-    result_type operator()(argument_type const& s) const
-    {
-        std::size_t h = 0x851bc1;
+        size_t h = 0x851bc1;
 
         hash_combine(h, s.health);
         hash_combine(h, s.attackRating);

@@ -2,23 +2,43 @@
 
 #include "common.hh"
 
-#include "Skill.hh"
 #include "Skillset.hh"
-#include "Augment.hh"
+#include "Gear.hh"
+#include "Rotation.hh"
 
-class Build
+struct Build
 {
-public:
     Skillset skills;
+    Gear gear;
+    SharedRotation rotation;
+    Stats potionStats;
 
-    vector<int> rotation;
-
-    Build();
-
-    void loadPistolShotgunHairTrigger();
-
-    void dump();
-    
-    void woodcutterDetailed();    
-    float woodcutterPenChance(float penChance);
+    void shortDump() const;
 };
+
+// custom specialization of std::hash can be injected in namespace std
+namespace std
+{
+template <>
+struct hash<Build>
+{
+    size_t operator()(Build const& s) const
+    {
+        size_t h = 0x851bc2;
+
+        hash_combine(h, s.skills);
+        hash_combine(h, s.gear);
+
+        return h;
+    }
+};
+}
+
+inline bool operator==(Build const& l, Build const& r)
+{
+    return l.skills == r.skills && l.gear == r.gear;
+}
+inline bool operator!=(Build const& l, Build const& r)
+{
+    return !(l == r);
+}

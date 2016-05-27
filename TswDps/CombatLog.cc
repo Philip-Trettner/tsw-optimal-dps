@@ -69,42 +69,7 @@ void VerboseLog::logResource(Simulation *sim, int timeIn60th, Weapon weapon, int
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60
               << "] You gain ";
-    std::cout << amount << " resource(s) for ";
-    switch (weapon)
-    {
-    case Weapon::Blade:
-        std::cout << "Blade";
-        break;
-    case Weapon::Hammer:
-        std::cout << "Hammer";
-        break;
-    case Weapon::Fist:
-        std::cout << "Fist";
-        break;
-
-    case Weapon::Chaos:
-        std::cout << "Chaos";
-        break;
-    case Weapon::Blood:
-        std::cout << "Blood";
-        break;
-    case Weapon::Elemental:
-        std::cout << "Elemental";
-        break;
-
-    case Weapon::Rifle:
-        std::cout << "Rifle";
-        break;
-    case Weapon::Pistol:
-        std::cout << "Pistol";
-        break;
-    case Weapon::Shotgun:
-        std::cout << "Shotgun";
-        break;
-
-    default:
-        break;
-    }
+    std::cout << amount << " resource(s) for " << to_string(weapon);
 
     std::cout << "." << std::endl;
 }

@@ -35,7 +35,7 @@ public:
     {
         static Passive SealTheDeal()
         {
-            auto p = passive("Seal The Deal", PassiveType::None);
+            auto p = passive("Seal The Deal", PassiveType::Elite);
 
             p.restrictType = SkillType::Consumer;
             p.bonusStats.addedCritChance = 5 / 100.f;
@@ -46,7 +46,7 @@ public:
 
         static Passive DoubleUp()
         {
-            auto p = passive("Double Up", PassiveType::None);
+            auto p = passive("Double Up", PassiveType::Skill);
 
             p.restrictWeapon = true;
             p.trigger = Trigger::Hit;
@@ -131,7 +131,7 @@ public:
     {
         static Passive Thunderstruck()
         {
-            auto p = passive("Thunderstruck", PassiveType::None);
+            auto p = passive("Thunderstruck", PassiveType::Elite);
 
             p.trigger = Trigger::Crit;
             p.effect = EffectSlot::Thunderstruck;
@@ -150,7 +150,7 @@ public:
 
         static Passive Momentum()
         {
-            auto p = passive("Momentum", PassiveType::None);
+            auto p = passive("Momentum", PassiveType::Skill);
 
             p.trigger = Trigger::Hit;
             p.effect = EffectSlot::MomentumStack;
@@ -181,7 +181,7 @@ public:
     {
         static Passive Calamity()
         {
-            auto p = passive("Calamity", PassiveType::None);
+            auto p = passive("Calamity", PassiveType::Skill);
 
             p.restrictWeapon = true;
             p.trigger = Trigger::Hit;
@@ -217,7 +217,7 @@ public:
 
         static Passive ElementalOverload()
         {
-            auto p = passive("Elemental Overload", PassiveType::None);
+            auto p = passive("Elemental Overload", PassiveType::Skill);
 
             p.restrictWeapon = true;
             p.trigger = Trigger::Hit;
@@ -229,7 +229,7 @@ public:
 
         static Passive LiveWire()
         {
-            auto p = passive("Live Wire", PassiveType::None);
+            auto p = passive("Live Wire", PassiveType::Elite);
 
             p.trigger = Trigger::Crit;
             p.effect = EffectSlot::LiveWireStack;
@@ -240,6 +240,8 @@ public:
     };
 
     static Passive empty() { return Passive(); }
+
+    static std::vector<Passive> all(); // only non-skills
 private:
     Passives() = delete;
 };

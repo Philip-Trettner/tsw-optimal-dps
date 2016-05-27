@@ -23,6 +23,19 @@ Simulation::Simulation()
 {
 }
 
+void Simulation::loadBuild(const Build& b)
+{
+    skills = b.skills;
+    gear = b.gear;
+    potionStats = b.potionStats;
+    rotation = b.rotation;
+}
+
+Build Simulation::build() const
+{
+    return {skills, gear, rotation, potionStats};
+}
+
 void Simulation::init()
 {
     // register effects
@@ -59,7 +72,8 @@ void Simulation::init()
         }
         else
         {
-            std::cout << "skill " << (int)skill.weapon << " vs " << (int)gear.leftWeapon << " & " << (int)gear.rightWeapon << std::endl;
+            std::cout << "skill " << (int)skill.weapon << " vs " << (int)gear.leftWeapon << " & "
+                      << (int)gear.rightWeapon << std::endl;
             assert(0 && "used skill for non-equipped weapon");
         }
 
@@ -458,6 +472,8 @@ void Simulation::fullHit(const Stats& baseStats,
     {
         auto slot = (size_t)passive.effect;
         auto const& effect = effects[slot];
+        //if (effect.slot == EffectSlot::Count)
+        //    std::cerr << "Unregistered effect " << effect.name << " for " << passive.name << std::endl;
         assert(effect.slot < EffectSlot::Count && "effect not registered");
 
         // finish activation is handled differently
@@ -618,7 +634,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         auto stats = procStats; // copy
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
         stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);        
+        stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
     }
@@ -853,11 +869,9 @@ void Simulation::registerEffect(const Effect& e)
 
 void Simulation::registerEffects()
 {
-    static bool doneOnce = false;
-    if (doneOnce)
+    if (effectsRegistered)
         return;
-    else
-        doneOnce = true;
+    effectsRegistered = true;
 
     registerEffect(Effects::Generic::MinorPenetrationChance());
     registerEffect(Effects::Generic::MajorPenetrationChance());

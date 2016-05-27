@@ -12,6 +12,12 @@
 
 using namespace std;
 
+template <typename T>
+inline void hash_combine(size_t& seed, T const& v)
+{
+    seed ^= std::hash<T>()(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+}
+
 inline void printTable(vector<string> const& header, vector<vector<float>> const& vals, ostream& oss = std::cout, char delim = ';')
 {
     auto first = true;

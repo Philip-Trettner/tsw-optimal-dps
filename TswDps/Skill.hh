@@ -36,6 +36,8 @@ struct Skill
     bool animaDeviation = false;
     DmgType appliesVulnerability = DmgType::None; ///< if non-None, applies EVS
 
+    bool slotForDmgAug = true; ///< if true, this skill may slot a dmg augment
+
     Passive passive; ///< built-in passive
 
     // 1.0  for no penalty

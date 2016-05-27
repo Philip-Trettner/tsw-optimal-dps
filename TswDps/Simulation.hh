@@ -9,6 +9,7 @@
 #include "Gear.hh"
 #include "EnemyInfo.hh"
 #include "Effect.hh"
+#include "Build.hh"
 
 struct CombatLog;
 
@@ -40,6 +41,12 @@ struct Simulation
     void resetStats();
 
     Simulation();
+
+    /// Loads a given build
+    void loadBuild(Build const& b);
+
+    /// Returns the currently set build
+    Build build() const;
 
     /// initializes the simulation
     /// * has to be called after changes to skills or gear
@@ -100,6 +107,7 @@ private: // run-time TRANSIENT data
     int effectHitID[(int)EffectSlot::Count]; // id of hit that applied this effect
     int effectSkillID[(int)EffectSlot::Count]; // id of skill that applied this effect
     Effect effects[(int)EffectSlot::Count];
+    bool effectsRegistered = false;
     // resources for both weapons
     int weaponResources[2];
     // currently equipped weapon (0 = left, 1 = right, -1 = aux)

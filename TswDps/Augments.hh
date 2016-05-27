@@ -39,12 +39,14 @@ struct Augments
     static Augment Grievous()
     {
         Augment a{"Grievous"};
-        a.bonusStats.additiveDamage = .15f;
+        a.bonusStats.additiveDamage = .05f;
+        // a.bonusStats.additiveDamage = .15f; I'm a scrub.
         return a;
     }
     static Augment Robust()
     {
         Augment a{"Robust"};
+        a.slot = AugmentSlot::Survival;
         a.bonusStats.health = 250;
         a.affectEverything = true;
         return a;
@@ -59,11 +61,25 @@ struct Augments
     static Augment Mending()
     {
         Augment a{"Mending"};
+        a.slot = AugmentSlot::Heal;
         a.bonusStats.healRating = 150;
         a.affectEverything = true;
         return a;
     }
     static Augment empty() { return {}; }
+    static std::vector<Augment> allDpsAugs()
+    {
+        return {
+            Accurate(),  //
+            Brutal(),    //
+            Piercing(),  //
+            Ferocious(), //
+            Fierce(),    //
+            Focused(),   //
+            Grievous()   //
+        };
+    }
+
 private:
     Augments() = delete;
 };

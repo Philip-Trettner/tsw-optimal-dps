@@ -10,7 +10,6 @@
 struct Skills
 {
 public:
-
 private:
     template <Weapon weapon, DmgType dmgtype>
     struct Base
@@ -126,7 +125,7 @@ public:
 
         static Skill PointBlank()
         {
-            auto s = skill("Point Blank", SkillType::None);
+            auto s = skill("Point Blank", SkillType::Elite);
             s.timeIn60th = 60;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
@@ -139,7 +138,7 @@ public:
 
         static Skill Kneecapper()
         {
-            auto s = skill("Kneecapper", SkillType::None);
+            auto s = skill("Kneecapper", SkillType::Elite);
             s.timeIn60th = 60;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
@@ -151,7 +150,7 @@ public:
 
         static Skill Bombardment()
         {
-            auto s = skill("Bombardment", SkillType::None);
+            auto s = skill("Bombardment", SkillType::Elite);
             s.timeIn60th = 60;
             // ... ???
             s.dmgScaling = scaling(s.name);
@@ -165,6 +164,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.passive.effect = EffectSlot::LockStockBarrel;
             s.passive.trigger = Trigger::FinishActivation;
+            s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
     };
@@ -173,7 +173,7 @@ public:
     {
         static Skill Shellshocker()
         {
-            auto s = skill("Shellshocker", SkillType::None);
+            auto s = skill("Shellshocker", SkillType::Elite);
             s.timeIn60th = 2 * 60;
             s.hits = 8;
             s.dmgScaling = scaling(s.name);
@@ -215,6 +215,7 @@ public:
             s.cooldownIn60th = 60 * 60;
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::AmorFati;
+            s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
     };
@@ -261,6 +262,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.passive.effect = EffectSlot::FullMomentum;
             s.passive.trigger = Trigger::FinishActivation;
+            s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
     };
@@ -269,7 +271,7 @@ public:
     {
         static Skill SeeRed()
         {
-            auto s = skill("See Red", SkillType::None);
+            auto s = skill("See Red", SkillType::Elite);
             s.timeIn60th = 4 * 60;
             s.hits = 20;
             s.dmgScaling = scaling(s.name);
@@ -286,6 +288,7 @@ public:
             s.cooldownIn60th = 40 * 60;
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::Reckless;
+            s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
     };
@@ -301,12 +304,14 @@ public:
             s.dmgScaling = scaling(s.name);
             s.chanceForScaleInc = 0.33f;
             s.scaleIncPerc = .45f;
+            s.slotForDmgAug = false;
             return s;
         }
     };
 
     static Skill empty() { return Skill(); }
+    static std::vector<Skill> all();
+
 private:
     Skills() = delete;
 };
-
