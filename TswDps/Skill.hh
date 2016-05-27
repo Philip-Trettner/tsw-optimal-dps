@@ -26,6 +26,13 @@ struct Skill
     float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
     float dmgScaling5 = -1; ///< scaling at 5 resources
 
+    int specialHitsA = 0;
+    float dmgScalingA = -1;
+    int specialHitsB = 0;
+    float dmgScalingB = -1;
+    int specialHitsC = 0;
+    float dmgScalingC = -1;
+
     float chanceForScaleInc = 0; ///< chance to increase base scaling
     float scaleIncPerc = 0;      ///< amount of base scale inc if proc
 

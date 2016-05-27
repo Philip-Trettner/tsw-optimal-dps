@@ -59,42 +59,49 @@ struct Builds
         return b;
     }
 
-	static Build currTest()
-	{
-		Build b;
-		b.rotation = DefaultRotation::create();
+    static Build currTest()
+    {
+        Build b;
+        b.rotation = DefaultRotation::create();
 
-		b.skills = { {
-				// skills
-				Skills::Rifle::SafetyOff(), //
-				Skills::Rifle::ThreeRoundBurst(), //
-				Skills::Rifle::Shellshocker(), //
-			},
-			{
-				// augs
-				Augments::Brutal(), //
-			},
-			{
-				// passives
-				Passives::Hammer::Brawler(),           //
-				Passives::Blood::IronMaiden(),         //
-				Passives::Elemental::ElementalForce(), //
-				Passives::Pistol::OneInTheChamber(),   //
-				Passives::Blade::SuddenReturn(),       //
-				Passives::Blade::FortunateStrike(),    //
-				Passives::Elemental::LiveWire(),   //
-			} };
+        b.skills = {{
+                        // skills
+                        Skills::Pistol::HairTrigger(),      //
+                        Skills::Pistol::StartAndFinish(),   //
+                        Skills::Shotgun::RagingBullet(),    //
+                        Skills::Shotgun::Kneecapper(),      //
+                        Skills::Shotgun::SureShot(),        //
+                        Skills::Shotgun::LockStockBarrel(), //
+                    },
+                    {
+                        // augs
+                        Augments::Brutal(),   //
+                        Augments::Fierce(),   //
+                        Augments::Grievous(), //
+                        Augments::Piercing(), //
+                        Augments::Accurate(), //
+                    },
+                    {
+                        // passives
+                        Passives::Chaos::Gnosis(),             //
+                        Passives::Blood::IronMaiden(),         //
+                        Passives::Elemental::ElementalForce(), //
+                        Passives::Pistol::OneInTheChamber(),   //
+                        Passives::Blade::SuddenReturn(),       //
+                        Passives::Blade::FortunateStrike(),    //
+                        Passives::Elemental::LiveWire(),       //
+                    }};
 
-		// gear
-		b.gear.loadStandardDpsGear();
+        // gear
+        b.gear.loadStandardDpsGear();
 
-		b.gear.leftWeapon = Weapon::Chaos;
-		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+        b.gear.leftWeapon = Weapon::Pistol;
+        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
 
-		b.gear.rightWeapon = Weapon::Rifle;
-		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
-		return b;
-	}
+        b.gear.rightWeapon = Weapon::Shotgun;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+        return b;
+    }
 
     static Build procHairtriggerOnly()
     {

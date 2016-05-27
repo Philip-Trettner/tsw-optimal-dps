@@ -63,17 +63,42 @@ public:
             return s;
         }
 
-		static Skill Shootout()
-		{
-			auto s = skill("Shootout", SkillType::Consumer);
-			s.timeIn60th = 150;
-			s.hits = 5;
-			s.dmgScaling = scaling(s.name + " @1");
-			s.dmgScaling5 = scaling(s.name + " @5");
-			s.cooldownIn60th = 60 * 4;
-			s.channeling = true;
-			return s;
-		}
+        static Skill Shootout()
+        {
+            auto s = skill("Shootout", SkillType::Consumer);
+            s.timeIn60th = 150;
+            s.cooldownIn60th = 60 * 4;
+            s.hits = 5;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
+            s.channeling = true;
+            return s;
+        }
+
+        static Skill Marked()
+        {
+            auto s = skill("Marked", SkillType::None);
+            s.timeIn60th = 90;
+            s.casttimeIn60th = 90;
+            s.cooldownIn60th = 60 * 30;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            return s;
+        }
+
+        static Skill StartAndFinish()
+        {
+            auto s = skill("Start & Finish", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.cooldownIn60th = 60 * 4;
+            s.hits = 2;
+            s.dmgScalingA = scaling(s.name + " 1st");
+            s.specialHitsA = 1;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
+            s.channeling = true;
+            return s;
+        }
 
 		static Skill BondStrongBond()
 		{
@@ -97,18 +122,36 @@ public:
 			s.dmgScaling = scaling(s.name + " @1");
 			s.dmgScaling5 = scaling(s.name + " @5");
 			return s;
-		}
+        }
 
-		static Skill DirtyTricks()
-		{
-			auto s = skill("Dirty Tricks", SkillType::Elite);
-			s.cooldownIn60th = 25 * 60;
-			s.timeIn60th = 60;
-			s.hits = 1;
-			s.dmgScaling = scaling(s.name);
-			s.animaDeviation = true;
-			return s;
-		}
+        static Skill DirtyTricks()
+        {
+            auto s = skill("Dirty Tricks", SkillType::Elite);
+            s.cooldownIn60th = 25 * 60;
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            s.animaDeviation = true;
+            return s;
+        }
+
+        static Skill GunCrazy()
+        {
+            auto s = skill("Gun Crazy", SkillType::Elite);
+            s.cooldownIn60th = 20 * 60;
+            s.timeIn60th = 3 * 60;
+            s.hits = 10;
+            s.channeling = true;
+            s.dmgScalingA = scaling(s.name + " 3xA");
+            s.dmgScalingB = scaling(s.name + " 3xB");
+            s.dmgScalingC = scaling(s.name + " 3xC");
+            s.dmgScaling = scaling(s.name + " Final");
+            s.specialHitsA = 3;
+            s.specialHitsB = 3;
+            s.specialHitsC = 3;
+            s.appliesVulnerability = DmgType::Magic;
+            return s;
+        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
@@ -224,7 +267,7 @@ public:
         }
     };
 
-    struct Rifle : private Base<Weapon::Chaos, DmgType::Ranged>
+    struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
     {
 		static Skill SafetyOff()
 		{

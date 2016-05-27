@@ -10,13 +10,16 @@ float Skills::scaling(const string &name)
 std::vector<Skill> Skills::all()
 {
     return {
-        Pistol::TheBusiness(), //
-        Pistol::HairTrigger(), //
-		Pistol::Shootout(),    //
-		Pistol::Collaboration(),    //
-		Pistol::Big45(),    //
-		Pistol::DirtyTricks(),    //
-		Pistol::BondStrongBond(),    //
+        Pistol::TheBusiness(),    //
+        Pistol::HairTrigger(),    //
+        Pistol::Shootout(),       //
+        Pistol::Collaboration(),  //
+        Pistol::Big45(),          //
+        Pistol::DirtyTricks(),    //
+        Pistol::BondStrongBond(), //
+        Pistol::GunCrazy(),       //
+        Pistol::StartAndFinish(), //
+        Pistol::Marked(),         //
 
         Shotgun::Striker(),         //
         Shotgun::SingleBarrel(),    //
@@ -25,13 +28,13 @@ std::vector<Skill> Skills::all()
         Shotgun::PointBlank(),      //
         Shotgun::Kneecapper(),      //
         Shotgun::LockStockBarrel(), //
-        Shotgun::Takedown(), //
+        Shotgun::Takedown(),        //
 
-		Rifle::Shellshocker(), //
-		Rifle::SafetyOff(), //
-		Rifle::TriggerHappy(), //
-		Rifle::ThreeRoundBurst(), //
-		Rifle::RedMist(), //
+        Rifle::Shellshocker(),    //
+        Rifle::SafetyOff(),       //
+        Rifle::TriggerHappy(),    //
+        Rifle::ThreeRoundBurst(), //
+        Rifle::RedMist(),         //
 
         Chaos::RunRampant(),   //
         Chaos::FourHorsemen(), //

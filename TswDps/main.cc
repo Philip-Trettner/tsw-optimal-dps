@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool optimization = false;
+    const bool optimization = true;
 
     const bool dpsTest = false;
 

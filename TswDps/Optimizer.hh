@@ -35,7 +35,7 @@ public: // settings
     Simulation refSim;
 
     /// testing time overall (per build)
-    int timePerTest = 3 * 3600 * 60;
+    int timePerTest = 10 * 3600 * 60;
     /// time per individual fight
 	int timePerFight = 10 * 60 * 60; // 10 min fights
 
@@ -47,7 +47,7 @@ public: // settings
     bool useAux = true;
 
     /// free ratings used for stat optimization
-    std::vector<Rating> freeRatings = {Rating::Crit, Rating::CritPower};
+    std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower});
 
 public: // tweaks
     /// Number of simulatenously hold builds
@@ -69,7 +69,7 @@ public:
     Optimizer();
 
     /// Runs the optimization for a number of generations
-    void run(int generations = 50);
+    void run(int generations = 25);
 
     /// get the best builds
     std::vector<std::pair<double, Build>> const& getTopBuilds() const { return activeBuilds; }
@@ -88,7 +88,7 @@ private: // "Library"
 
 	std::vector<Signet> allHeadWeaponSignets;
 
-	std::vector<size_t> headWeaponGearSlots = { Gear::Head, Gear::WeaponLeft, Gear::WeaponRight };
+    std::vector<size_t> headWeaponGearSlots = std::vector<size_t>({ Gear::Head, Gear::WeaponLeft, Gear::WeaponRight });
 
 private: // Transient data
     /// timing

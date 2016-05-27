@@ -76,8 +76,8 @@ void Simulation::init()
         }
         else
         {
-            std::cout << "skill " << (int)skill.weapon << " vs " << (int)gear.leftWeapon << " & "
-                      << (int)gear.rightWeapon << std::endl;
+            std::cout << "skill " << skill.name << " at " << to_string(skill.weapon) << " vs " << to_string(gear.leftWeapon) << " & "
+                      << to_string(gear.rightWeapon) << std::endl;
             assert(0 && "used skill for non-equipped weapon");
         }
 
@@ -329,8 +329,17 @@ void Simulation::simulate(int totalTimeIn60th)
 				rawHit(baseStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
 			}
 
+            // special hits
+            auto actualScaling = scaling;
+            if (hitIdx < skill.specialHitsA)
+                actualScaling = skill.dmgScalingA;
+            else if (hitIdx < skill.specialHitsA + skill.specialHitsB)
+                actualScaling = skill.dmgScalingB;
+            else if (hitIdx < skill.specialHitsA + skill.specialHitsB + skill.specialHitsC)
+                actualScaling = skill.dmgScalingC;
+
             // actual full hit
-            fullHit(baseStat, procStat, scaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
+            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
         }
 
         // channeling builders
