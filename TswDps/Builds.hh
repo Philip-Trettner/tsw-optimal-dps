@@ -18,7 +18,7 @@ struct Builds
 
 		b.skills = { {
 				// skills
-				Skills::Pistol::HairTrigger()
+				Skills::Chaos::RunRampant(),
 			},
 			{
 				// augs
@@ -30,10 +30,58 @@ struct Builds
 		// gear
 		b.gear.loadStandardDpsGear();
 
-		b.gear.leftWeapon = Weapon::Pistol;
+		b.gear.leftWeapon = Weapon::Chaos;
+		b.gear.rightWeapon = Weapon::Hammer;
+		return b;
+	}
+	static Build currMaxFistHammer()
+	{
+		// 8000 dps in 10min fights
+
+		Build b;
+		auto rot = DefaultRotation::create();
+		rot->minResourcesForConsumer = 5;
+		b.rotation = rot;
+
+		b.skills = { {
+				// skills
+				Skills::Fist::PreyOnTheWeak(), //
+				Skills::Fist::Reckless(), //
+				Skills::Fist::TearEmUp(), //
+				Skills::Hammer::MoltenSteel(), //
+				Skills::Fist::WildAtHeart(), //
+				Skills::Hammer::Shockwave(), //
+				Skills::Hammer::FullMomentum(), //
+			},
+			{
+				// augs
+				Augments::Brutal(),   //
+				Augments::empty(),   //
+				Augments::Brutal(),   //
+				Augments::Ferocious(), //
+				Augments::Accurate(), //
+				Augments::Fierce(), //
+				Augments::empty(),   //
+			},
+			{
+				// passives
+				Passives::Rifle::Lethality(),          //
+				Passives::Blood::IronMaiden(),         //
+				Passives::Elemental::ElementalForce(), //
+				Passives::Pistol::OneInTheChamber(),   //
+				Passives::Blade::SuddenReturn(),       //
+				Passives::Blade::FortunateStrike(),    //
+				Passives::Elemental::LiveWire(),       //
+			} };
+
+		// gear
+		b.gear.loadStandardDpsGear();
+		b.gear.setNeckWoodcutters();
+		
+		b.gear.leftWeapon = Weapon::Fist;
 		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
 
-		b.gear.rightWeapon = Weapon::Fist;
+		b.gear.rightWeapon = Weapon::Hammer;
 		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
 		return b;
 	}

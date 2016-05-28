@@ -25,7 +25,8 @@ private:
         NeckTalisman,
         StatChange,
         Augment,
-        Aux,
+		Aux,
+		Rotation,
 
         Count
     };
@@ -51,10 +52,10 @@ public: // settings
 
 public: // tweaks
     /// Number of simulatenously hold builds
-    size_t maxActiveBuilds = 30;
+    size_t maxActiveBuilds = 50;
 
     /// Number of new builds per generation
-    int newBuildsPerGen = 30;
+    int newBuildsPerGen = 50;
 
     /// if true, forces low variance on sim
     bool useLowVariance = true;
@@ -64,6 +65,10 @@ public: // tweaks
 
     /// max number of simulateneous build changes
     int maxBuildChanges = 7;
+
+public: // stats
+	/// nr of builds evaluated
+	int totalBuildsEvaluated = 0;
 
 public:
     Optimizer();

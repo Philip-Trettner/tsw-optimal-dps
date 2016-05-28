@@ -66,7 +66,14 @@ void Build::shortDump() const
     std::cout << s.attackRating << " AR, ";
     std::cout << s.penRating << " Pen, ";
     std::cout << s.critRating << " CR, ";
-    std::cout << s.critPowerRating << " CP" << std::endl;
+    std::cout << s.critPowerRating << " CP, Neck: ";
+	if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
+		std::cout << "Woodcutters";
+	else if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::EgonPendant)
+		std::cout << "Amulet of Yuggoth";
+	else 
+		std::cout << "QL11 + Violence";
+	std::cout << std::endl;
 
     std::cout << "Weapons:  ";
     std::cout << shortStatDump(gear.pieces[Gear::WeaponLeft]) << " for " << to_string(gear.leftWeapon) << ", ";
@@ -78,6 +85,14 @@ void Build::shortDump() const
     std::cout << gear.pieces[Gear::WeaponLeft].signet.name() << " on " << to_string(gear.leftWeapon) << ", ";
     std::cout << gear.pieces[Gear::WeaponRight].signet.name() << " on " << to_string(gear.rightWeapon);
     std::cout << std::endl;
+
+	auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
+	if (defRot)
+	{
+		std::cout << "Rotation: ";
+		std::cout << "use resources on " << defRot->minResourcesForConsumer;
+		std::cout << std::endl;
+	}
 
     // TODO: potion?
 }

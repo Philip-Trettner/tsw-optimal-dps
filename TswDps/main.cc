@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     AggregateLog log;
     VerboseLog vlog;
     vlog.skillsOnly = !true;
+	vlog.logResources = true;
     StatLog slog;
     if (!dpsTest)
         log.logs.push_back(&vlog);
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
         s.buffAt = 100000;
 
 	s.loadBuild(Builds::currTest());
+	//s.loadBuild(Builds::currMaxFistHammer());
 	// s.loadBuild(Builds::currMaxPistolShotgun());
 	//s.loadBuild(Builds::procHairtriggerOnly());
     // s.loadBuild(Builds::procBurstChaosRifle());
@@ -84,6 +86,23 @@ int main(int argc, char *argv[])
             if (cnt <= 0)
                 break;
         }
+
+		std::cout << std::endl;
+		std::cout << "Analysis of top build:" << std::endl;
+		std::cout << std::endl;
+		s.log = &slog;
+		s.lowVarianceMode = true;
+		s.resetStats();
+		s.loadBuild(builds[0].second);
+		s.init();
+		while (s.totalTimeAccum < maxTime)
+			s.simulate(optimizer.timePerFight);
+		std::cout << std::endl;
+		s.dumpBriefReport();
+		std::cout << std::endl;
+		slog.dump(&s);
+		std::cout << std::endl;
+		s.analyzePassiveContribution();
 
         return 0;
     }

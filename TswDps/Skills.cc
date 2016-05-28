@@ -19,7 +19,8 @@ std::vector<Skill> Skills::all()
         Pistol::BondStrongBond(), //
         Pistol::GunCrazy(),       //
         Pistol::StartAndFinish(), //
-        Pistol::Marked(),         //
+		Pistol::Marked(),         //
+		Pistol::GunFu(),          //
 
         Shotgun::Striker(),         //
         Shotgun::SingleBarrel(),    //
@@ -36,7 +37,8 @@ std::vector<Skill> Skills::all()
         Rifle::SafetyOff(),       //
         Rifle::TriggerHappy(),    //
         Rifle::ThreeRoundBurst(), //
-        Rifle::RedMist(),         //
+		Rifle::RedMist(),         //
+		Rifle::LockAndLoad(),     //
 
         Chaos::RunRampant(),   //
         Chaos::FourHorsemen(), //
@@ -49,12 +51,38 @@ std::vector<Skill> Skills::all()
 		Chaos::PrisonerOfFate(),     //
 		Chaos::SufferingAndSolace(),     //
 
+		Blade::DelicateStrike(), //
+		Blade::DancingBlade(), //
+		Blade::FourSeasons(), //
+		Blade::BalancedBlade(), //
+		Blade::BindingWounds(), //
+		Blade::GrassCutter(), //
+		Blade::SlingBlade(), //
+		Blade::StunningSwirl(), //
+		// TODO: Steel Echo
+
         Hammer::Smash(),        //
         Hammer::MoltenSteel(),  //
         Hammer::FullMomentum(), //
+		Hammer::Haymaker(),        //
+		Hammer::Shockwave(),        //
+		Hammer::BoneBreaker(),        //
+		Hammer::Eruption(),        //
+		Hammer::StonesThrow(),        //
 
         Fist::SeeRed(),   //
-        Fist::Reckless(), //
+		Fist::Reckless(), //
+		Fist::Claw(), //
+		Fist::WildAtHeart(), //
+		Fist::PreyOnTheWeak(), //
+		Fist::OneTwo(), //
+		Fist::TearEmUp(), //
+		// TODO: Go for the Throat
+		// TODO: Gore + afflict?
+
+		// TODO: Elemental (needs manifestations)
+
+		// TODO: Blood (needs skill passive)
 
         Chainsaw::Timber(), //
     };

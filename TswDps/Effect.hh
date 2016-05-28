@@ -44,7 +44,8 @@ MAKE_EFFECT_ENUM(
     Abuse,
     Aggression,
     MothersWrathStacks,
-    MothersWrathBuff,
+	MothersWrathBuff,
+	EgonPendant,
 
     // general passives
     MinorPenetrationChance,
@@ -67,7 +68,10 @@ MAKE_EFFECT_ENUM(
     AmorFati,
     FullMomentum,
     LockStockBarrel,
-    LockStockBarrelGain,
+	LockStockBarrelGain,
+	TearEmUp,
+	GunFu,
+	LockAndLoad,
 
     // procs
     SuddenReturn,
@@ -126,7 +130,7 @@ struct Effect
     bool consumedAfterAbility = false;            // if true, 1 stack is consumed after next ability
     EffectSlot gainOnConsume = EffectSlot::Count; // if non-Count, gains a stack of a given effect after consumed
 
-    int gainResources = 0; // gain resources for active resource
+    int gainResources = 0; // gain resources for active weapon
 
     EffectSlot gainEffectStacks
         = EffectSlot::Count;    // if non-Count, gains stacks of a given effect when this one gains them

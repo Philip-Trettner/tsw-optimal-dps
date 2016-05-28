@@ -94,6 +94,13 @@ struct Gear
     static Stats singleStatOf(Slot slot, Rating r);
     /// returns a 50% stat for a given rating
     static Stats splitStatOf(Slot slot, Rating r);
+
+	/// sets neck to QL11 + violence
+	void setNeckQL11();
+	/// sets neck to woodcutters
+	void setNeckWoodcutters();
+	/// sets neck to 10.9 egon
+	void setNeckEgon();
 };
 
 // custom specialization of std::hash can be injected in namespace std

@@ -42,6 +42,18 @@ public:
 			return s;
 		}
 
+		static Skill GunFu()
+		{
+			auto s = skill("Gun-Fu", SkillType::None);
+			s.timeIn60th = 60;
+			s.passive.trigger = Trigger::FinishActivation;
+			s.passive.effect = EffectSlot::GunFu;
+			s.cooldownIn60th = 30 * 60;
+			s.reduceWeaponConsumerCD = 4 * 60;
+			s.slotForDmgAug = false;
+			return s;
+		}
+
 		static Skill Collaboration()
 		{
 			auto s = skill("Collaboration", SkillType::Builder);
@@ -72,6 +84,7 @@ public:
             s.dmgScaling = scaling(s.name + " @1");
             s.dmgScaling5 = scaling(s.name + " @5");
             s.channeling = true;
+			s.subtype = SubType::Focus;
             return s;
         }
 
@@ -296,6 +309,18 @@ public:
 			return s;
 		}
 
+		static Skill LockAndLoad()
+		{
+			auto s = skill("Lock & Load", SkillType::None);
+			s.passive.trigger = Trigger::FinishActivation;
+			s.passive.effect = EffectSlot::LockAndLoad;
+			s.cooldownIn60th = 25 * 60;
+			s.reduceWeaponConsumerCD = 4 * 60;
+			s.slotForDmgAug = false;
+			return s;
+		}
+
+
 		static Skill TriggerHappy()
 		{
 			auto s = skill("Trigger Happy", SkillType::Builder);
@@ -494,31 +519,160 @@ public:
 
     struct Blade : private Base<Weapon::Blade, DmgType::Melee>
     {
+		static Skill DelicateStrike()
+		{
+			auto s = skill("Delicate Strike", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+		static Skill GrassCutter()
+		{
+			auto s = skill("Grass Cutter", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+		static Skill SlingBlade()
+		{
+			auto s = skill("Sling Blade", SkillType::None);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 35 * 60;
+			// TODO: afflict
+			return s;
+		}
+		static Skill BalancedBlade()
+		{
+			auto s = skill("Balanced Blade", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+		static Skill BindingWounds()
+		{
+			auto s = skill("Binding Wounds", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+		static Skill DancingBlade()
+		{
+			auto s = skill("Dancing Blade", SkillType::Consumer);
+			s.timeIn60th = 150;
+			s.hits = 5;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.channeling = true;
+			s.subtype = SubType::Focus;
+			return s;
+		}
+		static Skill StunningSwirl()
+		{
+			auto s = skill("Stunning Swirl", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.appliesVulnerability = DmgType::Ranged;
+			return s;
+		}
+		static Skill FourSeasons()
+		{
+			auto s = skill("Four Seasons", SkillType::Elite);
+			s.timeIn60th = 150;
+			s.hits = 5;
+			s.cooldownIn60th = 20 * 60;
+			s.passive.bonusStats.addedPenChance = 1.0; // guaranteed pen
+			s.dmgScalingA = scaling(s.name);
+			s.specialHitsA = 4;
+			s.dmgScaling = scaling(s.name + " Final");
+			s.channeling = true;
+			s.appliesVulnerability = DmgType::Magic;
+			return s;
+		}
+
     };
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
     {
-        static Skill Smash()
-        {
-            auto s = skill("Smash", SkillType::Builder);
-            s.timeIn60th = 60;
-            s.hits = 1;
-            s.dmgScaling = scaling(s.name);
-            return s;
-        }
+		static Skill Smash()
+		{
+			auto s = skill("Smash", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+		static Skill Haymaker()
+		{
+			auto s = skill("Haymaker", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.subtype = SubType::Strike;
+			return s;
+		}
+		static Skill StonesThrow()
+		{
+			auto s = skill("Stone's Throw", SkillType::None);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.cooldownIn60th = 15 * 60;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+		static Skill Shockwave()
+		{
+			auto s = skill("Shockwave", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 25 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.appliesVulnerability = DmgType::Magic;
+			return s;
+		}
+		static Skill Eruption()
+		{
+			auto s = skill("Eruption", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 25 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.appliesVulnerability = DmgType::Ranged;
+			return s;
+		}
 
-        static Skill MoltenSteel()
-        {
-            auto s = skill("Molten Steel", SkillType::Consumer);
-            s.timeIn60th = 60;
-            s.hits = 1;
-            s.dmgScaling = scaling(s.name + " @1");
-            s.dmgScaling5 = scaling(s.name + " @5");
-            s.passive.bonusStats.addedCritChance = 30 / 100.f;
-            s.passive.bonusStats.addedCritPower = 15 / 100.f;
+		static Skill MoltenSteel()
+		{
+			auto s = skill("Molten Steel", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.passive.bonusStats.addedCritChance = 30 / 100.f;
+			s.passive.bonusStats.addedCritPower = 15 / 100.f;
 
-            return s;
-        }
+			return s;
+		}
+
+		static Skill BoneBreaker()
+		{
+			auto s = skill("Bone Breaker", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+
+			return s;
+		}
 
         static Skill FullMomentum()
         {
@@ -555,6 +709,60 @@ public:
             s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
+
+		static Skill Claw()
+		{
+			auto s = skill("Claw", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+
+		static Skill PreyOnTheWeak()
+		{
+			auto s = skill("Prey on the Weak", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 3;
+			s.dmgScaling = scaling(s.name);
+			s.subtype = SubType::Burst;
+			return s;
+		}
+
+		static Skill WildAtHeart()
+		{
+			auto s = skill("Wild at Heart", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+
+		static Skill TearEmUp()
+		{
+			auto s = skill("Tear Em Up", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.passive.trigger = Trigger::Hit;
+			s.passive.effect = EffectSlot::TearEmUp;
+			return s;
+		}
+
+		static Skill OneTwo()
+		{
+			auto s = skill("One-Two", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 2;
+			s.dmgScalingA = scaling(s.name + " 1st");
+			s.specialHitsA = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.subtype = SubType::Burst;
+			return s;
+		}
     };
 
     struct Chainsaw : private Base<Weapon::Aux, DmgType::None>

@@ -80,6 +80,17 @@ public:
 
             return e;
         }
+
+        static Effect EgonPendant()
+        {
+            auto e = effect("Egon Pendant", EffectSlot::EgonPendant);
+
+            e.timeIn60th = 12 * 60;
+            e.cooldownIn60th = 12 * 60;
+            e.bonusStats.egonPendant = true;
+
+            return e;
+        }
     };
 
     struct Generic : private Base
@@ -176,28 +187,6 @@ public:
             e.bonusStats.additiveDamage = 40 / 100.f;
             e.restrictToWeapon = Weapon::Hammer;
             e.consumedAfterHit = true;
-
-            return e;
-        }
-
-        static Effect LockStockBarrel()
-        {
-            auto e = effect("Lock, Stock & Barrel", EffectSlot::LockStockBarrel);
-
-            e.timeIn60th = 20 * 60;
-            e.consumedAfterAbility = true;
-            e.gainOnConsume = EffectSlot::LockStockBarrelGain;
-            e.restrictToWeapon = Weapon::Shotgun;
-            e.restrictToSkillType = SkillType::Consumer;
-
-            return e;
-        }
-
-        static Effect LockStockBarrelGain()
-        {
-            auto e = effect("Lock, Stock & Barrel (Gain)", EffectSlot::LockStockBarrelGain);
-
-            e.gainResources = 5;
 
             return e;
         }
@@ -390,15 +379,40 @@ public:
 
             return e;
         }
-        static Effect AmorFati()
-        {
-            auto e = effect("Amor Fati", EffectSlot::AmorFati);
+		static Effect AmorFati()
+		{
+			auto e = effect("Amor Fati", EffectSlot::AmorFati);
 
-            e.timeIn60th = 10 * 60;
-            e.bonusStats.additiveDamage = 10 / 100.f;
+			e.timeIn60th = 10 * 60;
+			e.bonusStats.additiveDamage = 10 / 100.f;
 
-            return e;
-        }
+			return e;
+		}
+		static Effect TearEmUp()
+		{
+			auto e = effect("Tear Em Up", EffectSlot::TearEmUp);
+
+			e.timeIn60th = 4 * 60;
+			e.bonusStats.additiveDamage = 10 / 100.f;
+
+			return e;
+		}
+		static Effect GunFu()
+		{
+			auto e = effect("Gun-Fu", EffectSlot::GunFu);
+
+			e.gainResources = 5;
+
+			return e;
+		}
+		static Effect LockAndLoad()
+		{
+			auto e = effect("Lock & Load", EffectSlot::LockAndLoad);
+
+			e.gainResources = 3;
+
+			return e;
+		}
 
         static Effect FullMomentum()
         {
@@ -410,6 +424,28 @@ public:
 
             return e;
         }
+
+		static Effect LockStockBarrel()
+		{
+			auto e = effect("Lock, Stock & Barrel", EffectSlot::LockStockBarrel);
+
+			e.timeIn60th = 20 * 60;
+			e.consumedAfterAbility = true;
+			e.gainOnConsume = EffectSlot::LockStockBarrelGain;
+			e.restrictToWeapon = Weapon::Shotgun;
+			e.restrictToSkillType = SkillType::Consumer;
+
+			return e;
+		}
+
+		static Effect LockStockBarrelGain()
+		{
+			auto e = effect("Lock, Stock & Barrel (Gain)", EffectSlot::LockStockBarrelGain);
+
+			e.gainResources = 5;
+
+			return e;
+		}
     };
 
 private:

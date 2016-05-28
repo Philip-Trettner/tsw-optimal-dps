@@ -383,6 +383,17 @@ void Simulation::simulate(int totalTimeIn60th)
             procEffect(procStat, passive, -1);
         }
 
+		// reduce CD effect
+		if (skill.reduceWeaponConsumerCD > 0)
+			for (auto i = 0; i < SKILL_CNT; ++i)
+				if (skills.skills[i].weapon == skill.weapon &&
+					skills.skills[i].skilltype == SkillType::Consumer)
+				{
+					skillCDs[i] -= skill.reduceWeaponConsumerCD;
+					if (skillCDs[i] < 0)
+						skillCDs[i] = 0;
+				}
+
         // inc skill id
         ++currHitID;
 
@@ -459,25 +470,58 @@ void Simulation::analyzePassiveContribution(int maxTime)
         skills.passives[i] = passive;
     }
 
-    // WC
-    if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
-    {
-        auto piece = gear.pieces[Gear::MajorMid];
-        gear.pieces[Gear::MajorMid].signet = Signets::Major::Violence();
-        gear.pieces[Gear::MajorMid].set(PrimaryStat::Attack, Gear::TalismanQuality::QL11);
+	std::cout << "Neck: " << std::endl;
+    // QL11 + violence
+	{
+		auto piece = gear.pieces[Gear::MajorMid];
+		gear.setNeckQL11();
 
-        init();
-        resetStats();
-        simulate(maxTime);
-        auto dps = totalDPS();
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
 
-        std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
-                  << "% from Woodcutters (vs. purple Violence and QL11)" << std::endl;
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+			<< "% for QL11 + Violence" << std::endl;
 
-        gear.pieces[Gear::MajorMid] = piece;
-    }
+		gear.pieces[Gear::MajorMid] = piece;
+	}
+	// WC
+	{
+		auto piece = gear.pieces[Gear::MajorMid];
+		gear.setNeckWoodcutters();
+
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
+
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+			<< "% for Woodcutters" << std::endl;
+
+		gear.pieces[Gear::MajorMid] = piece;
+	}
+	// Egon
+	{
+		auto piece = gear.pieces[Gear::MajorMid];
+		gear.setNeckEgon();
+
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
+
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+			<< "% for Amulet of Yuggoth" << std::endl;
+
+		gear.pieces[Gear::MajorMid] = piece;
+	}
 
     log = savLog;
     lowVarianceMode = savMode;
@@ -945,7 +989,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::Aggression());
     registerEffect(Effects::Signet::Laceration());
     registerEffect(Effects::Signet::MothersWrathBuff());
-    registerEffect(Effects::Signet::MothersWrathStacks());
+	registerEffect(Effects::Signet::MothersWrathStacks());
+	registerEffect(Effects::Signet::EgonPendant());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());
@@ -963,10 +1008,13 @@ void Simulation::registerEffects()
     registerEffect(Effects::WeaponSkill::ElementalOverload());
     registerEffect(Effects::WeaponSkill::MomentumStack());
     registerEffect(Effects::WeaponSkill::MomentumBuff());
-    registerEffect(Effects::WeaponSkill::LockStockBarrel());
-    registerEffect(Effects::WeaponSkill::LockStockBarrelGain());
 
     registerEffect(Effects::SkillPassive::Reckless());
     registerEffect(Effects::SkillPassive::AmorFati());
-    registerEffect(Effects::SkillPassive::FullMomentum());
+	registerEffect(Effects::SkillPassive::FullMomentum());
+	registerEffect(Effects::SkillPassive::TearEmUp());
+	registerEffect(Effects::SkillPassive::GunFu());
+	registerEffect(Effects::SkillPassive::LockAndLoad());
+	registerEffect(Effects::SkillPassive::LockStockBarrel());
+	registerEffect(Effects::SkillPassive::LockStockBarrelGain());
 }

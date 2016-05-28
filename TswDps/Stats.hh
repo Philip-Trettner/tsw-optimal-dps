@@ -46,6 +46,9 @@ struct Stats
     int evadeRating = 0;
     int defenceRating = 0;
 
+	// special stuff
+	bool egonPendant = false;
+
     // flat perc increases
     // .2 = 20%
     float addedCritChance = 0;
@@ -99,6 +102,8 @@ struct hash<Stats>
 
         hash_combine(h, s.weaponPower);
 
+        hash_combine(h, s.egonPendant);
+
         hash_combine(h, s.hitRating);
         hash_combine(h, s.critRating);
         hash_combine(h, s.critPowerRating);
@@ -149,6 +154,8 @@ inline Stats operator+(Stats const& l, Stats const& r)
     s.additiveDamage = l.additiveDamage + r.additiveDamage;
     s.multiplicativeDamage = l.multiplicativeDamage + r.multiplicativeDamage;
 
+	s.egonPendant = l.egonPendant || r.egonPendant;
+
     return s;
 }
 
@@ -179,6 +186,8 @@ inline Stats operator*(Stats const& l, float f)
     s.additiveDamage = l.additiveDamage * f;
     s.multiplicativeDamage = l.multiplicativeDamage * f;
 
+	s.egonPendant = l.egonPendant;
+
     return s;
 }
 
@@ -191,8 +200,11 @@ inline bool operator==(Stats const& l, Stats const& r)
     if (l.healRating != r.healRating)
         return false;
 
-    if (l.weaponPower != r.weaponPower)
-        return false;
+	if (l.weaponPower != r.weaponPower)
+		return false;
+
+	if (l.egonPendant != r.egonPendant)
+		return false;
 
     if (l.hitRating != r.hitRating)
         return false;

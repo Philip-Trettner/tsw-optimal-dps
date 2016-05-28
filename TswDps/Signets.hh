@@ -74,15 +74,24 @@ public:
 
             return p;
         }
-        static Signet WoodcuttersWrath()
-        {
-            auto p = signet("Woodcutters Wrath");
+		static Signet WoodcuttersWrath()
+		{
+			auto p = signet("Woodcutters Wrath");
 
-            p.passive.trigger = Trigger::Hit;
-            p.passive.effect = EffectSlot::MothersWrathStacks;
+			p.passive.trigger = Trigger::Hit;
+			p.passive.effect = EffectSlot::MothersWrathStacks;
 
-            return p;
-        }
+			return p;
+		}
+		static Signet EgonPendant()
+		{
+			auto p = signet("Egon Pendant");
+
+			p.passive.trigger = Trigger::Crit;
+			p.passive.effect = EffectSlot::EgonPendant;
+
+			return p;
+		}
     };
 
     struct Minor : private Base<SignetSlot::Minor>

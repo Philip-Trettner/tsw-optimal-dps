@@ -19,9 +19,11 @@ void Gear::loadStandardDpsGear()
     pieces[MajorLeft].signet = Signets::Major::Violence();
 
     // Neck (WC)
-    pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    //pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
     pieces[MajorMid].fix(Rating::CritPower);
-    pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+    //pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+	//pieces[MajorMid].signet = Signets::Major::EgonPendant();
+	pieces[MajorMid].signet = Signets::Major::Violence();
 
     // Wrist
     pieces[MajorRight].fix(Rating::Pen);
@@ -264,6 +266,30 @@ Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
 Stats Gear::splitStatOf(Gear::Slot slot, Rating r)
 {
     return singleStatOf(slot, r) * 0.5f;
+}
+
+void Gear::setNeckQL11()
+{
+	auto& p = pieces[MajorMid];
+	p.status = SlotStatus::Free;
+	p.set(PrimaryStat::Attack, TalismanQuality::QL11);
+	p.signet = Signets::Major::Violence();
+}
+
+void Gear::setNeckWoodcutters()
+{
+	auto& p = pieces[MajorMid];
+	p.fix(Rating::CritPower);
+	p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+	p.signet = Signets::Major::WoodcuttersWrath();
+}
+
+void Gear::setNeckEgon()
+{
+	auto& p = pieces[MajorMid];
+	p.status = SlotStatus::Free;
+	p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+	p.signet = Signets::Major::EgonPendant();
 }
 
 void Gear::Piece::fix(Rating r)

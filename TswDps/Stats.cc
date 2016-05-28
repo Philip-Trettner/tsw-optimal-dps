@@ -8,7 +8,10 @@ void Stats::update(const EnemyInfo &enemy)
 {
     (void)enemy;
 
-    finalCritChance = float((55.14f - 100.3f / (exp(critRating / 790.3f) + 1)) / 100 + addedCritChance);
+	if (egonPendant)
+		finalCritChance = float((65.11f - 120.2f / (exp(critRating / 790.3f) + 1)) / 100 + addedCritChance);
+	else 
+		finalCritChance = float((55.14f - 100.3f / (exp(critRating / 790.3f) + 1)) / 100 + addedCritChance);
     finalCritPower = float(sqrt(5 * critPowerRating + 625) / 100 + addedCritPower);
     finalPenChance = .25f + addedPenChance; // TODO: make this dependent on enemy stats
     finalDmgMultiplier = (1 + additiveDamage) * (1 + multiplicativeDamage);

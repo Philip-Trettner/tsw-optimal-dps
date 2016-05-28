@@ -19,6 +19,7 @@ Optimizer::Optimizer()
 void Optimizer::run(int generations)
 {
     // seed
+	totalBuildsEvaluated = 0;
     auto startBuild = refSim.build();
     normalizeBuild(startBuild);
     knownBuilds.insert(startBuild);
@@ -86,6 +87,7 @@ void Optimizer::run(int generations)
 			else knownBuilds.insert(b);
 		}
 		std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
+		totalBuildsEvaluated += newBuilds.size();
 
 		// MT
 		auto nowEval = std::chrono::system_clock::now();
@@ -142,7 +144,8 @@ void Optimizer::run(int generations)
         auto nonSimTime = totalTime - secondsSim;
         std::cout << "  - highest DPS: " << activeBuilds[0].first << std::endl;
         std::cout << "  - simulation: " << secondsSim << " seconds" << std::endl;
-        std::cout << "  - other:      " << nonSimTime << " seconds" << std::endl;
+		std::cout << "  - other:      " << nonSimTime << " seconds" << std::endl;
+		std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
     }
 }
 
@@ -208,8 +211,15 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 	std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
 	std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
 	std::uniform_int_distribution<int> randomNeck(0, 2);
+	std::uniform_int_distribution<int> randomMinRes(1, 5);
 
     auto b = build;
+	auto newRot = DefaultRotation::create();
+	auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
+	if (oldRot)
+	{
+		newRot->minResourcesForConsumer = newRot->minResourcesForConsumer;
+	}
 
     auto resortPassives = false;
 
@@ -362,14 +372,16 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 			{
 				auto type = randomNeck(random);
 
-				// TODO!
 				switch (type)
 				{
 				case 0: // normal
+					b.gear.setNeckQL11();
 					break;
 				case 1: // woodcutters
+					b.gear.setNeckWoodcutters();
 					break;
 				case 2: // egon
+					b.gear.setNeckEgon();
 					break;
 				}
 
@@ -431,9 +443,12 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 changed = true;
             }
             break;
-        case BuildChange::Aux:
-            // TODO
-            break;
+		case BuildChange::Aux:
+			// TODO
+			break;
+		case BuildChange::Rotation:
+			newRot->minResourcesForConsumer = randomMinRes(random);
+			break;
 
         case BuildChange::Count:
             assert(false);

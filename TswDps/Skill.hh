@@ -54,6 +54,8 @@ struct Skill
 
     bool slotForDmgAug = true; ///< if true, this skill may slot a dmg augment
 
+	int reduceWeaponConsumerCD = 0; ///< if above 0, reduces CD of same-weapon consumers (after activation)
+
     Passive passive; ///< built-in passive
 
     // 1.0  for no penalty
