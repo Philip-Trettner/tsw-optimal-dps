@@ -14,7 +14,8 @@ enum class Trigger
     Crit,
     Pen,
     CritPen,
-    FinishActivation
+    FinishActivation,
+	StartActivation
 };
 
 struct Passive
@@ -31,6 +32,7 @@ struct Passive
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
     EffectSlot effect = EffectSlot::Count; ///< trigger effect
+	int effectStacks = 1;
 
     EffectSlot abilityBlockedEffect
         = EffectSlot::Count; ///< cannot trigger if it's the same ability as the blocked effect

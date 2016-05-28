@@ -75,6 +75,8 @@ MAKE_EFFECT_ENUM(
     LiveWireStack,
     LiveWireProc,
     Gnosis,
+	BombardmentStacks,
+	Bombardment,
 
     // weapon skills
     DoubleUp,
@@ -103,6 +105,7 @@ struct Effect
 
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
+	EffectSlot triggerOnStackLost = EffectSlot::Count; // < if < count, triggers every time a stack is lost
 
     DmgType dmgtype = DmgType::None; // for vulnerabilities
 

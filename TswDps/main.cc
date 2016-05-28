@@ -22,7 +22,8 @@ int main(int argc, char *argv[])
     const bool optimization = true;
 
     const bool dpsTest = false;
-
+	
+	const int maxTime = 100 * 1000 * 60;
     const int burstFight = 13 * 60;
     const bool longRun = true;
     const bool buffs = true;
@@ -116,8 +117,6 @@ int main(int argc, char *argv[])
         }
         std::cout << std::endl;
     }*/
-
-    const int maxTime = 100 * 1000 * 60;
 
     if (dpsTest)
     {

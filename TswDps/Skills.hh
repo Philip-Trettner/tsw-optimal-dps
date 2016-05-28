@@ -250,9 +250,10 @@ public:
         {
             auto s = skill("Bombardment", SkillType::Elite);
             s.timeIn60th = 60;
-            // ... ???
-            s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 60 * 30;
+			s.passive.trigger = Trigger::StartActivation;
+			s.passive.effect = EffectSlot::BombardmentStacks;
+			s.passive.effectStacks = 8;
             return s;
         }
 

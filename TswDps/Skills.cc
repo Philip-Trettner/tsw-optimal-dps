@@ -28,7 +28,8 @@ std::vector<Skill> Skills::all()
         Shotgun::PointBlank(),      //
         Shotgun::Kneecapper(),      //
         Shotgun::LockStockBarrel(), //
-        Shotgun::Takedown(),        //
+		Shotgun::Takedown(),        //
+		Shotgun::Bombardment(),     //
 
         Rifle::Shellshocker(),    //
         Rifle::SafetyOff(),       //

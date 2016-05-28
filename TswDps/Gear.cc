@@ -20,7 +20,7 @@ void Gear::loadStandardDpsGear()
 
     // Neck (WC)
     pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-    pieces[MajorMid].free(Rating::CritPower);
+    pieces[MajorMid].fix(Rating::CritPower);
     pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
 
     // Wrist

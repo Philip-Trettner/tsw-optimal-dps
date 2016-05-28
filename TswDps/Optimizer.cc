@@ -75,7 +75,6 @@ void Optimizer::run(int generations)
         generateNewBuilds(newBuildsPerGen, newBuilds);
 
 		// preprocess
-		std::cout << "from " << newBuilds.size() << " to ";
 		for (auto i = (int)newBuilds.size() - 1; i >= 0; --i)
 		{
 			auto const& b = newBuilds[i];
@@ -83,7 +82,7 @@ void Optimizer::run(int generations)
 				newBuilds.erase(begin(newBuilds) + i);
 			else knownBuilds.insert(b);
 		}
-		std::cout  << newBuilds.size() << std::endl;
+		std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
 
 		// MT
 		auto nowEval = std::chrono::system_clock::now();
@@ -124,7 +123,6 @@ void Optimizer::run(int generations)
 		secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - nowEval).count();
 
         // sort builds by dps
-		std::cout << activeBuilds.size() << " after calc" << std::endl;
         sort(begin(activeBuilds), end(activeBuilds), [](std::pair<double, Build> const& l, std::pair<double, Build> const& r)
              {
                  return l.first > r.first;
@@ -448,7 +446,9 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 
 void Optimizer::normalizeBuild(Build& b)
 {
-    sort(begin(b.skills.passives), end(b.skills.passives), [](Passive const& l, Passive const& r)
+	while (b.skills.passives.size() < maxPassives)
+		b.skills.passives.push_back(Passives::empty());
+	sort(begin(b.skills.passives), end(b.skills.passives), [](Passive const& l, Passive const& r)
          {
              return l.name < r.name;
          });

@@ -273,6 +273,27 @@ public:
 
             return e;
         }
+
+		static Effect BombardmentStacks()
+		{
+			auto e = effect("Bombardment Stacks", EffectSlot::BombardmentStacks);
+
+			e.timeIn60th = 2 * 60 + 30;
+			e.triggerOnStackLost = EffectSlot::Bombardment;
+			e.maxStacks = 8;
+
+			return e;
+		}
+
+		static Effect Bombardment()
+		{
+			auto e = effect("Bombardment", EffectSlot::Bombardment);
+
+			e.dmgtype = DmgType::Ranged;
+			e.procDmgScaling = scaling(e.name);
+
+			return e;
+		}
     };
 
     struct Passive : private Base

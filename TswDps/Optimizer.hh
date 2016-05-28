@@ -35,7 +35,7 @@ public: // settings
     Simulation refSim;
 
     /// testing time overall (per build)
-    int timePerTest = 10 * 3600 * 60;
+    int timePerTest = 2 * 3600 * 60;
     /// time per individual fight
 	int timePerFight = 10 * 60 * 60; // 10 min fights
 
@@ -54,7 +54,7 @@ public: // tweaks
     size_t maxActiveBuilds = 50;
 
     /// Number of new builds per generation
-    int newBuildsPerGen = 50;
+    int newBuildsPerGen = 30;
 
     /// if true, forces low variance on sim
     bool useLowVariance = true;
@@ -69,7 +69,7 @@ public:
     Optimizer();
 
     /// Runs the optimization for a number of generations
-    void run(int generations = 25);
+    void run(int generations = 150);
 
     /// get the best builds
     std::vector<std::pair<double, Build>> const& getTopBuilds() const { return activeBuilds; }

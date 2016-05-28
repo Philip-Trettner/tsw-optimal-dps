@@ -19,6 +19,11 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
         }
     assert(builder >= 0 && "no builder found");
 
+	// use bombardment off CD
+	for (int i = 0; i < SKILL_CNT; ++i)
+		if (skills[i].name == "Bombardment" && sim.isSkillReady(i))
+			return i;
+
     // only build if buffs soon
     if (buffsSoon)
         return builder;

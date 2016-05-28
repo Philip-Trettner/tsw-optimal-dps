@@ -272,6 +272,16 @@ void Simulation::simulate(int totalTimeIn60th)
         advanceTime(skill.casttimeIn60th);
         remainingTime -= skill.casttimeIn60th;
 
+		// effects that trigger BEFORE first hit
+		for (auto const& passive : skillTriggers[idx])
+		{
+			// start activation
+			if (passive.trigger != Trigger::StartActivation)
+				continue;
+
+			procEffect(procStat, passive, -1);
+		}
+
         // non-channeling builders
         if (!skill.channeling && skill.skilltype == SkillType::Builder)
             addResource(skill.buildPrimaryOnly);
@@ -346,7 +356,7 @@ void Simulation::simulate(int totalTimeIn60th)
         if (skill.channeling && skill.skilltype == SkillType::Builder)
             addResource(skill.buildPrimaryOnly);
 
-        // effects trigger AFTER the hit
+        // effects that trigger AFTER last hit
         for (auto const& passive : skillTriggers[idx])
         {
             // finish activation
@@ -598,8 +608,10 @@ void Simulation::procEffect(const Stats& procStats, const Passive& passive, floa
     // blocked by effect ability
     if (passive.abilityBlockedEffect != EffectSlot::Count && currSkillID == effectSkillID[(int)passive.abilityBlockedEffect])
         return;
-
-    procEffect(procStats, passive.effect, originalHitScaling);
+	
+	// add N stacks
+	for (auto i = 0; i < passive.effectStacks; ++i)
+		procEffect(procStats, passive.effect, originalHitScaling);
 }
 
 void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float originalHitScaling)
@@ -805,6 +817,10 @@ void Simulation::advanceTime(int timeIn60th)
                     // log
                     if (log)
                         log->logEffectEnd(this, currentTime, (EffectSlot)i);
+
+					// trigger on lose
+					if (effects[i].triggerOnStackLost != EffectSlot::Count)
+						procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
                 }
             }
 
@@ -916,7 +932,9 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::Thunderstruck());
     registerEffect(Effects::Proc::Gnosis());
     registerEffect(Effects::Proc::LiveWireProc());
-    registerEffect(Effects::Proc::LiveWireStack());
+	registerEffect(Effects::Proc::LiveWireStack());
+	registerEffect(Effects::Proc::BombardmentStacks());
+	registerEffect(Effects::Proc::Bombardment());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
