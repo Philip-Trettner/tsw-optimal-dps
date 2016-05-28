@@ -53,6 +53,9 @@ void Optimizer::run(int generations)
     {
         assert(p.passivetype != PassiveType::Skill);
 
+		if (p.restrictWeapon && p.weaponType != startBuild.gear.leftWeapon && p.weaponType != startBuild.gear.rightWeapon)
+			continue; // non-matched weapon restricted passive
+
         if (p.passivetype == PassiveType::Elite)
             allElitePassives.push_back(p);
         else

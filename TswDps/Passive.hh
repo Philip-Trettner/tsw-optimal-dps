@@ -25,7 +25,8 @@ struct Passive
     DmgType dmgtype = DmgType::None;
     PassiveType passivetype = PassiveType::None;
     bool restrictWeapon = false;              ///< if true, only weaponType weapons benefit from this passive
-    SkillType restrictType = SkillType::None; ///< if non-none, restricts this passive to a given skill type
+	SkillType restrictType = SkillType::None; ///< if non-none, restricts this passive to a given skill type
+	SubType restrictSubType = SubType::None; ///< if non-none, restricts this passive to a given skill type
 
     Stats bonusStats;
 

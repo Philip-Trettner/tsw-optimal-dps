@@ -30,6 +30,7 @@ std::vector<Skill> Skills::all()
         Shotgun::LockStockBarrel(), //
 		Shotgun::Takedown(),        //
 		Shotgun::Bombardment(),     //
+		Shotgun::ShotgunWedding(),  //
 
         Rifle::Shellshocker(),    //
         Rifle::SafetyOff(),       //
@@ -39,7 +40,14 @@ std::vector<Skill> Skills::all()
 
         Chaos::RunRampant(),   //
         Chaos::FourHorsemen(), //
-        Chaos::AmorFati(),     //
+		Chaos::AmorFati(),     //
+		Chaos::CallForEris(),     //
+		Chaos::HandOfChange(),     //
+		Chaos::DominoEffect(),     //
+		Chaos::Paradox(),     //
+		Chaos::PullingTheStrings(),     //
+		Chaos::PrisonerOfFate(),     //
+		Chaos::SufferingAndSolace(),     //
 
         Hammer::Smash(),        //
         Hammer::MoltenSteel(),  //

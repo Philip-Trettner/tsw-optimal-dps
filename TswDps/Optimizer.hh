@@ -51,7 +51,7 @@ public: // settings
 
 public: // tweaks
     /// Number of simulatenously hold builds
-    size_t maxActiveBuilds = 50;
+    size_t maxActiveBuilds = 30;
 
     /// Number of new builds per generation
     int newBuildsPerGen = 30;
@@ -69,7 +69,7 @@ public:
     Optimizer();
 
     /// Runs the optimization for a number of generations
-    void run(int generations = 150);
+    void run(int generations = 250);
 
     /// get the best builds
     std::vector<std::pair<double, Build>> const& getTopBuilds() const { return activeBuilds; }
@@ -92,7 +92,7 @@ private: // "Library"
 
 private: // Transient data
     /// timing
-    double secondsSim;
+    double secondsSim = -1;
 
     /// random
     std::default_random_engine random;

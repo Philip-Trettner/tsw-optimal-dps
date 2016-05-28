@@ -10,54 +10,6 @@
 
 struct Builds
 {
-    static Build hammerTest()
-    {
-        Build b;
-        b.rotation = DefaultRotation::create();
-
-        b.skills = {{
-                        // skills
-                        Skills::Hammer::Smash(),            //
-                        Skills::Shotgun::RagingBullet(),    //
-                        Skills::Hammer::MoltenSteel(),      //
-                        Skills::Shotgun::PointBlank(),      //
-                        Skills::Hammer::FullMomentum(),     //
-                        Skills::Shotgun::LockStockBarrel(), //
-                        Skills::Chainsaw::Timber(),         //
-                    },
-                    {
-                        // augs
-                        Augments::Brutal(),    //
-                        Augments::Focused(),   //
-                        Augments::Ferocious(), //
-                        Augments::Fierce(),    //
-                        Augments::empty(),     //
-                        Augments::empty(),     //
-                        Augments::empty(),     //
-                    },
-                    {
-                        // passives
-                        // Passives::Hammer::Brawler(),           //
-                        Passives::Blade::SuddenReturn(),       //
-                        Passives::Blood::IronMaiden(),         //
-                        Passives::Elemental::ElementalForce(), //
-                        Passives::Blade::TwistTheKnife(),      //
-                        Passives::Rifle::Lethality(),          //
-                        Passives::Hammer::Thunderstruck(),     //
-                        Passives::Pistol::OneInTheChamber(),   //
-                    }};
-
-        // gear
-        b.gear.loadStandardDpsGear();
-
-        b.gear.leftWeapon = Weapon::Hammer;
-        b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
-
-        b.gear.rightWeapon = Weapon::Shotgun;
-        b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
-
-        return b;
-    }
 
 	static Build currTest()
 	{
@@ -66,16 +18,10 @@ struct Builds
 
 		b.skills = { {
 				// skills
-				Skills::Pistol::HairTrigger(),      //
-				Skills::Shotgun::Bombardment(),        //
+				Skills::Pistol::HairTrigger()
 			},
 			{
 				// augs
-				Augments::Brutal(),   //
-				Augments::Fierce(),   //
-				Augments::Grievous(), //
-				Augments::Piercing(), //
-				Augments::Accurate(), //
 			},
 			{
 				// passives
@@ -87,13 +33,15 @@ struct Builds
 		b.gear.leftWeapon = Weapon::Pistol;
 		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
 
-		b.gear.rightWeapon = Weapon::Shotgun;
+		b.gear.rightWeapon = Weapon::Fist;
 		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
 		return b;
 	}
 
 	static Build currMaxPistolShotgun()
 	{
+		// 7500 dps in 10min fights
+
 		Build b;
 		b.rotation = DefaultRotation::create();
 
@@ -102,7 +50,7 @@ struct Builds
 				Skills::Pistol::HairTrigger(),      //
 				Skills::Pistol::StartAndFinish(),   //
 				Skills::Shotgun::RagingBullet(),    //
-				Skills::Shotgun::Kneecapper(),      //
+				Skills::Shotgun::Bombardment(),      //
 				Skills::Shotgun::SureShot(),        //
 				Skills::Shotgun::LockStockBarrel(), //
 			},
@@ -110,8 +58,8 @@ struct Builds
 				// augs
 				Augments::Brutal(),   //
 				Augments::Fierce(),   //
+				Augments::Focused(), //
 				Augments::Grievous(), //
-				Augments::Piercing(), //
 				Augments::Accurate(), //
 			},
 			{
@@ -133,6 +81,55 @@ struct Builds
 
 		b.gear.rightWeapon = Weapon::Shotgun;
 		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+		return b;
+	}
+
+	static Build hammerTest()
+	{
+		Build b;
+		b.rotation = DefaultRotation::create();
+
+		b.skills = { {
+				// skills
+				Skills::Hammer::Smash(),            //
+				Skills::Shotgun::RagingBullet(),    //
+				Skills::Hammer::MoltenSteel(),      //
+				Skills::Shotgun::PointBlank(),      //
+				Skills::Hammer::FullMomentum(),     //
+				Skills::Shotgun::LockStockBarrel(), //
+				Skills::Chainsaw::Timber(),         //
+			},
+			{
+				// augs
+				Augments::Brutal(),    //
+				Augments::Focused(),   //
+				Augments::Ferocious(), //
+				Augments::Fierce(),    //
+				Augments::empty(),     //
+				Augments::empty(),     //
+				Augments::empty(),     //
+			},
+			{
+				// passives
+				// Passives::Hammer::Brawler(),           //
+				Passives::Blade::SuddenReturn(),       //
+				Passives::Blood::IronMaiden(),         //
+				Passives::Elemental::ElementalForce(), //
+				Passives::Blade::TwistTheKnife(),      //
+				Passives::Rifle::Lethality(),          //
+				Passives::Hammer::Thunderstruck(),     //
+				Passives::Pistol::OneInTheChamber(),   //
+			} };
+
+		// gear
+		b.gear.loadStandardDpsGear();
+
+		b.gear.leftWeapon = Weapon::Hammer;
+		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
+
+		b.gear.rightWeapon = Weapon::Shotgun;
+		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+
 		return b;
 	}
 

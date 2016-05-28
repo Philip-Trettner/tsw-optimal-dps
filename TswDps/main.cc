@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     const bool dpsTest = false;
 	
 	const int maxTime = 100 * 1000 * 60;
-    const int burstFight = 13 * 60;
+    const int burstFight = 13 * 60 * 2;
     const bool longRun = true;
     const bool buffs = true;
 
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
         s.buffAt = 100000;
 
 	s.loadBuild(Builds::currTest());
+	// s.loadBuild(Builds::currMaxPistolShotgun());
 	//s.loadBuild(Builds::procHairtriggerOnly());
     // s.loadBuild(Builds::procBurstChaosRifle());
     // s.loadBuild(Builds::procBurstChaosFist());

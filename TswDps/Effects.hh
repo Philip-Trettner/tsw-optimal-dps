@@ -214,15 +214,24 @@ public:
 
             return e;
         }
-        static Effect SuddenReturn()
-        {
-            auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
+		static Effect SuddenReturn()
+		{
+			auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
 
-            e.dmgtype = DmgType::Melee;
-            e.procDmgScaling = scaling(e.name);
+			e.dmgtype = DmgType::Melee;
+			e.procDmgScaling = scaling(e.name);
 
-            return e;
-        }
+			return e;
+		}
+		static Effect Tenderising()
+		{
+			auto e = effect("Tenderising", EffectSlot::Tenderising);
+
+			e.dmgtype = DmgType::Melee;
+			e.procDmgScaling = scaling(e.name);
+
+			return e;
+		}
         static Effect FortunateStrike()
         {
             auto e = effect("Fortunate Strike", EffectSlot::FortunateStrike);
@@ -291,6 +300,7 @@ public:
 
 			e.dmgtype = DmgType::Ranged;
 			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
 
 			return e;
 		}
@@ -320,29 +330,53 @@ public:
             return e;
         }
 
-        static Effect ElementalForceStacks()
-        {
-            auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
+		static Effect ElementalForceStacks()
+		{
+			auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
 
-            e.timeIn60th = INF_TIME;
-            e.maxStacks = 5;
-            e.cooldownIn60th = 0; // no CD (on finish activation)
-            e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;
-            e.blockedSlot = EffectSlot::ElementalForceBuff;
+			e.timeIn60th = INF_TIME;
+			e.maxStacks = 5;
+			e.cooldownIn60th = 0; // no CD (on finish activation)
+			e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;
+			e.blockedSlot = EffectSlot::ElementalForceBuff;
 
-            return e;
-        }
+			return e;
+		}
 
-        static Effect ElementalForceBuff()
-        {
-            auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
+		static Effect ElementalForceBuff()
+		{
+			auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
 
-            e.timeIn60th = 5 * 60;
-            e.cooldownIn60th = 5 * 60;
-            e.bonusStats.addedCritChance = 20 / 100.f;
+			e.timeIn60th = 5 * 60;
+			e.cooldownIn60th = 5 * 60;
+			e.bonusStats.addedCritChance = 20 / 100.f;
 
-            return e;
-        }
+			return e;
+		}
+
+		static Effect FatalFlourishStacks()
+		{
+			auto e = effect("Fatal Flourish Stacks", EffectSlot::FatalFlourishStacks);
+
+			e.timeIn60th = INF_TIME;
+			e.maxStacks = 5;
+			e.cooldownIn60th = 0; // no CD (on finish activation)
+			e.triggerOnMaxStacks = EffectSlot::FatalFlourishBuff;
+			e.blockedSlot = EffectSlot::FatalFlourishBuff;
+
+			return e;
+		}
+
+		static Effect FatalFlourishBuff()
+		{
+			auto e = effect("Fatal Flourish Buff", EffectSlot::FatalFlourishBuff);
+
+			e.timeIn60th = 5 * 60;
+			e.cooldownIn60th = 5 * 60;
+			e.bonusStats.addedPenChance = 20 / 100.f;
+
+			return e;
+		}
     };
 
     struct SkillPassive : private Base

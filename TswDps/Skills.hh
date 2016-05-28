@@ -266,6 +266,21 @@ public:
             s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
+
+		static Skill ShotgunWedding()
+		{
+			auto s = skill("Shotgun Wedding", SkillType::Elite);
+			s.timeIn60th = 2 * 60 + 30;
+			s.hits = 5;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 20 * 60;
+			s.channeling = true;
+			s.baseDmgIncPerHit = 0.25f; // 25% more dmg per hit
+
+			s.appliesVulnerability = DmgType::Magic;
+
+			return s;
+		}
     };
 
     struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
@@ -310,10 +325,10 @@ public:
 		{
 			auto s = skill("Red Mist", SkillType::Elite);
 			s.timeIn60th = 2 * 60;
+			s.casttimeIn60th = s.timeIn60th;
 			s.hits = 1;
 			s.dmgScaling = scaling(s.name);
 			s.cooldownIn60th = 20 * 60;
-			s.channeling = true;
 
 			s.appliesVulnerability = DmgType::Magic;
 
@@ -335,25 +350,83 @@ public:
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
     {
-        static Skill RunRampant()
-        {
-            auto s = skill("Run Rampant", SkillType::Builder);
-            s.timeIn60th = 60;
-            s.hits = 3;
-            s.subtype = SubType::Burst;
-            s.dmgScaling = scaling(s.name);
-            return s;
-        }
-        static Skill FourHorsemen()
-        {
-            auto s = skill("Four Horsemen", SkillType::Consumer);
-            s.timeIn60th = 60;
-            s.hits = 4;
-            s.subtype = SubType::Burst;
-            s.dmgScaling = scaling(s.name + " @1");
-            s.dmgScaling5 = scaling(s.name + " @5");
-            return s;
-        }
+		static Skill RunRampant()
+		{
+			auto s = skill("Run Rampant", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 3;
+			s.subtype = SubType::Burst;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+
+		static Skill HandOfChange()
+		{
+			auto s = skill("Hand of Change", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+
+		static Skill FourHorsemen()
+		{
+			auto s = skill("Four Horsemen", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 4;
+			s.subtype = SubType::Burst;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+
+		static Skill PullingTheStrings()
+		{
+			auto s = skill("Pulling the Strings", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			// TODO: minor hit chance
+			return s;
+		}
+		
+		static Skill SufferingAndSolace()
+		{
+			auto s = skill("Suffering and Solace", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+
+		static Skill Schism()
+		{
+			auto s = skill("Schism", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			s.dmgScalingLow = scaling(s.name + " @1 low");
+			s.dmgScaling5Low = scaling(s.name + " @5 low");
+			return s;
+		}
+
+		static Skill CallForEris()
+		{
+			auto s = skill("Call for Eris", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.extraHitPerResource = 1;
+			s.fixedMultiHitPenalty = 0.75; // ?????? no fucking idea
+			s.subtype = SubType::Burst;
+			s.specialHitsA = 1;
+			s.dmgScalingA = scaling(s.name + " 1st");
+			s.dmgScaling = scaling(s.name + " @1");
+			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
 
         static Skill AmorFati()
         {
@@ -364,6 +437,51 @@ public:
             s.slotForDmgAug = false; // TODO: CHECK ME
             return s;
         }
+
+		static Skill DominoEffect()
+		{
+			auto s = skill("Domino Effect", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 25 * 60;
+			return s;
+		}
+
+		static Skill PrisonerOfFate()
+		{
+			auto s = skill("Prisoner of Fate", SkillType::Elite);
+			s.timeIn60th = 5 * 60;
+			s.hits = 5;
+			s.dmgScaling = scaling(s.name);
+			s.dmgScalingLow = scaling(s.name + " low");
+			s.cooldownIn60th = 20 * 60;
+			s.channeling = true;
+			s.animaDeviation = true;
+			s.appliesVulnerability = DmgType::Melee;
+			return s;
+		}
+
+		static Skill GravitationalAnomaly()
+		{
+			auto s = skill("Gravitational Anomaly", SkillType::Elite);
+			s.timeIn60th = 3 * 60;
+			s.hits = 3;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 25 * 60;
+			s.channeling = true;
+			return s;
+		}
+
+		static Skill Paradox()
+		{
+			auto s = skill("Paradox", SkillType::None);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.cooldownIn60th = 10 * 60;
+			return s;
+		}
     };
 
     struct Blood : private Base<Weapon::Blood, DmgType::Magic>

@@ -23,8 +23,12 @@ struct Skill
     int hits = 0;            ///< 0 = not damaging ability
     bool channeling = false; ///< if true, hits are channeled equally over time
 
-    float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
-    float dmgScaling5 = -1; ///< scaling at 5 resources
+	float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
+	float dmgScaling5 = -1; ///< scaling at 5 resources
+
+	// dmg @ low HP
+	float dmgScalingLow = -1;       
+	float dmgScaling5Low = -1;
 
     int specialHitsA = 0;
     float dmgScalingA = -1;
@@ -33,8 +37,13 @@ struct Skill
     int specialHitsC = 0;
     float dmgScalingC = -1;
 
+	int extraHitPerResource = 0; ///< extra hits per resource
+	float fixedMultiHitPenalty = 0; ///< if above zero, replaces MH penalty
+
     float chanceForScaleInc = 0; ///< chance to increase base scaling
     float scaleIncPerc = 0;      ///< amount of base scale inc if proc
+
+	float baseDmgIncPerHit = 0; ///< % inc per hit of base scaling
 
     int fixedConsumerResources = 0; ///< 0 = consumes all and uses dmgScaling5
 
@@ -55,6 +64,10 @@ struct Skill
     float multiHitPenalty() const
     {
         assert(hits > 0 && "only for damaging abilities");
+
+		if (fixedMultiHitPenalty > 0)
+			return fixedMultiHitPenalty;
+
         switch (timeIn60th / hits)
         {
         case 120:

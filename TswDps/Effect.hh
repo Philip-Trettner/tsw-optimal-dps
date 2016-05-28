@@ -59,6 +59,8 @@ MAKE_EFFECT_ENUM(
     Lethality,
     ElementalForceStacks,
     ElementalForceBuff,
+    FatalFlourishStacks,
+    FatalFlourishBuff,
 
     // skill passives
     Reckless,
@@ -77,6 +79,7 @@ MAKE_EFFECT_ENUM(
     Gnosis,
 	BombardmentStacks,
 	Bombardment,
+	Tenderising,
 
     // weapon skills
     DoubleUp,
@@ -111,6 +114,7 @@ struct Effect
 
     float procDmgScaling = 0.f;    // if > 0, triggers a proc dmg hit everytime this effect is applied
     float procDmgPercentage = 0.f; // if > 0, triggers a proc hit depending on the original hit
+	bool affectedByAdditiveDmg = false; // if true, proc dmg is buffed by additive dmg (e.g. Bombardment)
 
     bool affectProcs = true; // if true, bonus stats affect procs (additive dmg does not affect it anyways)
 

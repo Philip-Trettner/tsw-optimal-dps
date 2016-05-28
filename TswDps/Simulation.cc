@@ -156,8 +156,11 @@ void Simulation::init()
             if (passive.restrictWeapon && passive.weaponType != skill.weapon)
                 continue; // passive does not apply to this weapon
 
-            if (passive.restrictType != SkillType::None && passive.restrictType != skill.skilltype)
-                continue; // passive does not apply to this skill type
+			if (passive.restrictType != SkillType::None && passive.restrictType != skill.skilltype)
+				continue; // passive does not apply to this skill type
+
+			if (passive.restrictSubType != SubType::None && passive.restrictSubType != skill.subtype)
+				continue; // passive does not apply to this sub type
 
             // add passive stats
             s = s + passive.bonusStats;
@@ -288,12 +291,17 @@ void Simulation::simulate(int totalTimeIn60th)
 
         // precalc scaling
         float scaling = skill.dmgScaling;
+		if (skill.dmgScalingLow > 0 && stochasticLowHealth)
+			scaling += 0.35f * (skill.dmgScalingLow - skill.dmgScaling);
         float penCritPenalty = skillPenCritPenalty[idx];
         // "consumes all resources"
         if (skill.skilltype == SkillType::Consumer && skill.fixedConsumerResources == 0)
         {
             float a = (resources - 1.f) / (5.f - 1.f);
-            scaling += (skill.dmgScaling5 - skill.dmgScaling) * a;
+			auto scaling5 = skill.dmgScaling5;
+			if (skill.dmgScalingLow > 0 && stochasticLowHealth)
+				scaling5 += 0.35f * (skill.dmgScaling5Low - skill.dmgScaling5);
+            scaling += (scaling5 - skill.dmgScaling) * a;
         }
         // chance to do more dmg (timber)
         if (skill.chanceForScaleInc > 0)
@@ -305,38 +313,46 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // consumers
+		int resourcesConsumed = 0;
         if (skill.skilltype == SkillType::Consumer)
         {
             assert(currentWeapon >= 0 && "aux consumer??");
 
             auto resBefore = weaponResources[currentWeapon];
 
-            // TODO: fixed res consumers
+            // TODO: BLOOD
             if (skill.fixedConsumerResources > 0)
                 weaponResources[currentWeapon] -= skill.fixedConsumerResources;
             else
                 weaponResources[currentWeapon] = 0;
 
+			// res consumed
+			resourcesConsumed = resBefore - weaponResources[currentWeapon];
+
             if (log)
-                log->logResource(this, currentTime, skill.weapon, weaponResources[currentWeapon] - resBefore);
+                log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
         }
 
+		// hits
+		auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
+
         // actually do skill
-		for (auto hitIdx = 0; hitIdx < skill.hits; ++hitIdx)
+		for (auto hitIdx = 0; hitIdx < hits; ++hitIdx)
 		{
 			// if channeling, advance time first
 			if (skill.channeling)
 			{
-				advanceTime(skill.timeIn60th / skill.hits);
-				remainingTime -= skill.timeIn60th / skill.hits;
+				advanceTime(skill.timeIn60th / hits);
+				remainingTime -= skill.timeIn60th / hits;
 			}
 
 			// anima deviation
 			if (hitIdx == 0 && skill.animaDeviation)
 			{
-				// BUG: AD cannot crit currently
 				bool adCrit, adPen;
-				rawHit(baseStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
+				auto adStat = baseStat; // copy
+				adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
+				rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
 			}
 
             // special hits
@@ -347,9 +363,10 @@ void Simulation::simulate(int totalTimeIn60th)
                 actualScaling = skill.dmgScalingB;
             else if (hitIdx < skill.specialHitsA + skill.specialHitsB + skill.specialHitsC)
                 actualScaling = skill.dmgScalingC;
+			actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
 
             // actual full hit
-            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == skill.hits - 1, &skill, nullptr);
+            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr);
         }
 
         // channeling builders
@@ -666,7 +683,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     {
         auto stats = procStats; // copy
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        stats.additiveDamage = 0.f; // procs don't get additive dmg
+		if (!effect.affectedByAdditiveDmg)
+			stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
@@ -676,7 +694,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
         auto stats = procStats; // copy
         applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        stats.additiveDamage = 0.f; // procs don't get additive dmg
+		if (!effect.affectedByAdditiveDmg)
+			stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
         bool isCrit, isPen;
         rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
@@ -917,6 +936,8 @@ void Simulation::registerEffects()
 
     registerEffect(Effects::Passive::ElementalForceBuff());
     registerEffect(Effects::Passive::ElementalForceStacks());
+    registerEffect(Effects::Passive::FatalFlourishBuff());
+    registerEffect(Effects::Passive::FatalFlourishStacks());
     registerEffect(Effects::Passive::Lethality());
     registerEffect(Effects::Passive::TwistTheKnife());
 
@@ -935,6 +956,7 @@ void Simulation::registerEffects()
 	registerEffect(Effects::Proc::LiveWireStack());
 	registerEffect(Effects::Proc::BombardmentStacks());
 	registerEffect(Effects::Proc::Bombardment());
+	registerEffect(Effects::Proc::Tenderising());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
