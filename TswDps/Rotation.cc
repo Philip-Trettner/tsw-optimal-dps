@@ -95,12 +95,22 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
 		if (!skills[i].name.empty() &&                    //
 			skills[i].skilltype == SkillType::Consumer && //
 			sim.isSkillReady(i))
-		{
-			auto canUse = true;
+        {
+            bool canUse = true;
+
 			// fixed resource consumer only work if blood (without active offering) or enough res
-			if (skills[i].fixedConsumerResources > 0 && sim.resourcesFor(skills[i].weapon) < skills[i].fixedConsumerResources)
-				if (bloodOffering || skills[i].weapon != Weapon::Blood)
-					continue;
+            if (skills[i].fixedConsumerResources > 0)
+            {
+                if (sim.resourcesFor(skills[i].weapon) < skills[i].fixedConsumerResources)
+                    if (bloodOffering || skills[i].weapon != Weapon::Blood)
+                        canUse = false;
+            }
+            else if (sim.resourcesFor(skills[i].weapon) == 0)
+                canUse = false;
+
+            // cannot use skill currently
+            if (!canUse)
+                continue;
 
 			// use consumers only on X res (or, if tryToConsumeOnBuffed and buffs, immediately)
 			if (!(tryToConsumeOnBuffed && buffedNow))

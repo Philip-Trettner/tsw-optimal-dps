@@ -468,6 +468,7 @@ public:
             auto p = passive("Elemental Force", PassiveType::None);
 
             p.trigger = Trigger::FinishActivation;
+            p.triggerOnDamaging = true;
             p.effect = EffectSlot::ElementalForceStacks;
 
             return p;

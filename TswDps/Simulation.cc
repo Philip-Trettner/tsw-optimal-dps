@@ -288,6 +288,10 @@ void Simulation::simulate(int totalTimeIn60th)
 			if (passive.trigger != Trigger::StartActivation)
 				continue;
 
+            // non-dmg ability
+            if (passive.triggerOnDamaging && skill.hits == 0)
+                continue;
+
 			procEffect(procStat, passive, -1);
 		}
 
@@ -384,6 +388,10 @@ void Simulation::simulate(int totalTimeIn60th)
         {
             // finish activation
             if (passive.trigger != Trigger::FinishActivation)
+                continue;
+
+            // non-dmg ability
+            if (passive.triggerOnDamaging && hits == 0)
                 continue;
 
             procEffect(procStat, passive, -1);

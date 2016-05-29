@@ -32,6 +32,7 @@ struct Passive
 
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
+    bool triggerOnDamaging = false; // if true, only triggers on damaging (i.e. > 0 hits) abilities
     EffectSlot effect = EffectSlot::Count; ///< trigger effect
 	int effectStacks = 1;
 

@@ -71,6 +71,7 @@ std::vector<Skill> Skills::all()
 		Hammer::BoneBreaker(),        //
 		Hammer::Eruption(),        //
 		Hammer::StonesThrow(),        //
+                // TODO: Grand Slam
 
         Fist::SeeRed(),   //
 		Fist::Reckless(), //
@@ -96,6 +97,7 @@ std::vector<Skill> Skills::all()
 		Elemental::PowerLine(), //
 		Elemental::FireManifestation(), //
 		Elemental::LightningManifestation(), //
+                // TODO: Anima Charge (with passive?)
 
 		// TODO: Blood (needs skill passive)
 

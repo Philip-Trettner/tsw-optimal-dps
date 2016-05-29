@@ -21,7 +21,7 @@ struct Builds
 		b.skills = { {
 				// skills
 				Skills::Blade::GrassCutter(),
-				Skills::Elemental::LightningManifestation(),
+                Skills::Blade::DancingBlade(),
 				Skills::Elemental::PowerLine(),
 			},
 			{
