@@ -6,16 +6,32 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
 {
 	auto const& skills = sim.skills.skills;
 
-	bool buffsSoon = sim.nextDABS() <= maxWaitingForBuffs;
-	bool buffsNow = sim.isEffectActive(EffectSlot::MajorCriticalChance);
+	// buff status
+	bool majorBuffsSoon = sim.nextDABS() <= maxWaitingForMajorBuffs;
+	bool majorBuffsNow = sim.isEffectActive(EffectSlot::MajorCriticalChance);
 	bool efNow = sim.isEffectActive(EffectSlot::ElementalForceBuff);
+	bool ffNow = sim.isEffectActive(EffectSlot::FatalFlourishBuff);
+	bool wcNow = sim.isEffectActive(EffectSlot::MothersWrathBuff);
+	bool bloodOffering = sim.isEffectActive(EffectSlot::BloodOffering);
 	bool hasEF = false;
+	bool hasWC = false;
+	bool hasFF = false;
 	for (auto const& p : sim.skills.passives)
+	{
 		if (p.effect == EffectSlot::ElementalForceStacks)
-		{
 			hasEF = true;
-			break;
-		}
+		if (p.effect == EffectSlot::FatalFlourishStacks)
+			hasFF = true;
+	}
+	if (sim.gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
+		hasWC = true;
+	bool hasBuffState = false;
+	if (hasEF && considerBuffEF)
+		hasBuffState = true;
+	if (hasFF && considerBuffFF)
+		hasBuffState = true;
+	if (hasWC && considerBuffWC)
+		hasBuffState = true;
 
 	int builder = -1;
 	for (int i = 0; i < SKILL_CNT; ++i)
@@ -32,12 +48,21 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
 			return i;
 
 	// only build if buffs soon
-	if (buffsSoon)
+	if (majorBuffsSoon)
 		return builder;
 
 	// CD abilities if buffs or EF
-	auto useCDs = efNow || buffsNow || !hasEF;
-	if (useCDs)
+	auto buffedNow = false;
+	if (majorBuffsNow)
+		buffedNow = true;
+	if (efNow && considerBuffEF)
+		buffedNow = true;
+	if (ffNow && considerBuffFF)
+		buffedNow = true;
+	if (wcNow && considerBuffWC)
+		buffedNow = true;
+	// TODO: doom
+	if (buffedNow || !hasBuffState)
 		for (auto i = 0; i < SKILL_CNT; ++i)
 			if (!skills[i].name.empty() &&                    //
 				skills[i].skilltype != SkillType::Consumer && //
@@ -71,13 +96,23 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
 			skills[i].skilltype == SkillType::Consumer && //
 			sim.isSkillReady(i))
 		{
-			if (skills[i].weapon == sim.gear.leftWeapon &&
-				sim.resourcesFor(skills[i].weapon) < minResourcesForLeftConsumer)
-				continue;
-			
-			if (skills[i].weapon == sim.gear.rightWeapon &&
-				sim.resourcesFor(skills[i].weapon) < minResourcesForRightConsumer)
-				continue;
+			auto canUse = true;
+			// fixed resource consumer only work if blood (without active offering) or enough res
+			if (skills[i].fixedConsumerResources > 0 && sim.resourcesFor(skills[i].weapon) < skills[i].fixedConsumerResources)
+				if (bloodOffering || skills[i].weapon != Weapon::Blood)
+					continue;
+
+			// use consumers only on X res (or, if tryToConsumeOnBuffed and buffs, immediately)
+			if (!(tryToConsumeOnBuffed && buffedNow))
+			{
+				if (skills[i].weapon == sim.gear.leftWeapon &&
+					sim.resourcesFor(skills[i].weapon) < minResourcesForLeftConsumer)
+					continue;
+
+				if (skills[i].weapon == sim.gear.rightWeapon &&
+					sim.resourcesFor(skills[i].weapon) < minResourcesForRightConsumer)
+					continue;
+			}
 
 			return i;
 		}

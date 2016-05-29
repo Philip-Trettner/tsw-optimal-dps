@@ -50,6 +50,7 @@ std::vector<Skill> Skills::all()
 		Chaos::PullingTheStrings(),     //
 		Chaos::PrisonerOfFate(),     //
 		Chaos::SufferingAndSolace(),     //
+		Chaos::ChaoticPull(),     //
 
 		Blade::DelicateStrike(), //
 		Blade::DancingBlade(), //
@@ -78,7 +79,7 @@ std::vector<Skill> Skills::all()
 		Fist::OneTwo(), //
 		Fist::TearEmUp(), //
 		// TODO: Go for the Throat
-		// TODO: Gore + afflict?
+		// TODO: Gore + afflict? - STILL SUX
 
 		// TODO: Elemental (needs manifestations)
 

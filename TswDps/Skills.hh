@@ -415,7 +415,7 @@ public:
 			// TODO: minor hit chance
 			return s;
 		}
-		
+
 		static Skill SufferingAndSolace()
 		{
 			auto s = skill("Suffering and Solace", SkillType::Consumer);
@@ -423,6 +423,16 @@ public:
 			s.hits = 1;
 			s.dmgScaling = scaling(s.name + " @1");
 			s.dmgScaling5 = scaling(s.name + " @5");
+			return s;
+		}
+
+		static Skill ChaoticPull()
+		{
+			auto s = skill("Chaotic Pull", SkillType::None);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 35 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
 			return s;
 		}
 
@@ -515,6 +525,103 @@ public:
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
     {
+		static Skill Shock()
+		{
+			auto s = skill("Shock", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+		static Skill ElectricalBolt()
+		{
+			auto s = skill("Electrical Bolt", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			// TODO: 2 res if hindered
+			return s;
+		}
+		static Skill Ignition()
+		{
+			auto s = skill("Ignition", SkillType::Builder);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.subtype = SubType::Strike;
+			return s;
+		}
+
+		static Skill Combust()
+		{
+			auto s = skill("Combust", SkillType::Consumer);
+			s.timeIn60th = 60 + 30; // TODO: passive
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.fixedConsumerResources = 2; // TODO: 1 if hindered
+			s.dmgScaling = scaling(s.name);
+			return s;
+		}
+
+		static Skill FlameStrike()
+		{
+			auto s = skill("Flame Strike", SkillType::Consumer);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.fixedConsumerResources = 2;
+			s.dmgScaling = scaling(s.name);
+			s.subtype = SubType::Strike;
+			return s;
+		}
+
+		static Skill Blaze()
+		{
+			auto s = skill("Blaze", SkillType::Consumer);
+			s.timeIn60th = 60 + 30;
+			s.casttimeIn60th = s.timeIn60th;
+			s.hits = 1;
+			s.fixedConsumerResources = 3;
+			s.dmgScaling = scaling(s.name);
+			// TODO: Aidolon Passive
+			return s;
+		}
+
+		static Skill MoltenEarth()
+		{
+			auto s = skill("Molten Earth", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.animaDeviation = true;
+			return s;
+		}
+
+		static Skill ThorsHammer()
+		{
+			auto s = skill("Thor's Hammer", SkillType::Consumer);
+			s.timeIn60th = 2 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.fixedConsumerResources = 5;
+			s.subtype = SubType::Strike;
+			return s;
+		}
+
+		static Skill HardReset()
+		{
+			auto s = skill("Hard Reset", SkillType::Elite);
+			s.timeIn60th = 2 * 60;
+			s.cooldownIn60th = 35 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.passive.bonusStats.addedCritChance = 1; // guaranteed crit
+			s.animaDeviation = true;
+			return s;
+		}
     };
 
     struct Blade : private Base<Weapon::Blade, DmgType::Melee>

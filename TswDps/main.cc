@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    const bool optimization = true;
+    const bool optimization = false;
 
     const bool dpsTest = false;
 	
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     AggregateLog log;
     VerboseLog vlog;
     vlog.skillsOnly = !true;
-	vlog.logResources = true;
+	vlog.logResources = !true;
     StatLog slog;
     if (!dpsTest)
         log.logs.push_back(&vlog);

@@ -48,9 +48,24 @@ struct FixedRotation : Rotation
 /// skill priority is CD skill > consumer > builder (arbitrated by order)
 struct DefaultRotation : Rotation
 {
-    int maxWaitingForBuffs = 5 * 60; ///< in 60th
+	enum class Setting
+	{
+		MinResources,
+		TryToConsumeOnBuffed,
+		ConsiderEF,
+		ConsiderFF,
+		ConsiderWC,
+
+		Count
+	};
+
+    int maxWaitingForMajorBuffs = 5 * 60; ///< in 60th
 	int minResourcesForLeftConsumer = 5; ///< min Nr of resources for consuming (left weapon)
 	int minResourcesForRightConsumer = 5; ///< min Nr of resources for consuming (right weapon)
+	bool tryToConsumeOnBuffed = true; ///< if true, consume even on non full res if still under EF, DABS, FF, or WC
+	bool considerBuffEF = true; ///< if true, EF is considered a "buffed" state
+	bool considerBuffFF = true; ///< if true, FF is considered a "buffed" state
+	bool considerBuffWC = true; ///< if true, WC is considered a "buffed" state
 
     int nextSkill(int timeIn60th, Simulation const& sim) override;
     void reset() override;
@@ -58,5 +73,17 @@ struct DefaultRotation : Rotation
     static std::shared_ptr<DefaultRotation> create()
     {
         return std::make_shared<DefaultRotation>();
+    }
+
+	std::shared_ptr<DefaultRotation> clone()
+    {
+		auto rot = create();
+		rot->minResourcesForRightConsumer = minResourcesForRightConsumer;
+		rot->minResourcesForLeftConsumer = minResourcesForLeftConsumer;
+		rot->tryToConsumeOnBuffed = tryToConsumeOnBuffed;
+		rot->considerBuffEF = considerBuffEF;
+		rot->considerBuffFF = considerBuffFF;
+		rot->considerBuffWC = considerBuffWC;
+		return rot;
     }
 };

@@ -91,6 +91,7 @@ MAKE_EFFECT_ENUM(
     ElementalOverload,
     MomentumStack,
     MomentumBuff,
+	BloodOffering,
 
     //
     );

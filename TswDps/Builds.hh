@@ -14,11 +14,15 @@ struct Builds
 	static Build currTest()
 	{
 		Build b;
-		b.rotation = DefaultRotation::create();
+		auto rot = DefaultRotation::create();
+		rot->tryToConsumeOnBuffed = true;
+		b.rotation = rot;
 
 		b.skills = { {
 				// skills
-				Skills::Pistol::Collaboration(),
+				Skills::Elemental::Ignition(),
+				Skills::Elemental::Blaze(),
+				Skills::Elemental::HardReset(),
 			},
 			{
 				// augs
@@ -30,8 +34,8 @@ struct Builds
 		// gear
 		b.gear.loadStandardDpsGear();		
 
-		b.gear.leftWeapon = Weapon::Pistol;
-		b.gear.rightWeapon = Weapon::Shotgun;
+		b.gear.leftWeapon = Weapon::Elemental;
+		b.gear.rightWeapon = Weapon::Blood;
 		return b;
 	}
 

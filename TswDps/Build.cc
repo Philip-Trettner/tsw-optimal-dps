@@ -91,6 +91,8 @@ void Build::shortDump() const
 	{
 		std::cout << "Rotation: ";
 		std::cout << "use resources on " << defRot->minResourcesForLeftConsumer << " for " << to_string(gear.leftWeapon) << " and " << defRot->minResourcesForRightConsumer << " for " << to_string(gear.rightWeapon);
+		if (defRot->tryToConsumeOnBuffed)
+			std::cout << " (But prefer consume on buffs)";
 		std::cout << std::endl;
 	}
 

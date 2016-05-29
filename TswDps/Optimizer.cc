@@ -212,15 +212,12 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 	std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
 	std::uniform_int_distribution<int> randomNeck(0, 2);
 	std::uniform_int_distribution<int> randomMinRes(1, 5);
+	std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count);
 
     auto b = build;
-	auto newRot = DefaultRotation::create();
 	auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
-	if (oldRot)
-	{
-		newRot->minResourcesForLeftConsumer = newRot->minResourcesForLeftConsumer;
-		newRot->minResourcesForRightConsumer = newRot->minResourcesForRightConsumer;
-	}
+	assert(oldRot);
+	auto newRot = oldRot->clone();
 
     auto resortPassives = false;
 
@@ -462,12 +459,31 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 			// TODO
 			break;
 		case BuildChange::Rotation:
+			switch ((DefaultRotation::Setting) randomRotChance(random))
 		{
-			auto f = dice(random);
-			if (f < .66)
-				newRot->minResourcesForLeftConsumer = randomMinRes(random);
-			if (f > .33 )
-				newRot->minResourcesForRightConsumer = randomMinRes(random);
+			case DefaultRotation::Setting::MinResources:
+			{
+				auto f = dice(random);
+				if (f < .66)
+					newRot->minResourcesForLeftConsumer = randomMinRes(random);
+				if (f > .33)
+					newRot->minResourcesForRightConsumer = randomMinRes(random);
+			}
+				break;
+			case DefaultRotation::Setting::TryToConsumeOnBuffed:
+				newRot->tryToConsumeOnBuffed = dice(random) < 0.5;
+				break;
+			case DefaultRotation::Setting::ConsiderEF:
+				newRot->considerBuffEF = dice(random) < 0.5;
+				break;
+			case DefaultRotation::Setting::ConsiderFF:
+				newRot->considerBuffFF = dice(random) < 0.5;
+				break;
+			case DefaultRotation::Setting::ConsiderWC:
+				newRot->considerBuffWC = dice(random) < 0.5;
+				break;
+			default:
+				assert(0 && "not impl");
 		}
 			break;
 
