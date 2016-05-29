@@ -578,6 +578,7 @@ public:
 		{
 			auto s = skill("Stunning Swirl", SkillType::Elite);
 			s.timeIn60th = 60;
+			s.cooldownIn60th = 20 * 60;
 			s.hits = 1;
 			s.dmgScaling = scaling(s.name);
 			s.appliesVulnerability = DmgType::Ranged;

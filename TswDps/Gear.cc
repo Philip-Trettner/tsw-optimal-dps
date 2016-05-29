@@ -49,6 +49,49 @@ void Gear::loadStandardDpsGear()
     pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
 }
 
+void Gear::loadJagourTankGear()
+{
+	setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+
+	// Head
+	pieces[Head].fix(Rating::Block);
+	pieces[Head].signet = Signets::empty();
+
+	// Finger
+	pieces[MajorLeft].fix(Rating::Block);
+	pieces[MajorLeft].signet = Signets::Major::Violence();
+
+	// Neck (WC)
+	//pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+	pieces[MajorMid].fix(Rating::CritPower);
+	//pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+	//pieces[MajorMid].signet = Signets::Major::EgonPendant();
+	pieces[MajorMid].signet = Signets::Major::Violence();
+
+	// Wrist
+	pieces[MajorRight].fix(Rating::Hit);
+	pieces[MajorRight].signet = Signets::Major::Violence();
+
+	// Luck
+	pieces[MinorLeft].fix(Rating::Block);
+	pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
+
+	// Waist
+	pieces[MinorMid].fix(Rating::Hit);
+	pieces[MinorMid].signet = Signets::Minor::Issue1p5();
+
+	// Occult
+	pieces[MinorRight].fix(Rating::Block);
+	pieces[MinorRight].signet = Signets::Minor::Issue1p5();
+
+	// Weapons
+	pieces[WeaponLeft].fix(Rating::Block);
+	pieces[WeaponLeft].signet = Signets::empty();
+
+	pieces[WeaponRight].free(Rating::Crit);
+	pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
+}
+
 Gear::Gear()
 {
     for (auto i = 0u; i < pieces.size(); ++i)

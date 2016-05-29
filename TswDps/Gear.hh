@@ -68,7 +68,8 @@ struct Gear
     Weapon rightWeapon;
 
     /// default dps gear (for now)
-    void loadStandardDpsGear();
+	void loadStandardDpsGear();
+	void loadJagourTankGear();
 
     Gear();
 

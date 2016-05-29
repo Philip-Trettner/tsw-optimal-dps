@@ -18,7 +18,7 @@ struct Builds
 
 		b.skills = { {
 				// skills
-				Skills::Chaos::RunRampant(),
+				Skills::Pistol::Collaboration(),
 			},
 			{
 				// augs
@@ -28,19 +28,41 @@ struct Builds
 			} };
 
 		// gear
-		b.gear.loadStandardDpsGear();
+		b.gear.loadStandardDpsGear();		
 
-		b.gear.leftWeapon = Weapon::Chaos;
-		b.gear.rightWeapon = Weapon::Hammer;
+		b.gear.leftWeapon = Weapon::Pistol;
+		b.gear.rightWeapon = Weapon::Shotgun;
 		return b;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	static Build currMaxFistHammer()
 	{
 		// 8000 dps in 10min fights
 
 		Build b;
 		auto rot = DefaultRotation::create();
-		rot->minResourcesForConsumer = 5;
+		rot->minResourcesForLeftConsumer = 5;
+		rot->minResourcesForRightConsumer = 5;
 		b.rotation = rot;
 
 		b.skills = { {
@@ -57,7 +79,7 @@ struct Builds
 				// augs
 				Augments::Brutal(),   //
 				Augments::empty(),   //
-				Augments::Brutal(),   //
+				Augments::Focused(),   //
 				Augments::Ferocious(), //
 				Augments::Accurate(), //
 				Augments::Fierce(), //
@@ -77,8 +99,60 @@ struct Builds
 		// gear
 		b.gear.loadStandardDpsGear();
 		b.gear.setNeckWoodcutters();
-		
+
 		b.gear.leftWeapon = Weapon::Fist;
+		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+
+		b.gear.rightWeapon = Weapon::Hammer;
+		b.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+		return b;
+	}
+	static Build currMaxChaosHammer()
+	{
+		// 8000 dps in 10min fights
+
+		Build b;
+		auto rot = DefaultRotation::create();
+		rot->minResourcesForLeftConsumer = 5;
+		rot->minResourcesForRightConsumer = 5;
+		b.rotation = rot;
+
+		b.skills = { {
+				// skills
+				Skills::Chaos::RunRampant(), //
+				Skills::Chaos::AmorFati(), //
+				Skills::Chaos::CallForEris(), //
+				Skills::Hammer::MoltenSteel(), //
+				Skills::Chaos::SufferingAndSolace(), //
+				Skills::Hammer::Shockwave(), //
+				Skills::Hammer::FullMomentum(), //
+			},
+			{
+				// augs
+				Augments::Brutal(),   //
+				Augments::empty(),   //
+				Augments::Focused(),   //
+				Augments::Ferocious(), //
+				Augments::Accurate(), //
+				Augments::Fierce(), //
+				Augments::empty(),   //
+			},
+			{
+				// passives
+				Passives::Chaos::Gnosis(),          //
+				Passives::Blood::IronMaiden(),         //
+				Passives::Elemental::ElementalForce(), //
+				Passives::Pistol::OneInTheChamber(),   //
+				Passives::Blade::SuddenReturn(),       //
+				Passives::Blade::FortunateStrike(),    //
+				Passives::Elemental::LiveWire(),       //
+			} };
+
+		// gear
+		b.gear.loadStandardDpsGear();
+		b.gear.setNeckWoodcutters();
+
+		b.gear.leftWeapon = Weapon::Chaos;
 		b.gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
 
 		b.gear.rightWeapon = Weapon::Hammer;

@@ -87,7 +87,7 @@ void Optimizer::run(int generations)
 			else knownBuilds.insert(b);
 		}
 		std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
-		totalBuildsEvaluated += newBuilds.size();
+		totalBuildsEvaluated += (int)newBuilds.size();
 
 		// MT
 		auto nowEval = std::chrono::system_clock::now();
@@ -218,7 +218,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 	auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
 	if (oldRot)
 	{
-		newRot->minResourcesForConsumer = newRot->minResourcesForConsumer;
+		newRot->minResourcesForLeftConsumer = newRot->minResourcesForLeftConsumer;
+		newRot->minResourcesForRightConsumer = newRot->minResourcesForRightConsumer;
 	}
 
     auto resortPassives = false;
@@ -230,6 +231,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         switch (c)
         {
         case BuildChange::Builder:
+			if (fixedBuilder)
+				break; // forbidden
             for (auto& s : b.skills.skills)
                 if (s.skilltype == SkillType::Builder)
                 {
@@ -269,6 +272,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
         case BuildChange::EliteActive:
+			if (!useEliteActive)
+				break; // forbidden
             // dmg augments don't need adjustment, cause active elites always have them
             for (auto& s : b.skills.skills)
                 if (s.skilltype == SkillType::Elite)
@@ -319,6 +324,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
         case BuildChange::ElitePassive:
+			if (!useElitePassive)
+				break; // forbidden
             for (auto& p : b.skills.passives)
                 if (p.passivetype == PassiveType::Elite)
                 {
@@ -348,6 +355,9 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             {
 				auto idx = randomElement(headWeaponGearSlots);
 
+				if (!switchEmptySignets && b.gear.pieces[idx].signet.name() == "")
+					break;
+
 				b.gear.pieces[idx].signet = randomElement(allHeadWeaponSignets);
 				changed = true;
             }
@@ -360,6 +370,11 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 
 				if (idx1 == idx2)
 					continue;
+
+				if (!switchEmptySignets && b.gear.pieces[idx1].signet.name() == "")
+					break;
+				if (!switchEmptySignets && b.gear.pieces[idx2].signet.name() == "")
+					break;
 
 				auto tmp = b.gear.pieces[idx1].signet;
 				b.gear.pieces[idx1].signet = b.gear.pieces[idx2].signet;
@@ -447,7 +462,13 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 			// TODO
 			break;
 		case BuildChange::Rotation:
-			newRot->minResourcesForConsumer = randomMinRes(random);
+		{
+			auto f = dice(random);
+			if (f < .66)
+				newRot->minResourcesForLeftConsumer = randomMinRes(random);
+			if (f > .33 )
+				newRot->minResourcesForRightConsumer = randomMinRes(random);
+		}
 			break;
 
         case BuildChange::Count:

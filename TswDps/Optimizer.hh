@@ -44,8 +44,15 @@ public: // settings
     int maxActives = 7;
     /// # passives
     int maxPassives = 7;
-    /// if true, aux weapon is used
-    bool useAux = true;
+	/// if true, aux weapon is used TODO
+	bool useAux = true;
+	/// elites
+	bool useEliteActive = true;
+	bool useElitePassive = true;
+	// if true, empty signets can be changed
+	bool switchEmptySignets = true;
+	// if true, builder is not changed
+	bool fixedBuilder = false;
 
     /// free ratings used for stat optimization
     std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower});
@@ -55,7 +62,7 @@ public: // tweaks
     size_t maxActiveBuilds = 50;
 
     /// Number of new builds per generation
-    int newBuildsPerGen = 50;
+    int newBuildsPerGen = 30;
 
     /// if true, forces low variance on sim
     bool useLowVariance = true;

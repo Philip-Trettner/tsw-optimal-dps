@@ -90,7 +90,7 @@ void Build::shortDump() const
 	if (defRot)
 	{
 		std::cout << "Rotation: ";
-		std::cout << "use resources on " << defRot->minResourcesForConsumer;
+		std::cout << "use resources on " << defRot->minResourcesForLeftConsumer << " for " << to_string(gear.leftWeapon) << " and " << defRot->minResourcesForRightConsumer << " for " << to_string(gear.rightWeapon);
 		std::cout << std::endl;
 	}
 

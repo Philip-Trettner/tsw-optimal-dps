@@ -20,7 +20,7 @@ struct Simulation
     bool warnOnWait = true;          ///< warns if sim waits for a CD
     bool lowVarianceMode = false;    ///< if true, tries to reduce variance per sim
     bool resetStatsAtStart = false;  ///< if true, resets stats at the start of each "simulate"
-	bool stochasticLowHealth = true; ///< if true, treats bosses as stochastically low on health (below 35%), otherwise no low health
+	bool stochasticLowHealth = false; ///< if true, treats bosses as stochastically low on health (below 35%), otherwise no low health
 
     // gear, skills, rotation
     Skillset skills;

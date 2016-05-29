@@ -49,7 +49,8 @@ struct FixedRotation : Rotation
 struct DefaultRotation : Rotation
 {
     int maxWaitingForBuffs = 5 * 60; ///< in 60th
-	int minResourcesForConsumer = 5; ///< min Nr of resources for consuming
+	int minResourcesForLeftConsumer = 5; ///< min Nr of resources for consuming (left weapon)
+	int minResourcesForRightConsumer = 5; ///< min Nr of resources for consuming (right weapon)
 
     int nextSkill(int timeIn60th, Simulation const& sim) override;
     void reset() override;
