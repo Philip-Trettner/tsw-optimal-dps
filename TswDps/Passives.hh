@@ -30,6 +30,7 @@ private:
         }
     };
     static float scaling(std::string const& name) { return SkillTable::scaling(name); }
+
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
@@ -56,74 +57,74 @@ public:
             return p;
         }
 
-		static Passive OneInTheChamber()
-		{
-			auto p = passive("One In The Chamber", PassiveType::None);
+        static Passive OneInTheChamber()
+        {
+            auto p = passive("One In The Chamber", PassiveType::None);
 
-			p.trigger = Trigger::Crit;
-			p.effect = EffectSlot::OneInTheChamber;
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::OneInTheChamber;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive Closer()
-		{
-			auto p = passive("Closer", PassiveType::None);
+        static Passive Closer()
+        {
+            auto p = passive("Closer", PassiveType::None);
 
-			p.restrictType = SkillType::Consumer;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictType = SkillType::Consumer;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive StraightShooter()
-		{
-			auto p = passive("Straight Shooter", PassiveType::None);
+        static Passive StraightShooter()
+        {
+            auto p = passive("Straight Shooter", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive QuickFortyFive()
-		{
-			auto p = passive("Quick Forty Five", PassiveType::None);
+        static Passive QuickFortyFive()
+        {
+            auto p = passive("Quick Forty Five", PassiveType::None);
 
-			// TODO: quick forty five -0.5s
+            // TODO: quick forty five -0.5s
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive IncreasedFocus()
-		{
-			auto p = passive("Increased Focus", PassiveType::None);
+        static Passive IncreasedFocus()
+        {
+            auto p = passive("Increased Focus", PassiveType::None);
 
-			p.restrictSubType = SubType::Focus;
-			p.bonusStats.addedCritChance = 7.5f / 100.f;
+            p.restrictSubType = SubType::Focus;
+            p.bonusStats.addedCritChance = 7.5f / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive MadSkills()
-		{
-			auto p = passive("Mad Skills", PassiveType::None);
+        static Passive MadSkills()
+        {
+            auto p = passive("Mad Skills", PassiveType::None);
 
-			p.bonusStats.critRating = 200; // better than stacks
+            p.bonusStats.critRating = 200; // better than stacks
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive RapidGetaway()
-		{
-			auto p = passive("Rapid Getaway", PassiveType::Elite);
+        static Passive RapidGetaway()
+        {
+            auto p = passive("Rapid Getaway", PassiveType::Elite);
 
-			p.restrictType = SkillType::Consumer;
-			p.trigger = Trigger::FinishActivation;
-			p.effect = EffectSlot::MinorCriticalChance;
+            p.restrictType = SkillType::Consumer;
+            p.trigger = Trigger::FinishActivation;
+            p.effect = EffectSlot::MinorCriticalChance;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>
@@ -138,97 +139,97 @@ public:
             return p;
         }
 
-		static Passive BodyPiercing()
-		{
-			auto p = passive("Body Piercing", PassiveType::None);
+        static Passive BodyPiercing()
+        {
+            auto p = passive("Body Piercing", PassiveType::None);
 
-			p.bonusStats.penRating = 200; // better than stacks
+            p.bonusStats.penRating = 200; // better than stacks
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive StrikeForce()
-		{
-			auto p = passive("Strike Force", PassiveType::None);
+        static Passive StrikeForce()
+        {
+            auto p = passive("Strike Force", PassiveType::None);
 
-			p.restrictSubType = SubType::Strike;
-			p.bonusStats.addedPenChance = 7.5f / 100.f;
+            p.restrictSubType = SubType::Strike;
+            p.bonusStats.addedPenChance = 7.5f / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive RapidReload()
-		{
-			auto p = passive("Rapid Reload", PassiveType::None);
+        static Passive RapidReload()
+        {
+            auto p = passive("Rapid Reload", PassiveType::None);
 
-			// TODO: Buckshot -0.5s
+            // TODO: Buckshot -0.5s
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
     {
-		static Passive Lethality()
-		{
-			auto p = passive("Lethality", PassiveType::None);
+        static Passive Lethality()
+        {
+            auto p = passive("Lethality", PassiveType::None);
 
-			p.trigger = Trigger::Hit;
-			p.effect = EffectSlot::Lethality;
+            p.trigger = Trigger::Hit;
+            p.effect = EffectSlot::Lethality;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive ImprovedBursts()
-		{
-			auto p = passive("Improved Bursts", PassiveType::None);
+        static Passive ImprovedBursts()
+        {
+            auto p = passive("Improved Bursts", PassiveType::None);
 
-			p.restrictSubType = SubType::Burst;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictSubType = SubType::Burst;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive Accuracy()
-		{
-			auto p = passive("Accuracy", PassiveType::None);
+        static Passive Accuracy()
+        {
+            auto p = passive("Accuracy", PassiveType::None);
 
-			p.bonusStats.hitRating = 75;
-			p.bonusStats.additiveDamage = 7 / 100.f;
+            p.bonusStats.hitRating = 75;
+            p.bonusStats.additiveDamage = 7 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive CallYourShots()
-		{
-			auto p = passive("Call Your Shots", PassiveType::None);
+        static Passive CallYourShots()
+        {
+            auto p = passive("Call Your Shots", PassiveType::None);
 
-			p.bonusStats.hitRating = 200;
+            p.bonusStats.hitRating = 200;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive ShortControlledBursts()
-		{
-			auto p = passive("Short Controlled Bursts", PassiveType::None);
+        static Passive ShortControlledBursts()
+        {
+            auto p = passive("Short Controlled Bursts", PassiveType::None);
 
-			p.restrictSubType = SubType::Burst;
-			p.bonusStats.hitRating = 200;
-			p.bonusStats.addedCritChance = 4 / 100.f;
-			p.bonusStats.addedPenChance = 4 / 100.f;
+            p.restrictSubType = SubType::Burst;
+            p.bonusStats.hitRating = 200;
+            p.bonusStats.addedCritChance = 4 / 100.f;
+            p.bonusStats.addedPenChance = 4 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive EagleEye()
-		{
-			auto p = passive("Eagle Eye", PassiveType::None);
+        static Passive EagleEye()
+        {
+            auto p = passive("Eagle Eye", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = .10f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = .10f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Blade : private Base<Weapon::Blade, DmgType::Melee>
@@ -264,36 +265,36 @@ public:
             return p;
         }
 
-		static Passive FatalFlourish()
-		{
-			auto p = passive("Fatal Flourish", PassiveType::None);
+        static Passive FatalFlourish()
+        {
+            auto p = passive("Fatal Flourish", PassiveType::None);
 
-			// TODO: affliction!
-			p.trigger = Trigger::FinishActivation;
-			p.effect = EffectSlot::FatalFlourishStacks;
+            // TODO: affliction!
+            p.trigger = Trigger::FinishActivation;
+            p.effect = EffectSlot::FatalFlourishStacks;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive SevenAndAHalfSamurai()
-		{
-			auto p = passive("Seven and a half Samurai", PassiveType::None);
+        static Passive SevenAndAHalfSamurai()
+        {
+            auto p = passive("Seven and a half Samurai", PassiveType::None);
 
-			p.restrictSubType = SubType::Focus;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictSubType = SubType::Focus;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive SharpBlades()
-		{
-			auto p = passive("Sharp Blades", PassiveType::None);
+        static Passive SharpBlades()
+        {
+            auto p = passive("Sharp Blades", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Hammer : private Base<Weapon::Hammer, DmgType::Melee>
@@ -328,78 +329,77 @@ public:
             return p;
         }
 
-		static Passive ImprovedStrikes()
-		{
-			auto p = passive("Improved Strikes", PassiveType::None);
+        static Passive ImprovedStrikes()
+        {
+            auto p = passive("Improved Strikes", PassiveType::None);
 
-			p.restrictSubType = SubType::Strike;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictSubType = SubType::Strike;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive WreckingCrew()
-		{
-			auto p = passive("Wrecking Crew", PassiveType::None);
+        static Passive WreckingCrew()
+        {
+            auto p = passive("Wrecking Crew", PassiveType::None);
 
-			p.restrictSubType = SubType::Strike;
-			p.bonusStats.addedCritPower = 20 / 100.f;
+            p.restrictSubType = SubType::Strike;
+            p.bonusStats.addedCritPower = 20 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive KnuckleDown()
-		{
-			auto p = passive("Knuckle Down", PassiveType::None);
+        static Passive KnuckleDown()
+        {
+            auto p = passive("Knuckle Down", PassiveType::None);
 
-			p.restrictType = SkillType::Builder;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictType = SkillType::Builder;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive Punishment()
-		{
-			auto p = passive("Punishment", PassiveType::None);
+        static Passive Punishment()
+        {
+            auto p = passive("Punishment", PassiveType::None);
 
-			p.bonusStats.critPowerRating = 200; // better than stacks
+            p.bonusStats.critPowerRating = 200; // better than stacks
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive Tenderising()
-		{
-			auto p = passive("Tenderising", PassiveType::None);
+        static Passive Tenderising()
+        {
+            auto p = passive("Tenderising", PassiveType::None);
 
-			p.trigger = Trigger::Hit;
-			p.effect = EffectSlot::Tenderising;
+            p.trigger = Trigger::Hit;
+            p.effect = EffectSlot::Tenderising;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive HardImpact()
-		{
-			auto p = passive("Hard Impact", PassiveType::None);
+        static Passive HardImpact()
+        {
+            auto p = passive("Hard Impact", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Fist : private Base<Weapon::Fist, DmgType::Melee>
     {
+        static Passive Predator()
+        {
+            auto p = passive("Predator", PassiveType::None);
 
-		static Passive Predator()
-		{
-			auto p = passive("Predator", PassiveType::None);
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
-
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Blood : private Base<Weapon::Blood, DmgType::Magic>
@@ -414,15 +414,15 @@ public:
             return p;
         }
 
-		static Passive ThickerThanWater()
-		{
-			auto p = passive("Thicker Than Water", PassiveType::None);
+        static Passive ThickerThanWater()
+        {
+            auto p = passive("Thicker Than Water", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
@@ -450,15 +450,15 @@ public:
             return p;
         }
 
-		static Passive ChaosAdept()
-		{
-			auto p = passive("Chaos Adept", PassiveType::None);
+        static Passive ChaosAdept()
+        {
+            auto p = passive("Chaos Adept", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
@@ -497,25 +497,25 @@ public:
             return p;
         }
 
-		static Passive ViolentStrikes()
-		{
-			auto p = passive("Violent Strikes", PassiveType::None);
+        static Passive ViolentStrikes()
+        {
+            auto p = passive("Violent Strikes", PassiveType::None);
 
-			p.restrictSubType = SubType::Strike;
-			p.bonusStats.addedCritChance = 7.5f / 100.f;
+            p.restrictSubType = SubType::Strike;
+            p.bonusStats.addedCritChance = 7.5f / 100.f;
 
-			return p;
-		}
+            return p;
+        }
 
-		static Passive ElementalPrecision()
-		{
-			auto p = passive("Elemental Precision", PassiveType::None);
+        static Passive ElementalPrecision()
+        {
+            auto p = passive("Elemental Precision", PassiveType::None);
 
-			p.restrictWeapon = true;
-			p.bonusStats.additiveDamage = 10 / 100.f;
+            p.restrictWeapon = true;
+            p.bonusStats.additiveDamage = 10 / 100.f;
 
-			return p;
-		}
+            return p;
+        }
     };
 
     static Passive empty() { return Passive(); }

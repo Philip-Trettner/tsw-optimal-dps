@@ -44,8 +44,9 @@ MAKE_EFFECT_ENUM(
     Abuse,
     Aggression,
     MothersWrathStacks,
-	MothersWrathBuff,
-	EgonPendant,
+    MothersWrathBuff,
+    EgonPendant,
+    // TODO: Fury
 
     // general passives
     MinorPenetrationChance,
@@ -68,10 +69,11 @@ MAKE_EFFECT_ENUM(
     AmorFati,
     FullMomentum,
     LockStockBarrel,
-	LockStockBarrelGain,
-	TearEmUp,
-	GunFu,
-	LockAndLoad,
+    LockStockBarrelGain,
+    TearEmUp,
+    GunFu,
+    LockAndLoad,
+    SteelEcho,
 
     // procs
     SuddenReturn,
@@ -81,17 +83,17 @@ MAKE_EFFECT_ENUM(
     LiveWireStack,
     LiveWireProc,
     Gnosis,
-	Tenderising,
+    Tenderising,
 
-	// dots
-	Bombardment,
-	Whiteout,
-	GoForTheThroat,
-	EyeOfPandemonium,
-	PowerLine,
-	PowerLineDetonation,
-	FireManifestation,
-	LightningManifestation,
+    // dots
+    Bombardment,
+    Whiteout,
+    GoForTheThroat,
+    EyeOfPandemonium,
+    PowerLine,
+    PowerLineDetonation,
+    FireManifestation,
+    LightningManifestation,
 
     // weapon skills
     DoubleUp,
@@ -99,11 +101,18 @@ MAKE_EFFECT_ENUM(
     ElementalOverload,
     MomentumStack,
     MomentumBuff,
-	BloodOffering,
-	ElementalFury,
+    BloodOffering,
+    ElementalFury,
 
     //
     );
+
+enum class ProcOn
+{
+    Gain,
+    SkillHit,
+    Loss
+};
 
 struct Effect
 {
@@ -122,16 +131,16 @@ struct Effect
 
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
-	EffectSlot triggerOnStackLost = EffectSlot::Count; // < if < count, triggers every time a stack is lost
-	bool triggerOnStackLostOnlyLast = false; // if true, only triggers for last hit
+    EffectSlot triggerOnStackLost = EffectSlot::Count; // < if < count, triggers every time a stack is lost
+    bool triggerOnStackLostOnlyLast = false;           // if true, only triggers for last hit
 
     DmgType dmgtype = DmgType::None; // for vulnerabilities
 
-    float procDmgScaling = 0.f;    // if > 0, triggers a proc dmg hit everytime this effect is applied
-    float procDmgPercentage = 0.f; // if > 0, triggers a proc hit depending on the original hit
-	bool affectedByAdditiveDmg = false; // if true, proc dmg is buffed by additive dmg (e.g. Bombardment)
-	bool procOnGain = true; // if true, dmg is procced in stack gain, otherwise on stack lost
-	bool isFullHit = false; // if true, is a full hit
+    float procDmgScaling = 0.f;         // if > 0, triggers a proc dmg hit everytime this effect is applied
+    float procDmgPercentage = 0.f;      // if > 0, triggers a proc hit depending on the original hit
+    bool affectedByAdditiveDmg = false; // if true, proc dmg is buffed by additive dmg (e.g. Bombardment)
+    ProcOn procOn = ProcOn::Gain;       // controls when dmg procs are applied
+    bool isFullHit = false;             // if true, is a full hit
 
     bool affectProcs = true; // if true, bonus stats affect procs (additive dmg does not affect it anyways)
 

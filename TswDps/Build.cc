@@ -93,6 +93,14 @@ void Build::shortDump() const
 		std::cout << "use resources on " << defRot->minResourcesForLeftConsumer << " for " << to_string(gear.leftWeapon) << " and " << defRot->minResourcesForRightConsumer << " for " << to_string(gear.rightWeapon);
 		if (defRot->tryToConsumeOnBuffed)
 			std::cout << " (But prefer consume on buffs)";
+        std::cout << ", buffs are: [ ";
+        if (defRot->considerBuffEF)
+            std::cout << "EF ";
+        if (defRot->considerBuffFF)
+            std::cout << "FF ";
+        if (defRot->considerBuffWC)
+            std::cout << "WC ";
+        std::cout << "]";
 		std::cout << std::endl;
 	}
 

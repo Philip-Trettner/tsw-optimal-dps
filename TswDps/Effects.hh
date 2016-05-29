@@ -21,6 +21,7 @@ private:
         }
     };
     static float scaling(std::string const& name) { return SkillTable::scaling(name); }
+
 public:
     struct Signet : private Base
     {
@@ -179,38 +180,38 @@ public:
             return e;
         }
 
-		static Effect MomentumBuff()
-		{
-			auto e = effect("Momentum Buff", EffectSlot::MomentumBuff);
+        static Effect MomentumBuff()
+        {
+            auto e = effect("Momentum Buff", EffectSlot::MomentumBuff);
 
-			e.timeIn60th = INF_TIME;
-			e.bonusStats.additiveDamage = 40 / 100.f;
-			e.restrictToWeapon = Weapon::Hammer;
-			e.consumedAfterHit = true;
+            e.timeIn60th = INF_TIME;
+            e.bonusStats.additiveDamage = 40 / 100.f;
+            e.restrictToWeapon = Weapon::Hammer;
+            e.consumedAfterHit = true;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect BloodOffering()
-		{
-			auto e = effect("Blood Offering", EffectSlot::BloodOffering);
+        static Effect BloodOffering()
+        {
+            auto e = effect("Blood Offering", EffectSlot::BloodOffering);
 
-			e.timeIn60th = 8 * 60;
-			e.bonusStats.additiveDamage = 11.5f / 100.f;
-			e.restrictToWeapon = Weapon::Blood;
+            e.timeIn60th = 8 * 60;
+            e.bonusStats.additiveDamage = 11.5f / 100.f;
+            e.restrictToWeapon = Weapon::Blood;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect ElementalFury()
-		{
-			auto e = effect("Elemental Fury", EffectSlot::ElementalFury);
+        static Effect ElementalFury()
+        {
+            auto e = effect("Elemental Fury", EffectSlot::ElementalFury);
 
-			e.timeIn60th = 5 * 60;
-			e.bonusStats.additiveDamage = 7.5f / 100.f;
+            e.timeIn60th = 5 * 60;
+            e.bonusStats.additiveDamage = 7.5f / 100.f;
 
-			return e;
-		}
+            return e;
+        }
     };
 
     struct Proc : private Base
@@ -224,24 +225,24 @@ public:
 
             return e;
         }
-		static Effect SuddenReturn()
-		{
-			auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
+        static Effect SuddenReturn()
+        {
+            auto e = effect("Sudden Return", EffectSlot::SuddenReturn);
 
-			e.dmgtype = DmgType::Melee;
-			e.procDmgScaling = scaling(e.name);
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = scaling(e.name);
 
-			return e;
-		}
-		static Effect Tenderising()
-		{
-			auto e = effect("Tenderising", EffectSlot::Tenderising);
+            return e;
+        }
+        static Effect Tenderising()
+        {
+            auto e = effect("Tenderising", EffectSlot::Tenderising);
 
-			e.dmgtype = DmgType::Melee;
-			e.procDmgScaling = scaling(e.name);
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = scaling(e.name);
 
-			return e;
-		}
+            return e;
+        }
         static Effect FortunateStrike()
         {
             auto e = effect("Fortunate Strike", EffectSlot::FortunateStrike);
@@ -294,134 +295,134 @@ public:
         }
     };
 
-	struct Dots : private Base
-	{
-		static Effect Bombardment()
-		{
-			auto e = effect("Bombardment", EffectSlot::Bombardment);
+    struct Dots : private Base
+    {
+        static Effect Bombardment()
+        {
+            auto e = effect("Bombardment", EffectSlot::Bombardment);
 
-			e.timeIn60th = 2 * 60 + 30;
-			e.maxStacks = 8;
+            e.timeIn60th = 2 * 60 + 30;
+            e.maxStacks = 8;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Ranged;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Ranged;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect Whiteout()
-		{
-			auto e = effect("Whiteout", EffectSlot::Whiteout);
+        static Effect Whiteout()
+        {
+            auto e = effect("Whiteout", EffectSlot::Whiteout);
 
-			e.timeIn60th = 30;
-			e.maxStacks = 16;
+            e.timeIn60th = 30;
+            e.maxStacks = 16;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect GoForTheThroat()
-		{
-			auto e = effect("Go for the Throat Afflict", EffectSlot::GoForTheThroat);
+        static Effect GoForTheThroat()
+        {
+            auto e = effect("Go for the Throat Afflict", EffectSlot::GoForTheThroat);
 
-			e.timeIn60th = 60;
-			e.maxStacks = 10;
+            e.timeIn60th = 60;
+            e.maxStacks = 10;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Melee;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect EyeOfPandemonium()
-		{
-			auto e = effect("Eye of Pandemonium 2ndary", EffectSlot::EyeOfPandemonium);
+        static Effect EyeOfPandemonium()
+        {
+            auto e = effect("Eye of Pandemonium 2ndary", EffectSlot::EyeOfPandemonium);
 
-			e.timeIn60th = 60;
-			e.maxStacks = 10;
+            e.timeIn60th = 60;
+            e.maxStacks = 10;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect PowerLine()
-		{
-			auto e = effect("Power Line", EffectSlot::PowerLine);
+        static Effect PowerLine()
+        {
+            auto e = effect("Power Line", EffectSlot::PowerLine);
 
-			e.timeIn60th = 60;
-			e.maxStacks = 10;
+            e.timeIn60th = 60;
+            e.maxStacks = 10;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
 
-			e.triggerOnStackLostOnlyLast = true;
-			e.triggerOnStackLost = EffectSlot::PowerLineDetonation;
+            e.triggerOnStackLostOnlyLast = true;
+            e.triggerOnStackLost = EffectSlot::PowerLineDetonation;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect PowerLineDetonation()
-		{
-			auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
+        static Effect PowerLineDetonation()
+        {
+            auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
 
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name) * 2.8f; // assume always max bonus (3 is unrealistic)
-			e.affectedByAdditiveDmg = true;
-			e.isFullHit = true; // TODO: TEST!
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name) * 2.8f; // assume always max bonus (3 is unrealistic)
+            e.affectedByAdditiveDmg = true;
+            e.isFullHit = true; // TODO: TEST!
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect FireManifestation()
-		{
-			auto e = effect("Fire Manifestation", EffectSlot::FireManifestation);
+        static Effect FireManifestation()
+        {
+            auto e = effect("Fire Manifestation", EffectSlot::FireManifestation);
 
-			e.timeIn60th = 2 * 60 + 30;
-			e.maxStacks = 4;
+            e.timeIn60th = 2 * 60 + 30;
+            e.maxStacks = 4;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
-			e.isFullHit = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
+            e.isFullHit = true;
 
-			e.triggerOnStackLost = EffectSlot::ElementalFury;
+            e.triggerOnStackLost = EffectSlot::ElementalFury;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect LightningManifestation()
-		{
-			auto e = effect("Lightning Manifestation", EffectSlot::LightningManifestation);
+        static Effect LightningManifestation()
+        {
+            auto e = effect("Lightning Manifestation", EffectSlot::LightningManifestation);
 
-			e.timeIn60th = 60;
-			e.maxStacks = 10;
+            e.timeIn60th = 60;
+            e.maxStacks = 10;
 
-			e.procOnGain = false;
-			e.dmgtype = DmgType::Magic;
-			e.procDmgScaling = scaling(e.name);
-			e.affectedByAdditiveDmg = true;
-			e.isFullHit = true;
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
+            e.isFullHit = true;
 
-			e.triggerOnStackLost = EffectSlot::ElementalFury;
+            e.triggerOnStackLost = EffectSlot::ElementalFury;
 
-			return e;
-		}
-	};
+            return e;
+        }
+    };
 
     struct Passive : private Base
     {
@@ -447,53 +448,53 @@ public:
             return e;
         }
 
-		static Effect ElementalForceStacks()
-		{
-			auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
+        static Effect ElementalForceStacks()
+        {
+            auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);
 
-			e.timeIn60th = INF_TIME;
-			e.maxStacks = 5;
-			e.cooldownIn60th = 0; // no CD (on finish activation)
-			e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;
-			e.blockedSlot = EffectSlot::ElementalForceBuff;
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 5;
+            e.cooldownIn60th = 0; // no CD (on finish activation)
+            e.triggerOnMaxStacks = EffectSlot::ElementalForceBuff;
+            e.blockedSlot = EffectSlot::ElementalForceBuff;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect ElementalForceBuff()
-		{
-			auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
+        static Effect ElementalForceBuff()
+        {
+            auto e = effect("Elemental Force Buff", EffectSlot::ElementalForceBuff);
 
-			e.timeIn60th = 5 * 60;
-			e.cooldownIn60th = 5 * 60;
-			e.bonusStats.addedCritChance = 20 / 100.f;
+            e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 5 * 60;
+            e.bonusStats.addedCritChance = 20 / 100.f;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect FatalFlourishStacks()
-		{
-			auto e = effect("Fatal Flourish Stacks", EffectSlot::FatalFlourishStacks);
+        static Effect FatalFlourishStacks()
+        {
+            auto e = effect("Fatal Flourish Stacks", EffectSlot::FatalFlourishStacks);
 
-			e.timeIn60th = INF_TIME;
-			e.maxStacks = 5;
-			e.cooldownIn60th = 0; // no CD (on finish activation)
-			e.triggerOnMaxStacks = EffectSlot::FatalFlourishBuff;
-			e.blockedSlot = EffectSlot::FatalFlourishBuff;
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 5;
+            e.cooldownIn60th = 0; // no CD (on finish activation)
+            e.triggerOnMaxStacks = EffectSlot::FatalFlourishBuff;
+            e.blockedSlot = EffectSlot::FatalFlourishBuff;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect FatalFlourishBuff()
-		{
-			auto e = effect("Fatal Flourish Buff", EffectSlot::FatalFlourishBuff);
+        static Effect FatalFlourishBuff()
+        {
+            auto e = effect("Fatal Flourish Buff", EffectSlot::FatalFlourishBuff);
 
-			e.timeIn60th = 5 * 60;
-			e.cooldownIn60th = 5 * 60;
-			e.bonusStats.addedPenChance = 20 / 100.f;
+            e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 5 * 60;
+            e.bonusStats.addedPenChance = 20 / 100.f;
 
-			return e;
-		}
+            return e;
+        }
     };
 
     struct SkillPassive : private Base
@@ -507,40 +508,40 @@ public:
 
             return e;
         }
-		static Effect AmorFati()
-		{
-			auto e = effect("Amor Fati", EffectSlot::AmorFati);
+        static Effect AmorFati()
+        {
+            auto e = effect("Amor Fati", EffectSlot::AmorFati);
 
-			e.timeIn60th = 10 * 60;
-			e.bonusStats.additiveDamage = 10 / 100.f;
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.additiveDamage = 10 / 100.f;
 
-			return e;
-		}
-		static Effect TearEmUp()
-		{
-			auto e = effect("Tear Em Up", EffectSlot::TearEmUp);
+            return e;
+        }
+        static Effect TearEmUp()
+        {
+            auto e = effect("Tear Em Up", EffectSlot::TearEmUp);
 
-			e.timeIn60th = 4 * 60;
-			e.bonusStats.additiveDamage = 10 / 100.f;
+            e.timeIn60th = 4 * 60;
+            e.bonusStats.additiveDamage = 10 / 100.f;
 
-			return e;
-		}
-		static Effect GunFu()
-		{
-			auto e = effect("Gun-Fu", EffectSlot::GunFu);
+            return e;
+        }
+        static Effect GunFu()
+        {
+            auto e = effect("Gun-Fu", EffectSlot::GunFu);
 
-			e.gainResources = 5;
+            e.gainResources = 5;
 
-			return e;
-		}
-		static Effect LockAndLoad()
-		{
-			auto e = effect("Lock & Load", EffectSlot::LockAndLoad);
+            return e;
+        }
+        static Effect LockAndLoad()
+        {
+            auto e = effect("Lock & Load", EffectSlot::LockAndLoad);
 
-			e.gainResources = 3;
+            e.gainResources = 3;
 
-			return e;
-		}
+            return e;
+        }
 
         static Effect FullMomentum()
         {
@@ -553,27 +554,44 @@ public:
             return e;
         }
 
-		static Effect LockStockBarrel()
-		{
-			auto e = effect("Lock, Stock & Barrel", EffectSlot::LockStockBarrel);
+        static Effect LockStockBarrel()
+        {
+            auto e = effect("Lock, Stock & Barrel", EffectSlot::LockStockBarrel);
 
-			e.timeIn60th = 20 * 60;
-			e.consumedAfterAbility = true;
-			e.gainOnConsume = EffectSlot::LockStockBarrelGain;
-			e.restrictToWeapon = Weapon::Shotgun;
-			e.restrictToSkillType = SkillType::Consumer;
+            e.timeIn60th = 20 * 60;
+            e.consumedAfterAbility = true;
+            e.gainOnConsume = EffectSlot::LockStockBarrelGain;
+            e.restrictToWeapon = Weapon::Shotgun;
+            e.restrictToSkillType = SkillType::Consumer;
 
-			return e;
-		}
+            return e;
+        }
 
-		static Effect LockStockBarrelGain()
-		{
-			auto e = effect("Lock, Stock & Barrel (Gain)", EffectSlot::LockStockBarrelGain);
+        static Effect LockStockBarrelGain()
+        {
+            auto e = effect("Lock, Stock & Barrel (Gain)", EffectSlot::LockStockBarrelGain);
 
-			e.gainResources = 5;
+            e.gainResources = 5;
 
-			return e;
-		}
+            return e;
+        }
+
+
+        static Effect SteelEcho()
+        {
+            auto e = effect("Steel Echo", EffectSlot::SteelEcho);
+
+            e.timeIn60th = 10 * 60;
+            e.restrictToWeapon = Weapon::Blade;
+
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = scaling(e.name);
+            e.procOn = ProcOn::SkillHit;
+            e.isFullHit = true;
+
+            return e;
+        }
+
     };
 
 private:

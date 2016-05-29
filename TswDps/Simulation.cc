@@ -38,9 +38,9 @@ Build Simulation::build() const
 
 void Simulation::init()
 {
-	// AD
-	animaDeviationEffect.name = "Anima Deviation";
-	animaDeviationScaling = SkillTable::scaling("Anima Deviation");
+    // AD
+    animaDeviationEffect.name = "Anima Deviation";
+    animaDeviationScaling = SkillTable::scaling("Anima Deviation");
 
     // register effects
     registerEffects();
@@ -58,8 +58,8 @@ void Simulation::init()
             assert(skill.timeIn60th % skill.hits == 0 && "inconsistent hits over time");
 
         Stats s;
-		std::vector<Passive> triggers;
-		std::vector<Passive> procTrigger;
+        std::vector<Passive> triggers;
+        std::vector<Passive> procTrigger;
         std::vector<Passive> passives;
 
         // add weapon
@@ -77,8 +77,8 @@ void Simulation::init()
         }
         else
         {
-            std::cout << "skill " << skill.name << " at " << to_string(skill.weapon) << " vs " << to_string(gear.leftWeapon) << " & "
-                      << to_string(gear.rightWeapon) << std::endl;
+            std::cout << "skill " << skill.name << " at " << to_string(skill.weapon) << " vs "
+                      << to_string(gear.leftWeapon) << " & " << to_string(gear.rightWeapon) << std::endl;
             assert(0 && "used skill for non-equipped weapon");
         }
 
@@ -157,11 +157,11 @@ void Simulation::init()
             if (passive.restrictWeapon && passive.weaponType != skill.weapon)
                 continue; // passive does not apply to this weapon
 
-			if (passive.restrictType != SkillType::None && passive.restrictType != skill.skilltype)
-				continue; // passive does not apply to this skill type
+            if (passive.restrictType != SkillType::None && passive.restrictType != skill.skilltype)
+                continue; // passive does not apply to this skill type
 
-			if (passive.restrictSubType != SubType::None && passive.restrictSubType != skill.subtype)
-				continue; // passive does not apply to this sub type
+            if (passive.restrictSubType != SubType::None && passive.restrictSubType != skill.subtype)
+                continue; // passive does not apply to this sub type
 
             // add passive stats
             s = s + passive.bonusStats;
@@ -171,12 +171,12 @@ void Simulation::init()
                 ps = ps + passive.bonusStats;
 
             // extract trigger passives
-			if (passive.trigger != Trigger::None)
-			{
-				triggers.push_back(passive);
-				if (!passive.skillPassive)
-					procTrigger.push_back(passive);
-			}
+            if (passive.trigger != Trigger::None)
+            {
+                triggers.push_back(passive);
+                if (!passive.skillPassive)
+                    procTrigger.push_back(passive);
+            }
         }
 
         // calc multihit penalty
@@ -186,8 +186,8 @@ void Simulation::init()
 
         skillStats[i] = s;
         procStats[i] = ps;
-		skillTriggers[i] = triggers;
-		procTriggers[i] = procTrigger;
+        skillTriggers[i] = triggers;
+        procTriggers[i] = procTrigger;
     }
 
     // init vulnerabilities
@@ -281,19 +281,19 @@ void Simulation::simulate(int totalTimeIn60th)
         advanceTime(skill.casttimeIn60th);
         remainingTime -= skill.casttimeIn60th;
 
-		// effects that trigger BEFORE first hit
-		for (auto const& passive : skillTriggers[idx])
-		{
-			// start activation
-			if (passive.trigger != Trigger::StartActivation)
-				continue;
+        // effects that trigger BEFORE first hit
+        for (auto const& passive : skillTriggers[idx])
+        {
+            // start activation
+            if (passive.trigger != Trigger::StartActivation)
+                continue;
 
             // non-dmg ability
             if (passive.triggerOnDamaging && skill.hits == 0)
                 continue;
 
-			procEffect(procStat, passive, -1);
-		}
+            procEffect(procStat, passive, -1);
+        }
 
         // non-channeling builders
         if (!skill.channeling && skill.skilltype == SkillType::Builder)
@@ -301,16 +301,16 @@ void Simulation::simulate(int totalTimeIn60th)
 
         // precalc scaling
         float scaling = skill.dmgScaling;
-		if (skill.dmgScalingLow > 0 && stochasticLowHealth)
-			scaling += 0.35f * (skill.dmgScalingLow - skill.dmgScaling);
+        if (skill.dmgScalingLow > 0 && stochasticLowHealth)
+            scaling += 0.35f * (skill.dmgScalingLow - skill.dmgScaling);
         float penCritPenalty = skillPenCritPenalty[idx];
         // "consumes all resources"
         if (skill.skilltype == SkillType::Consumer && skill.fixedConsumerResources == 0)
         {
             float a = (resources - 1.f) / (5.f - 1.f);
-			auto scaling5 = skill.dmgScaling5;
-			if (skill.dmgScalingLow > 0 && stochasticLowHealth)
-				scaling5 += 0.35f * (skill.dmgScaling5Low - skill.dmgScaling5);
+            auto scaling5 = skill.dmgScaling5;
+            if (skill.dmgScalingLow > 0 && stochasticLowHealth)
+                scaling5 += 0.35f * (skill.dmgScaling5Low - skill.dmgScaling5);
             scaling += (scaling5 - skill.dmgScaling) * a;
         }
         // chance to do more dmg (timber)
@@ -323,7 +323,7 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // consumers
-		int resourcesConsumed = 0;
+        int resourcesConsumed = 0;
         if (skill.skilltype == SkillType::Consumer)
         {
             assert(currentWeapon >= 0 && "aux consumer??");
@@ -336,34 +336,34 @@ void Simulation::simulate(int totalTimeIn60th)
             else
                 weaponResources[currentWeapon] = 0;
 
-			// res consumed
-			resourcesConsumed = resBefore - weaponResources[currentWeapon];
+            // res consumed
+            resourcesConsumed = resBefore - weaponResources[currentWeapon];
 
             if (log)
                 log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
         }
 
-		// hits
-		auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
+        // hits
+        auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
 
-		// anima deviation
-		if (skill.animaDeviation)
-		{
-			bool adCrit, adPen;
-			auto adStat = baseStat; // copy
-			adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
-			rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
-		}
+        // anima deviation
+        if (skill.animaDeviation)
+        {
+            bool adCrit, adPen;
+            auto adStat = baseStat;        // copy
+            adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
+            rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
+        }
 
         // actually do skill
-		for (auto hitIdx = 0; hitIdx < hits; ++hitIdx)
-		{
-			// if channeling, advance time first
-			if (skill.channeling)
-			{
-				advanceTime(skill.timeIn60th / hits);
-				remainingTime -= skill.timeIn60th / hits;
-			}
+        for (auto hitIdx = 0; hitIdx < hits; ++hitIdx)
+        {
+            // if channeling, advance time first
+            if (skill.channeling)
+            {
+                advanceTime(skill.timeIn60th / hits);
+                remainingTime -= skill.timeIn60th / hits;
+            }
 
             // special hits
             auto actualScaling = scaling;
@@ -373,7 +373,7 @@ void Simulation::simulate(int totalTimeIn60th)
                 actualScaling = skill.dmgScalingB;
             else if (hitIdx < skill.specialHitsA + skill.specialHitsB + skill.specialHitsC)
                 actualScaling = skill.dmgScalingC;
-			actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
+            actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
 
             // actual full hit
             fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr);
@@ -397,16 +397,15 @@ void Simulation::simulate(int totalTimeIn60th)
             procEffect(procStat, passive, -1);
         }
 
-		// reduce CD effect
-		if (skill.reduceWeaponConsumerCD > 0)
-			for (auto i = 0; i < SKILL_CNT; ++i)
-				if (skills.skills[i].weapon == skill.weapon &&
-					skills.skills[i].skilltype == SkillType::Consumer)
-				{
-					skillCDs[i] -= skill.reduceWeaponConsumerCD;
-					if (skillCDs[i] < 0)
-						skillCDs[i] = 0;
-				}
+        // reduce CD effect
+        if (skill.reduceWeaponConsumerCD > 0)
+            for (auto i = 0; i < SKILL_CNT; ++i)
+                if (skills.skills[i].weapon == skill.weapon && skills.skills[i].skilltype == SkillType::Consumer)
+                {
+                    skillCDs[i] -= skill.reduceWeaponConsumerCD;
+                    if (skillCDs[i] < 0)
+                        skillCDs[i] = 0;
+                }
 
         // inc skill id
         ++currHitID;
@@ -484,58 +483,58 @@ void Simulation::analyzePassiveContribution(int maxTime)
         skills.passives[i] = passive;
     }
 
-	std::cout << "Neck: " << std::endl;
+    std::cout << "Neck: " << std::endl;
     // QL11 + violence
-	{
-		auto piece = gear.pieces[Gear::MajorMid];
-		gear.setNeckQL11();
+    {
+        auto piece = gear.pieces[Gear::MajorMid];
+        gear.setNeckQL11();
 
-		init();
-		resetStats();
-		simulate(maxTime);
-		auto dps = totalDPS();
+        init();
+        resetStats();
+        simulate(maxTime);
+        auto dps = totalDPS();
 
-		std::cout << " + ";
-		std::cout.width(4);
-		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
-			<< "% for QL11 + Violence" << std::endl;
+        std::cout << " + ";
+        std::cout.width(4);
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+                  << "% for QL11 + Violence" << std::endl;
 
-		gear.pieces[Gear::MajorMid] = piece;
-	}
-	// WC
-	{
-		auto piece = gear.pieces[Gear::MajorMid];
-		gear.setNeckWoodcutters();
+        gear.pieces[Gear::MajorMid] = piece;
+    }
+    // WC
+    {
+        auto piece = gear.pieces[Gear::MajorMid];
+        gear.setNeckWoodcutters();
 
-		init();
-		resetStats();
-		simulate(maxTime);
-		auto dps = totalDPS();
+        init();
+        resetStats();
+        simulate(maxTime);
+        auto dps = totalDPS();
 
-		std::cout << " + ";
-		std::cout.width(4);
-		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
-			<< "% for Woodcutters" << std::endl;
+        std::cout << " + ";
+        std::cout.width(4);
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+                  << "% for Woodcutters" << std::endl;
 
-		gear.pieces[Gear::MajorMid] = piece;
-	}
-	// Egon
-	{
-		auto piece = gear.pieces[Gear::MajorMid];
-		gear.setNeckEgon();
+        gear.pieces[Gear::MajorMid] = piece;
+    }
+    // Egon
+    {
+        auto piece = gear.pieces[Gear::MajorMid];
+        gear.setNeckEgon();
 
-		init();
-		resetStats();
-		simulate(maxTime);
-		auto dps = totalDPS();
+        init();
+        resetStats();
+        simulate(maxTime);
+        auto dps = totalDPS();
 
-		std::cout << " + ";
-		std::cout.width(4);
-		std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
-			<< "% for Amulet of Yuggoth" << std::endl;
+        std::cout << " + ";
+        std::cout.width(4);
+        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+                  << "% for Amulet of Yuggoth" << std::endl;
 
-		gear.pieces[Gear::MajorMid] = piece;
-	}
+        gear.pieces[Gear::MajorMid] = piece;
+    }
 
     log = savLog;
     lowVarianceMode = savMode;
@@ -571,6 +570,11 @@ void Simulation::fullHit(const Stats& baseStats,
         // reset on pen
         if (isPen && effect.resetOnPen && effectStacks[i] > 0)
             resetEffect((EffectSlot)i);
+
+        // proc on skill hit
+        if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0)
+            if (effect.restrictToWeapon == Weapon::None || srcSkill->weapon == effect.restrictToWeapon) // correct weapon
+                procEffectDmg(procStat, effect, dmgScaling);
     }
 
     // effects trigger AFTER the hit
@@ -578,7 +582,7 @@ void Simulation::fullHit(const Stats& baseStats,
     {
         auto slot = (size_t)passive.effect;
         auto const& effect = effects[slot];
-        //if (effect.slot == EffectSlot::Count)
+        // if (effect.slot == EffectSlot::Count)
         //    std::cerr << "Unregistered effect " << effect.name << " for " << passive.name << std::endl;
         assert(effect.slot < EffectSlot::Count && "effect not registered");
 
@@ -683,10 +687,10 @@ void Simulation::procEffect(const Stats& procStats, const Passive& passive, floa
     // blocked by effect ability
     if (passive.abilityBlockedEffect != EffectSlot::Count && currSkillID == effectSkillID[(int)passive.abilityBlockedEffect])
         return;
-	
-	// add N stacks
-	for (auto i = 0; i < passive.effectStacks; ++i)
-		procEffect(procStats, passive.effect, originalHitScaling);
+
+    // add N stacks
+    for (auto i = 0; i < passive.effectStacks; ++i)
+        procEffect(procStats, passive.effect, originalHitScaling);
 }
 
 void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float originalHitScaling)
@@ -737,8 +741,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         assert(effectTime[slot] == 0);
 
     // proc dmg
-	if (effect.procOnGain)
-		procEffectDmg(procStats, effect, originalHitScaling);
+    if (effect.procOn == ProcOn::Gain)
+        procEffectDmg(procStats, effect, originalHitScaling);
 
     // gain resources
     for (auto r = 0; r < effect.gainResources; ++r)
@@ -760,34 +764,34 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
 
 void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling)
 {
-	if (effect.procDmgScaling > 0)
-	{
-		auto stats = procStats; // copy
-		applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-		if (!effect.affectedByAdditiveDmg)
-			stats.additiveDamage = 0.f; // procs don't get additive dmg
-		stats.update(enemyInfo);
-		bool isCrit, isPen;
-		if (effect.isFullHit)
-			fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
-		else
-			rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
-	}
+    if (effect.procDmgScaling > 0)
+    {
+        auto stats = procStats; // copy
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+        if (!effect.affectedByAdditiveDmg)
+            stats.additiveDamage = 0.f; // procs don't get additive dmg
+        stats.update(enemyInfo);
+        bool isCrit, isPen;
+        if (effect.isFullHit)
+            fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
+        else
+            rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+    }
 
-	if (effect.procDmgPercentage > 0)
-	{
-		assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
-		auto stats = procStats; // copy
-		applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-		if (!effect.affectedByAdditiveDmg)
-			stats.additiveDamage = 0.f; // procs don't get additive dmg
-		stats.update(enemyInfo);
-		bool isCrit, isPen;
-		if (effect.isFullHit)
-			fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
-		else
-			rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
-	}
+    if (effect.procDmgPercentage > 0)
+    {
+        assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
+        auto stats = procStats; // copy
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+        if (!effect.affectedByAdditiveDmg)
+            stats.additiveDamage = 0.f; // procs don't get additive dmg
+        stats.update(enemyInfo);
+        bool isCrit, isPen;
+        if (effect.isFullHit)
+            fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
+        else
+            rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+    }
 }
 
 void Simulation::rawHit(const Stats& actualStats,
@@ -908,14 +912,14 @@ void Simulation::advanceTime(int timeIn60th)
                     if (log)
                         log->logEffectEnd(this, currentTime, (EffectSlot)i);
 
-					// trigger dmg on lose
-					if (!effects[i].procOnGain)
-						procEffectDmg(procStats[currentSkill], effects[i], -1);
+                    // trigger dmg on lose
+                    if (effects[i].procOn == ProcOn::Loss)
+                        procEffectDmg(procStats[currentSkill], effects[i], -1);
 
-					// trigger on lose
-					if (effects[i].triggerOnStackLost != EffectSlot::Count)
-						if (!effects[i].triggerOnStackLostOnlyLast || effectStacks[i] == 0)
-							procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
+                    // trigger on lose
+                    if (effects[i].triggerOnStackLost != EffectSlot::Count)
+                        if (!effects[i].triggerOnStackLostOnlyLast || effectStacks[i] == 0)
+                            procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
                 }
             }
 
@@ -1021,8 +1025,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::Aggression());
     registerEffect(Effects::Signet::Laceration());
     registerEffect(Effects::Signet::MothersWrathBuff());
-	registerEffect(Effects::Signet::MothersWrathStacks());
-	registerEffect(Effects::Signet::EgonPendant());
+    registerEffect(Effects::Signet::MothersWrathStacks());
+    registerEffect(Effects::Signet::EgonPendant());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());
@@ -1030,32 +1034,33 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::Thunderstruck());
     registerEffect(Effects::Proc::Gnosis());
     registerEffect(Effects::Proc::LiveWireProc());
-	registerEffect(Effects::Proc::LiveWireStack());
-	registerEffect(Effects::Proc::Tenderising());
+    registerEffect(Effects::Proc::LiveWireStack());
+    registerEffect(Effects::Proc::Tenderising());
 
-	registerEffect(Effects::Dots::Bombardment());
-	registerEffect(Effects::Dots::Whiteout());
-	registerEffect(Effects::Dots::GoForTheThroat());
-	registerEffect(Effects::Dots::EyeOfPandemonium());
-	registerEffect(Effects::Dots::PowerLine());
-	registerEffect(Effects::Dots::PowerLineDetonation());
-	registerEffect(Effects::Dots::FireManifestation());
-	registerEffect(Effects::Dots::LightningManifestation());
+    registerEffect(Effects::Dots::Bombardment());
+    registerEffect(Effects::Dots::Whiteout());
+    registerEffect(Effects::Dots::GoForTheThroat());
+    registerEffect(Effects::Dots::EyeOfPandemonium());
+    registerEffect(Effects::Dots::PowerLine());
+    registerEffect(Effects::Dots::PowerLineDetonation());
+    registerEffect(Effects::Dots::FireManifestation());
+    registerEffect(Effects::Dots::LightningManifestation());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
     registerEffect(Effects::WeaponSkill::ElementalOverload());
     registerEffect(Effects::WeaponSkill::MomentumStack());
-	registerEffect(Effects::WeaponSkill::MomentumBuff());
-	registerEffect(Effects::WeaponSkill::BloodOffering());
-	registerEffect(Effects::WeaponSkill::ElementalFury());
+    registerEffect(Effects::WeaponSkill::MomentumBuff());
+    registerEffect(Effects::WeaponSkill::BloodOffering());
+    registerEffect(Effects::WeaponSkill::ElementalFury());
 
     registerEffect(Effects::SkillPassive::Reckless());
     registerEffect(Effects::SkillPassive::AmorFati());
-	registerEffect(Effects::SkillPassive::FullMomentum());
-	registerEffect(Effects::SkillPassive::TearEmUp());
-	registerEffect(Effects::SkillPassive::GunFu());
-	registerEffect(Effects::SkillPassive::LockAndLoad());
-	registerEffect(Effects::SkillPassive::LockStockBarrel());
-	registerEffect(Effects::SkillPassive::LockStockBarrelGain());
+    registerEffect(Effects::SkillPassive::FullMomentum());
+    registerEffect(Effects::SkillPassive::TearEmUp());
+    registerEffect(Effects::SkillPassive::GunFu());
+    registerEffect(Effects::SkillPassive::LockAndLoad());
+    registerEffect(Effects::SkillPassive::LockStockBarrel());
+    registerEffect(Effects::SkillPassive::LockStockBarrelGain());
+    registerEffect(Effects::SkillPassive::SteelEcho());
 }

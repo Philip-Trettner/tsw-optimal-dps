@@ -15,7 +15,7 @@ enum class Trigger
     Pen,
     CritPen,
     FinishActivation,
-	StartActivation
+    StartActivation
 };
 
 struct Passive
@@ -25,16 +25,16 @@ struct Passive
     DmgType dmgtype = DmgType::None;
     PassiveType passivetype = PassiveType::None;
     bool restrictWeapon = false;              ///< if true, only weaponType weapons benefit from this passive
-	SkillType restrictType = SkillType::None; ///< if non-none, restricts this passive to a given skill type
-	SubType restrictSubType = SubType::None; ///< if non-none, restricts this passive to a given skill type
+    SkillType restrictType = SkillType::None; ///< if non-none, restricts this passive to a given skill type
+    SubType restrictSubType = SubType::None;  ///< if non-none, restricts this passive to a given skill type
 
     Stats bonusStats;
 
     Trigger trigger = Trigger::None;
     float triggerChance = 1.f;
-    bool triggerOnDamaging = false; // if true, only triggers on damaging (i.e. > 0 hits) abilities
+    bool triggerOnDamaging = false;        // if true, only triggers on damaging (i.e. > 0 hits) abilities
     EffectSlot effect = EffectSlot::Count; ///< trigger effect
-	int effectStacks = 1;
+    int effectStacks = 1;
 
     EffectSlot abilityBlockedEffect
         = EffectSlot::Count; ///< cannot trigger if it's the same ability as the blocked effect

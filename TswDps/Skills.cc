@@ -19,8 +19,8 @@ std::vector<Skill> Skills::all()
         Pistol::BondStrongBond(), //
         Pistol::GunCrazy(),       //
         Pistol::StartAndFinish(), //
-		Pistol::Marked(),         //
-		Pistol::GunFu(),          //
+        Pistol::Marked(),         //
+        Pistol::GunFu(),          //
 
         Shotgun::Striker(),         //
         Shotgun::SingleBarrel(),    //
@@ -29,77 +29,77 @@ std::vector<Skill> Skills::all()
         Shotgun::PointBlank(),      //
         Shotgun::Kneecapper(),      //
         Shotgun::LockStockBarrel(), //
-		Shotgun::Takedown(),        //
-		Shotgun::Bombardment(),     //
-		Shotgun::ShotgunWedding(),  //
+        Shotgun::Takedown(),        //
+        Shotgun::Bombardment(),     //
+        Shotgun::ShotgunWedding(),  //
 
         Rifle::Shellshocker(),    //
         Rifle::SafetyOff(),       //
         Rifle::TriggerHappy(),    //
         Rifle::ThreeRoundBurst(), //
-		Rifle::RedMist(),         //
-		Rifle::LockAndLoad(),     //
+        Rifle::RedMist(),         //
+        Rifle::LockAndLoad(),     //
 
-        Chaos::RunRampant(),   //
-        Chaos::FourHorsemen(), //
-		Chaos::AmorFati(),     //
-		Chaos::CallForEris(),     //
-		Chaos::HandOfChange(),     //
-		Chaos::DominoEffect(),     //
-		Chaos::Paradox(),     //
-		Chaos::PullingTheStrings(),     //
-		Chaos::PrisonerOfFate(),     //
-		Chaos::SufferingAndSolace(),     //
-		Chaos::ChaoticPull(),     //
-		Chaos::EyeOfPandemonium(),     //
+        Chaos::RunRampant(),         //
+        Chaos::FourHorsemen(),       //
+        Chaos::AmorFati(),           //
+        Chaos::CallForEris(),        //
+        Chaos::HandOfChange(),       //
+        Chaos::DominoEffect(),       //
+        Chaos::Paradox(),            //
+        Chaos::PullingTheStrings(),  //
+        Chaos::PrisonerOfFate(),     //
+        Chaos::SufferingAndSolace(), //
+        Chaos::ChaoticPull(),        //
+        Chaos::EyeOfPandemonium(),   //
 
-		Blade::DelicateStrike(), //
-		Blade::DancingBlade(), //
-		Blade::FourSeasons(), //
-		Blade::BalancedBlade(), //
-		Blade::BindingWounds(), //
-		Blade::GrassCutter(), //
-		Blade::SlingBlade(), //
-		Blade::StunningSwirl(), //
-		// TODO: Steel Echo
+        Blade::DelicateStrike(), //
+        Blade::DancingBlade(),   //
+        Blade::FourSeasons(),    //
+        Blade::BalancedBlade(),  //
+        Blade::BindingWounds(),  //
+        Blade::GrassCutter(),    //
+        Blade::SlingBlade(),     //
+        Blade::StunningSwirl(),  //
+        Blade::SteelEcho(),      //
 
         Hammer::Smash(),        //
         Hammer::MoltenSteel(),  //
         Hammer::FullMomentum(), //
-		Hammer::Haymaker(),        //
-		Hammer::Shockwave(),        //
-		Hammer::BoneBreaker(),        //
-		Hammer::Eruption(),        //
-		Hammer::StonesThrow(),        //
-                // TODO: Grand Slam
+        Hammer::Haymaker(),     //
+        Hammer::Shockwave(),    //
+        Hammer::BoneBreaker(),  //
+        Hammer::Eruption(),     //
+        Hammer::StonesThrow(),  //
+                                // TODO: Grand Slam
 
-        Fist::SeeRed(),   //
-		Fist::Reckless(), //
-		Fist::Claw(), //
-		Fist::WildAtHeart(), //
-		Fist::PreyOnTheWeak(), //
-		Fist::OneTwo(), //
-		Fist::TearEmUp(), //
-		Fist::GoForTheThroat(), //
-		// TODO: Gore + afflict? - STILL SUX
+        Fist::SeeRed(),         //
+        Fist::Reckless(),       //
+        Fist::Claw(),           //
+        Fist::WildAtHeart(),    //
+        Fist::PreyOnTheWeak(),  //
+        Fist::OneTwo(),         //
+        Fist::TearEmUp(),       //
+        Fist::GoForTheThroat(), //
+        // TODO: Gore + afflict? - STILL SUX
 
-		Elemental::Whiteout(), //
-		Elemental::Blaze(), //
-		Elemental::Combust(), //
-		Elemental::ElectricalBolt(), //
-		Elemental::FlameStrike(), //
-		Elemental::HardReset(), //
-		Elemental::Ignition(), //
-		Elemental::MoltenEarth(), //
-		Elemental::Overload(), //
-		Elemental::Shock(), //
-		Elemental::ThorsHammer(), //
-		Elemental::PowerLine(), //
-		Elemental::FireManifestation(), //
-		Elemental::LightningManifestation(), //
-                // TODO: Anima Charge (with passive?)
+        Elemental::Whiteout(),               //
+        Elemental::Blaze(),                  //
+        Elemental::Combust(),                //
+        Elemental::ElectricalBolt(),         //
+        Elemental::FlameStrike(),            //
+        Elemental::HardReset(),              //
+        Elemental::Ignition(),               //
+        Elemental::MoltenEarth(),            //
+        Elemental::Overload(),               //
+        Elemental::Shock(),                  //
+        Elemental::ThorsHammer(),            //
+        Elemental::PowerLine(),              //
+        Elemental::FireManifestation(),      //
+        Elemental::LightningManifestation(), //
+                                             // TODO: Anima Charge (with passive?)
 
-		// TODO: Blood (needs skill passive)
+        // TODO: Blood (needs skill passive)
 
         Chainsaw::Timber(), //
     };
