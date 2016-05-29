@@ -51,6 +51,7 @@ std::vector<Skill> Skills::all()
 		Chaos::PrisonerOfFate(),     //
 		Chaos::SufferingAndSolace(),     //
 		Chaos::ChaoticPull(),     //
+		Chaos::EyeOfPandemonium(),     //
 
 		Blade::DelicateStrike(), //
 		Blade::DancingBlade(), //
@@ -78,10 +79,23 @@ std::vector<Skill> Skills::all()
 		Fist::PreyOnTheWeak(), //
 		Fist::OneTwo(), //
 		Fist::TearEmUp(), //
-		// TODO: Go for the Throat
+		Fist::GoForTheThroat(), //
 		// TODO: Gore + afflict? - STILL SUX
 
-		// TODO: Elemental (needs manifestations)
+		Elemental::Whiteout(), //
+		Elemental::Blaze(), //
+		Elemental::Combust(), //
+		Elemental::ElectricalBolt(), //
+		Elemental::FlameStrike(), //
+		Elemental::HardReset(), //
+		Elemental::Ignition(), //
+		Elemental::MoltenEarth(), //
+		Elemental::Overload(), //
+		Elemental::Shock(), //
+		Elemental::ThorsHammer(), //
+		Elemental::PowerLine(), //
+		Elemental::FireManifestation(), //
+		Elemental::LightningManifestation(), //
 
 		// TODO: Blood (needs skill passive)
 

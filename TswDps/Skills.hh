@@ -265,7 +265,7 @@ public:
             s.timeIn60th = 60;
             s.cooldownIn60th = 60 * 30;
 			s.passive.trigger = Trigger::StartActivation;
-			s.passive.effect = EffectSlot::BombardmentStacks;
+			s.passive.effect = EffectSlot::Bombardment;
 			s.passive.effectStacks = 8;
             return s;
         }
@@ -497,6 +497,20 @@ public:
 			return s;
 		}
 
+		static Skill EyeOfPandemonium()
+		{
+			auto s = skill("Eye of Pandemonium", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 25 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.passive.trigger = Trigger::FinishActivation;
+			s.passive.effect = EffectSlot::EyeOfPandemonium;
+			s.passive.effectStacks = 10;
+			s.animaDeviation = true;
+			return s;
+		}
+
 		static Skill GravitationalAnomaly()
 		{
 			auto s = skill("Gravitational Anomaly", SkillType::Elite);
@@ -620,6 +634,67 @@ public:
 			s.dmgScaling = scaling(s.name);
 			s.passive.bonusStats.addedCritChance = 1; // guaranteed crit
 			s.animaDeviation = true;
+			return s;
+		}
+
+		static Skill Overload()
+		{
+			auto s = skill("Overload", SkillType::Elite);
+			s.timeIn60th = 3 * 60;
+			s.cooldownIn60th = 20 * 60;
+			s.hits = 3;
+			s.channeling = true;
+			s.dmgScalingA = scaling(s.name);
+			s.specialHitsA = 2;
+			s.dmgScaling = scaling(s.name + " final");
+			s.appliesVulnerability = DmgType::Melee;
+			return s;
+		}
+
+		static Skill Whiteout()
+		{
+			auto s = skill("Whiteout", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.casttimeIn60th = s.timeIn60th;
+			s.cooldownIn60th = 25 * 60;
+			s.passive.trigger = Trigger::FinishActivation;
+			s.passive.effect = EffectSlot::Whiteout;
+			s.passive.effectStacks = 16;
+			s.animaDeviation = true;
+			return s;
+		}
+
+		static Skill PowerLine()
+		{
+			auto s = skill("Power Line", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 20 * 60;
+			s.passive.trigger = Trigger::StartActivation;
+			s.passive.effect = EffectSlot::PowerLine;
+			s.passive.effectStacks = 10;
+			s.appliesVulnerability = DmgType::Ranged;
+			return s;
+		}
+
+		static Skill FireManifestation()
+		{
+			auto s = skill("Fire Manifestation", SkillType::None);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 10 * 60;
+			s.passive.trigger = Trigger::StartActivation;
+			s.passive.effect = EffectSlot::FireManifestation;
+			s.passive.effectStacks = 4;
+			return s;
+		}
+
+		static Skill LightningManifestation()
+		{
+			auto s = skill("Lightning Manifestation", SkillType::None);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 15 * 60;
+			s.passive.trigger = Trigger::StartActivation;
+			s.passive.effect = EffectSlot::LightningManifestation;
+			s.passive.effectStacks = 10;
 			return s;
 		}
     };
@@ -856,6 +931,20 @@ public:
 			s.dmgScaling5 = scaling(s.name + " @5");
 			s.passive.trigger = Trigger::Hit;
 			s.passive.effect = EffectSlot::TearEmUp;
+			return s;
+		}
+
+		static Skill GoForTheThroat()
+		{
+			auto s = skill("Go for the Throat", SkillType::Elite);
+			s.timeIn60th = 60;
+			s.cooldownIn60th = 25 * 60;
+			s.hits = 1;
+			s.dmgScaling = scaling(s.name);
+			s.passive.trigger = Trigger::FinishActivation;
+			s.passive.effect = EffectSlot::GoForTheThroat;
+			s.passive.effectStacks = 10;
+			s.animaDeviation = true;
 			return s;
 		}
 

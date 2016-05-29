@@ -20,22 +20,24 @@ struct Builds
 
 		b.skills = { {
 				// skills
-				Skills::Elemental::Ignition(),
-				Skills::Elemental::Blaze(),
-				Skills::Elemental::HardReset(),
+				Skills::Blade::GrassCutter(),
+				Skills::Elemental::LightningManifestation(),
+				Skills::Elemental::PowerLine(),
 			},
 			{
 				// augs
 			},
 			{
 				// passives
+				Passives::Hammer::Thunderstruck(),
+				Passives::Blade::SuddenReturn(),
 			} };
 
 		// gear
 		b.gear.loadStandardDpsGear();		
 
 		b.gear.leftWeapon = Weapon::Elemental;
-		b.gear.rightWeapon = Weapon::Blood;
+		b.gear.rightWeapon = Weapon::Blade;
 		return b;
 	}
 

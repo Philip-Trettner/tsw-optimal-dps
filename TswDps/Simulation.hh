@@ -88,7 +88,9 @@ private: // run-time INIT data
     // penalties for multi hit and stuff
     float skillPenCritPenalty[SKILL_CNT];
     // all passives that could !trigger! for this skill
-    std::vector<Passive> skillTriggers[SKILL_CNT];
+	std::vector<Passive> skillTriggers[SKILL_CNT];
+	// all passives that could !trigger! for this skill when triggered by a proc
+	std::vector<Passive> procTriggers[SKILL_CNT];
 
 	// AD 
 	Effect animaDeviationEffect;
@@ -135,7 +137,8 @@ private: // run-time TRANSIENT data
                  Effect const* srcEffect);
     void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, DmgType dmgType, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
     void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
-    void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
+	void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
+	void procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling);
 
     void advanceTime(int timeIn60th);
 

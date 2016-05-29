@@ -179,17 +179,38 @@ public:
             return e;
         }
 
-        static Effect MomentumBuff()
-        {
-            auto e = effect("Momentum Buff", EffectSlot::MomentumBuff);
+		static Effect MomentumBuff()
+		{
+			auto e = effect("Momentum Buff", EffectSlot::MomentumBuff);
 
-            e.timeIn60th = INF_TIME;
-            e.bonusStats.additiveDamage = 40 / 100.f;
-            e.restrictToWeapon = Weapon::Hammer;
-            e.consumedAfterHit = true;
+			e.timeIn60th = INF_TIME;
+			e.bonusStats.additiveDamage = 40 / 100.f;
+			e.restrictToWeapon = Weapon::Hammer;
+			e.consumedAfterHit = true;
 
-            return e;
-        }
+			return e;
+		}
+
+		static Effect BloodOffering()
+		{
+			auto e = effect("Blood Offering", EffectSlot::BloodOffering);
+
+			e.timeIn60th = 8 * 60;
+			e.bonusStats.additiveDamage = 11.5f / 100.f;
+			e.restrictToWeapon = Weapon::Blood;
+
+			return e;
+		}
+
+		static Effect ElementalFury()
+		{
+			auto e = effect("Elemental Fury", EffectSlot::ElementalFury);
+
+			e.timeIn60th = 5 * 60;
+			e.bonusStats.additiveDamage = 7.5f / 100.f;
+
+			return e;
+		}
     };
 
     struct Proc : private Base
@@ -271,29 +292,136 @@ public:
 
             return e;
         }
+    };
 
-		static Effect BombardmentStacks()
-		{
-			auto e = effect("Bombardment Stacks", EffectSlot::BombardmentStacks);
-
-			e.timeIn60th = 2 * 60 + 30;
-			e.triggerOnStackLost = EffectSlot::Bombardment;
-			e.maxStacks = 8;
-
-			return e;
-		}
-
+	struct Dots : private Base
+	{
 		static Effect Bombardment()
 		{
 			auto e = effect("Bombardment", EffectSlot::Bombardment);
 
+			e.timeIn60th = 2 * 60 + 30;
+			e.maxStacks = 8;
+
+			e.procOnGain = false;
 			e.dmgtype = DmgType::Ranged;
 			e.procDmgScaling = scaling(e.name);
 			e.affectedByAdditiveDmg = true;
 
 			return e;
 		}
-    };
+
+		static Effect Whiteout()
+		{
+			auto e = effect("Whiteout", EffectSlot::Whiteout);
+
+			e.timeIn60th = 30;
+			e.maxStacks = 16;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+
+			return e;
+		}
+
+		static Effect GoForTheThroat()
+		{
+			auto e = effect("Go for the Throat Afflict", EffectSlot::GoForTheThroat);
+
+			e.timeIn60th = 60;
+			e.maxStacks = 10;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Melee;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+
+			return e;
+		}
+
+		static Effect EyeOfPandemonium()
+		{
+			auto e = effect("Eye of Pandemonium 2ndary", EffectSlot::EyeOfPandemonium);
+
+			e.timeIn60th = 60;
+			e.maxStacks = 10;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+
+			return e;
+		}
+
+		static Effect PowerLine()
+		{
+			auto e = effect("Power Line", EffectSlot::PowerLine);
+
+			e.timeIn60th = 60;
+			e.maxStacks = 10;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+
+			e.triggerOnStackLostOnlyLast = true;
+			e.triggerOnStackLost = EffectSlot::PowerLineDetonation;
+
+			return e;
+		}
+
+		static Effect PowerLineDetonation()
+		{
+			auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
+
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name) * 2.8f; // assume always max bonus (3 is unrealistic)
+			e.affectedByAdditiveDmg = true;
+			e.isFullHit = true; // TODO: TEST!
+
+			return e;
+		}
+
+		static Effect FireManifestation()
+		{
+			auto e = effect("Fire Manifestation", EffectSlot::FireManifestation);
+
+			e.timeIn60th = 2 * 60 + 30;
+			e.maxStacks = 4;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+			e.isFullHit = true;
+
+			e.triggerOnStackLost = EffectSlot::ElementalFury;
+
+			return e;
+		}
+
+		static Effect LightningManifestation()
+		{
+			auto e = effect("Lightning Manifestation", EffectSlot::LightningManifestation);
+
+			e.timeIn60th = 60;
+			e.maxStacks = 10;
+
+			e.procOnGain = false;
+			e.dmgtype = DmgType::Magic;
+			e.procDmgScaling = scaling(e.name);
+			e.affectedByAdditiveDmg = true;
+			e.isFullHit = true;
+
+			e.triggerOnStackLost = EffectSlot::ElementalFury;
+
+			return e;
+		}
+	};
 
     struct Passive : private Base
     {

@@ -58,7 +58,8 @@ void Simulation::init()
             assert(skill.timeIn60th % skill.hits == 0 && "inconsistent hits over time");
 
         Stats s;
-        std::vector<Passive> triggers;
+		std::vector<Passive> triggers;
+		std::vector<Passive> procTrigger;
         std::vector<Passive> passives;
 
         // add weapon
@@ -170,8 +171,12 @@ void Simulation::init()
                 ps = ps + passive.bonusStats;
 
             // extract trigger passives
-            if (passive.trigger != Trigger::None)
-                triggers.push_back(passive);
+			if (passive.trigger != Trigger::None)
+			{
+				triggers.push_back(passive);
+				if (!passive.skillPassive)
+					procTrigger.push_back(passive);
+			}
         }
 
         // calc multihit penalty
@@ -181,7 +186,8 @@ void Simulation::init()
 
         skillStats[i] = s;
         procStats[i] = ps;
-        skillTriggers[i] = triggers;
+		skillTriggers[i] = triggers;
+		procTriggers[i] = procTrigger;
     }
 
     // init vulnerabilities
@@ -336,6 +342,15 @@ void Simulation::simulate(int totalTimeIn60th)
 		// hits
 		auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
 
+		// anima deviation
+		if (skill.animaDeviation)
+		{
+			bool adCrit, adPen;
+			auto adStat = baseStat; // copy
+			adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
+			rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
+		}
+
         // actually do skill
 		for (auto hitIdx = 0; hitIdx < hits; ++hitIdx)
 		{
@@ -344,15 +359,6 @@ void Simulation::simulate(int totalTimeIn60th)
 			{
 				advanceTime(skill.timeIn60th / hits);
 				remainingTime -= skill.timeIn60th / hits;
-			}
-
-			// anima deviation
-			if (hitIdx == 0 && skill.animaDeviation)
-			{
-				bool adCrit, adPen;
-				auto adStat = baseStat; // copy
-				adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
-				rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
 			}
 
             // special hits
@@ -560,7 +566,7 @@ void Simulation::fullHit(const Stats& baseStats,
     }
 
     // effects trigger AFTER the hit
-    for (auto const& passive : skillTriggers[currentSkill])
+    for (auto const& passive : srcSkill ? skillTriggers[currentSkill] : procTriggers[currentSkill])
     {
         auto slot = (size_t)passive.effect;
         auto const& effect = effects[slot];
@@ -723,27 +729,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         assert(effectTime[slot] == 0);
 
     // proc dmg
-    if (effect.procDmgScaling > 0)
-    {
-        auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-		if (!effect.affectedByAdditiveDmg)
-			stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);
-        bool isCrit, isPen;
-        rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
-    }
-    if (effect.procDmgPercentage > 0)
-    {
-        assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
-        auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-		if (!effect.affectedByAdditiveDmg)
-			stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);
-        bool isCrit, isPen;
-        rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
-    }
+	if (effect.procOnGain)
+		procEffectDmg(procStats, effect, originalHitScaling);
 
     // gain resources
     for (auto r = 0; r < effect.gainResources; ++r)
@@ -761,6 +748,38 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         else
             assert(0 && "invalid");
     }
+}
+
+void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling)
+{
+	if (effect.procDmgScaling > 0)
+	{
+		auto stats = procStats; // copy
+		applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+		if (!effect.affectedByAdditiveDmg)
+			stats.additiveDamage = 0.f; // procs don't get additive dmg
+		stats.update(enemyInfo);
+		bool isCrit, isPen;
+		if (effect.isFullHit)
+			fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
+		else
+			rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+	}
+
+	if (effect.procDmgPercentage > 0)
+	{
+		assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
+		auto stats = procStats; // copy
+		applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+		if (!effect.affectedByAdditiveDmg)
+			stats.additiveDamage = 0.f; // procs don't get additive dmg
+		stats.update(enemyInfo);
+		bool isCrit, isPen;
+		if (effect.isFullHit)
+			fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
+		else
+			rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+	}
 }
 
 void Simulation::rawHit(const Stats& actualStats,
@@ -881,9 +900,14 @@ void Simulation::advanceTime(int timeIn60th)
                     if (log)
                         log->logEffectEnd(this, currentTime, (EffectSlot)i);
 
+					// trigger dmg on lose
+					if (!effects[i].procOnGain)
+						procEffectDmg(procStats[currentSkill], effects[i], -1);
+
 					// trigger on lose
 					if (effects[i].triggerOnStackLost != EffectSlot::Count)
-						procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
+						if (!effects[i].triggerOnStackLostOnlyLast || effectStacks[i] == 0)
+							procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
                 }
             }
 
@@ -999,15 +1023,24 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::Gnosis());
     registerEffect(Effects::Proc::LiveWireProc());
 	registerEffect(Effects::Proc::LiveWireStack());
-	registerEffect(Effects::Proc::BombardmentStacks());
-	registerEffect(Effects::Proc::Bombardment());
 	registerEffect(Effects::Proc::Tenderising());
+
+	registerEffect(Effects::Dots::Bombardment());
+	registerEffect(Effects::Dots::Whiteout());
+	registerEffect(Effects::Dots::GoForTheThroat());
+	registerEffect(Effects::Dots::EyeOfPandemonium());
+	registerEffect(Effects::Dots::PowerLine());
+	registerEffect(Effects::Dots::PowerLineDetonation());
+	registerEffect(Effects::Dots::FireManifestation());
+	registerEffect(Effects::Dots::LightningManifestation());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
     registerEffect(Effects::WeaponSkill::ElementalOverload());
     registerEffect(Effects::WeaponSkill::MomentumStack());
-    registerEffect(Effects::WeaponSkill::MomentumBuff());
+	registerEffect(Effects::WeaponSkill::MomentumBuff());
+	registerEffect(Effects::WeaponSkill::BloodOffering());
+	registerEffect(Effects::WeaponSkill::ElementalFury());
 
     registerEffect(Effects::SkillPassive::Reckless());
     registerEffect(Effects::SkillPassive::AmorFati());
