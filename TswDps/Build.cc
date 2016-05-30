@@ -105,7 +105,7 @@ void Build::shortDump() const
         if (defRot->consumeIfNotBloodOffering && (gear.leftWeapon == Weapon::Blood || gear.rightWeapon == Weapon::Blood))
             std::cout << ", force Blood Offering uptime";
         if (defRot->buildOnlyBeforeMajorBuffs)
-            std::cout << ", only build shorty before DABS";
+            std::cout << ", only build shortly before DABS";
         std::cout << std::endl;
     }
 

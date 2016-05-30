@@ -18,9 +18,7 @@ struct Builds
 
         b.skills = {{
                         // skills
-                        Skills::Blood::Bloodline(),
-                        Skills::Blood::Bloodshot(),
-                        Skills::Blood::CardiacArrest(),
+                        Skills::Blade::GrassCutter(),
                     },
                     {
                         // augs
@@ -35,8 +33,8 @@ struct Builds
         b.gear.loadStandardDpsGear();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Blood;
-        b.gear.rightWeapon = Weapon::Elemental;
+        b.gear.leftWeapon = Weapon::Blade;
+        b.gear.rightWeapon = Weapon::Shotgun;
         return b;
     }
 
