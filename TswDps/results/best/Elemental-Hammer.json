@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
-		"",
 		"Accurate",
-		"Ferocious",
-		"Piercing",
 		"Brutal",
+		"",
+		"Ferocious",
+		"",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Passives": [
@@ -103,22 +103,22 @@
 	],
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 3,
-		"minResourcesForRightConsumer": 2,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Electrical Bolt",
-		"Full Momentum",
-		"Lightning Manifestation",
+		"Shock",
 		"Fire Manifestation",
-		"Molten Steel",
-		"Power Line",
 		"Stone's Throw",
+		"Lightning Manifestation",
+		"Molten Steel",
+		"Full Momentum",
+		"Power Line",
 		"" 
 	] 
 } 

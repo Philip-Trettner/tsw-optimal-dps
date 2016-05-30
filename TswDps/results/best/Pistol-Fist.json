@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"",
-		"Brutal",
+		"Fierce",
 		"Piercing",
 		"",
 		"",
-		"Ferocious",
+		"",
+		"Brutal",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -114,11 +114,11 @@
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
-		"Dirty Tricks",
-		"Bond, Strong Bond",
+		"See Red",
+		"Big 45",
 		"Reckless",
 		"Tear Em Up",
-		"Big 45",
+		"Shootout",
 		"" 
 	] 
 } 

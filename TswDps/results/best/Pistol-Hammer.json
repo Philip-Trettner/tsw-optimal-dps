@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Focused",
-		"",
-		"",
-		"Ferocious",
-		"Fierce",
 		"Brutal",
+		"",
+		"Piercing",
+		"Fierce",
+		"Ferocious",
 		"Accurate",
 		"" 
 	],
@@ -117,8 +117,8 @@
 		"Full Momentum",
 		"Shockwave",
 		"Molten Steel",
-		"Haymaker",
-		"Bond, Strong Bond",
+		"Bone Breaker",
+		"Shootout",
 		"" 
 	] 
 } 

@@ -2,11 +2,11 @@
 	"Augments": [
 		"Fierce",
 		"Focused",
-		"Accurate",
 		"Piercing",
 		"",
 		"",
 		"",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -102,7 +102,7 @@
 		"Twist The Knife" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -114,8 +114,8 @@
 	"Skills": [
 		"Grand Slam",
 		"Molten Steel",
-		"Bombardment",
 		"Raging Bullet",
+		"Bombardment",
 		"Lock, Stock & Barrel",
 		"Full Momentum",
 		"Bone Breaker",

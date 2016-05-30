@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"Fierce",
 		"Ferocious",
 		"",
-		"Accurate",
+		"Fierce",
 		"Focused",
+		"Accurate",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,12 +80,12 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -102,23 +102,23 @@
 		"Twist The Knife" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 3,
-		"minResourcesForRightConsumer": 3,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
+		"Shockwave",
 		"Full Momentum",
 		"Molten Steel",
-		"Shockwave",
-		"Cannibalize",
-		"Haymaker",
 		"Bloodshot",
+		"Stone's Throw",
+		"Cannibalize",
 		"" 
 	] 
 } 

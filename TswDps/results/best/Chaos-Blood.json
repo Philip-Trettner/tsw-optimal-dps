@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"Ferocious",
 		"Focused",
+		"",
+		"",
 		"Grievous",
-		"",
-		"",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		} 
 	],
 	"Passives": [
@@ -103,7 +103,7 @@
 	],
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
@@ -114,11 +114,11 @@
 	"Skills": [
 		"Bloodline",
 		"Call for Eris",
-		"Eye of Pandemonium",
 		"Bloodshot",
-		"Left Hand of Darkness",
 		"Amor Fati",
-		"",
+		"Pulling the Strings",
+		"Left Hand of Darkness",
+		"Eye of Pandemonium",
 		"" 
 	] 
 } 

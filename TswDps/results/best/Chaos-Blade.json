@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
-		"Piercing",
-		"",
 		"Ferocious",
-		"",
 		"Focused",
+		"Piercing",
+		"Accurate",
+		"Brutal",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Passives": [
@@ -113,12 +113,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Binding Wounds",
-		"Dancing Blade",
-		"Amor Fati",
 		"Steel Echo",
-		"Four Seasons",
 		"Call for Eris",
+		"Binding Wounds",
+		"Pulling the Strings",
+		"Four Seasons",
+		"Four Horsemen",
 		"" 
 	] 
 } 

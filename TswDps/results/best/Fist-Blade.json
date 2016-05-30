@@ -1,9 +1,9 @@
 {
 	"Augments": [
-		"Brutal",
+		"Fierce",
 		"Accurate",
 		"",
-		"Fierce",
+		"Brutal",
 		"Focused",
 		"Piercing",
 		"Ferocious",
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -117,7 +117,7 @@
 		"Reckless",
 		"Tear Em Up",
 		"Four Seasons",
-		"Wild at Heart",
+		"One-Two",
 		"Binding Wounds",
 		"" 
 	] 

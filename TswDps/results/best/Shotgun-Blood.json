@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
 		"",
 		"Focused",
-		"",
 		"Piercing",
+		"Accurate",
+		"",
 		"Fierce",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -103,7 +103,7 @@
 	],
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
@@ -113,11 +113,11 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Bombardment",
 		"Lock, Stock & Barrel",
 		"Raging Bullet",
-		"Cannibalize",
 		"Takedown",
+		"Bombardment",
+		"Cannibalize",
 		"Bloodshot",
 		"" 
 	] 

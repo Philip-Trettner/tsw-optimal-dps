@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
+		"Grievous",
 		"Ferocious",
 		"Fierce",
-		"",
-		"Grievous",
 		"Focused",
 		"Accurate",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -108,17 +108,17 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 2,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Start & Finish",
-		"Dirty Tricks",
-		"Cannibalize",
 		"Big 45",
+		"Cardiac Arrest",
 		"Bloodshot",
-		"Exsanguinate",
+		"Shootout",
+		"Cannibalize",
 		"" 
 	] 
 } 

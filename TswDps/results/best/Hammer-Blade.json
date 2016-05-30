@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
+		"Focused",
 		"",
 		"Accurate",
-		"Ferocious",
 		"",
-		"Focused",
+		"Ferocious",
 		"",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -112,13 +112,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Smash",
+		"Grand Slam",
+		"Molten Steel",
 		"Steel Echo",
 		"Four Seasons",
-		"Molten Steel",
-		"Full Momentum",
+		"Bone Breaker",
 		"Binding Wounds",
-		"Haymaker",
+		"Full Momentum",
 		"" 
 	] 
 } 

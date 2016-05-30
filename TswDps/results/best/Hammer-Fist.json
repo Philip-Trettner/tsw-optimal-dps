@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Ferocious",
-		"",
-		"Fierce",
 		"Accurate",
-		"Focused",
+		"Fierce",
 		"",
+		"",
+		"Piercing",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -109,16 +109,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Molten Steel",
-		"Reckless",
-		"Tear Em Up",
 		"Stone's Throw",
-		"Shockwave",
+		"Tear Em Up",
 		"Full Momentum",
+		"Reckless",
+		"Shockwave",
+		"Molten Steel",
 		"" 
 	] 
 } 

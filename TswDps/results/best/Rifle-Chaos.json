@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Piercing",
+		"Brutal",
 		"",
 		"Focused",
-		"Brutal",
 		"Ferocious",
 		"Accurate",
+		"Piercing",
 		"",
 		"" 
 	],
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Passives": [
@@ -102,7 +102,7 @@
 		"Sudden Return" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -115,7 +115,7 @@
 		"Run Rampant",
 		"Amor Fati",
 		"Call for Eris",
-		"Shellshocker",
+		"Eye of Pandemonium",
 		"Three Round Burst",
 		"Suffering and Solace",
 		"Lock & Load",

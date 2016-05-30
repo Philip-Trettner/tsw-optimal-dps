@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"",
-		"",
 		"Ferocious",
-		"Grievous",
+		"",
+		"",
 		"Fierce",
 		"Accurate",
+		"Focused",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -95,8 +95,8 @@
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
@@ -115,10 +115,10 @@
 		"Prey on the Weak",
 		"Reckless",
 		"Amor Fati",
-		"Tear Em Up",
-		"Eye of Pandemonium",
-		"Call for Eris",
+		"One-Two",
 		"Wild at Heart",
+		"Call for Eris",
+		"Eye of Pandemonium",
 		"" 
 	] 
 } 

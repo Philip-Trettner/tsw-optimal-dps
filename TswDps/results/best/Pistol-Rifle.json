@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Accurate",
-		"Ferocious",
-		"",
-		"Brutal",
-		"",
 		"Fierce",
+		"Brutal",
+		"Piercing",
+		"Grievous",
+		"Focused",
+		"",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		} 
 	],
 	"Passives": [
@@ -102,13 +102,13 @@
 		"Sudden Return" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForRightConsumer": 2,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [

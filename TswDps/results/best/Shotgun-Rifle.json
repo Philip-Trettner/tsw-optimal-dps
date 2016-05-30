@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Focused",
-		"",
 		"Ferocious",
 		"",
 		"Piercing",
+		"",
 		"Brutal",
 		"Accurate",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,12 +89,12 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
@@ -102,21 +102,21 @@
 		"Sudden Return" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Safety Off",
+		"Sure Shot",
 		"Lock, Stock & Barrel",
 		"Takedown",
 		"Lock & Load",
-		"Raging Bullet",
 		"Three Round Burst",
 		"Bombardment",
 		"" 

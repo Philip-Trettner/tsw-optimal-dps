@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
 		"Fierce",
+		"Piercing",
+		"",
 		"Focused",
 		"Accurate",
-		"Piercing",
 		"Grievous",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -102,19 +102,19 @@
 		"Twist The Knife" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Delicate Strike",
-		"Lock, Stock & Barrel",
+		"Grass Cutter",
 		"Binding Wounds",
+		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Steel Echo",
 		"Balanced Blade",

@@ -3,10 +3,10 @@
 		"Fierce",
 		"",
 		"Grievous",
-		"",
 		"Focused",
-		"Accurate",
+		"",
 		"Piercing",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -93,7 +93,7 @@
 		} 
 	],
 	"Passives": [
-		"Fatal Flourish",
+		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
@@ -102,7 +102,7 @@
 		"Sudden Return" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -113,10 +113,10 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Lock, Stock & Barrel",
-		"Tear Em Up",
 		"Reckless",
+		"Tear Em Up",
 		"Sure Shot",
+		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Bombardment",
 		"" 

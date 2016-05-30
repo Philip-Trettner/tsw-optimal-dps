@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Ferocious",
-		"Piercing",
-		"Grievous",
-		"Focused",
-		"",
+		"Brutal",
 		"Accurate",
+		"",
+		"Piercing",
+		"Ferocious",
+		"Grievous",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
@@ -114,11 +114,11 @@
 	"Skills": [
 		"Grass Cutter",
 		"Fire Manifestation",
+		"Lightning Manifestation",
 		"Steel Echo",
+		"Flame Strike",
 		"Power Line",
 		"Binding Wounds",
-		"Lightning Manifestation",
-		"Flame Strike",
 		"" 
 	] 
 } 

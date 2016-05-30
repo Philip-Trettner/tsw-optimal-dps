@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"",
 		"Accurate",
 		"",
 		"",
-		"Piercing",
+		"",
+		"",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -113,10 +113,10 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Eye of Pandemonium",
-		"Full Momentum",
 		"Stone's Throw",
+		"Full Momentum",
 		"Call for Eris",
+		"Eye of Pandemonium",
 		"Amor Fati",
 		"Molten Steel",
 		"" 

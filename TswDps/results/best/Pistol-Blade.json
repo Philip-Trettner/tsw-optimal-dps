@@ -2,9 +2,9 @@
 	"Augments": [
 		"Focused",
 		"",
-		"Grievous",
 		"Brutal",
 		"Piercing",
+		"Fierce",
 		"Accurate",
 		"",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,20 +89,20 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
+		"Thunderstruck",
 		"Twist The Knife" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -118,7 +118,7 @@
 		"Sling Blade",
 		"Dancing Blade",
 		"Start & Finish",
-		"",
+		"Bond, Strong Bond",
 		"" 
 	] 
 } 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"",
 		"Piercing",
-		"",
-		"",
 		"Accurate",
-		"Brutal",
+		"Ferocious",
 		"",
+		"",
+		"Brutal",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -113,12 +113,12 @@
 	},
 	"Skills": [
 		"Safety Off",
+		"Lightning Manifestation",
 		"Power Line",
 		"Fire Manifestation",
-		"Lightning Manifestation",
-		"Flame Strike",
-		"Three Round Burst",
 		"Lock & Load",
+		"Three Round Burst",
+		"Flame Strike",
 		"" 
 	] 
 } 

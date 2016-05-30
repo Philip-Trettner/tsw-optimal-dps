@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Fierce",
-		"Ferocious",
+		"Brutal",
 		"",
 		"Focused",
+		"Piercing",
 		"",
-		"Brutal",
+		"Fierce",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -30,12 +30,12 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
-			"Crit Power": 0,
-			"Free": true,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
@@ -89,36 +89,36 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Passives": [
-		"Brawler",
 		"Elemental Force",
 		"Fatal Flourish",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": false,
+		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Grand Slam",
-		"Three Round Burst",
-		"Full Momentum",
-		"Molten Steel",
+		"Safety Off",
 		"Lock & Load",
-		"Shellshocker",
-		"Bone Breaker",
+		"Molten Steel",
+		"Shockwave",
+		"Full Momentum",
+		"Three Round Burst",
+		"Stone's Throw",
 		"" 
 	] 
 } 
