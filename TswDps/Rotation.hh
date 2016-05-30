@@ -1,5 +1,7 @@
 #pragma once
 
+#include "jsonxx.hh"
+
 #include <memory>
 #include <functional>
 #include <vector>
@@ -75,6 +77,19 @@ struct DefaultRotation : Rotation
     void reset() override;
 
     static std::shared_ptr<DefaultRotation> create() { return std::make_shared<DefaultRotation>(); }
+    jsonxx::Object toJson() const
+    {
+        jsonxx::Object o;
+        o << "minResourcesForLeftConsumer" << minResourcesForLeftConsumer;
+        o << "minResourcesForRightConsumer" << minResourcesForRightConsumer;
+        o << "tryToConsumeOnBuffed" << tryToConsumeOnBuffed;
+        o << "considerBuffEF" << considerBuffEF;
+        o << "considerBuffFF" << considerBuffFF;
+        o << "considerBuffWC" << considerBuffWC;
+        o << "consumeIfNotBloodOffering" << consumeIfNotBloodOffering;
+        o << "buildOnlyBeforeMajorBuffs" << buildOnlyBeforeMajorBuffs;
+        return o;
+    }
 
     std::shared_ptr<DefaultRotation> clone()
     {

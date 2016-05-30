@@ -46,7 +46,10 @@ MAKE_EFFECT_ENUM(
     MothersWrathStacks,
     MothersWrathBuff,
     EgonPendant,
-    // TODO: Fury
+    FuryStacks,
+    FuryBuff,
+    Sadism,
+    Opportunism,
 
     // general passives
     MinorPenetrationChance,
@@ -74,6 +77,7 @@ MAKE_EFFECT_ENUM(
     GunFu,
     LockAndLoad,
     SteelEcho,
+    Cannibalize,
 
     // procs
     SuddenReturn,
@@ -84,6 +88,7 @@ MAKE_EFFECT_ENUM(
     LiveWireProc,
     Gnosis,
     Tenderising,
+    GrandSlam,
 
     // dots
     Bombardment,
@@ -94,6 +99,9 @@ MAKE_EFFECT_ENUM(
     PowerLineDetonation,
     FireManifestation,
     LightningManifestation,
+    Plague,
+    LeftHandOfDarkness,
+    Contaminate,
 
     // weapon skills
     DoubleUp,
@@ -137,6 +145,7 @@ struct Effect
     DmgType dmgtype = DmgType::None; // for vulnerabilities
 
     float procDmgScaling = 0.f;         // if > 0, triggers a proc dmg hit everytime this effect is applied
+    float procDmgFixed = 0.f;           // if > 0, triggers a fixed proc hit
     float procDmgPercentage = 0.f;      // if > 0, triggers a proc hit depending on the original hit
     bool affectedByAdditiveDmg = false; // if true, proc dmg is buffed by additive dmg (e.g. Bombardment)
     ProcOn procOn = ProcOn::Gain;       // controls when dmg procs are applied

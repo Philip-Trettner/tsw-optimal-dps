@@ -6,6 +6,8 @@
 #include "Signet.hh"
 #include "Stats.hh"
 
+#include "jsonxx.hh"
+
 struct Gear
 {
     static const size_t Head = 0;
@@ -56,6 +58,9 @@ struct Gear
 
         /// sets the primary stat of this talisman
         void set(PrimaryStat stat, TalismanQuality q);
+
+        jsonxx::Object toJson() const;
+        void fromJson(jsonxx::Object const& o);
     };
 
     // all gear pieces except aux

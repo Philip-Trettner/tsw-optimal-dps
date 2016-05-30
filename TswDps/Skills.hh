@@ -560,7 +560,6 @@ public:
         {
             auto s = skill("Exsanguinate", SkillType::Consumer);
             s.timeIn60th = 150;
-            s.cooldownIn60th = 60 * 4;
             s.hits = 5;
             s.fixedConsumerResources = 5;
             s.dmgScaling = scaling(s.name);
@@ -585,6 +584,54 @@ public:
             s.hits = 1;
             s.fixedConsumerResources = 2;
             s.dmgScaling = scaling(s.name);
+            return s;
+        }
+
+        static Skill Cannibalize()
+        {
+            auto s = skill("Cannibalize", SkillType::None);
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::Cannibalize;
+            s.cooldownIn60th = 25 * 60;
+            s.slotForDmgAug = false;
+            return s;
+        }
+
+        static Skill Plague()
+        {
+            auto s = skill("Plague", SkillType::Elite);
+            s.timeIn60th = 60 + 30;
+            s.casttimeIn60th = s.timeIn60th;
+            s.cooldownIn60th = 20 * 60;
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::Plague;
+            s.passive.effectStacks = 6;
+            s.appliesVulnerability = DmgType::Ranged;
+            return s;
+        }
+
+        static Skill LeftHandOfDarkness()
+        {
+            auto s = skill("Left Hand of Darkness", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.cooldownIn60th = 4 * 60;
+            s.fixedConsumerResources = 3;
+            s.passive.trigger = Trigger::StartActivation;
+            s.passive.effect = EffectSlot::LeftHandOfDarkness;
+            s.passive.effectStacks = 4;
+            return s;
+        }
+
+        static Skill Contaminate()
+        {
+            auto s = skill("Contaminate", SkillType::None);
+            s.timeIn60th = 60;
+            s.casttimeIn60th = s.timeIn60th;
+            s.cooldownIn60th = 40 * 60;
+            s.fixedConsumerResources = 3;
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::Contaminate;
+            s.passive.effectStacks = 6;
             return s;
         }
     };
@@ -855,6 +902,16 @@ public:
             s.dmgScaling = scaling(s.name);
             return s;
         }
+        static Skill GrandSlam()
+        {
+            auto s = skill("Grand Slam", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            s.passive.trigger = Trigger::Hit;
+            s.passive.effect = EffectSlot::GrandSlam;
+            return s;
+        }
         static Skill Haymaker()
         {
             auto s = skill("Haymaker", SkillType::Consumer);
@@ -1035,6 +1092,21 @@ public:
             s.dmgScaling = scaling(s.name);
             s.chanceForScaleInc = 0.33f;
             s.scaleIncPerc = .45f;
+            s.slotForDmgAug = false;
+            return s;
+        }
+    };
+
+    struct Flamethrower : private Base<Weapon::Aux, DmgType::None>
+    {
+        static Skill ScorchedEarth()
+        {
+            auto s = skill("Scorched Earth", SkillType::None);
+            s.timeIn60th = 60;
+            s.casttimeIn60th = 30;
+            s.cooldownIn60th = 20 * 60; // TODO: get real number with passive
+            // TODO: continue
+            assert(0 && "not impl");
             s.slotForDmgAug = false;
             return s;
         }

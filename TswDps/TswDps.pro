@@ -20,7 +20,8 @@ SOURCES += main.cc \
     Skills.cc \
     SkillTable.cc \
     Optimizer.cc \
-    Passives.cc
+    Passives.cc \
+    jsonxx.cc
 
 HEADERS += \
     Build.hh \
@@ -48,7 +49,45 @@ HEADERS += \
     Effects.hh \
     Builds.hh \
     SkillTable.hh \
-    Optimizer.hh
+    Optimizer.hh \
+    jsonxx.hh \
+    results/best/Fist-Blade.json \
+    results/best/Hammer-Blade.json \
+    results/best/Hammer-Fist.json \
+    results/best/Blood-Blade.json \
+    results/best/Blood-Fist.json \
+    results/best/Blood-Hammer.json \
+    results/best/Chaos-Blade.json \
+    results/best/Chaos-Fist.json \
+    results/best/Chaos-Hammer.json \
+    results/best/Chaos-Blood.json \
+    results/best/Elemental-Blade.json \
+    results/best/Elemental-Fist.json \
+    results/best/Elemental-Hammer.json \
+    results/best/Elemental-Blood.json \
+    results/best/Elemental-Chaos.json \
+    results/best/Rifle-Blade.json \
+    results/best/Rifle-Fist.json \
+    results/best/Rifle-Hammer.json \
+    results/best/Rifle-Blood.json \
+    results/best/Rifle-Chaos.json \
+    results/best/Rifle-Elemental.json \
+    results/best/Pistol-Blade.json \
+    results/best/Pistol-Fist.json \
+    results/best/Pistol-Hammer.json \
+    results/best/Pistol-Blood.json \
+    results/best/Pistol-Chaos.json \
+    results/best/Pistol-Elemental.json \
+    results/best/Pistol-Rifle.json \
+    results/best/Shotgun-Blade.json \
+    results/best/Shotgun-Fist.json \
+    results/best/Shotgun-Hammer.json \
+    results/best/Shotgun-Blood.json \
+    results/best/Shotgun-Chaos.json \
+    results/best/Shotgun-Elemental.json \
+    results/best/Shotgun-Rifle.json \
+    results/best/Shotgun-Pistol.json \
+    results/summary.csv
 
 linux {
     QMAKE_CXXFLAGS += -Wno-unused-parameter

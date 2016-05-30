@@ -92,6 +92,50 @@ public:
 
             return e;
         }
+
+        static Effect FuryStacks()
+        {
+            auto e = effect("Fury Stacks", EffectSlot::FuryStacks);
+
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 10;
+            e.cooldownIn60th = 0; // no CD (after dmg ability)
+            e.triggerOnMaxStacks = EffectSlot::FuryBuff;
+            e.blockedSlot = EffectSlot::FuryBuff;
+
+            return e;
+        }
+
+        static Effect FuryBuff()
+        {
+            auto e = effect("Fury Buff", EffectSlot::FuryBuff);
+
+            e.timeIn60th = 6 * 60;
+            e.cooldownIn60th = 6 * 60;
+            e.bonusStats.additiveDamage = 15 / 100.f;
+
+            return e;
+        }
+
+        static Effect Sadism()
+        {
+            auto e = effect("Sadism", EffectSlot::Sadism);
+
+            e.dmgtype = DmgType::None;
+            e.procDmgFixed = 427;
+
+            return e;
+        }
+
+        static Effect Opportunism()
+        {
+            auto e = effect("Opportunism", EffectSlot::Opportunism);
+
+            e.dmgtype = DmgType::None;
+            e.procDmgFixed = 224;
+
+            return e;
+        }
     };
 
     struct Generic : private Base
@@ -270,6 +314,16 @@ public:
 
             return e;
         }
+        static Effect GrandSlam()
+        {
+            auto e = effect("Grand Slam Proc", EffectSlot::GrandSlam);
+
+            e.dmgtype = DmgType::Melee;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true; // TODO: TEST ME!
+
+            return e;
+        }
 
         static Effect LiveWireStack()
         {
@@ -323,6 +377,51 @@ public:
             e.dmgtype = DmgType::Magic;
             e.procDmgScaling = scaling(e.name);
             e.affectedByAdditiveDmg = true;
+
+            return e;
+        }
+
+        static Effect Plague()
+        {
+            auto e = effect("Plague", EffectSlot::Plague);
+
+            e.timeIn60th = 2 * 60;
+            e.maxStacks = 6;
+
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true;
+
+            return e;
+        }
+
+        static Effect LeftHandOfDarkness()
+        {
+            auto e = effect("Left Hand of Darkness", EffectSlot::LeftHandOfDarkness);
+
+            e.timeIn60th = 60;
+            e.maxStacks = 4;
+
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true; // TODO: Test me!
+
+            return e;
+        }
+
+        static Effect Contaminate()
+        {
+            auto e = effect("Contaminate", EffectSlot::Contaminate);
+
+            e.timeIn60th = 60;
+            e.maxStacks = 6;
+
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true; // TODO: Test me!
 
             return e;
         }
@@ -539,6 +638,20 @@ public:
             auto e = effect("Lock & Load", EffectSlot::LockAndLoad);
 
             e.gainResources = 3;
+
+            return e;
+        }
+        static Effect Cannibalize()
+        {
+            auto e = effect("Cannibalize", EffectSlot::Cannibalize);
+
+            e.gainResources = 3;
+
+            e.timeIn60th = 20 * 60;
+            e.restrictToSkillType = SkillType::Consumer;
+            e.restrictToWeapon = Weapon::Blood;
+            e.consumedAfterAbility = true;
+            e.bonusStats.additiveDamage = 20 / 100.f;
 
             return e;
         }

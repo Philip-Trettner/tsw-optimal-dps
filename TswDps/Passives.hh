@@ -40,6 +40,7 @@ public:
 
             p.restrictType = SkillType::Consumer;
             p.bonusStats.addedCritChance = 5 / 100.f;
+            p.bonusStats.addedPenChance = 5 / 100.f;
             p.bonusStats.additiveDamage = 20 / 100.f;
 
             return p;

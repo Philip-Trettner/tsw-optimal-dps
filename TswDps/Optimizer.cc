@@ -18,12 +18,7 @@ Optimizer::Optimizer()
 
 void Optimizer::run(int generations)
 {
-    // seed
-    totalBuildsEvaluated = 0;
     auto startBuild = refSim.build();
-    normalizeBuild(startBuild);
-    knownBuilds.insert(startBuild);
-    activeBuilds.push_back(std::make_pair(evaluate(startBuild), startBuild));
 
     // init lib
     allSkills = Skills::all();
@@ -67,10 +62,30 @@ void Optimizer::run(int generations)
 
     allHeadWeaponSignets = Signets::HeadWeapon::all();
 
+    // guarantee a builder
+    bool hasBuilder = false;
+    for (auto i = 0; i < SKILL_CNT; ++i)
+        if (startBuild.skills.skills[i].skilltype == SkillType::Builder)
+            hasBuilder = true;
+    if (!hasBuilder)
+        for (auto i = 0; i < SKILL_CNT; ++i)
+            if (startBuild.skills.skills[i].name.empty())
+            {
+                startBuild.skills.skills[i] = allBuilder[0];
+                break;
+            }
+
+    // seed
+    totalBuildsEvaluated = 0;
+    normalizeBuild(startBuild);
+    knownBuilds.insert(startBuild);
+    activeBuilds.push_back(std::make_pair(evaluate(startBuild), startBuild));
+
     // generations
     for (auto g = 0; g < generations; ++g)
     {
-        std::cout << "GENERATION " << g << std::endl;
+        if (!silent)
+            std::cout << "GENERATION " << g << std::endl;
 
         secondsSim = 0;
         auto now = std::chrono::system_clock::now();
@@ -87,7 +102,8 @@ void Optimizer::run(int generations)
             else
                 knownBuilds.insert(b);
         }
-        std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
+        if (!silent)
+            std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
         totalBuildsEvaluated += (int)newBuilds.size();
 
         // MT
@@ -143,10 +159,13 @@ void Optimizer::run(int generations)
         // timing
         auto totalTime = std::chrono::duration<double>(std::chrono::system_clock::now() - now).count();
         auto nonSimTime = totalTime - secondsSim;
-        std::cout << "  - highest DPS: " << activeBuilds[0].first << std::endl;
-        std::cout << "  - simulation: " << secondsSim << " seconds" << std::endl;
-        std::cout << "  - other:      " << nonSimTime << " seconds" << std::endl;
-        std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
+        if (!silent)
+        {
+            std::cout << "  - highest DPS: " << activeBuilds[0].first << std::endl;
+            std::cout << "  - simulation:  " << secondsSim << " seconds" << std::endl;
+            std::cout << "  - other:       " << nonSimTime << " seconds" << std::endl;
+            std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
+        }
     }
 }
 
@@ -207,8 +226,11 @@ void Optimizer::generateNewBuilds(int count, std::vector<Build>& builds)
 
 Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::BuildChange>& changes)
 {
+    assert(maxActives >= 2);
+    assert(maxPassives >= 1);
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
     std::uniform_int_distribution<int> randomSkill(0, maxActives - 1);
+    std::uniform_int_distribution<int> randomNonBuilderSkill(1, maxActives - 1);
     std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
     std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
     std::uniform_int_distribution<int> randomNeck(0, 2);
@@ -220,8 +242,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     assert(oldRot);
     auto newRot = oldRot->clone();
 
-    auto resortPassives = false;
-
+    int tries = 50;
     auto changed = false;
 
     for (auto const& c : changes)
@@ -316,7 +337,6 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     if (valid) // no duplicates
                         b.skills.passives[idx] = newPassive;
                     changed = true;
-                    resortPassives = true;
                     break;
                 }
             }
@@ -332,7 +352,6 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     else
                         p = randomElement(allElitePassives);
                     changed = true;
-                    resortPassives = true;
                     break;
                 }
             if (!changed) // no elite slotted currently
@@ -343,7 +362,6 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     auto idx = randomPassive(random);
                     b.skills.passives[idx] = randomElement(allElitePassives);
                     changed = true;
-                    resortPassives = true;
                     break;
                 }
             }
@@ -459,6 +477,32 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         case BuildChange::Aux:
             // TODO
             break;
+        case BuildChange::SkillSwitch:
+            while (!changed && --tries > 0)
+            {
+                // get two non-empty skills
+                auto idx1 = randomNonBuilderSkill(random);
+                auto idx2 = randomNonBuilderSkill(random);
+
+                if (b.skills.skills[idx1].name.empty())
+                    continue;
+                if (b.skills.skills[idx2].name.empty())
+                    continue;
+
+                // switch skills
+                {
+                    auto tmp = b.skills.skills[idx1];
+                    b.skills.skills[idx1] = b.skills.skills[idx2];
+                    b.skills.skills[idx2] = tmp;
+                }
+                // and augs
+                {
+                    auto tmp = b.skills.augments[idx1];
+                    b.skills.augments[idx1] = b.skills.augments[idx2];
+                    b.skills.augments[idx2] = tmp;
+                }
+            }
+            break;
         case BuildChange::Rotation:
             switch ((DefaultRotation::Setting)randomRotChance(random))
             {
@@ -500,8 +544,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         }
     }
 
-    if (resortPassives)
-        normalizeBuild(b);
+    normalizeBuild(b);
 
     b.rotation = newRot;
     return b;
@@ -509,11 +552,54 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 
 void Optimizer::normalizeBuild(Build& b)
 {
-    while (b.skills.passives.size() < maxPassives)
+    while ((int)b.skills.passives.size() < maxPassives)
         b.skills.passives.push_back(Passives::empty());
 
     sort(begin(b.skills.passives), end(b.skills.passives), [](Passive const& l, Passive const& r)
          {
              return l.name < r.name;
          });
+
+    // EF FF WC normalize!
+    auto rot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
+    assert(rot);
+    bool hasEF = false;
+    bool hasWC = false;
+    bool hasFF = false;
+    for (auto const& p : b.skills.passives)
+    {
+        if (p.effect == EffectSlot::ElementalForceStacks)
+            hasEF = true;
+        if (p.effect == EffectSlot::FatalFlourishStacks)
+            hasFF = true;
+    }
+    if (b.gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
+        hasWC = true;
+    if (!hasEF)
+        rot->considerBuffEF = false;
+    if (!hasFF)
+        rot->considerBuffFF = false;
+    if (!hasWC)
+        rot->considerBuffWC = false;
+    if (b.gear.leftWeapon != Weapon::Blood && b.gear.rightWeapon != Weapon::Blood)
+        rot->consumeIfNotBloodOffering = false; // no blood
+
+    // move empty skills
+    for (int i = 0; i < SKILL_CNT; ++i)
+        if (b.skills.skills[i].name.empty())
+            for (int j = i + 1; j < SKILL_CNT; ++j)
+                if (!b.skills.skills[j].name.empty())
+                {
+                    {
+                        auto tmp = b.skills.skills[j];
+                        b.skills.skills[j] = b.skills.skills[i];
+                        b.skills.skills[i] = tmp;
+                    }
+                    {
+                        auto tmp = b.skills.augments[j];
+                        b.skills.augments[j] = b.skills.augments[i];
+                        b.skills.augments[i] = tmp;
+                    }
+                    break;
+                }
 }

@@ -111,3 +111,110 @@ void Build::shortDump() const
 
     // TODO: potion?
 }
+
+jsonxx::Object Build::toJson() const
+{
+    jsonxx::Array ss;
+    jsonxx::Array aa;
+    for (auto i = 0; i < SKILL_CNT; ++i)
+    {
+        ss << skills.skills[i].name;
+        aa << skills.augments[i].name;
+    }
+    jsonxx::Array pp;
+    for (auto const& p : skills.passives)
+        pp << p.name;
+    jsonxx::Array gg;
+    for (auto const& p : gear.pieces)
+        gg << p.toJson();
+    jsonxx::Object b;
+    b << "Skills" << ss;
+    b << "Augments" << aa;
+    b << "Passives" << pp;
+    b << "Gear" << gg;
+    auto rot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
+    assert(rot && "not supported");
+    b << "Rotation" << rot->toJson();
+    return b;
+}
+
+void Build::fromJson(const jsonxx::Object& o)
+{
+    using namespace jsonxx;
+    auto ss = o.get<Array>("Skills");
+    auto aa = o.get<Array>("Augments");
+    auto pp = o.get<Array>("Passives");
+    auto gg = o.get<Array>("Gear");
+
+    auto allSkills = Skills::all();
+    auto allAugs = Augments::allDpsAugs();
+    auto allPassives = Passives::all();
+
+    skills.passives.resize(pp.size());
+
+    for (auto i = 0u; i < ss.size(); ++i)
+    {
+        auto const& s = ss.get<String>(i);
+        if (s.empty())
+            skills.skills[i] = Skills::empty();
+        else
+        {
+            bool found = false;
+            for (auto const& sr : allSkills)
+                if (sr.name == s)
+                {
+                    skills.skills[i] = sr;
+                    found = true;
+                    break;
+                }
+            if (!found)
+                std::cerr << "Unknown skill " << s << std::endl;
+        }
+    }
+
+    for (auto i = 0u; i < aa.size(); ++i)
+    {
+        auto const& s = aa.get<String>(i);
+        if (s.empty())
+            skills.augments[i] = Augments::empty();
+        else
+        {
+            bool found = false;
+            for (auto const& ar : allAugs)
+                if (ar.name == s)
+                {
+                    skills.augments[i] = ar;
+                    found = true;
+                    break;
+                }
+            if (!found)
+                std::cerr << "Unknown augment " << s << std::endl;
+        }
+    }
+
+    for (auto i = 0u; i < pp.size(); ++i)
+    {
+        auto const& s = pp.get<String>(i);
+        if (s.empty())
+            skills.passives[i] = Passives::empty();
+        else
+        {
+            bool found = false;
+            for (auto const& pr : allPassives)
+                if (pr.name == s)
+                {
+                    skills.passives[i] = pr;
+                    found = true;
+                    break;
+                }
+            if (!found)
+                std::cerr << "Unknown passive " << s << std::endl;
+        }
+    }
+
+    for (auto i = 0u; i < gg.size(); ++i)
+    {
+        auto const& go = gg.get<Object>(i);
+        gear.pieces[i].fromJson(go);
+    }
+}

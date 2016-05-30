@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "jsonxx.hh"
+
 #define SKILL_CNT (8)
 
 #define INF_TIME (3600 * 60)

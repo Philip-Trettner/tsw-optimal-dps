@@ -577,7 +577,8 @@ void Simulation::fullHit(const Stats& baseStats,
 
         // proc on skill hit
         if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0)
-            if (effect.restrictToWeapon == Weapon::None || srcSkill->weapon == effect.restrictToWeapon) // correct weapon
+            if (effect.restrictToWeapon == Weapon::None
+                || srcSkill->weapon == effect.restrictToWeapon) // correct weapon
                 procEffectDmg(procStat, effect, dmgScaling);
     }
 
@@ -768,6 +769,20 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
 
 void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling)
 {
+    if (effect.procDmgFixed > 0)
+    {
+        auto stats = procStats; // copy
+        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+        if (!effect.affectedByAdditiveDmg)
+            stats.additiveDamage = 0.f; // procs don't get additive dmg
+        stats.update(enemyInfo);
+        bool isCrit, isPen;
+        if (effect.isFullHit)
+            fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect);
+        else
+            rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+    }
+
     if (effect.procDmgScaling > 0)
     {
         auto stats = procStats; // copy
@@ -818,7 +833,10 @@ void Simulation::rawHit(const Stats& actualStats,
     if (vulnTime[(int)dmgType] > 0)
         vulnerability += vulnDmg[(int)dmgType];
 
-    float dmg = actualStats.finalCombatPower * dmgScaling * actualStats.finalDmgMultiplier * vulnerability;
+    float dmg = actualStats.finalCombatPower * dmgScaling * actualStats.finalDmgMultiplier;
+    if (dmgScaling < 0)
+        dmg = -dmgScaling; // fixed dmg
+    dmg *= vulnerability;
 
     *isCrit = dice(random) < critChance;
     *isPen = dice(random) < penChance;
@@ -976,6 +994,9 @@ void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype
         if (effects[i].restrictToWeapon != Weapon::None && weapon != effects[i].restrictToWeapon)
             continue; // does not affect this weapon
 
+        if (effects[i].restrictToSkillType != SkillType::None && skilltype != effects[i].restrictToSkillType)
+            continue; // does not affect this weapon
+
         if (effectStacks[i] > 1)
             stats = stats + effects[i].bonusStats * (float)effectStacks[i];
         else if (effectStacks[i] == 1)
@@ -1031,6 +1052,10 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::MothersWrathBuff());
     registerEffect(Effects::Signet::MothersWrathStacks());
     registerEffect(Effects::Signet::EgonPendant());
+    registerEffect(Effects::Signet::FuryBuff());
+    registerEffect(Effects::Signet::FuryStacks());
+    registerEffect(Effects::Signet::Sadism());
+    registerEffect(Effects::Signet::Opportunism());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());
@@ -1040,6 +1065,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::LiveWireProc());
     registerEffect(Effects::Proc::LiveWireStack());
     registerEffect(Effects::Proc::Tenderising());
+    registerEffect(Effects::Proc::GrandSlam());
 
     registerEffect(Effects::Dots::Bombardment());
     registerEffect(Effects::Dots::Whiteout());
@@ -1049,6 +1075,9 @@ void Simulation::registerEffects()
     registerEffect(Effects::Dots::PowerLineDetonation());
     registerEffect(Effects::Dots::FireManifestation());
     registerEffect(Effects::Dots::LightningManifestation());
+    registerEffect(Effects::Dots::Plague());
+    registerEffect(Effects::Dots::Contaminate());
+    registerEffect(Effects::Dots::LeftHandOfDarkness());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());
@@ -1064,6 +1093,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::SkillPassive::TearEmUp());
     registerEffect(Effects::SkillPassive::GunFu());
     registerEffect(Effects::SkillPassive::LockAndLoad());
+    registerEffect(Effects::SkillPassive::Cannibalize());
     registerEffect(Effects::SkillPassive::LockStockBarrel());
     registerEffect(Effects::SkillPassive::LockStockBarrelGain());
     registerEffect(Effects::SkillPassive::SteelEcho());

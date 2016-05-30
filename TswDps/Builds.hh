@@ -18,7 +18,6 @@ struct Builds
 
         b.skills = {{
                         // skills
-                        Skills::Blade::GrassCutter(),
                     },
                     {
                         // augs
@@ -33,8 +32,10 @@ struct Builds
         b.gear.loadStandardDpsGear();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Blade;
-        b.gear.rightWeapon = Weapon::Shotgun;
+        b.gear.leftWeapon = Weapon::Hammer;
+        b.gear.rightWeapon = Weapon::Blood;
+        b.gear.pieces[Gear::WeaponRight].signet = Signets::empty();
+        b.gear.pieces[Gear::Head].signet = Signets::empty();
         return b;
     }
 

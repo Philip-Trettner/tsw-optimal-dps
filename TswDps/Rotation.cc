@@ -44,7 +44,11 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
 
     // use bombardment off CD
     for (int i = 0; i < SKILL_CNT; ++i)
-        if (skills[i].name == "Bombardment" && sim.isSkillReady(i))
+        if (skills[i].passive.effect == EffectSlot::Bombardment && sim.isSkillReady(i))
+            return i;
+    // use powerline off CD
+    for (int i = 0; i < SKILL_CNT; ++i)
+        if (skills[i].passive.effect == EffectSlot::PowerLine && sim.isSkillReady(i))
             return i;
 
     // only build if buffs soon
@@ -61,14 +65,60 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
         buffedNow = true;
     if (wcNow && considerBuffWC)
         buffedNow = true;
+    auto useCDs = buffedNow || (!hasBuffState && !majorBuffsSoon);
+
     // TODO: doom
-    if (buffedNow || (!hasBuffState && !majorBuffsSoon))
-        for (auto i = 0; i < SKILL_CNT; ++i)
-            if (!skills[i].name.empty() &&                    //
-                skills[i].skilltype != SkillType::Consumer && //
-                skills[i].skilltype != SkillType::Builder &&  //
-                sim.isSkillReady(i))
+
+    // CDs and Consumers
+    for (auto i = 0; i < SKILL_CNT; ++i)
+        if (!skills[i].name.empty() &&                   //
+            skills[i].skilltype != SkillType::Builder && //
+            sim.isSkillReady(i))
+        {
+            // consumer
+            if (skills[i].skilltype == SkillType::Consumer)
             {
+                bool canUse = true;
+
+                // fixed resource consumer only work if blood (without active offering) or enough res
+                if (skills[i].fixedConsumerResources > 0)
+                {
+                    if (sim.resourcesFor(skills[i].weapon) < skills[i].fixedConsumerResources)
+                        if (bloodOffering || skills[i].weapon != Weapon::Blood)
+                            canUse = false;
+                }
+                else if (sim.resourcesFor(skills[i].weapon) == 0)
+                    canUse = false;
+
+                //std::cout << " can use " << skills[i].name << ": " << canUse << std::endl;
+
+                // cannot use skill currently
+                if (!canUse)
+                    continue;
+
+                // force usage of consumer
+                bool forceUse = false;
+                if (tryToConsumeOnBuffed && buffedNow)
+                    forceUse = true; // forced on buffed
+                if (skills[i].weapon == Weapon::Blood && !bloodOffering && consumeIfNotBloodOffering)
+                    forceUse = true; // forced on blood offering
+
+                // use consumers only on X res (or, if tryToConsumeOnBuffed and buffs, immediately)
+                if (!forceUse)
+                {
+                    if (skills[i].weapon == sim.gear.leftWeapon && sim.resourcesFor(skills[i].weapon) < minResourcesForLeftConsumer)
+                        continue;
+
+                    if (skills[i].weapon == sim.gear.rightWeapon && sim.resourcesFor(skills[i].weapon) < minResourcesForRightConsumer)
+                        continue;
+                }
+            }
+            else // CD skill
+            {
+                // don't use CDs
+                if (!useCDs)
+                    continue;
+
                 // special skills
                 switch (skills[i].passive.effect)
                 {
@@ -84,51 +134,16 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
                     if (sim.resourcesFor(Weapon::Rifle) > 0)
                         continue; // don't L&L on full resources
                     break;
+                case EffectSlot::Cannibalize:
+                    if (sim.resourcesFor(Weapon::Blood) > 2)
+                        continue; // don't Cannibalize on full resources
+                    break;
                 default:
                     break;
                 }
-                return i;
             }
 
-    // consumer @ 5 (or custom)
-    for (auto i = 0; i < SKILL_CNT; ++i)
-        if (!skills[i].name.empty() &&                    //
-            skills[i].skilltype == SkillType::Consumer && //
-            sim.isSkillReady(i))
-        {
-            bool canUse = true;
-
-            // fixed resource consumer only work if blood (without active offering) or enough res
-            if (skills[i].fixedConsumerResources > 0)
-            {
-                if (sim.resourcesFor(skills[i].weapon) < skills[i].fixedConsumerResources)
-                    if (bloodOffering || skills[i].weapon != Weapon::Blood)
-                        canUse = false;
-            }
-            else if (sim.resourcesFor(skills[i].weapon) == 0)
-                canUse = false;
-
-            // cannot use skill currently
-            if (!canUse)
-                continue;
-
-            // force usage of consumer
-            bool forceUse = false;
-            if (tryToConsumeOnBuffed && buffedNow)
-                forceUse = true; // forced on buffed
-            if (skills[i].weapon == Weapon::Blood && !bloodOffering && consumeIfNotBloodOffering)
-                forceUse = true; // forced on blood offering
-
-            // use consumers only on X res (or, if tryToConsumeOnBuffed and buffs, immediately)
-            if (!forceUse)
-            {
-                if (skills[i].weapon == sim.gear.leftWeapon && sim.resourcesFor(skills[i].weapon) < minResourcesForLeftConsumer)
-                    continue;
-
-                if (skills[i].weapon == sim.gear.rightWeapon && sim.resourcesFor(skills[i].weapon) < minResourcesForRightConsumer)
-                    continue;
-            }
-
+            // select this skill
             return i;
         }
 

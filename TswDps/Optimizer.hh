@@ -16,6 +16,7 @@ private:
     enum class BuildChange
     {
         Builder,
+        SkillSwitch,
         NonBuilder,
         EliteActive,
         Passive,
@@ -36,7 +37,7 @@ public: // settings
     Simulation refSim;
 
     /// testing time overall (per build)
-    int timePerTest = 2 * 3600 * 60;
+    int timePerTest = 1 * 3600 * 60 / 2;
     /// time per individual fight
 	int timePerFight = 10 * 60 * 60; // 10 min fights
 
@@ -72,6 +73,9 @@ public: // tweaks
 
     /// max number of simulateneous build changes
     int maxBuildChanges = 7;
+
+    /// if true, minimizes output
+    bool silent = false;
 
 public: // stats
 	/// nr of builds evaluated

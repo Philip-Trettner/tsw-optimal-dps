@@ -19,11 +19,11 @@ void Gear::loadStandardDpsGear()
     pieces[MajorLeft].signet = Signets::Major::Violence();
 
     // Neck (WC)
-    //pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    // pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
     pieces[MajorMid].free(Rating::CritPower);
-    //pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
-	//pieces[MajorMid].signet = Signets::Major::EgonPendant();
-	pieces[MajorMid].signet = Signets::Major::Violence();
+    // pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+    // pieces[MajorMid].signet = Signets::Major::EgonPendant();
+    pieces[MajorMid].signet = Signets::Major::Violence();
 
     // Wrist
     pieces[MajorRight].fix(Rating::Pen);
@@ -51,45 +51,45 @@ void Gear::loadStandardDpsGear()
 
 void Gear::loadJagourTankGear()
 {
-	setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
 
-	// Head
-	pieces[Head].fix(Rating::Block);
-	pieces[Head].signet = Signets::empty();
+    // Head
+    pieces[Head].fix(Rating::Block);
+    pieces[Head].signet = Signets::empty();
 
-	// Finger
-	pieces[MajorLeft].fix(Rating::Block);
-	pieces[MajorLeft].signet = Signets::Major::Violence();
+    // Finger
+    pieces[MajorLeft].fix(Rating::Block);
+    pieces[MajorLeft].signet = Signets::Major::Violence();
 
-	// Neck (WC)
-	//pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-	pieces[MajorMid].fix(Rating::CritPower);
-	//pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
-	//pieces[MajorMid].signet = Signets::Major::EgonPendant();
-	pieces[MajorMid].signet = Signets::Major::Violence();
+    // Neck (WC)
+    // pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    pieces[MajorMid].fix(Rating::CritPower);
+    // pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
+    // pieces[MajorMid].signet = Signets::Major::EgonPendant();
+    pieces[MajorMid].signet = Signets::Major::Violence();
 
-	// Wrist
-	pieces[MajorRight].fix(Rating::Hit);
-	pieces[MajorRight].signet = Signets::Major::Violence();
+    // Wrist
+    pieces[MajorRight].fix(Rating::Hit);
+    pieces[MajorRight].signet = Signets::Major::Violence();
 
-	// Luck
-	pieces[MinorLeft].fix(Rating::Block);
-	pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
+    // Luck
+    pieces[MinorLeft].fix(Rating::Block);
+    pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
 
-	// Waist
-	pieces[MinorMid].fix(Rating::Hit);
-	pieces[MinorMid].signet = Signets::Minor::Issue1p5();
+    // Waist
+    pieces[MinorMid].fix(Rating::Hit);
+    pieces[MinorMid].signet = Signets::Minor::Issue1p5();
 
-	// Occult
-	pieces[MinorRight].fix(Rating::Block);
-	pieces[MinorRight].signet = Signets::Minor::Issue1p5();
+    // Occult
+    pieces[MinorRight].fix(Rating::Block);
+    pieces[MinorRight].signet = Signets::Minor::Issue1p5();
 
-	// Weapons
-	pieces[WeaponLeft].fix(Rating::Block);
-	pieces[WeaponLeft].signet = Signets::empty();
+    // Weapons
+    pieces[WeaponLeft].fix(Rating::Block);
+    pieces[WeaponLeft].signet = Signets::empty();
 
-	pieces[WeaponRight].free(Rating::Crit);
-	pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
+    pieces[WeaponRight].free(Rating::Crit);
+    pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
 }
 
 Gear::Gear()
@@ -313,26 +313,26 @@ Stats Gear::splitStatOf(Gear::Slot slot, Rating r)
 
 void Gear::setNeckQL11()
 {
-	auto& p = pieces[MajorMid];
-	p.status = SlotStatus::Free;
-	p.set(PrimaryStat::Attack, TalismanQuality::QL11);
-	p.signet = Signets::Major::Violence();
+    auto &p = pieces[MajorMid];
+    p.status = SlotStatus::Free;
+    p.set(PrimaryStat::Attack, TalismanQuality::QL11);
+    p.signet = Signets::Major::Violence();
 }
 
 void Gear::setNeckWoodcutters()
 {
-	auto& p = pieces[MajorMid];
-	p.fix(Rating::CritPower);
-	p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-	p.signet = Signets::Major::WoodcuttersWrath();
+    auto &p = pieces[MajorMid];
+    p.fix(Rating::CritPower);
+    p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    p.signet = Signets::Major::WoodcuttersWrath();
 }
 
 void Gear::setNeckEgon()
 {
-	auto& p = pieces[MajorMid];
-	p.status = SlotStatus::Free;
-	p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-	p.signet = Signets::Major::EgonPendant();
+    auto &p = pieces[MajorMid];
+    p.status = SlotStatus::Free;
+    p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    p.signet = Signets::Major::EgonPendant();
 }
 
 void Gear::Piece::fix(Rating r)
@@ -498,4 +498,46 @@ void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
             stats.health = val;
             break;
         }
+}
+
+jsonxx::Object Gear::Piece::toJson() const
+{
+    jsonxx::Object o;
+    o << "Free" << (status == SlotStatus::Free);
+    o << "Signet" << signet.name();
+    o << "AR" << stats.attackRating;
+    o << "Crit" << stats.critRating;
+    o << "Crit Power" << stats.critPowerRating;
+    o << "Pen" << stats.penRating;
+    o << "Hit" << stats.hitRating;
+    return o;
+}
+
+void Gear::Piece::fromJson(const jsonxx::Object &o)
+{
+    auto allSignets = Signets::all();
+
+    using namespace jsonxx;
+    status = o.get<Boolean>("Free", false) ? SlotStatus::Free : SlotStatus::Fixed;
+    stats.attackRating = o.get<Number>("AR", 0);
+    stats.critRating = o.get<Number>("Crit", 0);
+    stats.critPowerRating = o.get<Number>("Crit Power", 0);
+    stats.penRating = o.get<Number>("Pen", 0);
+    stats.hitRating = o.get<Number>("Hit", 0);
+    auto sig = o.get<String>("Signet", "");
+    if (sig.empty())
+        signet = Signets::empty();
+    else
+    {
+        bool found = false;
+        for (auto const &s : allSignets)
+            if (s.name() == sig)
+            {
+                found = true;
+                signet = s;
+                break;
+            }
+        if (!found)
+            std::cerr << "Unknown signet " << sig << std::endl;
+    }
 }

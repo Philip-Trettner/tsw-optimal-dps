@@ -53,14 +53,46 @@ public:
 
             return p;
         }
-
-		static std::vector<Signet> all()
+        static Signet Fury()
         {
-			return{
-				Laceration(),
-				Abuse(),
-				Aggression()
-			};
+            auto p = signet("Fury");
+
+            p.passive.trigger = Trigger::FinishActivation;
+            p.passive.effect = EffectSlot::FuryStacks;
+
+            return p;
+        }
+        static Signet Sadism()
+        {
+            auto p = signet("Sadism");
+
+            p.passive.trigger = Trigger::Hit; // TODO: Test me!
+            p.passive.triggerChance = 0.1f;
+            p.passive.effect = EffectSlot::Sadism;
+
+            return p;
+        }
+        static Signet Opportunism()
+        {
+            auto p = signet("Opportunism");
+
+            p.passive.trigger = Trigger::Hit; // TODO: Test me!
+            p.passive.triggerChance = 0.2f;
+            p.passive.effect = EffectSlot::Opportunism;
+
+            return p;
+        }
+
+        static std::vector<Signet> all()
+        {
+            return {
+                Laceration(),  //
+                Abuse(),       //
+                Aggression(),  //
+                Sadism(),      //
+                Opportunism(), //
+                Fury(),        //
+            };
         }
     };
 
@@ -74,24 +106,33 @@ public:
 
             return p;
         }
-		static Signet WoodcuttersWrath()
-		{
-			auto p = signet("Woodcutters Wrath");
+        static Signet WoodcuttersWrath()
+        {
+            auto p = signet("Woodcutters Wrath");
 
-			p.passive.trigger = Trigger::Hit;
-			p.passive.effect = EffectSlot::MothersWrathStacks;
+            p.passive.trigger = Trigger::Hit;
+            p.passive.effect = EffectSlot::MothersWrathStacks;
 
-			return p;
-		}
-		static Signet EgonPendant()
-		{
-			auto p = signet("Egon Pendant");
+            return p;
+        }
+        static Signet EgonPendant()
+        {
+            auto p = signet("Egon Pendant");
 
-			p.passive.trigger = Trigger::Crit;
-			p.passive.effect = EffectSlot::EgonPendant;
+            p.passive.trigger = Trigger::Crit;
+            p.passive.effect = EffectSlot::EgonPendant;
 
-			return p;
-		}
+            return p;
+        }
+
+        static std::vector<Signet> all()
+        {
+            return {
+                Violence(),         //
+                WoodcuttersWrath(), //
+                EgonPendant(),      //
+            };
+        }
     };
 
     struct Minor : private Base<SignetSlot::Minor>
@@ -104,13 +145,28 @@ public:
 
             return p;
         }
+
+        static std::vector<Signet> all()
+        {
+            return {
+                Issue1p5(), //
+            };
+        }
     };
 
-    static Signet empty()
+    static std::vector<Signet> all()
     {
-        return Signet();
+        auto hw = HeadWeapon::all();
+        auto major = Major::all();
+        auto minor = Minor::all();
+        std::vector<Signet> s;
+        s.insert(end(s), begin(hw), end(hw));
+        s.insert(end(s), begin(major), end(major));
+        s.insert(end(s), begin(minor), end(minor));
+        return s;
     }
 
+    static Signet empty() { return Signet(); }
 private:
     Signets() = delete;
 };

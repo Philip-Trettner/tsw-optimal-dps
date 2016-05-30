@@ -14,6 +14,9 @@ struct Build
     Stats potionStats;
 
     void shortDump() const;
+
+    jsonxx::Object toJson() const;
+    void fromJson(jsonxx::Object const& o);
 };
 
 // custom specialization of std::hash can be injected in namespace std

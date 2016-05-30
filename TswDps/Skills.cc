@@ -71,7 +71,7 @@ std::vector<Skill> Skills::all()
         Hammer::BoneBreaker(),  //
         Hammer::Eruption(),     //
         Hammer::StonesThrow(),  //
-                                // TODO: Grand Slam
+        Hammer::GrandSlam(),    //
 
         Fist::SeeRed(),         //
         Fist::Reckless(),       //
@@ -99,14 +99,16 @@ std::vector<Skill> Skills::all()
         Elemental::LightningManifestation(), //
                                              // TODO: Anima Charge (with passive?)
 
-        Blood::Bloodline(),     //
-        Blood::Bloodshot(),     //
-        Blood::Exsanguinate(),  //
-        Blood::BoilingBlood(),  //
-        Blood::CardiacArrest(), //
-                                // TODO: Plague
-                                // TODO: Cannibalize
-                                // TODO: Blood Spike
+        Blood::Bloodline(),          //
+        Blood::Bloodshot(),          //
+        Blood::Exsanguinate(),       //
+        Blood::BoilingBlood(),       //
+        Blood::CardiacArrest(),      //
+        Blood::Cannibalize(),        //
+        Blood::Plague(),             //
+        Blood::Contaminate(),        //
+        Blood::LeftHandOfDarkness(), //
+                                     // TODO: Blood Spike
 
         Chainsaw::Timber(), //
     };
