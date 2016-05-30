@@ -259,21 +259,6 @@ void Simulation::simulate(int totalTimeIn60th)
         // 'equip' weapon
         currentWeapon = skillWeaponIdx[idx];
 
-        // consumer check
-        int resources = skill.skilltype == SkillType::Consumer ? weaponResources[currentWeapon] : -1;
-        if (skill.skilltype == SkillType::Consumer && resources == 0 && skill.fixedConsumerResources == 0)
-        {
-            assert(skill.weapon != Weapon::Blood && "not implemented");
-            std::cout << "[ERROR] trying to consume '" << skill.name << "' on zero resources.";
-            assert(0);
-        }
-        if (skill.skilltype == SkillType::Consumer && resources < skill.fixedConsumerResources)
-        {
-            assert(skill.weapon != Weapon::Blood && "not implemented");
-            std::cout << "[ERROR] trying to consume '" << skill.name << "' on " << resources << " resources.";
-            assert(0);
-        }
-
         // apply CD
         skillCDs[idx] = skill.cooldownIn60th;
 
@@ -299,6 +284,42 @@ void Simulation::simulate(int totalTimeIn60th)
         if (!skill.channeling && skill.skilltype == SkillType::Builder)
             addResource(skill.buildPrimaryOnly);
 
+
+        // consumers
+        int resourcesConsumed = 0;
+        bool procBloodOffering = false;
+        if (skill.skilltype == SkillType::Consumer)
+        {
+            assert(currentWeapon >= 0 && "aux consumer??");
+
+            auto resBefore = weaponResources[currentWeapon];
+
+            // fixed res consumer
+            if (skill.fixedConsumerResources > 0)
+            {
+                weaponResources[currentWeapon] -= skill.fixedConsumerResources;
+                if (weaponResources[currentWeapon] < 0)
+                {
+                    assert(skill.weapon == Weapon::Blood && "trying to consume below 0 on non-blood");
+                    if (effectStacks[(int)EffectSlot::BloodOffering] > 0)
+                        assert(false && "trying to consume below 0 while blood offering is active");
+                    weaponResources[currentWeapon] = 0;
+                    procBloodOffering = true;
+                }
+            }
+            else // consumes all res
+            {
+                assert(weaponResources[currentWeapon] > 0 && "trying to consume on 0 res");
+                weaponResources[currentWeapon] = 0;
+            }
+
+            // res consumed
+            resourcesConsumed = resBefore - weaponResources[currentWeapon];
+
+            if (log)
+                log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
+        }
+
         // precalc scaling
         float scaling = skill.dmgScaling;
         if (skill.dmgScalingLow > 0 && stochasticLowHealth)
@@ -307,7 +328,7 @@ void Simulation::simulate(int totalTimeIn60th)
         // "consumes all resources"
         if (skill.skilltype == SkillType::Consumer && skill.fixedConsumerResources == 0)
         {
-            float a = (resources - 1.f) / (5.f - 1.f);
+            float a = (resourcesConsumed - 1.f) / (5.f - 1.f);
             auto scaling5 = skill.dmgScaling5;
             if (skill.dmgScalingLow > 0 && stochasticLowHealth)
                 scaling5 += 0.35f * (skill.dmgScaling5Low - skill.dmgScaling5);
@@ -320,27 +341,6 @@ void Simulation::simulate(int totalTimeIn60th)
                 scaling *= 1 + skill.chanceForScaleInc * skill.scaleIncPerc;
             else if (dice(random) < skill.chanceForScaleInc)
                 scaling *= 1 + skill.scaleIncPerc;
-        }
-
-        // consumers
-        int resourcesConsumed = 0;
-        if (skill.skilltype == SkillType::Consumer)
-        {
-            assert(currentWeapon >= 0 && "aux consumer??");
-
-            auto resBefore = weaponResources[currentWeapon];
-
-            // TODO: BLOOD
-            if (skill.fixedConsumerResources > 0)
-                weaponResources[currentWeapon] -= skill.fixedConsumerResources;
-            else
-                weaponResources[currentWeapon] = 0;
-
-            // res consumed
-            resourcesConsumed = resBefore - weaponResources[currentWeapon];
-
-            if (log)
-                log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
         }
 
         // hits
@@ -396,6 +396,10 @@ void Simulation::simulate(int totalTimeIn60th)
 
             procEffect(procStat, passive, -1);
         }
+
+        // Blood offering
+        if (procBloodOffering)
+            procEffect(procStat, EffectSlot::BloodOffering, -1);
 
         // reduce CD effect
         if (skill.reduceWeaponConsumerCD > 0)

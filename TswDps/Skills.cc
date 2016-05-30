@@ -99,7 +99,14 @@ std::vector<Skill> Skills::all()
         Elemental::LightningManifestation(), //
                                              // TODO: Anima Charge (with passive?)
 
-        // TODO: Blood (needs skill passive)
+        Blood::Bloodline(),     //
+        Blood::Bloodshot(),     //
+        Blood::Exsanguinate(),  //
+        Blood::BoilingBlood(),  //
+        Blood::CardiacArrest(), //
+                                // TODO: Plague
+                                // TODO: Cannibalize
+                                // TODO: Blood Spike
 
         Chainsaw::Timber(), //
     };

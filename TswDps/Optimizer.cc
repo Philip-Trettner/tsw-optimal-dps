@@ -19,7 +19,7 @@ Optimizer::Optimizer()
 void Optimizer::run(int generations)
 {
     // seed
-	totalBuildsEvaluated = 0;
+    totalBuildsEvaluated = 0;
     auto startBuild = refSim.build();
     normalizeBuild(startBuild);
     knownBuilds.insert(startBuild);
@@ -54,8 +54,8 @@ void Optimizer::run(int generations)
     {
         assert(p.passivetype != PassiveType::Skill);
 
-		if (p.restrictWeapon && p.weaponType != startBuild.gear.leftWeapon && p.weaponType != startBuild.gear.rightWeapon)
-			continue; // non-matched weapon restricted passive
+        if (p.restrictWeapon && p.weaponType != startBuild.gear.leftWeapon && p.weaponType != startBuild.gear.rightWeapon)
+            continue; // non-matched weapon restricted passive
 
         if (p.passivetype == PassiveType::Elite)
             allElitePassives.push_back(p);
@@ -65,7 +65,7 @@ void Optimizer::run(int generations)
 
     allDpsAugments = Augments::allDpsAugs();
 
-	allHeadWeaponSignets = Signets::HeadWeapon::all();
+    allHeadWeaponSignets = Signets::HeadWeapon::all();
 
     // generations
     for (auto g = 0; g < generations; ++g)
@@ -78,54 +78,55 @@ void Optimizer::run(int generations)
         std::vector<Build> newBuilds;
         generateNewBuilds(newBuildsPerGen, newBuilds);
 
-		// preprocess
-		for (auto i = (int)newBuilds.size() - 1; i >= 0; --i)
-		{
-			auto const& b = newBuilds[i];
-			if (knownBuilds.count(b))
-				newBuilds.erase(begin(newBuilds) + i);
-			else knownBuilds.insert(b);
-		}
-		std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
-		totalBuildsEvaluated += (int)newBuilds.size();
+        // preprocess
+        for (auto i = (int)newBuilds.size() - 1; i >= 0; --i)
+        {
+            auto const& b = newBuilds[i];
+            if (knownBuilds.count(b))
+                newBuilds.erase(begin(newBuilds) + i);
+            else
+                knownBuilds.insert(b);
+        }
+        std::cout << "  - testing " << newBuilds.size() << " new builds" << std::endl;
+        totalBuildsEvaluated += (int)newBuilds.size();
 
-		// MT
-		auto nowEval = std::chrono::system_clock::now();
-		std::mutex m;
-		std::vector<std::thread> threads;
-		auto threadFunc = [&]()
-		{
-			while (true) 
-			{
-				// get a build
-				m.lock();
-				if (newBuilds.empty()) // finished?
-				{
-					m.unlock();
-					return;
-				}
-				auto b = newBuilds[newBuilds.size() - 1];
-				newBuilds.erase(newBuilds.begin() + (newBuilds.size() - 1));
-				m.unlock();
+        // MT
+        auto nowEval = std::chrono::system_clock::now();
+        std::mutex m;
+        std::vector<std::thread> threads;
+        auto threadFunc = [&]()
+        {
+            while (true)
+            {
+                // get a build
+                m.lock();
+                if (newBuilds.empty()) // finished?
+                {
+                    m.unlock();
+                    return;
+                }
+                auto b = newBuilds[newBuilds.size() - 1];
+                newBuilds.erase(newBuilds.begin() + (newBuilds.size() - 1));
+                m.unlock();
 
-				// evaluate
-				auto res = std::make_pair(evaluate(b), b);
+                // evaluate
+                auto res = std::make_pair(evaluate(b), b);
 
-				// report results
-				m.lock();
-				activeBuilds.push_back(res);
-				m.unlock();
-			}
-		};
+                // report results
+                m.lock();
+                activeBuilds.push_back(res);
+                m.unlock();
+            }
+        };
 
-		// start threads
-		for (auto i = 0; i < 8; ++i)
-			threads.push_back(std::thread(threadFunc));
+        // start threads
+        for (auto i = 0; i < 8; ++i)
+            threads.push_back(std::thread(threadFunc));
 
-		// stop threads
-		for (auto i = 0; i < 8; ++i)
-			threads[i].join();
-		secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - nowEval).count();
+        // stop threads
+        for (auto i = 0; i < 8; ++i)
+            threads[i].join();
+        secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - nowEval).count();
 
         // sort builds by dps
         sort(begin(activeBuilds), end(activeBuilds), [](std::pair<double, Build> const& l, std::pair<double, Build> const& r)
@@ -144,8 +145,8 @@ void Optimizer::run(int generations)
         auto nonSimTime = totalTime - secondsSim;
         std::cout << "  - highest DPS: " << activeBuilds[0].first << std::endl;
         std::cout << "  - simulation: " << secondsSim << " seconds" << std::endl;
-		std::cout << "  - other:      " << nonSimTime << " seconds" << std::endl;
-		std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
+        std::cout << "  - other:      " << nonSimTime << " seconds" << std::endl;
+        std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
     }
 }
 
@@ -208,16 +209,16 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
     std::uniform_int_distribution<int> randomSkill(0, maxActives - 1);
-	std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
-	std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
-	std::uniform_int_distribution<int> randomNeck(0, 2);
-	std::uniform_int_distribution<int> randomMinRes(1, 5);
-	std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count);
+    std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
+    std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
+    std::uniform_int_distribution<int> randomNeck(0, 2);
+    std::uniform_int_distribution<int> randomMinRes(1, 5);
+    std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count - 1);
 
     auto b = build;
-	auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
-	assert(oldRot);
-	auto newRot = oldRot->clone();
+    auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
+    assert(oldRot);
+    auto newRot = oldRot->clone();
 
     auto resortPassives = false;
 
@@ -228,8 +229,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         switch (c)
         {
         case BuildChange::Builder:
-			if (fixedBuilder)
-				break; // forbidden
+            if (fixedBuilder)
+                break; // forbidden
             for (auto& s : b.skills.skills)
                 if (s.skilltype == SkillType::Builder)
                 {
@@ -269,8 +270,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
         case BuildChange::EliteActive:
-			if (!useEliteActive)
-				break; // forbidden
+            if (!useEliteActive)
+                break; // forbidden
             // dmg augments don't need adjustment, cause active elites always have them
             for (auto& s : b.skills.skills)
                 if (s.skilltype == SkillType::Elite)
@@ -321,8 +322,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
         case BuildChange::ElitePassive:
-			if (!useElitePassive)
-				break; // forbidden
+            if (!useElitePassive)
+                break; // forbidden
             for (auto& p : b.skills.passives)
                 if (p.passivetype == PassiveType::Elite)
                 {
@@ -350,82 +351,82 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         case BuildChange::SignetChange:
             while (!changed)
             {
-				auto idx = randomElement(headWeaponGearSlots);
+                auto idx = randomElement(headWeaponGearSlots);
 
-				if (!switchEmptySignets && b.gear.pieces[idx].signet.name() == "")
-					break;
+                if (!switchEmptySignets && b.gear.pieces[idx].signet.name() == "")
+                    break;
 
-				b.gear.pieces[idx].signet = randomElement(allHeadWeaponSignets);
-				changed = true;
+                b.gear.pieces[idx].signet = randomElement(allHeadWeaponSignets);
+                changed = true;
             }
             break;
         case BuildChange::SignetSwitch:
-			while (!changed)
-			{
-				auto idx1 = randomElement(headWeaponGearSlots);
-				auto idx2 = randomElement(headWeaponGearSlots);
+            while (!changed)
+            {
+                auto idx1 = randomElement(headWeaponGearSlots);
+                auto idx2 = randomElement(headWeaponGearSlots);
 
-				if (idx1 == idx2)
-					continue;
+                if (idx1 == idx2)
+                    continue;
 
-				if (!switchEmptySignets && b.gear.pieces[idx1].signet.name() == "")
-					break;
-				if (!switchEmptySignets && b.gear.pieces[idx2].signet.name() == "")
-					break;
+                if (!switchEmptySignets && b.gear.pieces[idx1].signet.name() == "")
+                    break;
+                if (!switchEmptySignets && b.gear.pieces[idx2].signet.name() == "")
+                    break;
 
-				auto tmp = b.gear.pieces[idx1].signet;
-				b.gear.pieces[idx1].signet = b.gear.pieces[idx2].signet;
-				b.gear.pieces[idx2].signet = tmp;
-				changed = true;
-			}
+                auto tmp = b.gear.pieces[idx1].signet;
+                b.gear.pieces[idx1].signet = b.gear.pieces[idx2].signet;
+                b.gear.pieces[idx2].signet = tmp;
+                changed = true;
+            }
             break;
         case BuildChange::NeckTalisman:
-			while (!changed)
-			{
-				auto type = randomNeck(random);
+            while (!changed)
+            {
+                auto type = randomNeck(random);
 
-				switch (type)
-				{
-				case 0: // normal
-					b.gear.setNeckQL11();
-					break;
-				case 1: // woodcutters
-					b.gear.setNeckWoodcutters();
-					break;
-				case 2: // egon
-					b.gear.setNeckEgon();
-					break;
-				}
+                switch (type)
+                {
+                case 0: // normal
+                    b.gear.setNeckQL11();
+                    break;
+                case 1: // woodcutters
+                    b.gear.setNeckWoodcutters();
+                    break;
+                case 2: // egon
+                    b.gear.setNeckEgon();
+                    break;
+                }
 
-				changed = true;
-			}
+                changed = true;
+            }
             break;
         case BuildChange::StatChange:
-			while (!changed)
-			{
-				auto idx = randomGearSlot(random);
-				if (b.gear.pieces[idx].status != Gear::SlotStatus::Free)
-					continue;
+            while (!changed)
+            {
+                auto idx = randomGearSlot(random);
+                if (b.gear.pieces[idx].status != Gear::SlotStatus::Free)
+                    continue;
 
-				assert(!freeRatings.empty());
-				if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
-				{
-					b.gear.pieces[idx].free(randomElement(freeRatings));
-				}
-				else
-				{
-					Rating r1, r2;
-					do
-					{
-						r1 = randomElement(freeRatings);
-						r2 = randomElement(freeRatings);
-					} while (r1 == r2);
+                assert(!freeRatings.empty());
+                if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
+                {
+                    b.gear.pieces[idx].free(randomElement(freeRatings));
+                }
+                else
+                {
+                    Rating r1, r2;
+                    do
+                    {
+                        r1 = randomElement(freeRatings);
+                        r2 = randomElement(freeRatings);
+                    } while (r1 == r2);
 
-					b.gear.pieces[idx].free(r1);
-					b.gear.pieces[idx].free(r2);
-					changed = true;
-				}
-			}
+                    b.gear.pieces[idx].free(r1);
+                    b.gear.pieces[idx].free(r2);
+                    changed = true;
+                }
+            }
             break;
         case BuildChange::Augment:
             while (!changed)
@@ -455,37 +456,43 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 changed = true;
             }
             break;
-		case BuildChange::Aux:
-			// TODO
-			break;
-		case BuildChange::Rotation:
-			switch ((DefaultRotation::Setting) randomRotChance(random))
-		{
-			case DefaultRotation::Setting::MinResources:
-			{
-				auto f = dice(random);
-				if (f < .66)
-					newRot->minResourcesForLeftConsumer = randomMinRes(random);
-				if (f > .33)
-					newRot->minResourcesForRightConsumer = randomMinRes(random);
-			}
-				break;
-			case DefaultRotation::Setting::TryToConsumeOnBuffed:
-				newRot->tryToConsumeOnBuffed = dice(random) < 0.5;
-				break;
-			case DefaultRotation::Setting::ConsiderEF:
-				newRot->considerBuffEF = dice(random) < 0.5;
-				break;
-			case DefaultRotation::Setting::ConsiderFF:
-				newRot->considerBuffFF = dice(random) < 0.5;
-				break;
-			case DefaultRotation::Setting::ConsiderWC:
-				newRot->considerBuffWC = dice(random) < 0.5;
-				break;
-			default:
-				assert(0 && "not impl");
-		}
-			break;
+        case BuildChange::Aux:
+            // TODO
+            break;
+        case BuildChange::Rotation:
+            switch ((DefaultRotation::Setting)randomRotChance(random))
+            {
+            case DefaultRotation::Setting::MinResources:
+            {
+                auto f = dice(random);
+                if (f < .66)
+                    newRot->minResourcesForLeftConsumer = randomMinRes(random);
+                if (f > .33)
+                    newRot->minResourcesForRightConsumer = randomMinRes(random);
+            }
+            break;
+            case DefaultRotation::Setting::TryToConsumeOnBuffed:
+                newRot->tryToConsumeOnBuffed = !newRot->tryToConsumeOnBuffed;
+                break;
+            case DefaultRotation::Setting::ConsiderEF:
+                newRot->considerBuffEF = !newRot->considerBuffEF;
+                break;
+            case DefaultRotation::Setting::ConsiderFF:
+                newRot->considerBuffFF = !newRot->considerBuffFF;
+                break;
+            case DefaultRotation::Setting::ConsiderWC:
+                newRot->considerBuffWC = !newRot->considerBuffWC;
+                break;
+            case DefaultRotation::Setting::ConsumeUntilOffering:
+                newRot->consumeIfNotBloodOffering = !newRot->consumeIfNotBloodOffering;
+                break;
+            case DefaultRotation::Setting::BuildOnlyBeforeMajorBuffs:
+                newRot->buildOnlyBeforeMajorBuffs = !newRot->buildOnlyBeforeMajorBuffs;
+                break;
+            default:
+                assert(0 && "not impl");
+            }
+            break;
 
         case BuildChange::Count:
             assert(false);
@@ -496,14 +503,16 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     if (resortPassives)
         normalizeBuild(b);
 
+    b.rotation = newRot;
     return b;
 }
 
 void Optimizer::normalizeBuild(Build& b)
 {
-	while (b.skills.passives.size() < maxPassives)
-		b.skills.passives.push_back(Passives::empty());
-	sort(begin(b.skills.passives), end(b.skills.passives), [](Passive const& l, Passive const& r)
+    while (b.skills.passives.size() < maxPassives)
+        b.skills.passives.push_back(Passives::empty());
+
+    sort(begin(b.skills.passives), end(b.skills.passives), [](Passive const& l, Passive const& r)
          {
              return l.name < r.name;
          });

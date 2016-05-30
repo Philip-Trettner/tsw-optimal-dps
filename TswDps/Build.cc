@@ -67,13 +67,13 @@ void Build::shortDump() const
     std::cout << s.penRating << " Pen, ";
     std::cout << s.critRating << " CR, ";
     std::cout << s.critPowerRating << " CP, Neck: ";
-	if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
-		std::cout << "Woodcutters";
-	else if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::EgonPendant)
-		std::cout << "Amulet of Yuggoth";
-	else 
-		std::cout << "QL11 + Violence";
-	std::cout << std::endl;
+    if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
+        std::cout << "Woodcutters";
+    else if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::EgonPendant)
+        std::cout << "Amulet of Yuggoth";
+    else
+        std::cout << "QL11 + Violence";
+    std::cout << std::endl;
 
     std::cout << "Weapons:  ";
     std::cout << shortStatDump(gear.pieces[Gear::WeaponLeft]) << " for " << to_string(gear.leftWeapon) << ", ";
@@ -86,13 +86,14 @@ void Build::shortDump() const
     std::cout << gear.pieces[Gear::WeaponRight].signet.name() << " on " << to_string(gear.rightWeapon);
     std::cout << std::endl;
 
-	auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
-	if (defRot)
-	{
-		std::cout << "Rotation: ";
-		std::cout << "use resources on " << defRot->minResourcesForLeftConsumer << " for " << to_string(gear.leftWeapon) << " and " << defRot->minResourcesForRightConsumer << " for " << to_string(gear.rightWeapon);
-		if (defRot->tryToConsumeOnBuffed)
-			std::cout << " (But prefer consume on buffs)";
+    auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
+    if (defRot)
+    {
+        std::cout << "Rotation: ";
+        std::cout << "use resources on " << defRot->minResourcesForLeftConsumer << " for " << to_string(gear.leftWeapon)
+                  << " and " << defRot->minResourcesForRightConsumer << " for " << to_string(gear.rightWeapon);
+        if (defRot->tryToConsumeOnBuffed)
+            std::cout << " (But prefer consume on buffs)";
         std::cout << ", buffs are: [ ";
         if (defRot->considerBuffEF)
             std::cout << "EF ";
@@ -101,8 +102,12 @@ void Build::shortDump() const
         if (defRot->considerBuffWC)
             std::cout << "WC ";
         std::cout << "]";
-		std::cout << std::endl;
-	}
+        if (defRot->consumeIfNotBloodOffering && (gear.leftWeapon == Weapon::Blood || gear.rightWeapon == Weapon::Blood))
+            std::cout << ", force Blood Offering uptime";
+        if (defRot->buildOnlyBeforeMajorBuffs)
+            std::cout << ", only build shorty before DABS";
+        std::cout << std::endl;
+    }
 
     // TODO: potion?
 }

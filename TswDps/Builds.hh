@@ -14,27 +14,28 @@ struct Builds
     {
         Build b;
         auto rot = DefaultRotation::create();
-        rot->tryToConsumeOnBuffed = true;
         b.rotation = rot;
 
         b.skills = {{
                         // skills
-                        Skills::Elemental::Ignition(),
+                        Skills::Blood::Bloodline(),
+                        Skills::Blood::Bloodshot(),
+                        Skills::Blood::CardiacArrest(),
                     },
                     {
                         // augs
                     },
                     {
                         // passives
-                        Passives::Hammer::Thunderstruck(),
-                        Passives::Blade::SuddenReturn(),
+                        //Passives::Hammer::Thunderstruck(),
+                        //Passives::Blade::SuddenReturn(),
                     }};
 
         // gear
         b.gear.loadStandardDpsGear();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Hammer;
+        b.gear.leftWeapon = Weapon::Blood;
         b.gear.rightWeapon = Weapon::Elemental;
         return b;
     }

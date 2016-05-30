@@ -535,6 +535,58 @@ public:
 
     struct Blood : private Base<Weapon::Blood, DmgType::Magic>
     {
+        static Skill BoilingBlood()
+        {
+            auto s = skill("Boiling Blood", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.casttimeIn60th = s.timeIn60th;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            return s;
+        }
+        static Skill CardiacArrest()
+        {
+            auto s = skill("Cardiac Arrest", SkillType::Elite);
+            s.timeIn60th = 60;
+            s.casttimeIn60th = s.timeIn60th;
+            s.cooldownIn60th = 25 * 60;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            s.animaDeviation = true;
+            s.appliesVulnerability = DmgType::Melee;
+            return s;
+        }
+        static Skill Exsanguinate()
+        {
+            auto s = skill("Exsanguinate", SkillType::Consumer);
+            s.timeIn60th = 150;
+            s.cooldownIn60th = 60 * 4;
+            s.hits = 5;
+            s.fixedConsumerResources = 5;
+            s.dmgScaling = scaling(s.name);
+            s.channeling = true;
+            s.subtype = SubType::Focus;
+            return s;
+        }
+        static Skill Bloodline()
+        {
+            auto s = skill("Bloodline", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.hits = 4;
+            s.subtype = SubType::Focus;
+            s.dmgScaling = scaling(s.name);
+            s.channeling = true;
+            return s;
+        }
+        static Skill Bloodshot()
+        {
+            auto s = skill("Bloodshot", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.fixedConsumerResources = 2;
+            s.dmgScaling = scaling(s.name);
+            return s;
+        }
     };
 
     struct Elemental : private Base<Weapon::Elemental, DmgType::Magic>
