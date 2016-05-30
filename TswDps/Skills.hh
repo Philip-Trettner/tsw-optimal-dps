@@ -608,6 +608,7 @@ public:
         {
             auto s = skill("Molten Earth", SkillType::Elite);
             s.timeIn60th = 60;
+            s.cooldownIn60th = 25 * 60;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.animaDeviation = true;
@@ -678,9 +679,10 @@ public:
 
         static Skill FireManifestation()
         {
-            auto s = skill("Fire Manifestation", SkillType::None);
+            auto s = skill("Fire Manifestation", SkillType::Consumer);
             s.timeIn60th = 60;
             s.cooldownIn60th = 10 * 60;
+            s.fixedConsumerResources = 2;
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::FireManifestation;
             s.passive.effectStacks = 4;
@@ -689,9 +691,10 @@ public:
 
         static Skill LightningManifestation()
         {
-            auto s = skill("Lightning Manifestation", SkillType::None);
+            auto s = skill("Lightning Manifestation", SkillType::Consumer);
             s.timeIn60th = 60;
             s.cooldownIn60th = 15 * 60;
+            s.fixedConsumerResources = 2;
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::LightningManifestation;
             s.passive.effectStacks = 10;

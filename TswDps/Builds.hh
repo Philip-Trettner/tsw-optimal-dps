@@ -19,9 +19,7 @@ struct Builds
 
         b.skills = {{
                         // skills
-                        Skills::Blade::GrassCutter(),
-                        Skills::Blade::SteelEcho(),
-                        Skills::Blade::DancingBlade(),
+                        Skills::Elemental::Ignition(),
                     },
                     {
                         // augs
@@ -35,8 +33,9 @@ struct Builds
         // gear
         b.gear.loadStandardDpsGear();
 
+        // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Hammer;
-        b.gear.rightWeapon = Weapon::Blade;
+        b.gear.rightWeapon = Weapon::Elemental;
         return b;
     }
 
