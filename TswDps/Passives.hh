@@ -272,6 +272,7 @@ public:
 
             // TODO: affliction!
             p.trigger = Trigger::FinishActivation;
+            p.triggerOnDamaging = true;
             p.effect = EffectSlot::FatalFlourishStacks;
 
             return p;
