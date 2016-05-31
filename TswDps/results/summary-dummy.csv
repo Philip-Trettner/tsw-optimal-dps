@@ -1,0 +1,33 @@
+Wep-to-Wep,Blade,Fist,Hammer,Blood,Chaos,Elemental,Rifle,Pistol,Shotgun
+Blade,-,4983.92,5513.93,5804.19,5176.08,6031.37,5318.16,5218.09,5157.78
+Fist,4983.92,-,5548.21,5316.5,5372.96,6527.52,5712.45,5334.75,5294.73
+Hammer,5513.93,5548.21,-,5888.66,5564.03,6820.8,5766.01,5711.04,5625.23
+Blood,5804.19,5316.5,5888.66,-,5649.58,6872.75,5741.67,5432.97,5572.12
+Chaos,5176.08,5372.96,5564.03,5649.58,-,6281.62,5067.16,5008.34,5416.99
+Elemental,6031.37,6527.52,6820.8,6872.75,6281.62,-,6588.08,6309.65,6079.03
+Rifle,5318.16,5712.45,5766.01,5741.67,5067.16,6588.08,-,5494.04,5305.23
+Pistol,5218.09,5334.75,5711.04,5432.97,5008.34,6309.65,5494.04,-,5129.14
+Shotgun,5157.78,5294.73,5625.23,5572.12,5416.99,6079.03,5305.23,5129.14,-
+
+Passives:,36,builds
+Live Wire,35
+One In The Chamber,31
+Iron Maiden,30
+Sudden Return,26
+Fortunate Strike,24
+Elemental Force,22
+Gnosis,20
+Lethality,20
+Twist The Knife,13
+Fatal Flourish,7
+Brawler,6
+Invasive Measures,5
+Tenderising,4
+Mad Skills,2
+Accuracy,1
+Closer,1
+Increased Focus,1
+Punishment,1
+Short Controlled Bursts,1
+Thicker Than Water,1
+Thunderstruck,1

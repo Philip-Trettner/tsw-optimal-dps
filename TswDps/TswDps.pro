@@ -88,6 +88,43 @@ HEADERS += \
     results/best/Shotgun-Rifle.json \
     results/best/Shotgun-Pistol.json \
     results/summary-best.csv \
+    results/dummy/Fist-Blade.json \
+    results/dummy/Hammer-Blade.json \
+    results/dummy/Hammer-Fist.json \
+    results/dummy/Blood-Blade.json \
+    results/dummy/Blood-Fist.json \
+    results/dummy/Blood-Hammer.json \
+    results/dummy/Chaos-Blade.json \
+    results/dummy/Chaos-Fist.json \
+    results/dummy/Chaos-Hammer.json \
+    results/dummy/Chaos-Blood.json \
+    results/dummy/Elemental-Blade.json \
+    results/dummy/Elemental-Fist.json \
+    results/dummy/Elemental-Hammer.json \
+    results/dummy/Elemental-Blood.json \
+    results/dummy/Elemental-Chaos.json \
+    results/dummy/Rifle-Blade.json \
+    results/dummy/Rifle-Fist.json \
+    results/dummy/Rifle-Hammer.json \
+    results/dummy/Rifle-Blood.json \
+    results/dummy/Rifle-Chaos.json \
+    results/dummy/Rifle-Elemental.json \
+    results/dummy/Pistol-Blade.json \
+    results/dummy/Pistol-Fist.json \
+    results/dummy/Pistol-Hammer.json \
+    results/dummy/Pistol-Blood.json \
+    results/dummy/Pistol-Chaos.json \
+    results/dummy/Pistol-Elemental.json \
+    results/dummy/Pistol-Rifle.json \
+    results/dummy/Shotgun-Blade.json \
+    results/dummy/Shotgun-Fist.json \
+    results/dummy/Shotgun-Hammer.json \
+    results/dummy/Shotgun-Blood.json \
+    results/dummy/Shotgun-Chaos.json \
+    results/dummy/Shotgun-Elemental.json \
+    results/dummy/Shotgun-Rifle.json \
+    results/dummy/Shotgun-Pistol.json \
+    results/summary-dummy.csv \
     results/burst/Fist-Blade.json \
     results/burst/Hammer-Blade.json \
     results/burst/Hammer-Fist.json \

@@ -10,7 +10,7 @@
 
 #define SKILL_CNT (8)
 
-#define INF_TIME (3600 * 60)
+#define INF_TIME (1000 * 3600 * 60)
 
 using namespace std;
 

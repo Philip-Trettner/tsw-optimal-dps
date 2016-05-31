@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
      * TODO:
      *
      * * Bullet Ballet
-     * * FtM, IM
      * * Subway Tokens (.4 and .9)
      *
      * later: afflictions + signet of corruption
@@ -100,7 +99,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
 
     if (!buffs)
-        s.buffAt = 100000;
+        s.buffAt = INF_TIME;
 
     // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
     // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
@@ -236,6 +235,9 @@ void explore(ExploreType type)
     case ExploreType::Burst:
         suffix = "burst";
         break;
+    case ExploreType::Dummy:
+        suffix = "dummy";
+        break;
     }
 
     std::cout << "Exploring '" << suffix << "'" << std::endl;
@@ -290,6 +292,11 @@ void explore(ExploreType type)
             case ExploreType::Burst:
                 s.enemyInfo.allVulnerabilities = true;
                 o.timePerFight = 15 * 60; // 15s
+                break;
+            case ExploreType::Dummy:
+                s.enemyInfo.allVulnerabilities = false; // no vuln
+                o.timePerFight = 2 * 60 * 60;           // 2 min parses
+                s.buffAt = INF_TIME;                    // no buffs
                 break;
             }
 
