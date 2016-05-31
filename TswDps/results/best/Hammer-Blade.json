@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Piercing",
 		"Fierce",
+		"Piercing",
 		"",
-		"Accurate",
-		"",
+		"Focused",
+		"Brutal",
 		"Ferocious",
 		"",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -104,17 +104,17 @@
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Grand Slam",
+		"Smash",
 		"Molten Steel",
 		"Steel Echo",
 		"Four Seasons",

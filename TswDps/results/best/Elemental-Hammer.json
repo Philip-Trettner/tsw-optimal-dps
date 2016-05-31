@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
 		"Piercing",
+		"",
 		"Accurate",
+		"",
 		"Ferocious",
 		"Brutal",
-		"",
 		"" 
 	],
 	"Gear": [
@@ -104,7 +104,7 @@
 	],
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -114,13 +114,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Ignition",
-		"Full Momentum",
+		"Shock",
 		"Power Line",
+		"Lightning Manifestation",
 		"Fire Manifestation",
+		"Full Momentum",
 		"Molten Steel",
 		"Stone's Throw",
-		"Lightning Manifestation",
 		"" 
 	] 
 } 

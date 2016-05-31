@@ -2,7 +2,7 @@
 	"Augments": [
 		"Grievous",
 		"Piercing",
-		"Fierce",
+		"Brutal",
 		"Accurate",
 		"Focused",
 		"",
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,

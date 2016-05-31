@@ -1,10 +1,10 @@
 {
 	"Augments": [
+		"Grievous",
 		"Fierce",
-		"Focused",
 		"Ferocious",
 		"",
-		"Grievous",
+		"Brutal",
 		"",
 		"Accurate",
 		"" 
@@ -104,14 +104,14 @@
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
@@ -120,7 +120,7 @@
 		"Cannibalize",
 		"Three Round Burst",
 		"Lock & Load",
-		"Contaminate",
+		"Left Hand of Darkness",
 		"" 
 	] 
 } 

@@ -294,30 +294,44 @@ void Simulation::simulate(int totalTimeIn60th)
 
             auto resBefore = weaponResources[currentWeapon];
 
-            // fixed res consumer
-            if (skill.fixedConsumerResources > 0)
-            {
-                weaponResources[currentWeapon] -= skill.fixedConsumerResources;
-                if (weaponResources[currentWeapon] < 0)
+            // check if consumes resources
+            bool consumeResources = true;
+            for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+                if (effectStacks[i] > 0 && effects[i].makeConsumerFree
+                    && effects[i].affects(skill.dmgtype, skill.skilltype, skill.subtype, skill.weapon))
                 {
-                    assert(skill.weapon == Weapon::Blood && "trying to consume below 0 on non-blood");
-                    if (effectStacks[(int)EffectSlot::BloodOffering] > 0)
-                        assert(false && "trying to consume below 0 while blood offering is active");
-                    weaponResources[currentWeapon] = 0;
-                    procBloodOffering = true;
+                    consumeResources = false; // e.g. anima charge
+                    break;
                 }
-            }
-            else // consumes all res
+
+            // if actually requires resources
+            if (consumeResources)
             {
-                assert(weaponResources[currentWeapon] > 0 && "trying to consume on 0 res");
-                weaponResources[currentWeapon] = 0;
+                // fixed res consumer
+                if (skill.fixedConsumerResources > 0)
+                {
+                    weaponResources[currentWeapon] -= skill.fixedConsumerResources;
+                    if (weaponResources[currentWeapon] < 0)
+                    {
+                        assert(skill.weapon == Weapon::Blood && "trying to consume below 0 on non-blood");
+                        if (effectStacks[(int)EffectSlot::BloodOffering] > 0)
+                            assert(false && "trying to consume below 0 while blood offering is active");
+                        weaponResources[currentWeapon] = 0;
+                        procBloodOffering = true;
+                    }
+                }
+                else // consumes all res
+                {
+                    assert(weaponResources[currentWeapon] > 0 && "trying to consume on 0 res");
+                    weaponResources[currentWeapon] = 0;
+                }
+
+                // res consumed
+                resourcesConsumed = resBefore - weaponResources[currentWeapon];
+
+                if (log)
+                    log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
             }
-
-            // res consumed
-            resourcesConsumed = resBefore - weaponResources[currentWeapon];
-
-            if (log)
-                log->logResource(this, currentTime, skill.weapon, -resourcesConsumed);
         }
 
         // precalc scaling
@@ -576,10 +590,8 @@ void Simulation::fullHit(const Stats& baseStats,
             resetEffect((EffectSlot)i);
 
         // proc on skill hit
-        if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0)
-            if (effect.restrictToWeapon == Weapon::None
-                || srcSkill->weapon == effect.restrictToWeapon) // correct weapon
-                procEffectDmg(procStat, effect, dmgScaling);
+        if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0 && effect.affects(dmgtype, skilltype, subtype, weapon))
+            procEffectDmg(procStat, effect, dmgScaling);
     }
 
     // effects trigger AFTER the hit
@@ -587,8 +599,6 @@ void Simulation::fullHit(const Stats& baseStats,
     {
         auto slot = (size_t)passive.effect;
         auto const& effect = effects[slot];
-        // if (effect.slot == EffectSlot::Count)
-        //    std::cerr << "Unregistered effect " << effect.name << " for " << passive.name << std::endl;
         assert(effect.slot < EffectSlot::Count && "effect not registered");
 
         // finish activation is handled differently
@@ -642,12 +652,8 @@ void Simulation::fullHit(const Stats& baseStats,
         if (effect.cannotConsumeSameAbility && effectSkillID[i] == currSkillID)
             continue;
 
-        // wrong weapon type
-        if (effect.restrictToWeapon != Weapon::None && weapon != effect.restrictToWeapon)
-            continue;
-
-        // wrong skill type
-        if (effect.restrictToSkillType != SkillType::None && skilltype != effect.restrictToSkillType)
+        // not affected
+        if (!effect.affects(dmgtype, skilltype, subtype, weapon))
             continue;
 
         // lose one stack after each hit (or at end of ability)
@@ -748,6 +754,10 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // proc dmg
     if (effect.procOn == ProcOn::Gain)
         procEffectDmg(procStats, effect, originalHitScaling);
+
+    // trigger on max res
+    if (effect.triggerOnMaxRes != EffectSlot::Count && currentWeapon >= 0 && weaponResources[currentWeapon] == 5)
+        procEffect(procStats, effect.triggerOnMaxRes, originalHitScaling);
 
     // gain resources
     for (auto r = 0; r < effect.gainResources; ++r)
@@ -988,14 +998,8 @@ void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype
     // add currently running effects
     for (auto i = 0; i < (int)EffectSlot::Count; ++i)
     {
-        if (skilltype == SkillType::Proc && !effects[i].affectProcs)
-            continue; // not all effects affect procs
-
-        if (effects[i].restrictToWeapon != Weapon::None && weapon != effects[i].restrictToWeapon)
-            continue; // does not affect this weapon
-
-        if (effects[i].restrictToSkillType != SkillType::None && skilltype != effects[i].restrictToSkillType)
-            continue; // does not affect this weapon
+        if (!effects[i].affects(dmgtype, skilltype, subtype, weapon))
+            continue; // not affected
 
         if (effectStacks[i] > 1)
             stats = stats + effects[i].bonusStats * (float)effectStacks[i];
@@ -1043,8 +1047,12 @@ void Simulation::registerEffects()
     registerEffect(Effects::Passive::ElementalForceStacks());
     registerEffect(Effects::Passive::FatalFlourishBuff());
     registerEffect(Effects::Passive::FatalFlourishStacks());
+    registerEffect(Effects::Passive::DoomBuff());
+    registerEffect(Effects::Passive::DoomStacks());
     registerEffect(Effects::Passive::Lethality());
     registerEffect(Effects::Passive::TwistTheKnife());
+    registerEffect(Effects::Passive::InvasiveMeasures());
+    registerEffect(Effects::Passive::InvasiveMeasuresProc());
 
     registerEffect(Effects::Signet::Abuse());
     registerEffect(Effects::Signet::Aggression());
@@ -1094,6 +1102,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::SkillPassive::GunFu());
     registerEffect(Effects::SkillPassive::LockAndLoad());
     registerEffect(Effects::SkillPassive::Cannibalize());
+    registerEffect(Effects::SkillPassive::AnimaCharge());
     registerEffect(Effects::SkillPassive::LockStockBarrel());
     registerEffect(Effects::SkillPassive::LockStockBarrelGain());
     registerEffect(Effects::SkillPassive::SteelEcho());

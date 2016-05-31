@@ -799,6 +799,17 @@ public:
             s.passive.effectStacks = 10;
             return s;
         }
+
+        static Skill AnimaCharge()
+        {
+            auto s = skill("Anima Charge", SkillType::None);
+            s.passive.trigger = Trigger::FinishActivation;
+            s.passive.effect = EffectSlot::AnimaCharge;
+            s.cooldownIn60th = 30 * 60;
+            s.slotForDmgAug = false;
+            // TODO: Casttime?
+            return s;
+        }
     };
 
     struct Blade : private Base<Weapon::Blade, DmgType::Melee>

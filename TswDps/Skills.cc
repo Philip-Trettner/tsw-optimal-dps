@@ -97,7 +97,7 @@ std::vector<Skill> Skills::all()
         Elemental::PowerLine(),              //
         Elemental::FireManifestation(),      //
         Elemental::LightningManifestation(), //
-                                             // TODO: Anima Charge (with passive?)
+        Elemental::AnimaCharge(),            //
 
         Blood::Bloodline(),          //
         Blood::Bloodshot(),          //

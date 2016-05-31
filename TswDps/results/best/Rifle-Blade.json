@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Fierce",
+		"Brutal",
 		"",
 		"Focused",
-		"",
-		"Brutal",
+		"Piercing",
+		"Fierce",
 		"",
 		"Accurate",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -95,8 +95,8 @@
 	"Left Weapon": 7,
 	"Passives": [
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
@@ -109,8 +109,8 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -119,8 +119,8 @@
 		"Four Seasons",
 		"Three Round Burst",
 		"Dancing Blade",
+		"Lock & Load",
 		"Balanced Blade",
-		"Binding Wounds",
 		"" 
 	] 
 } 

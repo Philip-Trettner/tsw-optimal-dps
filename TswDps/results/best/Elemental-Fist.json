@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Focused",
-		"Brutal",
-		"Grievous",
-		"Accurate",
+		"Ferocious",
 		"Piercing",
+		"Accurate",
+		"Brutal",
 		"",
 		"",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -111,16 +111,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Fire Manifestation",
 		"Tear Em Up",
+		"Power Line",
 		"Lightning Manifestation",
+		"Fire Manifestation",
 		"Wild at Heart",
 		"Reckless",
-		"Power Line",
 		"" 
 	] 
 } 

@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Focused",
+		"",
+		"",
 		"Ferocious",
-		"",
-		"Fierce",
-		"",
+		"Piercing",
+		"Focused",
 		"Accurate",
 		"" 
 	],
@@ -95,9 +95,9 @@
 	"Left Weapon": 4,
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
@@ -108,19 +108,19 @@
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": false,
+		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Tear Em Up",
-		"Bloodshot",
 		"Reckless",
-		"Contaminate",
 		"Cannibalize",
+		"Bloodshot",
 		"Go for the Throat",
+		"Tear Em Up",
+		"Exsanguinate",
 		"" 
 	] 
 } 

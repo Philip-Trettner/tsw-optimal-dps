@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
-		"Focused",
+		"",
 		"Accurate",
+		"Fierce",
 		"",
+		"Focused",
 		"Ferocious",
-		"",
 		"" 
 	],
 	"Gear": [
@@ -57,8 +57,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -115,12 +115,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Shellshocker",
-		"Three Round Burst",
-		"One-Two",
-		"Lock & Load",
-		"Wild at Heart",
 		"Reckless",
+		"One-Two",
+		"Shellshocker",
+		"Tear Em Up",
+		"Wild at Heart",
+		"Three Round Burst",
 		"" 
 	] 
 } 

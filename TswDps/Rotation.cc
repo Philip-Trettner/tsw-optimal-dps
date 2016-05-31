@@ -13,6 +13,7 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
     bool ffNow = sim.isEffectActive(EffectSlot::FatalFlourishBuff);
     bool wcNow = sim.isEffectActive(EffectSlot::MothersWrathBuff);
     bool bloodOffering = sim.isEffectActive(EffectSlot::BloodOffering);
+    bool animaCharge = sim.isEffectActive(EffectSlot::AnimaCharge);
     bool hasEF = false;
     bool hasWC = false;
     bool hasFF = false;
@@ -90,7 +91,9 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
                 else if (sim.resourcesFor(skills[i].weapon) == 0)
                     canUse = false;
 
-                //std::cout << " can use " << skills[i].name << ": " << canUse << std::endl;
+                // anima charge
+                if (animaCharge && skills[i].weapon == Weapon::Elemental)
+                    canUse = true;
 
                 // cannot use skill currently
                 if (!canUse)

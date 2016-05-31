@@ -3,10 +3,10 @@
 		"Fierce",
 		"Accurate",
 		"",
-		"Brutal",
+		"Ferocious",
 		"Focused",
 		"Piercing",
-		"Ferocious",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -30,8 +30,8 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,22 +89,22 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Left Weapon": 2,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -119,7 +119,7 @@
 		"Reckless",
 		"Tear Em Up",
 		"Four Seasons",
-		"Wild at Heart",
+		"Sling Blade",
 		"Binding Wounds",
 		"" 
 	] 

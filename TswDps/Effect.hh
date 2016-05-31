@@ -66,6 +66,10 @@ MAKE_EFFECT_ENUM(
     ElementalForceBuff,
     FatalFlourishStacks,
     FatalFlourishBuff,
+    DoomStacks,
+    DoomBuff,
+    InvasiveMeasures,
+    InvasiveMeasuresProc,
 
     // skill passives
     Reckless,
@@ -78,6 +82,7 @@ MAKE_EFFECT_ENUM(
     LockAndLoad,
     SteelEcho,
     Cannibalize,
+    AnimaCharge,
 
     // procs
     SuddenReturn,
@@ -156,12 +161,26 @@ struct Effect
     Weapon restrictToWeapon = Weapon::None;          // if non-None, only affects the specified weapon type
     SkillType restrictToSkillType = SkillType::None; // if non-None, only affects the specified skill type
 
+    bool affects(DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon) const
+    {
+        if (!affectProcs && skilltype == SkillType::Proc)
+            return false;
+        if (restrictToWeapon != Weapon::None && weapon != restrictToWeapon)
+            return false;
+        if (restrictToSkillType != SkillType::None && skilltype != restrictToSkillType)
+            return false;
+        // TODO: subtype and dmgtype
+        return true;
+    }
+
     bool cannotConsumeSameAbility = false;        // if true, cannot be consumed in same ability
     bool consumedAfterHit = false;                // if true, 1 stack is consumed after next hit
     bool consumedAfterAbility = false;            // if true, 1 stack is consumed after next ability
     EffectSlot gainOnConsume = EffectSlot::Count; // if non-Count, gains a stack of a given effect after consumed
 
-    int gainResources = 0; // gain resources for active weapon
+    int gainResources = 0;         // gain resources for active weapon
+    bool makeConsumerFree = false; // if true, makes the next consumer free
+    EffectSlot triggerOnMaxRes = EffectSlot::Count; // if max-res, this effect is triggered
 
     EffectSlot gainEffectStacks
         = EffectSlot::Count;    // if non-Count, gains stacks of a given effect when this one gains them

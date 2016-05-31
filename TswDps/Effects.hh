@@ -21,7 +21,6 @@ private:
         }
     };
     static float scaling(std::string const& name) { return SkillTable::scaling(name); }
-
 public:
     struct Signet : private Base
     {
@@ -479,7 +478,7 @@ public:
             auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = scaling(e.name) * 2.8f; // assume always max bonus (3 is unrealistic)
+            e.procDmgScaling = scaling(e.name) * 2.7f; // assume always max bonus (3 is unrealistic, between 2.6 and 2.8)
             e.affectedByAdditiveDmg = true;
             e.isFullHit = true; // TODO: TEST!
 
@@ -594,6 +593,54 @@ public:
 
             return e;
         }
+
+        static Effect DoomStacks()
+        {
+            auto e = effect("Doom Stacks", EffectSlot::DoomStacks);
+
+            // implicit: max once per sec
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 4;
+            e.triggerOnMaxStacks = EffectSlot::DoomBuff;
+            e.blockedSlot = EffectSlot::DoomBuff;
+
+            return e;
+        }
+
+        static Effect DoomBuff()
+        {
+            auto e = effect("Doom Buff", EffectSlot::DoomBuff);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.addedPenChance = 1; // guaranteed pen
+            e.affectProcs = false;           // only actual skills
+            e.consumedAfterAbility = true;
+
+            return e;
+        }
+
+        static Effect InvasiveMeasures()
+        {
+            auto e = effect("Invasive Measures", EffectSlot::InvasiveMeasures);
+
+            e.cooldownIn60th = 0; // no ICD
+            e.gainResources = 1;
+            e.triggerOnMaxRes = EffectSlot::InvasiveMeasuresProc;
+
+            return e;
+        }
+
+        static Effect InvasiveMeasuresProc()
+        {
+            auto e = effect("Invasive Measures Proc", EffectSlot::InvasiveMeasuresProc);
+
+            e.cooldownIn60th = 0; // no ICD
+            e.dmgtype = DmgType::Ranged;
+            e.procDmgScaling = scaling(e.name);
+            e.affectedByAdditiveDmg = true; // TODO: test me!
+
+            return e;
+        }
     };
 
     struct SkillPassive : private Base
@@ -655,6 +702,18 @@ public:
 
             return e;
         }
+        static Effect AnimaCharge()
+        {
+            auto e = effect("Anima Charge", EffectSlot::AnimaCharge);
+
+            e.timeIn60th = 20 * 60;
+            e.restrictToSkillType = SkillType::Consumer;
+            e.restrictToWeapon = Weapon::Elemental;
+            e.consumedAfterAbility = true;
+            e.makeConsumerFree = true;
+
+            return e;
+        }
 
         static Effect FullMomentum()
         {
@@ -704,7 +763,6 @@ public:
 
             return e;
         }
-
     };
 
 private:

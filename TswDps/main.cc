@@ -14,7 +14,15 @@
 #include "SkillTable.hh"
 #include "Optimizer.hh"
 
-void explore();
+
+enum class ExploreType
+{
+    Best,
+    Burst,
+    Dummy,
+};
+
+void explore(ExploreType type);
 
 int main(int argc, char *argv[])
 {
@@ -26,15 +34,18 @@ int main(int argc, char *argv[])
     /**
      * TODO:
      *
-     * * Anima Charge
-     * * Doom
      * * Bullet Ballet
      * * FtM, IM
      * * Subway Tokens (.4 and .9)
      *
      * later: afflictions + signet of corruption
+     *
+     * Doom is strange... is consumed on focus/burst builders?
      */
 
+    Optimizer optimizer;
+
+    const auto exploreType = ExploreType::Dummy;
     const bool exploration = true;
     const bool optimization = true;
 
@@ -45,6 +56,23 @@ int main(int argc, char *argv[])
     const bool longRun = true;
     const bool buffs = true;
 
+    optimizer.excludeSkillsAndPassives = {
+        //"Power Line",         //
+        "Live Wire",          //
+        "Sudden Return",      //
+        "One In The Chamber", //
+        "Fortunate Strike",   //
+        "Thunderstruck",      //
+    };
+    // no procs
+    /*optimizer.excludeSkillsAndPassives = {
+        "Live Wire",          //
+        "Sudden Return",      //
+        "One In The Chamber", //
+        "Fortunate Strike",   //
+        "Thunderstruck",      //
+    };*/
+
     // for (auto const& s : g.enumerateGearStats({Rating::Crit,
     // Rating::CritPower}, true))
     //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
@@ -52,17 +80,15 @@ int main(int argc, char *argv[])
 
     if (exploration)
     {
-        explore();
+        explore(exploreType);
         return 0;
     }
 
 
-    Optimizer optimizer;
-
     AggregateLog log;
     VerboseLog vlog;
     vlog.skillsOnly = !true;
-    vlog.logResources = !true;
+    vlog.logResources = !!true;
     StatLog slog;
     if (!dpsTest)
         log.logs.push_back(&vlog);
@@ -76,18 +102,15 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = 100000;
 
-    s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
-    // s.loadBuild(Builds::currTest());
+    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
+    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
+    s.loadBuild(Builds::currTest());
     // s.loadBuild(Builds::currMaxFistHammer());
     // s.loadBuild(Builds::currMaxPistolShotgun());
     // s.loadBuild(Builds::procHairtriggerOnly());
     // s.loadBuild(Builds::procBurstChaosRifle());
     // s.loadBuild(Builds::procBurstChaosFist());
     // s.loadBuild(Builds::hammerTest());
-
-    std::cout << "Build:" << std::endl;
-    s.build().shortDump();
-    std::cout << std::endl;
 
     std::cout << "Base gear stats:" << std::endl;
     s.gear.gearStats().dumpDpsStats();
@@ -137,6 +160,10 @@ int main(int argc, char *argv[])
 
     std::cout << "Skill stats:" << std::endl;
     s.dumpSkillStats();
+    std::cout << std::endl;
+
+    std::cout << "Build:" << std::endl;
+    s.build().shortDump();
     std::cout << std::endl;
 
     /*if (false)
@@ -189,19 +216,16 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
         s.analyzePassiveContribution(maxTime);
     }
+
+    enum class ExploreType
+    {
+        Best,
+        Burst
+    };
 }
 
-enum class ExploreType
+void explore(ExploreType type)
 {
-    Best,
-    Burst
-};
-
-void explore()
-{
-    // SETTING
-    auto const type = ExploreType::Burst;
-
     // path
     auto suffix = "INVALID";
     switch (type)
@@ -270,7 +294,7 @@ void explore()
             }
 
             std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << (cont ? " [cont.]" : "") << std::flush;
-            o.run(50);
+            o.run(5);
 
             auto const &builds = o.getTopBuilds();
             auto maxDPS = builds[0].first;

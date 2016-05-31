@@ -1,12 +1,12 @@
 {
 	"Augments": [
+		"",
+		"",
+		"Ferocious",
+		"Fierce",
 		"Brutal",
 		"",
-		"Fierce",
 		"Accurate",
-		"Ferocious",
-		"",
-		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -114,13 +114,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"The Business",
-		"Dirty Tricks",
-		"One-Two",
-		"Wild at Heart",
+		"Hair Trigger",
+		"See Red",
 		"Tear Em Up",
+		"One-Two",
+		"Start & Finish",
 		"Reckless",
-		"Gun-Fu",
+		"Wild at Heart",
 		"" 
 	] 
 } 

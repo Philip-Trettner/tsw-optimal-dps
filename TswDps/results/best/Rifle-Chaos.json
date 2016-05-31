@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		} 
 	],
 	"Left Weapon": 7,
@@ -109,15 +109,15 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 4,
+		"minResourcesForRightConsumer": 4,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
 		"Amor Fati",
-		"Four Horsemen",
-		"Eye of Pandemonium",
+		"Call for Eris",
+		"Domino Effect",
 		"Three Round Burst",
 		"Pulling the Strings",
 		"Suffering and Solace",

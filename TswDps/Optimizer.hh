@@ -37,7 +37,7 @@ public: // settings
     Simulation refSim;
 
     /// testing time overall (per build)
-    int timePerTest = 1 * 3600 * 60 / 2;
+    int timePerTest = 1 * 3600 * 60;
     /// time per individual fight
 	int timePerFight = 10 * 60 * 60; // 10 min fights
 
@@ -57,6 +57,9 @@ public: // settings
 
     /// free ratings used for stat optimization
     std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower});
+
+    /// excluded skills and passives
+    std::set<std::string> excludeSkillsAndPassives;
 
 public: // tweaks
     /// Number of simulatenously hold builds

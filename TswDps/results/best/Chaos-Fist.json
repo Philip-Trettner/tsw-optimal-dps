@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Accurate",
-		"",
-		"Piercing",
-		"Fierce",
-		"Ferocious",
 		"Grievous",
+		"Fierce",
+		"",
+		"",
+		"Accurate",
+		"Brutal",
 		"",
 		"" 
 	],
@@ -57,8 +57,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		} 
 	],
 	"Left Weapon": 5,
@@ -98,9 +98,9 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 2,
 	"Rotation": {
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 3,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Reckless",
+		"Four Horsemen",
+		"Amor Fati",
+		"Tear Em Up",
 		"One-Two",
-		"Call for Eris",
-		"Pulling the Strings",
-		"See Red",
-		"Suffering and Solace",
+		"Eye of Pandemonium",
+		"Reckless",
 		"" 
 	] 
 } 

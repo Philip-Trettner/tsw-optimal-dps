@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
 		"Grievous",
-		"Focused",
-		"",
-		"Accurate",
 		"Piercing",
+		"Focused",
+		"Accurate",
+		"",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -57,8 +57,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,8 +95,8 @@
 	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
+		"Fatal Flourish",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
@@ -105,8 +105,8 @@
 	"Right Weapon": 2,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
-		"considerBuffFF": false,
+		"considerBuffEF": true,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
@@ -115,12 +115,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
 		"Tear Em Up",
+		"One-Two",
 		"Sure Shot",
-		"Lock, Stock & Barrel",
-		"Wild at Heart",
 		"Bombardment",
+		"Reckless",
+		"Lock, Stock & Barrel",
 		"" 
 	] 
 } 

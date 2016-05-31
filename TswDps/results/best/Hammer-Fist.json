@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Focused",
+		"",
 		"Piercing",
-		"",
 		"Accurate",
-		"Fierce",
+		"Grievous",
 		"",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -32,10 +32,10 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": true,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
@@ -115,12 +115,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Molten Steel",
-		"Eruption",
 		"Reckless",
+		"Shockwave",
 		"Stone's Throw",
 		"Tear Em Up",
 		"Full Momentum",
+		"Molten Steel",
 		"" 
 	] 
 } 

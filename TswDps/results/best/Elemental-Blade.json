@@ -1,9 +1,9 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
-		"Accurate",
 		"Fierce",
+		"Accurate",
+		"Piercing",
 		"Grievous",
 		"Ferocious",
 		"",
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -89,12 +89,12 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 6,
 	"Passives": [
-		"Brawler",
+		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
@@ -104,7 +104,7 @@
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,

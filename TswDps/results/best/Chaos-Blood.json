@@ -3,9 +3,9 @@
 		"Brutal",
 		"Accurate",
 		"Ferocious",
+		"",
+		"",
 		"Piercing",
-		"",
-		"",
 		"Focused",
 		"" 
 	],
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		} 
 	],
 	"Left Weapon": 5,
@@ -104,20 +104,20 @@
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Bloodline",
-		"Call for Eris",
+		"Run Rampant",
+		"Four Horsemen",
 		"Bloodshot",
-		"Paradox",
+		"Call for Eris",
 		"Pulling the Strings",
 		"Left Hand of Darkness",
 		"Eye of Pandemonium",

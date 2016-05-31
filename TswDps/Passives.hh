@@ -167,6 +167,17 @@ public:
 
             return p;
         }
+
+        static Passive InvasiveMeasures()
+        {
+            auto p = passive("Invasive Measures", PassiveType::None);
+
+            p.trigger = Trigger::Hit;
+            p.triggerChance = 17.5f / 100.f;
+            p.effect = EffectSlot::InvasiveMeasures;
+
+            return p;
+        }
     };
 
     struct Rifle : private Base<Weapon::Rifle, DmgType::Ranged>
@@ -422,6 +433,16 @@ public:
 
             p.restrictWeapon = true;
             p.bonusStats.additiveDamage = 10 / 100.f;
+
+            return p;
+        }
+
+        static Passive Doom()
+        {
+            auto p = passive("Doom", PassiveType::None);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::DoomStacks;
 
             return p;
         }

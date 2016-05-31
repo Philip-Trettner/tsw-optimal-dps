@@ -28,6 +28,9 @@ void Optimizer::run(int generations)
     allAux.clear();
     for (auto const& s : allSkills)
     {
+        if (excludeSkillsAndPassives.count(s.name))
+            continue;
+
         if (s.weapon == Weapon::Aux)
             allAux.push_back(s);
 
@@ -47,6 +50,9 @@ void Optimizer::run(int generations)
     allElitePassives.clear();
     for (auto const& p : allPassives)
     {
+        if (excludeSkillsAndPassives.count(p.name))
+            continue;
+
         assert(p.passivetype != PassiveType::Skill);
 
         if (p.restrictWeapon && p.weaponType != startBuild.gear.leftWeapon && p.weaponType != startBuild.gear.rightWeapon)
