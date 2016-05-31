@@ -2,10 +2,10 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"Fierce",
+		"",
 		"Piercing",
 		"",
-		"",
+		"Fierce",
 		"",
 		"" 
 	],
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 4,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,14 +102,15 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -118,7 +120,7 @@
 		"Bloodshot",
 		"Cannibalize",
 		"Binding Wounds",
-		"",
+		"Left Hand of Darkness",
 		"" 
 	] 
 } 

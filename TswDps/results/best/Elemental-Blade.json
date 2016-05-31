@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
-		"",
 		"Piercing",
-		"Ferocious",
-		"Grievous",
+		"Accurate",
 		"Fierce",
+		"Grievous",
+		"Ferocious",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Left Weapon": 6,
 	"Passives": [
 		"Brawler",
 		"Iron Maiden",
@@ -101,24 +102,25 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Grass Cutter",
 		"Fire Manifestation",
 		"Lightning Manifestation",
-		"Steel Echo",
-		"Flame Strike",
-		"Power Line",
 		"Binding Wounds",
+		"Power Line",
+		"Flame Strike",
+		"Steel Echo",
 		"" 
 	] 
 } 

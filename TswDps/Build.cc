@@ -4,7 +4,7 @@
 #include "Passives.hh"
 #include "Augments.hh"
 
-
+#include <fstream>
 #include <iostream>
 
 namespace
@@ -131,6 +131,8 @@ jsonxx::Object Build::toJson() const
     b << "Skills" << ss;
     b << "Augments" << aa;
     b << "Passives" << pp;
+    b << "Left Weapon" << (int)gear.leftWeapon;
+    b << "Right Weapon" << (int)gear.rightWeapon;
     b << "Gear" << gg;
     auto rot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
     assert(rot && "not supported");
@@ -145,6 +147,9 @@ void Build::fromJson(const jsonxx::Object& o)
     auto aa = o.get<Array>("Augments");
     auto pp = o.get<Array>("Passives");
     auto gg = o.get<Array>("Gear");
+
+    gear.leftWeapon = (Weapon)(int)o.get<Number>("Left Weapon", (int)gear.leftWeapon);
+    gear.rightWeapon = (Weapon)(int)o.get<Number>("Right Weapon", (int)gear.rightWeapon);
 
     auto allSkills = Skills::all();
     auto allAugs = Augments::allDpsAugs();
@@ -217,4 +222,22 @@ void Build::fromJson(const jsonxx::Object& o)
         auto const& go = gg.get<Object>(i);
         gear.pieces[i].fromJson(go);
     }
+
+    auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
+    if (!defRot) defRot = DefaultRotation::create();
+    defRot->fromJson(o.get<Object>("Rotation"));
+    rotation = defRot;
+}
+
+void Build::fromFile(const string& filename)
+{
+    std::ifstream file(filename);
+    if (!file.good())
+    {
+        std::cerr << "Unable to open " << filename;
+        return;
+    }
+    jsonxx::Object o;
+    o.parse(file);
+    fromJson(o);
 }

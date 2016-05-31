@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,26 +89,28 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		} 
 	],
+	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
+	"Right Weapon": 8,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -117,7 +119,7 @@
 		"Lock, Stock & Barrel",
 		"Takedown",
 		"Raging Bullet",
-		"Sure Shot",
+		"Gun-Fu",
 		"Bombardment",
 		"" 
 	] 

@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 #include <fstream>
 
 #include "Augments.hh"
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     const bool exploration = true;
     const bool optimization = true;
 
-    const bool dpsTest = false;
+    const bool dpsTest = true;
 
     const int maxTime = 100 * 1000 * 60;
     const int burstFight = 20 * 60;
@@ -76,7 +76,8 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = 100000;
 
-    s.loadBuild(Builds::currTest());
+    s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
+    // s.loadBuild(Builds::currTest());
     // s.loadBuild(Builds::currMaxFistHammer());
     // s.loadBuild(Builds::currMaxPistolShotgun());
     // s.loadBuild(Builds::procHairtriggerOnly());
@@ -190,29 +191,44 @@ int main(int argc, char *argv[])
     }
 }
 
+enum class ExploreType
+{
+    Best,
+    Burst
+};
+
 void explore()
 {
+    // SETTING
+    auto const type = ExploreType::Burst;
+
+    // path
+    auto suffix = "INVALID";
+    switch (type)
+    {
+    case ExploreType::Best:
+        suffix = "best";
+        break;
+    case ExploreType::Burst:
+        suffix = "burst";
+        break;
+    }
+
+    std::cout << "Exploring '" << suffix << "'" << std::endl;
+
     auto weapons = {Weapon::Blade,     Weapon::Fist,  Weapon::Hammer, Weapon::Blood,  Weapon::Chaos,
                     Weapon::Elemental, Weapon::Rifle, Weapon::Pistol, Weapon::Shotgun};
     auto resPath = pathOf(__FILE__) + "/results/";
-    std::ofstream table(resPath + "summary.csv");
-    table << "Wep-to-Wep";
-    for (auto w : weapons)
-        if (w != *(weapons.begin() + (weapons.size() - 1)))
-            table << " " << to_string(w);
-    table << std::endl;
+    std::map<Weapon, std::map<Weapon, double>> w2w2dps;
+    std::map<std::string, int> passiveCnt;
+    int buildCnt = 0;
     for (auto w1 : weapons)
-    {
-        if (w1 == *begin(weapons))
-            continue;
-
-        table << to_string(w1);
         for (auto w2 : weapons)
         {
             if (w2 >= w1)
                 break;
 
-            auto bestpath = resPath + "best/" + to_string(w1) + "-" + to_string(w2) + ".json";
+            auto bestpath = resPath + suffix + "/" + to_string(w1) + "-" + to_string(w2) + ".json";
 
             // start build
             Build b;
@@ -240,20 +256,64 @@ void explore()
             o.silent = true;
             auto &s = o.refSim;
             s.loadBuild(b);
-            s.enemyInfo.allVulnerabilities = true;
 
-            std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << (cont ? " [cont.]" : "") << std::endl;
-            o.run(100);
+            switch (type)
+            {
+            case ExploreType::Best:
+                s.enemyInfo.allVulnerabilities = true;
+                o.timePerFight = 10 * 60 * 60; // 10 min
+                break;
+            case ExploreType::Burst:
+                s.enemyInfo.allVulnerabilities = true;
+                o.timePerFight = 15 * 60; // 15s
+                break;
+            }
+
+            std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << (cont ? " [cont.]" : "") << std::flush;
+            o.run(50);
 
             auto const &builds = o.getTopBuilds();
             auto maxDPS = builds[0].first;
-            table << " " << maxDPS;
+            w2w2dps[w1][w2] = maxDPS;
+            w2w2dps[w2][w1] = maxDPS;
 
+            std::cout << " ... " << maxDPS << std::endl;
+
+            // stats
+            ++buildCnt;
+            for (auto const &p : builds[0].second.skills.passives)
+                passiveCnt[p.name]++;
+
+            // save
             {
                 std::ofstream bfile(bestpath);
                 bfile << builds[0].second.toJson().json() << std::endl;
             }
         }
+
+    std::ofstream table(resPath + "summary-" + suffix + ".csv");
+    table << "Wep-to-Wep";
+    for (auto w : weapons)
+        table << "," << to_string(w);
+    table << std::endl;
+    for (auto w1 : weapons)
+    {
+        table << to_string(w1);
+        for (auto w2 : weapons)
+        {
+            if (w1 == w2)
+                table << ",-";
+            else
+                table << "," << w2w2dps[w1][w2];
+        }
         table << std::endl;
     }
+    table << std::endl;
+    table << "Passives:," << buildCnt << ",builds" << std::endl;
+    std::vector<std::pair<int, std::string>> cnts;
+    for (auto const &kvp : passiveCnt)
+        cnts.push_back(std::make_pair(-kvp.second, kvp.first));
+    sort(begin(cnts), end(cnts));
+    for (auto const &kvp : cnts)
+        table << kvp.second << "," << -kvp.first << std::endl;
 }

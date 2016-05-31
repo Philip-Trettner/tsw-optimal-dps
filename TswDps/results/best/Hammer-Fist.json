@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
+		"Focused",
+		"Piercing",
+		"",
 		"Accurate",
 		"Fierce",
 		"",
-		"",
-		"Piercing",
-		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -32,10 +32,10 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Left Weapon": 3,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,24 +102,25 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 2,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
+		"Molten Steel",
+		"Eruption",
+		"Reckless",
 		"Stone's Throw",
 		"Tear Em Up",
 		"Full Momentum",
-		"Reckless",
-		"Shockwave",
-		"Molten Steel",
 		"" 
 	] 
 } 

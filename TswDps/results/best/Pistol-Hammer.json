@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 8,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,23 +102,24 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
 		"Full Momentum",
-		"Shockwave",
+		"Dirty Tricks",
 		"Molten Steel",
-		"Bone Breaker",
+		"Haymaker",
 		"Shootout",
 		"" 
 	] 

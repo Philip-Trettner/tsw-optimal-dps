@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Piercing",
-		"",
-		"",
-		"",
 		"Brutal",
+		"",
+		"Fierce",
 		"Accurate",
+		"Ferocious",
+		"",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Left Weapon": 8,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,24 +102,25 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 2,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Hair Trigger",
-		"Start & Finish",
-		"See Red",
-		"Big 45",
-		"Reckless",
+		"The Business",
+		"Dirty Tricks",
+		"One-Two",
+		"Wild at Heart",
 		"Tear Em Up",
-		"Shootout",
+		"Reckless",
+		"Gun-Fu",
 		"" 
 	] 
 } 

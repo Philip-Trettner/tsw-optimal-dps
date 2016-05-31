@@ -135,13 +135,22 @@ void Optimizer::run(int generations)
             }
         };
 
-        // start threads
-        for (auto i = 0; i < 8; ++i)
-            threads.push_back(std::thread(threadFunc));
+        if (multithreaded)
+        {
+            auto tCnt = std::thread::hardware_concurrency();
 
-        // stop threads
-        for (auto i = 0; i < 8; ++i)
-            threads[i].join();
+            // start threads
+            for (auto i = 0u; i < tCnt; ++i)
+                threads.push_back(std::thread(threadFunc));
+
+            // stop threads
+            for (auto& t : threads)
+                t.join();
+        }
+        else // single threaded
+        {
+            threadFunc();
+        }
         secondsSim += std::chrono::duration<double>(std::chrono::system_clock::now() - nowEval).count();
 
         // sort builds by dps
@@ -176,6 +185,7 @@ double Optimizer::evaluate(const Build& b)
     if (useLowVariance)
         sim.lowVarianceMode = true;
     sim.log = nullptr;
+    sim.resetStatsAtStart = false;
     sim.init();
 
     auto totalTime = 0;
@@ -544,9 +554,9 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         }
     }
 
+    b.rotation = newRot;
     normalizeBuild(b);
 
-    b.rotation = newRot;
     return b;
 }
 

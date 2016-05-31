@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -30,8 +30,8 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 313,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,8 +57,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
 		"Iron Maiden",
@@ -101,24 +102,25 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 3,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Grand Slam",
 		"Molten Steel",
-		"Raging Bullet",
+		"Bone Breaker",
 		"Bombardment",
 		"Lock, Stock & Barrel",
 		"Full Momentum",
-		"Bone Breaker",
+		"Sure Shot",
 		"" 
 	] 
 } 

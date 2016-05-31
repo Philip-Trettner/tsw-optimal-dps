@@ -58,6 +58,7 @@ public:
             auto p = signet("Fury");
 
             p.passive.trigger = Trigger::FinishActivation;
+            p.passive.triggerOnDamaging = true;
             p.passive.effect = EffectSlot::FuryStacks;
 
             return p;

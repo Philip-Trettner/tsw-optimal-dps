@@ -1,7 +1,7 @@
 {
 	"Augments": [
+		"Piercing",
 		"Fierce",
-		"Focused",
 		"",
 		"Accurate",
 		"",
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Left Weapon": 3,
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -101,22 +102,23 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Grand Slam",
 		"Molten Steel",
 		"Steel Echo",
 		"Four Seasons",
-		"Bone Breaker",
+		"Stone's Throw",
 		"Binding Wounds",
 		"Full Momentum",
 		"" 

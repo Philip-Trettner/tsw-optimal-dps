@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
+		"",
+		"Accurate",
 		"Ferocious",
 		"",
-		"Piercing",
-		"",
 		"Brutal",
-		"Accurate",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,24 +102,25 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 7,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Safety Off",
+		"Lock & Load",
+		"Bombardment",
 		"Sure Shot",
 		"Lock, Stock & Barrel",
-		"Takedown",
-		"Lock & Load",
 		"Three Round Burst",
-		"Bombardment",
+		"Takedown",
 		"" 
 	] 
 } 

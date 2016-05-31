@@ -90,6 +90,18 @@ struct DefaultRotation : Rotation
         o << "buildOnlyBeforeMajorBuffs" << buildOnlyBeforeMajorBuffs;
         return o;
     }
+    void fromJson(jsonxx::Object const& o)
+    {
+        using namespace jsonxx;
+        minResourcesForLeftConsumer = o.get<Boolean>("minResourcesForLeftConsumer", minResourcesForLeftConsumer);
+        minResourcesForRightConsumer = o.get<Boolean>("minResourcesForRightConsumer", minResourcesForRightConsumer);
+        tryToConsumeOnBuffed = o.get<Boolean>("tryToConsumeOnBuffed", tryToConsumeOnBuffed);
+        considerBuffEF = o.get<Boolean>("considerBuffEF", considerBuffEF);
+        considerBuffFF = o.get<Boolean>("considerBuffFF", considerBuffFF);
+        considerBuffWC = o.get<Boolean>("considerBuffWC", considerBuffWC);
+        consumeIfNotBloodOffering = o.get<Boolean>("consumeIfNotBloodOffering", consumeIfNotBloodOffering);
+        buildOnlyBeforeMajorBuffs = o.get<Boolean>("buildOnlyBeforeMajorBuffs", buildOnlyBeforeMajorBuffs);
+    }
 
     std::shared_ptr<DefaultRotation> clone()
     {

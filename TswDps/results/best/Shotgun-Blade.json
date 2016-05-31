@@ -30,8 +30,8 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
 		"Iron Maiden",
@@ -101,21 +102,22 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Grass Cutter",
 		"Binding Wounds",
 		"Lock, Stock & Barrel",
-		"Raging Bullet",
+		"Sure Shot",
 		"Steel Echo",
 		"Balanced Blade",
 		"Four Seasons",

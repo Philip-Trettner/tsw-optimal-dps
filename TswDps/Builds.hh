@@ -10,6 +10,14 @@
 
 struct Builds
 {
+    static Build fromFile(std::string const& filename)
+    {
+        Build b;
+        b.gear.loadStandardDpsGear(); // for weapons
+        b.fromFile(filename);
+        return b;
+    }
+
     static Build currTest()
     {
         Build b;
@@ -33,9 +41,7 @@ struct Builds
 
         // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Hammer;
-        b.gear.rightWeapon = Weapon::Blood;
-        b.gear.pieces[Gear::WeaponRight].signet = Signets::empty();
-        b.gear.pieces[Gear::Head].signet = Signets::empty();
+        b.gear.rightWeapon = Weapon::Elemental;
         return b;
     }
 

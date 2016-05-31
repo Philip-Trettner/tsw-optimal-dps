@@ -17,6 +17,7 @@ struct Build
 
     jsonxx::Object toJson() const;
     void fromJson(jsonxx::Object const& o);
+    void fromFile(std::string const& filename);
 };
 
 // custom specialization of std::hash can be injected in namespace std

@@ -77,6 +77,9 @@ public: // tweaks
     /// if true, minimizes output
     bool silent = false;
 
+    /// if true, uses multithreading
+    bool multithreaded = true;
+
 public: // stats
 	/// nr of builds evaluated
 	int totalBuildsEvaluated = 0;

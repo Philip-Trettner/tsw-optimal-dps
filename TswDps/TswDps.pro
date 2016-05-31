@@ -87,7 +87,44 @@ HEADERS += \
     results/best/Shotgun-Elemental.json \
     results/best/Shotgun-Rifle.json \
     results/best/Shotgun-Pistol.json \
-    results/summary.csv
+    results/summary-best.csv \
+    results/burst/Fist-Blade.json \
+    results/burst/Hammer-Blade.json \
+    results/burst/Hammer-Fist.json \
+    results/burst/Blood-Blade.json \
+    results/burst/Blood-Fist.json \
+    results/burst/Blood-Hammer.json \
+    results/burst/Chaos-Blade.json \
+    results/burst/Chaos-Fist.json \
+    results/burst/Chaos-Hammer.json \
+    results/burst/Chaos-Blood.json \
+    results/burst/Elemental-Blade.json \
+    results/burst/Elemental-Fist.json \
+    results/burst/Elemental-Hammer.json \
+    results/burst/Elemental-Blood.json \
+    results/burst/Elemental-Chaos.json \
+    results/burst/Rifle-Blade.json \
+    results/burst/Rifle-Fist.json \
+    results/burst/Rifle-Hammer.json \
+    results/burst/Rifle-Blood.json \
+    results/burst/Rifle-Chaos.json \
+    results/burst/Rifle-Elemental.json \
+    results/burst/Pistol-Blade.json \
+    results/burst/Pistol-Fist.json \
+    results/burst/Pistol-Hammer.json \
+    results/burst/Pistol-Blood.json \
+    results/burst/Pistol-Chaos.json \
+    results/burst/Pistol-Elemental.json \
+    results/burst/Pistol-Rifle.json \
+    results/burst/Shotgun-Blade.json \
+    results/burst/Shotgun-Fist.json \
+    results/burst/Shotgun-Hammer.json \
+    results/burst/Shotgun-Blood.json \
+    results/burst/Shotgun-Chaos.json \
+    results/burst/Shotgun-Elemental.json \
+    results/burst/Shotgun-Rifle.json \
+    results/burst/Shotgun-Pistol.json \
+    results/summary-burst.csv
 
 linux {
     QMAKE_CXXFLAGS += -Wno-unused-parameter

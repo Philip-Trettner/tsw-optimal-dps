@@ -5,8 +5,8 @@
 		"Ferocious",
 		"",
 		"",
-		"Brutal",
 		"Fierce",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		} 
 	],
+	"Left Weapon": 7,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -101,14 +102,15 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 6,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [

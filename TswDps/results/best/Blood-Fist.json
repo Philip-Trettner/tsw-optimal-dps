@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
-		"",
-		"Ferocious",
 		"Focused",
+		"Ferocious",
+		"",
 		"Fierce",
 		"",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -32,10 +32,10 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 4,
 	"Passives": [
 		"Elemental Force",
 		"Fatal Flourish",
@@ -101,24 +102,25 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 2,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Bloodline",
-		"Go for the Throat",
-		"Reckless",
+		"Prey on the Weak",
 		"Tear Em Up",
 		"Bloodshot",
-		"Exsanguinate",
-		"One-Two",
+		"Reckless",
+		"Contaminate",
+		"Cannibalize",
+		"Go for the Throat",
 		"" 
 	] 
 } 

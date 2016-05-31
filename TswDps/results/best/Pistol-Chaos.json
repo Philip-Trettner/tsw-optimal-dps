@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
 		"Ferocious",
-		"Fierce",
+		"",
 		"",
 		"Focused",
-		"",
+		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -32,10 +32,10 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -92,8 +92,9 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 8,
 	"Passives": [
-		"Elemental Force",
+		"Fatal Flourish",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
@@ -101,24 +102,25 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Hair Trigger",
-		"Start & Finish",
+		"The Business",
 		"Chaotic Pull",
-		"Shootout",
-		"Call for Eris",
-		"Eye of Pandemonium",
 		"Amor Fati",
+		"Marked",
+		"Eye of Pandemonium",
+		"Four Horsemen",
+		"Pulling the Strings",
 		"" 
 	] 
 } 

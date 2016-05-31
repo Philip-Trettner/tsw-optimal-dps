@@ -4,9 +4,9 @@
 		"",
 		"Focused",
 		"Piercing",
-		"Accurate",
-		"",
 		"Fierce",
+		"",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
 		"Iron Maiden",
@@ -101,24 +102,25 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Takedown",
-		"Bombardment",
-		"Cannibalize",
 		"Bloodshot",
+		"Cannibalize",
+		"Bombardment",
 		"" 
 	] 
 } 

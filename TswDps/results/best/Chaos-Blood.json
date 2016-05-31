@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"Focused",
-		"",
-		"",
-		"Grievous",
 		"Ferocious",
+		"Piercing",
+		"",
+		"",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": false,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Left Weapon": 5,
 	"Passives": [
 		"Elemental Force",
 		"Fatal Flourish",
@@ -101,21 +102,22 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
 		"Call for Eris",
 		"Bloodshot",
-		"Amor Fati",
+		"Paradox",
 		"Pulling the Strings",
 		"Left Hand of Darkness",
 		"Eye of Pandemonium",
