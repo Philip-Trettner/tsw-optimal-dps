@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(TswDps)
 
-file(GLOB_RECURSE SRCS "*.cc" "*.hh")
+file(GLOB_RECURSE SRCS "*.cc" "*.hh" "*.json" "*.csv")
 
 add_executable(TswDps ${SRCS})
 

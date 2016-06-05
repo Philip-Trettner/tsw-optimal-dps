@@ -1,29 +1,29 @@
 {
 	"Augments": [
-		"Piercing",
-		"",
-		"Focused",
-		"Ferocious",
 		"Fierce",
 		"",
+		"",
+		"Ferocious",
+		"Focused",
 		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -41,7 +41,7 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -49,27 +49,27 @@
 		{
 			"AR": 664,
 			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -89,38 +89,38 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 4,
 	"Passives": [
+		"Accuracy",
 		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Punishment",
 		"Sudden Return" 
 	],
 	"Right Weapon": 2,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"consumeIfNotBloodOffering": true,
+		"minResourcesForLeftConsumer": 4,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Bloodshot",
-		"Cardiac Arrest",
-		"Tear Em Up",
 		"Cannibalize",
-		"One-Two",
+		"Reckless",
+		"Cardiac Arrest",
+		"Bloodshot",
+		"Exsanguinate",
+		"Wild at Heart",
 		"" 
 	] 
 } 

@@ -1,31 +1,31 @@
 {
 	"Augments": [
 		"Focused",
+		"Precise",
 		"Accurate",
-		"",
-		"Ferocious",
 		"Grievous",
 		"",
-		"Piercing",
+		"Fierce",
+		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,20 +39,20 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -94,33 +94,33 @@
 	],
 	"Left Weapon": 7,
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
-		"Sudden Return",
 		"Twist The Knife" 
 	],
 	"Right Weapon": 6,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Safety Off",
-		"Lightning Manifestation",
-		"Anima Charge",
 		"Power Line",
+		"Lightning Manifestation",
+		"Three Round Burst",
 		"Fire Manifestation",
 		"Flame Strike",
-		"Three Round Burst",
+		"Lock & Load",
 		"" 
 	] 
 } 

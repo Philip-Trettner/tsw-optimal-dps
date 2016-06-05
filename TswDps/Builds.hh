@@ -43,7 +43,7 @@ struct Builds
         b.gear.loadStandardDpsGear();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Hammer;
+        b.gear.leftWeapon = Weapon::Blood;
         b.gear.rightWeapon = Weapon::Elemental;
         return b;
     }

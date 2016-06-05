@@ -64,7 +64,10 @@ struct Stats
     float finalCombatPower = -1;
     float finalCritChance = -1;
     float finalCritPower = -1;
-    float finalPenChance = -1;
+	float finalPenChance = -1;
+	float finalBlockChance = -1;
+	float finalGlanceChance = -1;
+	float finalEvadeChance = -1;
     float finalDmgMultiplier = -1; // is > 1 (e.g. 1.5 for 50% additive dmg)
 
     void update(EnemyInfo const& enemy);

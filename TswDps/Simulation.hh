@@ -37,6 +37,9 @@ struct Simulation
     int totalHits = 0;
     int totalPens = 0;
     int totalCrits = 0;
+	int totalGlances = 0;
+	int totalBlocks = 0;
+	int totalEvades = 0;
     int totalTimeAccum = 0;
     double totalDPS() const { return totalDmg / (totalTimeAccum / 60.); }
     void resetStats();
@@ -60,7 +63,7 @@ struct Simulation
     /// dumps all skill stats
     void dumpSkillStats();
     /// dumps brief report of last finished simulation
-    void dumpBriefReport();
+    void dumpBriefReport() const;
 
     /// Analyzes the total dmg increase of each passive
     void analyzePassiveContribution(int maxTime = 100 * 1000 * 60);
@@ -135,7 +138,7 @@ private: // run-time TRANSIENT data
                  bool endOfAbility,
                  Skill const* srcSkill,
                  Effect const* srcEffect);
-    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, DmgType dmgType, bool* isCrit, bool* isPen, Skill const* srcSkill, Effect const* srcEffect);
+    void rawHit(Stats const& actualStats, float dmgScaling, float penCritPenalty, DmgType dmgType, bool* isCrit, bool* isPen, bool* isGlance, bool* isBlock, bool* isEvade, Skill const* srcSkill, Effect const* srcEffect);
     void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
 	void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
 	void procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling);

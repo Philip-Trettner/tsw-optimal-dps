@@ -143,7 +143,7 @@ void Optimizer::run(int generations)
 
         if (multithreaded)
         {
-            auto tCnt = std::thread::hardware_concurrency();
+            auto tCnt = std::thread::hardware_concurrency() / 2; // DEBUG
 
             // start threads
             for (auto i = 0u; i < tCnt; ++i)

@@ -29,13 +29,19 @@ struct Augments
         a.bonusStats.addedCritPower = .15f;
         return a;
     }
-    static Augment Focused()
-    {
-        Augment a{"Focused"};
-        a.bonusStats.addedCritChance = .05f;
-        a.bonusStats.addedCritPower = .10f;
-        return a;
-    }
+	static Augment Focused()
+	{
+		Augment a{ "Focused" };
+		a.bonusStats.addedCritChance = .05f;
+		a.bonusStats.addedCritPower = .10f;
+		return a;
+	}
+	static Augment Precise()
+	{
+		Augment a{ "Precise" };
+		a.bonusStats.hitRating = 250;
+		return a;
+	}
     static Augment Grievous()
     {
         Augment a{"Grievous"};
@@ -72,9 +78,10 @@ struct Augments
         return {
             Accurate(),  //
             Brutal(),    //
+			Precise(),   //
             Piercing(),  //
             Ferocious(), //
-            Fierce(),    //
+			Fierce(),    //
             Focused(),   //
             Grievous()   //
         };

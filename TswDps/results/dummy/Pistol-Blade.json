@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"",
+		"Brutal",
+		"Fierce",
 		"Accurate",
 		"",
-		"",
-		"Piercing",
 		"Focused",
-		"",
+		"Grievous",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -40,18 +40,18 @@
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -99,28 +99,28 @@
 		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
-		"Sudden Return",
-		"Twist The Knife" 
+		"One In The Chamber",
+		"Sudden Return" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Marked",
 		"Start & Finish",
 		"Steel Echo",
-		"Binding Wounds",
+		"Big 45",
 		"Four Seasons",
-		"",
+		"Binding Wounds",
+		"Bond, Strong Bond",
 		"" 
 	] 
 } 

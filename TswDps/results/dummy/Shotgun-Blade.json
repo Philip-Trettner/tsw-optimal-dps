@@ -1,37 +1,37 @@
 {
 	"Augments": [
-		"Accurate",
 		"Focused",
-		"",
-		"",
-		"",
 		"Fierce",
-		"Brutal",
+		"Accurate",
+		"",
+		"",
+		"Grievous",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 313,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,18 +39,27 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -65,13 +74,13 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 0,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -80,21 +89,12 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 9,
 	"Passives": [
-		"Fortunate Strike",
+		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
@@ -104,23 +104,23 @@
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Delicate Strike",
+		"Grass Cutter",
 		"Sure Shot",
-		"Lock, Stock & Barrel",
-		"Takedown",
 		"Steel Echo",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
 		"Four Seasons",
-		"Dancing Blade",
+		"Binding Wounds",
 		"" 
 	] 
 } 

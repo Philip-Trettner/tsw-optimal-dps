@@ -1,31 +1,31 @@
 {
 	"Augments": [
+		"Fierce",
+		"Grievous",
+		"Focused",
 		"",
 		"Accurate",
 		"Brutal",
-		"Fierce",
-		"",
-		"",
 		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,37 +41,46 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 0,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -81,20 +90,11 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Opportunism" 
 		} 
 	],
 	"Left Weapon": 8,
 	"Passives": [
-		"Accuracy",
+		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 3,
-		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"See Red",
 		"Start & Finish",
+		"Tear Em Up",
 		"Wild at Heart",
-		"Bond, Strong Bond",
+		"Shootout",
+		"See Red",
 		"Reckless",
-		"",
 		"" 
 	] 
 } 

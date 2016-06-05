@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Piercing",
-		"",
-		"",
-		"Focused",
 		"Fierce",
+		"Focused",
+		"",
+		"Piercing",
+		"Grievous",
 		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,18 +39,18 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -75,28 +75,28 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 347,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 8,
 	"Passives": [
+		"Elemental Force",
 		"Fatal Flourish",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
@@ -109,18 +109,18 @@
 		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"The Business",
-		"Chaotic Pull",
+		"Hair Trigger",
+		"Start & Finish",
 		"Amor Fati",
-		"Marked",
 		"Eye of Pandemonium",
-		"Four Horsemen",
-		"Pulling the Strings",
+		"Chaotic Pull",
+		"Bond, Strong Bond",
+		"Call for Eris",
 		"" 
 	] 
 } 

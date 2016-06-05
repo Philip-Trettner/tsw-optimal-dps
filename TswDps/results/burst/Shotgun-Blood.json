@@ -1,75 +1,75 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
-		"Fierce",
-		"Ferocious",
-		"Focused",
 		"Accurate",
+		"",
+		"Ferocious",
+		"",
+		"Grievous",
+		"Focused",
 		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": true,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -94,32 +94,32 @@
 	],
 	"Left Weapon": 9,
 	"Passives": [
+		"Accuracy",
 		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
-		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"One In The Chamber" 
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"considerBuffWC": true,
+		"consumeIfNotBloodOffering": true,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 4,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Bloodline",
+		"Single Barrel",
 		"Lock, Stock & Barrel",
-		"Sure Shot",
-		"Point Blank",
-		"Bloodshot",
+		"Cardiac Arrest",
 		"Takedown",
+		"Sure Shot",
+		"Bloodshot",
 		"Cannibalize",
 		"" 
 	] 

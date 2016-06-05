@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
-		"",
-		"",
-		"",
+		"Brutal",
+		"Precise",
 		"",
 		"Accurate",
+		"Fierce",
+		"Focused",
 		"",
 		"" 
 	],
@@ -14,16 +14,16 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -39,19 +39,19 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -89,38 +89,38 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 2,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
-		"Lethality",
+		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Tenderising" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
 		"Steel Echo",
-		"Binding Wounds",
-		"Four Seasons",
-		"Sling Blade",
-		"Tear Em Up",
 		"Reckless",
+		"Four Seasons",
+		"One-Two",
+		"Binding Wounds",
+		"",
 		"" 
 	] 
 } 

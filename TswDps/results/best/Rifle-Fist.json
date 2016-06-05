@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"",
-		"Accurate",
-		"Fierce",
-		"",
 		"Focused",
-		"Ferocious",
+		"Grievous",
+		"Fierce",
+		"Accurate",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,18 +39,27 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -65,13 +74,13 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 0,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -81,15 +90,6 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Fury" 
 		} 
 	],
 	"Left Weapon": 7,
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
 		"Reckless",
-		"One-Two",
-		"Shellshocker",
-		"Tear Em Up",
-		"Wild at Heart",
 		"Three Round Burst",
+		"Shellshocker",
+		"One-Two",
+		"Wild at Heart",
+		"Lock & Load",
 		"" 
 	] 
 } 

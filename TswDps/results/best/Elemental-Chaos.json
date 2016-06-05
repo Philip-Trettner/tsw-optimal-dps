@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Grievous",
-		"Piercing",
-		"Brutal",
-		"Accurate",
 		"Focused",
 		"",
 		"",
+		"Ferocious",
+		"Fierce",
+		"Accurate",
+		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,17 +41,17 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -75,17 +75,17 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -94,8 +94,8 @@
 	],
 	"Left Weapon": 6,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
+		"Invasive Measures",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
@@ -107,20 +107,20 @@
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Lightning Manifestation",
-		"Power Line",
-		"Fire Manifestation",
-		"Four Horsemen",
 		"Amor Fati",
-		"Paradox",
+		"Anima Charge",
+		"Fire Manifestation",
+		"Call for Eris",
+		"Power Line",
+		"Lightning Manifestation",
 		"" 
 	] 
 } 

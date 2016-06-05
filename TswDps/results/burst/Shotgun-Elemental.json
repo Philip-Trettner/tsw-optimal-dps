@@ -2,8 +2,8 @@
 	"Augments": [
 		"Fierce",
 		"",
-		"",
 		"Accurate",
+		"",
 		"Focused",
 		"",
 		"Ferocious",
@@ -12,75 +12,66 @@
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
-			"Pen": 0,
-			"Signet": "Aggression" 
-		},
-		{
-			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 327,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Egon Pendant" 
-		},
-		{
-			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
 			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Abuse" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -90,36 +81,45 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 347,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 9,
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
+		"Fatal Flourish",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck",
-		"Twist The Knife",
-		"Wrecking Crew" 
+		"Twist The Knife" 
 	],
 	"Right Weapon": 6,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Ignition",
+		"Single Barrel",
+		"Anima Charge",
 		"Lightning Manifestation",
 		"Lock, Stock & Barrel",
-		"Power Line",
 		"Raging Bullet",
-		"Takedown",
+		"Power Line",
 		"Flame Strike",
 		"" 
 	] 

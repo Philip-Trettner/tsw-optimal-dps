@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Brutal",
-		"Grievous",
-		"",
 		"Focused",
-		"Accurate",
 		"Piercing",
+		"",
+		"",
+		"Fierce",
+		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,18 +39,27 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -65,31 +74,22 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
+			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 201,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 407,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
 		} 
 	],
 	"Left Weapon": 8,
@@ -98,29 +98,29 @@
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 7,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 3,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
-		"Shootout",
-		"Bond, Strong Bond",
-		"Marked",
+		"Lock & Load",
+		"Big 45",
 		"Three Round Burst",
-		"Dirty Tricks",
+		"Shellshocker",
+		"Shootout",
 		"" 
 	] 
 } 

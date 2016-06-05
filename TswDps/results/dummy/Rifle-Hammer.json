@@ -1,12 +1,12 @@
 {
 	"Augments": [
+		"Fierce",
 		"",
+		"Accurate",
 		"",
-		"",
-		"",
-		"",
-		"Brutal",
 		"Piercing",
+		"Focused",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,21 +39,12 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
@@ -68,6 +59,15 @@
 			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -84,8 +84,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -94,29 +94,29 @@
 	],
 	"Left Weapon": 7,
 	"Passives": [
-		"Closer",
+		"Brawler",
+		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
-		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
-		"Sudden Return",
+		"One In The Chamber",
 		"Twist The Knife" 
 	],
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 3,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Safety Off",
-		"Stone's Throw",
 		"Lock & Load",
+		"Stone's Throw",
 		"Full Momentum",
 		"Shellshocker",
 		"Molten Steel",

@@ -1,82 +1,82 @@
 {
 	"Augments": [
-		"Fierce",
+		"Brutal",
 		"",
-		"Accurate",
+		"Precise",
 		"Ferocious",
 		"Focused",
-		"Brutal",
-		"Piercing",
+		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -94,13 +94,13 @@
 	],
 	"Left Weapon": 2,
 	"Passives": [
-		"Brawler",
 		"Fortunate Strike",
+		"Invasive Measures",
 		"Iron Maiden",
+		"Lethality",
 		"One In The Chamber",
 		"Sudden Return",
-		"Thunderstruck",
-		"Twist The Knife" 
+		"Thunderstruck" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
 		"Reckless",
 		"Steel Echo",
-		"Dancing Blade",
-		"Tear Em Up",
 		"Four Seasons",
-		"One-Two",
+		"Dancing Blade",
+		"Balanced Blade",
+		"Binding Wounds",
 		"" 
 	] 
 } 

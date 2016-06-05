@@ -56,7 +56,7 @@ public: // settings
 	bool fixedBuilder = false;
 
     /// free ratings used for stat optimization
-    std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower});
+    std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit});
 
     /// excluded skills and passives
     std::set<std::string> excludeSkillsAndPassives;
@@ -66,7 +66,7 @@ public: // tweaks
     size_t maxActiveBuilds = 50;
 
     /// Number of new builds per generation
-    int newBuildsPerGen = 30;
+    int newBuildsPerGen = 60;
 
     /// if true, forces low variance on sim
     bool useLowVariance = true;

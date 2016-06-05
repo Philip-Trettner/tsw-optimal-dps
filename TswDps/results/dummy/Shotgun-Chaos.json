@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Fierce",
-		"Grievous",
-		"",
-		"",
-		"",
-		"Piercing",
 		"Brutal",
+		"Grievous",
+		"Fierce",
+		"",
+		"",
+		"Focused",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,24 +41,24 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,14 +89,14 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 9,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
+		"Invasive Measures",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
@@ -105,21 +105,21 @@
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Four Horsemen",
+		"Call for Eris",
+		"Raging Bullet",
 		"Lock, Stock & Barrel",
-		"Takedown",
+		"Amor Fati",
 		"Shotgun Wedding",
-		"Sure Shot",
 		"Suffering and Solace",
 		"" 
 	] 

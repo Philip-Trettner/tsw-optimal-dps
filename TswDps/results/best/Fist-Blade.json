@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
+		"Brutal",
+		"Grievous",
 		"Accurate",
 		"",
-		"Ferocious",
 		"Focused",
-		"Piercing",
-		"Brutal",
+		"Precise",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -14,43 +14,43 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,21 +75,21 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 407,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 2,
@@ -97,9 +97,9 @@
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
+		"Thunderstruck",
 		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
+		"Tear Em Up",
 		"Steel Echo",
 		"Reckless",
-		"Tear Em Up",
 		"Four Seasons",
-		"Sling Blade",
-		"Binding Wounds",
+		"One-Two",
+		"Dancing Blade",
 		"" 
 	] 
 } 

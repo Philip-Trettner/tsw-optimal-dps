@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Ferocious",
-		"Accurate",
-		"",
+		"Focused",
 		"",
 		"Fierce",
 		"",
-		"",
+		"Brutal",
+		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,17 +41,17 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -75,17 +75,17 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,32 +95,32 @@
 	"Left Weapon": 6,
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
-		"Iron Maiden",
-		"Lethality",
+		"Fortunate Strike",
+		"Invasive Measures",
 		"Live Wire",
 		"One In The Chamber",
+		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
 	"Right Weapon": 5,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
 		"Power Line",
+		"Fire Manifestation",
 		"Amor Fati",
 		"Lightning Manifestation",
-		"Pulling the Strings",
-		"Suffering and Solace",
-		"Fire Manifestation",
+		"Call for Eris",
+		"Four Horsemen",
 		"" 
 	] 
 } 

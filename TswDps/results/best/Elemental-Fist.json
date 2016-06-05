@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Ferocious",
-		"Piercing",
-		"Accurate",
 		"Brutal",
 		"",
-		"",
+		"Ferocious",
+		"Focused",
+		"Precise",
+		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,7 +41,7 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -49,9 +49,9 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
@@ -94,12 +94,12 @@
 	],
 	"Left Weapon": 6,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
+		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
 	"Right Weapon": 2,
@@ -110,17 +110,17 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Tear Em Up",
+		"Reckless",
+		"Fire Manifestation",
+		"One-Two",
+		"Wild at Heart",
 		"Power Line",
 		"Lightning Manifestation",
-		"Fire Manifestation",
-		"Wild at Heart",
-		"Reckless",
 		"" 
 	] 
 } 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
+		"Brutal",
+		"Fierce",
+		"Grievous",
 		"Focused",
 		"",
-		"Ferocious",
 		"Accurate",
 		"",
-		"",
-		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -40,17 +40,17 @@
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -96,31 +96,31 @@
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 4,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"consumeIfNotBloodOffering": true,
+		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
-		"Four Horsemen",
-		"Suffering and Solace",
-		"Cardiac Arrest",
-		"Cannibalize",
-		"Amor Fati",
+		"Bloodline",
 		"Bloodshot",
+		"Call for Eris",
+		"Cardiac Arrest",
+		"Amor Fati",
+		"Four Horsemen",
+		"Cannibalize",
 		"" 
 	] 
 } 

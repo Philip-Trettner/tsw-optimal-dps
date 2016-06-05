@@ -1,11 +1,11 @@
 {
 	"Augments": [
+		"Fierce",
 		"Brutal",
 		"Accurate",
+		"",
 		"Ferocious",
 		"",
-		"",
-		"Piercing",
 		"Focused",
 		"" 
 	],
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,7 +41,7 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -50,9 +50,9 @@
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -67,16 +67,16 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 201,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -89,38 +89,38 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 5,
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
-		"considerBuffFF": true,
-		"considerBuffWC": false,
+		"considerBuffFF": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
-		"Four Horsemen",
-		"Bloodshot",
+		"Bloodline",
 		"Call for Eris",
-		"Pulling the Strings",
-		"Left Hand of Darkness",
+		"Four Horsemen",
+		"Cannibalize",
 		"Eye of Pandemonium",
+		"Amor Fati",
+		"Bloodshot",
 		"" 
 	] 
 } 

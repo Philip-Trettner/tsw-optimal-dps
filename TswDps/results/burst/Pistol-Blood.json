@@ -1,37 +1,37 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
 		"Grievous",
-		"Focused",
+		"Fierce",
+		"",
+		"",
 		"Accurate",
-		"Ferocious",
 		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 313,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -41,7 +41,7 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -50,17 +50,17 @@
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -75,19 +75,19 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Abuse" 
 		} 
@@ -96,29 +96,29 @@
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
+		"Fatal Flourish",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Cannibalize",
 		"Cardiac Arrest",
 		"Bloodshot",
-		"Exsanguinate",
+		"Cannibalize",
+		"Left Hand of Darkness",
 		"Start & Finish",
 		"",
 		"" 

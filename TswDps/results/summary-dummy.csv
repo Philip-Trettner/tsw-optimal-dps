@@ -1,33 +1,27 @@
 Wep-to-Wep,Blade,Fist,Hammer,Blood,Chaos,Elemental,Rifle,Pistol,Shotgun
-Blade,-,4983.92,5513.93,5804.19,5176.08,6031.37,5318.16,5218.09,5157.78
-Fist,4983.92,-,5548.21,5316.5,5372.96,6527.52,5712.45,5334.75,5294.73
-Hammer,5513.93,5548.21,-,5888.66,5564.03,6820.8,5766.01,5711.04,5625.23
-Blood,5804.19,5316.5,5888.66,-,5649.58,6872.75,5741.67,5432.97,5572.12
-Chaos,5176.08,5372.96,5564.03,5649.58,-,6281.62,5067.16,5008.34,5416.99
-Elemental,6031.37,6527.52,6820.8,6872.75,6281.62,-,6588.08,6309.65,6079.03
-Rifle,5318.16,5712.45,5766.01,5741.67,5067.16,6588.08,-,5494.04,5305.23
-Pistol,5218.09,5334.75,5711.04,5432.97,5008.34,6309.65,5494.04,-,5129.14
-Shotgun,5157.78,5294.73,5625.23,5572.12,5416.99,6079.03,5305.23,5129.14,-
+Blade,-,4883.86,5182.81,5276.09,5149.63,5465.95,4776.8,4956.64,4637.96
+Fist,4883.86,-,5117.78,5046.65,5049.53,5759.86,5194.73,4783.9,4919.54
+Hammer,5182.81,5117.78,-,5539.26,5368.14,6005.68,5225.03,5117.6,5150.12
+Blood,5276.09,5046.65,5539.26,-,4957.25,5825.19,5194.53,5014.04,5110.97
+Chaos,5149.63,5049.53,5368.14,4957.25,-,5721.47,5113.02,4968.05,5041.47
+Elemental,5465.95,5759.86,6005.68,5825.19,5721.47,-,5547.95,5699.48,5660.87
+Rifle,4776.8,5194.73,5225.03,5194.53,5113.02,5547.95,-,4844.3,4718.07
+Pistol,4956.64,4783.9,5117.6,5014.04,4968.05,5699.48,4844.3,-,4732.51
+Shotgun,4637.96,4919.54,5150.12,5110.97,5041.47,5660.87,4718.07,4732.51,-
 
 Passives:,36,builds
-Live Wire,35
-One In The Chamber,31
-Iron Maiden,30
-Sudden Return,26
-Fortunate Strike,24
-Elemental Force,22
-Gnosis,20
-Lethality,20
-Twist The Knife,13
-Fatal Flourish,7
-Brawler,6
-Invasive Measures,5
-Tenderising,4
-Mad Skills,2
-Accuracy,1
-Closer,1
-Increased Focus,1
-Punishment,1
-Short Controlled Bursts,1
-Thicker Than Water,1
-Thunderstruck,1
+One In The Chamber,36
+Live Wire,33
+Iron Maiden,31
+Elemental Force,30
+Fortunate Strike,28
+Sudden Return,25
+Lethality,19
+Twist The Knife,15
+Gnosis,13
+Brawler,8
+Invasive Measures,4
+Short Controlled Bursts,4
+Thunderstruck,3
+Fatal Flourish,2
+Wrecking Crew,1

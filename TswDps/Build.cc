@@ -64,7 +64,8 @@ void Build::shortDump() const
     std::cout << "Gear:     ";
     auto s = gear.gearStats();
     std::cout << s.attackRating << " AR, ";
-    std::cout << s.penRating << " Pen, ";
+	std::cout << s.hitRating << " Hit, ";
+	std::cout << s.penRating << " Pen, ";
     std::cout << s.critRating << " CR, ";
     std::cout << s.critPowerRating << " CP, Neck: ";
     if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)

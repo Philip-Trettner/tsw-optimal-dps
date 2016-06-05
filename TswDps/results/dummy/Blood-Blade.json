@@ -1,31 +1,31 @@
 {
 	"Augments": [
+		"Fierce",
 		"",
-		"Piercing",
+		"Grievous",
 		"Accurate",
-		"",
-		"",
-		"",
-		"",
+		"Ferocious",
+		"Focused",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,39 +39,48 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 0,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 407,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -81,46 +90,37 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Abuse" 
 		} 
 	],
 	"Left Weapon": 4,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
-		"One In The Chamber" 
+		"One In The Chamber",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
-		"Bloodshot",
+		"Cannibalize",
+		"Contaminate",
 		"Steel Echo",
 		"Four Seasons",
-		"Cannibalize",
-		"Exsanguinate",
-		"",
+		"Bloodshot",
+		"Binding Wounds",
 		"" 
 	] 
 } 

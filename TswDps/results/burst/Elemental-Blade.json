@@ -1,37 +1,37 @@
 {
 	"Augments": [
-		"Brutal",
-		"Focused",
-		"",
-		"Grievous",
-		"Ferocious",
 		"Piercing",
+		"Grievous",
+		"",
 		"Accurate",
+		"Precise",
+		"Fierce",
+		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -40,17 +40,17 @@
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,17 +75,17 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,32 +95,32 @@
 	"Left Weapon": 6,
 	"Passives": [
 		"Brawler",
-		"Elemental Force",
+		"Fortunate Strike",
+		"Invasive Measures",
 		"Iron Maiden",
 		"One In The Chamber",
-		"Sudden Return",
 		"Thunderstruck",
 		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 4,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Ignition",
+		"Shock",
 		"Lightning Manifestation",
+		"Power Line",
+		"Thor's Hammer",
 		"Steel Echo",
-		"Sling Blade",
 		"Dancing Blade",
 		"Flame Strike",
-		"Power Line",
 		"" 
 	] 
 } 

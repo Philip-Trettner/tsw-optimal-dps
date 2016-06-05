@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
 		"Fierce",
-		"",
-		"Focused",
 		"Accurate",
+		"Piercing",
+		"Ferocious",
+		"Focused",
 		"Grievous",
+		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,19 +41,10 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -66,8 +57,17 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -97,30 +97,30 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 6,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Power Line",
 		"Lightning Manifestation",
 		"Fire Manifestation",
 		"Flame Strike",
-		"Blaze",
 		"Start & Finish",
+		"Power Line",
+		"Anima Charge",
 		"" 
 	] 
 } 

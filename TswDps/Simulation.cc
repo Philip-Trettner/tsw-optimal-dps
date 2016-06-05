@@ -10,12 +10,20 @@
 #include "Passives.hh"
 #include "Signets.hh"
 
+static float mix(float min, float max, float a)
+{
+	return min + (max - min) * a;
+}
+
 void Simulation::resetStats()
 {
     totalDmg = 0;
     totalHits = 0;
     totalPens = 0;
     totalCrits = 0;
+	totalBlocks = 0;
+	totalGlances = 0;
+	totalEvades = 0;
     totalTimeAccum = 0;
 }
 
@@ -363,10 +371,10 @@ void Simulation::simulate(int totalTimeIn60th)
         // anima deviation
         if (skill.animaDeviation)
         {
-            bool adCrit, adPen;
+            bool adCrit, adPen, adGlance, adBlock, adEvade;
             auto adStat = baseStat;        // copy
             adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
-            rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, nullptr, &animaDeviationEffect);
+            rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, &adGlance, &adBlock, &adEvade, nullptr, &animaDeviationEffect);
         }
 
         // actually do skill
@@ -458,13 +466,16 @@ void Simulation::dumpSkillStats()
     }
 }
 
-void Simulation::dumpBriefReport()
+void Simulation::dumpBriefReport() const
 {
     std::cout << "Dmg:   " << totalDmg << " over " << totalTimeAccum / 60.f << " sec" << std::endl;
     std::cout << "DPS:   " << totalDPS() << std::endl;
     std::cout << "Hits:  " << totalHits << std::endl;
     std::cout << "Crits: " << totalCrits << " (" << totalCrits * 100.f / totalHits << "%)" << std::endl;
-    std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)" << std::endl;
+	std::cout << "Pens:  " << totalPens << " (" << totalPens * 100.f / totalHits << "%)" << std::endl;
+	std::cout << "Glances:  " << totalGlances << " (" << totalGlances * 100.f / totalHits << "%)" << std::endl;
+	std::cout << "Blocks:   " << totalBlocks << " (" << totalBlocks * 100.f / totalHits << "%)" << std::endl;
+	std::cout << "Evades:   " << totalEvades << " (" << totalEvades * 100.f / totalHits << "%)" << std::endl;
 }
 
 void Simulation::analyzePassiveContribution(int maxTime)
@@ -554,6 +565,59 @@ void Simulation::analyzePassiveContribution(int maxTime)
         gear.pieces[Gear::MajorMid] = piece;
     }
 
+	std::cout << "Signets: " << std::endl;
+	// Head
+	{
+		auto piece = gear.pieces[Gear::Head];
+		gear.pieces[Gear::Head].signet = Signets::empty();
+
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
+
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+			<< "% from " << piece.signet.name() << " on Head" << std::endl;
+
+		gear.pieces[Gear::Head] = piece;
+	}
+	// Left
+	{
+		auto piece = gear.pieces[Gear::WeaponLeft];
+		gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
+
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
+
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+			<< "% from " << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
+
+		gear.pieces[Gear::WeaponLeft] = piece;
+	}
+	// Right
+	{
+		auto piece = gear.pieces[Gear::WeaponRight];
+		gear.pieces[Gear::WeaponRight].signet = Signets::empty();
+
+		init();
+		resetStats();
+		simulate(maxTime);
+		auto dps = totalDPS();
+
+		std::cout << " + ";
+		std::cout.width(4);
+		std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+			<< "% from " << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
+
+		gear.pieces[Gear::WeaponRight] = piece;
+	}
+
     log = savLog;
     lowVarianceMode = savMode;
 }
@@ -577,8 +641,8 @@ void Simulation::fullHit(const Stats& baseStats,
     applyEffects(stats, dmgtype, skilltype, subtype, weapon);
     stats.update(enemyInfo);
 
-    bool isCrit, isPen;
-    rawHit(stats, dmgScaling, penCritPenalty, dmgtype, &isCrit, &isPen, srcSkill, srcEffect);
+    bool isCrit, isPen, isGlance, isBlock, isEvade;
+    rawHit(stats, dmgScaling, penCritPenalty, dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, srcSkill, srcEffect);
 
     // special hit effects
     for (auto i = 0u; i < (int)EffectSlot::Count; ++i)
@@ -786,11 +850,11 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         if (!effect.affectedByAdditiveDmg)
             stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
-        bool isCrit, isPen;
+		bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect);
         else
-            rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+            rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
     }
 
     if (effect.procDmgScaling > 0)
@@ -800,11 +864,11 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         if (!effect.affectedByAdditiveDmg)
             stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
-        bool isCrit, isPen;
+		bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
         else
-            rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+            rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
     }
 
     if (effect.procDmgPercentage > 0)
@@ -815,11 +879,11 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         if (!effect.affectedByAdditiveDmg)
             stats.additiveDamage = 0.f; // procs don't get additive dmg
         stats.update(enemyInfo);
-        bool isCrit, isPen;
+		bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
         else
-            rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, nullptr, &effect);
+            rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
     }
 }
 
@@ -829,6 +893,9 @@ void Simulation::rawHit(const Stats& actualStats,
                         DmgType dmgType,
                         bool* isCrit,
                         bool* isPen,
+						bool* isGlance, 
+						bool* isBlock, 
+						bool* isEvade,
                         const Skill* srcSkill,
                         const Effect* srcEffect)
 {
@@ -836,7 +903,10 @@ void Simulation::rawHit(const Stats& actualStats,
 
     // crit an pen calculation
     float critChance = actualStats.finalCritChance * penCritPenalty;
-    float penChance = actualStats.finalPenChance * penCritPenalty;
+	float penChance = actualStats.finalPenChance * penCritPenalty;
+	float glanceChance = actualStats.finalGlanceChance;
+	float blockChance = actualStats.finalBlockChance;
+	float evadeChance = actualStats.finalEvadeChance;
     float critPower = actualStats.finalCritPower;
 
     float vulnerability = 1 + enemyInfo.baseVulnerability;
@@ -848,8 +918,17 @@ void Simulation::rawHit(const Stats& actualStats,
         dmg = -dmgScaling; // fixed dmg
     dmg *= vulnerability;
 
-    *isCrit = dice(random) < critChance;
-    *isPen = dice(random) < penChance;
+    *isCrit = false;
+	*isPen = false;
+	*isGlance = dice(random) < glanceChance;
+	*isBlock = dice(random) < blockChance;
+	*isEvade = dice(random) < evadeChance;
+
+	if (!*isGlance)
+		*isCrit = dice(random) < critChance; // only non-glances can crit
+
+	if (!*isBlock)
+		*isPen = dice(random) < penChance; // only non-blocks can pen
 
     if (!lowVarianceMode)
     {
@@ -858,11 +937,25 @@ void Simulation::rawHit(const Stats& actualStats,
 
         if (*isPen)
             dmg *= 1.0f + enemyInfo.penPower;
+
+		if (*isGlance)
+			dmg *= enemyInfo.glancedMultiplier;
+
+		if (*isBlock)
+			dmg *= enemyInfo.blockedMultiplier;
+
+		if (*isEvade)
+			dmg = 0.0f;
     }
     else
     {
-        dmg *= 1.0f + fmin(critChance, 1.0f) * critPower;
-        dmg *= 1.0f + fmin(penChance, 1.0f) * enemyInfo.penPower;
+		dmg *= 1.0f - evadeChance;
+		dmg *= mix(1.0f + fmin(critChance, 1.0f) * critPower, enemyInfo.glancedMultiplier, glanceChance);
+		dmg *= mix(1.0f + fmin(penChance, 1.0f) * enemyInfo.penPower, enemyInfo.blockedMultiplier, blockChance);
+		// dmg *= 1.0f + glanceChance * (enemyInfo.glancedMultiplier - 1.0f);
+		// dmg *= 1.0f + blockChance * (enemyInfo.blockedMultiplier - 1.0f);
+        // dmg *= 1.0f + fmin(critChance, 1.0f) * (1 - glanceChance) * critPower;
+        // dmg *= 1.0f + fmin(penChance, 1.0f) * (1 - blockChance) * enemyInfo.penPower;
     }
 
     // 10% base variance in each dir
@@ -874,12 +967,18 @@ void Simulation::rawHit(const Stats& actualStats,
     totalHits += 1;
     if (*isCrit)
         totalCrits += 1;
-    if (*isPen)
-        totalPens += 1;
+	if (*isPen)
+		totalPens += 1;
+	if (*isGlance)
+		totalGlances += 1;
+	if (*isBlock)
+		totalBlocks += 1;
+	if (*isEvade)
+		totalEvades += 1;
 
     // log
     if (log)
-        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, actualStats, vulnerability);
+        log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, *isGlance, *isBlock, *isEvade, actualStats, vulnerability);
 }
 
 void Simulation::advanceTime(int timeIn60th)

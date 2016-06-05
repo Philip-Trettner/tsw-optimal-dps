@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
+		"Grievous",
 		"",
-		"",
-		"Ferocious",
-		"Piercing",
 		"Focused",
+		"Fierce",
+		"",
 		"Accurate",
 		"" 
 	],
@@ -14,16 +14,16 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -32,25 +32,34 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": true,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -65,24 +74,6 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Fury" 
-		},
-		{
 			"AR": 0,
 			"Crit": 362,
 			"Crit Power": 0,
@@ -90,6 +81,15 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Abuse" 
 		} 
 	],
 	"Left Weapon": 4,
@@ -104,23 +104,23 @@
 	],
 	"Right Weapon": 2,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Prey on the Weak",
+		"Bloodline",
+		"Cardiac Arrest",
 		"Reckless",
-		"Cannibalize",
-		"Bloodshot",
-		"Go for the Throat",
 		"Tear Em Up",
-		"Exsanguinate",
+		"Bloodshot",
+		"Cannibalize",
+		"Wild at Heart",
 		"" 
 	] 
 } 

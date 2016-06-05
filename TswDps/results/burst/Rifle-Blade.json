@@ -1,56 +1,56 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"Ferocious",
-		"Fierce",
-		"Accurate",
-		"Focused",
+		"Piercing",
 		"",
+		"Ferocious",
+		"Focused",
+		"Accurate",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Crit Power": 347,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": true,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,52 +75,52 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 7,
 	"Passives": [
-		"Brawler",
+		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
-		"Iron Maiden",
+		"Invasive Measures",
 		"One In The Chamber",
 		"Sudden Return",
-		"Thunderstruck" 
+		"Thunderstruck",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Safety Off",
-		"Three Round Burst",
 		"Steel Echo",
-		"Dancing Blade",
-		"Balanced Blade",
+		"Lock & Load",
 		"Four Seasons",
-		"Binding Wounds",
+		"Dancing Blade",
+		"Three Round Burst",
+		"Sling Blade",
 		"" 
 	] 
 } 

@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Piercing",
-		"Fierce",
-		"Focused",
+		"Brutal",
 		"",
+		"Fierce",
+		"Piercing",
+		"Focused",
 		"Accurate",
-		"Ferocious",
 		"",
 		"" 
 	],
@@ -14,73 +14,64 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": true,
+			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -90,12 +81,21 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 4,
 	"Passives": [
-		"Brawler",
 		"Elemental Force",
+		"Fortunate Strike",
 		"Iron Maiden",
 		"One In The Chamber",
 		"Sudden Return",
@@ -104,22 +104,22 @@
 	],
 	"Right Weapon": 1,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": false 
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Grass Cutter",
-		"Binding Wounds",
-		"Bloodshot",
+		"Bloodline",
 		"Steel Echo",
-		"Sling Blade",
 		"Four Seasons",
+		"Dancing Blade",
+		"Bloodshot",
+		"Sling Blade",
 		"Cannibalize",
 		"" 
 	] 

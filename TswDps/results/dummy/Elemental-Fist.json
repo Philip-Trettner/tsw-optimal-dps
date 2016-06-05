@@ -1,47 +1,47 @@
 {
 	"Augments": [
-		"Grievous",
-		"",
+		"Fierce",
+		"Focused",
 		"Brutal",
-		"",
-		"",
 		"Accurate",
+		"Piercing",
 		"",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -50,15 +50,15 @@
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,12 +95,12 @@
 	"Left Weapon": 6,
 	"Passives": [
 		"Elemental Force",
-		"Gnosis",
+		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 2,
 	"Rotation": {
@@ -109,18 +109,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
+		"Tear Em Up",
+		"Fire Manifestation",
 		"Power Line",
 		"Lightning Manifestation",
-		"Fire Manifestation",
-		"Tear Em Up",
-		"Anima Charge",
+		"Reckless",
+		"Flame Strike",
 		"" 
 	] 
 } 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
-		"Accurate",
 		"",
-		"Focused",
+		"Piercing",
 		"Ferocious",
 		"",
+		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -14,51 +14,42 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -74,18 +65,27 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
 			"AR": 0,
 			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,7 +95,7 @@
 	"Left Weapon": 7,
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
+		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
@@ -104,23 +104,23 @@
 	],
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Grand Slam",
-		"Shockwave",
-		"Three Round Burst",
+		"Safety Off",
 		"Full Momentum",
+		"Shockwave",
 		"Molten Steel",
-		"Haymaker",
 		"Lock & Load",
+		"Three Round Burst",
+		"Stone's Throw",
 		"" 
 	] 
 } 

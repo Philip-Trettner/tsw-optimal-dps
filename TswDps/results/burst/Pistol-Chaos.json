@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Accurate",
+		"Fierce",
 		"",
 		"Ferocious",
-		"Piercing",
-		"Grievous",
 		"Focused",
-		"Fierce",
+		"Accurate",
+		"Piercing",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -14,51 +14,51 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
+			"Crit Power": 313,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,52 +75,52 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 8,
 	"Passives": [
-		"Brawler",
 		"Elemental Force",
+		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Amor Fati",
-		"Prisoner of Fate",
+		"Eye of Pandemonium",
+		"Call for Eris",
 		"Start & Finish",
-		"Chaotic Pull",
-		"Suffering and Solace",
-		"Paradox",
+		"Pulling the Strings",
+		"",
 		"" 
 	] 
 } 

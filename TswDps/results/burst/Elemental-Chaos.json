@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Brutal",
-		"Grievous",
-		"Ferocious",
-		"",
+		"Fierce",
 		"Focused",
 		"Accurate",
-		"Fierce",
+		"",
+		"Ferocious",
+		"",
+		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Crit Power": 347,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,19 +39,19 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -76,10 +76,10 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Aggression" 
 		},
 		{
@@ -89,38 +89,38 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 6,
 	"Passives": [
+		"Accuracy",
 		"Brawler",
 		"Elemental Force",
+		"Fatal Flourish",
 		"Iron Maiden",
 		"Lethality",
-		"Live Wire",
-		"One In The Chamber",
-		"Sudden Return" 
+		"Live Wire" 
 	],
 	"Right Weapon": 5,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Electrical Bolt",
-		"Lightning Manifestation",
-		"Flame Strike",
+		"Blaze",
+		"Power Line",
 		"Amor Fati",
 		"Suffering and Solace",
-		"Power Line",
-		"Combust",
+		"Anima Charge",
+		"Lightning Manifestation",
 		"" 
 	] 
 } 

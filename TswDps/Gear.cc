@@ -11,26 +11,26 @@ void Gear::loadStandardDpsGear()
     setGear(PrimaryStat::Attack, TalismanQuality::QL11);
 
     // Head
-    pieces[Head].fix(Rating::Hit);
+    pieces[Head].free(Rating::Crit);
     pieces[Head].signet = Signets::HeadWeapon::Laceration();
 
     // Finger
-    pieces[MajorLeft].fix(Rating::Pen);
+    pieces[MajorLeft].free(Rating::Crit);
     pieces[MajorLeft].signet = Signets::Major::Violence();
 
     // Neck (WC)
     // pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-    pieces[MajorMid].free(Rating::CritPower);
+    pieces[MajorMid].free(Rating::Crit);
     // pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
     // pieces[MajorMid].signet = Signets::Major::EgonPendant();
     pieces[MajorMid].signet = Signets::Major::Violence();
 
     // Wrist
-    pieces[MajorRight].fix(Rating::Pen);
+    pieces[MajorRight].free(Rating::Crit);
     pieces[MajorRight].signet = Signets::Major::Violence();
 
     // Luck
-    pieces[MinorLeft].fix(Rating::Hit);
+    pieces[MinorLeft].free(Rating::Crit);
     pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
 
     // Waist
@@ -44,49 +44,6 @@ void Gear::loadStandardDpsGear()
     // Weapons
     pieces[WeaponLeft].free(Rating::Crit);
     pieces[WeaponLeft].signet = Signets::HeadWeapon::Aggression();
-
-    pieces[WeaponRight].free(Rating::Crit);
-    pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
-}
-
-void Gear::loadJagourTankGear()
-{
-    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
-
-    // Head
-    pieces[Head].fix(Rating::Block);
-    pieces[Head].signet = Signets::empty();
-
-    // Finger
-    pieces[MajorLeft].fix(Rating::Block);
-    pieces[MajorLeft].signet = Signets::Major::Violence();
-
-    // Neck (WC)
-    // pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-    pieces[MajorMid].fix(Rating::CritPower);
-    // pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
-    // pieces[MajorMid].signet = Signets::Major::EgonPendant();
-    pieces[MajorMid].signet = Signets::Major::Violence();
-
-    // Wrist
-    pieces[MajorRight].fix(Rating::Hit);
-    pieces[MajorRight].signet = Signets::Major::Violence();
-
-    // Luck
-    pieces[MinorLeft].fix(Rating::Block);
-    pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
-
-    // Waist
-    pieces[MinorMid].fix(Rating::Hit);
-    pieces[MinorMid].signet = Signets::Minor::Issue1p5();
-
-    // Occult
-    pieces[MinorRight].fix(Rating::Block);
-    pieces[MinorRight].signet = Signets::Minor::Issue1p5();
-
-    // Weapons
-    pieces[WeaponLeft].fix(Rating::Block);
-    pieces[WeaponLeft].signet = Signets::empty();
 
     pieces[WeaponRight].free(Rating::Crit);
     pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
@@ -324,7 +281,7 @@ void Gear::setNeckWoodcutters()
     auto &p = pieces[MajorMid];
     p.fix(Rating::CritPower);
     p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-    p.signet = Signets::Major::WoodcuttersWrath();
+	p.signet = Signets::Major::WoodcuttersWrath();
 }
 
 void Gear::setNeckEgon()

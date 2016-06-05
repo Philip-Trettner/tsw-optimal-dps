@@ -19,7 +19,7 @@ void VerboseLog::logSkill(Simulation *sim, int timeIn60th, int skillIdx)
     std::cout << sim->skills.skills[skillIdx].name << "'." << std::endl;
 }
 
-void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, float dmg, bool critical, bool penetrated, const Stats &stats, float vulnMultiplier)
+void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, const Stats &stats, float vulnMultiplier)
 {
     if (skillsOnly)
         return;
@@ -34,6 +34,12 @@ void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, flo
         std::cout << "penetrated";
     else
         std::cout << "normal";
+	if (glanced)
+		std::cout << ", glanced";
+	if (blocked)
+		std::cout << ", blocked";
+	if (evaded)
+		std::cout << ", evaded";
     std::cout << ", dmg x" << stats.finalDmgMultiplier;
     std::cout << ", vuln x" << vulnMultiplier;
     std::cout << ")." << std::endl;

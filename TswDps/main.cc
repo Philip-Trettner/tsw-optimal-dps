@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <chrono>
 
 #include "Augments.hh"
 #include "Build.hh"
@@ -14,6 +15,7 @@
 #include "SkillTable.hh"
 #include "Optimizer.hh"
 
+#define CLI 0
 
 enum class ExploreType
 {
@@ -22,18 +24,59 @@ enum class ExploreType
     Dummy,
 };
 
-void explore(ExploreType type);
+void explore(ExploreType type, double timeMult);
 
+#if CLI
 int main(int argc, char *argv[])
 {
-    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+	SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
 
+	if (argc != 2)
+	{
+		std::cout << "Usage:" << std::endl;
+		std::cout << "  detailed fight (20s fight): -f BUILDFILE" << std::endl;
+		std::cout << "  dps analysis   (10h fight): -s BUILDFILE" << std::endl;
+		std::cout << "  optimize        (100 gens): -o BUILDFILE" << std::endl;
+		return 0;
+	}
+
+	auto flag = argv[0];
+	auto file = argv[1];
+
+	if (flag == "-f")
+	{
+		
+	}
+	else if (flag == "-s")
+	{
+		
+	}
+	else if (flag == "-o")
+	{
+		
+	}
+	else
+	{
+		std::cout << "invalid flag " << flag << std::endl;
+	}
+}
+#endif
+
+#if CLI
+int main_(int argc, char *argv[])
+#else
+int main(int argc, char *argv[])
+#endif
+{
+    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+	
     (void)argc;
     (void)argv;
 
     /**
      * TODO:
      *
+	 * * Mercurials
      * * Bullet Ballet
      * * Subway Tokens (.4 and .9)
      *
@@ -44,11 +87,14 @@ int main(int argc, char *argv[])
 
     Optimizer optimizer;
 
+	const bool continuousExploration = true;
+	const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Dummy;
     const bool exploration = true;
     const bool optimization = true;
 
-    const bool dpsTest = true;
+	const bool dpsTest = true;
+	const bool varianceComparison = !true;
 
     const int maxTime = 100 * 1000 * 60;
     const int burstFight = 20 * 60;
@@ -57,11 +103,11 @@ int main(int argc, char *argv[])
 
     optimizer.excludeSkillsAndPassives = {
         //"Power Line",         //
-        "Live Wire",          //
+        /*"Live Wire",          //
         "Sudden Return",      //
         "One In The Chamber", //
         "Fortunate Strike",   //
-        "Thunderstruck",      //
+        "Thunderstruck",      //*/
     };
     // no procs
     /*optimizer.excludeSkillsAndPassives = {
@@ -79,7 +125,12 @@ int main(int argc, char *argv[])
 
     if (exploration)
     {
-        explore(exploreType);
+		double mult = 1;
+		do
+		{
+			explore(exploreType, mult);
+			mult *= longerTimePerRun;
+		} while (continuousExploration);
         return 0;
     }
 
@@ -192,13 +243,40 @@ int main(int argc, char *argv[])
 
     if (dpsTest)
     {
-        s.lowVarianceMode = true;
-        if (longRun)
-            s.simulate(maxTime);
-        else
-            while (s.totalTimeAccum < maxTime)
-                s.simulate(burstFight);
-        s.dumpBriefReport();
+		if (varianceComparison)
+		{
+			s.lowVarianceMode = false;
+			std::cout << "normal:" << std::endl;
+			for (int r = 0; r < 10; ++r)
+			{
+				s.resetStats();
+				for (int i = 0; i < 1000; ++i)
+					s.simulate(200 * 60);
+				std::cout << "dps: " << s.totalDPS() << std::endl;
+			}
+			std::cout << std::endl;
+
+			std::cout << "low variance:" << std::endl;
+			s.lowVarianceMode = true;
+			for (int r = 0; r < 10; ++r)
+			{
+				s.resetStats();
+				for (int i = 0; i < 1000; ++i)
+					s.simulate(200 * 60);
+				std::cout << "dps: " << s.totalDPS() << std::endl;
+			}
+			std::cout << std::endl;
+		}
+		else 
+		{
+			s.lowVarianceMode = true;
+			if (longRun)
+				s.simulate(maxTime);
+			else
+				while (s.totalTimeAccum < maxTime)
+					s.simulate(burstFight);
+			s.dumpBriefReport();
+		}
     }
     else
     {
@@ -215,15 +293,9 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
         s.analyzePassiveContribution(maxTime);
     }
-
-    enum class ExploreType
-    {
-        Best,
-        Burst
-    };
 }
 
-void explore(ExploreType type)
+void explore(ExploreType type, double timeMult)
 {
     // path
     auto suffix = "INVALID";
@@ -279,6 +351,7 @@ void explore(ExploreType type)
 
             // optimize
             Optimizer o;
+			o.timePerTest *= timeMult;
             o.silent = true;
             auto &s = o.refSim;
             s.loadBuild(b);
@@ -295,13 +368,17 @@ void explore(ExploreType type)
                 break;
             case ExploreType::Dummy:
                 s.enemyInfo.allVulnerabilities = false; // no vuln
+				s.enemyInfo.baseVulnerability = 0;      // no expose
+				s.enemyInfo.penPower = 0.49f;           // no breaching
                 o.timePerFight = 2 * 60 * 60;           // 2 min parses
                 s.buffAt = INF_TIME;                    // no buffs
+				s.enemyInfo.stats.blockRating = 100;
+				s.enemyInfo.stats.defenceRating = 100;
                 break;
             }
 
             std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << (cont ? " [cont.]" : "") << std::flush;
-            o.run(5);
+            o.run(15);
 
             auto const &builds = o.getTopBuilds();
             auto maxDPS = builds[0].first;

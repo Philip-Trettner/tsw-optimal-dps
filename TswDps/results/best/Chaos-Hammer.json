@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"",
-		"",
-		"",
-		"Focused",
+		"Grievous",
 		"Accurate",
-		"Fierce",
+		"Focused",
+		"Ferocious",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -14,34 +14,34 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -50,7 +50,16 @@
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
@@ -59,15 +68,6 @@
 			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -94,33 +94,33 @@
 	],
 	"Left Weapon": 5,
 	"Passives": [
-		"Brawler",
 		"Elemental Force",
+		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Smash",
+		"Run Rampant",
 		"Full Momentum",
-		"Amor Fati",
 		"Call for Eris",
-		"Eye of Pandemonium",
 		"Stone's Throw",
 		"Molten Steel",
+		"Eye of Pandemonium",
+		"Amor Fati",
 		"" 
 	] 
 } 

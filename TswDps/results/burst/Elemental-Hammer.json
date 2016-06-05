@@ -1,32 +1,23 @@
 {
 	"Augments": [
+		"Brutal",
+		"",
 		"Piercing",
-		"",
-		"",
 		"Accurate",
-		"Grievous",
-		"Focused",
+		"",
+		"Fierce",
 		"Ferocious",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
-		},
-		{
-			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
 		},
 		{
 			"AR": 1033,
@@ -38,20 +29,29 @@
 			"Signet": "Violence" 
 		},
 		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -67,9 +67,9 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 201,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -84,8 +84,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -96,31 +96,31 @@
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
+		"Improved Strikes",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Wrecking Crew" 
 	],
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Ignition",
-		"Full Momentum",
+		"Anima Charge",
 		"Lightning Manifestation",
 		"Power Line",
+		"Full Momentum",
 		"Flame Strike",
-		"Stone's Throw",
-		"Molten Steel",
+		"Haymaker",
 		"" 
 	] 
 } 

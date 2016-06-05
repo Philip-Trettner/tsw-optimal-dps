@@ -1,29 +1,29 @@
 {
 	"Augments": [
+		"Piercing",
+		"Ferocious",
 		"Brutal",
+		"Focused",
 		"Accurate",
 		"",
 		"Grievous",
-		"",
-		"Fierce",
-		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -39,21 +39,12 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
@@ -68,6 +59,15 @@
 			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,30 +75,30 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 4,
 	"Passives": [
-		"Elemental Force",
+		"Accuracy",
 		"Fortunate Strike",
+		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
-		"One In The Chamber",
 		"Sudden Return",
 		"Twist The Knife" 
 	],
@@ -110,17 +110,17 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Steel Echo",
 		"Four Seasons",
 		"Bloodshot",
+		"Left Hand of Darkness",
 		"Cannibalize",
 		"Binding Wounds",
-		"Left Hand of Darkness",
 		"" 
 	] 
 } 

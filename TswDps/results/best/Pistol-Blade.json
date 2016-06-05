@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
-		"Piercing",
 		"Brutal",
-		"",
-		"Fierce",
 		"Accurate",
+		"Focused",
+		"Fierce",
+		"Grievous",
+		"",
 		"",
 		"" 
 	],
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -41,7 +41,7 @@
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 367,
 			"Signet": "Violence" 
@@ -49,16 +49,7 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -74,13 +65,13 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 0,
-			"Crit": 362,
+			"AR": 664,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -90,17 +81,26 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 8,
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
+		"Invasive Measures",
 		"Iron Maiden",
 		"One In The Chamber",
 		"Sudden Return",
-		"Thunderstruck" 
+		"Thunderstruck",
+		"Twist The Knife" 
 	],
 	"Right Weapon": 1,
 	"Rotation": {
@@ -109,17 +109,17 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 4,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Steel Echo",
 		"Four Seasons",
-		"Sling Blade",
 		"Dancing Blade",
 		"Start & Finish",
+		"Bond, Strong Bond",
 		"Shootout",
 		"" 
 	] 

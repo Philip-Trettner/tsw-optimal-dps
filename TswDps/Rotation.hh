@@ -93,8 +93,8 @@ struct DefaultRotation : Rotation
     void fromJson(jsonxx::Object const& o)
     {
         using namespace jsonxx;
-        minResourcesForLeftConsumer = o.get<Boolean>("minResourcesForLeftConsumer", minResourcesForLeftConsumer);
-        minResourcesForRightConsumer = o.get<Boolean>("minResourcesForRightConsumer", minResourcesForRightConsumer);
+        minResourcesForLeftConsumer = (int)o.get<Number>("minResourcesForLeftConsumer", minResourcesForLeftConsumer);
+        minResourcesForRightConsumer = (int)o.get<Number>("minResourcesForRightConsumer", minResourcesForRightConsumer);
         tryToConsumeOnBuffed = o.get<Boolean>("tryToConsumeOnBuffed", tryToConsumeOnBuffed);
         considerBuffEF = o.get<Boolean>("considerBuffEF", considerBuffEF);
         considerBuffFF = o.get<Boolean>("considerBuffFF", considerBuffFF);

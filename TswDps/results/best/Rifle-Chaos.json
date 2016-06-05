@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
 		"Focused",
-		"Ferocious",
+		"Brutal",
+		"Grievous",
 		"Accurate",
-		"Piercing",
+		"Fierce",
+		"",
 		"",
 		"" 
 	],
@@ -14,18 +14,18 @@
 			"AR": 1144,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,20 +39,20 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
-			"Pen": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,8 +75,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -84,22 +84,22 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 7,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
+		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
 	"Right Weapon": 5,
@@ -107,20 +107,20 @@
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 4,
-		"minResourcesForRightConsumer": 4,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
-		"Call for Eris",
-		"Domino Effect",
 		"Three Round Burst",
-		"Pulling the Strings",
+		"Call for Eris",
 		"Suffering and Solace",
+		"Eye of Pandemonium",
+		"Amor Fati",
+		"Lock & Load",
 		"" 
 	] 
 } 

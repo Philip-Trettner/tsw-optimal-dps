@@ -74,7 +74,6 @@ struct Gear
 
     /// default dps gear (for now)
 	void loadStandardDpsGear();
-	void loadJagourTankGear();
 
     Gear();
 

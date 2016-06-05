@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Piercing",
+		"Brutal",
+		"Accurate",
 		"",
-		"",
-		"",
-		"Fierce",
 		"Focused",
+		"Grievous",
+		"Precise",
 		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 407,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 367,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,21 +39,12 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": false,
-			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
@@ -68,6 +59,15 @@
 			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -84,19 +84,19 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Aggression" 
 		} 
 	],
 	"Left Weapon": 6,
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
-		"Invasive Measures",
-		"Iron Maiden",
+		"Fortunate Strike",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
@@ -104,23 +104,23 @@
 	],
 	"Right Weapon": 4,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 3,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
 		"Lightning Manifestation",
-		"Cannibalize",
-		"Power Line",
-		"Fire Manifestation",
+		"Anima Charge",
 		"Bloodshot",
-		"",
+		"Fire Manifestation",
+		"Power Line",
+		"Cannibalize",
 		"" 
 	] 
 } 
