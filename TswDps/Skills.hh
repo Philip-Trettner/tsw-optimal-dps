@@ -165,6 +165,22 @@ public:
             s.appliesVulnerability = DmgType::Magic;
             return s;
         }
+
+        static Skill BulletBallet()
+        {
+            auto s = skill("Bullet Ballet", SkillType::Elite);
+            s.consumesAnyways = true;
+            s.cooldownIn60th = 20 * 60;
+            s.timeIn60th = 2 * 60;
+            s.hits = 10;
+            s.channeling = true;
+            s.specialHitsA = 9;
+            s.dmgScalingA = scaling(s.name);
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
+            s.appliesVulnerability = DmgType::Melee;
+            return s;
+        }
     };
 
     struct Shotgun : private Base<Weapon::Shotgun, DmgType::Ranged>

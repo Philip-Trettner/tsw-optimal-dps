@@ -27,16 +27,18 @@ struct Builds
 
         b.skills = {{
                         // skills
-                        //Skills::Pistol::HairTrigger(), //
+                        Skills::Blood::Bloodline(),     //
+                        Skills::Pistol::BulletBallet(), //
                     },
                     {
                         // augs
                     },
                     {
                         // passives
-                        //Passives::Shotgun::InvasiveMeasures(), //
-                        //Passives::Hammer::Thunderstruck(),
-                        //Passives::Blade::SuddenReturn(),
+                        // Passives::Shotgun::InvasiveMeasures(), //
+                        Passives::Hammer::Thunderstruck(),  //
+                        Passives::Blade::SuddenReturn(),    //
+                        Passives::Pistol::IncreasedFocus(), //
                     }};
 
         // gear
@@ -44,7 +46,7 @@ struct Builds
 
         // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Blood;
-        b.gear.rightWeapon = Weapon::Elemental;
+        b.gear.rightWeapon = Weapon::Pistol;
         return b;
     }
 

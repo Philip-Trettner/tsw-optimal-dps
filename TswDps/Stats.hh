@@ -46,8 +46,8 @@ struct Stats
     int evadeRating = 0;
     int defenceRating = 0;
 
-	// special stuff
-	bool egonPendant = false;
+    // special stuff
+    bool egonPendant = false;
 
     // flat perc increases
     // .2 = 20%
@@ -64,10 +64,10 @@ struct Stats
     float finalCombatPower = -1;
     float finalCritChance = -1;
     float finalCritPower = -1;
-	float finalPenChance = -1;
-	float finalBlockChance = -1;
-	float finalGlanceChance = -1;
-	float finalEvadeChance = -1;
+    float finalPenChance = -1;
+    float finalBlockChance = -1;
+    float finalGlanceChance = -1;
+    float finalEvadeChance = -1;
     float finalDmgMultiplier = -1; // is > 1 (e.g. 1.5 for 50% additive dmg)
 
     void update(EnemyInfo const& enemy);
@@ -86,6 +86,29 @@ struct Stats
         s.health = health;
         s.weaponPower = weaponPower;
         return s;
+    }
+
+    /// sets a given rating explicitly
+    void set(Rating r, int value)
+    {
+        switch (r)
+        {
+        case Rating::Hit:
+            hitRating = value;
+            break;
+        case Rating::Crit:
+            critRating = value;
+            break;
+        case Rating::CritPower:
+            critPowerRating = value;
+            break;
+        case Rating::Pen:
+            penRating = value;
+            break;
+        default:
+            assert(0 && "not impl");
+            break;
+        }
     }
 };
 
@@ -157,7 +180,7 @@ inline Stats operator+(Stats const& l, Stats const& r)
     s.additiveDamage = l.additiveDamage + r.additiveDamage;
     s.multiplicativeDamage = l.multiplicativeDamage + r.multiplicativeDamage;
 
-	s.egonPendant = l.egonPendant || r.egonPendant;
+    s.egonPendant = l.egonPendant || r.egonPendant;
 
     return s;
 }
@@ -189,7 +212,7 @@ inline Stats operator*(Stats const& l, float f)
     s.additiveDamage = l.additiveDamage * f;
     s.multiplicativeDamage = l.multiplicativeDamage * f;
 
-	s.egonPendant = l.egonPendant;
+    s.egonPendant = l.egonPendant;
 
     return s;
 }
@@ -203,11 +226,11 @@ inline bool operator==(Stats const& l, Stats const& r)
     if (l.healRating != r.healRating)
         return false;
 
-	if (l.weaponPower != r.weaponPower)
-		return false;
+    if (l.weaponPower != r.weaponPower)
+        return false;
 
-	if (l.egonPendant != r.egonPendant)
-		return false;
+    if (l.egonPendant != r.egonPendant)
+        return false;
 
     if (l.hitRating != r.hitRating)
         return false;

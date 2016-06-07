@@ -28,6 +28,7 @@ private:
         Augment,
 		Aux,
 		Rotation,
+        Potion,
 
         Count
     };

@@ -47,6 +47,8 @@ struct Passive
             return false;
         if (restrictWeapon)
             return false;
+        if (restrictSubType != SubType::None)
+            return false;
         if (skillPassive)
             return false;
         return true;

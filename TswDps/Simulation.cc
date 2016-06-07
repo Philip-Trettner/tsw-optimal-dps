@@ -296,7 +296,8 @@ void Simulation::simulate(int totalTimeIn60th)
         // consumers
         int resourcesConsumed = 0;
         bool procBloodOffering = false;
-        if (skill.skilltype == SkillType::Consumer)
+        bool consumes = skill.skilltype == SkillType::Consumer || skill.consumesAnyways;
+        if (consumes)
         {
             assert(currentWeapon >= 0 && "aux consumer??");
 
@@ -330,7 +331,7 @@ void Simulation::simulate(int totalTimeIn60th)
                 }
                 else // consumes all res
                 {
-                    assert(weaponResources[currentWeapon] > 0 && "trying to consume on 0 res");
+                    assert(weaponResources[currentWeapon] > 0 || skill.consumesAnyways && "trying to consume on 0 res");
                     weaponResources[currentWeapon] = 0;
                 }
 
@@ -348,13 +349,16 @@ void Simulation::simulate(int totalTimeIn60th)
             scaling += 0.35f * (skill.dmgScalingLow - skill.dmgScaling);
         float penCritPenalty = skillPenCritPenalty[idx];
         // "consumes all resources"
-        if (skill.skilltype == SkillType::Consumer && skill.fixedConsumerResources == 0)
+        if (consumes && skill.fixedConsumerResources == 0)
         {
             float a = (resourcesConsumed - 1.f) / (5.f - 1.f);
             auto scaling5 = skill.dmgScaling5;
             if (skill.dmgScalingLow > 0 && stochasticLowHealth)
                 scaling5 += 0.35f * (skill.dmgScaling5Low - skill.dmgScaling5);
             scaling += (scaling5 - skill.dmgScaling) * a;
+
+            if (resourcesConsumed == 0)
+                scaling = 0; // Bullet Balle @0 resources
         }
         // chance to do more dmg (timber)
         if (skill.chanceForScaleInc > 0)

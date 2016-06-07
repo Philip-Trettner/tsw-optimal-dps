@@ -21,6 +21,7 @@ std::vector<Skill> Skills::all()
         Pistol::StartAndFinish(), //
         Pistol::Marked(),         //
         Pistol::GunFu(),          //
+        Pistol::BulletBallet(),   //
 
         Shotgun::Striker(),         //
         Shotgun::SingleBarrel(),    //

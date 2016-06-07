@@ -76,8 +76,7 @@ int main(int argc, char *argv[])
     /**
      * TODO:
      *
-	 * * Mercurials
-     * * Bullet Ballet
+     * * Mercurials
      * * Subway Tokens (.4 and .9)
      *
      * later: afflictions + signet of corruption
@@ -90,10 +89,10 @@ int main(int argc, char *argv[])
 	const bool continuousExploration = true;
 	const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Dummy;
-    const bool exploration = true;
-    const bool optimization = true;
+    const bool exploration = !true;
+    const bool optimization = !true;
 
-	const bool dpsTest = true;
+    const bool dpsTest = !true;
 	const bool varianceComparison = !true;
 
     const int maxTime = 100 * 1000 * 60;
@@ -116,11 +115,8 @@ int main(int argc, char *argv[])
         "One In The Chamber", //
         "Fortunate Strike",   //
         "Thunderstruck",      //
+        "Gnosis",             //
     };*/
-
-    // for (auto const& s : g.enumerateGearStats({Rating::Crit,
-    // Rating::CritPower}, true))
-    //    std::cout << s.critRating << ";" << s.critPowerRating << std::endl;
 
 
     if (exploration)

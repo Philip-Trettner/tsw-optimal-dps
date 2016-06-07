@@ -252,6 +252,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     std::uniform_int_distribution<int> randomNeck(0, 2);
     std::uniform_int_distribution<int> randomMinRes(1, 5);
     std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count - 1);
+    std::uniform_int_distribution<int> randomRating(0, (int)freeRatings.size() - 1);
 
     auto b = build;
     auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
@@ -492,6 +493,13 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             break;
         case BuildChange::Aux:
             // TODO
+            break;
+        case BuildChange::Potion:
+        {
+            auto rating = freeRatings[randomRating(random)];
+            b.potionStats = Stats();
+            b.potionStats.set(rating, 100);
+        }
             break;
         case BuildChange::SkillSwitch:
             while (!changed && --tries > 0)

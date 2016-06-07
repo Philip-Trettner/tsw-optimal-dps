@@ -74,6 +74,7 @@ void Build::shortDump() const
         std::cout << "Amulet of Yuggoth";
     else
         std::cout << "QL11 + Violence";
+    std::cout << ", Potion: " << shortStatDump(potionStats, false);
     std::cout << std::endl;
 
     std::cout << "Weapons:  ";
