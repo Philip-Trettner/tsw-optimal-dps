@@ -12,7 +12,7 @@ void Gear::loadStandardDpsGear()
 
     // Head
     pieces[Head].free(Rating::Hit);
-    pieces[Head].signet = Signets::HeadWeapon::Laceration();
+    pieces[Head].signet = Signets::empty();
 
     // Finger
     pieces[MajorLeft].free(Rating::Crit);
@@ -31,22 +31,22 @@ void Gear::loadStandardDpsGear()
 
     // Luck
     pieces[MinorLeft].free(Rating::Hit);
-    pieces[MinorLeft].signet = Signets::Minor::SubwayTokens();
+    pieces[MinorLeft].signet = Signets::empty();
 
     // Waist
     pieces[MinorMid].free(Rating::Crit);
-    pieces[MinorMid].signet = Signets::Minor::Issue1p5();
+    pieces[MinorMid].signet = Signets::empty();
 
     // Occult
     pieces[MinorRight].free(Rating::Crit);
-    pieces[MinorRight].signet = Signets::Minor::Issue1p5();
+    pieces[MinorRight].signet = Signets::empty();
 
     // Weapons
     pieces[WeaponLeft].free(Rating::Crit);
-    pieces[WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+    pieces[WeaponLeft].signet = Signets::empty();
 
     pieces[WeaponRight].free(Rating::Crit);
-    pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
+    pieces[WeaponRight].signet = Signets::empty();
 }
 
 Gear::Gear()

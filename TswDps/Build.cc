@@ -86,6 +86,10 @@ void Build::shortDump() const
     std::cout << gear.pieces[Gear::Head].signet.name() << " on Head, ";
     std::cout << gear.pieces[Gear::WeaponLeft].signet.name() << " on " << to_string(gear.leftWeapon) << ", ";
     std::cout << gear.pieces[Gear::WeaponRight].signet.name() << " on " << to_string(gear.rightWeapon);
+    std::cout << ", Minors: [";
+    std::cout << gear.pieces[Gear::MinorLeft].signet.name() << ", ";
+    std::cout << gear.pieces[Gear::MinorMid].signet.name() << ", ";
+    std::cout << gear.pieces[Gear::MinorRight].signet.name() << "]";
     std::cout << std::endl;
 
     auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);

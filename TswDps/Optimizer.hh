@@ -21,8 +21,9 @@ private:
         EliteActive,
         Passive,
         ElitePassive,
-        SignetSwitch,
-        SignetChange,
+        MajorSignetSwitch,
+        MajorSignetChange,
+        MinorSignetChange,
         NeckTalisman,
         StatChange,
         Augment,
@@ -62,6 +63,14 @@ public: // settings
     /// excluded skills and passives
     std::set<std::string> excludeSkillsAndPassives;
 
+    /// default talisman quality
+    Gear::TalismanQuality defaultQuality = Gear::TalismanQuality::QL11;
+    /// raid item quality (TODO: implement .4 version)
+    Gear::TalismanQuality raidQuality = Gear::TalismanQuality::QL10_9;
+
+    /// force a certain vulnerability (if none found, returns immediately, leaving zero top builds)
+    DmgType forceVulnerability = DmgType::None;
+
 public: // tweaks
     /// Number of simulatenously hold builds
     size_t maxActiveBuilds = 50;
@@ -95,7 +104,7 @@ public:
     Optimizer();
 
     /// Runs the optimization for a number of generations
-    void run(int generations = 250);
+    void run(int generations = 50);
 
     /// get the best builds
     std::vector<std::pair<double, Build>> const& getTopBuilds() const { return activeBuilds; }
@@ -113,8 +122,10 @@ private: // "Library"
 	std::vector<Augment> allDpsAugments;
 
 	std::vector<Signet> allHeadWeaponSignets;
+    std::vector<Signet> allMinorSignets;
 
     std::vector<size_t> headWeaponGearSlots = std::vector<size_t>({ Gear::Head, Gear::WeaponLeft, Gear::WeaponRight });
+    std::vector<size_t> minorGearSlots = std::vector<size_t>({ Gear::MinorLeft, Gear::MinorRight, Gear::MinorMid });
 
 private: // Transient data
     /// timing

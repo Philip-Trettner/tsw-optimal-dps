@@ -40,10 +40,17 @@ void Optimizer::run(int generations)
         if (s.skilltype == SkillType::Builder)
             allBuilder.push_back(s);
         else if (s.skilltype == SkillType::Elite)
+        {
+            if (forceVulnerability != DmgType::None && s.appliesVulnerability != forceVulnerability)
+                continue; // wrong vulnerability
             allEliteActives.push_back(s);
+        }
         else
             allNonBuilder.push_back(s);
     }
+
+    if (allEliteActives.empty())
+        return; // no suitable elite found
 
     allPassives = Passives::all();
     allNonElitePassives.clear();
@@ -67,6 +74,16 @@ void Optimizer::run(int generations)
     allDpsAugments = Augments::allDpsAugs();
 
     allHeadWeaponSignets = Signets::HeadWeapon::all();
+    allMinorSignets.clear();
+    for (auto const& s : Signets::Minor::all())
+    {
+        if (s.passive.restrictWeapon && s.passive.weaponType != startBuild.gear.leftWeapon
+            && s.passive.weaponType != startBuild.gear.rightWeapon)
+            continue; // non-matched weapon restricted passive
+
+        allMinorSignets.push_back(s);
+    }
+    allMinorSignets.push_back(Signets::Minor::SubwayTokens()); // special
 
     // guarantee a builder
     bool hasBuilder = false;
@@ -254,7 +271,6 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     std::uniform_int_distribution<int> randomNeck(0, 2);
     std::uniform_int_distribution<int> randomMinRes(1, 5);
     std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count - 1);
-    std::uniform_int_distribution<int> randomRating(0, (int)freeRatings.size() - 1);
 
     auto b = build;
     auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
@@ -385,7 +401,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 }
             }
             break;
-        case BuildChange::SignetChange:
+        case BuildChange::MajorSignetChange:
             while (!changed)
             {
                 auto idx = randomElement(headWeaponGearSlots);
@@ -397,7 +413,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 changed = true;
             }
             break;
-        case BuildChange::SignetSwitch:
+        case BuildChange::MajorSignetSwitch:
             while (!changed)
             {
                 auto idx1 = randomElement(headWeaponGearSlots);
@@ -496,13 +512,23 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         case BuildChange::Aux:
             // TODO
             break;
+        case BuildChange::MinorSignetChange:
+        {
+            auto const& signet = randomElement(allMinorSignets);
+            auto isTokens = signet.passive.effect == EffectSlot::SubwayTokensCountdown;
+            auto slot = isTokens ? Gear::MinorLeft : randomElement(minorGearSlots);
+
+            b.gear.pieces[slot].signet = signet;
+            b.gear.pieces[slot].set(PrimaryStat::Attack, isTokens ? raidQuality : defaultQuality);
+        }
+        break;
         case BuildChange::Potion:
         {
-            auto rating = freeRatings[randomRating(random)];
+            auto rating = randomElement(freeRatings);
             b.potionStats = Stats();
             b.potionStats.set(rating, 100);
         }
-            break;
+        break;
         case BuildChange::SkillSwitch:
             while (!changed && --tries > 0)
             {

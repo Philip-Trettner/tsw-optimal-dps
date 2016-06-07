@@ -147,6 +147,135 @@ public:
             return p;
         }
 
+        static Signet Assassination()
+        {
+            auto p = signet("Assassination");
+
+            p.passive.restrictSubType = SubType::Strike;
+            p.passive.bonusStats.additiveDamage = 4.5f / 100;
+
+            return p;
+        }
+
+        static Signet Cleaving()
+        {
+            auto p = signet("Cleaving");
+
+            p.passive.restrictSubType = SubType::Focus;
+            p.passive.bonusStats.additiveDamage = 4.5f / 100;
+
+            return p;
+        }
+
+        static Signet Storms()
+        {
+            auto p = signet("Storms");
+
+            p.passive.restrictSubType = SubType::Burst;
+            p.passive.bonusStats.additiveDamage = 4.5f / 100;
+
+            return p;
+        }
+
+        static Signet Distortion()
+        {
+            auto p = signet("Distortion");
+
+            p.passive.weaponType = Weapon::Chaos;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Execution()
+        {
+            auto p = signet("Execution");
+
+            p.passive.weaponType = Weapon::Rifle;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Flux()
+        {
+            auto p = signet("Flux");
+
+            p.passive.weaponType = Weapon::Elemental;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Liquidation()
+        {
+            auto p = signet("Liquidation");
+
+            p.passive.weaponType = Weapon::Pistol;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Serration()
+        {
+            auto p = signet("Serration");
+
+            p.passive.weaponType = Weapon::Fist;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Shards()
+        {
+            auto p = signet("Shards");
+
+            p.passive.weaponType = Weapon::Shotgun;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Shattering()
+        {
+            auto p = signet("Shattering");
+
+            p.passive.weaponType = Weapon::Hammer;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Swords()
+        {
+            auto p = signet("Swords");
+
+            p.passive.weaponType = Weapon::Blade;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
+        static Signet Tomes()
+        {
+            auto p = signet("Tomes");
+
+            p.passive.weaponType = Weapon::Blood;
+            p.passive.restrictWeapon = true;
+            p.passive.bonusStats.additiveDamage = 3.0f / 100;
+
+            return p;
+        }
+
         static Signet SubwayTokens()
         {
             auto p = signet("Subway Tokens");
@@ -161,6 +290,20 @@ public:
         {
             return {
                 Issue1p5(), //
+
+                Assassination(), //
+                Cleaving(),      //
+                Storms(),        //
+
+                Distortion(),  //
+                Execution(),   //
+                Flux(),        //
+                Liquidation(), //
+                Serration(),   //
+                Shards(),      //
+                Shattering(),  //
+                Swords(),      //
+                Tomes(),       //
             };
         }
     };

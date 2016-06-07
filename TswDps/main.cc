@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
      * TODO:
      *
      * * Mercurials
-     * * Subway Tokens (.4 and .9)
+     * * Coney, Equilibrium
      *
      * later: afflictions + signet of corruption
      *
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Dummy;
     const bool exploration = !true;
-    const bool optimization = !true;
+    const bool optimization = true;
 
     const bool dpsTest = !true;
 	const bool varianceComparison = !true;
