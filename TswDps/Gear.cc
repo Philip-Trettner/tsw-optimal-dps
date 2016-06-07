@@ -11,7 +11,7 @@ void Gear::loadStandardDpsGear()
     setGear(PrimaryStat::Attack, TalismanQuality::QL11);
 
     // Head
-    pieces[Head].free(Rating::Crit);
+    pieces[Head].free(Rating::Hit);
     pieces[Head].signet = Signets::HeadWeapon::Laceration();
 
     // Finger
@@ -30,8 +30,8 @@ void Gear::loadStandardDpsGear()
     pieces[MajorRight].signet = Signets::Major::Violence();
 
     // Luck
-    pieces[MinorLeft].free(Rating::Crit);
-    pieces[MinorLeft].signet = Signets::Minor::Issue1p5();
+    pieces[MinorLeft].free(Rating::Hit);
+    pieces[MinorLeft].signet = Signets::Minor::SubwayTokens();
 
     // Waist
     pieces[MinorMid].free(Rating::Crit);
@@ -281,7 +281,7 @@ void Gear::setNeckWoodcutters()
     auto &p = pieces[MajorMid];
     p.fix(Rating::CritPower);
     p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-	p.signet = Signets::Major::WoodcuttersWrath();
+    p.signet = Signets::Major::WoodcuttersWrath();
 }
 
 void Gear::setNeckEgon()

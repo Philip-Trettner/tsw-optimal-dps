@@ -135,6 +135,29 @@ public:
 
             return e;
         }
+
+        static Effect SubwayTokens()
+        {
+            auto e = effect("Subway Tokens", EffectSlot::SubwayTokens);
+
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 11;
+            e.resetOnGlance = true;
+            e.resetOnMax = true;
+            e.bonusStats.additiveDamage = 1 / 100.f;
+
+            return e;
+        }
+
+        static Effect SubwayTokensCountdown()
+        {
+            auto e = effect("Subway Tokens Countdown", EffectSlot::SubwayTokensCountdown);
+
+            e.timeIn60th = 6 * 60;
+            e.triggerOnStackLost = EffectSlot::SubwayTokens;
+
+            return e;
+        }
     };
 
     struct Generic : private Base
@@ -478,7 +501,8 @@ public:
             auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling = scaling(e.name) * 2.7f; // assume always max bonus (3 is unrealistic, between 2.6 and 2.8)
+            e.procDmgScaling
+                = scaling(e.name) * 2.7f; // assume always max bonus (3 is unrealistic, between 2.6 and 2.8)
             e.affectedByAdditiveDmg = true;
             e.isFullHit = true; // TODO: TEST!
 

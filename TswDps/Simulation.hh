@@ -123,7 +123,7 @@ private: // run-time TRANSIENT data
     int weaponResources[2];
     // currently equipped weapon (0 = left, 1 = right, -1 = aux)
     int currentWeapon;
-    // currently used skill
+    // currently used skill 0..7
     int currentSkill;
     // vulnerabilities
     int vulnTime[(int)DmgType::Count];

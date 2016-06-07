@@ -147,6 +147,16 @@ public:
             return p;
         }
 
+        static Signet SubwayTokens()
+        {
+            auto p = signet("Subway Tokens");
+
+            p.passive.effect = EffectSlot::SubwayTokensCountdown;
+            p.passive.trigger = Trigger::Auto;
+
+            return p;
+        }
+
         static std::vector<Signet> all()
         {
             return {

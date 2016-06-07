@@ -50,6 +50,8 @@ MAKE_EFFECT_ENUM(
     FuryBuff,
     Sadism,
     Opportunism,
+    SubwayTokens,
+    SubwayTokensCountdown,
 
     // general passives
     MinorPenetrationChance,
@@ -140,7 +142,9 @@ struct Effect
     int cooldownIn60th = 60;
     int timeIn60th = 0; // 0 = no stacks, only applies once (for procs)
 
-    bool resetOnPen = false; //< if true, resets effect on pen
+    bool resetOnPen = false;    //< if true, resets effect on pen
+    bool resetOnGlance = false; //< if true, resets effect on glance
+    bool resetOnMax = false;    //< if true, resets effect on max stacks
 
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
@@ -178,8 +182,8 @@ struct Effect
     bool consumedAfterAbility = false;            // if true, 1 stack is consumed after next ability
     EffectSlot gainOnConsume = EffectSlot::Count; // if non-Count, gains a stack of a given effect after consumed
 
-    int gainResources = 0;         // gain resources for active weapon
-    bool makeConsumerFree = false; // if true, makes the next consumer free
+    int gainResources = 0;                          // gain resources for active weapon
+    bool makeConsumerFree = false;                  // if true, makes the next consumer free
     EffectSlot triggerOnMaxRes = EffectSlot::Count; // if max-res, this effect is triggered
 
     EffectSlot gainEffectStacks

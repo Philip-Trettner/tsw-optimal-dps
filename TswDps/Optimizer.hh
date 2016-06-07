@@ -84,6 +84,9 @@ public: // tweaks
     /// if true, uses multithreading
     bool multithreaded = true;
 
+    /// divisor for thread cnt
+    int threadDivisor = 1;
+
 public: // stats
 	/// nr of builds evaluated
 	int totalBuildsEvaluated = 0;

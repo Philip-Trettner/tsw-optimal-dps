@@ -657,6 +657,10 @@ void Simulation::fullHit(const Stats& baseStats,
         if (isPen && effect.resetOnPen && effectStacks[i] > 0)
             resetEffect((EffectSlot)i);
 
+        // reset on glance
+        if (isGlance && effect.resetOnGlance && effectStacks[i] > 0)
+            resetEffect((EffectSlot)i);
+
         // proc on skill hit
         if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0 && effect.affects(dmgtype, skilltype, subtype, weapon))
             procEffectDmg(procStat, effect, dmgScaling);
@@ -671,6 +675,12 @@ void Simulation::fullHit(const Stats& baseStats,
 
         // finish activation is handled differently
         if (passive.trigger == Trigger::FinishActivation)
+            continue;
+        // start activation is handled differently
+        if (passive.trigger == Trigger::StartActivation)
+            continue;
+        // auto is handled differently
+        if (passive.trigger == Trigger::Auto)
             continue;
 
         // once per ability can only proc at start (for now)
@@ -695,6 +705,10 @@ void Simulation::fullHit(const Stats& baseStats,
 
         // blocked by pen
         if (isPen && effect.resetOnPen)
+            continue;
+
+        // blocked by glance
+        if (isGlance && effect.resetOnGlance)
             continue;
 
         // on crit-pen
@@ -815,6 +829,10 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
             // gain new effect
             procEffect(procStats, effect.triggerOnMaxStacks, originalHitScaling);
         }
+
+        // reset on max stacks
+        if (effect.resetOnMax && effectStacks[slot] == effect.maxStacks)
+            resetEffect(effect.slot);
     }
     else
         assert(effectTime[slot] == 0);
@@ -1005,6 +1023,11 @@ void Simulation::advanceTime(int timeIn60th)
     // process passives
     while (timeIn60th > 0)
     {
+        // auto trigger
+        for (auto const& p : skillTriggers[currentSkill])
+            if (p.trigger == Trigger::Auto && effectStacks[(int)p.effect] == 0)
+                procEffect(procStats[currentSkill], p, -1);
+
         // calc time to next event
         auto delta = timeIn60th;
         for (auto i = 0; i < (int)EffectSlot::Count; ++i)
@@ -1038,6 +1061,7 @@ void Simulation::advanceTime(int timeIn60th)
                 {
                     // loose a stack
                     effectStacks[i] -= 1;
+                    assert(effectStacks[i] >= 0 && "negative stacks");
 
                     // refresh time if stacks left
                     if (effectStacks[i] > 0)
@@ -1167,6 +1191,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::FuryStacks());
     registerEffect(Effects::Signet::Sadism());
     registerEffect(Effects::Signet::Opportunism());
+    registerEffect(Effects::Signet::SubwayTokens());
+    registerEffect(Effects::Signet::SubwayTokensCountdown());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());
