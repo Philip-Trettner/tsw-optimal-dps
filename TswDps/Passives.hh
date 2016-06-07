@@ -282,9 +282,10 @@ public:
             auto p = passive("Fatal Flourish", PassiveType::None);
 
             // TODO: affliction!
-            p.trigger = Trigger::FinishActivation;
+			// Mason Ring does not stack => useless!
+            /*p.trigger = Trigger::FinishActivation;
             p.triggerOnDamaging = true;
-            p.effect = EffectSlot::FatalFlourishStacks;
+            p.effect = EffectSlot::FatalFlourishStacks;*/
 
             return p;
         }
