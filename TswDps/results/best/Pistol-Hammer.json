@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"Piercing",
-		"Focused",
+		"Fierce",
 		"",
-		"Accurate",
+		"Focused",
 		"Ferocious",
+		"Precise",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
@@ -47,21 +47,21 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 625,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 236,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -94,17 +94,20 @@
 	],
 	"Left Weapon": 8,
 	"Passives": [
-		"Brawler",
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
-		"One In The Chamber" 
+		"One In The Chamber",
+		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 3,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Start & Finish",
 		"Shockwave",
-		"Stone's Throw",
 		"Full Momentum",
-		"Bond, Strong Bond",
+		"Stone's Throw",
 		"Molten Steel",
+		"Start & Finish",
+		"Bond, Strong Bond",
 		"" 
 	] 
 } 

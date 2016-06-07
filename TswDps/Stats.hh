@@ -2,6 +2,7 @@
 
 #include "common.hh"
 #include <functional>
+#include "jsonxx.hh"
 
 struct EnemyInfo;
 
@@ -76,6 +77,35 @@ struct Stats
     void dumpDpsGlyphs() const;
     /// dumps ar, hit, crit, crit power, pen
     void dumpDpsStats(bool updateWithEmpty = true);
+
+	jsonxx::Object toJson() const
+	{
+		jsonxx::Object o;
+		if (hitRating > 0)
+			o << "Hit" << hitRating;
+		if (penRating > 0)
+			o << "Pen" << penRating;
+		if (critRating > 0)
+			o << "Crit" << critRating;
+		if (critPowerRating > 0)
+			o << "CritPower" << critPowerRating;
+		// TODO: more
+		return o;
+	}
+
+	void fromJson(jsonxx::Object const& o)
+	{
+		// only overwrites present members
+		using namespace jsonxx;
+		if (o.has<Number>("Hit"))
+			hitRating = (int)o.get<Number>("Hit");
+		if (o.has<Number>("Pen"))
+			penRating = (int)o.get<Number>("Pen");
+		if (o.has<Number>("Crit"))
+			critRating = (int)o.get<Number>("Crit");
+		if (o.has<Number>("CritPower"))
+			critPowerRating = (int)o.get<Number>("CritPower");
+	}
 
     /// returns AR, HR, HP, WP part
     Stats getPrimaryPart() const

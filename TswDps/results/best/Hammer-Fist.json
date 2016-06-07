@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
 		"Focused",
-		"Piercing",
 		"",
+		"Ferocious",
 		"Fierce",
+		"",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -84,12 +84,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 407,
+			"Signet": "Abuse" 
 		} 
 	],
 	"Left Weapon": 3,
@@ -97,14 +97,17 @@
 		"Elemental Force",
 		"Fatal Flourish",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 2,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": true,
 		"considerBuffWC": false,
@@ -115,11 +118,11 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
 		"Molten Steel",
-		"Shockwave",
 		"Full Momentum",
 		"Tear Em Up",
+		"Shockwave",
+		"Reckless",
 		"Stone's Throw",
 		"" 
 	] 

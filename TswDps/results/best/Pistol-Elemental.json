@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accurate",
-		"Piercing",
-		"Ferocious",
 		"Focused",
+		"Accurate",
 		"Grievous",
+		"Piercing",
 		"",
+		"Fierce",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,6 +102,9 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 6,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -116,11 +119,11 @@
 	"Skills": [
 		"Hair Trigger",
 		"Lightning Manifestation",
-		"Fire Manifestation",
-		"Flame Strike",
 		"Start & Finish",
-		"Power Line",
+		"Fire Manifestation",
 		"Anima Charge",
+		"Flame Strike",
+		"Power Line",
 		"" 
 	] 
 } 

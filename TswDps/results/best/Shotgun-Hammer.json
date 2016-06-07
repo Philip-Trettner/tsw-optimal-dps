@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
+		"Focused",
+		"Grievous",
+		"Piercing",
+		"Ferocious",
+		"",
 		"Accurate",
 		"",
-		"",
-		"Piercing",
-		"Grievous",
-		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 625,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Twist The Knife" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 3,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -116,11 +119,11 @@
 	"Skills": [
 		"Grand Slam",
 		"Bombardment",
-		"Lock, Stock & Barrel",
-		"Full Momentum",
 		"Raging Bullet",
-		"Sure Shot",
 		"Molten Steel",
+		"Lock, Stock & Barrel",
+		"Sure Shot",
+		"Full Momentum",
 		"" 
 	] 
 } 

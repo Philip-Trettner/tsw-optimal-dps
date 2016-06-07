@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"Focused",
-		"Grievous",
 		"Fierce",
 		"Accurate",
+		"Focused",
+		"",
+		"Grievous",
 		"",
 		"" 
 	],
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Pen": 367,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 0,
@@ -102,10 +102,13 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 2,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -115,11 +118,11 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Three Round Burst",
-		"Shellshocker",
 		"One-Two",
 		"Wild at Heart",
+		"Three Round Burst",
+		"Reckless",
+		"Shellshocker",
 		"Lock & Load",
 		"" 
 	] 

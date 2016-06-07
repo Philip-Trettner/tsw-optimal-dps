@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
 		"Focused",
-		"Accurate",
-		"",
-		"Fierce",
 		"",
 		"Grievous",
+		"Fierce",
+		"Ferocious",
+		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -95,13 +95,16 @@
 	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 8,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Start & Finish",
-		"Bombardment",
-		"Shootout",
-		"Sure Shot",
 		"Lock, Stock & Barrel",
+		"Bombardment",
+		"Start & Finish",
+		"Sure Shot",
 		"Raging Bullet",
+		"Shootout",
 		"" 
 	] 
 } 

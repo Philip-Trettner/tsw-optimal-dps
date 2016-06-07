@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
 		"Piercing",
-		"Ferocious",
 		"",
+		"",
+		"Ferocious",
 		"Fierce",
 		"Accurate",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 3,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
@@ -115,10 +118,10 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Full Momentum",
 		"Shockwave",
-		"Molten Steel",
 		"Lock & Load",
+		"Full Momentum",
+		"Molten Steel",
 		"Three Round Burst",
 		"Stone's Throw",
 		"" 

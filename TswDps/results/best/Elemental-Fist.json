@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"Ferocious",
-		"Focused",
-		"Precise",
 		"Grievous",
+		"Ferocious",
+		"Precise",
+		"",
+		"Focused",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,19 +89,22 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		} 
 	],
 	"Left Weapon": 6,
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 2,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -111,16 +114,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Fire Manifestation",
-		"One-Two",
-		"Wild at Heart",
-		"Power Line",
 		"Lightning Manifestation",
+		"Fire Manifestation",
+		"Power Line",
+		"Reckless",
+		"Tear Em Up",
+		"One-Two",
 		"" 
 	] 
 } 

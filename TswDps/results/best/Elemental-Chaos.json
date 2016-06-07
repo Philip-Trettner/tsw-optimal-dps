@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
+		"Grievous",
 		"",
 		"",
-		"Ferocious",
-		"Fierce",
 		"Accurate",
-		"Precise",
+		"Piercing",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -78,18 +78,18 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
+			"Pen": 407,
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Left Weapon": 6,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"CritPower": 100 
+	},
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
-		"Anima Charge",
 		"Fire Manifestation",
-		"Call for Eris",
+		"Anima Charge",
+		"Amor Fati",
 		"Power Line",
 		"Lightning Manifestation",
+		"Call for Eris",
 		"" 
 	] 
 } 

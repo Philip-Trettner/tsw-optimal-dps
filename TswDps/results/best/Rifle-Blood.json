@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
+		"Grievous",
 		"Focused",
-		"Piercing",
-		"",
 		"Accurate",
+		"",
 		"Fierce",
 		"",
 		"" 
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,11 +102,14 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 4,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Bloodshot",
 		"Shellshocker",
-		"Cannibalize",
-		"Exsanguinate",
-		"Three Round Burst",
+		"Bloodshot",
+		"Left Hand of Darkness",
 		"Lock & Load",
+		"Three Round Burst",
+		"Cannibalize",
 		"" 
 	] 
 } 

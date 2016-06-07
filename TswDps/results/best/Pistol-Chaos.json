@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Focused",
-		"",
-		"Piercing",
-		"Grievous",
-		"Accurate",
 		"Brutal",
+		"Precise",
+		"Focused",
+		"Piercing",
+		"Fierce",
+		"",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,11 +102,14 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
-		"considerBuffFF": true,
+		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
@@ -116,11 +119,11 @@
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
-		"Amor Fati",
-		"Eye of Pandemonium",
+		"Call for Eris",
 		"Chaotic Pull",
 		"Bond, Strong Bond",
-		"Call for Eris",
+		"Amor Fati",
+		"Eye of Pandemonium",
 		"" 
 	] 
 } 

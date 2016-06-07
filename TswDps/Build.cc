@@ -143,6 +143,7 @@ jsonxx::Object Build::toJson() const
     auto rot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
     assert(rot && "not supported");
     b << "Rotation" << rot->toJson();
+	b << "Potion" << potionStats.toJson();
     return b;
 }
 
@@ -153,6 +154,12 @@ void Build::fromJson(const jsonxx::Object& o)
     auto aa = o.get<Array>("Augments");
     auto pp = o.get<Array>("Passives");
     auto gg = o.get<Array>("Gear");
+
+	if (o.has<Object>("Potion"))
+	{
+		potionStats = Stats();
+		potionStats.fromJson(o.get<Object>("Potion"));
+	}
 
     gear.leftWeapon = (Weapon)(int)o.get<Number>("Left Weapon", (int)gear.leftWeapon);
     gear.rightWeapon = (Weapon)(int)o.get<Number>("Right Weapon", (int)gear.rightWeapon);

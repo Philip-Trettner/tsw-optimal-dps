@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Accurate",
 		"Fierce",
-		"Precise",
-		"",
-		"",
+		"Piercing",
+		"Accurate",
 		"Ferocious",
+		"",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 625,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Serration" 
 		},
 		{
 			"AR": 0,
@@ -94,20 +94,23 @@
 	],
 	"Left Weapon": 9,
 	"Passives": [
+		"Elemental Force",
 		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 2,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
-		"considerBuffFF": true,
-		"considerBuffWC": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Bombardment",
+		"Tear Em Up",
 		"Raging Bullet",
 		"Sure Shot",
-		"Lock, Stock & Barrel",
+		"Bombardment",
 		"Reckless",
-		"One-Two",
+		"Lock, Stock & Barrel",
 		"" 
 	] 
 } 

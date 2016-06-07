@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
+		"Fierce",
 		"",
-		"Grievous",
+		"",
+		"Piercing",
 		"Accurate",
+		"Precise",
 		"Focused",
-		"Ferocious",
-		"",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"CritPower": 100 
+	},
 	"Right Weapon": 3,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Full Momentum",
-		"Call for Eris",
-		"Stone's Throw",
-		"Molten Steel",
-		"Eye of Pandemonium",
 		"Amor Fati",
+		"Full Momentum",
+		"Eye of Pandemonium",
+		"Stone's Throw",
+		"Call for Eris",
+		"Molten Steel",
 		"" 
 	] 
 } 

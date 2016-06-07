@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
+		"",
 		"Fierce",
 		"Focused",
 		"",
-		"Precise",
 		"Accurate",
-		"",
+		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 4,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
@@ -111,16 +114,16 @@
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
+		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Bloodshot",
 		"Cannibalize",
 		"Bombardment",
-		"Exsanguinate",
-		"Lock, Stock & Barrel",
+		"Sure Shot",
 		"" 
 	] 
 } 

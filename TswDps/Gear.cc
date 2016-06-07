@@ -476,11 +476,11 @@ void Gear::Piece::fromJson(const jsonxx::Object &o)
 
     using namespace jsonxx;
     status = o.get<Boolean>("Free", false) ? SlotStatus::Free : SlotStatus::Fixed;
-    stats.attackRating = o.get<Number>("AR", 0);
-    stats.critRating = o.get<Number>("Crit", 0);
-    stats.critPowerRating = o.get<Number>("Crit Power", 0);
-    stats.penRating = o.get<Number>("Pen", 0);
-    stats.hitRating = o.get<Number>("Hit", 0);
+    stats.attackRating = (int)o.get<Number>("AR", 0);
+    stats.critRating = (int)o.get<Number>("Crit", 0);
+    stats.critPowerRating = (int)o.get<Number>("Crit Power", 0);
+    stats.penRating = (int)o.get<Number>("Pen", 0);
+    stats.hitRating = (int)o.get<Number>("Hit", 0);
     auto sig = o.get<String>("Signet", "");
     if (sig.empty())
         signet = Signets::empty();

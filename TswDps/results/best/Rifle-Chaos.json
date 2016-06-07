@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Focused",
 		"Brutal",
 		"Grievous",
-		"Accurate",
+		"Focused",
 		"Fierce",
+		"Accurate",
 		"",
 		"",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 664,
@@ -80,34 +80,37 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 407,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 7,
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Hit": 100 
+	},
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Three Round Burst",
 		"Call for Eris",
-		"Suffering and Solace",
+		"Three Round Burst",
 		"Eye of Pandemonium",
-		"Amor Fati",
+		"Suffering and Solace",
 		"Lock & Load",
+		"Amor Fati",
 		"" 
 	] 
 } 

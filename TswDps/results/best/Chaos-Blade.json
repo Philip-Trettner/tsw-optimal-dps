@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Brutal",
-		"",
-		"Ferocious",
-		"Grievous",
 		"Accurate",
-		"Precise",
+		"",
+		"Brutal",
+		"Grievous",
+		"Ferocious",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -84,8 +84,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -95,13 +95,16 @@
 	"Left Weapon": 5,
 	"Passives": [
 		"Fortunate Strike",
-		"Gnosis",
 		"Invasive Measures",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
@@ -111,7 +114,7 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",

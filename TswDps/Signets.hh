@@ -317,6 +317,7 @@ public:
         s.insert(end(s), begin(hw), end(hw));
         s.insert(end(s), begin(major), end(major));
         s.insert(end(s), begin(minor), end(minor));
+		s.push_back(Minor::SubwayTokens());
         return s;
     }
 

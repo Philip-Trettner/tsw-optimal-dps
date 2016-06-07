@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
+		"Fierce",
 		"Piercing",
 		"",
 		"",
-		"Fierce",
 		"Grievous",
+		"Focused",
 		"Accurate",
 		"" 
 	],
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 0,
+			"AR": 625,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Left Weapon": 8,
@@ -102,10 +102,13 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"CritPower": 100 
+	},
 	"Right Weapon": 7,
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -116,11 +119,11 @@
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
-		"Lock & Load",
-		"Big 45",
-		"Three Round Burst",
-		"Shellshocker",
 		"Shootout",
+		"Lock & Load",
+		"Shellshocker",
+		"Three Round Burst",
+		"Big 45",
 		"" 
 	] 
 } 

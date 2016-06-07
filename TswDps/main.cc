@@ -88,11 +88,11 @@ int main(int argc, char *argv[])
 
 	const bool continuousExploration = true;
 	const double longerTimePerRun = 1.1;
-    const auto exploreType = ExploreType::Dummy;
+    const auto exploreType = ExploreType::Best;
     const bool exploration = !true;
-    const bool optimization = true;
+    const bool optimization = !true;
 
-    const bool dpsTest = !true;
+    const bool dpsTest = true;
 	const bool varianceComparison = !true;
 
     const int maxTime = 100 * 1000 * 60;
@@ -148,9 +148,9 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = INF_TIME;
 
-    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
-    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
-    s.loadBuild(Builds::currTest());
+    s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
+    //s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
+    //s.loadBuild(Builds::currTest());
     // s.loadBuild(Builds::currMaxFistHammer());
     // s.loadBuild(Builds::currMaxPistolShotgun());
     // s.loadBuild(Builds::procHairtriggerOnly());
@@ -347,7 +347,7 @@ void explore(ExploreType type, double timeMult)
 
             // optimize
             Optimizer o;
-			o.timePerTest *= timeMult;
+			o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
             auto &s = o.refSim;
             s.loadBuild(b);

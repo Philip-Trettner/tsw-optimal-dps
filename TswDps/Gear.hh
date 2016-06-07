@@ -36,7 +36,8 @@ struct Gear
 
     enum class TalismanQuality
     {
-        QL10_9,
+		QL10_4,
+		QL10_9,
         QL11
     };
 

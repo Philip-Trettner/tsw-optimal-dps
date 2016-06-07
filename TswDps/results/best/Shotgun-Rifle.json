@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Piercing",
-		"Accurate",
+		"Grievous",
+		"",
 		"Focused",
+		"Piercing",
 		"",
-		"",
-		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 0,
@@ -95,31 +95,34 @@
 	"Left Weapon": 9,
 	"Passives": [
 		"Elemental Force",
+		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Hit": 100 
+	},
 	"Right Weapon": 7,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Safety Off",
-		"Raging Bullet",
 		"Bombardment",
-		"Three Round Burst",
 		"Lock, Stock & Barrel",
-		"Lock & Load",
+		"Raging Bullet",
+		"Three Round Burst",
+		"Sure Shot",
 		"Takedown",
 		"" 
 	] 

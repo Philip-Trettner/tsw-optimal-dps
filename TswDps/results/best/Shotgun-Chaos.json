@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
 		"Ferocious",
-		"Precise",
 		"Focused",
+		"",
+		"Precise",
 		"Accurate",
 		"",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -47,22 +47,22 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 5,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -115,10 +118,10 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Lock, Stock & Barrel",
 		"Call for Eris",
-		"Bombardment",
 		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Bombardment",
 		"Sure Shot",
 		"Amor Fati",
 		"" 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Ferocious",
-		"Piercing",
-		"Grievous",
 		"Focused",
+		"Grievous",
+		"Piercing",
 		"Fierce",
 		"Accurate",
+		"Brutal",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -32,35 +32,35 @@
 			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 313,
-			"Free": false,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -89,23 +89,26 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		} 
 	],
 	"Left Weapon": 6,
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Grass Cutter",
+		"Steel Echo",
 		"Lightning Manifestation",
 		"Fire Manifestation",
-		"Steel Echo",
+		"Power Line",
 		"Flame Strike",
 		"Binding Wounds",
-		"Power Line",
 		"" 
 	] 
 } 

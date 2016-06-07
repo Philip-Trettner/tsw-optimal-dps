@@ -1,7 +1,7 @@
 {
 	"Augments": [
-		"Brutal",
 		"Focused",
+		"Brutal",
 		"",
 		"",
 		"Fierce",
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Tomes" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -102,11 +102,14 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 4,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
-		"considerBuffFF": false,
+		"considerBuffFF": true,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 4,
@@ -114,13 +117,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Hair Trigger",
+		"Bloodline",
 		"Start & Finish",
-		"Big 45",
+		"Bond, Strong Bond",
 		"Cannibalize",
 		"Bloodshot",
 		"Cardiac Arrest",
-		"Bond, Strong Bond",
+		"Exsanguinate",
 		"" 
 	] 
 } 

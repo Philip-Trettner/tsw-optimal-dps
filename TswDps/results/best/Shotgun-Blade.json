@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
-		"",
 		"Ferocious",
 		"Grievous",
-		"Focused",
 		"Piercing",
+		"",
+		"Accurate",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -102,6 +102,9 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
+	"Potion": {
+		"Hit": 100 
+	},
 	"Right Weapon": 1,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Steel Echo",
-		"Lock, Stock & Barrel",
-		"Raging Bullet",
-		"Sure Shot",
-		"Four Seasons",
 		"Binding Wounds",
+		"Dancing Blade",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Steel Echo",
+		"Four Seasons",
 		"" 
 	] 
 } 

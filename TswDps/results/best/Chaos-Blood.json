@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Brutal",
-		"Accurate",
-		"",
 		"Ferocious",
 		"",
+		"",
 		"Focused",
+		"Brutal",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -102,6 +102,9 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
+	"Potion": {
+		"Crit": 119 
+	},
 	"Right Weapon": 4,
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Call for Eris",
-		"Four Horsemen",
-		"Cannibalize",
 		"Eye of Pandemonium",
+		"Cannibalize",
 		"Amor Fati",
 		"Bloodshot",
+		"Call for Eris",
+		"Four Horsemen",
 		"" 
 	] 
 } 

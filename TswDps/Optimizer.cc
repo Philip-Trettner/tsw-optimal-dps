@@ -526,7 +526,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         {
             auto rating = randomElement(freeRatings);
             b.potionStats = Stats();
-            b.potionStats.set(rating, 100);
+			auto amount = rating == Rating::Crit ? 119 : 100;
+            b.potionStats.set(rating, amount);
         }
         break;
         case BuildChange::SkillSwitch:
