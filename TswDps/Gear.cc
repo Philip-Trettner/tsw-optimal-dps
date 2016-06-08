@@ -11,7 +11,7 @@ void Gear::loadStandardDpsGear()
     setGear(PrimaryStat::Attack, TalismanQuality::QL11);
 
     // Head
-    pieces[Head].free(Rating::Crit);
+    pieces[Head].free(Rating::Hit);
     pieces[Head].signet = Signets::empty();
 
     // Finger
@@ -30,7 +30,7 @@ void Gear::loadStandardDpsGear()
     pieces[MajorRight].signet = Signets::Major::Violence();
 
     // Luck
-    pieces[MinorLeft].free(Rating::Crit);
+    pieces[MinorLeft].free(Rating::Hit);
     pieces[MinorLeft].signet = Signets::empty();
 
     // Waist
@@ -47,6 +47,16 @@ void Gear::loadStandardDpsGear()
 
     pieces[WeaponRight].free(Rating::Crit);
     pieces[WeaponRight].signet = Signets::empty();
+}
+
+void Gear::loadEmptyDpsGear()
+{
+    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+
+    // violences currently don't get optimized except neck
+    pieces[MajorLeft].signet = Signets::Major::Violence();
+    pieces[MajorMid].signet = Signets::Major::Violence();
+    pieces[MajorRight].signet = Signets::Major::Violence();
 }
 
 Gear::Gear()

@@ -64,8 +64,8 @@ void Build::shortDump() const
     std::cout << "Gear:     ";
     auto s = gear.gearStats();
     std::cout << s.attackRating << " AR, ";
-	std::cout << s.hitRating << " Hit, ";
-	std::cout << s.penRating << " Pen, ";
+    std::cout << s.hitRating << " Hit, ";
+    std::cout << s.penRating << " Pen, ";
     std::cout << s.critRating << " CR, ";
     std::cout << s.critPowerRating << " CP, Neck: ";
     if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
@@ -137,13 +137,13 @@ jsonxx::Object Build::toJson() const
     b << "Skills" << ss;
     b << "Augments" << aa;
     b << "Passives" << pp;
-    b << "Left Weapon" << (int)gear.leftWeapon;
-    b << "Right Weapon" << (int)gear.rightWeapon;
+    b << "Left Weapon" << to_string(gear.leftWeapon);
+    b << "Right Weapon" << to_string(gear.rightWeapon);
     b << "Gear" << gg;
     auto rot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
     assert(rot && "not supported");
     b << "Rotation" << rot->toJson();
-	b << "Potion" << potionStats.toJson();
+    b << "Potion" << potionStats.toJson();
     return b;
 }
 
@@ -155,14 +155,22 @@ void Build::fromJson(const jsonxx::Object& o)
     auto pp = o.get<Array>("Passives");
     auto gg = o.get<Array>("Gear");
 
-	if (o.has<Object>("Potion"))
-	{
-		potionStats = Stats();
-		potionStats.fromJson(o.get<Object>("Potion"));
-	}
+    if (o.has<Object>("Potion"))
+    {
+        potionStats = Stats();
+        potionStats.fromJson(o.get<Object>("Potion"));
+    }
 
-    gear.leftWeapon = (Weapon)(int)o.get<Number>("Left Weapon", (int)gear.leftWeapon);
-    gear.rightWeapon = (Weapon)(int)o.get<Number>("Right Weapon", (int)gear.rightWeapon);
+    if (o.has<Number>("Left Weapon"))
+        gear.leftWeapon = (Weapon)(int)o.get<Number>("Left Weapon", (int)gear.leftWeapon);
+    else
+        gear.leftWeapon = parseWeapon(o.get<String>("Left Weapon", to_string(gear.leftWeapon)));
+
+    if (o.has<Number>("Right Weapon"))
+        gear.rightWeapon = (Weapon)(int)o.get<Number>("Right Weapon", (int)gear.rightWeapon);
+    else
+        gear.rightWeapon = parseWeapon(o.get<String>("Right Weapon", to_string(gear.rightWeapon)));
+
 
     auto allSkills = Skills::all();
     auto allAugs = Augments::allDpsAugs();
@@ -237,7 +245,8 @@ void Build::fromJson(const jsonxx::Object& o)
     }
 
     auto defRot = std::dynamic_pointer_cast<DefaultRotation>(rotation);
-    if (!defRot) defRot = DefaultRotation::create();
+    if (!defRot)
+        defRot = DefaultRotation::create();
     defRot->fromJson(o.get<Object>("Rotation"));
     rotation = defRot;
 }

@@ -36,6 +36,33 @@ inline bool startsWithResources(Weapon w)
     }
 }
 
+inline Weapon parseWeapon(string const& s)
+{
+    if (s == "Blade")
+        return Weapon::Blade;
+    else if (s == "Fist")
+        return Weapon::Fist;
+    else if (s == "Hammer")
+        return Weapon::Hammer;
+
+    else if (s == "Chaos")
+        return Weapon::Chaos;
+    else if (s == "Blood")
+        return Weapon::Blood;
+    else if (s == "Elemental")
+        return Weapon::Elemental;
+
+    else if (s == "Rifle")
+        return Weapon::Rifle;
+    else if (s == "Pistol")
+        return Weapon::Pistol;
+    else if (s == "Shotgun")
+        return Weapon::Shotgun;
+
+    else
+        return Weapon::None;
+}
+
 inline string to_string(Weapon w)
 {
     switch (w)

@@ -30,6 +30,7 @@ struct CombatLog
 struct VerboseLog : CombatLog
 {
     bool skillsOnly = false;
+    bool logEffects = true;
     bool logResources = false;
 
     void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override;

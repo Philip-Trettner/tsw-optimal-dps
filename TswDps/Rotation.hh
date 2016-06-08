@@ -68,8 +68,8 @@ struct DefaultRotation : Rotation
     int minResourcesForRightConsumer = 5;  ///< min Nr of resources for consuming (right weapon)
     bool tryToConsumeOnBuffed = true;      ///< if true, consume even on non full res if still under EF, DABS, FF, or WC
     bool considerBuffEF = true;            ///< if true, EF is considered a "buffed" state
-    bool considerBuffFF = true;            ///< if true, FF is considered a "buffed" state
-    bool considerBuffWC = true;            ///< if true, WC is considered a "buffed" state
+    bool considerBuffFF = false;           ///< if true, FF is considered a "buffed" state
+    bool considerBuffWC = false;           ///< if true, WC is considered a "buffed" state
     bool consumeIfNotBloodOffering = true; ///< if true, tries to consume until blood offering
     bool buildOnlyBeforeMajorBuffs = false; ///< if true, only builders shortly before major buffs
 

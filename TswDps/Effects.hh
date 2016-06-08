@@ -621,6 +621,17 @@ public:
             return e;
         }
 
+        static Effect Ferocity()
+        {
+            auto e = effect("Ferocity", EffectSlot::Ferocity);
+
+            e.timeIn60th = 5 * 60;
+            e.maxStacks = 3;
+            e.bonusStats.additiveDamage = 4 / 100.f;
+
+            return e;
+        }
+
         static Effect ElementalForceStacks()
         {
             auto e = effect("Elemental Force Stacks", EffectSlot::ElementalForceStacks);

@@ -418,6 +418,17 @@ public:
 
             return p;
         }
+
+        static Passive Ferocity()
+        {
+            auto p = passive("Ferocity", PassiveType::None);
+
+            p.restrictSubType = SubType::Burst;
+            p.trigger = Trigger::FinishActivation;
+            p.effect = EffectSlot::Ferocity;
+
+            return p;
+        }
     };
 
     struct Blood : private Base<Weapon::Blood, DmgType::Magic>

@@ -51,7 +51,7 @@ std::vector<Passive> Passives::all()
                                    // TODO: Street Fighter?
         // Fist [done]
         Fist::Predator(), //
-        // TODO: Ferocity
+        Fist::Ferocity(), //
         // TODO: One-Two passive?
 
         // Blood [done]

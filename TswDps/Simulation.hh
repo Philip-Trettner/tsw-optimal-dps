@@ -81,6 +81,11 @@ struct Simulation
         return w == gear.leftWeapon ? weaponResources[0] : w == gear.rightWeapon ? weaponResources[1] : -1;
     }
 
+    /// saves fight parameters in json
+    jsonxx::Object fightToJson() const;
+    /// loads fight parameters from json
+    void fightFromJson(jsonxx::Object const& o);
+
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
     // does NOT include multi-hit penalty

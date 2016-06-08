@@ -3,6 +3,10 @@
 #include <fstream>
 #include <chrono>
 
+#include <QCoreApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+
 #include "Augments.hh"
 #include "Build.hh"
 #include "CombatLog.hh"
@@ -15,7 +19,7 @@
 #include "SkillTable.hh"
 #include "Optimizer.hh"
 
-#define CLI 0
+#define DEPLOY 0
 
 enum class ExploreType
 {
@@ -26,62 +30,18 @@ enum class ExploreType
 
 void explore(ExploreType type, double timeMult);
 
-#if CLI
-int main(int argc, char *argv[])
+void debugRun()
 {
-	SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
-
-	if (argc != 2)
-	{
-		std::cout << "Usage:" << std::endl;
-		std::cout << "  detailed fight (20s fight): -f BUILDFILE" << std::endl;
-		std::cout << "  dps analysis   (10h fight): -s BUILDFILE" << std::endl;
-		std::cout << "  optimize        (100 gens): -o BUILDFILE" << std::endl;
-		return 0;
-	}
-
-	auto flag = argv[0];
-	auto file = argv[1];
-
-	if (flag == "-f")
-	{
-		
-	}
-	else if (flag == "-s")
-	{
-		
-	}
-	else if (flag == "-o")
-	{
-		
-	}
-	else
-	{
-		std::cout << "invalid flag " << flag << std::endl;
-	}
-}
-#endif
-
-#if CLI
-int main_(int argc, char *argv[])
-#else
-int main(int argc, char *argv[])
-#endif
-{
-    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
-	
-    (void)argc;
-    (void)argv;
-
     /**
      * TODO:
      *
      * * Mercurials
      * * Coney, Equilibrium
-     * * additive glance chance
+     * * support augs
      * * better gear optimization
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
      * * check if laceration on head makes a difference
+     * * performance
      *
      * later: afflictions + signet of corruption
      *
@@ -90,14 +50,14 @@ int main(int argc, char *argv[])
 
     Optimizer optimizer;
 
-	const bool continuousExploration = true;
-	const double longerTimePerRun = 1.1;
+    const bool continuousExploration = true;
+    const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
     const bool exploration = !true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;
-	const bool varianceComparison = !true;
+    const bool varianceComparison = !true;
 
     const int maxTime = 100 * 1000 * 60;
     const int burstFight = 20 * 60;
@@ -125,13 +85,14 @@ int main(int argc, char *argv[])
 
     if (exploration)
     {
-		double mult = 1;
-		do
-		{
-			explore(exploreType, mult);
-			mult *= longerTimePerRun;
-		} while (continuousExploration);
-        return 0;
+        double mult = 1;
+        do
+        {
+            explore(exploreType, mult);
+            mult *= longerTimePerRun;
+        } while (continuousExploration);
+
+        return;
     }
 
 
@@ -152,8 +113,8 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = INF_TIME;
 
-    //s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
-    //s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
+    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
+    // s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
     s.loadBuild(Builds::currTest());
     // s.loadBuild(Builds::currMaxFistHammer());
     // s.loadBuild(Builds::currMaxPistolShotgun());
@@ -203,7 +164,7 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
         s.analyzePassiveContribution();
 
-        return 0;
+        return;
     }
 
     s.init();
@@ -243,40 +204,40 @@ int main(int argc, char *argv[])
 
     if (dpsTest)
     {
-		if (varianceComparison)
-		{
-			s.lowVarianceMode = false;
-			std::cout << "normal:" << std::endl;
-			for (int r = 0; r < 10; ++r)
-			{
-				s.resetStats();
-				for (int i = 0; i < 1000; ++i)
-					s.simulate(200 * 60);
-				std::cout << "dps: " << s.totalDPS() << std::endl;
-			}
-			std::cout << std::endl;
+        if (varianceComparison)
+        {
+            s.lowVarianceMode = false;
+            std::cout << "normal:" << std::endl;
+            for (int r = 0; r < 10; ++r)
+            {
+                s.resetStats();
+                for (int i = 0; i < 1000; ++i)
+                    s.simulate(200 * 60);
+                std::cout << "dps: " << s.totalDPS() << std::endl;
+            }
+            std::cout << std::endl;
 
-			std::cout << "low variance:" << std::endl;
-			s.lowVarianceMode = true;
-			for (int r = 0; r < 10; ++r)
-			{
-				s.resetStats();
-				for (int i = 0; i < 1000; ++i)
-					s.simulate(200 * 60);
-				std::cout << "dps: " << s.totalDPS() << std::endl;
-			}
-			std::cout << std::endl;
-		}
-		else 
-		{
-			s.lowVarianceMode = true;
-			if (longRun)
-				s.simulate(maxTime);
-			else
-				while (s.totalTimeAccum < maxTime)
-					s.simulate(burstFight);
-			s.dumpBriefReport();
-		}
+            std::cout << "low variance:" << std::endl;
+            s.lowVarianceMode = true;
+            for (int r = 0; r < 10; ++r)
+            {
+                s.resetStats();
+                for (int i = 0; i < 1000; ++i)
+                    s.simulate(200 * 60);
+                std::cout << "dps: " << s.totalDPS() << std::endl;
+            }
+            std::cout << std::endl;
+        }
+        else
+        {
+            s.lowVarianceMode = true;
+            if (longRun)
+                s.simulate(maxTime);
+            else
+                while (s.totalTimeAccum < maxTime)
+                    s.simulate(burstFight);
+            s.dumpBriefReport();
+        }
     }
     else
     {
@@ -351,7 +312,7 @@ void explore(ExploreType type, double timeMult)
 
             // optimize
             Optimizer o;
-			o.timePerTest = (int)(o.timePerTest * timeMult);
+            o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
             auto &s = o.refSim;
             s.loadBuild(b);
@@ -367,13 +328,9 @@ void explore(ExploreType type, double timeMult)
                 o.timePerFight = 15 * 60; // 15s
                 break;
             case ExploreType::Dummy:
-                s.enemyInfo.allVulnerabilities = false; // no vuln
-				s.enemyInfo.baseVulnerability = 0;      // no expose
-				s.enemyInfo.penPower = 0.49f;           // no breaching
-                o.timePerFight = 2 * 60 * 60;           // 2 min parses
-                s.buffAt = INF_TIME;                    // no buffs
-				s.enemyInfo.stats.blockRating = 100;
-				s.enemyInfo.stats.defenceRating = 100;
+                s.enemyInfo.dummySetting();
+                o.timePerFight = 2 * 60 * 60; // 2 min parses
+                s.buffAt = INF_TIME;          // no buffs
                 break;
             }
 
@@ -424,4 +381,311 @@ void explore(ExploreType type, double timeMult)
     sort(begin(cnts), end(cnts));
     for (auto const &kvp : cnts)
         table << kvp.second << "," << -kvp.first << std::endl;
+}
+
+int main(int argc, char *argv[])
+{
+#if DEPLOY
+    SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
+#else
+    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+#endif
+
+    QCoreApplication app(argc, argv);
+    QCoreApplication::setApplicationName("ArtificialMind's Combat Simulator");
+    QCoreApplication::setApplicationVersion("1.0");
+
+    // ==========================================================================
+    // setup otions
+    QCommandLineParser parser;
+    parser.setApplicationDescription(app.applicationName());
+    auto oHelp = parser.addHelpOption();
+    parser.addVersionOption();
+
+    // .. build
+    parser.addPositionalArgument("build", "Build (either a .json file or a 'Weapon+Weapon' combination)");
+
+    // .. debug
+    QCommandLineOption oDebug({"d", "debug"}, "Debug Procedure");
+#if !DEPLOY
+    parser.addOption(oDebug);
+#endif
+
+    // .. log level
+    QCommandLineOption oLog(
+        {"l", "log"}, "Log Level (0 = none, 1 = stats [default], 2 = skills, 3 = hits, 4 = effects, 5 = all)", "level", "1");
+    parser.addOption(oLog);
+
+    // .. analysis
+    QCommandLineOption oAnalysis({"a", "analysis"}, "Analyzes the dps impact of every part of the build. Each "
+                                                    "individual step simulates [time] seconds (default 48h)",
+                                 "time", "48h");
+    parser.addOption(oAnalysis);
+
+    // .. fight scenario
+    QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid', 'burst' [default], 'dummy', or file)",
+                              "scenario", "burst");
+    parser.addOption(oFight);
+
+    // .. combat time
+    QCommandLineOption oTime({"t", "time"},
+                             "Simulated total combat time in seconds (default is taken from fight scenario)", "time");
+    parser.addOption(oTime);
+    QCommandLineOption oFightTime("fight-time",
+                                  "Simulated fight time in seconds (default is taken from fight scenario)", "time");
+    parser.addOption(oFightTime);
+
+    // .. optimizer
+    QCommandLineOption oOptimize({"o", "optimize"}, "Optimizes the DPS of the given build for a given number of rounds "
+                                                    "(settings are included in the fight scenario)",
+                                 "rounds");
+    parser.addOption(oOptimize);
+
+    // .. dump build at end
+    QCommandLineOption oDumpBuild(
+        "dump-build", "Dumps the build (as json) at the end (affected by optimizer), use '.' for console output",
+        "file");
+    parser.addOption(oDumpBuild);
+
+    // .. dump scenario at end
+    QCommandLineOption oDumpScenario("dump-scenario", "Dumps the fight scenario (as json), use '.' for console output", "file");
+    parser.addOption(oDumpScenario);
+
+    // .. output base stats per skill
+    QCommandLineOption oSkillStats("skill-stats", "Outputs base stats for each skill");
+    parser.addOption(oSkillStats);
+
+    // ==========================================================================
+    // parse options
+    parser.process(app);
+
+    // ==========================================================================
+    // process options
+
+    Optimizer o;
+    Simulation &s = o.refSim;
+    int fightTime = ticksFromTimeStr("20s");
+    int totalTime = fightTime;
+
+    // .. debug only
+    if (parser.isSet(oDebug))
+    {
+        debugRun();
+        return 0;
+    }
+
+    // args
+    auto args = parser.positionalArguments();
+    if (args.length() == 0)
+    {
+        std::cerr << "No build provided" << std::endl;
+        std::cerr << std::endl;
+        parser.showHelp(-1);
+    }
+
+    // .. build
+    auto buildName = args[0];
+    Build b;
+    b.gear.loadEmptyDpsGear();              // for weapons and base stats
+    b.rotation = DefaultRotation::create(); // default rot
+    // .. .. from weapon+weapon
+    if (buildName.contains('+') && !buildName.endsWith(".json"))
+    {
+        Weapon w1, w2;
+        auto parts = buildName.split('+');
+        auto valid = true;
+        if (parts.length() != 2)
+            valid = false;
+        else
+        {
+            w1 = parseWeapon(parts[0].toStdString());
+            w2 = parseWeapon(parts[1].toStdString());
+
+            if (w1 == Weapon::None || w2 == Weapon::None || w1 == w2)
+                valid = false;
+        }
+
+        if (!valid)
+        {
+            std::cerr << "Invalid weapon name/combination '" << buildName << "'" << std::endl;
+            std::cerr << std::endl;
+            std::cerr << "Weapons must be different." << std::endl;
+            std::cerr << std::endl;
+            std::cerr << "Weapon name must be in:" << std::endl;
+            std::cerr << "  Ranged: Pistol, Shotgun, Rifle" << std::endl;
+            std::cerr << "  Melee:  Blade, Hammer, Fist" << std::endl;
+            std::cerr << "  Magic:  Blood, Chaos, Elemental" << std::endl;
+            std::cerr << std::endl;
+            parser.showHelp(-1);
+        }
+        b.gear.leftWeapon = w1;
+        b.gear.rightWeapon = w2;
+
+        // get at least one builder
+        for (auto const &s : Skills::all())
+            if (s.weapon == w1 || s.weapon == w2)
+                if (s.skilltype == SkillType::Builder)
+                {
+                    b.skills.skills[0] = s;
+                    break;
+                }
+    }
+    else if (std::ifstream(buildName.toStdString()).good())
+    {
+        std::ifstream file(buildName.toStdString());
+        jsonxx::Object o;
+        o.parse(file);
+        b.fromJson(o);
+    }
+    else
+    {
+        std::cerr << "Could not open file " << buildName << std::endl;
+        std::cerr << std::endl;
+        parser.showHelp(-1);
+    }
+    s.loadBuild(b);
+
+    // .. scenario
+    auto scen = parser.value(oFight);
+    std::cout << "Fight Scenario: " << scen.toStdString() << std::endl;
+    std::cout << std::endl;
+    if (scen.toLower() == "raid")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.enemyInfo.allVulnerabilities = true;
+        s.lowVarianceMode = true;
+    }
+    else if (scen.toLower() == "burst")
+    {
+        fightTime = totalTime = ticksFromTimeStr("20s");
+        s.enemyInfo.allVulnerabilities = true;
+    }
+    else if (scen.toLower() == "dummy")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.buffAt = INF_TIME;
+        s.enemyInfo.dummySetting();
+        s.lowVarianceMode = true;
+    }
+    else if (std::ifstream(scen.toStdString()).good())
+    {
+        std::ifstream file(buildName.toStdString());
+        jsonxx::Object o;
+        o.parse(file);
+        s.fightFromJson(o);
+
+        fightTime = ticksFromJsonObj(o, "Fight Time");
+        totalTime = ticksFromJsonObj(o, "Total Time");
+    }
+    else
+    {
+        std::cerr << "Could not open file " << scen << std::endl;
+        std::cerr << std::endl;
+        parser.showHelp(-1);
+    }
+
+    // .. combat time
+    if (parser.isSet(oTime))
+        totalTime = ticksFromTimeStr(parser.value(oTime).toStdString());
+    if (parser.isSet(oFightTime))
+        fightTime = ticksFromTimeStr(parser.value(oFightTime).toStdString());
+
+    // .. optimizer
+    auto optimizerRounds = 0;
+    if (parser.isSet(oOptimize))
+        optimizerRounds = parser.value(oOptimize).toInt();
+    bool optimization = optimizerRounds > 0;
+
+    // .. log
+    auto loglevel = parser.value(oLog).toInt();
+    AggregateLog log;
+    VerboseLog vlog;
+    vlog.logResources = loglevel >= 5;
+    vlog.logEffects = loglevel >= 4;
+    vlog.skillsOnly = loglevel <= 2;
+    StatLog slog;
+    log.logs.push_back(&slog);
+    if (loglevel >= 2)
+        log.logs.push_back(&vlog);
+    s.log = loglevel <= 0 ? nullptr : &log;
+
+    // ==========================================================================
+    // print info
+
+    // initialize sim
+    s.init();
+
+    // .. print build
+    std::cout << "(Initial) Build:" << std::endl;
+    b.shortDump();
+    std::cout << std::endl;
+
+    // .. skill stats
+    if (parser.isSet(oSkillStats))
+    {
+        s.dumpSkillStats();
+        std::cout << std::endl;
+    }
+
+    // TODO
+
+    // ==========================================================================
+    // do simulation
+
+    // TODO!!
+
+    if (!optimization)
+    {
+        while (s.totalTimeAccum < totalTime)
+            s.simulate(fightTime);
+    }
+
+    // ==========================================================================
+    // .. dump results
+
+    if (!optimization)
+    {
+        s.dumpBriefReport();
+        std::cout << std::endl;
+
+        if (loglevel >= 1)
+        {
+            slog.dump(&s);
+            std::cout << std::endl;
+        }
+    }
+
+    if (parser.isSet(oDumpBuild))
+    {
+        auto fname = parser.value(oDumpBuild);
+        auto json = b.toJson(); // TODO: from optimizer
+        if (fname == ".")
+            std::cout << json.json() << std::endl;
+        else
+        {
+            std::ofstream file(fname.toStdString());
+            file << json.json();
+            std::cout << "Wrote build to '" << fname.toStdString() << "'" << std::endl;
+        }
+        std::cout << std::endl;
+    }
+
+    if (parser.isSet(oDumpScenario))
+    {
+        auto fname = parser.value(oDumpScenario);
+        auto json = s.fightToJson(); // TODO: from optimizer
+        json << "Fight Time" << toTimeStr(fightTime);
+        json << "Total Time" << toTimeStr(totalTime);
+        if (fname == ".")
+            std::cout << json.json() << std::endl;
+        else
+        {
+            std::ofstream file(fname.toStdString());
+            file << json.json();
+            std::cout << "Wrote scenario to '" << fname.toStdString() << "'" << std::endl;
+        }
+        std::cout << std::endl;
+    }
 }

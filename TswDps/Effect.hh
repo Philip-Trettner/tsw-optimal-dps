@@ -75,6 +75,7 @@ MAKE_EFFECT_ENUM(
     DoomBuff,
     InvasiveMeasures,
     InvasiveMeasuresProc,
+    Ferocity,
 
     // skill passives
     Reckless,

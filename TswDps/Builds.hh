@@ -27,8 +27,7 @@ struct Builds
 
         b.skills = {{
                         // skills
-                        Skills::Blood::Bloodline(),     //
-                        Skills::Pistol::BulletBallet(), //
+                        Skills::Chaos::RunRampant(),     //
                     },
                     {
                         // augs
@@ -36,7 +35,7 @@ struct Builds
                     {
                         // passives
                         // Passives::Shotgun::InvasiveMeasures(), //
-                        Passives::Chaos::FeverPitch(),     //
+                        Passives::Fist::Ferocity(),     //
                     }};
 
         // gear
@@ -44,7 +43,7 @@ struct Builds
 
         // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Blood;
-        b.gear.rightWeapon = Weapon::Pistol;
+        b.gear.rightWeapon = Weapon::Chaos;
         return b;
     }
 

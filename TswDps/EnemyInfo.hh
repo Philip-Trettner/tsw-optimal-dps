@@ -25,4 +25,13 @@ struct EnemyInfo
 
 		// TODO: check evade rating
 	}
+
+    void dummySetting()
+    {
+        stats.blockRating = 100;
+        stats.defenceRating = 100;
+        allVulnerabilities = false;
+        baseVulnerability = 0.f;
+        penPower = .49f;
+    }
 };
