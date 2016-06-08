@@ -179,6 +179,8 @@ public:
             s.dmgScaling = scaling(s.name + " @1");
             s.dmgScaling5 = scaling(s.name + " @5");
             s.appliesVulnerability = DmgType::Melee;
+            s.passive.trigger = Trigger::Hit;
+            s.passive.effect = EffectSlot::CritRating;
             return s;
         }
     };

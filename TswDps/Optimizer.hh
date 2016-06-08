@@ -41,7 +41,7 @@ public: // settings
     /// testing time overall (per build)
     int timePerTest = 1 * 3600 * 60;
     /// time per individual fight
-	int timePerFight = 10 * 60 * 60; // 10 min fights
+    int timePerFight = 1.5 * 60 * 60; // 1.5 min fights
 
     /// # active skills
     int maxActives = 7;

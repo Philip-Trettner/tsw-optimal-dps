@@ -36,9 +36,7 @@ struct Builds
                     {
                         // passives
                         // Passives::Shotgun::InvasiveMeasures(), //
-                        Passives::Hammer::Thunderstruck(),  //
-                        Passives::Blade::SuddenReturn(),    //
-                        Passives::Pistol::IncreasedFocus(), //
+                        Passives::Chaos::FeverPitch(),     //
                     }};
 
         // gear

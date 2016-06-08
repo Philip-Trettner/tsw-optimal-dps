@@ -30,7 +30,6 @@ private:
         }
     };
     static float scaling(std::string const& name) { return SkillTable::scaling(name); }
-
 public:
     struct Pistol : private Base<Weapon::Pistol, DmgType::Ranged>
     {
@@ -111,7 +110,8 @@ public:
         {
             auto p = passive("Mad Skills", PassiveType::None);
 
-            p.bonusStats.critRating = 200; // better than stacks
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::CritRating;
 
             return p;
         }
@@ -144,7 +144,8 @@ public:
         {
             auto p = passive("Body Piercing", PassiveType::None);
 
-            p.bonusStats.penRating = 200; // better than stacks
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::PenRating;
 
             return p;
         }
@@ -216,7 +217,9 @@ public:
         {
             auto p = passive("Call Your Shots", PassiveType::None);
 
-            p.bonusStats.hitRating = 200;
+            p.trigger = Trigger::Hit;
+            p.effect = EffectSlot::HitRating;
+            // ignore reset on glance for now
 
             return p;
         }
@@ -282,7 +285,7 @@ public:
             auto p = passive("Fatal Flourish", PassiveType::None);
 
             // TODO: affliction!
-			// Mason Ring does not stack => useless!
+            // Mason Ring does not stack => useless!
             /*p.trigger = Trigger::FinishActivation;
             p.triggerOnDamaging = true;
             p.effect = EffectSlot::FatalFlourishStacks;*/
@@ -377,7 +380,8 @@ public:
         {
             auto p = passive("Punishment", PassiveType::None);
 
-            p.bonusStats.critPowerRating = 200; // better than stacks
+            p.trigger = Trigger::Hit;
+            p.effect = EffectSlot::CritPowerRating;
 
             return p;
         }
@@ -474,6 +478,17 @@ public:
             return p;
         }
 
+        static Passive FeverPitch()
+        {
+            auto p = passive("Fever Pitch", PassiveType::None);
+
+            p.trigger = Trigger::Hit; // FIX ME
+            p.triggerChance = 0.15f;
+            p.effect = EffectSlot::MajorHitChance;
+
+            return p;
+        }
+
         static Passive ChaosAdept()
         {
             auto p = passive("Chaos Adept", PassiveType::None);
@@ -543,7 +558,6 @@ public:
     };
 
     static Passive empty() { return Passive(); }
-
     static std::vector<Passive> all(); // only non-skills
 private:
     Passives() = delete;

@@ -1169,6 +1169,11 @@ void Simulation::registerEffects()
     registerEffect(Effects::Generic::MajorPenetrationChance());
     registerEffect(Effects::Generic::MinorCriticalChance());
     registerEffect(Effects::Generic::MajorCriticalChance());
+    registerEffect(Effects::Generic::MajorHitChance());
+    registerEffect(Effects::Generic::CritRating());
+    registerEffect(Effects::Generic::CritPowerRating());
+    registerEffect(Effects::Generic::PenRating());
+    registerEffect(Effects::Generic::HitRating());
 
     registerEffect(Effects::Passive::ElementalForceBuff());
     registerEffect(Effects::Passive::ElementalForceStacks());

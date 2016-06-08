@@ -78,6 +78,10 @@ int main(int argc, char *argv[])
      *
      * * Mercurials
      * * Coney, Equilibrium
+     * * additive glance chance
+     * * better gear optimization
+     * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
+     * * check if laceration on head makes a difference
      *
      * later: afflictions + signet of corruption
      *
@@ -92,7 +96,7 @@ int main(int argc, char *argv[])
     const bool exploration = !true;
     const bool optimization = !true;
 
-    const bool dpsTest = true;
+    const bool dpsTest = !true;
 	const bool varianceComparison = !true;
 
     const int maxTime = 100 * 1000 * 60;
@@ -148,9 +152,9 @@ int main(int argc, char *argv[])
     if (!buffs)
         s.buffAt = INF_TIME;
 
-    s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
+    //s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Hammer.json"));
     //s.loadBuild(Builds::fromFile(pathOf(__FILE__) + "/results/best/Elemental-Blood.json"));
-    //s.loadBuild(Builds::currTest());
+    s.loadBuild(Builds::currTest());
     // s.loadBuild(Builds::currMaxFistHammer());
     // s.loadBuild(Builds::currMaxPistolShotgun());
     // s.loadBuild(Builds::procHairtriggerOnly());

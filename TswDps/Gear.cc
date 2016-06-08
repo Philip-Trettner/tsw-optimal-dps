@@ -11,7 +11,7 @@ void Gear::loadStandardDpsGear()
     setGear(PrimaryStat::Attack, TalismanQuality::QL11);
 
     // Head
-    pieces[Head].free(Rating::Hit);
+    pieces[Head].free(Rating::Crit);
     pieces[Head].signet = Signets::empty();
 
     // Finger
@@ -20,17 +20,17 @@ void Gear::loadStandardDpsGear()
 
     // Neck (WC)
     // pieces[MajorMid].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
-    pieces[MajorMid].free(Rating::Crit);
+    pieces[MajorMid].free(Rating::CritPower);
     // pieces[MajorMid].signet = Signets::Major::WoodcuttersWrath();
     // pieces[MajorMid].signet = Signets::Major::EgonPendant();
     pieces[MajorMid].signet = Signets::Major::Violence();
 
     // Wrist
-    pieces[MajorRight].free(Rating::Crit);
+    pieces[MajorRight].free(Rating::Pen);
     pieces[MajorRight].signet = Signets::Major::Violence();
 
     // Luck
-    pieces[MinorLeft].free(Rating::Hit);
+    pieces[MinorLeft].free(Rating::Crit);
     pieces[MinorLeft].signet = Signets::empty();
 
     // Waist

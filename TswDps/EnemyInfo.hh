@@ -19,7 +19,7 @@ struct EnemyInfo
 		stats.blockRating = 450; // Eidolon NM
 		// dummy is 100 block
 
-		stats.defenceRating = 350; // -> 650 hit  = 0 glance
+        stats.defenceRating = 360; // -> 650 hit  = 0 glance
 		// dummy is 100 defense
 		// TODO: test if really 100 or offset
 

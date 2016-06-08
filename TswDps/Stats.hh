@@ -55,6 +55,7 @@ struct Stats
     float addedCritChance = 0;
     float addedCritPower = 0;
     float addedPenChance = 0;
+    float reducedGlanceChance = 0;
 
     // damage inc (.3 = 30%)
     float additiveDamage = 0;       // "Bracket A"
@@ -78,34 +79,34 @@ struct Stats
     /// dumps ar, hit, crit, crit power, pen
     void dumpDpsStats(bool updateWithEmpty = true);
 
-	jsonxx::Object toJson() const
-	{
-		jsonxx::Object o;
-		if (hitRating > 0)
-			o << "Hit" << hitRating;
-		if (penRating > 0)
-			o << "Pen" << penRating;
-		if (critRating > 0)
-			o << "Crit" << critRating;
-		if (critPowerRating > 0)
-			o << "CritPower" << critPowerRating;
-		// TODO: more
-		return o;
-	}
+    jsonxx::Object toJson() const
+    {
+        jsonxx::Object o;
+        if (hitRating > 0)
+            o << "Hit" << hitRating;
+        if (penRating > 0)
+            o << "Pen" << penRating;
+        if (critRating > 0)
+            o << "Crit" << critRating;
+        if (critPowerRating > 0)
+            o << "CritPower" << critPowerRating;
+        // TODO: more
+        return o;
+    }
 
-	void fromJson(jsonxx::Object const& o)
-	{
-		// only overwrites present members
-		using namespace jsonxx;
-		if (o.has<Number>("Hit"))
-			hitRating = (int)o.get<Number>("Hit");
-		if (o.has<Number>("Pen"))
-			penRating = (int)o.get<Number>("Pen");
-		if (o.has<Number>("Crit"))
-			critRating = (int)o.get<Number>("Crit");
-		if (o.has<Number>("CritPower"))
-			critPowerRating = (int)o.get<Number>("CritPower");
-	}
+    void fromJson(jsonxx::Object const& o)
+    {
+        // only overwrites present members
+        using namespace jsonxx;
+        if (o.has<Number>("Hit"))
+            hitRating = (int)o.get<Number>("Hit");
+        if (o.has<Number>("Pen"))
+            penRating = (int)o.get<Number>("Pen");
+        if (o.has<Number>("Crit"))
+            critRating = (int)o.get<Number>("Crit");
+        if (o.has<Number>("CritPower"))
+            critPowerRating = (int)o.get<Number>("CritPower");
+    }
 
     /// returns AR, HR, HP, WP part
     Stats getPrimaryPart() const
@@ -174,6 +175,7 @@ struct hash<Stats>
         hash_combine(h, s.addedCritChance);
         hash_combine(h, s.addedCritPower);
         hash_combine(h, s.addedPenChance);
+        hash_combine(h, s.reducedGlanceChance);
 
         hash_combine(h, s.additiveDamage);
         hash_combine(h, s.multiplicativeDamage);
@@ -206,6 +208,7 @@ inline Stats operator+(Stats const& l, Stats const& r)
     s.addedCritChance = l.addedCritChance + r.addedCritChance;
     s.addedCritPower = l.addedCritPower + r.addedCritPower;
     s.addedPenChance = l.addedPenChance + r.addedPenChance;
+    s.reducedGlanceChance = l.reducedGlanceChance + r.reducedGlanceChance;
 
     s.additiveDamage = l.additiveDamage + r.additiveDamage;
     s.multiplicativeDamage = l.multiplicativeDamage + r.multiplicativeDamage;
@@ -238,6 +241,7 @@ inline Stats operator*(Stats const& l, float f)
     s.addedCritChance = l.addedCritChance * f;
     s.addedCritPower = l.addedCritPower * f;
     s.addedPenChance = l.addedPenChance * f;
+    s.reducedGlanceChance = l.reducedGlanceChance * f;
 
     s.additiveDamage = l.additiveDamage * f;
     s.multiplicativeDamage = l.multiplicativeDamage * f;
@@ -287,6 +291,8 @@ inline bool operator==(Stats const& l, Stats const& r)
     if (l.addedCritPower != r.addedCritPower)
         return false;
     if (l.addedPenChance != r.addedPenChance)
+        return false;
+    if (l.reducedGlanceChance != r.reducedGlanceChance)
         return false;
 
     if (l.additiveDamage != r.additiveDamage)

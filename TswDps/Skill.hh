@@ -54,7 +54,8 @@ struct Skill
     bool animaDeviation = false;
     DmgType appliesVulnerability = DmgType::None; ///< if non-None, applies EVS
 
-    bool slotForDmgAug = true; ///< if true, this skill may slot a dmg augment
+    bool slotForDmgAug = true;      ///< if true, this skill may slot a dmg augment
+    bool slotForSupportAug = false; ///< if true, this skill may slot a support augment
 
     int reduceWeaponConsumerCD = 0; ///< if above 0, reduces CD of same-weapon consumers (after activation)
 

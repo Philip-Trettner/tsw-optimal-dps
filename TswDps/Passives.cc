@@ -66,6 +66,7 @@ std::vector<Passive> Passives::all()
         // Chaos [done]
         Chaos::Gnosis(),     //
         Chaos::ChaosAdept(), //
+        Chaos::FeverPitch(), //
                              // TODO: Ripple Effect
                              // TODO: Cutting Thoughts
                              // TODO: Entropy

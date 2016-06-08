@@ -198,6 +198,57 @@ public:
 
             return e;
         }
+        static Effect MajorHitChance()
+        {
+            auto e = effect("Major Hit Chance", EffectSlot::MajorHitChance);
+
+            e.timeIn60th = 5 * 60;
+            e.bonusStats.reducedGlanceChance = 25 / 100.f;
+            e.cooldownIn60th = e.timeIn60th; // cannot reapply
+
+            return e;
+        }
+        static Effect CritRating()
+        {
+            auto e = effect("Critical Rating", EffectSlot::CritRating);
+
+            e.cooldownIn60th = 0; // CHECK ME with Bullet Ballet!
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.critRating = 40;
+            e.maxStacks = 5;
+
+            return e;
+        }
+        static Effect CritPowerRating()
+        {
+            auto e = effect("Crit Power Rating", EffectSlot::CritPowerRating);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.critPowerRating = 40;
+            e.maxStacks = 5;
+
+            return e;
+        }
+        static Effect PenRating()
+        {
+            auto e = effect("Penetration Rating", EffectSlot::PenRating);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.penRating = 40;
+            e.maxStacks = 5;
+
+            return e;
+        }
+        static Effect HitRating()
+        {
+            auto e = effect("Hit Rating", EffectSlot::HitRating);
+
+            e.timeIn60th = 10 * 60;
+            e.bonusStats.hitRating = 40;
+            e.maxStacks = 5;
+
+            return e;
+        }
     };
 
     struct WeaponSkill : private Base

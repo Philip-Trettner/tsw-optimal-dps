@@ -21,7 +21,7 @@ void Stats::update(const EnemyInfo &enemy)
 	if (finalBlockChance < 0)
 		finalBlockChance = 0.0;
 
-	finalGlanceChance = float(0.167429 - 0.193239 / (exp((enemy.stats.defenceRating - hitRating) / 150.874) + 1)); // TODO added hit chance
+    finalGlanceChance = float(0.167429 - 0.193239 / (exp((enemy.stats.defenceRating - hitRating) / 150.874) + 1)) - reducedGlanceChance;
 	if (finalGlanceChance < 0)
 		finalGlanceChance = 0.0;
 

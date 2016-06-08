@@ -58,6 +58,9 @@ MAKE_EFFECT_ENUM(
     MajorPenetrationChance,
     MinorCriticalChance,
     MajorCriticalChance,
+    MajorHitChance,
+    PenRating,
+    HitRating,
     CritRating,
     CritPowerRating,
 
