@@ -421,8 +421,8 @@ int main(int argc, char *argv[])
     parser.addOption(oAnalysis);
 
     // .. fight scenario
-    QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid', 'burst' [default], 'dummy', or file)",
-                              "scenario", "burst");
+    QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid' [default], 'burst', 'dummy', or file)",
+                              "scenario", "raid");
     parser.addOption(oFight);
 
     // .. combat time
@@ -433,7 +433,7 @@ int main(int argc, char *argv[])
         "fight-time", "Simulated fight time in seconds (default is taken from fight scenario), affects optimizer and analyser",
         "time");
     parser.addOption(oFightTime);
-    QCommandLineOption oOptTime("optimize-time", "Simulation time per evaluation in the optimizer (default 1h)", "time", "1h");
+    QCommandLineOption oOptTime("optimize-time", "Simulation time per evaluation in the optimizer (default 2h)", "time", "2h");
     parser.addOption(oOptTime);
     QCommandLineOption oAnaTime("analysis-time", "Simulation time per evaluation in the analyzer (default 8h)", "time", "8h");
     parser.addOption(oAnaTime);
@@ -469,6 +469,10 @@ int main(int argc, char *argv[])
     // .. builds per gen
     QCommandLineOption oBuildsPerGen("builds-per-gen", "Number of new potential builds per optimizer generation (default: 60).", "N");
     parser.addOption(oBuildsPerGen);
+
+    // .. fast-opt
+    QCommandLineOption oFastOpt("fast-opt", "Overwrite some optimization settings for speed (but less accuracy). Useful when starting out.");
+    parser.addOption(oFastOpt);
 
     // ==========================================================================
     // parse options
@@ -559,14 +563,6 @@ int main(int argc, char *argv[])
         parser.showHelp(-1);
     }
 
-    // .. threads
-    if (parser.isSet(oThreads))
-        o.threadOverwrite = parser.value(oThreads).toInt();
-
-    // .. builds per gen
-    if (parser.isSet(oBuildsPerGen))
-        o.newBuildsPerGen = parser.value(oBuildsPerGen).toInt();
-
     // .. scenario
     auto scen = parser.value(oFight);
     std::cout << "Fight Scenario: " << scen.toStdString() << std::endl;
@@ -620,6 +616,24 @@ int main(int argc, char *argv[])
         optimizerRounds = parser.value(oOptimize).toInt();
     bool optimization = optimizerRounds > 0;
 
+    // .. threads
+    if (parser.isSet(oThreads))
+        o.threadOverwrite = parser.value(oThreads).toInt();
+
+    // .. builds per gen
+    if (parser.isSet(oBuildsPerGen))
+        o.newBuildsPerGen = parser.value(oBuildsPerGen).toInt();
+
+    // .. optimizer time
+    auto optTime = ticksFromTimeStr(parser.value(oOptTime).toStdString());
+
+    // .. fast opt
+    if (parser.isSet(oFastOpt))
+    {
+        o.newBuildsPerGen = 150;
+        optTime = ticksFromTimeStr("2m");
+    }
+
     // .. analyzer
     auto analyze = parser.isSet(oAnalysis);
 
@@ -661,7 +675,7 @@ int main(int argc, char *argv[])
     if (optimization)
     {
         o.timePerFight = fightTime;
-        o.timePerTest = ticksFromTimeStr(parser.value(oOptTime).toStdString());
+        o.timePerTest = optTime;
         o.run(optimizerRounds);
 
         if (o.getTopBuilds().empty())

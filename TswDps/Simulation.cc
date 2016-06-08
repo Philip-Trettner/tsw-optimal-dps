@@ -490,7 +490,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     log = nullptr;
     lowVarianceMode = true;
 
-    std::cout << "Passive Analysis: ";
+    std::cout << "Build Analysis: ";
     std::cout.flush();
 
     init();
@@ -501,6 +501,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
     std::cout << "(" << startDPS << " DPS)" << std::endl;
 
+    std::cout << "Passives:" << std::endl;
     for (auto i = 0u; i < skills.passives.size(); ++i)
     {
         auto passive = skills.passives[i];
@@ -515,11 +516,57 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
                   << "% from '" << passive.name << "'" << std::endl;
 
         skills.passives[i] = passive;
+    }
+
+    std::cout << "Augments:" << std::endl;
+    for (auto i = 0; i < SKILL_CNT; ++i)
+    {
+        auto aug = skills.augments[i];
+        if (aug.name.empty())
+            continue;
+        skills.augments[i] = Augment();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
+                  << "% from '" << aug.name << "'" << std::endl;
+
+        skills.augments[i] = aug;
+    }
+
+    std::cout << "Skills:" << std::endl;
+    for (auto i = 0; i < SKILL_CNT; ++i)
+    {
+        auto skill = skills.skills[i];
+        if (skill.name.empty())
+            continue;
+        if (skill.skilltype == SkillType::Builder)
+            continue; // no changing builder
+        skills.skills[i] = Skill();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
+                  << "% from '" << skill.name << "'" << std::endl;
+
+        skills.skills[i] = skill;
     }
 
     std::cout << "Neck: " << std::endl;
@@ -535,8 +582,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for QL11 + Violence" << std::endl;
 
         gear.pieces[Gear::MajorMid] = piece;
@@ -553,8 +600,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Woodcutters" << std::endl;
 
         gear.pieces[Gear::MajorMid] = piece;
@@ -571,8 +618,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(dps * 1000 / startDPS - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Amulet of Yuggoth" << std::endl;
 
         gear.pieces[Gear::MajorMid] = piece;
@@ -591,8 +638,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
                   << "% from " << piece.signet.name() << " on Head" << std::endl;
 
         gear.pieces[Gear::Head] = piece;
@@ -609,8 +656,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
                   << "% from " << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
 
         gear.pieces[Gear::WeaponLeft] = piece;
@@ -627,8 +674,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         auto dps = totalDPS();
 
         std::cout << " + ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(startDPS * 1000 / dps - 1000) / 10.
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
                   << "% from " << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
 
         gear.pieces[Gear::WeaponRight] = piece;
