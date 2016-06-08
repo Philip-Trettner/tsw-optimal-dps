@@ -160,7 +160,7 @@ void Optimizer::run(int generations)
 
         if (multithreaded)
         {
-            auto tCnt = std::thread::hardware_concurrency() / threadDivisor;
+            auto tCnt = threadOverwrite > 0 ? threadOverwrite : std::thread::hardware_concurrency();
             if (tCnt < 1)
                 tCnt = 1;
 
@@ -199,6 +199,7 @@ void Optimizer::run(int generations)
             std::cout << "  - simulation:  " << secondsSim << " seconds" << std::endl;
             std::cout << "  - other:       " << nonSimTime << " seconds" << std::endl;
             std::cout << "  - total builds evaluated: " << totalBuildsEvaluated << std::endl;
+            std::cout << std::endl;
         }
     }
 }

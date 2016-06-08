@@ -483,19 +483,23 @@ void Simulation::dumpBriefReport() const
     std::cout << "Evades:   " << totalEvades << " (" << totalEvades * 100.f / totalHits << "%)" << std::endl;
 }
 
-void Simulation::analyzePassiveContribution(int maxTime)
+void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 {
     auto savMode = lowVarianceMode;
     auto savLog = log;
     log = nullptr;
     lowVarianceMode = true;
 
-    std::cout << "Passive Analysis:" << std::endl;
+    std::cout << "Passive Analysis: ";
+    std::cout.flush();
 
     init();
     resetStats();
-    simulate(maxTime);
+    while (totalTimeAccum < maxTime)
+        simulate(fightTime);
     auto startDPS = totalDPS();
+
+    std::cout << "(" << startDPS << " DPS)" << std::endl;
 
     for (auto i = 0u; i < skills.passives.size(); ++i)
     {
@@ -506,7 +510,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -525,7 +530,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -542,7 +548,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -559,7 +566,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -578,7 +586,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -595,7 +604,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";
@@ -612,7 +622,8 @@ void Simulation::analyzePassiveContribution(int maxTime)
 
         init();
         resetStats();
-        simulate(maxTime);
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
         auto dps = totalDPS();
 
         std::cout << " + ";

@@ -67,7 +67,7 @@ struct Simulation
     void dumpBriefReport() const;
 
     /// Analyzes the total dmg increase of each passive
-    void analyzePassiveContribution(int maxTime = 100 * 1000 * 60);
+    void analyzeIndividualContribution(int fightTime, int maxTime);
 
     /// next dabs in 60th
     int nextDABS() const { return dabsTime; }

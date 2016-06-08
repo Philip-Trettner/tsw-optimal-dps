@@ -93,8 +93,8 @@ public: // tweaks
     /// if true, uses multithreading
     bool multithreaded = true;
 
-    /// divisor for thread cnt
-    int threadDivisor = 1;
+    /// if > 0, nr of threads
+    int threadOverwrite = 0;
 
 public: // stats
 	/// nr of builds evaluated

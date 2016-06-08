@@ -162,7 +162,7 @@ void debugRun()
         std::cout << std::endl;
         slog.dump(&s);
         std::cout << std::endl;
-        s.analyzePassiveContribution();
+        s.analyzeIndividualContribution(optimizer.timePerFight, maxTime);
 
         return;
     }
@@ -252,7 +252,7 @@ void debugRun()
     if (dpsTest)
     {
         std::cout << std::endl;
-        s.analyzePassiveContribution(maxTime);
+        s.analyzeIndividualContribution(longRun ? maxTime : burstFight, maxTime);
     }
 }
 
@@ -399,7 +399,7 @@ int main(int argc, char *argv[])
     // setup otions
     QCommandLineParser parser;
     parser.setApplicationDescription(app.applicationName());
-    auto oHelp = parser.addHelpOption();
+    parser.addHelpOption();
     parser.addVersionOption();
 
     // .. build
@@ -417,9 +417,7 @@ int main(int argc, char *argv[])
     parser.addOption(oLog);
 
     // .. analysis
-    QCommandLineOption oAnalysis({"a", "analysis"}, "Analyzes the dps impact of every part of the build. Each "
-                                                    "individual step simulates [time] seconds (default 48h)",
-                                 "time", "48h");
+    QCommandLineOption oAnalysis({"a", "analysis"}, "Instead of simulating, analyzes the dps impact of every part of the build.");
     parser.addOption(oAnalysis);
 
     // .. fight scenario
@@ -431,9 +429,14 @@ int main(int argc, char *argv[])
     QCommandLineOption oTime({"t", "time"},
                              "Simulated total combat time in seconds (default is taken from fight scenario)", "time");
     parser.addOption(oTime);
-    QCommandLineOption oFightTime("fight-time",
-                                  "Simulated fight time in seconds (default is taken from fight scenario)", "time");
+    QCommandLineOption oFightTime(
+        "fight-time", "Simulated fight time in seconds (default is taken from fight scenario), affects optimizer and analyser",
+        "time");
     parser.addOption(oFightTime);
+    QCommandLineOption oOptTime("optimize-time", "Simulation time per evaluation in the optimizer (default 1h)", "time", "1h");
+    parser.addOption(oOptTime);
+    QCommandLineOption oAnaTime("analysis-time", "Simulation time per evaluation in the analyzer (default 8h)", "time", "8h");
+    parser.addOption(oAnaTime);
 
     // .. optimizer
     QCommandLineOption oOptimize({"o", "optimize"}, "Optimizes the DPS of the given build for a given number of rounds "
@@ -454,6 +457,18 @@ int main(int argc, char *argv[])
     // .. output base stats per skill
     QCommandLineOption oSkillStats("skill-stats", "Outputs base stats for each skill");
     parser.addOption(oSkillStats);
+
+    // .. shows top X builds after optimization
+    QCommandLineOption oShowTop("show-top", "Prints to [N] builds after optimization.", "N");
+    parser.addOption(oShowTop);
+
+    // .. threads for optimization
+    QCommandLineOption oThreads("threads", "Overwrites the number of threads used in optimization (default: # cores).", "N");
+    parser.addOption(oThreads);
+
+    // .. builds per gen
+    QCommandLineOption oBuildsPerGen("builds-per-gen", "Number of new potential builds per optimizer generation (default: 60).", "N");
+    parser.addOption(oBuildsPerGen);
 
     // ==========================================================================
     // parse options
@@ -543,7 +558,14 @@ int main(int argc, char *argv[])
         std::cerr << std::endl;
         parser.showHelp(-1);
     }
-    s.loadBuild(b);
+
+    // .. threads
+    if (parser.isSet(oThreads))
+        o.threadOverwrite = parser.value(oThreads).toInt();
+
+    // .. builds per gen
+    if (parser.isSet(oBuildsPerGen))
+        o.newBuildsPerGen = parser.value(oBuildsPerGen).toInt();
 
     // .. scenario
     auto scen = parser.value(oFight);
@@ -598,6 +620,9 @@ int main(int argc, char *argv[])
         optimizerRounds = parser.value(oOptimize).toInt();
     bool optimization = optimizerRounds > 0;
 
+    // .. analyzer
+    auto analyze = parser.isSet(oAnalysis);
+
     // .. log
     auto loglevel = parser.value(oLog).toInt();
     AggregateLog log;
@@ -615,6 +640,7 @@ int main(int argc, char *argv[])
     // print info
 
     // initialize sim
+    s.loadBuild(b);
     s.init();
 
     // .. print build
@@ -629,14 +655,26 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
     }
 
-    // TODO
-
     // ==========================================================================
     // do simulation
 
-    // TODO!!
+    if (optimization)
+    {
+        o.timePerFight = fightTime;
+        o.timePerTest = ticksFromTimeStr(parser.value(oOptTime).toStdString());
+        o.run(optimizerRounds);
 
-    if (!optimization)
+        if (o.getTopBuilds().empty())
+        {
+            std::cout << "Error while optimizing" << std::endl;
+            std::cout << std::endl;
+            parser.showHelp(-1);
+        }
+
+        b = o.getTopBuilds()[0].second; // update build
+        s.loadBuild(b);
+    }
+    else if (!analyze) // don't sim if analyze
     {
         while (s.totalTimeAccum < totalTime)
             s.simulate(fightTime);
@@ -645,7 +683,31 @@ int main(int argc, char *argv[])
     // ==========================================================================
     // .. dump results
 
-    if (!optimization)
+    // show sim results
+    if (optimization)
+    {
+        if (parser.isSet(oShowTop))
+        {
+            int cnt = parser.value(oShowTop).toInt();
+            std::cout << "Top " << cnt << " builds:" << std::endl;
+            std::cout << std::endl;
+            for (auto const &kvp : o.getTopBuilds())
+            {
+                std::cout << kvp.first << " DPS" << std::endl;
+                kvp.second.shortDump();
+                std::cout << std::endl;
+
+                --cnt;
+                if (cnt <= 0)
+                    break;
+            }
+        }
+
+        std::cout << "Best Optimized Build: " << o.getTopBuilds()[0].first << " DPS" << std::endl;
+        b.shortDump();
+        std::cout << std::endl;
+    }
+    else if (!analyze) // don't sim if analyze
     {
         s.dumpBriefReport();
         std::cout << std::endl;
@@ -657,10 +719,18 @@ int main(int argc, char *argv[])
         }
     }
 
+    // analyze
+    if (analyze)
+    {
+        auto atime = ticksFromTimeStr(parser.value(oAnaTime).toStdString());
+        s.analyzeIndividualContribution(fightTime, atime);
+        std::cout << std::endl;
+    }
+
     if (parser.isSet(oDumpBuild))
     {
         auto fname = parser.value(oDumpBuild);
-        auto json = b.toJson(); // TODO: from optimizer
+        auto json = b.toJson(); // potentially from optimizer
         if (fname == ".")
             std::cout << json.json() << std::endl;
         else
