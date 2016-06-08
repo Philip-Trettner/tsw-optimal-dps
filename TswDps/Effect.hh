@@ -123,6 +123,15 @@ MAKE_EFFECT_ENUM(
     BloodOffering,
     ElementalFury,
 
+    // augments
+    AugCuring,
+    AugInspiring,
+    AugAccelerating,
+    AugQuickening,
+    AugInvulnerable,
+    AugSalubrious,
+    AugMercurial,
+
     //
     );
 

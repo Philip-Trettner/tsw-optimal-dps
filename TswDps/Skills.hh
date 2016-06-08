@@ -51,6 +51,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.reduceWeaponConsumerCD = 4 * 60;
             s.slotForDmgAug = false;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -96,6 +97,7 @@ public:
             s.cooldownIn60th = 60 * 30;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -236,6 +238,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 60 * 25;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -285,6 +288,7 @@ public:
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::Bombardment;
             s.passive.effectStacks = 8;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -295,6 +299,7 @@ public:
             s.passive.effect = EffectSlot::LockStockBarrel;
             s.passive.trigger = Trigger::FinishActivation;
             s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -335,6 +340,7 @@ public:
             s.cooldownIn60th = 25 * 60;
             s.reduceWeaponConsumerCD = 4 * 60;
             s.slotForDmgAug = false;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -451,6 +457,7 @@ public:
             s.cooldownIn60th = 35 * 60;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -488,6 +495,7 @@ public:
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::AmorFati;
             s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -547,6 +555,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 10 * 60;
+            s.slotForSupportAug = true; // ???
             return s;
         }
     };
@@ -612,6 +621,7 @@ public:
             s.passive.effect = EffectSlot::Cannibalize;
             s.cooldownIn60th = 25 * 60;
             s.slotForDmgAug = false;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -803,6 +813,7 @@ public:
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::FireManifestation;
             s.passive.effectStacks = 4;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -815,6 +826,7 @@ public:
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::LightningManifestation;
             s.passive.effectStacks = 10;
+            s.slotForSupportAug = true;
             return s;
         }
 
@@ -825,6 +837,7 @@ public:
             s.passive.effect = EffectSlot::AnimaCharge;
             s.cooldownIn60th = 30 * 60;
             s.slotForDmgAug = false;
+            s.slotForSupportAug = true;
             // TODO: Casttime?
             return s;
         }
@@ -854,6 +867,8 @@ public:
             s.cooldownIn60th = 60 * 60;
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::SteelEcho;
+            s.slotForSupportAug = true;
+            s.slotForDmgAug = false;
             return s;
         }
         static Skill SlingBlade()
@@ -863,6 +878,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 35 * 60;
+            s.slotForSupportAug = true;
             // TODO: afflict
             return s;
         }
@@ -903,6 +919,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.appliesVulnerability = DmgType::Ranged;
+            s.slotForSupportAug = true;
             return s;
         }
         static Skill FourSeasons()
@@ -958,6 +975,7 @@ public:
             s.hits = 1;
             s.cooldownIn60th = 15 * 60;
             s.dmgScaling = scaling(s.name);
+            s.slotForSupportAug = true;
             return s;
         }
         static Skill Shockwave()
@@ -1012,6 +1030,7 @@ public:
             s.passive.effect = EffectSlot::FullMomentum;
             s.passive.trigger = Trigger::FinishActivation;
             s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForSupportAug = true;
             return s;
         }
     };
@@ -1038,6 +1057,7 @@ public:
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::Reckless;
             s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForSupportAug = true;
             return s;
         }
 
