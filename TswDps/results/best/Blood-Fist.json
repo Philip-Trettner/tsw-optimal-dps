@@ -4,8 +4,8 @@
 		"",
 		"Piercing",
 		"Accurate",
-		"Precise",
-		"Fierce",
+		"Ferocious",
+		"Focused",
 		"",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 4,
+	"Left Weapon": "Blood",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 2,
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,

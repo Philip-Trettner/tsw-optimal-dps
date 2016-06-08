@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
+		"Fierce",
 		"Focused",
 		"Accurate",
 		"",
-		"Fierce",
+		"Grievous",
 		"",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -92,12 +92,12 @@
 			"Signet": "Fury" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
@@ -105,13 +105,13 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 4,
+	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
-		"considerBuffFF": true,
+		"considerBuffFF": false,
 		"considerBuffWC": false,
-		"consumeIfNotBloodOffering": true,
+		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 

@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 2,
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -121,7 +121,7 @@
 		"Start & Finish",
 		"Reckless",
 		"One-Two",
-		"Dirty Tricks",
+		"Bullet Ballet",
 		"Wild at Heart",
 		"Tear Em Up",
 		"" 

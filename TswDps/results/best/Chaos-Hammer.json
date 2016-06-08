@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
+		"Precise",
 		"",
 		"",
 		"Piercing",
-		"Accurate",
-		"Precise",
 		"Focused",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"CritPower": 100 
 	},
-	"Right Weapon": 3,
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -118,12 +118,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
+		"Stone's Throw",
 		"Amor Fati",
 		"Full Momentum",
-		"Eye of Pandemonium",
-		"Stone's Throw",
 		"Call for Eris",
 		"Molten Steel",
+		"Eye of Pandemonium",
 		"" 
 	] 
 } 

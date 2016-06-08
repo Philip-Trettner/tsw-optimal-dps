@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"Ferocious",
-		"Grievous",
-		"Piercing",
-		"",
 		"Accurate",
+		"",
+		"Ferocious",
+		"Piercing",
+		"Grievous",
 		"Focused",
 		"" 
 	],
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Swords" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
 		"Iron Maiden",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Hit": 100 
 	},
-	"Right Weapon": 1,
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -118,11 +118,11 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Binding Wounds",
-		"Dancing Blade",
-		"Raging Bullet",
-		"Lock, Stock & Barrel",
 		"Steel Echo",
+		"Lock, Stock & Barrel",
+		"Binding Wounds",
+		"Raging Bullet",
+		"Sure Shot",
 		"Four Seasons",
 		"" 
 	] 

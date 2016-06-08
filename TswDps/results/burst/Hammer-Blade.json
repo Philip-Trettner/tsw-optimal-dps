@@ -3,7 +3,7 @@
 		"Fierce",
 		"Focused",
 		"",
-		"Precise",
+		"Piercing",
 		"Accurate",
 		"Brutal",
 		"Ferocious",
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 3,
+	"Left Weapon": "Hammer",
 	"Passives": [
 		"Accuracy",
 		"Brawler",
@@ -102,7 +102,10 @@
 		"Sudden Return",
 		"Thunderstruck" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,

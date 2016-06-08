@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
+		"Accurate",
 		"",
 		"Ferocious",
 		"Focused",
-		"Accurate",
 		"Fierce",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,7 +102,10 @@
 		"Thunderstruck",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
+		"Fierce",
 		"Accurate",
 		"",
 		"Focused",
 		"Precise",
-		"Fierce",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 2,
+	"Left Weapon": "Fist",
 	"Passives": [
 		"Fortunate Strike",
 		"Iron Maiden",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 1,
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -122,7 +122,7 @@
 		"Steel Echo",
 		"Reckless",
 		"Four Seasons",
-		"Wild at Heart",
+		"One-Two",
 		"Dancing Blade",
 		"" 
 	] 

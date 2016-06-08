@@ -1,11 +1,11 @@
 {
 	"Augments": [
+		"Brutal",
+		"",
+		"",
 		"Piercing",
 		"Ferocious",
 		"Focused",
-		"",
-		"Brutal",
-		"",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -92,20 +92,20 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Potion": {
 		"CritPower": 100 
 	},
-	"Right Weapon": 4,
+	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -113,17 +113,17 @@
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
-		"Fire Manifestation",
-		"Bloodshot",
+		"Cannibalize",
 		"Anima Charge",
 		"Lightning Manifestation",
-		"Cannibalize",
-		"Power Line",
+		"Fire Manifestation",
+		"Bloodshot",
+		"Cardiac Arrest",
 		"" 
 	] 
 } 

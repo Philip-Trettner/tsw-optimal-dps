@@ -4,9 +4,9 @@
 		"",
 		"Precise",
 		"Piercing",
-		"Grievous",
-		"Ferocious",
 		"Accurate",
+		"Ferocious",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -92,17 +92,20 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 6,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,

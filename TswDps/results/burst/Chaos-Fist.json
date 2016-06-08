@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Brutal",
+		"Fierce",
 		"",
 		"Ferocious",
 		"",
-		"Fierce",
+		"Brutal",
 		"Focused",
 		"Accurate",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -89,25 +89,28 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
+		"Ferocity",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck" 
+		"Sudden Return" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
-		"considerBuffFF": true,
-		"considerBuffWC": false,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,

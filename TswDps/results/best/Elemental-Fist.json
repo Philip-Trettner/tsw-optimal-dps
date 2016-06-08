@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Grievous",
-		"Ferocious",
-		"Precise",
+		"Fierce",
 		"",
 		"Focused",
+		"Piercing",
+		"Ferocious",
 		"Accurate",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Sadism" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 2,
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -113,17 +113,17 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Lightning Manifestation",
-		"Fire Manifestation",
-		"Power Line",
 		"Reckless",
-		"Tear Em Up",
+		"Go for the Throat",
 		"One-Two",
+		"Fire Manifestation",
+		"Lightning Manifestation",
+		"",
 		"" 
 	] 
 } 

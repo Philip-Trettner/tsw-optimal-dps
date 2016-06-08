@@ -2,11 +2,11 @@
 	"Augments": [
 		"Focused",
 		"Accurate",
-		"Grievous",
-		"Piercing",
+		"Brutal",
+		"Precise",
 		"",
 		"Fierce",
-		"Ferocious",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 6,
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
@@ -123,7 +123,7 @@
 		"Fire Manifestation",
 		"Anima Charge",
 		"Flame Strike",
-		"Power Line",
+		"Bullet Ballet",
 		"" 
 	] 
 } 

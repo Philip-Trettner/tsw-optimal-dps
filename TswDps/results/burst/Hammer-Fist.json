@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Shattering" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Shattering" 
 		},
 		{
 			"AR": 0,
@@ -92,17 +92,20 @@
 			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 3,
+	"Left Weapon": "Hammer",
 	"Passives": [
 		"Accuracy",
 		"Brawler",
-		"Fatal Flourish",
+		"Elemental Force",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,

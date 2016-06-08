@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Grievous",
 		"Piercing",
-		"Fierce",
-		"Accurate",
 		"Brutal",
 		"Ferocious",
+		"Grievous",
+		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -48,11 +48,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Swords" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,7 @@
 			"Signet": "Fury" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 1,
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -114,16 +114,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 2,
 		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Steel Echo",
 		"Lightning Manifestation",
 		"Fire Manifestation",
-		"Power Line",
-		"Flame Strike",
 		"Binding Wounds",
+		"Steel Echo",
+		"Flame Strike",
+		"Four Seasons",
 		"" 
 	] 
 } 

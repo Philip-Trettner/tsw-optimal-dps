@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Fierce",
-		"Grievous",
-		"",
 		"Focused",
 		"Piercing",
+		"Fierce",
+		"Ferocious",
+		"Grievous",
 		"",
 		"Accurate",
 		"" 
@@ -92,12 +92,12 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
@@ -105,12 +105,12 @@
 	"Potion": {
 		"Hit": 100 
 	},
-	"Right Weapon": 7,
+	"Right Weapon": "Rifle",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
-		"considerBuffFF": true,
-		"considerBuffWC": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 4,
@@ -118,12 +118,12 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Bombardment",
-		"Lock, Stock & Barrel",
-		"Raging Bullet",
 		"Three Round Burst",
 		"Sure Shot",
+		"Raging Bullet",
 		"Takedown",
+		"Lock, Stock & Barrel",
+		"Bombardment",
 		"" 
 	] 
 } 

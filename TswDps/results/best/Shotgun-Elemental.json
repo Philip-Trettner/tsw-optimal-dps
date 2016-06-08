@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Focused",
 		"Accurate",
+		"",
+		"Focused",
+		"",
 		"Brutal",
 		"Ferocious",
-		"Precise",
-		"",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 6,
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -117,13 +117,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Electrical Bolt",
-		"Sure Shot",
+		"Shock",
 		"Lightning Manifestation",
+		"Anima Charge",
+		"Sure Shot",
+		"Bombardment",
 		"Fire Manifestation",
 		"Flame Strike",
-		"Power Line",
-		"Anima Charge",
 		"" 
 	] 
 } 

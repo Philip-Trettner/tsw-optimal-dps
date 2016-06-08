@@ -3,8 +3,8 @@
 		"Brutal",
 		"",
 		"",
-		"Piercing",
 		"Accurate",
+		"Piercing",
 		"Focused",
 		"Ferocious",
 		"" 
@@ -92,21 +92,23 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 6,
+	"Potion": {
+	},
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
-		"considerBuffFF": true,
+		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,

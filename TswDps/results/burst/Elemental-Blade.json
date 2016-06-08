@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Brawler",
 		"Fortunate Strike",
@@ -102,7 +102,10 @@
 		"Thunderstruck",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,7 +117,7 @@
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Shock",
+		"Ignition",
 		"Lightning Manifestation",
 		"Power Line",
 		"Thor's Hammer",

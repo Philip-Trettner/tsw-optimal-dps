@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
+			"AR": 1033,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 367,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -92,21 +92,24 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Brawler",
-		"Fatal Flourish",
+		"Fortunate Strike",
 		"Hard Impact",
 		"Iron Maiden",
 		"One In The Chamber",
 		"Sudden Return",
 		"Thunderstruck" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
-		"considerBuffFF": true,
+		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,

@@ -92,17 +92,20 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
+		"Accuracy",
 		"Brawler",
-		"Dead On Target",
 		"Elemental Force",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
@@ -110,7 +113,7 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [

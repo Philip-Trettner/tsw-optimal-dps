@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"",
-		"Grievous",
 		"Fierce",
 		"Ferocious",
-		"Accurate",
+		"",
 		"Brutal",
+		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -105,10 +105,10 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 8,
+	"Right Weapon": "Pistol",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -118,12 +118,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Lock, Stock & Barrel",
-		"Bombardment",
 		"Start & Finish",
 		"Sure Shot",
+		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Shootout",
+		"Bombardment",
 		"" 
 	] 
 } 

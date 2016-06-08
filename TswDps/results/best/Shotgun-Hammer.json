@@ -1,7 +1,7 @@
 {
 	"Augments": [
 		"Focused",
-		"Grievous",
+		"Fierce",
 		"Piercing",
 		"Ferocious",
 		"",
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
@@ -66,12 +66,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 210,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Assassination" 
 		},
 		{
 			"AR": 0,
@@ -92,20 +92,20 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
+		"Sudden Return",
 		"Twist The Knife" 
 	],
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 3,
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,

@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Brutal",
+		"Fierce",
 		"",
-		"Piercing",
+		"Brutal",
 		"Accurate",
 		"",
-		"Fierce",
+		"Piercing",
 		"Ferocious",
 		"" 
 	],
@@ -92,7 +92,7 @@
 			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -102,9 +102,12 @@
 		"One In The Chamber",
 		"Wrecking Crew" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,

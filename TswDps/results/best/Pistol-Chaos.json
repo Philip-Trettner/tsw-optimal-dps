@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Precise",
+		"Accurate",
 		"Focused",
 		"Piercing",
 		"Fierce",
 		"",
-		"Accurate",
+		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,23 +89,23 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
-		"Fatal Flourish",
 		"Fortunate Strike",
+		"Invasive Measures",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
-	"Right Weapon": 5,
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -117,13 +117,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Hair Trigger",
+		"Run Rampant",
 		"Start & Finish",
 		"Call for Eris",
 		"Chaotic Pull",
 		"Bond, Strong Bond",
 		"Amor Fati",
-		"Eye of Pandemonium",
+		"Bullet Ballet",
 		"" 
 	] 
 } 

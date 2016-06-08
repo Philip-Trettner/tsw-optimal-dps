@@ -4,9 +4,9 @@
 		"Accurate",
 		"",
 		"Brutal",
-		"Grievous",
-		"Ferocious",
 		"Focused",
+		"Ferocious",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Fortunate Strike",
 		"Invasive Measures",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 1,
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,7 +114,7 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Run Rampant",

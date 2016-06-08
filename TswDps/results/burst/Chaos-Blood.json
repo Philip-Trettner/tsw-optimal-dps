@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,19 +80,19 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 407,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -102,7 +102,10 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 4,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -120,7 +123,7 @@
 		"Eye of Pandemonium",
 		"Suffering and Solace",
 		"Bloodshot",
-		"Chaotic Pull",
+		"Paradox",
 		"" 
 	] 
 } 

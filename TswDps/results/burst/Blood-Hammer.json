@@ -2,11 +2,11 @@
 	"Augments": [
 		"Accurate",
 		"Ferocious",
-		"Brutal",
+		"Piercing",
 		"Focused",
 		"",
 		"",
-		"Piercing",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
@@ -92,17 +92,20 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 4,
+	"Left Weapon": "Blood",
 	"Passives": [
 		"Accuracy",
 		"Brawler",
-		"Fatal Flourish",
+		"Closer",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,

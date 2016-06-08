@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Precise",
-		"",
 		"Accurate",
-		"Focused",
 		"Piercing",
 		"Fierce",
+		"",
+		"Focused",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Fortunate Strike",
 		"Iron Maiden",
@@ -105,7 +105,7 @@
 	"Potion": {
 		"Crit": 119 
 	},
-	"Right Weapon": 6,
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -119,11 +119,11 @@
 	"Skills": [
 		"Safety Off",
 		"Fire Manifestation",
-		"Anima Charge",
-		"Power Line",
-		"Three Round Burst",
 		"Lightning Manifestation",
 		"Flame Strike",
+		"Shellshocker",
+		"Three Round Burst",
+		"",
 		"" 
 	] 
 } 

@@ -38,14 +38,22 @@ void debugRun()
      * * Mercurials
      * * Coney, Equilibrium
      * * support augs
-     * * better gear optimization
+     * * better gear optimization (total reglyph mutation)
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
      * * check if laceration on head makes a difference
      * * performance
+	 * * fire in the hole
+	 * * stims + kickbacks
+	 * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
+	 *    -> check if mani hits get stats of current weapon
      *
      * later: afflictions + signet of corruption
      *
      * Doom is strange... is consumed on focus/burst builders?
+	 *
+	 * Known Issues:
+	 *  * Double Up is not logged
+	 *  * Calamity is not logged
      */
 
     Optimizer optimizer;
@@ -53,7 +61,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = !true;
+    const bool exploration = true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;
@@ -65,7 +73,7 @@ void debugRun()
     const bool buffs = true;
 
     optimizer.excludeSkillsAndPassives = {
-        //"Power Line",         //
+        "Power Line",         //
         /*"Live Wire",          //
         "Sudden Return",      //
         "One In The Chamber", //
@@ -312,6 +320,9 @@ void explore(ExploreType type, double timeMult)
 
             // optimize
             Optimizer o;
+			o.excludeSkillsAndPassives = {
+				"Power Line" // DEBUG
+			};
             o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
             auto &s = o.refSim;
@@ -335,7 +346,7 @@ void explore(ExploreType type, double timeMult)
             }
 
             std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << (cont ? " [cont.]" : "") << std::flush;
-            o.run(15);
+            o.run(10);
 
             auto const &builds = o.getTopBuilds();
             auto maxDPS = builds[0].first;

@@ -4,7 +4,7 @@
 		"Grievous",
 		"",
 		"Fierce",
-		"Precise",
+		"Piercing",
 		"Focused",
 		"",
 		"" 
@@ -22,9 +22,9 @@
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 313,
 			"Free": true,
-			"Hit": 367,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Swords" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Brawler",
 		"Fortunate Strike",
@@ -102,7 +102,10 @@
 		"Thunderstruck",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,

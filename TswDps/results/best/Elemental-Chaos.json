@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Grievous",
-		"",
-		"",
 		"Accurate",
+		"Ferocious",
 		"Piercing",
+		"Focused",
 		"Fierce",
+		"",
+		"",
 		"" 
 	],
 	"Gear": [
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,7 @@
 			"Signet": "Opportunism" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Fortunate Strike",
 		"Invasive Measures",
@@ -105,12 +105,12 @@
 	"Potion": {
 		"CritPower": 100 
 	},
-	"Right Weapon": 5,
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 3,
 		"minResourcesForRightConsumer": 5,
@@ -118,12 +118,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Fire Manifestation",
-		"Anima Charge",
-		"Amor Fati",
-		"Power Line",
+		"Eye of Pandemonium",
 		"Lightning Manifestation",
+		"Fire Manifestation",
 		"Call for Eris",
+		"Amor Fati",
+		"",
 		"" 
 	] 
 } 

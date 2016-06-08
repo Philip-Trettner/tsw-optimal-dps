@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
-		"Ferocious",
 		"Focused",
-		"Accurate",
+		"",
 		"Piercing",
+		"Ferocious",
+		"Accurate",
 		"",
 		"" 
 	],
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,7 +102,10 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
@@ -115,12 +118,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Amor Fati",
-		"Eye of Pandemonium",
 		"Call for Eris",
-		"Start & Finish",
+		"Amor Fati",
 		"Pulling the Strings",
-		"",
+		"Eye of Pandemonium",
+		"Start & Finish",
+		"Suffering and Solace",
 		"" 
 	] 
 } 

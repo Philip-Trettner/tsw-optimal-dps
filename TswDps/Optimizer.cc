@@ -20,6 +20,17 @@ void Optimizer::run(int generations)
 {
     auto startBuild = refSim.build();
 
+	// remove excluded abilities
+	for (auto i = 0; i < SKILL_CNT; ++i)
+		if (excludeSkillsAndPassives.count(startBuild.skills.skills[i].name))
+		{
+			startBuild.skills.skills[i] = Skills::empty();
+			startBuild.skills.augments[i] = Augments::empty();
+		}
+	for (auto& p : startBuild.skills.passives)
+		if (excludeSkillsAndPassives.count(p.name))
+			p = Passives::empty();
+
     // init lib
     allSkills = Skills::all();
     allBuilder.clear();

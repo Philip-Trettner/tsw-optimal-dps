@@ -147,6 +147,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -165,6 +166,7 @@ public:
             s.specialHitsB = 3;
             s.specialHitsC = 3;
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -183,6 +185,7 @@ public:
             s.appliesVulnerability = DmgType::Melee;
             s.passive.trigger = Trigger::Hit;
             s.passive.effect = EffectSlot::CritRating;
+			s.slotForSupportAug = true;
             return s;
         }
     };
@@ -265,6 +268,7 @@ public:
 
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Melee;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -277,6 +281,7 @@ public:
             s.cooldownIn60th = 60 * 25;
 
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -298,7 +303,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.passive.effect = EffectSlot::LockStockBarrel;
             s.passive.trigger = Trigger::FinishActivation;
-            s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForDmgAug = false;
             s.slotForSupportAug = true;
             return s;
         }
@@ -314,6 +319,7 @@ public:
             s.baseDmgIncPerHit = 0.25f; // 25% more dmg per hit
 
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
 
             return s;
         }
@@ -366,6 +372,7 @@ public:
 
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Melee;
+			s.slotForSupportAug = true;
 
             return s;
         }
@@ -380,6 +387,7 @@ public:
             s.cooldownIn60th = 20 * 60;
 
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
 
             return s;
         }
@@ -479,7 +487,7 @@ public:
             s.timeIn60th = 60;
             s.hits = 1;
             s.extraHitPerResource = 1;
-            s.fixedMultiHitPenalty = 0.75; // ?????? no fucking idea
+            s.fixedMultiHitPenalty = 0.70; // ?????? no fucking idea
             s.subtype = SubType::Burst;
             s.specialHitsA = 1;
             s.dmgScalingA = scaling(s.name + " 1st");
@@ -494,7 +502,7 @@ public:
             s.cooldownIn60th = 60 * 60;
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::AmorFati;
-            s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForDmgAug = false;
             s.slotForSupportAug = true;
             return s;
         }
@@ -506,6 +514,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 25 * 60;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -520,6 +529,7 @@ public:
             s.channeling = true;
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Melee;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -534,6 +544,7 @@ public:
             s.passive.effect = EffectSlot::EyeOfPandemonium;
             s.passive.effectStacks = 10;
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -545,6 +556,7 @@ public:
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 25 * 60;
             s.channeling = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -555,7 +567,6 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.cooldownIn60th = 10 * 60;
-            s.slotForSupportAug = true; // ???
             return s;
         }
     };
@@ -581,6 +592,7 @@ public:
             s.dmgScaling = scaling(s.name);
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Melee;
+			s.slotForSupportAug = true;
             return s;
         }
         static Skill Exsanguinate()
@@ -660,6 +672,7 @@ public:
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::Contaminate;
             s.passive.effectStacks = 6;
+			s.slotForSupportAug = true;
             return s;
         }
     };
@@ -739,6 +752,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -762,6 +776,7 @@ public:
             s.dmgScaling = scaling(s.name);
             s.passive.bonusStats.addedCritChance = 1; // guaranteed crit
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -776,6 +791,7 @@ public:
             s.specialHitsA = 2;
             s.dmgScaling = scaling(s.name + " final");
             s.appliesVulnerability = DmgType::Melee;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -789,6 +805,7 @@ public:
             s.passive.effect = EffectSlot::Whiteout;
             s.passive.effectStacks = 16;
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -801,6 +818,7 @@ public:
             s.passive.effect = EffectSlot::PowerLine;
             s.passive.effectStacks = 10;
             s.appliesVulnerability = DmgType::Ranged;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -838,7 +856,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.slotForDmgAug = false;
             s.slotForSupportAug = true;
-            // TODO: Casttime?
+            // Casttime can be mitigated!
             return s;
         }
     };
@@ -868,7 +886,7 @@ public:
             s.passive.trigger = Trigger::StartActivation;
             s.passive.effect = EffectSlot::SteelEcho;
             s.slotForSupportAug = true;
-            s.slotForDmgAug = false;
+            s.slotForDmgAug = true; // TODO: Affects steel echo proc!
             return s;
         }
         static Skill SlingBlade()
@@ -928,12 +946,13 @@ public:
             s.timeIn60th = 150;
             s.hits = 5;
             s.cooldownIn60th = 20 * 60;
-            s.passive.bonusStats.addedPenChance = 1.0; // guaranteed pen
+            s.passive.bonusStats.addedPenChance = 2.0; // guaranteed pen, even after penalty
             s.dmgScalingA = scaling(s.name);
             s.specialHitsA = 4;
             s.dmgScaling = scaling(s.name + " Final");
             s.channeling = true;
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
             return s;
         }
     };
@@ -986,6 +1005,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
             return s;
         }
         static Skill Eruption()
@@ -996,6 +1016,7 @@ public:
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.appliesVulnerability = DmgType::Ranged;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -1029,7 +1050,7 @@ public:
             s.cooldownIn60th = 30 * 60;
             s.passive.effect = EffectSlot::FullMomentum;
             s.passive.trigger = Trigger::FinishActivation;
-            s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForDmgAug = false;
             s.slotForSupportAug = true;
             return s;
         }
@@ -1047,6 +1068,7 @@ public:
             s.channeling = true;
             s.animaDeviation = true;
             s.appliesVulnerability = DmgType::Magic;
+			s.slotForSupportAug = true;
             return s;
         }
 
@@ -1056,7 +1078,7 @@ public:
             s.cooldownIn60th = 40 * 60;
             s.passive.trigger = Trigger::FinishActivation;
             s.passive.effect = EffectSlot::Reckless;
-            s.slotForDmgAug = false; // TODO: CHECK ME
+            s.slotForDmgAug = false;
             s.slotForSupportAug = true;
             return s;
         }
@@ -1113,6 +1135,7 @@ public:
             s.passive.effect = EffectSlot::GoForTheThroat;
             s.passive.effectStacks = 10;
             s.animaDeviation = true;
+			s.slotForSupportAug = true;
             return s;
         }
 

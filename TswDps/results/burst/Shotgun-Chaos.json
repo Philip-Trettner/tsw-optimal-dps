@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Accurate",
-		"",
-		"",
 		"Fierce",
+		"",
+		"",
+		"Piercing",
 		"Ferocious",
 		"Focused",
-		"Piercing",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Brawler",
 		"Dead On Target",
@@ -102,9 +102,12 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
