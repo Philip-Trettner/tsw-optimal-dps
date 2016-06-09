@@ -28,21 +28,23 @@ struct Builds
         b.skills = {{
                         // skills
                         Skills::Chaos::RunRampant(), //
+                        Skills::Elemental::FireManifestation(),   //
                     },
                     {
                         // augs
+                        Augments::empty(), //
+                        Augments::Inspiring(), //
                     },
                     {
                         // passives
                         // Passives::Shotgun::InvasiveMeasures(), //
-                        Passives::Fist::Ferocity(), //
                     }};
 
         // gear
         b.gear.loadStandardDpsGear();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Blood;
+        b.gear.leftWeapon = Weapon::Elemental;
         b.gear.rightWeapon = Weapon::Chaos;
         return b;
     }
@@ -63,20 +65,15 @@ struct Builds
             b.gear.rightWeapon = randomElement(weapons, random);
         while (b.gear.leftWeapon == b.gear.rightWeapon);
 
-        auto allSkills = filter(Skills::all(), [&](Skill const& s)
-                                {
-                                    return s.weapon == b.gear.leftWeapon || s.weapon == b.gear.rightWeapon;
-                                });
+        auto allSkills = filter(Skills::all(), [&](Skill const& s) {
+            return s.weapon == b.gear.leftWeapon || s.weapon == b.gear.rightWeapon;
+        });
         auto dpsAugs = Augments::allDpsAugs();
         auto minorSigs = Signets::Minor::all();
 
         // builder
-        b.skills.skills[0] = randomElement(filter(allSkills,
-                                                  [](Skill const& s)
-                                                  {
-                                                      return s.skilltype == SkillType::Builder;
-                                                  }),
-                                           random);
+        b.skills.skills[0]
+            = randomElement(filter(allSkills, [](Skill const& s) { return s.skilltype == SkillType::Builder; }), random);
 
         // skills
         int sCnt = std::uniform_int_distribution<int>(0, 6)(random);

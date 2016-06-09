@@ -14,6 +14,8 @@ struct EnemyInfo
 
     bool allVulnerabilities = false; // if true, assumes total vuln all the time
 
+    int groupMembers = 5;
+
 	EnemyInfo() 
 	{
 		stats.blockRating = 450; // Eidolon NM

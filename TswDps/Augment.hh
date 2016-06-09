@@ -1,7 +1,8 @@
 #pragma once
 
 #include "common.hh"
-#include "Stats.hh"
+#include "Effect.hh"
+#include "Passive.hh"
 
 enum class AugmentSlot
 {
@@ -19,7 +20,7 @@ struct Augment
 
     AugmentSlot slot = AugmentSlot::Damage;
 
-    // TODO: effects?
+    EffectSlot effect = EffectSlot::Count;
 
     bool affectEverything = false;
 

@@ -47,6 +47,7 @@ void debugRun()
      * * check if laceration on head makes a difference
      * * fire in the hole
      * * .5 glyphs
+     * * test if powerline dmg is base, additive, or multiplicative
      *
      * later: afflictions + signet of corruption
      *

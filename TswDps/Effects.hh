@@ -851,6 +851,82 @@ public:
         }
     };
 
+    struct Augments : private Base
+    {
+        static Effect Curing()
+        {
+            auto e = effect("Augment Curing", EffectSlot::AugCuring);
+
+            e.cooldownIn60th = 10 * 60;
+            e.triggersGroupHealOnGain = true;
+
+            return e;
+        }
+
+        static Effect Inspiring()
+        {
+            auto e = effect("Augment Inspiring", EffectSlot::AugInspiring);
+
+            e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 30 * 60;
+            e.bonusStats.additiveDamage = 5 / 100.f;
+
+            return e;
+        }
+
+        static Effect Accelerating()
+        {
+            auto e = effect("Augment Accelerating", EffectSlot::AugAccelerating);
+
+            e.cooldownIn60th = 5 * 60;
+            e.reducesCooldown = 5 / 100.f;
+
+            return e;
+        }
+
+        static Effect Quickening()
+        {
+            auto e = effect("Augment Quickening", EffectSlot::AugQuickening);
+
+            e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 30 * 60;
+            e.bonusStats.additiveDamage = 3 / 100.f;
+            e.triggersGroupHealOnGain = true;
+
+            return e;
+        }
+
+        static Effect Invulnerable()
+        {
+            auto e = effect("Augment Invulnerable", EffectSlot::AugInvulnerable);
+
+            e.cooldownIn60th = 30 * 60;
+            e.triggersGroupHealOnGain = true;
+
+            return e;
+        }
+
+        static Effect Salubrious()
+        {
+            auto e = effect("Augment Salubrious", EffectSlot::AugSalubrious);
+
+            e.cooldownIn60th = 30 * 60;
+            e.triggersGroupHealOnGain = true;
+
+            return e;
+        }
+
+        static Effect Mercurial()
+        {
+            auto e = effect("Augment Mercurial", EffectSlot::AugMercurial);
+
+            e.cooldownIn60th = 10 * 60;
+            e.reducesCooldown = 10 / 100.f;
+
+            return e;
+        }
+    };
+
     struct Stimulants : private Base
     {
         static Effect StimAttackPurple()

@@ -189,6 +189,11 @@ struct Effect
     ProcOn procOn = ProcOn::Gain;       // controls when dmg procs are applied
     bool isFullHit = false;             // if true, is a full hit
 
+    bool triggersGroupHealOnGain = false; //< if true, triggers a group heal when a stack is gained (support augments)
+    bool triggersPlayerHealOnLost = false; //< if true, triggers a player heal when a stack is lost (immortal spirit)
+
+    float reducesCooldown = 0; // if > 0, reduces x % of all cooldowns
+
     bool affectProcs = true; // if true, bonus stats affect procs (additive dmg does not affect it anyways)
 
     Weapon restrictToWeapon = Weapon::None;          // if non-None, only affects the specified weapon type

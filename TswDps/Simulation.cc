@@ -326,6 +326,10 @@ void Simulation::simulate(int totalTimeIn60th)
             procEffect(procStat, passive, -1);
         }
 
+        // trigger augments
+        if (skills.augments[idx].effect != EffectSlot::Count && !isOnCooldown(skills.augments[idx].effect))
+            procEffect(procStat, skills.augments[idx].effect, -1);
+
         // non-channeling builders
         if (!skill.channeling && skill.skilltype == SkillType::Builder)
             addResource(skill.buildPrimaryOnly);
@@ -864,6 +868,8 @@ void Simulation::fullHit(const Stats& baseStats,
     ++currHitID; // increase hit id
 
     auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
+    if (!srcSkill && skillIndex >= 0)
+        weapon = skills.skills[skillIndex].weapon; // full hits from skill passives
     auto dmgtype = srcSkill ? srcSkill->dmgtype : srcEffect->dmgtype;
     auto skilltype = srcSkill ? srcSkill->skilltype : SkillType::PassiveFullHit;
     auto subtype = srcSkill ? srcSkill->subtype : SubType::None;
@@ -1030,6 +1036,9 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
 {
     // ACTION(); <= 100ns, too expensive
 
+    // DO NOT TEST FOR EFFECT CD HERE
+    // effect cd is tested earlier
+
     auto slot = (size_t)effectSlot;
     auto const& effect = effects[slot];
     assert(effect.slot < EffectSlot::Count && "effect not registered");
@@ -1037,6 +1046,14 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // blocked by other effect
     if (effect.blockedSlot < EffectSlot::Count && (isOnCooldown(effect.blockedSlot) || isActive(effect.blockedSlot)))
         return;
+
+    // reduced cooldowns
+    if (effect.reducesCooldown > 0)
+    {
+        // TODO!
+        //for (auto i = 0; i < SKILL_CNT; ++i)
+        //    if (skillCDs)
+    }
 
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
@@ -1129,7 +1146,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         else
         {
             auto stats = procStats; // copy
-            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
             if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
@@ -1148,7 +1166,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         else
         {
             auto stats = procStats; // copy
-            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
             if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
@@ -1169,7 +1188,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
         else
         {
             auto stats = procStats; // copy
-            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
             if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
@@ -1601,6 +1621,14 @@ void Simulation::registerEffects()
     registerEffect(Effects::SkillPassive::LockStockBarrel());
     registerEffect(Effects::SkillPassive::LockStockBarrelGain());
     registerEffect(Effects::SkillPassive::SteelEcho());
+
+    registerEffect(Effects::Augments::Curing());
+    registerEffect(Effects::Augments::Inspiring());
+    registerEffect(Effects::Augments::Accelerating());
+    registerEffect(Effects::Augments::Quickening());
+    registerEffect(Effects::Augments::Invulnerable());
+    registerEffect(Effects::Augments::Salubrious());
+    registerEffect(Effects::Augments::Mercurial());
 
     registerEffect(Effects::Stimulants::StimAttackPurple());
     registerEffect(Effects::Stimulants::StimCritPurple());
