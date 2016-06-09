@@ -133,6 +133,7 @@ private: // run-time TRANSIENT data
     int effectStacks[(int)EffectSlot::Count];
     int effectHitID[(int)EffectSlot::Count];   // id of hit that applied this effect
     int effectSkillID[(int)EffectSlot::Count]; // id of skill that applied this effect
+    int effectSkillIndex[(int)EffectSlot::Count]; // index into skill of the skill that applied this
     Effect effects[(int)EffectSlot::Count];
     bool effectsRegistered = false;
     // resources for both weapons
@@ -160,7 +161,8 @@ private: // run-time TRANSIENT data
                  bool startOfAbility,
                  bool endOfAbility,
                  Skill const* srcSkill,
-                 Effect const* srcEffect);
+                 Effect const* srcEffect,
+                 int skillIndex);
     void rawHit(Stats const& actualStats,
                 float dmgScaling,
                 float penCritPenalty,
@@ -174,7 +176,8 @@ private: // run-time TRANSIENT data
                 bool* isBlock,
                 bool* isEvade,
                 Skill const* srcSkill,
-                Effect const* srcEffect);
+                Effect const* srcEffect,
+                int skillIndex);
     void procEffect(Stats const& procStats, Passive const& passive, float originalHitScaling);
     void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
     void procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling);

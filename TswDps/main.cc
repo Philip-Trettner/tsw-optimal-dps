@@ -46,8 +46,6 @@ void debugRun()
      * * better gear optimization (total reglyph mutation)
      * * check if laceration on head makes a difference
      * * fire in the hole
-     * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
-     *    -> check if mani hits get stats of current weapon (assumed yes)
      * * .5 glyphs
      *
      * later: afflictions + signet of corruption

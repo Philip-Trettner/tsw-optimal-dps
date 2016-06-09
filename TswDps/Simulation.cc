@@ -67,10 +67,14 @@ void Simulation::init()
     // register effects
     registerEffects();
 
+    // reset skill linkage
+    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+        effectSkillIndex[i] = -1;
+
     // assemble gear per skill
-    for (auto i = 0; i < SKILL_CNT; ++i)
+    for (auto skillIdx = 0; skillIdx < SKILL_CNT; ++skillIdx)
     {
-        auto const& skill = skills.skills[i];
+        auto const& skill = skills.skills[skillIdx];
 
         if (skill.weapon == Weapon::None)
             continue; // unused slot
@@ -88,14 +92,14 @@ void Simulation::init()
         if (skill.weapon == Weapon::Aux)
         {
             s.weaponPower = 457;
-            skillWeaponIdx[i] = -1;
+            skillWeaponIdx[skillIdx] = -1;
         }
         else if (skill.weapon == gear.leftWeapon || skill.weapon == gear.rightWeapon)
         {
             auto const& wp = skill.weapon == gear.leftWeapon ? gear.pieces[Gear::WeaponLeft] : gear.pieces[Gear::WeaponRight];
             s = s + wp.stats;
             passives.push_back(wp.signet.passive);
-            skillWeaponIdx[i] = skill.weapon == gear.leftWeapon ? 0 : 1;
+            skillWeaponIdx[skillIdx] = skill.weapon == gear.leftWeapon ? 0 : 1;
         }
         else
         {
@@ -150,11 +154,11 @@ void Simulation::init()
         // add aug(s)
         for (auto a = 0; a < SKILL_CNT; ++a)
         {
-            if (skills.augments[a].affectEverything || i == a)
-                s = s + skills.augments[a].bonusStats;
+            if (!skills.augments[a].affectEverything)
+                continue; // individual augments are added on each hit
 
-            if (skills.augments[a].affectEverything)
-                ps = ps + skills.augments[a].bonusStats;
+            s = s + skills.augments[a].bonusStats;
+            ps = ps + skills.augments[a].bonusStats;
         }
 
         // TODO: add weapon skill passive
@@ -169,6 +173,9 @@ void Simulation::init()
             p.skillPassive = true;
             p.name = skill.name + " [passive]";
             passives.push_back(p);
+
+            if (p.effect != EffectSlot::Count)
+                effectSkillIndex[(int)p.effect] = skillIdx;
         }
 
         // kickback
@@ -206,14 +213,14 @@ void Simulation::init()
         }
 
         // calc multihit penalty
-        skillPenCritPenalty[i] = 1.0f;
+        skillPenCritPenalty[skillIdx] = 1.0f;
         if (skill.hits > 0)
-            skillPenCritPenalty[i] = skill.multiHitPenalty();
+            skillPenCritPenalty[skillIdx] = skill.multiHitPenalty();
 
-        skillStats[i] = s;
-        procStats[i] = ps;
-        skillTriggers[i] = triggers;
-        procTriggers[i] = procTrigger;
+        skillStats[skillIdx] = s;
+        procStats[skillIdx] = ps;
+        skillTriggers[skillIdx] = triggers;
+        procTriggers[skillIdx] = procTrigger;
     }
 
     // init vulnerabilities
@@ -414,7 +421,7 @@ void Simulation::simulate(int totalTimeIn60th)
             auto adStat = baseStat;        // copy
             adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
             rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, SkillType::None, SubType::None, Weapon::None,
-                   &adCrit, &adPen, &adGlance, &adBlock, &adEvade, nullptr, &animaDeviationEffect);
+                   &adCrit, &adPen, &adGlance, &adBlock, &adEvade, nullptr, &animaDeviationEffect, -1);
         }
 
         // actually do skill
@@ -438,7 +445,7 @@ void Simulation::simulate(int totalTimeIn60th)
             actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
 
             // actual full hit
-            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr);
+            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr, currentSkill);
         }
 
         // channeling builders
@@ -778,7 +785,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         {
             if (first)
                 first = false;
-            else std::cout << ", ";
+            else
+                std::cout << ", ";
             std::cout.flush();
 
             Stats offset;
@@ -791,7 +799,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
                 simulate(fightTime);
             auto dps = totalDPS();
 
-            std::cout << (startDPS < dps ? "+" : "-") << std::fixed << std::setprecision(2) << (startDPS > dps ? startDPS * 100. / dps - 100. : dps * 100. / startDPS - 100.) << "%";
+            std::cout << (startDPS < dps ? "+" : "-") << std::fixed << std::setprecision(2)
+                      << (startDPS > dps ? startDPS * 100. / dps - 100. : dps * 100. / startDPS - 100.) << "%";
         }
         std::cout << "} for {-200, -100, -50, +50, +100, +200}" << std::endl;
     }
@@ -848,7 +857,8 @@ void Simulation::fullHit(const Stats& baseStats,
                          bool startOfAbility,
                          bool endOfAbility,
                          Skill const* srcSkill,
-                         Effect const* srcEffect)
+                         Effect const* srcEffect,
+                         int skillIndex)
 {
     // ACTION(); 850ns
     ++currHitID; // increase hit id
@@ -859,11 +869,13 @@ void Simulation::fullHit(const Stats& baseStats,
     auto subtype = srcSkill ? srcSkill->subtype : SubType::None;
     auto stats = baseStats; // copy
     applyEffects(stats, dmgtype, skilltype, subtype, weapon);
+    if (skillIndex >= 0 && !skills.augments[skillIndex].affectEverything)
+        stats = stats + skills.augments[skillIndex].bonusStats;
     stats.update(enemyInfo);
 
     bool isCrit, isPen, isGlance, isBlock, isEvade;
     rawHit(stats, dmgScaling, penCritPenalty, dmgtype, skilltype, subtype, weapon, &isCrit, &isPen, &isGlance, &isBlock,
-           &isEvade, srcSkill, srcEffect);
+           &isEvade, srcSkill, srcEffect, skillIndex);
 
     // special hit effects
     for (auto i = 0; i < currEffectCnt; ++i)
@@ -1108,37 +1120,43 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
 
 void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling)
 {
+    auto skillIdx = effectSkillIndex[(int)effect.slot];
+
     if (effect.procDmgFixed > 0)
     {
         if (effect.isFullHit)
-            fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect);
+            fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect, skillIdx);
         else
         {
             auto stats = procStats; // copy
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
+            if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
+                stats = stats + skills.augments[skillIdx].bonusStats;
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
             rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None,
-                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
+                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect, effectSkillIndex[(int)effect.slot]);
         }
     }
 
     if (effect.procDmgScaling > 0)
     {
         if (effect.isFullHit)
-            fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
+            fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect, skillIdx);
         else
         {
             auto stats = procStats; // copy
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
+            if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
+                stats = stats + skills.augments[skillIdx].bonusStats;
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
             rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None,
-                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
+                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect, effectSkillIndex[(int)effect.slot]);
         }
     }
 
@@ -1146,18 +1164,22 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
     {
         assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
         if (effect.isFullHit)
-            fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
+            fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr,
+                    &effect, skillIdx);
         else
         {
             auto stats = procStats; // copy
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
             if (!effect.affectedByAdditiveDmg)
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
+            if (skillIdx >= 0 && !skills.augments[skillIdx].affectEverything)
+                stats = stats + skills.augments[skillIdx].bonusStats;
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
 
             rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, SkillType::Proc,
-                   SubType::None, Weapon::None, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
+                   SubType::None, Weapon::None, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect,
+                   effectSkillIndex[(int)effect.slot]);
         }
     }
 }
@@ -1175,7 +1197,8 @@ void Simulation::rawHit(const Stats& actualStats,
                         bool* isBlock,
                         bool* isEvade,
                         const Skill* srcSkill,
-                        const Effect* srcEffect)
+                        const Effect* srcEffect,
+                        int skillIndex)
 {
     // ACTION(); ~170ns
 

@@ -15,15 +15,15 @@ TEST(Variance, RandomBuild)
         s.init();
 
         s.lowVarianceMode = false;
-        s.simulate(timestr(".1h"));
+        s.simulate(timestr(".5h"));
         auto dpsHigh = s.totalDPS();
 
         s.resetStats();
         s.lowVarianceMode = true;
-        s.simulate(timestr(".1h"));
+        s.simulate(timestr(".5h"));
         auto dpsLow = s.totalDPS();
 
-        auto maxError = fmax(dpsHigh, dpsLow) * 0.1; // 10% max error (for 10min tests)
+        auto maxError = fmax(dpsHigh, dpsLow) * 0.1; // 10% max error (for 30min tests)
 
         ASSERT_NEAR(dpsHigh, dpsLow, maxError);
     }

@@ -839,6 +839,7 @@ public:
         {
             auto s = skill("Lightning Manifestation", SkillType::Consumer);
             s.timeIn60th = 60;
+            s.casttimeIn60th = s.timeIn60th;
             s.cooldownIn60th = 15 * 60;
             s.fixedConsumerResources = 2;
             s.passive.trigger = Trigger::StartActivation;
