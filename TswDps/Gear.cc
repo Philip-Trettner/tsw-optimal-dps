@@ -59,6 +59,12 @@ void Gear::loadEmptyDpsGear()
     pieces[MajorRight].signet = Signets::Major::Violence();
 }
 
+void Gear::setWeapons(Weapon left, Weapon right)
+{
+    leftWeapon = left;
+    rightWeapon = right;
+}
+
 Gear::Gear()
 {
     for (auto i = 0u; i < pieces.size(); ++i)

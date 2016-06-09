@@ -29,6 +29,8 @@ void Simulation::resetStats()
 
 Simulation::Simulation()
 {
+    rotation = DefaultRotation::create();
+    gear.loadEmptyDpsGear();
 }
 
 void Simulation::loadBuild(const Build& b)
@@ -203,12 +205,19 @@ void Simulation::init()
     vulnDmg[(int)DmgType::Melee] = 25 / 100.f;
     vulnDmg[(int)DmgType::Magic] = 20 / 100.f;
     vulnDmg[(int)DmgType::Ranged] = 20 / 100.f;
+
+    // fin.
+    initialized = true;
 }
 
 void Simulation::simulate(int totalTimeIn60th)
 {
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
     assert(rotation && "no rotation set");
+
+    // init on demand
+    if (!initialized)
+        init();
 
     // reset sim
     currHitID = 0;

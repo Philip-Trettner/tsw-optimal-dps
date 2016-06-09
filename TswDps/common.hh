@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <random>
 
 #include "jsonxx.hh"
 
@@ -14,6 +15,23 @@
 #define INF_TIME (1000 * 3600 * 60)
 
 using namespace std;
+
+template <typename T>
+inline T const& randomElement(std::vector<T> const& elements, std::default_random_engine& random)
+{
+    std::uniform_int_distribution<int> randIdx(0, (int)elements.size() - 1);
+    return elements[randIdx(random)];
+}
+
+template <typename T, typename F>
+inline std::vector<T> filter(std::vector<T> const& input, F&& f)
+{
+    std::vector<T> result;
+    for (auto const& t : input)
+        if (f(t))
+            result.push_back(t);
+    return result;
+}
 
 inline string toTimeStr(int ticksIn60th)
 {
@@ -55,6 +73,10 @@ inline int ticksFromTimeStr(string const& s)
     }
 
     return val;
+}
+inline int timestr(string const& s)
+{
+    return ticksFromTimeStr(s);
 }
 
 inline int ticksFromJsonObj(jsonxx::Object const& o, string name, int def = -1)

@@ -7,6 +7,8 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
+#include <gtest/gtest.h>
+
 #include "Augments.hh"
 #include "Build.hh"
 #include "CombatLog.hh"
@@ -42,18 +44,18 @@ void debugRun()
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
      * * check if laceration on head makes a difference
      * * performance
-	 * * fire in the hole
-	 * * stims + kickbacks
-	 * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
-	 *    -> check if mani hits get stats of current weapon
+         * * fire in the hole
+         * * stims + kickbacks
+         * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
+         *    -> check if mani hits get stats of current weapon
      *
      * later: afflictions + signet of corruption
      *
      * Doom is strange... is consumed on focus/burst builders?
-	 *
-	 * Known Issues:
-	 *  * Double Up is not logged
-	 *  * Calamity is not logged
+         *
+         * Known Issues:
+         *  * Double Up is not logged
+         *  * Calamity is not logged
      */
 
     Optimizer optimizer;
@@ -73,7 +75,7 @@ void debugRun()
     const bool buffs = true;
 
     optimizer.excludeSkillsAndPassives = {
-        "Power Line",         //
+        "Power Line", //
         /*"Live Wire",          //
         "Sudden Return",      //
         "One In The Chamber", //
@@ -320,9 +322,9 @@ void explore(ExploreType type, double timeMult)
 
             // optimize
             Optimizer o;
-			o.excludeSkillsAndPassives = {
-				"Power Line" // DEBUG
-			};
+            o.excludeSkillsAndPassives = {
+                "Power Line" // DEBUG
+            };
             o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
             auto &s = o.refSim;
@@ -428,7 +430,8 @@ int main(int argc, char *argv[])
     parser.addOption(oLog);
 
     // .. analysis
-    QCommandLineOption oAnalysis({"a", "analysis"}, "Instead of simulating, analyzes the dps impact of every part of the build.");
+    QCommandLineOption oAnalysis({"a", "analysis"},
+                                 "Instead of simulating, analyzes the dps impact of every part of the build.");
     parser.addOption(oAnalysis);
 
     // .. fight scenario
@@ -440,9 +443,9 @@ int main(int argc, char *argv[])
     QCommandLineOption oTime({"t", "time"},
                              "Simulated total combat time in seconds (default is taken from fight scenario)", "time");
     parser.addOption(oTime);
-    QCommandLineOption oFightTime(
-        "fight-time", "Simulated fight time in seconds (default is taken from fight scenario), affects optimizer and analyser",
-        "time");
+    QCommandLineOption oFightTime("fight-time", "Simulated fight time in seconds (default is taken from fight "
+                                                "scenario), affects optimizer and analyser",
+                                  "time");
     parser.addOption(oFightTime);
     QCommandLineOption oOptTime("optimize-time", "Simulation time per evaluation in the optimizer (default 2h)", "time", "2h");
     parser.addOption(oOptTime);
@@ -478,12 +481,18 @@ int main(int argc, char *argv[])
     parser.addOption(oThreads);
 
     // .. builds per gen
-    QCommandLineOption oBuildsPerGen("builds-per-gen", "Number of new potential builds per optimizer generation (default: 60).", "N");
+    QCommandLineOption oBuildsPerGen("builds-per-gen",
+                                     "Number of new potential builds per optimizer generation (default: 60).", "N");
     parser.addOption(oBuildsPerGen);
 
     // .. fast-opt
-    QCommandLineOption oFastOpt("fast-opt", "Overwrite some optimization settings for speed (but less accuracy). Useful when starting out.");
+    QCommandLineOption oFastOpt(
+        "fast-opt", "Overwrite some optimization settings for speed (but less accuracy). Useful when starting out.");
     parser.addOption(oFastOpt);
+
+    // .. test
+    QCommandLineOption oTest("test", "Runs internal tests.");
+    parser.addOption(oTest);
 
     // ==========================================================================
     // parse options
@@ -502,6 +511,13 @@ int main(int argc, char *argv[])
     {
         debugRun();
         return 0;
+    }
+
+    // .. tests
+    if (parser.isSet(oTest))
+    {
+        testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
     }
 
     // args

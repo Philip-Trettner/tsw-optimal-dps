@@ -150,13 +150,13 @@ private: // Transient data
     /// Mutates a given build with a given set of changes
     Build mutateBuild(Build const& build, std::vector<BuildChange> const& changes);
 
+    /// removes some randomness in build setup
+    void normalizeBuild(Build& b);
+
     template <typename T>
     T const& randomElement(std::vector<T> const& elements)
     {
         std::uniform_int_distribution<int> randIdx(0, (int)elements.size() - 1);
         return elements[randIdx(random)];
     }
-
-    /// removes some randomness in build setup
-    void normalizeBuild(Build& b);
 };

@@ -4,6 +4,8 @@
 *.o
 *.obj
 
+CMakeLists.txt.user
+
 # Precompiled Headers
 *.gch
 *.pch

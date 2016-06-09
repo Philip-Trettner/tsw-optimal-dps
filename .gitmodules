@@ -1,0 +1,7 @@
+[submodule "extern/aion"]
+	path = extern/aion
+	url = https://www.graphics.rwth-aachen.de:9000/ptrettner/aion.git
+	branch = master
+[submodule "extern/googletest"]
+	path = extern/googletest
+	url = https://github.com/google/googletest.git

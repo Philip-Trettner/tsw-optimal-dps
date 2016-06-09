@@ -78,6 +78,9 @@ struct Gear
     /// empty dps gear
     void loadEmptyDpsGear();
 
+    /// sets both weapons
+    void setWeapons(Weapon left, Weapon right);
+
     Gear();
 
     /// sets all gear pieces at once (includes weapons)

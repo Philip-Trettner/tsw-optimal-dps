@@ -19,7 +19,17 @@ void VerboseLog::logSkill(Simulation *sim, int timeIn60th, int skillIdx)
     std::cout << sim->skills.skills[skillIdx].name << "'." << std::endl;
 }
 
-void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, const Stats &stats, float vulnMultiplier)
+void VerboseLog::logHit(Simulation *sim,
+                        int timeIn60th,
+                        const string &name,
+                        float dmg,
+                        bool critical,
+                        bool penetrated,
+                        bool glanced,
+                        bool blocked,
+                        bool evaded,
+                        const Stats &stats,
+                        float vulnMultiplier)
 {
     if (skillsOnly)
         return;
@@ -35,12 +45,12 @@ void VerboseLog::logHit(Simulation *sim, int timeIn60th, const string &name, flo
         std::cout << "penetrated";
     else
         std::cout << "normal";
-	if (glanced)
-		std::cout << ", glanced";
-	if (blocked)
-		std::cout << ", blocked";
-	if (evaded)
-		std::cout << ", evaded";
+    if (glanced)
+        std::cout << ", glanced";
+    if (blocked)
+        std::cout << ", blocked";
+    if (evaded)
+        std::cout << ", evaded";
     std::cout << ", dmg x" << stats.finalDmgMultiplier;
     std::cout << ", vuln x" << vulnMultiplier;
     std::cout << ")." << std::endl;
@@ -90,7 +100,7 @@ void VerboseLog::logResource(Simulation *sim, int timeIn60th, Weapon weapon, int
 void StatLog::dump(Simulation *sim)
 {
     std::vector<std::pair<string, DmgStat>> stats;
-    for (auto const &kvp : dmgs)
+    for (auto const &kvp : dmgStats)
         stats.push_back(kvp);
     sort(begin(stats), end(stats), [](std::pair<string, DmgStat> const &s1, std::pair<string, DmgStat> const &s2) -> bool
          {
@@ -108,4 +118,19 @@ void StatLog::dump(Simulation *sim)
         std::cout << "% '" << kvp.first << "' (" << s.hits << " hits, " << int(s.crits * 1000. / s.hits) / 10.
                   << "% crits, " << int(s.pens * 1000. / s.hits) / 10. << "% pens)" << std::endl;
     }
+}
+
+StatLog::DmgStat StatLog::operator[](const Skill &s) const
+{
+    if (dmgStats.count(s.name))
+        return dmgStats.at(s.name);
+    return {};
+}
+
+StatLog::DmgStat StatLog::operator[](EffectSlot s) const
+{
+    auto n = to_string(s);
+    if (dmgStats.count(n))
+        return dmgStats.at(n);
+    return {};
 }

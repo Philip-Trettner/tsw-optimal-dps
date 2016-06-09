@@ -105,6 +105,9 @@ private: // run-time INIT data
     Effect animaDeviationEffect;
     float animaDeviationScaling = -1;
 
+    // already initialized?
+    bool initialized = false;
+
 private: // run-time TRANSIENT data
     // unique hit id for FULL hits only
     int currHitID;

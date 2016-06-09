@@ -7,6 +7,7 @@
 
 struct Simulation;
 struct Stats;
+struct Skill;
 
 struct CombatLog
 {
@@ -15,14 +16,23 @@ struct CombatLog
     // is called whenever a skill is activated
     virtual void logSkill(Simulation* sim, int timeIn60th, int skillIdx) {}
     // is called for every active, passive, signet hit
-    virtual void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, Stats const& stats, float vulnMultiplier)
+    virtual void logHit(Simulation* sim,
+                        int timeIn60th,
+                        string const& name,
+                        float dmg,
+                        bool critical,
+                        bool penetrated,
+                        bool glanced,
+                        bool blocked,
+                        bool evaded,
+                        Stats const& stats,
+                        float vulnMultiplier)
     {
     }
     // is called for every stack gained
     virtual void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) {}
     // is called for every stack lost
     virtual void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) {}
-
     // is called whenever resources are gained or lost
     virtual void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) {}
 };
@@ -34,7 +44,17 @@ struct VerboseLog : CombatLog
     bool logResources = false;
 
     void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override;
-    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, Stats const& stats, float vulnMultiplier) override;
+    void logHit(Simulation* sim,
+                int timeIn60th,
+                string const& name,
+                float dmg,
+                bool critical,
+                bool penetrated,
+                bool glanced,
+                bool blocked,
+                bool evaded,
+                Stats const& stats,
+                float vulnMultiplier) override;
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) override;
@@ -48,31 +68,44 @@ struct StatLog : CombatLog
         int hits = 0;
         int pens = 0;
         int crits = 0;
-		int glances = 0;
-		int blocks = 0;
-		int evades = 0;
+        int glances = 0;
+        int blocks = 0;
+        int evades = 0;
     };
 
-    std::map<std::string, DmgStat> dmgs;
+    std::map<std::string, DmgStat> dmgStats;
 
-    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, Stats const& stats, float vulnMultiplier) override
+    void logHit(Simulation* sim,
+                int timeIn60th,
+                string const& name,
+                float dmg,
+                bool critical,
+                bool penetrated,
+                bool glanced,
+                bool blocked,
+                bool evaded,
+                Stats const& stats,
+                float vulnMultiplier) override
     {
-        auto& s = dmgs[name];
+        auto& s = dmgStats[name];
         s.totalDmg += dmg;
         s.hits += 1;
         if (critical)
             s.crits += 1;
         if (penetrated)
             s.pens += 1;
-		if (glanced)
-			s.glances += 1;
-		if (blocked)
-			s.blocks += 1;
-		if (evaded)
-			s.evades += 1;
+        if (glanced)
+            s.glances += 1;
+        if (blocked)
+            s.blocks += 1;
+        if (evaded)
+            s.evades += 1;
     }
 
     void dump(Simulation* sim);
+
+    DmgStat operator[](Skill const& s) const;
+    DmgStat operator[](EffectSlot s) const;
 };
 
 struct AggregateLog : CombatLog
@@ -84,7 +117,17 @@ struct AggregateLog : CombatLog
         for (auto log : logs)
             log->logSkill(sim, timeIn60th, skillIdx);
     }
-    void logHit(Simulation* sim, int timeIn60th, string const& name, float dmg, bool critical, bool penetrated, bool glanced, bool blocked, bool evaded, Stats const& stats, float vulnMultiplier) override
+    void logHit(Simulation* sim,
+                int timeIn60th,
+                string const& name,
+                float dmg,
+                bool critical,
+                bool penetrated,
+                bool glanced,
+                bool blocked,
+                bool evaded,
+                Stats const& stats,
+                float vulnMultiplier) override
     {
         for (auto log : logs)
             log->logHit(sim, timeIn60th, name, dmg, critical, penetrated, glanced, blocked, evaded, stats, vulnMultiplier);
