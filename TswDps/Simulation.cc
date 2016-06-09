@@ -803,7 +803,7 @@ void Simulation::fullHit(const Stats& baseStats,
             continue;
 
         // on CD
-        if (currentTime - effectLastTick[slot] < effect.cooldownIn60th)
+        if (isOnCooldown(passive.effect))
             continue;
 
         // on hit
