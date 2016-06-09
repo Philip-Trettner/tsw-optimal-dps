@@ -9,6 +9,9 @@
 
 #include <gtest/gtest.h>
 
+#include <aion/Action.hh>
+#include <aion/ActionAnalyzer.hh>
+
 #include "Augments.hh"
 #include "Build.hh"
 #include "CombatLog.hh"
@@ -44,18 +47,20 @@ void debugRun()
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
      * * check if laceration on head makes a difference
      * * performance
-         * * fire in the hole
-         * * stims + kickbacks
-         * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
-         *    -> check if mani hits get stats of current weapon
+     * * fire in the hole
+     * * stims + kickbacks
+     * * analysis: % of melee, ranged, magic dmg
+     * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
+     *    -> check if mani hits get stats of current weapon (assumed yes)
+     * * .5 glyphs
      *
      * later: afflictions + signet of corruption
      *
      * Doom is strange... is consumed on focus/burst builders?
-         *
-         * Known Issues:
-         *  * Double Up is not logged
-         *  * Calamity is not logged
+     *
+     * Known Issues:
+     *  * Double Up is not logged
+     *  * Calamity is not logged
      */
 
     Optimizer optimizer;
@@ -494,6 +499,10 @@ int main(int argc, char *argv[])
     QCommandLineOption oTest("test", "Runs internal tests.");
     parser.addOption(oTest);
 
+    // .. timings
+    QCommandLineOption oTimings("timings", "Dump full internal timings.");
+    parser.addOption(oTimings);
+
     // ==========================================================================
     // parse options
     parser.process(app);
@@ -797,6 +806,12 @@ int main(int argc, char *argv[])
             file << json.json();
             std::cout << "Wrote scenario to '" << fname.toStdString() << "'" << std::endl;
         }
+        std::cout << std::endl;
+    }
+
+    if (parser.isSet(oTimings))
+    {
+        aion::ActionAnalyzer::dumpSummary(std::cout, true);
         std::cout << std::endl;
     }
 }

@@ -10,6 +10,8 @@
 #include "Passives.hh"
 #include "Signets.hh"
 
+#include "aion/Action.hh"
+
 static float mix(float min, float max, float a)
 {
     return min + (max - min) * a;
@@ -48,6 +50,8 @@ Build Simulation::build() const
 
 void Simulation::init()
 {
+    ACTION();
+
     // AD
     animaDeviationEffect.name = "Anima Deviation";
     animaDeviationScaling = SkillTable::scaling("Anima Deviation");
@@ -212,12 +216,14 @@ void Simulation::init()
 
 void Simulation::simulate(int totalTimeIn60th)
 {
-    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
-    assert(rotation && "no rotation set");
-
     // init on demand
     if (!initialized)
         init();
+
+    ACTION();
+
+    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
+    assert(rotation && "no rotation set");
 
     // reset sim
     currHitID = 0;
@@ -733,6 +739,7 @@ void Simulation::fullHit(const Stats& baseStats,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
+    ACTION();
     ++currHitID; // increase hit id
 
     auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
@@ -1107,6 +1114,8 @@ void Simulation::rawHit(const Stats& actualStats,
 
 void Simulation::advanceTime(int timeIn60th)
 {
+    ACTION();
+
     // reduce skill CDs
     for (auto& cd : skillCDs)
     {
@@ -1222,6 +1231,7 @@ void Simulation::addResource(bool currentOnly)
 
 void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon)
 {
+    ACTION();
     // TODO: check if Lethality etc. affect procs
 
     // add currently running effects

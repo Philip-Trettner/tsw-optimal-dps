@@ -12,12 +12,16 @@
 #include <thread>
 #include <mutex>
 
+#include "aion/Action.hh"
+
 Optimizer::Optimizer()
 {
 }
 
 void Optimizer::run(int generations)
 {
+    ACTION();
+
     auto startBuild = refSim.build();
 
 	// remove excluded abilities
@@ -217,6 +221,8 @@ void Optimizer::run(int generations)
 
 double Optimizer::evaluate(const Build& b)
 {
+    ACTION();
+
     auto sim = refSim;
     sim.loadBuild(b);
     if (useLowVariance)
@@ -237,6 +243,8 @@ double Optimizer::evaluate(const Build& b)
 
 void Optimizer::generateNewBuilds(int count, std::vector<Build>& builds)
 {
+    ACTION();
+
     std::uniform_int_distribution<int> randomBuildIdx(0, (int)activeBuilds.size() - 1);
     std::uniform_int_distribution<int> randomBuildChanges(1, maxBuildChanges);
     std::uniform_int_distribution<int> randomChange(0, (int)BuildChange::Count - 1);
@@ -273,6 +281,8 @@ void Optimizer::generateNewBuilds(int count, std::vector<Build>& builds)
 
 Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::BuildChange>& changes)
 {
+    ACTION();
+
     assert(maxActives >= 2);
     assert(maxPassives >= 1);
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
@@ -617,6 +627,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 
 void Optimizer::normalizeBuild(Build& b)
 {
+    ACTION();
+
     while ((int)b.skills.passives.size() < maxPassives)
         b.skills.passives.push_back(Passives::empty());
 
