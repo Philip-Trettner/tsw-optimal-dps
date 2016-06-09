@@ -25,6 +25,10 @@ struct CombatLog
                         bool glanced,
                         bool blocked,
                         bool evaded,
+                        DmgType dmgType,
+                        SkillType skillType,
+                        SubType subType,
+                        Weapon weaponType,
                         Stats const& stats,
                         float vulnMultiplier)
     {
@@ -53,6 +57,10 @@ struct VerboseLog : CombatLog
                 bool glanced,
                 bool blocked,
                 bool evaded,
+                DmgType dmgType,
+                SkillType skillType,
+                SubType subType,
+                Weapon weaponType,
                 Stats const& stats,
                 float vulnMultiplier) override;
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override;
@@ -74,6 +82,10 @@ struct StatLog : CombatLog
     };
 
     std::map<std::string, DmgStat> dmgStats;
+    std::map<DmgType, double> dmgOfType;
+    std::map<SkillType, double> dmgOfSkill;
+    std::map<SubType, double> dmgOfSub;
+    std::map<Weapon, double> dmgOfWeapon;
 
     void logHit(Simulation* sim,
                 int timeIn60th,
@@ -84,6 +96,10 @@ struct StatLog : CombatLog
                 bool glanced,
                 bool blocked,
                 bool evaded,
+                DmgType dmgType,
+                SkillType skillType,
+                SubType subType,
+                Weapon weaponType,
                 Stats const& stats,
                 float vulnMultiplier) override
     {
@@ -100,6 +116,11 @@ struct StatLog : CombatLog
             s.blocks += 1;
         if (evaded)
             s.evades += 1;
+
+        dmgOfType[dmgType] += dmg;
+        dmgOfSkill[skillType] += dmg;
+        dmgOfSub[subType] += dmg;
+        dmgOfWeapon[weaponType] += dmg;
     }
 
     void dump(Simulation* sim);
@@ -126,11 +147,16 @@ struct AggregateLog : CombatLog
                 bool glanced,
                 bool blocked,
                 bool evaded,
+                DmgType dmgType,
+                SkillType skillType,
+                SubType subType,
+                Weapon weaponType,
                 Stats const& stats,
                 float vulnMultiplier) override
     {
         for (auto log : logs)
-            log->logHit(sim, timeIn60th, name, dmg, critical, penetrated, glanced, blocked, evaded, stats, vulnMultiplier);
+            log->logHit(sim, timeIn60th, name, dmg, critical, penetrated, glanced, blocked, evaded, dmgType, skillType,
+                        subType, weaponType, stats, vulnMultiplier);
     }
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override
     {

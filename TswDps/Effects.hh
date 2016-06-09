@@ -868,7 +868,7 @@ public:
             auto e = effect("Stimulant Crit (purple)", EffectSlot::StimCritPurple);
 
             e.timeIn60th = 20 * 60;
-            e.bonusStats.critRating = 326; // TODO: Inform me!
+            e.bonusStats.critRating = 341;
 
             return e;
         }
@@ -886,7 +886,7 @@ public:
             auto e = effect("Stimulant Pen (purple)", EffectSlot::StimPenPurple);
 
             e.timeIn60th = 20 * 60;
-            e.bonusStats.penRating = 280; // TODO: Inform me!
+            e.bonusStats.penRating = 312;
 
             return e;
         }
@@ -929,7 +929,7 @@ public:
 
             e.timeIn60th = 4 * 60;
             e.cooldownIn60th = e.timeIn60th;
-            e.bonusStats.penRating = 650; // TODO: Inform me!
+            e.bonusStats.penRating = 644;
 
             return e;
         }
@@ -949,7 +949,7 @@ public:
 
             e.timeIn60th = 4 * 60;
             e.cooldownIn60th = e.timeIn60th;
-            e.bonusStats.critPowerRating = 650; // TODO: Inform me!
+            e.bonusStats.critPowerRating = 644;
 
             return e;
         }

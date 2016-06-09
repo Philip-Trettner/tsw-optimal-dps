@@ -1,11 +1,11 @@
-#include <iostream>
 #include <algorithm>
-#include <fstream>
 #include <chrono>
+#include <fstream>
+#include <iostream>
 
-#include <QCoreApplication>
-#include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QCommandLineParser>
+#include <QCoreApplication>
 
 #include <gtest/gtest.h>
 
@@ -14,15 +14,15 @@
 
 #include "Augments.hh"
 #include "Build.hh"
+#include "Builds.hh"
 #include "CombatLog.hh"
 #include "Gear.hh"
+#include "Optimizer.hh"
 #include "Passives.hh"
 #include "Signets.hh"
 #include "Simulation.hh"
-#include "Skills.hh"
-#include "Builds.hh"
 #include "SkillTable.hh"
-#include "Optimizer.hh"
+#include "Skills.hh"
 
 #define DEPLOY 0
 
@@ -44,10 +44,8 @@ void debugRun()
      * * Coney, Equilibrium
      * * support augs
      * * better gear optimization (total reglyph mutation)
-     * * analysis: what are dps effects of: all non-builder, all passives, all signets, -+100/200 on each stat
      * * check if laceration on head makes a difference
      * * fire in the hole
-     * * analysis: % of melee, ranged, magic dmg
      * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
      *    -> check if mani hits get stats of current weapon (assumed yes)
      * * .5 glyphs
@@ -547,7 +545,7 @@ int main(int argc, char *argv[])
     // .. .. from weapon+weapon
     if (buildName.contains('+') && !buildName.endsWith(".json"))
     {
-        Weapon w1, w2;
+        Weapon w1 = Weapon::None, w2 = Weapon::None;
         auto parts = buildName.split('+');
         auto valid = true;
         if (parts.length() != 2)

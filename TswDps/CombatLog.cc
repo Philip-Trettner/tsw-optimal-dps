@@ -4,8 +4,8 @@
 
 #include <algorithm>
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 CombatLog::~CombatLog()
 {
@@ -28,6 +28,10 @@ void VerboseLog::logHit(Simulation *sim,
                         bool glanced,
                         bool blocked,
                         bool evaded,
+                        DmgType dmgType,
+                        SkillType skillType,
+                        SubType subType,
+                        Weapon weaponType,
                         const Stats &stats,
                         float vulnMultiplier)
 {
@@ -102,10 +106,9 @@ void StatLog::dump(Simulation *sim)
     std::vector<std::pair<string, DmgStat>> stats;
     for (auto const &kvp : dmgStats)
         stats.push_back(kvp);
-    sort(begin(stats), end(stats), [](std::pair<string, DmgStat> const &s1, std::pair<string, DmgStat> const &s2) -> bool
-         {
-             return s1.second.totalDmg > s2.second.totalDmg;
-         });
+    sort(begin(stats), end(stats), [](std::pair<string, DmgStat> const &s1, std::pair<string, DmgStat> const &s2) -> bool {
+        return s1.second.totalDmg > s2.second.totalDmg;
+    });
 
     auto totalDmg = sim->totalDmg;
     std::cout << "DPS: " << sim->totalDPS() << std::endl;
@@ -113,10 +116,36 @@ void StatLog::dump(Simulation *sim)
     {
         auto const &s = kvp.second;
         std::cout << "  - ";
-        std::cout.width(4);
-        std::cout << std::right << std::fixed << std::setprecision(1) << int(s.totalDmg * 1000 / totalDmg) / 10.;
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << s.totalDmg * 100. / totalDmg;
         std::cout << "% '" << kvp.first << "' (" << s.hits << " hits, " << int(s.crits * 1000. / s.hits) / 10.
                   << "% crits, " << int(s.pens * 1000. / s.hits) / 10. << "% pens)" << std::endl;
+    }
+
+    std::cout << std::endl;
+    std::cout << "By Type:" << std::endl;
+    std::vector<std::pair<double, std::string>> typeDmg = {
+        {-dmgOfType[DmgType::Melee], "Melee"},                                   //
+        {-dmgOfType[DmgType::Magic], "Magic"},                                   //
+        {-dmgOfType[DmgType::Ranged], "Ranged"},                                 //
+        {-dmgOfSkill[SkillType::Builder], "Builder"},                            //
+        {-dmgOfSkill[SkillType::Consumer], "Consumer"},                          //
+        {-dmgOfSub[SubType::Burst], "Burst"},                                    //
+        {-dmgOfSub[SubType::Focus], "Focus"},                                    //
+        {-dmgOfSub[SubType::Strike], "Strike"},                                  //
+        {-dmgOfWeapon[sim->gear.leftWeapon], to_string(sim->gear.leftWeapon)},   //
+        {-dmgOfWeapon[sim->gear.rightWeapon], to_string(sim->gear.rightWeapon)}, //
+    };
+    sort(begin(typeDmg), end(typeDmg));
+    for (auto const& kvp : typeDmg)
+    {
+        if (kvp.first == 0)
+            continue;
+
+        std::cout << "  - ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << -kvp.first * 100. / totalDmg;
+        std::cout << "% " << kvp.second << std::endl;
     }
 }
 

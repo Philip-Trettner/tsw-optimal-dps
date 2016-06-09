@@ -1,7 +1,7 @@
 #pragma once
 
-#include "common.hh"
 #include <functional>
+#include "common.hh"
 #include "jsonxx.hh"
 
 struct EnemyInfo;
@@ -19,6 +19,24 @@ enum class Rating
     Evade,
     Defence
 };
+
+inline string to_string(Rating r)
+{
+    switch (r)
+    {
+    case Rating::Hit:
+        return "Hit";
+    case Rating::Crit:
+        return "Crit";
+    case Rating::CritPower:
+        return "CP";
+    case Rating::Pen:
+        return "Pen";
+    default:
+        assert(0 && "not impl");
+        return "";
+    }
+}
 
 enum class PrimaryStat
 {

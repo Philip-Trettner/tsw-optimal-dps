@@ -413,8 +413,8 @@ void Simulation::simulate(int totalTimeIn60th)
             bool adCrit, adPen, adGlance, adBlock, adEvade;
             auto adStat = baseStat;        // copy
             adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
-            rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, &adCrit, &adPen, &adGlance, &adBlock, &adEvade,
-                   nullptr, &animaDeviationEffect);
+            rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, SkillType::None, SubType::None, Weapon::None,
+                   &adCrit, &adPen, &adGlance, &adBlock, &adEvade, nullptr, &animaDeviationEffect);
         }
 
         // actually do skill
@@ -528,15 +528,24 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     std::cout << "Build Analysis: ";
     std::cout.flush();
 
+    StatLog slog;
+    auto savlog = log;
+    log = &slog;
     init();
     resetStats();
     while (totalTimeAccum < maxTime)
         simulate(fightTime);
     auto startDPS = totalDPS();
+    log = savlog;
 
-    std::cout << "(" << startDPS << " DPS)" << std::endl;
+    std::cout << "(" << startDPS << " DPS)" << std::endl << std::endl;
 
-    std::cout << "Passives:" << std::endl;
+    std::cout << "[Damage Breakdown]" << std::endl;
+    slog.dump(this);
+    std::cout << std::endl;
+
+    std::cout << "[Individual Contributions]" << std::endl;
+    std::cout << "  Passives:" << std::endl;
     for (auto i = 0u; i < skills.passives.size(); ++i)
     {
         auto passive = skills.passives[i];
@@ -550,7 +559,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << passive.name << "'" << std::endl;
@@ -558,7 +567,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         skills.passives[i] = passive;
     }
 
-    std::cout << "Augments:" << std::endl;
+    std::cout << "  Augments:" << std::endl;
     for (auto i = 0; i < SKILL_CNT; ++i)
     {
         auto aug = skills.augments[i];
@@ -572,7 +581,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << aug.name << "'" << std::endl;
@@ -580,7 +589,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         skills.augments[i] = aug;
     }
 
-    std::cout << "Skills:" << std::endl;
+    std::cout << "  Skills:" << std::endl;
     for (auto i = 0; i < SKILL_CNT; ++i)
     {
         auto skill = skills.skills[i];
@@ -596,7 +605,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << skill.name << "'" << std::endl;
@@ -604,7 +613,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         skills.skills[i] = skill;
     }
 
-    std::cout << "Neck: " << std::endl;
+    std::cout << "  Neck: " << std::endl;
     // QL11 + violence
     {
         auto piece = gear.pieces[Gear::MajorMid];
@@ -616,7 +625,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for QL11 + Violence" << std::endl;
@@ -634,7 +643,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Woodcutters" << std::endl;
@@ -652,7 +661,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Amulet of Yuggoth" << std::endl;
@@ -660,7 +669,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         gear.pieces[Gear::MajorMid] = piece;
     }
 
-    std::cout << "Signets: " << std::endl;
+    std::cout << "  Signets: " << std::endl;
     // Head
     {
         auto piece = gear.pieces[Gear::Head];
@@ -672,7 +681,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << piece.signet.name() << " on Head" << std::endl;
@@ -690,7 +699,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
@@ -708,7 +717,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
@@ -718,7 +727,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     // Stimulant
     if (gear.stimulant != EffectSlot::Count)
     {
-        std::cout << "Stimulant: " << std::endl;
+        std::cout << "  Stimulant: " << std::endl;
         auto stim = gear.stimulant;
         gear.stimulant = EffectSlot::Count;
 
@@ -728,7 +737,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << to_string(stim) << std::endl;
@@ -738,7 +747,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     // Kickback
     if (gear.kickback.passivetype == PassiveType::Kickback)
     {
-        std::cout << "Kickback: " << std::endl;
+        std::cout << "  Kickback: " << std::endl;
         auto kb = gear.kickback;
         gear.kickback = Passives::empty();
 
@@ -748,13 +757,45 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
             simulate(fightTime);
         auto dps = totalDPS();
 
-        std::cout << " + ";
+        std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << kb.name << std::endl;
 
         gear.kickback = kb;
     }
+
+    std::cout << std::endl;
+    std::cout << "[Stat Impact]" << std::endl;
+    auto savPot = potionStats;
+    for (auto r : {Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit})
+    {
+        std::cout << "  ";
+        std::cout.width(4);
+        std::cout << std::right << to_string(r) << ": {";
+        bool first = true;
+        for (auto o : {-200, -100, -50, 50, 100, 200})
+        {
+            if (first)
+                first = false;
+            else std::cout << ", ";
+            std::cout.flush();
+
+            Stats offset;
+            offset.set(r, o);
+            potionStats = savPot + offset;
+
+            init();
+            resetStats();
+            while (totalTimeAccum < maxTime)
+                simulate(fightTime);
+            auto dps = totalDPS();
+
+            std::cout << (startDPS < dps ? "+" : "-") << std::fixed << std::setprecision(2) << (startDPS > dps ? startDPS * 100. / dps - 100. : dps * 100. / startDPS - 100.) << "%";
+        }
+        std::cout << "} for {-200, -100, -50, +50, +100, +200}" << std::endl;
+    }
+    potionStats = savPot;
 
     log = savLog;
     lowVarianceMode = savMode;
@@ -821,7 +862,8 @@ void Simulation::fullHit(const Stats& baseStats,
     stats.update(enemyInfo);
 
     bool isCrit, isPen, isGlance, isBlock, isEvade;
-    rawHit(stats, dmgScaling, penCritPenalty, dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, srcSkill, srcEffect);
+    rawHit(stats, dmgScaling, penCritPenalty, dmgtype, skilltype, subtype, weapon, &isCrit, &isPen, &isGlance, &isBlock,
+           &isEvade, srcSkill, srcEffect);
 
     // special hit effects
     for (auto i = 0; i < currEffectCnt; ++i)
@@ -1078,8 +1120,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
-            rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade,
-                   nullptr, &effect);
+            rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None,
+                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
         }
     }
 
@@ -1095,8 +1137,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
                 stats.additiveDamage = 0.f; // procs don't get additive dmg
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
-            rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade,
-                   nullptr, &effect);
+            rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None,
+                   &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
         }
     }
 
@@ -1114,8 +1156,8 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
             stats.update(enemyInfo);
             bool isCrit, isPen, isGlance, isBlock, isEvade;
 
-            rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen,
-                   &isGlance, &isBlock, &isEvade, nullptr, &effect);
+            rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, SkillType::Proc,
+                   SubType::None, Weapon::None, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect);
         }
     }
 }
@@ -1124,6 +1166,9 @@ void Simulation::rawHit(const Stats& actualStats,
                         float dmgScaling,
                         float penCritPenalty,
                         DmgType dmgType,
+                        SkillType skillType,
+                        SubType subType,
+                        Weapon weaponType,
                         bool* isCrit,
                         bool* isPen,
                         bool* isGlance,
@@ -1214,7 +1259,7 @@ void Simulation::rawHit(const Stats& actualStats,
     // log
     if (log)
         log->logHit(this, currentTime, srcSkill ? srcSkill->name : srcEffect->name, dmg, *isCrit, *isPen, *isGlance,
-                    *isBlock, *isEvade, actualStats, vulnerability);
+                    *isBlock, *isEvade, dmgType, skillType, subType, weaponType, actualStats, vulnerability);
 }
 
 void Simulation::advanceTime(int timeIn60th)

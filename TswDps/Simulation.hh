@@ -2,14 +2,14 @@
 
 #include <random>
 
-#include "common.hh"
+#include "Build.hh"
+#include "Effect.hh"
+#include "EnemyInfo.hh"
+#include "Gear.hh"
+#include "Rotation.hh"
 #include "Skillset.hh"
 #include "Stats.hh"
-#include "Rotation.hh"
-#include "Gear.hh"
-#include "EnemyInfo.hh"
-#include "Effect.hh"
-#include "Build.hh"
+#include "common.hh"
 
 struct CombatLog;
 
@@ -165,6 +165,9 @@ private: // run-time TRANSIENT data
                 float dmgScaling,
                 float penCritPenalty,
                 DmgType dmgType,
+                SkillType skillType,
+                SubType subType,
+                Weapon weaponType,
                 bool* isCrit,
                 bool* isPen,
                 bool* isGlance,
