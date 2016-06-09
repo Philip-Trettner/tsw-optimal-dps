@@ -497,7 +497,10 @@ int main(int argc, char *argv[])
 
     // .. test
     QCommandLineOption oTest("test", "Runs internal tests.");
+#if !DEPLOY
     parser.addOption(oTest);
+    parser.addOption({"gtest_filter", "test filter", "filter"});
+#endif
 
     // .. timings
     QCommandLineOption oTimings("timings", "Dump full internal timings.");

@@ -228,6 +228,7 @@ void Simulation::simulate(int totalTimeIn60th)
     // reset sim
     currHitID = 0;
     currSkillID = 0;
+    currEffectCnt = 0;
     random.seed((uint32_t)std::chrono::system_clock::now().time_since_epoch().count());
     rotation->reset();
     currentTime = 0;
@@ -241,6 +242,7 @@ void Simulation::simulate(int totalTimeIn60th)
         effectStacks[i] = 0;
         effectHitID[i] = -1;
         effectSkillID[i] = -1;
+        currEffectIdx[i] = -1;
     }
     for (auto i = 0; i < (int)DmgType::Count; ++i)
         vulnTime[i] = enemyInfo.allVulnerabilities ? totalTimeIn60th + 1 : 0;
@@ -862,10 +864,14 @@ void Simulation::fullHit(const Stats& baseStats,
 
             // refresh time
             if (effectStacks[i] > 0)
+            {
+                assert(effect.timeIn60th > 0);
                 effectTime[i] = effect.timeIn60th;
+            }
             else // or reset it
             {
                 effectTime[i] = 0;
+                deactivate((EffectSlot)i);
                 // no CD reduction here?
             }
 
@@ -923,6 +929,20 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     }
     if (effect.timeIn60th > 0)
     {
+        assert(effectStacks[slot] >= 0);
+
+        // "activate" effect
+        if (effectStacks[slot] == 0)
+        {
+            assert(currEffectCnt < (int)EffectSlot::Count);
+            assert(currEffectIdx[slot] == -1);
+            currEffects[currEffectCnt] = effectSlot;
+            currEffectIdx[slot] = currEffectCnt;
+            // std::cout << currentTime << ": activate " << to_string((EffectSlot)slot) << " (slot " << currEffectCnt <<
+            // ")" << std::endl;
+            ++currEffectCnt;
+        }
+
         effectTime[slot] = effect.timeIn60th;
         effectStacks[slot] += 1;
         if (effectStacks[slot] > effect.maxStacks)
@@ -1127,6 +1147,10 @@ void Simulation::advanceTime(int timeIn60th)
 {
     ACTION();
 
+    const int maxNewProcs = 10;
+    EffectSlot newProcs[maxNewProcs];
+    EffectSlot dmgProcs[maxNewProcs];
+
     // reduce skill CDs
     for (auto& cd : skillCDs)
     {
@@ -1150,6 +1174,7 @@ void Simulation::advanceTime(int timeIn60th)
                 delta = effectTime[i];
         if (dabsTime < delta)
             delta = dabsTime;
+        assert(delta > 0);
 
         // actually advance time
         currentTime += delta;
@@ -1166,36 +1191,66 @@ void Simulation::advanceTime(int timeIn60th)
         }
 
         // update running effects
-        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
-            if (effectTime[i] > 0)
+        {
+            auto i = 0;
+            int newProcCnt = 0;
+            int dmgProcCnt = 0;
+            while (i < currEffectCnt)
             {
-                effectTime[i] -= delta;
+                auto slot = (int)currEffects[i];
+
+                assert(effectTime[slot] > 0);
+
+                effectTime[slot] -= delta;
+
+                bool deactivated = false;
 
                 // effect ended
-                if (effectTime[i] == 0)
+                if (effectTime[slot] == 0)
                 {
                     // loose a stack
-                    effectStacks[i] -= 1;
-                    assert(effectStacks[i] >= 0 && "negative stacks");
+                    effectStacks[slot] -= 1;
+                    assert(effectStacks[slot] >= 0 && "negative stacks");
 
                     // refresh time if stacks left
-                    if (effectStacks[i] > 0)
-                        effectTime[i] = effects[i].timeIn60th;
+                    if (effectStacks[slot] > 0)
+                        effectTime[slot] = effects[slot].timeIn60th;
+                    else
+                    {
+                        // deactivate
+                        deactivated = true;
+                        deactivate((EffectSlot)slot);
+                    }
 
                     // log
                     if (log)
-                        log->logEffectEnd(this, currentTime, (EffectSlot)i);
+                        log->logEffectEnd(this, currentTime, (EffectSlot)slot);
 
                     // trigger dmg on lose
-                    if (effects[i].procOn == ProcOn::Loss)
-                        procEffectDmg(procStats[currentSkill], effects[i], -1);
+                    if (effects[slot].procOn == ProcOn::Loss)
+                        dmgProcs[dmgProcCnt++] = (EffectSlot)slot;
 
                     // trigger on lose
-                    if (effects[i].triggerOnStackLost != EffectSlot::Count)
-                        if (!effects[i].triggerOnStackLostOnlyLast || effectStacks[i] == 0)
-                            procEffect(procStats[currentSkill], effects[i].triggerOnStackLost, -1);
+                    if (effects[slot].triggerOnStackLost != EffectSlot::Count)
+                        if (!effects[slot].triggerOnStackLostOnlyLast || effectStacks[slot] == 0)
+                            newProcs[newProcCnt++] = effects[slot].triggerOnStackLost;
+
+                    assert(dmgProcCnt < maxNewProcs);
+                    assert(newProcCnt < maxNewProcs);
                 }
+
+                // inc if stacks left
+                if (!deactivated)
+                    ++i;
             }
+
+            // dmg proc on stack lost
+            for (auto i = 0; i < dmgProcCnt; ++i)
+                procEffectDmg(procStats[currentSkill], effects[(int)dmgProcs[i]], -1);
+            // proc on stack lost
+            for (auto i = 0; i < newProcCnt; ++i)
+                procEffect(procStats[currentSkill], newProcs[i], -1);
+        }
 
         // check buffs
         if (dabsTime == 0)
@@ -1265,6 +1320,33 @@ void Simulation::resetEffect(EffectSlot slot)
         }
     effectStacks[idx] = 0;
     effectTime[idx] = 0;
+
+    deactivate(slot);
+}
+
+void Simulation::deactivate(EffectSlot slot)
+{
+    auto slotIdx = (size_t)slot;
+
+    assert(effectTime[slotIdx] == 0);
+    assert(effectStacks[slotIdx] == 0);
+
+    // "deactivate" effect
+    if (currEffectIdx[slotIdx] >= 0)
+    {
+        // std::cout << currentTime << ": deactivate " << to_string(slot) << " (slot " << currEffectIdx[slotIdx] << ")"
+        // << std::endl;
+        auto ourIdx = currEffectIdx[slotIdx];
+        assert(currEffectCnt > 0);
+        // copy last effect to this (also works if this is last)
+        currEffects[ourIdx] = currEffects[currEffectCnt - 1];
+        // update idx of last effect
+        currEffectIdx[(int)currEffects[ourIdx]] = ourIdx;
+        // remove our idx
+        currEffectIdx[slotIdx] = -1;
+        // decrease cnt
+        --currEffectCnt;
+    }
 }
 
 void Simulation::registerEffect(const Effect& e)

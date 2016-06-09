@@ -145,9 +145,10 @@ private: // run-time TRANSIENT data
     std::default_random_engine random;
 
     // currently active effects
-    // EffectSlot currEffects[(int)EffectSlot::Count];
+    int currEffectIdx[(int)EffectSlot::Count]; // idx into currEffects
+    EffectSlot currEffects[(int)EffectSlot::Count];
     // nr of currently active effects
-    // int currEffectCnt = 0;
+    int currEffectCnt = 0;
 
     void fullHit(Stats const& baseStats,
                  Stats const& procStat,
@@ -184,4 +185,6 @@ private: // run-time TRANSIENT data
     // has to be done for non-direct effects like the EF buff
     void registerEffect(Effect const& e);
     void registerEffects();
+
+    void deactivate(EffectSlot slot);
 };
