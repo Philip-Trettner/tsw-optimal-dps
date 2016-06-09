@@ -16,6 +16,14 @@ static float mix(float min, float max, float a)
 {
     return min + (max - min) * a;
 }
+static float saturate(float val)
+{
+    if (val < 0.f)
+        return 0.f;
+    if (val > 1.f)
+        return 1.f;
+    return val;
+}
 
 void Simulation::resetStats()
 {
@@ -766,20 +774,23 @@ void Simulation::fullHit(const Stats& baseStats,
     rawHit(stats, dmgScaling, penCritPenalty, dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, srcSkill, srcEffect);
 
     // special hit effects
-    for (auto i = 0u; i < (int)EffectSlot::Count; ++i)
+    for (auto i = 0; i < currEffectCnt; ++i)
     {
-        auto const& effect = effects[i];
+        auto slot = (int)currEffects[i];
+        auto const& effect = effects[slot];
+
+        assert(effectStacks[slot] > 0);
 
         // reset on pen
-        if (isPen && effect.resetOnPen && effectStacks[i] > 0)
-            resetEffect((EffectSlot)i);
+        if (isPen && effect.resetOnPen)
+            resetEffect((EffectSlot)slot);
 
         // reset on glance
-        if (isGlance && effect.resetOnGlance && effectStacks[i] > 0)
-            resetEffect((EffectSlot)i);
+        if (isGlance && effect.resetOnGlance)
+            resetEffect((EffectSlot)slot);
 
         // proc on skill hit
-        if (srcSkill && effect.procOn == ProcOn::SkillHit && effectStacks[i] > 0 && effect.affects(dmgtype, skilltype, subtype, weapon))
+        if (srcSkill && effect.procOn == ProcOn::SkillHit && effect.affects(dmgtype, skilltype, subtype, weapon))
             procEffectDmg(procStat, effect, dmgScaling);
     }
 
@@ -836,19 +847,19 @@ void Simulation::fullHit(const Stats& baseStats,
     }
 
     // consumed after hit
-    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+    for (auto i = 0; i < currEffectCnt; ++i)
     {
-        auto const& effect = effects[i];
+        auto slot = (int)currEffects[i];
+        auto const& effect = effects[slot];
 
-        if (effectStacks[i] == 0)
-            continue;
+        assert(effectStacks[slot] > 0);
 
         // cannot trigger from the same hit it was (re)gained
-        if (effectHitID[i] == currHitID)
+        if (effectHitID[slot] == currHitID)
             continue;
 
         // optionally: cannot conume on same ability
-        if (effect.cannotConsumeSameAbility && effectSkillID[i] == currSkillID)
+        if (effect.cannotConsumeSameAbility && effectSkillID[slot] == currSkillID)
             continue;
 
         // not affected
@@ -858,20 +869,20 @@ void Simulation::fullHit(const Stats& baseStats,
         // lose one stack after each hit (or at end of ability)
         if (effect.consumedAfterHit || (effect.consumedAfterAbility && endOfAbility))
         {
-            --effectStacks[i];
+            --effectStacks[slot];
             if (log)
-                log->logEffectEnd(this, currentTime, (EffectSlot)i);
+                log->logEffectEnd(this, currentTime, (EffectSlot)slot);
 
             // refresh time
-            if (effectStacks[i] > 0)
+            if (effectStacks[slot] > 0)
             {
                 assert(effect.timeIn60th > 0);
-                effectTime[i] = effect.timeIn60th;
+                effectTime[slot] = effect.timeIn60th;
             }
             else // or reset it
             {
-                effectTime[i] = 0;
-                deactivate((EffectSlot)i);
+                effectTime[slot] = 0;
+                deactivate((EffectSlot)slot);
                 // no CD reduction here?
             }
 
@@ -909,7 +920,7 @@ void Simulation::procEffect(const Stats& procStats, const Passive& passive, floa
 
 void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float originalHitScaling)
 {
-    ACTION();
+    // ACTION(); <= 100ns, too expensive
 
     auto slot = (size_t)effectSlot;
     auto const& effect = effects[slot];
@@ -1003,48 +1014,55 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
 {
     if (effect.procDmgFixed > 0)
     {
-        auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        if (!effect.affectedByAdditiveDmg)
-            stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);
-        bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect);
         else
+        {
+            auto stats = procStats; // copy
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            if (!effect.affectedByAdditiveDmg)
+                stats.additiveDamage = 0.f; // procs don't get additive dmg
+            stats.update(enemyInfo);
+            bool isCrit, isPen, isGlance, isBlock, isEvade;
             rawHit(stats, -effect.procDmgFixed, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade,
                    nullptr, &effect);
+        }
     }
 
     if (effect.procDmgScaling > 0)
     {
-        auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        if (!effect.affectedByAdditiveDmg)
-            stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);
-        bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect);
         else
+        {
+            auto stats = procStats; // copy
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            if (!effect.affectedByAdditiveDmg)
+                stats.additiveDamage = 0.f; // procs don't get additive dmg
+            stats.update(enemyInfo);
+            bool isCrit, isPen, isGlance, isBlock, isEvade;
             rawHit(stats, effect.procDmgScaling, 1.0f, effect.dmgtype, &isCrit, &isPen, &isGlance, &isBlock, &isEvade,
                    nullptr, &effect);
+        }
     }
 
     if (effect.procDmgPercentage > 0)
     {
         assert(originalHitScaling > 0 && "proc effect at the end of an ability? Oo");
-        auto stats = procStats; // copy
-        applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
-        if (!effect.affectedByAdditiveDmg)
-            stats.additiveDamage = 0.f; // procs don't get additive dmg
-        stats.update(enemyInfo);
-        bool isCrit, isPen, isGlance, isBlock, isEvade;
         if (effect.isFullHit)
             fullHit(procStats, procStats, effect.procDmgPercentage * originalHitScaling, 1.0f, false, false, nullptr, &effect);
         else
+        {
+            auto stats = procStats; // copy
+            applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, Weapon::None);
+            if (!effect.affectedByAdditiveDmg)
+                stats.additiveDamage = 0.f; // procs don't get additive dmg
+            stats.update(enemyInfo);
+            bool isCrit, isPen, isGlance, isBlock, isEvade;
+
             rawHit(stats, effect.procDmgPercentage * originalHitScaling, 1.0f, effect.dmgtype, &isCrit, &isPen,
                    &isGlance, &isBlock, &isEvade, nullptr, &effect);
+        }
     }
 }
 
@@ -1060,11 +1078,13 @@ void Simulation::rawHit(const Stats& actualStats,
                         const Skill* srcSkill,
                         const Effect* srcEffect)
 {
+    // ACTION(); ~170ns
+
     std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
     // crit an pen calculation
-    float critChance = actualStats.finalCritChance * penCritPenalty;
-    float penChance = actualStats.finalPenChance * penCritPenalty;
+    float critChance = saturate(actualStats.finalCritChance * penCritPenalty);
+    float penChance = saturate(actualStats.finalPenChance * penCritPenalty);
     float glanceChance = actualStats.finalGlanceChance;
     float blockChance = actualStats.finalBlockChance;
     float evadeChance = actualStats.finalEvadeChance;
@@ -1111,8 +1131,8 @@ void Simulation::rawHit(const Stats& actualStats,
     else
     {
         dmg *= 1.0f - evadeChance;
-        dmg *= mix(1.0f + fmin(critChance, 1.0f) * critPower, enemyInfo.glancedMultiplier, glanceChance);
-        dmg *= mix(1.0f + fmin(penChance, 1.0f) * enemyInfo.penPower, enemyInfo.blockedMultiplier, blockChance);
+        dmg *= mix(1.0f + critChance * critPower, enemyInfo.glancedMultiplier, glanceChance);
+        dmg *= mix(1.0f + penChance * enemyInfo.penPower, enemyInfo.blockedMultiplier, blockChance);
         // dmg *= 1.0f + glanceChance * (enemyInfo.glancedMultiplier - 1.0f);
         // dmg *= 1.0f + blockChance * (enemyInfo.blockedMultiplier - 1.0f);
         // dmg *= 1.0f + fmin(critChance, 1.0f) * (1 - glanceChance) * critPower;
