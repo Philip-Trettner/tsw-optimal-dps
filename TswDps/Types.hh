@@ -30,5 +30,7 @@ enum class PassiveType {
     None,
 
     Skill,
-    Elite
+    Elite,
+
+    Kickback
 };

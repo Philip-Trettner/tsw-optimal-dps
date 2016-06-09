@@ -122,6 +122,9 @@ private: // run-time TRANSIENT data
     int currentTime;
     // buff time
     int dabsTime;
+    int kickbackTime;
+    // number of times dabsed
+    int dabsCnt;
     // skill cooldowns
     int skillCDs[SKILL_CNT];
     // effect time, CD, stacks
@@ -148,7 +151,7 @@ private: // run-time TRANSIENT data
     int currEffectIdx[(int)EffectSlot::Count]; // idx into currEffects
     EffectSlot currEffects[(int)EffectSlot::Count];
     // nr of currently active effects
-    int currEffectCnt = 0;
+    int currEffectCnt;
 
     void fullHit(Stats const& baseStats,
                  Stats const& procStat,

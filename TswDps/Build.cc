@@ -74,7 +74,12 @@ void Build::shortDump() const
         std::cout << "Amulet of Yuggoth";
     else
         std::cout << "QL11 + Violence";
-    std::cout << ", Potion: " << shortStatDump(potionStats, false);
+    if (potionStats != Stats())
+        std::cout << ", Potion: " << shortStatDump(potionStats, false);
+    if (gear.stimulant != EffectSlot::Count)
+        std::cout << ", Stim: " << to_string(gear.stimulant);
+    if (gear.kickback.passivetype == PassiveType::Kickback)
+        std::cout << ", KB: " << gear.kickback.name;
     std::cout << std::endl;
 
     std::cout << "Weapons:  ";
@@ -144,6 +149,10 @@ jsonxx::Object Build::toJson() const
     assert(rot && "not supported");
     b << "Rotation" << rot->toJson();
     b << "Potion" << potionStats.toJson();
+    if (gear.stimulant != EffectSlot::Count)
+        b << "Stim" << to_string(gear.stimulant);
+    if (!gear.kickback.name.empty())
+        b << "Kickback" << gear.kickback.name;
     return b;
 }
 
@@ -154,6 +163,22 @@ void Build::fromJson(const jsonxx::Object& o)
     auto aa = o.get<Array>("Augments");
     auto pp = o.get<Array>("Passives");
     auto gg = o.get<Array>("Gear");
+
+    if (o.has<String>("Stim"))
+    {
+        auto ss = o.get<String>("Stim");
+        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+            if (to_string((EffectSlot)i) == ss)
+                gear.stimulant = (EffectSlot)i;
+    }
+
+    if (o.has<String>("Kickback"))
+    {
+        auto kb = o.get<String>("Kickback");
+        for (auto const& p : Passives::Kickback::all())
+            if (kb == p.name)
+                gear.kickback = p;
+    }
 
     if (o.has<Object>("Potion"))
     {

@@ -13,7 +13,7 @@ struct Builds
     static Build fromFile(std::string const& filename)
     {
         Build b;
-        b.gear.loadStandardDpsGear(); // for weapons
+        b.gear.loadEmptyDpsGear(); // for weapons
         b.fromFile(filename);
         return b;
     }

@@ -83,3 +83,23 @@ std::vector<Passive> Passives::all()
                                          // TODO: Rapid Combustion?
     };
 }
+
+std::vector<Passive> Passives::Kickback::all()
+{
+    return {
+        CritOnCritPurple(), //
+        CritOnPenPurple(),  //
+        CritOnCritBlue(),   //
+        CritOnPenBlue(),    //
+
+        CritPowerOnCritPurple(), //
+        CritPowerOnPenPurple(),  //
+        CritPowerOnCritBlue(),   //
+        CritPowerOnPenBlue(),    //
+
+        PenOnCritPurple(), //
+        PenOnPenPurple(),  //
+        PenOnCritBlue(),   //
+        PenOnPenBlue(),    //
+    };
+}

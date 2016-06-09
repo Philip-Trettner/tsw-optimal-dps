@@ -132,6 +132,21 @@ MAKE_EFFECT_ENUM(
     AugSalubrious,
     AugMercurial,
 
+    // stimulants
+    StimAttackPurple,
+    StimCritPurple,
+    StimPenPurple,
+    StimCritBlue,
+    StimPenBlue,
+
+    // kickbacks
+    KickbackPenPurple,
+    KickbackCritPurple,
+    KickbackCritPowerPurple,
+    KickbackPenBlue,
+    KickbackCritBlue,
+    KickbackCritPowerBlue,
+
     //
     );
 

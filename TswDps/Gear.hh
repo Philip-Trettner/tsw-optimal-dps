@@ -73,6 +73,11 @@ struct Gear
     /// Right hand weapon
     Weapon rightWeapon;
 
+    /// Effect for stimulant
+    EffectSlot stimulant = EffectSlot::Count;
+    /// Passive for kickback
+    Passive kickback;
+
     /// default dps gear (for now)
     void loadStandardDpsGear();
     /// empty dps gear

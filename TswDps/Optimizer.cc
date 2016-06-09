@@ -24,16 +24,16 @@ void Optimizer::run(int generations)
 
     auto startBuild = refSim.build();
 
-	// remove excluded abilities
-	for (auto i = 0; i < SKILL_CNT; ++i)
-		if (excludeSkillsAndPassives.count(startBuild.skills.skills[i].name))
-		{
-			startBuild.skills.skills[i] = Skills::empty();
-			startBuild.skills.augments[i] = Augments::empty();
-		}
-	for (auto& p : startBuild.skills.passives)
-		if (excludeSkillsAndPassives.count(p.name))
-			p = Passives::empty();
+    // remove excluded abilities
+    for (auto i = 0; i < SKILL_CNT; ++i)
+        if (excludeSkillsAndPassives.count(startBuild.skills.skills[i].name))
+        {
+            startBuild.skills.skills[i] = Skills::empty();
+            startBuild.skills.augments[i] = Augments::empty();
+        }
+    for (auto& p : startBuild.skills.passives)
+        if (excludeSkillsAndPassives.count(p.name))
+            p = Passives::empty();
 
     // init lib
     allSkills = Skills::all();
@@ -534,6 +534,18 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         case BuildChange::Aux:
             // TODO
             break;
+        case BuildChange::Stimulant:
+            b.gear.stimulant = randomElement(std::vector<EffectSlot>({
+                EffectSlot::StimAttackPurple, //
+                EffectSlot::StimCritPurple,   //
+                EffectSlot::StimCritBlue,     //
+                EffectSlot::StimPenPurple,    //
+                EffectSlot::StimPenBlue,      //
+            }));
+            break;
+        case BuildChange::Kickback:
+            b.gear.kickback = randomElement(Passives::Kickback::all());
+            break;
         case BuildChange::MinorSignetChange:
         {
             auto const& signet = randomElement(allMinorSignets);
@@ -548,7 +560,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
         {
             auto rating = randomElement(freeRatings);
             b.potionStats = Stats();
-			auto amount = rating == Rating::Crit ? 119 : 100;
+            auto amount = rating == Rating::Crit ? 119 : 100;
             b.potionStats.set(rating, amount);
         }
         break;

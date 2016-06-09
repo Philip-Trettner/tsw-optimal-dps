@@ -46,7 +46,6 @@ void debugRun()
      * * better gear optimization (total reglyph mutation)
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, -+100/200 on each stat
      * * check if laceration on head makes a difference
-     * * performance
      * * fire in the hole
      * * stims + kickbacks
      * * analysis: % of melee, ranged, magic dmg
@@ -68,7 +67,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = true;
+    const bool exploration = !true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;

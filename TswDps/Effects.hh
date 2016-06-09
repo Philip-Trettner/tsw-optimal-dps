@@ -851,6 +851,120 @@ public:
         }
     };
 
+    struct Stimulants : private Base
+    {
+        static Effect StimAttackPurple()
+        {
+            auto e = effect("Stimulant Attack (purple)", EffectSlot::StimAttackPurple);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.attackRating = 600;
+            // blue gives 78 and is therefore useless
+
+            return e;
+        }
+        static Effect StimCritPurple()
+        {
+            auto e = effect("Stimulant Crit (purple)", EffectSlot::StimCritPurple);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.critRating = 326; // TODO: Inform me!
+
+            return e;
+        }
+        static Effect StimCritBlue()
+        {
+            auto e = effect("Stimulant Crit (blue)", EffectSlot::StimCritBlue);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.critRating = 276;
+
+            return e;
+        }
+        static Effect StimPenPurple()
+        {
+            auto e = effect("Stimulant Pen (purple)", EffectSlot::StimPenPurple);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.penRating = 280; // TODO: Inform me!
+
+            return e;
+        }
+        static Effect StimPenBlue()
+        {
+            auto e = effect("Stimulant Pen (blue)", EffectSlot::StimPenBlue);
+
+            e.timeIn60th = 20 * 60;
+            e.bonusStats.penRating = 232;
+
+            return e;
+        }
+    };
+
+    struct Kickbacks : private Base
+    {
+        static Effect KickbackCritPurple()
+        {
+            auto e = effect("Kickback Crit (purple)", EffectSlot::KickbackCritPurple);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.critRating = 712;
+
+            return e;
+        }
+        static Effect KickbackCritBlue()
+        {
+            auto e = effect("Kickback Crit (blue)", EffectSlot::KickbackCritBlue);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.critRating = 506;
+
+            return e;
+        }
+        static Effect KickbackPenPurple()
+        {
+            auto e = effect("Kickback Pen (purple)", EffectSlot::KickbackPenPurple);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.penRating = 650; // TODO: Inform me!
+
+            return e;
+        }
+        static Effect KickbackPenBlue()
+        {
+            auto e = effect("Kickback Pen (blue)", EffectSlot::KickbackPenBlue);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.penRating = 425;
+
+            return e;
+        }
+        static Effect KickbackCritPowerPurple()
+        {
+            auto e = effect("Kickback CritPower (purple)", EffectSlot::KickbackCritPowerPurple);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.critPowerRating = 650; // TODO: Inform me!
+
+            return e;
+        }
+        static Effect KickbackCritPowerBlue()
+        {
+            auto e = effect("Kickback CritPower (blue)", EffectSlot::KickbackCritPowerBlue);
+
+            e.timeIn60th = 4 * 60;
+            e.cooldownIn60th = e.timeIn60th;
+            e.bonusStats.critPowerRating = 425;
+
+            return e;
+        }
+    };
+
 private:
     Effects() = delete;
 };

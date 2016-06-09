@@ -568,6 +568,125 @@ public:
         }
     };
 
+    struct Kickback : private Base<Weapon::None, DmgType::None>
+    {
+        static Passive CritOnCritPurple()
+        {
+            auto p = passive("Kickback Crit on Crit (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackCritPurple;
+
+            return p;
+        }
+        static Passive CritOnPenPurple()
+        {
+            auto p = passive("Kickback Crit on Pen (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackCritPurple;
+
+            return p;
+        }
+
+        static Passive CritOnCritBlue()
+        {
+            auto p = passive("Kickback Crit on Crit (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackCritBlue;
+
+            return p;
+        }
+        static Passive CritOnPenBlue()
+        {
+            auto p = passive("Kickback Crit on Pen (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackCritBlue;
+
+            return p;
+        }
+
+        static Passive CritPowerOnCritPurple()
+        {
+            auto p = passive("Kickback CritPower on Crit (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackCritPowerPurple;
+
+            return p;
+        }
+        static Passive CritPowerOnPenPurple()
+        {
+            auto p = passive("Kickback CritPower on Pen (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackCritPowerPurple;
+
+            return p;
+        }
+
+        static Passive CritPowerOnCritBlue()
+        {
+            auto p = passive("Kickback CritPower on Crit (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackCritPowerBlue;
+
+            return p;
+        }
+        static Passive CritPowerOnPenBlue()
+        {
+            auto p = passive("Kickback CritPower on Pen (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackCritPowerBlue;
+
+            return p;
+        }
+
+        static Passive PenOnCritPurple()
+        {
+            auto p = passive("Kickback Pen on Crit (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackPenPurple;
+
+            return p;
+        }
+        static Passive PenOnPenPurple()
+        {
+            auto p = passive("Kickback Pen on Pen (purple)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackPenPurple;
+
+            return p;
+        }
+
+        static Passive PenOnCritBlue()
+        {
+            auto p = passive("Kickback Pen on Crit (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Crit;
+            p.effect = EffectSlot::KickbackPenBlue;
+
+            return p;
+        }
+        static Passive PenOnPenBlue()
+        {
+            auto p = passive("Kickback Pen on Pen (blue)", PassiveType::Kickback);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::KickbackPenBlue;
+
+            return p;
+        }
+
+        static std::vector<Passive> all(); // all kickbacks
+    };
+
     static Passive empty() { return Passive(); }
     static std::vector<Passive> all(); // only non-skills
 private:

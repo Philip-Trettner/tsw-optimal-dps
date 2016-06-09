@@ -171,6 +171,10 @@ void Simulation::init()
             passives.push_back(p);
         }
 
+        // kickback
+        if (gear.kickback.passivetype == PassiveType::Kickback)
+            passives.push_back(gear.kickback);
+
         // add passives
         for (auto const& passive : skills.passives)
             passives.push_back(passive);
@@ -240,7 +244,9 @@ void Simulation::simulate(int totalTimeIn60th)
     random.seed((uint32_t)std::chrono::system_clock::now().time_since_epoch().count());
     rotation->reset();
     currentTime = 0;
+    kickbackTime = 0;
     dabsTime = buffAt * 60;
+    dabsCnt = 0;
     for (auto i = 0; i < SKILL_CNT; ++i)
         skillCDs[i] = 0;
     for (auto i = 0; i < (int)EffectSlot::Count; ++i)
@@ -709,6 +715,46 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         gear.pieces[Gear::WeaponRight] = piece;
     }
+    // Stimulant
+    if (gear.stimulant != EffectSlot::Count)
+    {
+        std::cout << "Stimulant: " << std::endl;
+        auto stim = gear.stimulant;
+        gear.stimulant = EffectSlot::Count;
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << to_string(stim) << std::endl;
+
+        gear.stimulant = stim;
+    }
+    // Kickback
+    if (gear.kickback.passivetype == PassiveType::Kickback)
+    {
+        std::cout << "Kickback: " << std::endl;
+        auto kb = gear.kickback;
+        gear.kickback = Passives::empty();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << " + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << kb.name << std::endl;
+
+        gear.kickback = kb;
+    }
 
     log = savLog;
     lowVarianceMode = savMode;
@@ -821,6 +867,10 @@ void Simulation::fullHit(const Stats& baseStats,
 
         // on CD
         if (isOnCooldown(passive.effect))
+            continue;
+
+        // kickback on non-kb time
+        if (passive.passivetype == PassiveType::Kickback && kickbackTime <= 0)
             continue;
 
         // on hit
@@ -1209,6 +1259,7 @@ void Simulation::advanceTime(int timeIn60th)
         totalTimeAccum += delta;
         timeIn60th -= delta;
         dabsTime -= delta;
+        kickbackTime -= delta;
 
         // reduce vulnerabilities
         for (auto& t : vulnTime)
@@ -1287,6 +1338,16 @@ void Simulation::advanceTime(int timeIn60th)
             dabsTime = cd(random);
             procEffect(Stats(), EffectSlot::MajorCriticalChance, -1);
             procEffect(Stats(), EffectSlot::MajorPenetrationChance, -1);
+
+            // stims + KBs every 2nd dabs
+            if (dabsCnt % 2 == 0)
+            {
+                kickbackTime = 20 * 60;
+                if (gear.stimulant != EffectSlot::Count)
+                    procEffect(Stats(), gear.stimulant, -1);
+            }
+
+            ++dabsCnt;
         }
     }
 }
@@ -1472,4 +1533,17 @@ void Simulation::registerEffects()
     registerEffect(Effects::SkillPassive::LockStockBarrel());
     registerEffect(Effects::SkillPassive::LockStockBarrelGain());
     registerEffect(Effects::SkillPassive::SteelEcho());
+
+    registerEffect(Effects::Stimulants::StimAttackPurple());
+    registerEffect(Effects::Stimulants::StimCritPurple());
+    registerEffect(Effects::Stimulants::StimPenPurple());
+    registerEffect(Effects::Stimulants::StimCritBlue());
+    registerEffect(Effects::Stimulants::StimPenBlue());
+
+    registerEffect(Effects::Kickbacks::KickbackCritPurple());
+    registerEffect(Effects::Kickbacks::KickbackCritPowerPurple());
+    registerEffect(Effects::Kickbacks::KickbackPenPurple());
+    registerEffect(Effects::Kickbacks::KickbackCritBlue());
+    registerEffect(Effects::Kickbacks::KickbackCritPowerBlue());
+    registerEffect(Effects::Kickbacks::KickbackPenBlue());
 }

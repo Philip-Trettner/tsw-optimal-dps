@@ -30,6 +30,8 @@ private:
 		Aux,
 		Rotation,
         Potion,
+        Stimulant,
+        Kickback,
 
         Count
     };

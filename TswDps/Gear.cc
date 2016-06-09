@@ -3,6 +3,7 @@
 #include <cassert>
 
 #include "Signets.hh"
+#include "Passives.hh"
 
 #include <unordered_set>
 
@@ -47,6 +48,9 @@ void Gear::loadStandardDpsGear()
 
     pieces[WeaponRight].free(Rating::Crit);
     pieces[WeaponRight].signet = Signets::empty();
+
+    stimulant = EffectSlot::StimAttackPurple;
+    kickback = Passives::Kickback::CritOnCritPurple();
 }
 
 void Gear::loadEmptyDpsGear()

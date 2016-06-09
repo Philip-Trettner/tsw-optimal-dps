@@ -59,6 +59,9 @@ TEST(Sanity, FixedDps)
     s.gear.pieces[Gear::WeaponRight].free(Rating::Crit);
     s.gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
 
+    s.gear.stimulant = EffectSlot::StimAttackPurple;
+    s.gear.kickback = Passives::Kickback::CritPowerOnCritPurple();
+
     s.potionStats.critRating = 119;
 
     auto rot = DefaultRotation::create();
@@ -75,5 +78,5 @@ TEST(Sanity, FixedDps)
 
     s.simulate(timestr("6h"));
 
-    ASSERT_NEAR(s.totalDPS(), 8234.79, 50);
+    ASSERT_NEAR(s.totalDPS(), 8460.0, 50);
 }
