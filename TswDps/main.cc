@@ -47,7 +47,6 @@ void debugRun()
      * * analysis: what are dps effects of: all non-builder, all passives, all signets, -+100/200 on each stat
      * * check if laceration on head makes a difference
      * * fire in the hole
-     * * stims + kickbacks
      * * analysis: % of melee, ranged, magic dmg
      * * augments on manis actually benefit the manis: AUGMENTS AFFECT EVERY HIT BY THAT SKILL
      *    -> check if mani hits get stats of current weapon (assumed yes)
