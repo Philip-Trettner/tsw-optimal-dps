@@ -237,7 +237,7 @@ void Simulation::simulate(int totalTimeIn60th)
     for (auto i = 0; i < (int)EffectSlot::Count; ++i)
     {
         effectTime[i] = 0;
-        effectCD[i] = 0;
+        effectLastTick[i] = -INF_TIME;
         effectStacks[i] = 0;
         effectHitID[i] = -1;
         effectSkillID[i] = -1;
@@ -532,8 +532,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from '" << passive.name << "'" << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << passive.name << "'" << std::endl;
 
         skills.passives[i] = passive;
     }
@@ -554,8 +554,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from '" << aug.name << "'" << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << aug.name << "'" << std::endl;
 
         skills.augments[i] = aug;
     }
@@ -578,8 +578,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from '" << skill.name << "'" << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << skill.name << "'" << std::endl;
 
         skills.skills[i] = skill;
     }
@@ -654,8 +654,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from " << piece.signet.name() << " on Head" << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << piece.signet.name() << " on Head" << std::endl;
 
         gear.pieces[Gear::Head] = piece;
     }
@@ -672,8 +672,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from " << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
 
         gear.pieces[Gear::WeaponLeft] = piece;
     }
@@ -690,8 +690,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << " + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100.
-                  << "% from " << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
 
         gear.pieces[Gear::WeaponRight] = piece;
     }
@@ -728,6 +728,16 @@ void Simulation::fightFromJson(const jsonxx::Object& o)
     enemyInfo.baseVulnerability = o.get<Number>("Base Vulnerability", enemyInfo.baseVulnerability);
     enemyInfo.allVulnerabilities = o.get<Boolean>("All Vulnerabilities", enemyInfo.allVulnerabilities);
     lowVarianceMode = o.get<Boolean>("Low Variance Mode", lowVarianceMode);
+}
+
+bool Simulation::isOnCooldown(EffectSlot slot) const
+{
+    return currentTime - effectLastTick[(int)slot] < effects[(int)slot].cooldownIn60th;
+}
+
+bool Simulation::isActive(EffectSlot slot) const
+{
+    return effectStacks[(int)slot] > 0;
 }
 
 void Simulation::fullHit(const Stats& baseStats,
@@ -793,7 +803,7 @@ void Simulation::fullHit(const Stats& baseStats,
             continue;
 
         // on CD
-        if (effectCD[slot] > 0)
+        if (currentTime - effectLastTick[slot] < effect.cooldownIn60th)
             continue;
 
         // on hit
@@ -856,7 +866,7 @@ void Simulation::fullHit(const Stats& baseStats,
             else // or reset it
             {
                 effectTime[i] = 0;
-                effectCD[i] = 0;
+                // no CD reduction here?
             }
 
             // gain on consume
@@ -893,18 +903,19 @@ void Simulation::procEffect(const Stats& procStats, const Passive& passive, floa
 
 void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float originalHitScaling)
 {
+    ACTION();
+
     auto slot = (size_t)effectSlot;
     auto const& effect = effects[slot];
     assert(effect.slot < EffectSlot::Count && "effect not registered");
 
     // blocked by other effect
-    if (effect.blockedSlot < EffectSlot::Count
-        && (effectCD[(int)effect.blockedSlot] > 0 || effectStacks[(int)effect.blockedSlot] > 0))
+    if (effect.blockedSlot < EffectSlot::Count && (isOnCooldown(effect.blockedSlot) || isActive(effect.blockedSlot)))
         return;
 
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
-    effectCD[slot] = effect.cooldownIn60th;
+    effectLastTick[slot] = currentTime;
     if (effectStacks[slot] < effect.maxStacks)
     {
         effectHitID[slot] = currHitID;
@@ -1118,13 +1129,6 @@ void Simulation::advanceTime(int timeIn60th)
 
     // reduce skill CDs
     for (auto& cd : skillCDs)
-    {
-        cd -= timeIn60th;
-        if (cd < 0)
-            cd = 0;
-    }
-    // reduce effect CDs
-    for (auto& cd : effectCD)
     {
         cd -= timeIn60th;
         if (cd < 0)

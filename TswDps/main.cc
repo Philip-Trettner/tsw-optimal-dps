@@ -44,7 +44,7 @@ void debugRun()
      * * Coney, Equilibrium
      * * support augs
      * * better gear optimization (total reglyph mutation)
-     * * analysis: what are dps effects of: all non-builder, all passives, all signets, +100 on each stat
+     * * analysis: what are dps effects of: all non-builder, all passives, all signets, -+100/200 on each stat
      * * check if laceration on head makes a difference
      * * performance
      * * fire in the hole

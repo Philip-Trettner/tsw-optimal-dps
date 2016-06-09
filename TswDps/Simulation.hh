@@ -86,6 +86,11 @@ struct Simulation
     /// loads fight parameters from json
     void fightFromJson(jsonxx::Object const& o);
 
+    /// returns true if the given effect is on CD
+    bool isOnCooldown(EffectSlot slot) const;
+    /// returns true if the given effect has at least one stack
+    bool isActive(EffectSlot slot) const;
+
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
     // does NOT include multi-hit penalty
@@ -121,7 +126,7 @@ private: // run-time TRANSIENT data
     int skillCDs[SKILL_CNT];
     // effect time, CD, stacks
     int effectTime[(int)EffectSlot::Count];
-    int effectCD[(int)EffectSlot::Count];
+    int effectLastTick[(int)EffectSlot::Count]; // tick when this effect was last applied
     int effectStacks[(int)EffectSlot::Count];
     int effectHitID[(int)EffectSlot::Count];   // id of hit that applied this effect
     int effectSkillID[(int)EffectSlot::Count]; // id of skill that applied this effect
@@ -138,6 +143,11 @@ private: // run-time TRANSIENT data
     float vulnDmg[(int)DmgType::Count];
     // random
     std::default_random_engine random;
+
+    // currently active effects
+    // EffectSlot currEffects[(int)EffectSlot::Count];
+    // nr of currently active effects
+    // int currEffectCnt = 0;
 
     void fullHit(Stats const& baseStats,
                  Stats const& procStat,
