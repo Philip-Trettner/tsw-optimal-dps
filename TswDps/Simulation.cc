@@ -330,13 +330,17 @@ void Simulation::simulate(int totalTimeIn60th)
 
             // check if consumes resources
             bool consumeResources = true;
-            for (auto i = 0; i < (int)EffectSlot::Count; ++i)
-                if (effectStacks[i] > 0 && effects[i].makeConsumerFree
-                    && effects[i].affects(skill.dmgtype, skill.skilltype, skill.subtype, skill.weapon))
+            for (auto i = 0; i < currEffectCnt; ++i)
+            {
+                auto slot = (int)currEffects[i];
+                assert(effectStacks[slot] > 0);
+                if (effects[slot].makeConsumerFree
+                    && effects[slot].affects(skill.dmgtype, skill.skilltype, skill.subtype, skill.weapon))
                 {
                     consumeResources = false; // e.g. anima charge
                     break;
                 }
+            }
 
             // if actually requires resources
             if (consumeResources)
@@ -759,7 +763,7 @@ void Simulation::fullHit(const Stats& baseStats,
                          Skill const* srcSkill,
                          Effect const* srcEffect)
 {
-    ACTION();
+    // ACTION(); 850ns
     ++currHitID; // increase hit id
 
     auto weapon = srcSkill ? srcSkill->weapon : Weapon::None;
@@ -1165,9 +1169,9 @@ void Simulation::rawHit(const Stats& actualStats,
 
 void Simulation::advanceTime(int timeIn60th)
 {
-    ACTION();
+    // ACTION(); 500ns
 
-    const int maxNewProcs = 10;
+    const int maxNewProcs = 30;
     EffectSlot newProcs[maxNewProcs];
     EffectSlot dmgProcs[maxNewProcs];
 
@@ -1189,9 +1193,13 @@ void Simulation::advanceTime(int timeIn60th)
 
         // calc time to next event
         auto delta = timeIn60th;
-        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
-            if (effectTime[i] > 0 && effectTime[i] < delta)
-                delta = effectTime[i];
+        for (auto i = 0; i < currEffectCnt; ++i)
+        {
+            auto slot = (int)currEffects[i];
+            assert(effectTime[slot] > 0);
+            if (effectTime[slot] < delta)
+                delta = effectTime[slot];
+        }
         if (dabsTime < delta)
             delta = dabsTime;
         assert(delta > 0);
