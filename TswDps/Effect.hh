@@ -149,6 +149,7 @@ struct Effect
     EffectSlot blockedSlot = EffectSlot::Count; // if < Count, this effect cannot trigger if that effect has Cooldown!
 
     Stats bonusStats;
+    bool hasBonusStats;
 
     bool oncePerAbility = false;
     int maxStacks = 1;

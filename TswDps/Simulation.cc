@@ -1290,19 +1290,23 @@ void Simulation::addResource(bool currentOnly)
 
 void Simulation::applyEffects(Stats& stats, DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon)
 {
-    ACTION();
-    // TODO: check if Lethality etc. affect procs
+    // ACTION(); <= 90ns aka too expensive
 
     // add currently running effects
-    for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+    for (auto i = 0; i < currEffectCnt; ++i)
     {
-        if (!effects[i].affects(dmgtype, skilltype, subtype, weapon))
+        auto slot = (int)currEffects[i];
+        assert(effectStacks[slot] >= 1);
+
+        if (!effects[slot].hasBonusStats)
+            continue; // no bonus stats
+        if (!effects[slot].affects(dmgtype, skilltype, subtype, weapon))
             continue; // not affected
 
-        if (effectStacks[i] > 1)
-            stats = stats + effects[i].bonusStats * (float)effectStacks[i];
-        else if (effectStacks[i] == 1)
-            stats = stats + effects[i].bonusStats;
+        if (effectStacks[slot] > 1)
+            stats = stats + effects[slot].bonusStats * (float)effectStacks[slot];
+        else
+            stats = stats + effects[slot].bonusStats;
     }
 }
 
@@ -1355,6 +1359,7 @@ void Simulation::registerEffect(const Effect& e)
     assert(effects[(int)e.slot].slot == EffectSlot::Count && "already registered");
 
     effects[(int)e.slot] = e;
+    effects[(int)e.slot].hasBonusStats = effects[(int)e.slot].bonusStats != Stats();
 }
 
 void Simulation::registerEffects()
