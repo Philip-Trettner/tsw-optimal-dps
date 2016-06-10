@@ -33,7 +33,7 @@ struct Builds
                     {
                         // augs
                         Augments::empty(), //
-                        Augments::Inspiring(), //
+                        Augments::Quickening(), //
                     },
                     {
                         // passives

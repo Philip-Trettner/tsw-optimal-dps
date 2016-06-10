@@ -48,6 +48,7 @@ void debugRun()
      * * fire in the hole
      * * .5 glyphs
      * * test if powerline dmg is base, additive, or multiplicative
+     * * BBCode
      *
      * later: afflictions + signet of corruption
      *

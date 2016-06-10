@@ -916,15 +916,26 @@ void Simulation::fullHit(const Stats& baseStats,
         auto const& effect = effects[slot];
         assert(effect.slot < EffectSlot::Count && "effect not registered");
 
-        // finish activation is handled differently
-        if (passive.trigger == Trigger::FinishActivation)
-            continue;
-        // start activation is handled differently
-        if (passive.trigger == Trigger::StartActivation)
-            continue;
-        // auto is handled differently
-        if (passive.trigger == Trigger::Auto)
-            continue;
+        // check trigger
+        switch (passive.trigger)
+        {
+        case Trigger::Hit: // on hit
+            break;
+        case Trigger::Crit: // on crit
+            if (!isCrit)
+                continue;
+            break;
+        case Trigger::Pen: // on pen
+            if (!isPen)
+                continue;
+            break;
+        case Trigger::CritPen: // on crit-pen
+            if (!(isCrit && isPen))
+                continue;
+            break;
+        default:
+            continue; // not triggered by (special) hit
+        }
 
         // once per ability can only proc at start (for now)
         if (effect.oncePerAbility && !startOfAbility)
@@ -938,28 +949,12 @@ void Simulation::fullHit(const Stats& baseStats,
         if (passive.passivetype == PassiveType::Kickback && kickbackTime <= 0)
             continue;
 
-        // on hit
-        // if (false && passive.trigger == Trigger::Hit)
-        //     continue;
-
-        // on crit
-        if (!isCrit && passive.trigger == Trigger::Crit)
-            continue;
-
-        // on pen
-        if (!isPen && passive.trigger == Trigger::Pen)
-            continue;
-
         // blocked by pen
         if (isPen && effect.resetOnPen)
             continue;
 
         // blocked by glance
         if (isGlance && effect.resetOnGlance)
-            continue;
-
-        // on crit-pen
-        if (!(isCrit && isPen) && passive.trigger == Trigger::CritPen)
             continue;
 
         procEffect(procStat, passive, dmgScaling);
@@ -1056,7 +1051,7 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     if (effect.reducesCooldown > 0)
     {
         // TODO!
-        //for (auto i = 0; i < SKILL_CNT; ++i)
+        // for (auto i = 0; i < SKILL_CNT; ++i)
         //    if (skillCDs)
     }
 

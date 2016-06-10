@@ -7,7 +7,6 @@
 #include "Types.hh"
 #include "Weapon.hh"
 
-// Careful: when adding a trigger, check handling in Simulation::fullHit!
 enum class Trigger
 {
     None,
@@ -17,7 +16,9 @@ enum class Trigger
     CritPen,
     FinishActivation,
     StartActivation,
-    Auto
+    Auto,
+    CritHealSelf,
+    CritHealAny,
 };
 
 struct Passive

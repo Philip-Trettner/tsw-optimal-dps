@@ -101,6 +101,21 @@ void VerboseLog::logResource(Simulation *sim, int timeIn60th, Weapon weapon, int
     std::cout << "." << std::endl;
 }
 
+void VerboseLog::logHeal(Simulation *sim, int timeIn60th, EffectSlot slot, bool criticalSelf, bool criticalAny, int affected)
+{
+    if (skillsOnly)
+        return;
+    if (!logEffects)
+        return;
+
+    auto frac = (timeIn60th % 60) * 100 / 60;
+    std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60 << "] '";
+    std::cout << to_string(slot) << "' heals " << affected << " member (self: ";
+    std::cout << (criticalSelf ? "critical" : "normal") << ", group: ";
+    std::cout << (criticalAny ? "critical" : "normal");
+    std::cout << ")." << std::endl;
+}
+
 void StatLog::dump(Simulation *sim)
 {
     std::vector<std::pair<string, DmgStat>> stats;

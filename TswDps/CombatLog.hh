@@ -39,6 +39,10 @@ struct CombatLog
     virtual void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) {}
     // is called whenever resources are gained or lost
     virtual void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) {}
+    // is called for every heal
+    virtual void logHeal(Simulation* sim, int timeIn60th, EffectSlot slot, bool criticalSelf, bool criticalAny, int affected)
+    {
+    }
 };
 
 struct VerboseLog : CombatLog
@@ -66,6 +70,7 @@ struct VerboseLog : CombatLog
     void logEffectStart(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logEffectEnd(Simulation* sim, int timeIn60th, EffectSlot slot) override;
     void logResource(Simulation* sim, int timeIn60th, Weapon weapon, int amount) override;
+    void logHeal(Simulation* sim, int timeIn60th, EffectSlot slot, bool criticalSelf, bool criticalAny, int affected) override;
 };
 
 struct StatLog : CombatLog
@@ -174,5 +179,10 @@ struct AggregateLog : CombatLog
     {
         for (auto log : logs)
             log->logResource(sim, timeIn60th, weapon, amount);
+    }
+    void logHeal(Simulation* sim, int timeIn60th, EffectSlot slot, bool criticalSelf, bool criticalAny, int affected) override
+    {
+        for (auto log : logs)
+            log->logHeal(sim, timeIn60th, slot, criticalSelf, criticalAny, affected);
     }
 };
