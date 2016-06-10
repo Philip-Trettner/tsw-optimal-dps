@@ -464,6 +464,8 @@ int main(int argc, char *argv[])
         "dump-build", "Dumps the build (as json) at the end (affected by optimizer), use '.' for console output",
         "file");
     parser.addOption(oDumpBuild);
+    QCommandLineOption oUpdate(
+        {"u", "update"}, "Updates the loaded build (if json) at the end. Same as --dump-build with the same build");
 
     // .. dump scenario at end
     QCommandLineOption oDumpScenario("dump-scenario", "Dumps the fight scenario (as json), use '.' for console output", "file");
@@ -539,6 +541,7 @@ int main(int argc, char *argv[])
 
     // .. build
     auto buildName = args[0];
+    auto buildIsFile = false;
     Build b;
     b.gear.loadEmptyDpsGear();              // for weapons and base stats
     b.rotation = DefaultRotation::create(); // default rot
@@ -590,6 +593,7 @@ int main(int argc, char *argv[])
         jsonxx::Object o;
         o.parse(file);
         b.fromJson(o);
+        buildIsFile = true;
     }
     else
     {
@@ -789,6 +793,21 @@ int main(int argc, char *argv[])
             std::cout << "Wrote build to '" << fname.toStdString() << "'" << std::endl;
         }
         std::cout << std::endl;
+    }
+
+    if (parser.isSet(oUpdate))
+    {
+        if (buildIsFile)
+        {
+            auto json = b.toJson(); // potentially from optimizer
+            std::ofstream file(buildName.toStdString());
+            file << json.json();
+            std::cout << "Wrote build to '" << buildName.toStdString() << "'" << std::endl;
+        }
+        else
+        {
+            std::cout << "Build was not loaded from a file." << std::endl;
+        }
     }
 
     if (parser.isSet(oDumpScenario))

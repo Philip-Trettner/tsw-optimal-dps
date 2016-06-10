@@ -158,6 +158,28 @@ public:
 
             return e;
         }
+
+        static Effect Equilibrium()
+        {
+            auto e = effect("Equilibrium", EffectSlot::Equilibrium);
+
+            e.timeIn60th = 5 * 60;
+            e.cooldownIn60th = 15 * 60;
+            e.bonusStats.additiveDamage = 15 / 100.f;
+
+            return e;
+        }
+
+        static Effect ConeyIslandBand()
+        {
+            auto e = effect("Coney Island Band", EffectSlot::ConeyIslandBand);
+
+            e.timeIn60th = 15 * 60;
+            e.cooldownIn60th = 15 * 60;
+            e.bonusStats.addedCritPower = 25 / 100.f;
+
+            return e;
+        }
     };
 
     struct Generic : private Base

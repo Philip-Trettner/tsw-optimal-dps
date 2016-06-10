@@ -1133,6 +1133,10 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         else
             assert(0 && "invalid");
     }
+
+    // group heal on gain
+    if (effect.triggersGroupHealOnGain)
+        procHeal(procStats, effectSlot, enemyInfo.groupMembers);
 }
 
 void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling)
@@ -1201,6 +1205,49 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
                    SubType::None, Weapon::None, &isCrit, &isPen, &isGlance, &isBlock, &isEvade, nullptr, &effect,
                    effectSkillIndex[(int)effect.slot]);
         }
+    }
+}
+
+void Simulation::procHeal(const Stats& procStats, EffectSlot effectSlot, int affected)
+{
+    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
+
+    auto stats = procStats; // copy
+    applyEffects(stats, DmgType::None, SkillType::Proc, SubType::None, Weapon::None);
+    stats.update(enemyInfo);
+
+    auto critChance = saturate(stats.finalCritChance);
+    auto anyCritChance = 1.0 - pow(1.0 - critChance, affected);
+
+    bool isCrit = dice(random) < critChance;
+    bool isAnyCrit = dice(random) < anyCritChance;
+
+    if (log)
+        log->logHeal(this, currentTime, effectSlot, isCrit, isAnyCrit, affected);
+
+    // trigger
+    for (auto const& p : procTriggers[currentSkill])
+    {
+        switch (p.trigger)
+        {
+        case Trigger::CritHealSelf:
+            if (!isCrit)
+                continue;
+            break;
+        case Trigger::CritHealAny:
+            if (!isAnyCrit)
+                continue;
+            break;
+        default:
+            continue;
+        }
+
+        // cooldown
+        if (isOnCooldown(p.effect))
+            continue;
+
+        // actual proc
+        procEffect(procStats, p, -1);
     }
 }
 
@@ -1312,6 +1359,7 @@ void Simulation::advanceTime(int timeIn60th)
     const int maxNewProcs = 30;
     EffectSlot newProcs[maxNewProcs];
     EffectSlot dmgProcs[maxNewProcs];
+    EffectSlot healProcs[maxNewProcs];
 
     // reduce skill CDs
     for (auto& cd : skillCDs)
@@ -1362,6 +1410,7 @@ void Simulation::advanceTime(int timeIn60th)
             auto i = 0;
             int newProcCnt = 0;
             int dmgProcCnt = 0;
+            int healProcCnt = 0;
             while (i < currEffectCnt)
             {
                 auto slot = (int)currEffects[i];
@@ -1397,6 +1446,10 @@ void Simulation::advanceTime(int timeIn60th)
                     if (effects[slot].procOn == ProcOn::Loss)
                         dmgProcs[dmgProcCnt++] = (EffectSlot)slot;
 
+                    // trigger heal on lose
+                    if (effects[slot].triggersPlayerHealOnLost)
+                        healProcs[healProcCnt++] = (EffectSlot)slot;
+
                     // trigger on lose
                     if (effects[slot].triggerOnStackLost != EffectSlot::Count)
                         if (!effects[slot].triggerOnStackLostOnlyLast || effectStacks[slot] == 0)
@@ -1417,6 +1470,9 @@ void Simulation::advanceTime(int timeIn60th)
             // proc on stack lost
             for (auto i = 0; i < newProcCnt; ++i)
                 procEffect(procStats[currentSkill], newProcs[i], -1);
+            // proc player heal on stack lost
+            for (auto i = 0; i < healProcCnt; ++i)
+                procHeal(procStats[currentSkill], healProcs[i], 1);
         }
 
         // check buffs
@@ -1579,6 +1635,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Signet::Opportunism());
     registerEffect(Effects::Signet::SubwayTokens());
     registerEffect(Effects::Signet::SubwayTokensCountdown());
+    registerEffect(Effects::Signet::Equilibrium());
+    registerEffect(Effects::Signet::ConeyIslandBand());
 
     registerEffect(Effects::Proc::FortunateStrike());
     registerEffect(Effects::Proc::OneInTheChamber());

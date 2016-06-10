@@ -125,6 +125,15 @@ public:
 
             return p;
         }
+        static Signet ConeyIslandBand()
+        {
+            auto p = signet("Coney Island Band");
+
+            p.passive.trigger = Trigger::CritHealAny;
+            p.passive.effect = EffectSlot::ConeyIslandBand;
+
+            return p;
+        }
 
         static std::vector<Signet> all()
         {
@@ -132,12 +141,23 @@ public:
                 Violence(),         //
                 WoodcuttersWrath(), //
                 EgonPendant(),      //
+                ConeyIslandBand(),  //
             };
         }
     };
 
     struct Minor : private Base<SignetSlot::Minor>
     {
+        static Signet Equilibrium()
+        {
+            auto p = signet("Equilibrium");
+
+            p.passive.trigger = Trigger::CritHealSelf;
+            p.passive.effect = EffectSlot::Equilibrium;
+
+            return p;
+        }
+
         static Signet Issue1p5()
         {
             auto p = signet("Issue 1.5%");
@@ -304,6 +324,8 @@ public:
                 Shattering(),  //
                 Swords(),      //
                 Tomes(),       //
+
+                Equilibrium(), //
             };
         }
     };
@@ -317,7 +339,7 @@ public:
         s.insert(end(s), begin(hw), end(hw));
         s.insert(end(s), begin(major), end(major));
         s.insert(end(s), begin(minor), end(minor));
-		s.push_back(Minor::SubwayTokens());
+        s.push_back(Minor::SubwayTokens());
         return s;
     }
 

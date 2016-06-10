@@ -117,6 +117,11 @@ struct Gear
 	void setNeckWoodcutters();
 	/// sets neck to 10.9 egon
 	void setNeckEgon();
+
+    /// sets finger to QL11 + violence
+    void setFingerQL11();
+    /// sets finger to Coney
+    void setFingerConey();
 };
 
 // custom specialization of std::hash can be injected in namespace std

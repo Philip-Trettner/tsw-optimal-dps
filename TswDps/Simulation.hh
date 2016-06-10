@@ -185,6 +185,8 @@ private: // run-time TRANSIENT data
     void procEffect(Stats const& procStats, EffectSlot effectSlot, float originalHitScaling);
     void procEffectDmg(Stats const& procStats, Effect const& effect, float originalHitScaling);
 
+    void procHeal(Stats const& procStats, EffectSlot effectSlot, int affected);
+
     void advanceTime(int timeIn60th);
 
     void addResource(bool currentOnly); ///< to current weapon

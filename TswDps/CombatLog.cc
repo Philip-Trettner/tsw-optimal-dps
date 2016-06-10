@@ -111,7 +111,7 @@ void VerboseLog::logHeal(Simulation *sim, int timeIn60th, EffectSlot slot, bool 
     auto frac = (timeIn60th % 60) * 100 / 60;
     std::cout << "[" << timeIn60th / 60 << ":" << (frac < 10 ? "0" : "") << (timeIn60th % 60) * 100 / 60 << "] '";
     std::cout << to_string(slot) << "' heals " << affected << " member (self: ";
-    std::cout << (criticalSelf ? "critical" : "normal") << ", group: ";
+    std::cout << (criticalSelf ? "critical" : "normal") << ", any: ";
     std::cout << (criticalAny ? "critical" : "normal");
     std::cout << ")." << std::endl;
 }

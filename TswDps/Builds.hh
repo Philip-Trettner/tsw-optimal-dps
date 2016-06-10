@@ -43,6 +43,9 @@ struct Builds
         // gear
         b.gear.loadStandardDpsGear();
 
+        b.gear.pieces[Gear::MajorLeft].signet = Signets::Major::ConeyIslandBand();
+        b.gear.pieces[Gear::MinorLeft].signet = Signets::Minor::Equilibrium();
+
         // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Elemental;
         b.gear.rightWeapon = Weapon::Chaos;

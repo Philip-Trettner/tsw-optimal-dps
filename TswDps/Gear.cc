@@ -13,7 +13,7 @@ void Gear::loadStandardDpsGear()
 
     // Head
     pieces[Head].free(Rating::Hit);
-    pieces[Head].signet = Signets::empty();
+    pieces[Head].signet = Signets::HeadWeapon::Laceration();
 
     // Finger
     pieces[MajorLeft].free(Rating::Crit);
@@ -31,26 +31,27 @@ void Gear::loadStandardDpsGear()
     pieces[MajorRight].signet = Signets::Major::Violence();
 
     // Luck
+    pieces[MinorLeft].set(PrimaryStat::Attack, TalismanQuality::QL10_9);
     pieces[MinorLeft].free(Rating::Hit);
-    pieces[MinorLeft].signet = Signets::empty();
+    pieces[MinorLeft].signet = Signets::Minor::SubwayTokens();
 
     // Waist
     pieces[MinorMid].free(Rating::Crit);
-    pieces[MinorMid].signet = Signets::empty();
+    pieces[MinorMid].signet = Signets::Minor::Issue1p5();
 
     // Occult
     pieces[MinorRight].free(Rating::Crit);
-    pieces[MinorRight].signet = Signets::empty();
+    pieces[MinorRight].signet = Signets::Minor::Issue1p5();
 
     // Weapons
     pieces[WeaponLeft].free(Rating::Crit);
-    pieces[WeaponLeft].signet = Signets::empty();
+    pieces[WeaponLeft].signet = Signets::HeadWeapon::Aggression();
 
     pieces[WeaponRight].free(Rating::Crit);
-    pieces[WeaponRight].signet = Signets::empty();
+    pieces[WeaponRight].signet = Signets::HeadWeapon::Aggression();
 
     stimulant = EffectSlot::StimAttackPurple;
-    kickback = Passives::Kickback::CritOnCritPurple();
+    kickback = Passives::Kickback::CritPowerOnCritPurple();
 }
 
 void Gear::loadEmptyDpsGear()
@@ -310,6 +311,22 @@ void Gear::setNeckEgon()
     p.status = SlotStatus::Free;
     p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
     p.signet = Signets::Major::EgonPendant();
+}
+
+void Gear::setFingerQL11()
+{
+    auto &p = pieces[MajorLeft];
+    p.status = SlotStatus::Free;
+    p.set(PrimaryStat::Attack, TalismanQuality::QL11);
+    p.signet = Signets::Major::Violence();
+}
+
+void Gear::setFingerConey()
+{
+    auto &p = pieces[MajorLeft];
+    p.status = SlotStatus::Free;
+    p.set(PrimaryStat::Heal, TalismanQuality::QL10_9);
+    p.signet = Signets::Major::ConeyIslandBand();
 }
 
 void Gear::Piece::fix(Rating r)
