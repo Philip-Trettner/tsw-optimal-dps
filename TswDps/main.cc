@@ -466,6 +466,7 @@ int main(int argc, char *argv[])
     parser.addOption(oDumpBuild);
     QCommandLineOption oUpdate(
         {"u", "update"}, "Updates the loaded build (if json) at the end. Same as --dump-build with the same build");
+    parser.addOption(oUpdate);
 
     // .. dump scenario at end
     QCommandLineOption oDumpScenario("dump-scenario", "Dumps the fight scenario (as json), use '.' for console output", "file");
@@ -808,6 +809,7 @@ int main(int argc, char *argv[])
         {
             std::cout << "Build was not loaded from a file." << std::endl;
         }
+        std::cout << std::endl;
     }
 
     if (parser.isSet(oDumpScenario))

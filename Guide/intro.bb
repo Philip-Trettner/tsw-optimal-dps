@@ -9,5 +9,6 @@ Sections:
  * Tables for different settings
  * Best Builds (for Raid, Burst, Vulnerabilities, Buffs)
  * The DPS Formula
- * FAQ
+ * A Combat Simulator + How the builds got made
+ * FAQ + Changelog + Known Issues
  * One for every weapon combination

@@ -422,7 +422,9 @@ void Simulation::simulate(int totalTimeIn60th)
         if (skill.animaDeviation)
         {
             bool adCrit, adPen, adGlance, adBlock, adEvade;
-            auto adStat = baseStat;        // copy
+            auto adStat = baseStat; // copy
+            applyEffects(adStat, DmgType::None, SkillType::None, SubType::None, Weapon::None);
+            adStat.update(enemyInfo);
             adStat.finalCritChance = 0.0f; // BUG: AD cannot crit currently
             rawHit(adStat, animaDeviationScaling, 1.0f, DmgType::None, SkillType::None, SubType::None, Weapon::None,
                    &adCrit, &adPen, &adGlance, &adBlock, &adEvade, nullptr, &animaDeviationEffect, -1);
