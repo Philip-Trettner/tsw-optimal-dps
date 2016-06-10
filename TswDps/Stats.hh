@@ -325,3 +325,22 @@ inline bool operator!=(Stats const& l, Stats const& r)
 {
     return !(l == r);
 }
+
+inline string shortStatDump(Stats const& s, bool withBase = true, bool withBB = false)
+{
+    auto prefix = withBB ? "[color=#FFEB3B][b]" : "";
+    auto suffix = withBB ? "[/b][/color]" : "";
+
+    string ss;
+    if (s.attackRating > 0 && withBase)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.attackRating) + prefix + " AR" + suffix;
+    if (s.hitRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.hitRating) + prefix + " Hit" + suffix;
+    if (s.penRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.penRating) + prefix + " Pen" + suffix;
+    if (s.critRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critRating) + prefix + " Crit" + suffix;
+    if (s.critPowerRating > 0)
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critPowerRating) + prefix + " CritPower" + suffix;
+    return ss;
+}

@@ -49,13 +49,13 @@ struct Gear
         Signet signet;
 
         /// fixes this piece to a single stat
-        void fix(Rating r);
+        void fix(Rating r, bool ql11 = true);
         /// fixes this piece to a 50-50 stat split
-        void fix(Rating r1, Rating r2);
+        void fix(Rating r1, Rating r2, bool ql11 = true);
         /// sets the inital rating but makes this a free piece
-        void free(Rating r);
+        void free(Rating r, bool ql11 = true);
         /// sets the inital rating but makes this a free piece
-        void free(Rating r1, Rating r2);
+        void free(Rating r1, Rating r2, bool ql11 = true);
 
         /// sets the primary stat of this talisman
         void set(PrimaryStat stat, TalismanQuality q);
@@ -132,12 +132,12 @@ struct Gear
     /// returns all possible stats combinations of a single slot
     /// assumes QL11
     /// (each return value is unique)
-    static std::vector<Stats> enumeratePieceStats(Slot slot, std::vector<Rating> const& ratings, bool allowSplits = true);
+    static std::vector<Stats> enumeratePieceStats(Slot slot, std::vector<Rating> const& ratings, bool ql11, bool allowSplits = true);
 
     /// returns a 100% stat for a given rating
-    static Stats singleStatOf(Slot slot, Rating r);
+    static Stats singleStatOf(Slot slot, Rating r, bool ql11);
     /// returns a 50% stat for a given rating
-    static Stats splitStatOf(Slot slot, Rating r);
+    static Stats splitStatOf(Slot slot, Rating r, bool ql11);
 
     /// sets neck to QL11 + violence
     void setNeckQL11();

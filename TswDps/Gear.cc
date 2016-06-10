@@ -145,25 +145,25 @@ std::vector<Stats> Gear::enumerateGearStats(const std::vector<Rating> &ratings, 
     return std::vector<Stats>(begin(stats.back()), end(stats.back()));
 }
 
-std::vector<Stats> Gear::enumeratePieceStats(Slot slot, const std::vector<Rating> &ratings, bool allowSplits)
+std::vector<Stats> Gear::enumeratePieceStats(Slot slot, const std::vector<Rating> &ratings, bool ql11, bool allowSplits)
 {
     assert(ratings.size() > 0 && "specify at least one rating");
     std::vector<Stats> stats;
 
     // single stats
     for (auto r : ratings)
-        stats.push_back(singleStatOf(slot, r));
+        stats.push_back(singleStatOf(slot, r, ql11));
 
     // double stats
     if (allowSplits)
         for (auto i1 = 0u; i1 < ratings.size(); ++i1)
             for (auto i2 = i1 + 1; i2 < ratings.size(); ++i2)
-                stats.push_back(splitStatOf(slot, ratings[i1]) + splitStatOf(slot, ratings[i2]));
+                stats.push_back(splitStatOf(slot, ratings[i1], ql11) + splitStatOf(slot, ratings[i2], ql11));
 
     return stats;
 }
 
-Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
+Stats Gear::singleStatOf(Gear::Slot slot, Rating r, bool ql11)
 {
     Stats s;
     switch (slot)
@@ -173,32 +173,32 @@ Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
         switch (r)
         {
         case Rating::Hit:
-            s.hitRating = 407;
+            s.hitRating = !ql11 ? 363 : 407;
             break;
         case Rating::Pen:
-            s.penRating = 407;
+            s.penRating = !ql11 ? 363 : 407;
             break;
         case Rating::Crit:
-            s.critRating = 362;
+            s.critRating = !ql11 ? 336 : 362;
             break;
         case Rating::CritPower:
-            s.critPowerRating = 347;
+            s.critPowerRating = !ql11 ? 328 : 347;
             break;
 
         case Rating::Block:
-            s.blockRating = 407;
+            s.blockRating = !ql11 ? 363 : 407;
             break;
         case Rating::Defence:
-            s.defenceRating = 407;
+            s.defenceRating = !ql11 ? 363 : 407;
             break;
         case Rating::Evade:
-            s.evadeRating = 367;
+            s.evadeRating = !ql11 ? 337 : 367;
             break;
         case Rating::PhysProt:
-            s.physProtRating = 362;
+            s.physProtRating = !ql11 ? 336 : 362;
             break;
         case Rating::MagProt:
-            s.magProtRating = 362;
+            s.magProtRating = !ql11 ? 336 : 362;
             break;
         default:
             assert(0);
@@ -209,32 +209,32 @@ Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
         switch (r)
         {
         case Rating::Hit:
-            s.hitRating = 367;
+            s.hitRating = !ql11 ? 328 : 367;
             break;
         case Rating::Pen:
-            s.penRating = 367;
+            s.penRating = !ql11 ? 328 : 367;
             break;
         case Rating::Crit:
-            s.critRating = 327;
+            s.critRating = !ql11 ? 303 : 327;
             break;
         case Rating::CritPower:
-            s.critPowerRating = 313;
+            s.critPowerRating = !ql11 ? 296 : 313;
             break;
 
         case Rating::Block:
-            s.blockRating = 367;
+            s.blockRating = !ql11 ? 328 : 367;
             break;
         case Rating::Defence:
-            s.defenceRating = 367;
+            s.defenceRating = !ql11 ? 328 : 367;
             break;
         case Rating::Evade:
-            s.evadeRating = 332;
+            s.evadeRating = !ql11 ? 304 : 332;
             break;
         case Rating::PhysProt:
-            s.physProtRating = 327;
+            s.physProtRating = !ql11 ? 304 : 327;
             break;
         case Rating::MagProt:
-            s.magProtRating = 327;
+            s.magProtRating = !ql11 ? 304 : 327;
             break;
         default:
             assert(0);
@@ -245,32 +245,32 @@ Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
         switch (r)
         {
         case Rating::Hit:
-            s.hitRating = 236;
+            s.hitRating = !ql11 ? 211 : 236;
             break;
         case Rating::Pen:
-            s.penRating = 236;
+            s.penRating = !ql11 ? 211 : 236;
             break;
         case Rating::Crit:
-            s.critRating = 210;
+            s.critRating = !ql11 ? 195 : 210;
             break;
         case Rating::CritPower:
-            s.critPowerRating = 201;
+            s.critPowerRating = !ql11 ? 191 : 201;
             break;
 
         case Rating::Block:
-            s.blockRating = 236;
+            s.blockRating = !ql11 ? 211 : 236;
             break;
         case Rating::Defence:
-            s.defenceRating = 236;
+            s.defenceRating = !ql11 ? 211 : 236;
             break;
         case Rating::Evade:
-            s.evadeRating = 213;
+            s.evadeRating = !ql11 ? 196 : 213;
             break;
         case Rating::PhysProt:
-            s.physProtRating = 210;
+            s.physProtRating = !ql11 ? 195 : 210;
             break;
         case Rating::MagProt:
-            s.magProtRating = 210;
+            s.magProtRating = !ql11 ? 195 : 210;
             break;
         default:
             assert(0);
@@ -284,9 +284,9 @@ Stats Gear::singleStatOf(Gear::Slot slot, Rating r)
     return s;
 }
 
-Stats Gear::splitStatOf(Gear::Slot slot, Rating r)
+Stats Gear::splitStatOf(Gear::Slot slot, Rating r, bool ql11)
 {
-    return singleStatOf(slot, r) * 0.5f;
+    return singleStatOf(slot, r, ql11) * 0.5f;
 }
 
 void Gear::setNeckQL11()
@@ -300,7 +300,7 @@ void Gear::setNeckQL11()
 void Gear::setNeckWoodcutters()
 {
     auto &p = pieces[MajorMid];
-    p.fix(Rating::CritPower);
+    p.fix(Rating::CritPower, false);
     p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
     p.signet = Signets::Major::WoodcuttersWrath();
 }
@@ -329,32 +329,32 @@ void Gear::setFingerConey()
     p.signet = Signets::Major::ConeyIslandBand();
 }
 
-void Gear::Piece::fix(Rating r)
+void Gear::Piece::fix(Rating r, bool ql11)
 {
     status = SlotStatus::Fixed;
     auto s = stats.getPrimaryPart();
-    stats = singleStatOf(slot, r) + s;
+    stats = singleStatOf(slot, r, ql11) + s;
 }
 
-void Gear::Piece::fix(Rating r1, Rating r2)
+void Gear::Piece::fix(Rating r1, Rating r2, bool ql11)
 {
     status = SlotStatus::Fixed;
     auto s = stats.getPrimaryPart();
-    stats = splitStatOf(slot, r1) + splitStatOf(slot, r2) + s;
+    stats = splitStatOf(slot, r1, ql11) + splitStatOf(slot, r2, ql11) + s;
 }
 
-void Gear::Piece::free(Rating r)
+void Gear::Piece::free(Rating r, bool ql11)
 {
     status = SlotStatus::Free;
     auto s = stats.getPrimaryPart();
-    stats = singleStatOf(slot, r) + s;
+    stats = singleStatOf(slot, r, ql11) + s;
 }
 
-void Gear::Piece::free(Rating r1, Rating r2)
+void Gear::Piece::free(Rating r1, Rating r2, bool ql11)
 {
     status = SlotStatus::Free;
     auto s = stats.getPrimaryPart();
-    stats = splitStatOf(slot, r1) + splitStatOf(slot, r2) + s;
+    stats = splitStatOf(slot, r1, ql11) + splitStatOf(slot, r2, ql11) + s;
 }
 
 void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
@@ -367,6 +367,59 @@ void Gear::Piece::set(PrimaryStat stat, TalismanQuality q)
 
     switch (q)
     {
+    case TalismanQuality::QL10_4:
+        switch (slot)
+        {
+        case Slot::Head:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 735;
+                break;
+            case PrimaryStat::HP:
+                val = 2476;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Major:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 664;
+                break;
+            case PrimaryStat::HP:
+                val = 2237;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Minor:
+            switch (stat)
+            {
+            case PrimaryStat::Attack:
+            case PrimaryStat::Heal:
+                val = 427;
+                break;
+            case PrimaryStat::HP:
+                val = 1438;
+                break;
+            default:
+                assert(0);
+            }
+            break;
+        case Slot::Weapon:
+            val = 446;
+            break;
+        default:
+            assert(0);
+        }
+        break;
+
     case TalismanQuality::QL10_9:
         switch (slot)
         {

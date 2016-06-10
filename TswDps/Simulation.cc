@@ -533,7 +533,7 @@ void Simulation::dumpBriefReport() const
     std::cout << "Evades:   " << totalEvades << " (" << totalEvades * 100.f / totalHits << "%)" << std::endl;
 }
 
-void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
+void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg)
 {
     auto savMode = lowVarianceMode;
     auto savLog = log;
@@ -578,6 +578,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << passive.name << "'" << std::endl;
+        relDmg[passive.name] = startDPS / dps;
 
         skills.passives[i] = passive;
     }
@@ -600,6 +601,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << aug.name << "'" << std::endl;
+        relDmg[aug.name] = startDPS / dps;
 
         skills.augments[i] = aug;
     }
@@ -624,6 +626,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << skill.name << "'" << std::endl;
+        relDmg[skill.name] = startDPS / dps;
 
         skills.skills[i] = skill;
     }
@@ -644,6 +647,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for QL11 + Violence" << std::endl;
+        relDmg["Neck QL11"] = dps / startDPS;
 
         gear.pieces[Gear::MajorMid] = piece;
     }
@@ -662,6 +666,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Woodcutters" << std::endl;
+        relDmg["Neck WC"] = dps / startDPS;
 
         gear.pieces[Gear::MajorMid] = piece;
     }
@@ -680,6 +685,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
                   << "% for Amulet of Yuggoth" << std::endl;
+        relDmg["Neck Egon"] = dps / startDPS;
 
         gear.pieces[Gear::MajorMid] = piece;
     }
@@ -688,6 +694,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     for (auto i = Gear::Head; i <= Gear::WeaponRight; ++i)
     {
         auto piece = gear.pieces[i];
+        if (piece.signet.name().empty())
+            continue;
         gear.pieces[i].signet = Signets::empty();
 
         init();
@@ -700,6 +708,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << piece.signet.name() << "' on " << gear.pieceName(i) << std::endl;
+        relDmg[piece.signet.name()] = startDPS / dps;
 
         gear.pieces[i] = piece;
     }
@@ -720,6 +729,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << to_string(stim) << std::endl;
+        relDmg["Stimulant"] = startDPS / dps;
 
         gear.stimulant = stim;
     }
@@ -740,8 +750,30 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
                   << kb.name << std::endl;
+        relDmg["Kickback"] = startDPS / dps;
 
         gear.kickback = kb;
+    }
+    // Potion
+    if (potionStats != Stats())
+    {
+        std::cout << "  Potion: " << std::endl;
+        auto pot = potionStats;
+        potionStats = Stats();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << "   + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
+                  << shortStatDump(pot) << " Potion" << std::endl;
+        relDmg["Potion"] = startDPS / dps;
+
+        potionStats = pot;
     }
 
     std::cout << std::endl;
@@ -773,6 +805,8 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
             std::cout << (startDPS < dps ? "+" : "-") << std::fixed << std::setprecision(2)
                       << (startDPS > dps ? startDPS * 100. / dps - 100. : dps * 100. / startDPS - 100.) << "%";
+
+            relDmg["Stat " + to_string(r) + " " + to_string(o)] = startDPS / dps;
         }
         std::cout << "} for {-200, -100, -50, +50, +100, +200}" << std::endl;
     }
@@ -825,6 +859,11 @@ bool Simulation::isActive(EffectSlot slot) const
 string Simulation::effectName(EffectSlot slot) const
 {
     return effects[(int)slot].name;
+}
+
+Effect const& Simulation::effectFor(EffectSlot slot) const
+{
+    return effects[(int)slot];
 }
 
 void Simulation::fullHit(const Stats& baseStats,

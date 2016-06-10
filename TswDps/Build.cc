@@ -7,25 +7,9 @@
 #include <fstream>
 #include <iostream>
 
-namespace
-{
-string shortStatDump(Stats const& s, bool withBase = true)
-{
-    string ss;
-    if (s.attackRating > 0 && withBase)
-        ss += (ss.empty() ? "" : ", ") + std::to_string(s.attackRating) + " AR";
-    if (s.penRating > 0)
-        ss += (ss.empty() ? "" : ", ") + std::to_string(s.penRating) + " Pen";
-    if (s.critRating > 0)
-        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critRating) + " CR";
-    if (s.critPowerRating > 0)
-        ss += (ss.empty() ? "" : ", ") + std::to_string(s.critPowerRating) + " CP";
-    return ss;
-}
-string shortStatDump(Gear::Piece const& p)
+static string shortStatDump(Gear::Piece const& p)
 {
     return shortStatDump(p.stats, false);
-}
 }
 
 void Build::shortDump() const
