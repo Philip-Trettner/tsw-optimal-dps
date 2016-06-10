@@ -854,6 +854,11 @@ bool Simulation::isActive(EffectSlot slot) const
     return effectStacks[(int)slot] > 0;
 }
 
+string Simulation::effectName(EffectSlot slot) const
+{
+    return effects[(int)slot].name;
+}
+
 void Simulation::fullHit(const Stats& baseStats,
                          Stats const& procStat,
                          float dmgScaling,

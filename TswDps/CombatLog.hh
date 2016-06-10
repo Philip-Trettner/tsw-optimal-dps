@@ -86,6 +86,7 @@ struct StatLog : CombatLog
     std::map<SkillType, double> dmgOfSkill;
     std::map<SubType, double> dmgOfSub;
     std::map<Weapon, double> dmgOfWeapon;
+    Simulation* sim; // backref
 
     void logHit(Simulation* sim,
                 int timeIn60th,
@@ -103,6 +104,7 @@ struct StatLog : CombatLog
                 Stats const& stats,
                 float vulnMultiplier) override
     {
+        this->sim = sim;
         auto& s = dmgStats[name];
         s.totalDmg += dmg;
         s.hits += 1;

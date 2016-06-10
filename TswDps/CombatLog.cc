@@ -106,9 +106,10 @@ void StatLog::dump(Simulation *sim)
     std::vector<std::pair<string, DmgStat>> stats;
     for (auto const &kvp : dmgStats)
         stats.push_back(kvp);
-    sort(begin(stats), end(stats), [](std::pair<string, DmgStat> const &s1, std::pair<string, DmgStat> const &s2) -> bool {
-        return s1.second.totalDmg > s2.second.totalDmg;
-    });
+    sort(begin(stats), end(stats), [](std::pair<string, DmgStat> const &s1, std::pair<string, DmgStat> const &s2) -> bool
+         {
+             return s1.second.totalDmg > s2.second.totalDmg;
+         });
 
     auto totalDmg = sim->totalDmg;
     std::cout << "DPS: " << sim->totalDPS() << std::endl;
@@ -137,7 +138,7 @@ void StatLog::dump(Simulation *sim)
         {-dmgOfWeapon[sim->gear.rightWeapon], to_string(sim->gear.rightWeapon)}, //
     };
     sort(begin(typeDmg), end(typeDmg));
-    for (auto const& kvp : typeDmg)
+    for (auto const &kvp : typeDmg)
     {
         if (kvp.first == 0)
             continue;
@@ -158,7 +159,8 @@ StatLog::DmgStat StatLog::operator[](const Skill &s) const
 
 StatLog::DmgStat StatLog::operator[](EffectSlot s) const
 {
-    auto n = to_string(s);
+    assert(sim && "no sim attached");
+    auto n = sim->effectName(s);
     if (dmgStats.count(n))
         return dmgStats.at(n);
     return {};

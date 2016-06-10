@@ -91,6 +91,9 @@ struct Simulation
     /// returns true if the given effect has at least one stack
     bool isActive(EffectSlot slot) const;
 
+    /// returns the name of a given effect
+    std::string effectName(EffectSlot slot) const;
+
 private: // run-time INIT data
     // includes total gear stats including all non-effect passives, weapons, and signets
     // does NOT include multi-hit penalty
