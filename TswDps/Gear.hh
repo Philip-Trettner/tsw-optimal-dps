@@ -36,8 +36,8 @@ struct Gear
 
     enum class TalismanQuality
     {
-		QL10_4,
-		QL10_9,
+        QL10_4,
+        QL10_9,
         QL11
     };
 
@@ -86,6 +86,34 @@ struct Gear
     /// sets both weapons
     void setWeapons(Weapon left, Weapon right);
 
+    std::string pieceName(int slot)
+    {
+        switch (slot)
+        {
+        case Gear::Head:
+            return "Head";
+        case Gear::MajorLeft:
+            return "Major Left";
+        case Gear::MajorMid:
+            return "Major Mid";
+        case Gear::MajorRight:
+            return "Major Right";
+        case Gear::MinorLeft:
+            return "Minor Left";
+        case Gear::MinorMid:
+            return "Minor Mid";
+        case Gear::MinorRight:
+            return "Minor Right";
+        case Gear::WeaponLeft:
+            return to_string(leftWeapon);
+        case Gear::WeaponRight:
+            return to_string(rightWeapon);
+        default:
+            assert(0);
+            return "";
+        }
+    }
+
     Gear();
 
     /// sets all gear pieces at once (includes weapons)
@@ -111,12 +139,12 @@ struct Gear
     /// returns a 50% stat for a given rating
     static Stats splitStatOf(Slot slot, Rating r);
 
-	/// sets neck to QL11 + violence
-	void setNeckQL11();
-	/// sets neck to woodcutters
-	void setNeckWoodcutters();
-	/// sets neck to 10.9 egon
-	void setNeckEgon();
+    /// sets neck to QL11 + violence
+    void setNeckQL11();
+    /// sets neck to woodcutters
+    void setNeckWoodcutters();
+    /// sets neck to 10.9 egon
+    void setNeckEgon();
 
     /// sets finger to QL11 + violence
     void setFingerQL11();

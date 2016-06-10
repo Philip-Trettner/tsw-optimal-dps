@@ -148,6 +148,18 @@ struct Augments
         return a;
     }
     static Augment empty() { return {}; }
+    static std::vector<Augment> all()
+    {
+        auto dps = allDpsAugs();
+        auto support = allSupportAugs();
+        std::vector<Augment> res;
+        res.insert(end(res), begin(dps), end(dps));
+        res.insert(end(res), begin(support), end(support));
+        res.push_back(Mending());
+        res.push_back(Robust());
+        return res;
+    }
+
 private:
     Augments() = delete;
 };

@@ -67,11 +67,17 @@ void Build::shortDump() const
     std::cout << s.hitRating << " Hit, ";
     std::cout << s.penRating << " Pen, ";
     std::cout << s.critRating << " CR, ";
-    std::cout << s.critPowerRating << " CP, Neck: ";
+    std::cout << s.critPowerRating << " CP, ";
+    std::cout << "Neck: ";
     if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::MothersWrathStacks)
         std::cout << "Woodcutters";
     else if (gear.pieces[Gear::MajorMid].signet.passive.effect == EffectSlot::EgonPendant)
         std::cout << "Amulet of Yuggoth";
+    else
+        std::cout << "QL11 + Violence";
+    std::cout << ", Finger: ";
+    if (gear.pieces[Gear::MajorLeft].signet.passive.effect == EffectSlot::ConeyIslandBand)
+        std::cout << "Coney";
     else
         std::cout << "QL11 + Violence";
     if (potionStats != Stats())
@@ -198,7 +204,7 @@ void Build::fromJson(const jsonxx::Object& o)
 
 
     auto allSkills = Skills::all();
-    auto allAugs = Augments::allDpsAugs();
+    auto allAugs = Augments::all();
     auto allPassives = Passives::all();
 
     skills.passives.resize(pp.size());

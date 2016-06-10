@@ -683,10 +683,10 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
     }
 
     std::cout << "  Signets: " << std::endl;
-    // Head
+    for (auto i = Gear::Head; i <= Gear::WeaponRight; ++i)
     {
-        auto piece = gear.pieces[Gear::Head];
-        gear.pieces[Gear::Head].signet = Signets::empty();
+        auto piece = gear.pieces[i];
+        gear.pieces[i].signet = Signets::empty();
 
         init();
         resetStats();
@@ -696,46 +696,10 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime)
 
         std::cout << "   + ";
         std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
-                  << piece.signet.name() << " on Head" << std::endl;
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << piece.signet.name() << "' on " << gear.pieceName(i) << std::endl;
 
-        gear.pieces[Gear::Head] = piece;
-    }
-    // Left
-    {
-        auto piece = gear.pieces[Gear::WeaponLeft];
-        gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
-
-        init();
-        resetStats();
-        while (totalTimeAccum < maxTime)
-            simulate(fightTime);
-        auto dps = totalDPS();
-
-        std::cout << "   + ";
-        std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
-                  << piece.signet.name() << " on " << to_string(gear.leftWeapon) << std::endl;
-
-        gear.pieces[Gear::WeaponLeft] = piece;
-    }
-    // Right
-    {
-        auto piece = gear.pieces[Gear::WeaponRight];
-        gear.pieces[Gear::WeaponRight].signet = Signets::empty();
-
-        init();
-        resetStats();
-        while (totalTimeAccum < maxTime)
-            simulate(fightTime);
-        auto dps = totalDPS();
-
-        std::cout << "   + ";
-        std::cout.width(5);
-        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from "
-                  << piece.signet.name() << " on " << to_string(gear.rightWeapon) << std::endl;
-
-        gear.pieces[Gear::WeaponRight] = piece;
+        gear.pieces[i] = piece;
     }
     // Stimulant
     if (gear.stimulant != EffectSlot::Count)

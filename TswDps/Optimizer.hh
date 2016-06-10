@@ -25,6 +25,7 @@ private:
         MajorSignetChange,
         MinorSignetChange,
         NeckTalisman,
+        FingerTalisman,
         StatChange,
         Augment,
 		Aux,
@@ -122,6 +123,7 @@ private: // "Library"
     std::vector<Passive> allElitePassives;
 
 	std::vector<Augment> allDpsAugments;
+    std::vector<Augment> allSupportAugments;
 
 	std::vector<Signet> allHeadWeaponSignets;
     std::vector<Signet> allMinorSignets;

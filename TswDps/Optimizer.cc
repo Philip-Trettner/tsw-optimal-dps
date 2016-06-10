@@ -26,11 +26,21 @@ void Optimizer::run(int generations)
 
     // remove excluded abilities
     for (auto i = 0; i < SKILL_CNT; ++i)
+    {
         if (excludeSkillsAndPassives.count(startBuild.skills.skills[i].name))
         {
             startBuild.skills.skills[i] = Skills::empty();
             startBuild.skills.augments[i] = Augments::empty();
         }
+
+        // wrong vuln
+        if (forceVulnerability != DmgType::None && startBuild.skills.skills[i].skilltype == SkillType::Elite
+            && startBuild.skills.skills[i].appliesVulnerability != forceVulnerability)
+        {
+            startBuild.skills.skills[i] = Skills::empty();
+            startBuild.skills.augments[i] = Augments::empty();
+        }
+    }
     for (auto& p : startBuild.skills.passives)
         if (excludeSkillsAndPassives.count(p.name))
             p = Passives::empty();
@@ -87,6 +97,7 @@ void Optimizer::run(int generations)
     }
 
     allDpsAugments = Augments::allDpsAugs();
+    allSupportAugments = Augments::allSupportAugs();
 
     allHeadWeaponSignets = Signets::HeadWeapon::all();
     allMinorSignets.clear();
@@ -291,6 +302,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     std::uniform_int_distribution<int> randomPassive(0, maxPassives - 1);
     std::uniform_int_distribution<int> randomGearSlot(Gear::Head, Gear::WeaponRight);
     std::uniform_int_distribution<int> randomNeck(0, 2);
+    std::uniform_int_distribution<int> randomFinger(0, 1);
     std::uniform_int_distribution<int> randomMinRes(1, 5);
     std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count - 1);
 
@@ -476,6 +488,24 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 changed = true;
             }
             break;
+        case BuildChange::FingerTalisman:
+            while (!changed)
+            {
+                auto type = randomFinger(random);
+
+                switch (type)
+                {
+                case 0: // normal
+                    b.gear.setFingerQL11();
+                    break;
+                case 1: // coney
+                    b.gear.setFingerConey();
+                    break;
+                }
+
+                changed = true;
+            }
+            break;
         case BuildChange::StatChange:
             while (!changed)
             {
@@ -510,25 +540,51 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 auto idx = randomSkill(random);
                 if (b.skills.skills[idx].name.empty())
                     continue;
-                if (!b.skills.skills[idx].slotForDmgAug)
-                    continue;
 
-                // choose new aug
-                auto newAug = randomElement(allDpsAugments);
-                while (b.skills.augments[idx].name == newAug.name)
-                    newAug = randomElement(allDpsAugments);
+                if (dice(random) < .5) // dps aug
+                {
+                    if (!b.skills.skills[idx].slotForDmgAug)
+                        continue;
 
-                // switch if required
-                for (auto i = 0; i < maxActives; ++i)
-                    if (b.skills.augments[i].name == newAug.name)
-                    {
-                        b.skills.augments[i] = b.skills.augments[idx];
-                        break;
-                    }
+                    // choose new aug
+                    auto newAug = randomElement(allDpsAugments);
+                    while (b.skills.augments[idx].name == newAug.name)
+                        newAug = randomElement(allDpsAugments);
 
-                // assign new
-                b.skills.augments[idx] = newAug;
-                changed = true;
+                    // switch if required
+                    for (auto i = 0; i < maxActives; ++i)
+                        if (b.skills.augments[i].name == newAug.name)
+                        {
+                            b.skills.augments[i] = b.skills.augments[idx];
+                            break;
+                        }
+
+                    // assign new
+                    b.skills.augments[idx] = newAug;
+                    changed = true;
+                }
+                else // support aug
+                {
+                    if (!b.skills.skills[idx].slotForSupportAug)
+                        continue;
+
+                    // choose new aug
+                    auto newAug = randomElement(allSupportAugments);
+                    while (b.skills.augments[idx].name == newAug.name)
+                        newAug = randomElement(allSupportAugments);
+
+                    // switch if required
+                    for (auto i = 0; i < maxActives; ++i)
+                        if (b.skills.augments[i].name == newAug.name)
+                        {
+                            b.skills.augments[i] = b.skills.augments[idx];
+                            break;
+                        }
+
+                    // assign new
+                    b.skills.augments[idx] = newAug;
+                    changed = true;
+                }
             }
             break;
         case BuildChange::Aux:
@@ -640,6 +696,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
 void Optimizer::normalizeBuild(Build& b)
 {
     ACTION();
+    std::uniform_real_distribution<float> dice(0.0f, 1.0f);
 
     while ((int)b.skills.passives.size() < maxPassives)
         b.skills.passives.push_back(Passives::empty());
@@ -691,4 +748,35 @@ void Optimizer::normalizeBuild(Build& b)
                     }
                     break;
                 }
+
+    // add augments
+    for (int i = 0; i < SKILL_CNT - 1; ++i)
+        if (!b.skills.skills[i].name.empty() && b.skills.augments[i].name.empty())
+        {
+            auto const& s = b.skills.skills[i];
+            bool valid = false;
+            Augment newAug;
+            while (!valid)
+            {
+                valid = true;
+
+                if (s.slotForDmgAug && s.slotForSupportAug)
+                    newAug = dice(random) < .5 ? randomElement(allDpsAugments) : randomElement(allSupportAugments);
+                else if (s.slotForDmgAug)
+                    newAug = randomElement(allDpsAugments);
+                else if (s.slotForSupportAug)
+                    newAug = randomElement(allSupportAugments);
+                else
+                    assert(0);
+
+                for (int j = 0; j < SKILL_CNT - 1; ++j)
+                    if (i != j && b.skills.augments[j].name == newAug.name)
+                    {
+                        valid = false;
+                        break;
+                    }
+            }
+
+            b.skills.augments[i] = newAug;
+        }
 }

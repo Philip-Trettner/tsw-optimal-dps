@@ -8,6 +8,7 @@ TODO:
 Sections:
  * Tables for different settings
  * Best Builds (for Raid, Burst, Vulnerabilities, Buffs)
+ * Statistics
  * The DPS Formula
  * A Combat Simulator + How the builds got made
  * FAQ + Changelog + Known Issues

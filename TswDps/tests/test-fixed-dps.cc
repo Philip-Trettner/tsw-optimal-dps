@@ -78,5 +78,5 @@ TEST(Sanity, FixedDps)
 
     s.simulate(timestr("6h"));
 
-    ASSERT_NEAR(s.totalDPS(), 8450.0, 80);
+    ASSERT_NEAR(s.totalDPS(), 8500.0, 80);
 }

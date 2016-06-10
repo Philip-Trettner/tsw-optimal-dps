@@ -41,10 +41,9 @@ void debugRun()
      * TODO:
      *
      * * Mercurials
-     * * Coney, Equilibrium
      * * support augs
      * * better gear optimization (total reglyph mutation)
-     * * check if laceration on head makes a difference
+     * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * fire in the hole
      * * .5 glyphs
      * * test if powerline dmg is base, additive, or multiplicative
@@ -436,7 +435,8 @@ int main(int argc, char *argv[])
     parser.addOption(oAnalysis);
 
     // .. fight scenario
-    QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid' [default], 'burst', 'dummy', or file)",
+    QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid' [default], 'burst', 'dummy', 'raid-melee', "
+                                              "'raid-ranged', 'raid-magic', or file)",
                               "scenario", "raid");
     parser.addOption(oFight);
 
@@ -494,6 +494,10 @@ int main(int argc, char *argv[])
         "fast-opt", "Overwrite some optimization settings for speed (but less accuracy). Useful when starting out.");
     parser.addOption(oFastOpt);
 
+    // .. starting build
+    QCommandLineOption oStart("start", "Starting build in 'Weapon+Weapon' form, used if file does not exist.", "build");
+    parser.addOption(oStart);
+
     // .. test
     QCommandLineOption oTest("test", "Runs internal tests.");
 #if !DEPLOY
@@ -542,10 +546,17 @@ int main(int argc, char *argv[])
 
     // .. build
     auto buildName = args[0];
+    auto buildFile = buildName;
     auto buildIsFile = false;
     Build b;
     b.gear.loadEmptyDpsGear();              // for weapons and base stats
     b.rotation = DefaultRotation::create(); // default rot
+    if (parser.isSet(oStart) && !std::ifstream(buildName.toStdString()).good())
+    {
+        buildName = parser.value(oStart);
+        buildIsFile = true;
+        std::cout << "Using start build " << buildName.toStdString() << std::endl;
+    }
     // .. .. from weapon+weapon
     if (buildName.contains('+') && !buildName.endsWith(".json"))
     {
@@ -626,6 +637,30 @@ int main(int argc, char *argv[])
         s.buffAt = INF_TIME;
         s.enemyInfo.dummySetting();
         s.lowVarianceMode = true;
+    }
+    else if (scen.toLower() == "raid-melee")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.enemyInfo.allVulnerabilities = true;
+        s.lowVarianceMode = true;
+        o.forceVulnerability = DmgType::Melee;
+    }
+    else if (scen.toLower() == "raid-ranged")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.enemyInfo.allVulnerabilities = true;
+        s.lowVarianceMode = true;
+        o.forceVulnerability = DmgType::Ranged;
+    }
+    else if (scen.toLower() == "raid-magic")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.enemyInfo.allVulnerabilities = true;
+        s.lowVarianceMode = true;
+        o.forceVulnerability = DmgType::Magic;
     }
     else if (std::ifstream(scen.toStdString()).good())
     {
@@ -801,9 +836,9 @@ int main(int argc, char *argv[])
         if (buildIsFile)
         {
             auto json = b.toJson(); // potentially from optimizer
-            std::ofstream file(buildName.toStdString());
+            std::ofstream file(buildFile.toStdString());
             file << json.json();
-            std::cout << "Wrote build to '" << buildName.toStdString() << "'" << std::endl;
+            std::cout << "Wrote build to '" << buildFile.toStdString() << "'" << std::endl;
         }
         else
         {
