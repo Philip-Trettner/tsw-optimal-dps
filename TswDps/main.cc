@@ -40,14 +40,14 @@ void debugRun()
     /**
      * TODO:
      *
-     * * Mercurials
-     * * support augs
+     * * Team Mercurials
      * * better gear optimization (total reglyph mutation)
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * fire in the hole
      * * .5 glyphs
      * * test if powerline dmg is base, additive, or multiplicative
      * * BBCode
+     * * "Budget" raid scenario
      *
      * later: afflictions + signet of corruption
      *

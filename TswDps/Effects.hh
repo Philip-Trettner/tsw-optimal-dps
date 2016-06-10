@@ -617,6 +617,20 @@ public:
 
             return e;
         }
+
+        static Effect FireInTheHole()
+        {
+            auto e = effect("Fire in the Hole", EffectSlot::FireInTheHole);
+
+            e.timeIn60th = 2 * 60;
+            e.dmgtype = DmgType::Ranged;
+            e.procDmgPercentage = 1;
+            e.procOn = ProcOn::Loss;
+            e.affectedByAdditiveDmg = true;
+            e.isFullHit = false; // TEST ME
+
+            return e;
+        }
     };
 
     struct Passive : private Base

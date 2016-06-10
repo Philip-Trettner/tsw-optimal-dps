@@ -28,12 +28,10 @@ struct Builds
         b.skills = {{
                         // skills
                         Skills::Chaos::RunRampant(), //
-                        Skills::Elemental::FireManifestation(),   //
+                        Skills::Rifle::FireInTheHole(), //
                     },
                     {
                         // augs
-                        Augments::empty(), //
-                        Augments::Quickening(), //
                     },
                     {
                         // passives
@@ -47,7 +45,7 @@ struct Builds
         b.gear.pieces[Gear::MinorLeft].signet = Signets::Minor::Equilibrium();
 
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Elemental;
+        b.gear.leftWeapon = Weapon::Rifle;
         b.gear.rightWeapon = Weapon::Chaos;
         return b;
     }

@@ -414,6 +414,7 @@ void Simulation::simulate(int totalTimeIn60th)
             else if (dice(random) < skill.chanceForScaleInc)
                 scaling *= 1 + skill.scaleIncPerc;
         }
+        skillLastScaling[idx] = scaling;
 
         // hits
         auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
@@ -449,6 +450,7 @@ void Simulation::simulate(int totalTimeIn60th)
             else if (hitIdx < skill.specialHitsA + skill.specialHitsB + skill.specialHitsC)
                 actualScaling = skill.dmgScalingC;
             actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
+            skillLastScaling[idx] = actualScaling;
 
             // actual full hit
             fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr, currentSkill);
@@ -1016,9 +1018,23 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
     // reduced cooldowns
     if (effect.reducesCooldown > 0)
     {
-        // TODO!
-        // for (auto i = 0; i < SKILL_CNT; ++i)
-        //    if (skillCDs)
+        auto cdMult = 1.0 - effect.reducesCooldown;
+
+        // for skills
+        for (auto& s : skillCDs)
+            s *= cdMult;
+
+        // for effects
+        for (auto i = 0; i < (int)EffectSlot::Count; ++i)
+        {
+            auto cd = effects[i].cooldownIn60th - (currentTime - effectLastTick[i]);
+            cd *= cdMult;
+            effectLastTick[i] = currentTime - effects[i].cooldownIn60th + cd;
+        }
+
+        // for dabs
+        if (dabsTime != INF_TIME)
+            dabsTime *= cdMult;
     }
 
     // actually procced
@@ -1327,14 +1343,6 @@ void Simulation::advanceTime(int timeIn60th)
     EffectSlot dmgProcs[maxNewProcs];
     EffectSlot healProcs[maxNewProcs];
 
-    // reduce skill CDs
-    for (auto& cd : skillCDs)
-    {
-        cd -= timeIn60th;
-        if (cd < 0)
-            cd = 0;
-    }
-
     // process passives
     while (timeIn60th > 0)
     {
@@ -1360,8 +1368,17 @@ void Simulation::advanceTime(int timeIn60th)
         currentTime += delta;
         totalTimeAccum += delta;
         timeIn60th -= delta;
-        dabsTime -= delta;
         kickbackTime -= delta;
+        if (dabsTime != INF_TIME)
+            dabsTime -= delta;
+
+        // reduce skill CDs
+        for (auto& cd : skillCDs)
+        {
+            cd -= delta;
+            if (cd < 0)
+                cd = 0;
+        }
 
         // reduce vulnerabilities
         for (auto& t : vulnTime)
@@ -1432,7 +1449,9 @@ void Simulation::advanceTime(int timeIn60th)
 
             // dmg proc on stack lost
             for (auto i = 0; i < dmgProcCnt; ++i)
-                procEffectDmg(procStats[currentSkill], effects[(int)dmgProcs[i]], -1);
+                procEffectDmg(
+                    procStats[currentSkill], effects[(int)dmgProcs[i]],
+                    effectSkillIndex[(int)dmgProcs[i]] == -1 ? -1 : skillLastScaling[effectSkillIndex[(int)dmgProcs[i]]]);
             // proc on stack lost
             for (auto i = 0; i < newProcCnt; ++i)
                 procEffect(procStats[currentSkill], newProcs[i], -1);
@@ -1614,6 +1633,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::Proc::Tenderising());
     registerEffect(Effects::Proc::GrandSlam());
 
+    registerEffect(Effects::Dots::FireInTheHole());
     registerEffect(Effects::Dots::Bombardment());
     registerEffect(Effects::Dots::Whiteout());
     registerEffect(Effects::Dots::GoForTheThroat());

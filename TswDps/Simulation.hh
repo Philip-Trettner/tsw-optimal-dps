@@ -130,6 +130,8 @@ private: // run-time TRANSIENT data
     int dabsCnt;
     // skill cooldowns
     int skillCDs[SKILL_CNT];
+    // scaling of last used skill
+    float skillLastScaling[SKILL_CNT];
     // effect time, CD, stacks
     int effectTime[(int)EffectSlot::Count];
     int effectLastTick[(int)EffectSlot::Count]; // tick when this effect was last applied

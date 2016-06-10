@@ -40,6 +40,7 @@ std::vector<Skill> Skills::all()
         Rifle::ThreeRoundBurst(), //
         Rifle::RedMist(),         //
         Rifle::LockAndLoad(),     //
+        Rifle::FireInTheHole(),   //
 
         Chaos::RunRampant(),         //
         Chaos::FourHorsemen(),       //

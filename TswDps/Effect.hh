@@ -91,6 +91,7 @@ MAKE_EFFECT_ENUM(
     SteelEcho,
     Cannibalize,
     AnimaCharge,
+    FireInTheHole,
 
     // procs
     SuddenReturn,

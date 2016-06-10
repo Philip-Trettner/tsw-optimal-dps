@@ -403,6 +403,19 @@ public:
             s.dmgScaling5 = scaling(s.name + " @5");
             return s;
         }
+
+        static Skill FireInTheHole()
+        {
+            auto s = skill("Fire in the Hole", SkillType::Consumer);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.cooldownIn60th = 4 * 60;
+            s.dmgScaling = scaling(s.name + " @1");
+            s.dmgScaling5 = scaling(s.name + " @5");
+            s.passive.trigger = Trigger::Hit;
+            s.passive.effect = EffectSlot::FireInTheHole;
+            return s;
+        }
     };
 
     struct Chaos : private Base<Weapon::Chaos, DmgType::Magic>
