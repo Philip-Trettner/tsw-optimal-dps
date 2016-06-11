@@ -782,7 +782,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     for (auto r : {Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit})
     {
         std::cout << "  ";
-        std::cout.width(4);
+        std::cout.width(9);
         std::cout << std::right << to_string(r) << ": {";
         bool first = true;
         for (auto o : {-200, -100, -50, 50, 100, 200})
@@ -806,7 +806,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
             std::cout << (startDPS < dps ? "+" : "-") << std::fixed << std::setprecision(2)
                       << (startDPS > dps ? startDPS * 100. / dps - 100. : dps * 100. / startDPS - 100.) << "%";
 
-            relDmg["Stat " + to_string(r) + " " + to_string(o)] = startDPS / dps;
+            relDmg["Stat " + to_string(r) + " " + to_string(o)] = dps / startDPS;
         }
         std::cout << "} for {-200, -100, -50, +50, +100, +200}" << std::endl;
     }

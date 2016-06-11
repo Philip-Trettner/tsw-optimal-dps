@@ -29,7 +29,7 @@ inline string to_string(Rating r)
     case Rating::Crit:
         return "Crit";
     case Rating::CritPower:
-        return "CP";
+        return "CritPower";
     case Rating::Pen:
         return "Pen";
     default:
@@ -333,7 +333,7 @@ inline string shortStatDump(Stats const& s, bool withBase = true, bool withBB = 
 
     string ss;
     if (s.attackRating > 0 && withBase)
-        ss += (ss.empty() ? "" : ", ") + std::to_string(s.attackRating) + prefix + " AR" + suffix;
+        ss += (ss.empty() ? "" : ", ") + std::to_string(s.attackRating) + (withBB ? "[color=#D32F2F][b]" : "") + " AR" + suffix;
     if (s.hitRating > 0)
         ss += (ss.empty() ? "" : ", ") + std::to_string(s.hitRating) + prefix + " Hit" + suffix;
     if (s.penRating > 0)

@@ -527,8 +527,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                         r2 = randomElement(freeRatings);
                     } while (r1 == r2);
 
-                    b.gear.pieces[idx].free(r1);
-                    b.gear.pieces[idx].free(r2);
+                    b.gear.pieces[idx].free(r1, r2);
                     changed = true;
                 }
             }

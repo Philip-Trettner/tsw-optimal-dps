@@ -851,6 +851,8 @@ int main(int argc, char *argv[])
         if (poss)
         {
             auto& oss = *poss;
+
+            // 40000 limit!
             
             StatLog slog;
             auto savlog = s.log;
@@ -861,23 +863,31 @@ int main(int argc, char *argv[])
                 s.simulate(fightTime);
             s.log = savlog;
 
-            auto incStr = [&](std::string const& name) -> std::string
+            auto const eps = .001;
+            auto incBaseStr = [&](std::string const& name) -> std::string
             {
                 if (!dmg.count(name))
                     return "";
-                
-                std::ostringstream out;
-                out << "[color=#B6B6B6][i](";
 
+                std::ostringstream out;
                 auto reldmg = dmg.at(name);
-                auto const eps = .001;
                 if (reldmg > 1 + eps)
                     out << "+" << std::fixed << std::setprecision(2) << (reldmg - 1) * 100.;
                 else if (reldmg < 1 - eps)
                     out << "-" << std::fixed << std::setprecision(2) << (1 - reldmg) * 100.;
                 else
                     out << "~ 0"; // below eps
-                out << "% dps)[/i][/color]";
+                out << "% dps";
+
+                return out.str();
+            };
+            auto incStr = [&](std::string const& name) -> std::string
+            {
+                if (!dmg.count(name))
+                    return "";
+                
+                std::ostringstream out;
+                out << "[color=#B6B6B6][i](" << incBaseStr(name) << ")[/i][/color]";
 
                 return out.str();
             };
@@ -924,6 +934,7 @@ int main(int argc, char *argv[])
                 if (!augName.empty())
                     oss << "with [color=" << augColor(b.skills.augments[i]) << "][b]" << augName << "[/b][/color] " << incStr(augName);
                 oss << "[/td][td]"; // passive
+                oss << "    ";
                 if (!skillName.empty())
                     oss << "[color=#03A9F4][b]" << passiveName << "[/b][/color] " << incStr(passiveName);
                 oss << "[/td][/tr]" << std::endl;
@@ -932,7 +943,7 @@ int main(int argc, char *argv[])
 
             oss << std::endl;
             oss << "[size=+1][color=#B2EBF2]Gear[/color][/size]" << std::endl;
-            oss << "[table][tr][th]Slot[/th][th]Glyphs[/th][th]Signet[/th][th]Notes[/th][/tr]" << std::endl;
+            oss << "[table][tr][th]Slot[/th][th]Glyphs[/th][th]Signet[/th][th]Notes/Alternatives[/th][/tr]" << std::endl;
             for (auto slot = Gear::Head; slot <= Gear::WeaponRight; ++slot)
             {
                 auto const& piece = b.gear.pieces[slot];
@@ -950,7 +961,8 @@ int main(int argc, char *argv[])
                 oss << "[/td][td]"; // notes
                 if (slot == Gear::MajorMid)
                 {
-                    oss << "[color=#B6B6B6]other:[/color] ";
+                    oss << " ";
+                    //oss << "[color=#B6B6B6]other:[/color] ";
                     bool first = true;
                     if (seff != EffectSlot::MothersWrathStacks) // WC
                     {
@@ -989,9 +1001,9 @@ int main(int argc, char *argv[])
             if (b.potionStats != Stats())
                 oss << "[tr][td][color=#03A9F4][b]Potion:[/b][/color][/td][td]" << shortStatDump(b.potionStats, true, true) << " " << incStr("Potion") << "[/td][/tr]" << std::endl;
             if (b.gear.stimulant != EffectSlot::Count)
-                oss << "[tr][td][color=#03A9F4][b]Stimulant:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.stimulant).bonusStats, true, true) << " " << incStr("Stimulant") << "[/td][/tr]" << std::endl;
+                oss << "[tr][td][color=#03A9F4][b]Stimulant:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.stimulant).bonusStats, true, true) << " over 20s " << incStr("Stimulant") << "[/td][/tr]" << std::endl;
             if (!b.gear.kickback.name.empty())
-                oss << "[tr][td][color=#03A9F4][b]Kickback:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.kickback.effect).bonusStats, true, true) << " on [color=#FFEB3B][b]Crit/Pen[/b][/color] " << incStr("Kickback") << "[/td][/tr]" << std::endl;
+                oss << "[tr][td][color=#03A9F4][b]Kickback:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.kickback.effect).bonusStats, true, true) << " on [color=#FFEB3B][b]Crit/Pen[/b][/color] over 20s " << incStr("Kickback") << "[/td][/tr]" << std::endl;
             oss << "[/table]" << std::endl;
 
             auto rot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
@@ -1070,6 +1082,34 @@ int main(int argc, char *argv[])
                 oss << "[/td][td]"; // type
                 oss << "[color=#03A9F4][b]" << kvp.second << "[/b][/color]";
                 oss << "[/td][/tr]" << std::endl;
+            }
+            oss << "[/table]" << std::endl;
+
+            oss << std::endl;
+            oss << "[size=+1][color=#B2EBF2]Glyph Stat Impact[/color][/size]" << std::endl;
+            oss << "[table][tr][td]Stat[/td]";
+            std::vector<int> offsets = { -200,-100,-50,50,100,200 };
+            std::vector<Rating> ratings = { Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit };
+            for (auto o : offsets)
+                oss << "[th]" << (o >= 0 ? "+" : "") << o << "[/th]";
+            oss << "[/tr]";
+            for(auto r : ratings)
+            {
+                oss << "[tr][td]"; // rating
+                oss << "[color=#FFEB3B][b]" << to_string(r) << "[/b][/color]";
+                oss << "[/td]"; // offsets
+                for (auto o : offsets)
+                {
+                    auto n = "Stat " + to_string(r) + " " + to_string(o);
+                    auto d = dmg[n];
+                    oss << "[td]";
+                    if (d > 1 - eps)
+                        oss << "[color=#8BC34A]" << incBaseStr(n) << "[/color]";
+                    else
+                        oss << "[color=#D32F2F]" << incBaseStr(n) << "[/color]";
+                    oss << "[/td]";
+                }
+                oss << "[/tr]" << std::endl;
             }
             oss << "[/table]" << std::endl;
         }
