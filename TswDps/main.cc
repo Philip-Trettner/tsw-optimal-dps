@@ -992,7 +992,12 @@ int main(int argc, char *argv[])
                 oss << "[/td][/tr]" << std::endl;
             }
             oss << "[/table]" << std::endl;
-            oss << "[color=#03A9F4][b]Non-Weapon Base Stats:[/b][/color] " << shortStatDump(b.gear.gearStats(), false, true) << std::endl;
+            oss << "[table][tr][th]Stats[/th][th][color=#FFEB3B][b]Hit[/b][/color][/th][th][color=#FFEB3B][b]Pen[/b][/color][/th][th][color=#FFEB3B][b]Crit[/b][/color][/th][th][color=#FFEB3B][b]Crit Power[/b][/color][/th][/tr]" << std::endl;
+            auto sLeft = b.gear.gearStats() + b.gear.pieces[Gear::WeaponLeft].stats;
+            auto sRight = b.gear.gearStats() + b.gear.pieces[Gear::WeaponRight].stats;
+            oss << "[tr][td][color=#03A9F4][b]" << to_string(b.gear.leftWeapon) << "[/b][/color][/td][td]" << sLeft.hitRating << "[/td][td]" << sLeft.penRating << "[/td][td]" << sLeft.critRating << "[/td][td]" << sLeft.critPowerRating << "[/td][/tr]" << std::endl;
+            oss << "[tr][td][color=#03A9F4][b]" << to_string(b.gear.rightWeapon) << "[/b][/color][/td][td]" << sRight.hitRating << "[/td][td]" << sRight.penRating << "[/td][td]" << sRight.critRating << "[/td][td]" << sRight.critPowerRating << "[/td][/tr]" << std::endl;
+            oss << "[/table]" << std::endl;
 
             oss << std::endl;
             oss << std::endl;
