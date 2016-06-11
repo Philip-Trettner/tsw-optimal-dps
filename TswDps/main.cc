@@ -44,8 +44,6 @@ void debugRun()
      * * better gear optimization (total reglyph mutation)
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * .5 glyphs
-     * * test if powerline dmg is base, additive, or multiplicative
-     * * BBCode
      * * "Budget" raid scenario
      *
      * later: afflictions + signet of corruption
@@ -500,7 +498,9 @@ int main(int argc, char *argv[])
     parser.addOption(oStart);
 
     // .. starting build
-    QCommandLineOption oBBCode("bb", "Writes BBCode for the current (analyzed) build into a given file (or '.' for console). Affected by analysis time, implies -a.", "file");
+    QCommandLineOption oBBCode("bb", "Writes BBCode for the current (analyzed) build into a given file (or '.' for "
+                                     "console). Affected by analysis time, implies -a.",
+                               "file");
     parser.addOption(oBBCode);
 
     // .. test
@@ -631,13 +631,21 @@ int main(int argc, char *argv[])
         totalTime = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
-        settingName = "Raid Setting";
+        settingName = "Raid/Dungeon Setting";
     }
     else if (scen.toLower() == "burst")
     {
         fightTime = totalTime = ticksFromTimeStr("20s");
         s.enemyInfo.allVulnerabilities = true;
         settingName = "Burst Fight";
+    }
+    else if (scen.toLower() == "budget")
+    {
+        fightTime = ticksFromTimeStr("2.5m");
+        totalTime = ticksFromTimeStr("48h");
+        s.enemyInfo.allVulnerabilities = true;
+        s.lowVarianceMode = true;
+        settingName = "Raid/Dungeon Setting, .9.5 only, no Woodcutters, no NM Raid Drops";
     }
     else if (scen.toLower() == "dummy")
     {
@@ -655,7 +663,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Melee;
-        settingName = "Raid Setting with Melee Vulnerability";
+        settingName = "Raid/Dungeon Setting with Melee Vulnerability";
     }
     else if (scen.toLower() == "raid-ranged")
     {
@@ -664,7 +672,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Ranged;
-        settingName = "Raid Setting with Ranged Vulnerability";
+        settingName = "Raid/Dungeon Setting with Ranged Vulnerability";
     }
     else if (scen.toLower() == "raid-magic")
     {
@@ -673,7 +681,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Magic;
-        settingName = "Raid Setting with Magic Vulnerability";
+        settingName = "Raid/Dungeon Setting with Magic Vulnerability";
     }
     else if (std::ifstream(scen.toStdString()).good())
     {
@@ -827,8 +835,8 @@ int main(int argc, char *argv[])
     if (analyze)
     {
         // bb code
-        std::ostream* poss = nullptr;
-        std::ofstream* bbs = nullptr;
+        std::ostream *poss = nullptr;
+        std::ofstream *bbs = nullptr;
         if (parser.isSet(oBBCode))
         {
             auto bbfile = parser.value(oBBCode);
@@ -850,10 +858,10 @@ int main(int argc, char *argv[])
         // BB CODE GEN
         if (poss)
         {
-            auto& oss = *poss;
+            auto &oss = *poss;
 
             // 40000 limit!
-            
+
             StatLog slog;
             auto savlog = s.log;
             s.log = &slog;
@@ -864,8 +872,7 @@ int main(int argc, char *argv[])
             s.log = savlog;
 
             auto const eps = .001;
-            auto incBaseStr = [&](std::string const& name) -> std::string
-            {
+            auto incBaseStr = [&](std::string const &name) -> std::string {
                 if (!dmg.count(name))
                     return "";
 
@@ -881,26 +888,23 @@ int main(int argc, char *argv[])
 
                 return out.str();
             };
-            auto incStr = [&](std::string const& name) -> std::string
-            {
+            auto incStr = [&](std::string const &name) -> std::string {
                 if (!dmg.count(name))
                     return "";
-                
+
                 std::ostringstream out;
-                out << "[color=#B6B6B6][i](" << incBaseStr(name) << ")[/i][/color]";
+                out << "[i](" << incBaseStr(name) << ")[/i]";
 
                 return out.str();
             };
             auto dpsAugs = Augments::allDpsAugs();
-            auto augColor = [&](Augment const& a)
-            {
-                for (auto const& da : dpsAugs)
+            auto augColor = [&](Augment const &a) {
+                for (auto const &da : dpsAugs)
                     if (da.name == a.name)
                         return "#D32F2F";
                 return "#FFEB3B";
             };
-            auto signetColor = [&](Signet const& s)
-            {
+            auto signetColor = [&](Signet const &s) {
                 if (s.passive.effect == EffectSlot::MothersWrathStacks)
                     return "#FFEB3B";
                 return "#b82ed0";
@@ -908,16 +912,19 @@ int main(int argc, char *argv[])
 
             auto builderWeapon = b.skills.skills[0].weapon;
             auto secondWeapon = b.gear.leftWeapon == builderWeapon ? b.gear.rightWeapon : b.gear.leftWeapon;
-            oss << "[size=+2][color=#03A9F4]" << to_string(builderWeapon) << "[/color]/[color=#03A9F4]" << to_string(secondWeapon)
-                << "[/color] (" << settingName << ", [color=#D32F2F]" << s.totalDPS() << " DPS[/color])[/size]" << std::endl;
+            oss << "[size=+2][color=#03A9F4]" << to_string(builderWeapon) << "[/color]/[color=#03A9F4]"
+                << to_string(secondWeapon) << "[/color] (" << settingName << ", [color=#D32F2F]" << s.totalDPS()
+                << " DPS[/color])[/size]" << std::endl;
 
             oss << std::endl;
             oss << "[size=+1][color=#B2EBF2]Build[/color][/size]" << std::endl;
+            oss << "[color=#B6B6B6]" << std::endl; // grey start
             oss << "[table][tr][th]Skill[/th][th]Augment[/th][th]Passive[/th][/tr]" << std::endl;
             auto passives = b.skills.passives;
             while (passives.size() < SKILL_CNT)
                 passives.push_back({});
-            sort(begin(passives), end(passives), [&](Passive const& l, Passive const& r) { return dmg[l.name] > dmg[r.name]; });
+            sort(begin(passives), end(passives),
+                 [&](Passive const &l, Passive const &r) { return dmg[l.name] > dmg[r.name]; });
 
             for (auto i = 0; i < SKILL_CNT; ++i)
             {
@@ -932,7 +939,8 @@ int main(int argc, char *argv[])
                     oss << "[color=#03A9F4][b]" << skillName << "[/b][/color] " << incStr(skillName);
                 oss << "[/td][td]"; // augment
                 if (!augName.empty())
-                    oss << "with [color=" << augColor(b.skills.augments[i]) << "][b]" << augName << "[/b][/color] " << incStr(augName);
+                    oss << "with [color=" << augColor(b.skills.augments[i]) << "][b]" << augName << "[/b][/color] "
+                        << incStr(augName);
                 oss << "[/td][td]"; // passive
                 oss << "    ";
                 if (!skillName.empty())
@@ -943,60 +951,76 @@ int main(int argc, char *argv[])
 
             oss << std::endl;
             oss << "[size=+1][color=#B2EBF2]Gear[/color][/size]" << std::endl;
-            oss << "[table][tr][th]Slot[/th][th]Glyphs[/th][th]Signet[/th][th]Notes/Alternatives[/th][/tr]" << std::endl;
+            oss << "[table][tr][th]Slot[/th][th]Signet[/th][th]Notes/Alternatives[/th][/tr]" << std::endl;
             for (auto slot = Gear::Head; slot <= Gear::WeaponRight; ++slot)
             {
-                auto const& piece = b.gear.pieces[slot];
+                auto const &piece = b.gear.pieces[slot];
                 auto slotName = b.gear.pieceName(slot);
                 auto signetName = piece.signet.name();
                 auto seff = piece.signet.passive.effect;
 
                 oss << "[tr][td]"; // slot
                 oss << "[color=#03A9F4][b]" << slotName << "[/b][/color]";
-                oss << "[/td][td]"; // glyphs
-                oss << shortStatDump(piece.stats, false, true);
+                // oss << "[/td][td]"; // glyphs
+                // oss << shortStatDump(piece.stats, false, true);
                 oss << "[/td][td]"; // signet
                 if (!signetName.empty())
-                    oss << "with [color=" << signetColor(piece.signet) << "][b]" << signetName << "[/b][/color] " << incStr(signetName);
+                    oss << "with [color=" << signetColor(piece.signet) << "][b]" << signetName << "[/b][/color] "
+                        << incStr(signetName);
                 oss << "[/td][td]"; // notes
                 if (slot == Gear::MajorMid)
                 {
                     oss << " ";
-                    //oss << "[color=#B6B6B6]other:[/color] ";
+                    // oss << "[color=#B6B6B6]other:[/color] ";
                     bool first = true;
                     if (seff != EffectSlot::MothersWrathStacks) // WC
                     {
                         if (first)
                             first = false;
-                        else oss << ", ";
+                        else
+                            oss << ", ";
 
-                        oss << "Woodcutters " << incStr("Neck WC");
+                        oss << "[color=#03A9F4][b]Woodcutters[/b][/color] " << incStr("Neck WC");
                     }
                     if (seff != EffectSlot::EgonPendant) // Egon
                     {
                         if (first)
                             first = false;
-                        else oss << ", ";
+                        else
+                            oss << ", ";
 
-                        oss << ".9 Egon Pendant " << incStr("Neck Egon");
+                        oss << "[color=#03A9F4][b].9 Egon Pendant[/b][/color] " << incStr("Neck Egon");
                     }
                     if (signetName != "Violence")
                     {
                         if (first)
                             first = false;
-                        else oss << ", ";
+                        else
+                            oss << ", ";
 
-                        oss << "QL11 + Violence " << incStr("Neck QL11");
+                        oss << "[color=#03A9F4][b]QL11 + Violence[/b][/color] " << incStr("Neck QL11");
                     }
+                }
+                else if (slot == Gear::MajorLeft && piece.signet.passive.effect == EffectSlot::ConeyIslandBand)
+                {
+                    oss << " [color=#03A9F4][b]QL11 + Violence[/b][/color] " << incStr("Finger QL11");
                 }
                 oss << "[/td][/tr]" << std::endl;
             }
             oss << "[/table]" << std::endl;
-            oss << "[table][tr][th]Stats[/th][th][color=#FFEB3B][b]Hit[/b][/color][/th][th][color=#FFEB3B][b]Pen[/b][/color][/th][th][color=#FFEB3B][b]Crit[/b][/color][/th][th][color=#FFEB3B][b]Crit Power[/b][/color][/th][/tr]" << std::endl;
+            oss << "[table][tr][th]Stats[/th][th][color=#FFEB3B][b]Hit[/b][/color][/th][th][color=#FFEB3B][b]Pen[/b][/"
+                   "color][/th][th][color=#FFEB3B][b]Crit[/b][/color][/th][th][color=#FFEB3B][b]Crit "
+                   "Power[/b][/color][/th][/tr]"
+                << std::endl;
             auto sLeft = b.gear.gearStats() + b.gear.pieces[Gear::WeaponLeft].stats;
             auto sRight = b.gear.gearStats() + b.gear.pieces[Gear::WeaponRight].stats;
-            oss << "[tr][td][color=#03A9F4][b]" << to_string(b.gear.leftWeapon) << "[/b][/color][/td][td]" << sLeft.hitRating << "[/td][td]" << sLeft.penRating << "[/td][td]" << sLeft.critRating << "[/td][td]" << sLeft.critPowerRating << "[/td][/tr]" << std::endl;
-            oss << "[tr][td][color=#03A9F4][b]" << to_string(b.gear.rightWeapon) << "[/b][/color][/td][td]" << sRight.hitRating << "[/td][td]" << sRight.penRating << "[/td][td]" << sRight.critRating << "[/td][td]" << sRight.critPowerRating << "[/td][/tr]" << std::endl;
+            oss << "[tr][td][color=#03A9F4][b]" << (sLeft == sRight ? "Each Weapon" : to_string(b.gear.leftWeapon))
+                << "[/b][/color][/td][td]" << sLeft.hitRating << "[/td][td]" << sLeft.penRating << "[/td][td]"
+                << sLeft.critRating << "[/td][td]" << sLeft.critPowerRating << "[/td][/tr]" << std::endl;
+            if (sLeft != sRight)
+                oss << "[tr][td][color=#03A9F4][b]" << to_string(b.gear.rightWeapon) << "[/b][/color][/td][td]"
+                    << sRight.hitRating << "[/td][td]" << sRight.penRating << "[/td][td]" << sRight.critRating
+                    << "[/td][td]" << sRight.critPowerRating << "[/td][/tr]" << std::endl;
             oss << "[/table]" << std::endl;
 
             oss << std::endl;
@@ -1004,19 +1028,29 @@ int main(int argc, char *argv[])
             oss << "[size=+1][color=#B2EBF2]Extras[/color][/size]" << std::endl;
             oss << "[table]" << std::endl;
             if (b.potionStats != Stats())
-                oss << "[tr][td][color=#03A9F4][b]Potion:[/b][/color][/td][td]" << shortStatDump(b.potionStats, true, true) << " " << incStr("Potion") << "[/td][/tr]" << std::endl;
+                oss << "[tr][td][color=#03A9F4][b]Potion:[/b][/color][/td][td]"
+                    << shortStatDump(b.potionStats, true, true) << " " << incStr("Potion") << "[/td][/tr]" << std::endl;
             if (b.gear.stimulant != EffectSlot::Count)
-                oss << "[tr][td][color=#03A9F4][b]Stimulant:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.stimulant).bonusStats, true, true) << " over 20s " << incStr("Stimulant") << "[/td][/tr]" << std::endl;
+                oss << "[tr][td][color=#03A9F4][b]Stimulant:[/b][/color][/td][td]"
+                    << shortStatDump(s.effectFor(b.gear.stimulant).bonusStats, true, true) << " over 20s "
+                    << incStr("Stimulant") << "[/td][/tr]" << std::endl;
             if (!b.gear.kickback.name.empty())
-                oss << "[tr][td][color=#03A9F4][b]Kickback:[/b][/color][/td][td]" << shortStatDump(s.effectFor(b.gear.kickback.effect).bonusStats, true, true) << " on [color=#FFEB3B][b]Crit/Pen[/b][/color] over 20s " << incStr("Kickback") << "[/td][/tr]" << std::endl;
+                oss << "[tr][td][color=#03A9F4][b]Kickback:[/b][/color][/td][td]"
+                    << shortStatDump(s.effectFor(b.gear.kickback.effect).bonusStats, true, true)
+                    << " on [color=#FFEB3B][b]Crit/Pen[/b][/color] over 20s " << incStr("Kickback") << "[/td][/tr]"
+                    << std::endl;
             oss << "[/table]" << std::endl;
+
+            oss << "[/color]" << std::endl; // grey end
 
             auto rot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
             oss << std::endl;
-            oss << "[size=+1][color=#B2EBF2]Rotation/Usage[/color][/size]" << std::endl;
+            oss << "[size=+1][color=#B2EBF2]Usage[/color][/size]" << std::endl;
             oss << "[list]" << std::endl;
-            oss << "[*] Use resources on [color=#03A9F4][b]" << rot->minResourcesForLeftConsumer << "[/b][/color] for [color=#03A9F4][b]" << to_string(b.gear.leftWeapon) << "[/b][/color]" << std::endl;
-            oss << "[*] Use resources on [color=#03A9F4][b]" << rot->minResourcesForRightConsumer << "[/b][/color] for [color=#03A9F4][b]" << to_string(b.gear.rightWeapon) << "[/b][/color]" << std::endl;
+            oss << "[*] Use resources on [color=#03A9F4][b]" << rot->minResourcesForLeftConsumer
+                << "[/b][/color] for [color=#03A9F4][b]" << to_string(b.gear.leftWeapon) << "[/b][/color]" << std::endl;
+            oss << "[*] Use resources on [color=#03A9F4][b]" << rot->minResourcesForRightConsumer
+                << "[/b][/color] for [color=#03A9F4][b]" << to_string(b.gear.rightWeapon) << "[/b][/color]" << std::endl;
             if (rot->tryToConsumeOnBuffed)
             {
                 oss << "[*] Always consume when buffed ([color=#03A9F4][b]DABS[/b][/color]";
@@ -1034,89 +1068,96 @@ int main(int argc, char *argv[])
                 oss << "[*] Force blood offering uptime" << std::endl;
             oss << "[/list]" << std::endl;
 
-            oss << std::endl;
-            oss << "[size=+1][color=#B2EBF2]Damage by Source[/color][/size]" << std::endl;
-            oss << "[table][tr][th]Damage[/th][th]Source[/th][th]Crit[/th][th]Pen[/th][/tr]" << std::endl;
-            std::vector<std::pair<string, StatLog::DmgStat>> stats;
-            for (auto const &kvp : slog.dmgStats)
-                stats.push_back(kvp);
-            sort(begin(stats), end(stats), [](std::pair<string, StatLog::DmgStat> const &s1, std::pair<string, StatLog::DmgStat> const &s2) -> bool
+            if (false) // too much for now
             {
-                return s1.second.totalDmg > s2.second.totalDmg;
-            });
-            auto totalDmg = s.totalDmg;
-            for (auto const &kvp : stats)
-            {
-                auto const &s = kvp.second;
-                oss << "[tr][td]"; // damage
-                oss << "[color=#D32F2F][b][right]" << std::fixed << std::setprecision(2) << s.totalDmg * 100. / totalDmg << "%[/right][/b][/color]";
-                oss << "[/td][td]"; // source
-                oss << "[color=#03A9F4][b]" << kvp.first << "[/b][/color]";
-                oss << "[/td][td]"; // crits
-                oss << std::fixed << std::setprecision(2) << s.crits * 100. / s.hits << "% [color=#B6B6B6]crits[/color]";
-                oss << "[/td][td]"; // pens
-                oss << std::fixed << std::setprecision(2) << s.pens * 100. / s.hits << "% [color=#B6B6B6]pens[/color]";
-                oss << "[/td][/tr]" << std::endl;
-            }
-            oss << "[/table]" << std::endl;
-
-
-            oss << std::endl;
-            oss << "[size=+1][color=#B2EBF2]Damage by Type[/color][/size]" << std::endl;
-            oss << "[table][tr][th]Damage[/th][th]Type[/th][/tr]" << std::endl;
-            std::vector<std::pair<double, std::string>> typeDmg = {
-                {-slog.dmgOfType[DmgType::Melee], "Melee"},                             //
-                {-slog.dmgOfType[DmgType::Magic], "Magic"},                             //
-                {-slog.dmgOfType[DmgType::Ranged], "Ranged"},                           //
-                {-slog.dmgOfSkill[SkillType::Builder], "Builder"},                      //
-                {-slog.dmgOfSkill[SkillType::Consumer], "Consumer"},                    //
-                {-slog.dmgOfSub[SubType::Burst], "Burst"},                              //
-                {-slog.dmgOfSub[SubType::Focus], "Focus"},                              //
-                {-slog.dmgOfSub[SubType::Strike], "Strike"},                            //
-                {-slog.dmgOfWeapon[b.gear.leftWeapon], to_string(b.gear.leftWeapon)},   //
-                {-slog.dmgOfWeapon[b.gear.rightWeapon], to_string(b.gear.rightWeapon)}, //
-            };
-            sort(begin(typeDmg), end(typeDmg));
-            for (auto const &kvp : typeDmg)
-            {
-                if (kvp.first == 0)
-                    continue;
-
-                oss << "[tr][td]"; // damage
-                oss << "[color=#D32F2F][b][right]" << std::fixed << std::setprecision(2) << -kvp.first * 100. / totalDmg << "%[/right][/b][/color]";
-                oss << "[/td][td]"; // type
-                oss << "[color=#03A9F4][b]" << kvp.second << "[/b][/color]";
-                oss << "[/td][/tr]" << std::endl;
-            }
-            oss << "[/table]" << std::endl;
-
-            oss << std::endl;
-            oss << "[size=+1][color=#B2EBF2]Glyph Stat Impact[/color][/size]" << std::endl;
-            oss << "[table][tr][td]Stat[/td]";
-            std::vector<int> offsets = { -200,-100,-50,50,100,200 };
-            std::vector<Rating> ratings = { Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit };
-            for (auto o : offsets)
-                oss << "[th]" << (o >= 0 ? "+" : "") << o << "[/th]";
-            oss << "[/tr]";
-            for(auto r : ratings)
-            {
-                oss << "[tr][td]"; // rating
-                oss << "[color=#FFEB3B][b]" << to_string(r) << "[/b][/color]";
-                oss << "[/td]"; // offsets
-                for (auto o : offsets)
+                oss << std::endl;
+                oss << "[size=+1][color=#B2EBF2]Damage by Source[/color][/size]" << std::endl;
+                oss << "[table][tr][th]Damage[/th][th]Source[/th][th]Crit[/th][th]Pen[/th][/tr]" << std::endl;
+                std::vector<std::pair<string, StatLog::DmgStat>> stats;
+                for (auto const &kvp : slog.dmgStats)
+                    stats.push_back(kvp);
+                sort(begin(stats), end(stats),
+                     [](std::pair<string, StatLog::DmgStat> const &s1, std::pair<string, StatLog::DmgStat> const &s2) -> bool {
+                         return s1.second.totalDmg > s2.second.totalDmg;
+                     });
+                auto totalDmg = s.totalDmg;
+                for (auto const &kvp : stats)
                 {
-                    auto n = "Stat " + to_string(r) + " " + to_string(o);
-                    auto d = dmg[n];
-                    oss << "[td]";
-                    if (d > 1 - eps)
-                        oss << "[color=#8BC34A]" << incBaseStr(n) << "[/color]";
-                    else
-                        oss << "[color=#D32F2F]" << incBaseStr(n) << "[/color]";
-                    oss << "[/td]";
+                    auto const &s = kvp.second;
+                    oss << "[tr][td]"; // damage
+                    oss << "[color=#D32F2F][b][right]" << std::fixed << std::setprecision(2)
+                        << s.totalDmg * 100. / totalDmg << "%[/right][/b][/color]";
+                    oss << "[/td][td]"; // source
+                    oss << "[color=#03A9F4][b]" << kvp.first << "[/b][/color]";
+                    oss << "[/td][td]"; // crits
+                    oss << std::fixed << std::setprecision(2) << s.crits * 100. / s.hits
+                        << "% [color=#B6B6B6]crits[/color]";
+                    oss << "[/td][td]"; // pens
+                    oss << std::fixed << std::setprecision(2) << s.pens * 100. / s.hits
+                        << "% [color=#B6B6B6]pens[/color]";
+                    oss << "[/td][/tr]" << std::endl;
                 }
-                oss << "[/tr]" << std::endl;
+                oss << "[/table]" << std::endl;
+
+
+                oss << std::endl;
+                oss << "[size=+1][color=#B2EBF2]Damage by Type[/color][/size]" << std::endl;
+                oss << "[table][tr][th]Damage[/th][th]Type[/th][/tr]" << std::endl;
+                std::vector<std::pair<double, std::string>> typeDmg = {
+                    {-slog.dmgOfType[DmgType::Melee], "Melee"},                             //
+                    {-slog.dmgOfType[DmgType::Magic], "Magic"},                             //
+                    {-slog.dmgOfType[DmgType::Ranged], "Ranged"},                           //
+                    {-slog.dmgOfSkill[SkillType::Builder], "Builder"},                      //
+                    {-slog.dmgOfSkill[SkillType::Consumer], "Consumer"},                    //
+                    {-slog.dmgOfSub[SubType::Burst], "Burst"},                              //
+                    {-slog.dmgOfSub[SubType::Focus], "Focus"},                              //
+                    {-slog.dmgOfSub[SubType::Strike], "Strike"},                            //
+                    {-slog.dmgOfWeapon[b.gear.leftWeapon], to_string(b.gear.leftWeapon)},   //
+                    {-slog.dmgOfWeapon[b.gear.rightWeapon], to_string(b.gear.rightWeapon)}, //
+                };
+                sort(begin(typeDmg), end(typeDmg));
+                for (auto const &kvp : typeDmg)
+                {
+                    if (kvp.first == 0)
+                        continue;
+
+                    oss << "[tr][td]"; // damage
+                    oss << "[color=#D32F2F][b][right]" << std::fixed << std::setprecision(2)
+                        << -kvp.first * 100. / totalDmg << "%[/right][/b][/color]";
+                    oss << "[/td][td]"; // type
+                    oss << "[color=#03A9F4][b]" << kvp.second << "[/b][/color]";
+                    oss << "[/td][/tr]" << std::endl;
+                }
+                oss << "[/table]" << std::endl;
+
+                oss << std::endl;
+                oss << "[size=+1][color=#B2EBF2]Glyph Stat Impact[/color][/size]" << std::endl;
+                oss << "[table][tr][td]Stat[/td]";
+                std::vector<int> offsets = {-200, -100, -50, 50, 100, 200};
+                std::vector<Rating> ratings = {Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit};
+                for (auto o : offsets)
+                    oss << "[th]" << (o >= 0 ? "+" : "") << o << "[/th]";
+                oss << "[/tr]";
+                for (auto r : ratings)
+                {
+                    oss << "[tr][td]"; // rating
+                    oss << "[color=#FFEB3B][b]" << to_string(r) << "[/b][/color]";
+                    oss << "[/td]"; // offsets
+                    for (auto o : offsets)
+                    {
+                        auto n = "Stat " + to_string(r) + " " + to_string(o);
+                        auto d = dmg[n];
+                        oss << "[td]";
+                        if (d > 1 - eps)
+                            oss << "[color=#8BC34A]" << incBaseStr(n) << "[/color]";
+                        else
+                            oss << "[color=#D32F2F]" << incBaseStr(n) << "[/color]";
+                        oss << "[/td]";
+                    }
+                    oss << "[/tr]" << std::endl;
+                }
+                oss << "[/table]" << std::endl;
             }
-            oss << "[/table]" << std::endl;
         }
 
         delete bbs;

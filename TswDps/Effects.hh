@@ -574,10 +574,10 @@ public:
             auto e = effect("Power Line Detonation", EffectSlot::PowerLineDetonation);
 
             e.dmgtype = DmgType::Magic;
-            e.procDmgScaling
-                = scaling(e.name) * 2.7f; // assume always max bonus (3 is unrealistic, between 2.6 and 2.8)
+            e.procDmgScaling = scaling(e.name);
+            e.procBonusStats.additiveDamage = 2.8; // last sec = x3, last 2sec = x2.8, last 3sec = x2.6
             e.affectedByAdditiveDmg = true;
-            e.isFullHit = true; // TODO: TEST!
+            e.isFullHit = false; // NOT a full hit
 
             return e;
         }

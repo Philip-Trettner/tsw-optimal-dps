@@ -192,6 +192,8 @@ struct Effect
     ProcOn procOn = ProcOn::Gain;       // controls when dmg procs are applied
     bool isFullHit = false;             // if true, is a full hit
 
+    Stats procBonusStats;
+
     bool triggersGroupHealOnGain = false;  //< if true, triggers a group heal when a stack is gained (support augments)
     bool triggersPlayerHealOnLost = false; //< if true, triggers a player heal when a stack is lost (immortal spirit)
 

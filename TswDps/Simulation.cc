@@ -252,7 +252,10 @@ void Simulation::simulate(int totalTimeIn60th)
     rotation->reset();
     currentTime = 0;
     kickbackTime = 0;
-    dabsTime = buffAt * 60;
+    if (buffAt >= INF_TIME)
+        dabsTime = INF_TIME;
+    else 
+        dabsTime = buffAt * 60;
     dabsCnt = 0;
     for (auto i = 0; i < SKILL_CNT; ++i)
         skillCDs[i] = 0;
@@ -631,6 +634,28 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         skills.skills[i] = skill;
     }
 
+    if (gear.pieces[Gear::MajorLeft].signet.passive.effect == EffectSlot::ConeyIslandBand)
+    {
+        std::cout << "  Non-Coney: " << std::endl;
+
+        auto piece = gear.pieces[Gear::MajorLeft];
+        gear.setFingerQL11();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << "   + ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
+            << "% for QL11 + Violence" << std::endl;
+        relDmg["Finger QL11"] = dps / startDPS;
+
+        gear.pieces[Gear::MajorLeft] = piece;
+    }
+
     std::cout << "  Neck: " << std::endl;
     // QL11 + violence
     {
@@ -694,9 +719,20 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     for (auto i = Gear::Head; i <= Gear::WeaponRight; ++i)
     {
         auto piece = gear.pieces[i];
+        auto allPieces = gear.pieces;
         if (piece.signet.name().empty())
             continue;
         gear.pieces[i].signet = Signets::empty();
+
+        if (i == Gear::Head || i == Gear::WeaponLeft || i == Gear::WeaponRight)
+        {
+            if (gear.pieces[Gear::Head].signet.name() == piece.signet.name())
+                gear.pieces[Gear::Head].signet = Signets::empty();
+            if (gear.pieces[Gear::WeaponLeft].signet.name() == piece.signet.name())
+                gear.pieces[Gear::WeaponLeft].signet = Signets::empty();
+            if (gear.pieces[Gear::WeaponRight].signet.name() == piece.signet.name())
+                gear.pieces[Gear::WeaponRight].signet = Signets::empty();
+        }
 
         init();
         resetStats();
@@ -710,7 +746,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
                   << piece.signet.name() << "' on " << gear.pieceName(i) << std::endl;
         relDmg[piece.signet.name()] = startDPS / dps;
 
-        gear.pieces[i] = piece;
+        gear.pieces = allPieces;
     }
     // Stimulant
     if (gear.stimulant != EffectSlot::Count)
@@ -1170,7 +1206,7 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
             fullHit(procStats, procStats, -effect.procDmgFixed, 1.0f, false, false, nullptr, &effect, skillIdx);
         else
         {
-            auto stats = procStats; // copy
+            auto stats = procStats + effect.procBonusStats; // copy
             auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
@@ -1190,7 +1226,7 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
             fullHit(procStats, procStats, effect.procDmgScaling, 1.0f, false, false, nullptr, &effect, skillIdx);
         else
         {
-            auto stats = procStats; // copy
+            auto stats = procStats + effect.procBonusStats; // copy
             auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
@@ -1212,7 +1248,7 @@ void Simulation::procEffectDmg(Stats const& procStats, Effect const& effect, flo
                     &effect, skillIdx);
         else
         {
-            auto stats = procStats; // copy
+            auto stats = procStats + effect.procBonusStats; // copy
             auto weapon = skillIdx >= 0 ? skills.skills[skillIdx].weapon : Weapon::None;
             applyEffects(stats, effect.dmgtype, SkillType::Proc, SubType::None, weapon);
             if (!effect.affectedByAdditiveDmg)
@@ -1513,6 +1549,7 @@ void Simulation::advanceTime(int timeIn60th)
                 kickbackTime = 20 * 60;
                 if (gear.stimulant != EffectSlot::Count)
                     procEffect(Stats(), gear.stimulant, -1);
+
             }
 
             ++dabsCnt;
