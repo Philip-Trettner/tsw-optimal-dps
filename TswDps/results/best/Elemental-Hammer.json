@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accurate",
-		"Focused",
-		"",
 		"Brutal",
+		"Focused",
+		"Accurate",
+		"Grievous",
+		"Invulnerable",
 		"Ferocious",
-		"",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
@@ -117,14 +118,15 @@
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Shock",
+		"Ignition",
 		"Lightning Manifestation",
-		"Molten Steel",
 		"Fire Manifestation",
+		"Molten Steel",
 		"Stone's Throw",
-		"Molten Earth",
+		"Power Line",
 		"Full Momentum",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

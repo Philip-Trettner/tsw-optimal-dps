@@ -39,7 +39,7 @@ struct Skill
     int specialHitsC = 0;
     float dmgScalingC = -1;
 
-    int extraHitPerResource = 0;    ///< extra hits per resource
+    int extraHitPerResource = 0;    ///< extra hits per resource, NOT FULL HITS
     float fixedMultiHitPenalty = 0; ///< if above zero, replaces MH penalty
 
     float chanceForScaleInc = 0; ///< chance to increase base scaling

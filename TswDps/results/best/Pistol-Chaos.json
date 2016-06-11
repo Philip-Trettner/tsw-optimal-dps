@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
+		"Grievous",
 		"Accurate",
-		"Focused",
+		"Inspiring",
 		"Piercing",
-		"Fierce",
-		"",
+		"Mercurial",
 		"Precise",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,21 +47,21 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Subway Tokens" 
-		},
-		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 105,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -72,15 +72,6 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -90,41 +81,52 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 347,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Fortunate Strike",
-		"Invasive Measures",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
+		"Hair Trigger",
 		"Start & Finish",
-		"Call for Eris",
-		"Chaotic Pull",
-		"Bond, Strong Bond",
 		"Amor Fati",
-		"Bullet Ballet",
+		"Chaotic Pull",
+		"Eye of Pandemonium",
+		"Shootout",
+		"Call for Eris",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

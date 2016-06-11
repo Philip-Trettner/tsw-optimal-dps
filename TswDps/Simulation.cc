@@ -420,7 +420,7 @@ void Simulation::simulate(int totalTimeIn60th)
         skillLastScaling[idx] = scaling;
 
         // hits
-        auto hits = skill.hits + skill.extraHitPerResource * resourcesConsumed;
+        auto hits = skill.hits;
 
         // anima deviation
         if (skill.animaDeviation)
@@ -457,6 +457,23 @@ void Simulation::simulate(int totalTimeIn60th)
 
             // actual full hit
             fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr, currentSkill);
+        }
+
+        // extra hits
+        // hits are instant, using only scaling
+        auto extraHits = skill.extraHitPerResource * resourcesConsumed;
+        if (extraHits > 0)
+        {
+            auto stats = baseStat;
+            applyEffects(stats, skill.dmgtype, skill.skilltype, skill.subtype, skill.weapon);
+            stats = stats + skills.augments[idx].bonusStats;
+            stats.update(enemyInfo);
+
+            // Multihit penalty assumed to 0.7
+            bool isCrit, isPen, isGlance, isBlock, isEvade;
+            for (auto hitIdx = 0; hitIdx < extraHits; ++hitIdx)
+                rawHit(stats, scaling, 0.7, skill.dmgtype, skill.skilltype, skill.subtype, skill.weapon, &isCrit,
+                       &isPen, &isGlance, &isBlock, &isEvade, &skill, nullptr, idx);
         }
 
         // channeling builders

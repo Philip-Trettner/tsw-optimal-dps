@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
-		"",
-		"",
 		"Focused",
-		"Fierce",
+		"Curing",
+		"Inspiring",
+		"Ferocious",
+		"Grievous",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Opportunism" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
@@ -103,7 +104,7 @@
 		"Sudden Return" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
@@ -125,6 +126,7 @@
 		"Three Round Burst",
 		"Stone's Throw",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

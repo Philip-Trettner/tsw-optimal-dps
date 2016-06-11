@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Precise",
-		"",
-		"",
-		"Piercing",
+		"Brutal",
 		"Focused",
+		"Invulnerable",
 		"Accurate",
+		"Quickening",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -60,16 +60,16 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
+			"Hit": 118,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Stone's Throw",
-		"Amor Fati",
-		"Full Momentum",
 		"Call for Eris",
 		"Molten Steel",
+		"Full Momentum",
+		"Stone's Throw",
+		"Amor Fati",
 		"Eye of Pandemonium",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

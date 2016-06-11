@@ -778,4 +778,22 @@ void Optimizer::normalizeBuild(Build& b)
 
             b.skills.augments[i] = newAug;
         }
+
+    // remove wrong augs
+    for (int i = 0; i < SKILL_CNT; ++i)
+    {
+        auto const& s = b.skills.skills[i];
+        auto const& a = b.skills.augments[i];
+
+        if (s.name.empty())
+            b.skills.augments[i] = Augments::empty();
+        else
+        {
+            if (!s.slotForDmgAug && a.slot == AugmentSlot::Damage)
+                b.skills.augments[i] = Augments::empty();
+
+            if (!s.slotForSupportAug && a.slot == AugmentSlot::Support)
+                b.skills.augments[i] = Augments::empty();
+        }
+    }
 }

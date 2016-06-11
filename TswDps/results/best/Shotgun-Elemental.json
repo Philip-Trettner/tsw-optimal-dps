@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accurate",
-		"",
-		"Focused",
-		"",
 		"Brutal",
+		"Focused",
+		"Accurate",
+		"Inspiring",
+		"Accelerating",
+		"Fierce",
 		"Ferocious",
 		"" 
 	],
@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Brawler",
@@ -117,14 +118,15 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Shock",
+		"Single Barrel",
+		"Fire Manifestation",
 		"Lightning Manifestation",
 		"Anima Charge",
+		"Power Line",
 		"Sure Shot",
-		"Bombardment",
-		"Fire Manifestation",
 		"Flame Strike",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

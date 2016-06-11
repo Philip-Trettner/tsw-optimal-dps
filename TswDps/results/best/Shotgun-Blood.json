@@ -1,22 +1,22 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"Accurate",
+		"Grievous",
 		"Focused",
-		"Fierce",
-		"Precise",
-		"",
+		"Piercing",
+		"Curing",
+		"Mercurial",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		},
 		{
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -92,6 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
@@ -103,12 +104,12 @@
 		"Sudden Return" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Lock, Stock & Barrel",
-		"Bombardment",
 		"Bloodshot",
 		"Raging Bullet",
-		"Left Hand of Darkness",
+		"Bombardment",
+		"Lock, Stock & Barrel",
 		"Cannibalize",
+		"Exsanguinate",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

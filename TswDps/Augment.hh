@@ -6,6 +6,8 @@
 
 enum class AugmentSlot
 {
+    Invalid,
+
     Damage,
     Heal,
     Support,

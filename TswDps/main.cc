@@ -60,7 +60,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = !true;
+    const bool exploration = true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;
@@ -72,7 +72,7 @@ void debugRun()
     const bool buffs = true;
 
     optimizer.excludeSkillsAndPassives = {
-        "Power Line", //
+        //"Power Line", //
         /*"Live Wire",          //
         "Sudden Return",      //
         "One In The Chamber", //
@@ -322,18 +322,20 @@ void explore(ExploreType type, double timeMult)
             // optimize
             Optimizer o;
             o.excludeSkillsAndPassives = {
-                "Power Line" // DEBUG
+              //  "Power Line" // DEBUG
             };
             o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
             auto &s = o.refSim;
             s.loadBuild(b);
 
+            o.threadOverwrite = 4; // DEBUG!
+
             switch (type)
             {
             case ExploreType::Best:
                 s.enemyInfo.allVulnerabilities = true;
-                o.timePerFight = 10 * 60 * 60; // 10 min
+                o.timePerFight = 2.5 * 60 * 60; // 2.5 min
                 break;
             case ExploreType::Burst:
                 s.enemyInfo.allVulnerabilities = true;
@@ -980,7 +982,7 @@ int main(int argc, char *argv[])
                         else
                             oss << ", ";
 
-                        oss << "[color=#03A9F4][b]Woodcutters[/b][/color] " << incStr("Neck WC");
+                        oss << "[color=#FFEB3B][b]Woodcutters[/b][/color] " << incStr("Neck WC");
                     }
                     if (seff != EffectSlot::EgonPendant) // Egon
                     {
@@ -989,7 +991,7 @@ int main(int argc, char *argv[])
                         else
                             oss << ", ";
 
-                        oss << "[color=#03A9F4][b].9 Egon Pendant[/b][/color] " << incStr("Neck Egon");
+                        oss << "[color=#b82ed0][b].9 Egon Pendant[/b][/color] " << incStr("Neck Egon");
                     }
                     if (signetName != "Violence")
                     {

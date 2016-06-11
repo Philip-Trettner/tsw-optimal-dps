@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
-		"",
-		"Focused",
 		"Ferocious",
+		"Inspiring",
+		"Mercurial",
+		"Grievous",
 		"Fierce",
-		"Precise",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -58,18 +58,18 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Shattering" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -89,9 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback Pen on Pen (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
@@ -108,7 +109,7 @@
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
+		"Shockwave",
 		"Full Momentum",
 		"Stone's Throw",
 		"Molten Steel",
 		"Start & Finish",
-		"Bond, Strong Bond",
+		"Shootout",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
-		"Focused",
 		"Accurate",
 		"Grievous",
+		"Focused",
 		"Piercing",
+		"Quickening",
 		"Brutal",
 		"" 
 	],
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -48,10 +48,10 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -92,18 +92,19 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Hammer",
 	"Passives": [
 		"Accuracy",
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
-		"Live Wire",
 		"One In The Chamber",
+		"Thunderstruck",
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Grand Slam",
-		"Full Momentum",
-		"Molten Steel",
 		"Steel Echo",
 		"Four Seasons",
+		"Molten Steel",
 		"Bone Breaker",
+		"Full Momentum",
 		"Binding Wounds",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

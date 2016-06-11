@@ -1,37 +1,37 @@
 {
 	"Augments": [
-		"Focused",
-		"Accurate",
-		"Brutal",
-		"Precise",
-		"",
+		"Grievous",
 		"Fierce",
-		"",
+		"Focused",
+		"Piercing",
+		"Accurate",
+		"Ferocious",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
-			"Hit": 367,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,30 +57,21 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 201,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -90,8 +81,18 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
@@ -108,23 +109,24 @@
 	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Lightning Manifestation",
-		"Start & Finish",
+		"Power Line",
 		"Fire Manifestation",
-		"Anima Charge",
+		"Start & Finish",
+		"Lightning Manifestation",
 		"Flame Strike",
-		"Bullet Ballet",
+		"Anima Charge",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

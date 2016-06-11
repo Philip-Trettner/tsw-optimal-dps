@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"",
-		"Piercing",
-		"Focused",
-		"Accurate",
-		"",
+		"Brutal",
+		"Ferocious",
+		"Inspiring",
 		"Grievous",
+		"Focused",
+		"Piercing",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 210,
-			"Crit Power": 0,
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -80,18 +80,19 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 203,
+			"Signet": "Laceration" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Lock & Load",
-		"Start & Finish",
-		"Three Round Burst",
-		"Big 45",
-		"Shootout",
 		"Bullet Ballet",
+		"Lock & Load",
+		"Three Round Burst",
+		"Start & Finish",
+		"Fire in the Hole",
+		"Shootout",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

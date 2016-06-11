@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
 		"Focused",
-		"Piercing",
-		"Ferocious",
 		"Accurate",
-		"",
+		"Invulnerable",
+		"Curing",
+		"Inspiring",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,8 +75,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Sadism" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Go for the Throat",
-		"One-Two",
-		"Fire Manifestation",
 		"Lightning Manifestation",
-		"",
+		"Fire Manifestation",
+		"Power Line",
+		"Reckless",
+		"Anima Charge",
+		"Tear Em Up",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

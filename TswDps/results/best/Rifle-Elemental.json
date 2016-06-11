@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"Piercing",
-		"Fierce",
-		"",
 		"Focused",
-		"",
+		"Fierce",
+		"Piercing",
+		"Inspiring",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -92,18 +92,19 @@
 			"Signet": "Abuse" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Rifle",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
@@ -114,17 +115,18 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Safety Off",
-		"Fire Manifestation",
 		"Lightning Manifestation",
-		"Flame Strike",
-		"Shellshocker",
+		"Fire Manifestation",
 		"Three Round Burst",
-		"",
+		"Power Line",
+		"Anima Charge",
+		"Flame Strike",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

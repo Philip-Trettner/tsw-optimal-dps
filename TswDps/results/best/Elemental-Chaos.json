@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Accurate",
-		"Ferocious",
-		"Piercing",
 		"Focused",
+		"Brutal",
+		"Accurate",
 		"Fierce",
-		"",
-		"",
+		"Mercurial",
+		"Inspiring",
+		"Quickening",
 		"" 
 	],
 	"Gear": [
@@ -17,21 +17,21 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,12 +57,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Storms" 
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -72,6 +72,15 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -81,29 +90,21 @@
 			"Hit": 0,
 			"Pen": 407,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 407,
-			"Signet": "Opportunism" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
 		"Fortunate Strike",
 		"Invasive Measures",
 		"Iron Maiden",
 		"Lethality",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Eye of Pandemonium",
 		"Lightning Manifestation",
 		"Fire Manifestation",
 		"Call for Eris",
+		"Power Line",
 		"Amor Fati",
-		"",
+		"Chaotic Pull",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

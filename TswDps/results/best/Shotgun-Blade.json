@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accurate",
-		"",
+		"Brutal",
 		"Ferocious",
-		"Piercing",
+		"Fierce",
+		"Inspiring",
 		"Grievous",
+		"Accurate",
 		"Focused",
 		"" 
 	],
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -42,8 +42,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 367,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -84,26 +84,27 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -119,12 +120,13 @@
 	"Skills": [
 		"Grass Cutter",
 		"Steel Echo",
+		"Raging Bullet",
 		"Lock, Stock & Barrel",
 		"Binding Wounds",
-		"Raging Bullet",
 		"Sure Shot",
 		"Four Seasons",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

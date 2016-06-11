@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"Accurate",
-		"",
-		"Focused",
-		"Precise",
+		"Inspiring",
+		"Invulnerable",
 		"Grievous",
+		"Precise",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -92,6 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Fist",
 	"Passives": [
 		"Fortunate Strike",
@@ -103,7 +104,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -125,6 +126,7 @@
 		"One-Two",
 		"Dancing Blade",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

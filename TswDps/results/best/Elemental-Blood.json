@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"",
-		"Piercing",
 		"Ferocious",
 		"Focused",
+		"Inspiring",
 		"Accurate",
+		"Accelerating",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,23 +75,24 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Cannibalize",
-		"Anima Charge",
+		"Power Line",
 		"Lightning Manifestation",
+		"Cannibalize",
 		"Fire Manifestation",
+		"Anima Charge",
 		"Bloodshot",
-		"Cardiac Arrest",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

@@ -575,7 +575,7 @@ public:
 
             e.dmgtype = DmgType::Magic;
             e.procDmgScaling = scaling(e.name);
-            e.procBonusStats.additiveDamage = 2.8; // last sec = x3, last 2sec = x2.8, last 3sec = x2.6
+            e.procBonusStats.additiveDamage = 1.8; // last sec = x3, last 2sec = x2.8, last 3sec = x2.6
             e.affectedByAdditiveDmg = true;
             e.isFullHit = false; // NOT a full hit
 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
-		"Piercing",
-		"",
+		"Ferocious",
 		"Grievous",
-		"Focused",
+		"Invulnerable",
+		"Inspiring",
 		"Accurate",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Tomes" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -92,6 +92,7 @@
 			"Signet": "Fury" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Blood",
 	"Passives": [
 		"Elemental Force",
@@ -107,7 +108,7 @@
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Cannibalize",
 		"Shockwave",
-		"Full Momentum",
 		"Molten Steel",
-		"Bloodshot",
+		"Cannibalize",
+		"Full Momentum",
 		"Stone's Throw",
+		"Bloodshot",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accelerating",
-		"Inspiring",
-		"Brutal",
 		"Focused",
 		"Accurate",
 		"Grievous",
+		"Inspiring",
+		"Ferocious",
+		"Fierce",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -17,12 +17,12 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 313,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,29 +39,29 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
-			"Crit Power": 156,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 367,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 105,
+			"AR": 664,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
-			"Signet": "Subway Tokens" 
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,58 +75,57 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 362,
 			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Pen (blue)",
-	"Left Weapon": "Chaos",
+	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Left Weapon": "Pistol",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
-		"Invasive Measures",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
-	"Right Weapon": "Blade",
+	"Right Weapon": "Elemental",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 4,
-		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 3,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
-		"Steel Echo",
-		"Amor Fati",
-		"Four Seasons",
-		"Binding Wounds",
-		"Sling Blade",
-		"Call for Eris",
+		"Hair Trigger",
+		"Lightning Manifestation",
+		"Fire Manifestation",
+		"Anima Charge",
+		"Power Line",
+		"Flame Strike",
+		"Start & Finish",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 
 } 
-

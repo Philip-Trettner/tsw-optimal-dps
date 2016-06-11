@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Fierce",
 		"Focused",
-		"Precise",
-		"Grievous",
+		"Fierce",
+		"Inspiring",
+		"Brutal",
 		"Accurate",
-		"",
+		"Ferocious",
+		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -17,21 +17,21 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 163,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,12 +57,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Tomes" 
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -75,23 +75,24 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Abuse" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
@@ -103,7 +104,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Bloodshot",
 		"Start & Finish",
-		"Big 45",
-		"Exsanguinate",
-		"Bullet Ballet",
 		"Cannibalize",
+		"Bloodshot",
+		"Shootout",
+		"Bullet Ballet",
+		"Left Hand of Darkness",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

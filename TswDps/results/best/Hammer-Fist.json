@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
 		"Focused",
-		"",
+		"Inspiring",
+		"Invulnerable",
 		"Fierce",
-		"Ferocious",
 		"Accurate",
+		"Salubrious",
 		"" 
 	],
 	"Gear": [
@@ -17,21 +17,21 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -80,18 +80,19 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
-			"Signet": "Laceration" 
+			"Pen": 203,
+			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Hammer",
 	"Passives": [
 		"Elemental Force",
@@ -118,13 +119,14 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
+		"Molten Steel",
 		"Reckless",
-		"Shockwave",
 		"Full Momentum",
 		"Tear Em Up",
-		"Molten Steel",
 		"One-Two",
+		"Shockwave",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 
