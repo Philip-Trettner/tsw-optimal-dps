@@ -45,6 +45,9 @@ void debugRun()
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * .5 glyphs
      * * "Budget" raid scenario
+     * * Randomize DABS more to reduce aliasing
+     * * Fix four horsemen
+     * * Third Degree
      *
      * later: afflictions + signet of corruption
      *
@@ -60,7 +63,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = true;
+    const bool exploration = !true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;

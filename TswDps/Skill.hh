@@ -45,7 +45,7 @@ struct Skill
     float chanceForScaleInc = 0; ///< chance to increase base scaling
     float scaleIncPerc = 0;      ///< amount of base scale inc if proc
 
-    float baseDmgIncPerHit = 0; ///< % inc per hit of base scaling
+    float baseDmgIncPerHit = 0; ///< % inc per hit of base scaling, _additive_
 
     int fixedConsumerResources = 0; ///< 0 = consumes all and uses dmgScaling5
 

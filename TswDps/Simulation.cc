@@ -452,11 +452,14 @@ void Simulation::simulate(int totalTimeIn60th)
                 actualScaling = skill.dmgScalingB;
             else if (hitIdx < skill.specialHitsA + skill.specialHitsB + skill.specialHitsC)
                 actualScaling = skill.dmgScalingC;
-            actualScaling *= 1 + skill.baseDmgIncPerHit * hitIdx;
             skillLastScaling[idx] = actualScaling;
 
+            // updated stats
+            auto stats = baseStat;
+            stats.additiveDamage += skill.baseDmgIncPerHit * hitIdx;
+
             // actual full hit
-            fullHit(baseStat, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr, currentSkill);
+            fullHit(stats, procStat, actualScaling, penCritPenalty, hitIdx == 0, hitIdx == hits - 1, &skill, nullptr, currentSkill);
         }
 
         // extra hits
