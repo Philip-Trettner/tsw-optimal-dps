@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"",
 		"Focused",
+		"Inspiring",
+		"Mercurial",
 		"Grievous",
-		"Precise",
-		"",
+		"Accelerating",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,8 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Kickback": "Kickback Pen on Pen (blue)",
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -102,26 +103,30 @@
 		"One In The Chamber",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 4,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 3,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
-		"Lightning Manifestation",
-		"Anima Charge",
+		"Cardiac Arrest",
 		"Bloodshot",
-		"Fire Manifestation",
-		"Power Line",
+		"Anima Charge",
 		"Cannibalize",
+		"Fire Manifestation",
+		"Lightning Manifestation",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

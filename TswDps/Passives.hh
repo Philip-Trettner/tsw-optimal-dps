@@ -443,6 +443,16 @@ public:
             return p;
         }
 
+        static Passive ThirdDegree()
+        {
+            auto p = passive("Third Degree", PassiveType::None);
+
+            p.trigger = Trigger::Pen;
+            p.effect = EffectSlot::ThirdDegreeStack;
+
+            return p;
+        }
+
         static Passive ThickerThanWater()
         {
             auto p = passive("Thicker Than Water", PassiveType::None);

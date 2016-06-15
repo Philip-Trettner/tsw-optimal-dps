@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Focused",
-		"",
+		"Mercurial",
 		"Accurate",
-		"Fierce",
+		"Quickening",
 		"Ferocious",
-		"",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -76,10 +76,10 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Abuse" 
 		},
 		{
@@ -92,7 +92,8 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 3,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Hammer",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -102,7 +103,10 @@
 		"One In The Chamber",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -122,6 +126,7 @@
 		"Four Seasons",
 		"Binding Wounds",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

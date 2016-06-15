@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"",
-		"",
+		"Grievous",
+		"Inspiring",
 		"Focused",
 		"Fierce",
 		"Accurate",
-		"Precise",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,20 +57,20 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,36 +92,41 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Kickback": "Kickback Crit on Crit (purple)",
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Invasive Measures",
+		"Gnosis",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 3,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
-		"Amor Fati",
+		"Prey on the Weak",
+		"Four Horsemen",
 		"Reckless",
-		"See Red",
-		"Call for Eris",
+		"Prisoner of Fate",
+		"Paradox",
 		"Suffering and Solace",
 		"One-Two",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

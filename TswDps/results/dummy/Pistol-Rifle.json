@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Focused",
 		"Grievous",
-		"Fierce",
-		"",
+		"Focused",
 		"Accurate",
+		"Mercurial",
+		"Fierce",
 		"",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 625,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -89,10 +89,11 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Kickback": "Kickback Crit on Crit (purple)",
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,7 +103,10 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 7,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Rifle",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -115,13 +119,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Shellshocker",
 		"Start & Finish",
-		"Three Round Burst",
-		"Lock & Load",
+		"Bullet Ballet",
 		"Bond, Strong Bond",
+		"Lock & Load",
+		"Three Round Burst",
 		"",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

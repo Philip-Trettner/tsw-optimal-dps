@@ -116,6 +116,8 @@ MAKE_EFFECT_ENUM(
     Plague,
     LeftHandOfDarkness,
     Contaminate,
+    ThirdDegreeStack,
+    ThirdDegree,
 
     // weapon skills
     DoubleUp,
@@ -178,6 +180,7 @@ struct Effect
     bool resetOnGlance = false; //< if true, resets effect on glance
     bool resetOnMax = false;    //< if true, resets effect on max stacks
 
+    int triggerOnMaxStacksCnt = 1; // nr of stack gained for triggerOnMaxStacks
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)
     EffectSlot triggerOnStackLost = EffectSlot::Count; // < if < count, triggers every time a stack is lost
@@ -191,6 +194,8 @@ struct Effect
     bool affectedByAdditiveDmg = false; // if true, proc dmg is buffed by additive dmg (e.g. Bombardment)
     ProcOn procOn = ProcOn::Gain;       // controls when dmg procs are applied
     bool isFullHit = false;             // if true, is a full hit
+
+    bool cannotTriggerOnPassiveFullHit = false; // if true, cannot be triggered by a passive full hit
 
     Stats procBonusStats;
 
@@ -206,6 +211,8 @@ struct Effect
 
     bool affects(DmgType dmgtype, SkillType skilltype, SubType subtype, Weapon weapon) const
     {
+        if (cannotTriggerOnPassiveFullHit && skilltype == SkillType::PassiveFullHit)
+            return false;
         if (!affectProcs && skilltype == SkillType::Proc)
             return false;
         if (restrictToWeapon != Weapon::None && weapon != restrictToWeapon)

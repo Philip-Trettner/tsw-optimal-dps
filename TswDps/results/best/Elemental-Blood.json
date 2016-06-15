@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Ferocious",
 		"Focused",
 		"Inspiring",
 		"Accurate",
-		"Accelerating",
+		"Invulnerable",
+		"Quickening",
 		"Grievous",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Tomes" 
 		},
 		{
 			"AR": 664,
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -104,26 +104,26 @@
 		"Sudden Return" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
-		"consumeIfNotBloodOffering": true,
+		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
-		"Power Line",
-		"Lightning Manifestation",
-		"Cannibalize",
 		"Fire Manifestation",
+		"Cannibalize",
+		"Lightning Manifestation",
 		"Anima Charge",
+		"Power Line",
 		"Bloodshot",
 		"" 
 	],

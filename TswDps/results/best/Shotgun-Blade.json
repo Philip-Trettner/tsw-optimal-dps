@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Ferocious",
-		"Fierce",
-		"Inspiring",
 		"Grievous",
+		"Quickening",
+		"Inspiring",
+		"Mercurial",
+		"Ferocious",
 		"Accurate",
-		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,16 +71,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Swords" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -119,14 +119,14 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Steel Echo",
-		"Raging Bullet",
-		"Lock, Stock & Barrel",
 		"Binding Wounds",
-		"Sure Shot",
+		"Steel Echo",
+		"Lock, Stock & Barrel",
 		"Four Seasons",
+		"Sure Shot",
+		"Raging Bullet",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimAttackPurple" 
 } 
 

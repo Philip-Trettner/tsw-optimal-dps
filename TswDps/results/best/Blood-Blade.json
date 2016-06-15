@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Fierce",
-		"Grievous",
-		"Ferocious",
-		"Brutal",
-		"Inspiring",
 		"Accurate",
+		"Focused",
+		"Grievous",
+		"Fierce",
+		"Brutal",
+		"Mercurial",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -98,10 +98,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
+		"One In The Chamber",
 		"Sudden Return",
-		"Twist The Knife" 
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -127,6 +127,6 @@
 		"Binding Wounds",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

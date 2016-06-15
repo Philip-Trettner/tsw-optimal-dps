@@ -1176,7 +1176,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
             resetEffect(effect.slot);
 
             // gain new effect
-            procEffect(procStats, effect.triggerOnMaxStacks, originalHitScaling);
+            for (auto i = 0; i < effect.triggerOnMaxStacksCnt; ++i)
+                procEffect(procStats, effect.triggerOnMaxStacks, originalHitScaling);
         }
 
         // reset on max stacks
@@ -1741,6 +1742,8 @@ void Simulation::registerEffects()
     registerEffect(Effects::Dots::Plague());
     registerEffect(Effects::Dots::Contaminate());
     registerEffect(Effects::Dots::LeftHandOfDarkness());
+    registerEffect(Effects::Dots::ThirdDegree());
+    registerEffect(Effects::Dots::ThirdDegreeStack());
 
     registerEffect(Effects::WeaponSkill::Calamity());
     registerEffect(Effects::WeaponSkill::DoubleUp());

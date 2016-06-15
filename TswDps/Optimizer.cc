@@ -44,6 +44,9 @@ void Optimizer::run(int generations)
     for (auto& p : startBuild.skills.passives)
         if (excludeSkillsAndPassives.count(p.name))
             p = Passives::empty();
+    for (auto& p : startBuild.gear.pieces)
+        if (!allowWoodcutters && p.signet.passive.effect == EffectSlot::MothersWrathStacks)
+            p.signet = Signets::empty();
 
     // init lib
     allSkills = Skills::all();
@@ -478,7 +481,10 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     b.gear.setNeckQL11();
                     break;
                 case 1: // woodcutters
-                    b.gear.setNeckWoodcutters();
+                    if (allowWoodcutters)
+                        b.gear.setNeckWoodcutters();
+                    else
+                        b.gear.setNeckQL11();
                     break;
                 case 2: // egon
                     b.gear.setNeckEgon();
@@ -514,22 +520,28 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     continue;
 
                 assert(!freeRatings.empty());
-                if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
+
+                if (allowSplitGlyphs)
                 {
-                    b.gear.pieces[idx].free(randomElement(freeRatings));
+                    if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
+                    {
+                        b.gear.pieces[idx].free(randomElement(freeRatings));
+                    }
+                    else
+                    {
+                        Rating r1, r2;
+                        do
+                        {
+                            r1 = randomElement(freeRatings);
+                            r2 = randomElement(freeRatings);
+                        } while (r1 == r2);
+
+                        b.gear.pieces[idx].free(r1, r2);
+                        changed = true;
+                    }
                 }
                 else
-                {
-                    Rating r1, r2;
-                    do
-                    {
-                        r1 = randomElement(freeRatings);
-                        r2 = randomElement(freeRatings);
-                    } while (r1 == r2);
-
-                    b.gear.pieces[idx].free(r1, r2);
-                    changed = true;
-                }
+                    b.gear.pieces[idx].free(randomElement(freeRatings));
             }
             break;
         case BuildChange::Augment:

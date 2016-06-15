@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Fierce",
-		"Grievous",
-		"",
-		"Accurate",
-		"",
 		"Focused",
+		"Accurate",
+		"Grievous",
+		"Inspiring",
+		"Curing",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -76,9 +76,9 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
@@ -92,36 +92,41 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Rifle",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 3,
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Call for Eris",
+		"Four Horsemen",
+		"Suffering and Solace",
 		"Three Round Burst",
 		"Lock & Load",
-		"Suffering and Solace",
 		"Amor Fati",
-		"Red Mist",
+		"Shellshocker",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

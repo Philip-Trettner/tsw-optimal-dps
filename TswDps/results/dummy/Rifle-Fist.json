@@ -2,9 +2,9 @@
 	"Augments": [
 		"Brutal",
 		"Focused",
-		"",
-		"",
-		"Piercing",
+		"Inspiring",
+		"Curing",
+		"Mercurial",
 		"Fierce",
 		"Accurate",
 		"" 
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,21 +39,12 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
@@ -62,6 +53,15 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,17 +92,21 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Kickback": "Kickback Crit on Crit (purple)",
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return",
-		"Thunderstruck" 
+		"Thunderstruck",
+		"Twist The Knife" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -120,8 +124,9 @@
 		"Lock & Load",
 		"Shellshocker",
 		"One-Two",
-		"Tear Em Up",
+		"Wild at Heart",
 		"" 
-	] 
+	],
+	"Stim": "StimPenBlue" 
 } 
 

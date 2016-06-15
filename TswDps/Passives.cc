@@ -58,7 +58,7 @@ std::vector<Passive> Passives::all()
         Blood::IronMaiden(),       //
         Blood::ThickerThanWater(), //
         Blood::Doom(),             //
-                                   // TODO: Third Degree
+        Blood::ThirdDegree(),      //
                                    // TODO: Blood Bank
                                    // TODO: Toxic Affinity
                                    // TODO: Unholy Knowledge

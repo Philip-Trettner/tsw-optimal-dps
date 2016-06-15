@@ -2,7 +2,7 @@
 	"Augments": [
 		"Brutal",
 		"Focused",
-		"Curing",
+		"Accelerating",
 		"Inspiring",
 		"Ferocious",
 		"Grievous",
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -48,11 +48,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -75,8 +75,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -98,10 +98,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -109,9 +109,9 @@
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
@@ -127,6 +127,6 @@
 		"Stone's Throw",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritBlue" 
 } 
 

@@ -429,6 +429,7 @@ public:
             e.consumedAfterHit = true;
             e.gainOnConsume = EffectSlot::LiveWireProc;
             e.cannotConsumeSameAbility = true;
+            e.cannotTriggerOnPassiveFullHit = true;
 
             return e;
         }
@@ -439,6 +440,7 @@ public:
 
             e.dmgtype = DmgType::Magic;
             e.procDmgScaling = scaling(e.name);
+            e.cannotTriggerOnPassiveFullHit = true;
 
             return e;
         }
@@ -628,6 +630,33 @@ public:
             e.procOn = ProcOn::Loss;
             e.affectedByAdditiveDmg = true;
             e.isFullHit = false; // TEST ME
+
+            return e;
+        }
+
+        static Effect ThirdDegree()
+        {
+            auto e = effect("Third Degree", EffectSlot::ThirdDegree);
+
+            e.timeIn60th = 60;
+            e.maxStacks = 4;
+
+            e.procOn = ProcOn::Loss;
+            e.dmgtype = DmgType::Magic;
+            e.procDmgScaling = scaling(e.name);
+
+            return e;
+        }
+
+        static Effect ThirdDegreeStack()
+        {
+            auto e = effect("Third Degree Stack", EffectSlot::ThirdDegreeStack);
+
+            e.timeIn60th = INF_TIME;
+            e.maxStacks = 3;
+
+            e.triggerOnMaxStacksCnt = 4;
+            e.triggerOnMaxStacks = EffectSlot::ThirdDegree;
 
             return e;
         }

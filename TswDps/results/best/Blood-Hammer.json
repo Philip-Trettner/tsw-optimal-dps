@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Ferocious",
-		"Grievous",
 		"Invulnerable",
-		"Inspiring",
-		"Accurate",
+		"Grievous",
+		"Ferocious",
+		"Mercurial",
 		"Focused",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,15 +17,15 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
@@ -89,19 +89,19 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Blood",
 	"Passives": [
 		"Elemental Force",
-		"Fortunate Strike",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Twist The Knife" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -109,24 +109,24 @@
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
-		"Shockwave",
-		"Molten Steel",
-		"Cannibalize",
 		"Full Momentum",
-		"Stone's Throw",
+		"Molten Steel",
+		"Shockwave",
+		"Cannibalize",
 		"Bloodshot",
+		"Stone's Throw",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritBlue" 
 } 
 

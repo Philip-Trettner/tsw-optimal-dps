@@ -2,9 +2,9 @@
 	"Augments": [
 		"Fierce",
 		"Grievous",
-		"",
-		"",
-		"Focused",
+		"Inspiring",
+		"Accelerating",
+		"Quickening",
 		"Ferocious",
 		"Accurate",
 		"" 
@@ -17,33 +17,33 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 156,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
+			"Crit Power": 296,
+			"Free": false,
 			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Egon Pendant" 
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,10 +57,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -84,44 +84,49 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Chaos",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Short Controlled Bursts",
 		"Sudden Return" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 4,
+		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Call for Eris",
+		"Four Horsemen",
 		"Amor Fati",
 		"Steel Echo",
 		"Four Seasons",
 		"Binding Wounds",
-		"Balanced Blade",
+		"Suffering and Solace",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

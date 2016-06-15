@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Brutal",
-		"Focused",
-		"Invulnerable",
-		"Accurate",
+		"Ferocious",
+		"Inspiring",
 		"Quickening",
+		"Focused",
 		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -49,19 +49,19 @@
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 118,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -104,7 +104,7 @@
 		"Sudden Return" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
@@ -119,14 +119,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Call for Eris",
-		"Molten Steel",
-		"Full Momentum",
-		"Stone's Throw",
-		"Amor Fati",
 		"Eye of Pandemonium",
+		"Full Momentum",
+		"Amor Fati",
+		"Molten Steel",
+		"Pulling the Strings",
+		"Stone's Throw",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

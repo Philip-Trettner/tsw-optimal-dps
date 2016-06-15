@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Piercing",
-		"Grievous",
 		"Focused",
+		"Grievous",
+		"Piercing",
 		"Fierce",
 		"Accurate",
-		"Inspiring",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Cleaving" 
 		},
 		{
 			"AR": 0,
@@ -123,7 +123,7 @@
 		"Four Seasons",
 		"Dancing Blade",
 		"Three Round Burst",
-		"Sling Blade",
+		"Balanced Blade",
 		"Lock & Load",
 		"" 
 	],

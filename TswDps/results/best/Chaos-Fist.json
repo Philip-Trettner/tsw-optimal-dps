@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
+		"Brutal",
+		"Inspiring",
+		"Invulnerable",
+		"Accelerating",
 		"Grievous",
 		"Accurate",
-		"Inspiring",
-		"Ferocious",
-		"Curing",
-		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,8 +57,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
@@ -76,11 +76,11 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 203,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,19 +89,19 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree" 
 	],
 	"Potion": {
 		"CritPower": 100 
@@ -113,18 +113,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 3,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Call for Eris",
-		"Suffering and Solace",
+		"Four Horsemen",
+		"Reckless",
 		"Amor Fati",
 		"Eye of Pandemonium",
-		"Reckless",
 		"One-Two",
+		"Call for Eris",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

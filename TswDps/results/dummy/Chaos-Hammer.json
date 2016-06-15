@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
-		"",
 		"Focused",
-		"Grievous",
+		"Curing",
+		"Mercurial",
+		"Fierce",
 		"Accurate",
 		"Ferocious",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -66,12 +66,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Distortion" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,8 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,26 +103,30 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 3,
 		"minResourcesForRightConsumer": 4,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Full Momentum",
 		"Amor Fati",
+		"Full Momentum",
 		"Molten Steel",
-		"Call for Eris",
-		"Pulling the Strings",
 		"Shockwave",
+		"Stone's Throw",
+		"Four Horsemen",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

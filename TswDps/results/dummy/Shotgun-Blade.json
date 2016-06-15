@@ -2,22 +2,22 @@
 	"Augments": [
 		"Focused",
 		"Fierce",
-		"Accurate",
-		"",
-		"",
 		"Grievous",
+		"Accurate",
+		"Accelerating",
+		"Mercurial",
 		"Ferocious",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -30,8 +30,8 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,20 +47,20 @@
 			"Signet": "Violence" 
 		},
 		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
+		},
+		{
 			"AR": 664,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,10 +89,11 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
 		"Iron Maiden",
@@ -102,7 +103,10 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -119,9 +123,10 @@
 		"Steel Echo",
 		"Raging Bullet",
 		"Lock, Stock & Barrel",
-		"Four Seasons",
+		"Point Blank",
 		"Binding Wounds",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

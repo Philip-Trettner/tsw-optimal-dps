@@ -48,6 +48,7 @@ void debugRun()
      * * Randomize DABS more to reduce aliasing
      * * Fix four horsemen
      * * Third Degree
+     * * Ignite, different casttime
      *
      * later: afflictions + signet of corruption
      *
@@ -63,7 +64,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = !true;
+    const bool exploration = true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;
@@ -292,6 +293,7 @@ void explore(ExploreType type, double timeMult)
     auto resPath = pathOf(__FILE__) + "/results/";
     std::map<Weapon, std::map<Weapon, double>> w2w2dps;
     std::map<std::string, int> passiveCnt;
+    std::map<Rating, int> statSum;
     int buildCnt = 0;
     for (auto w1 : weapons)
         for (auto w2 : weapons)
@@ -325,7 +327,7 @@ void explore(ExploreType type, double timeMult)
             // optimize
             Optimizer o;
             o.excludeSkillsAndPassives = {
-              //  "Power Line" // DEBUG
+                // "Power Line" // DEBUG
             };
             o.timePerTest = (int)(o.timePerTest * timeMult);
             o.silent = true;
@@ -365,6 +367,20 @@ void explore(ExploreType type, double timeMult)
             ++buildCnt;
             for (auto const &p : builds[0].second.skills.passives)
                 passiveCnt[p.name]++;
+            {
+                auto s = builds[0].second.gear.gearStats() + builds[0].second.gear.pieces[Gear::WeaponLeft].stats;
+                statSum[Rating::Hit] += s.hitRating;
+                statSum[Rating::CritPower] += s.critPowerRating;
+                statSum[Rating::Crit] += s.critRating;
+                statSum[Rating::Pen] += s.penRating;
+            }
+            {
+                auto s = builds[0].second.gear.gearStats() + builds[0].second.gear.pieces[Gear::WeaponRight].stats;
+                statSum[Rating::Hit] += s.hitRating;
+                statSum[Rating::CritPower] += s.critPowerRating;
+                statSum[Rating::Crit] += s.critRating;
+                statSum[Rating::Pen] += s.penRating;
+            }
 
             // save
             {
@@ -398,6 +414,11 @@ void explore(ExploreType type, double timeMult)
     sort(begin(cnts), end(cnts));
     for (auto const &kvp : cnts)
         table << kvp.second << "," << -kvp.first << std::endl;
+
+    table << std::endl;
+    table << "Stats:" << std::endl;
+    for (auto const &kvp : statSum)
+        table << to_string(kvp.first) << "," << kvp.second / (2 * buildCnt) << std::endl;
 }
 
 int main(int argc, char *argv[])
@@ -434,9 +455,12 @@ int main(int argc, char *argv[])
     parser.addOption(oLog);
 
     // .. analysis
-    QCommandLineOption oAnalysis({"a", "analysis"},
-                                 "Instead of simulating, analyzes the dps impact of every part of the build.");
+    QCommandLineOption oAnalysis({ "a", "analysis" },
+        "Instead of simulating, analyzes the dps impact of every part of the build.");
     parser.addOption(oAnalysis);
+    QCommandLineOption oDumpAnalysis("dump-ana",
+        "Dumps the analysis to a file (or '.' for cmd). Implies -a.", "file");
+    parser.addOption(oDumpAnalysis);
 
     // .. fight scenario
     QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid' [default], 'burst', 'dummy', 'raid-melee', "
@@ -738,7 +762,7 @@ int main(int argc, char *argv[])
     }
 
     // .. analyzer
-    auto analyze = parser.isSet(oAnalysis) || parser.isSet(oBBCode);
+    auto analyze = parser.isSet(oAnalysis) || parser.isSet(oBBCode) || parser.isSet(oDumpAnalysis);
 
     // .. log
     auto loglevel = parser.value(oLog).toInt();
@@ -859,6 +883,25 @@ int main(int argc, char *argv[])
         auto atime = ticksFromTimeStr(parser.value(oAnaTime).toStdString());
         s.analyzeIndividualContribution(fightTime, atime, dmg);
         std::cout << std::endl;
+
+        // Analysis json dump
+        if (parser.isSet(oDumpAnalysis))
+        {
+            jsonxx::Object o;
+            for (auto const& kvp : dmg)
+                o << kvp.first << kvp.second;
+
+            auto fname = parser.value(oDumpAnalysis);
+            if (fname == ".")
+                std::cout << o.json() << std::endl;
+            else
+            {
+                std::ofstream file(fname.toStdString());
+                file << o.json();
+                std::cout << "Wrote build to '" << fname.toStdString() << "'" << std::endl;
+            }
+            std::cout << std::endl;
+        }
 
         // BB CODE GEN
         if (poss)

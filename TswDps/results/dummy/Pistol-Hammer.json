@@ -1,41 +1,23 @@
 {
 	"Augments": [
+		"Brutal",
+		"Mercurial",
+		"Fierce",
+		"Accurate",
 		"Focused",
 		"Ferocious",
-		"Accurate",
-		"",
-		"Brutal",
-		"Fierce",
-		"Grievous",
+		"Accelerating",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Sadism" 
-		},
-		{
-			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
@@ -47,21 +29,39 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -84,15 +84,16 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Kickback": "Kickback Pen on Crit (blue)",
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,26 +103,30 @@
 		"Sudden Return",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
+		"Bullet Ballet",
+		"Start & Finish",
+		"Stone's Throw",
 		"Molten Steel",
 		"Bone Breaker",
 		"Full Momentum",
-		"Eruption",
-		"Start & Finish",
-		"Shootout",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 

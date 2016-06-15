@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"",
 		"Focused",
-		"Fierce",
+		"Inspiring",
+		"Accelerating",
+		"Grievous",
 		"Accurate",
 		"",
 		"" 
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 156,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -89,20 +89,24 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Fury" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Fortunate Strike",
 		"Gnosis",
-		"Invasive Measures",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,14 +118,15 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Run Rampant",
-		"Call for Eris",
+		"Hair Trigger",
+		"Start & Finish",
 		"Amor Fati",
-		"Gun Crazy",
+		"Bullet Ballet",
 		"Pulling the Strings",
 		"Suffering and Solace",
 		"",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

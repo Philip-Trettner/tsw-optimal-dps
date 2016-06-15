@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"Focused",
-		"Curing",
+		"Invulnerable",
 		"Grievous",
 		"Ferocious",
+		"Focused",
 		"Fierce",
 		"Accurate",
 		"" 
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -39,29 +39,29 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 367,
+			"Hit": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 201,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Equilibrium" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,22 +89,22 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback Pen on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
+		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
-		"Lethality",
 		"One In The Chamber",
 		"Sudden Return",
+		"Third Degree",
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -114,7 +114,7 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 4,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -123,7 +123,7 @@
 		"Four Seasons",
 		"Dancing Blade",
 		"Start & Finish",
-		"Bond, Strong Bond",
+		"Big 45",
 		"Shootout",
 		"" 
 	],

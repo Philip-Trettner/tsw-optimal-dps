@@ -730,7 +730,7 @@ public:
         {
             auto s = skill("Ignition", SkillType::Builder);
             s.timeIn60th = 60;
-            s.casttimeIn60th = s.timeIn60th;
+            s.casttimeIn60th = 30;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
             s.subtype = SubType::Strike;

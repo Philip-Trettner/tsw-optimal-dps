@@ -1,11 +1,11 @@
 {
 	"Augments": [
+		"Brutal",
 		"Focused",
 		"Fierce",
-		"Inspiring",
-		"Brutal",
+		"Grievous",
+		"Mercurial",
 		"Accurate",
-		"Ferocious",
 		"Precise",
 		"" 
 	],
@@ -17,15 +17,15 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -48,39 +48,39 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Tomes" 
 		},
 		{
 			"AR": 664,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
+			"Hit": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Tomes" 
-		},
-		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -101,32 +101,32 @@
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Twist The Knife" 
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
-		"Start & Finish",
-		"Cannibalize",
-		"Bloodshot",
-		"Shootout",
 		"Bullet Ballet",
+		"Start & Finish",
+		"Bloodshot",
+		"Cannibalize",
+		"Shootout",
 		"Left Hand of Darkness",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimCritBlue" 
 } 
 

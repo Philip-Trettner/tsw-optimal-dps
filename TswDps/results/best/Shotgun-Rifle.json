@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
 		"Focused",
+		"Grievous",
 		"Piercing",
-		"Accurate",
+		"Mercurial",
 		"Inspiring",
-		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -39,10 +39,10 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 156,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -66,12 +66,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
-			"Signet": "Storms" 
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -101,14 +101,14 @@
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Hit": 100 
 	},
 	"Right Weapon": "Rifle",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -119,14 +119,14 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Lock, Stock & Barrel",
+		"Bombardment",
 		"Raging Bullet",
 		"Three Round Burst",
-		"Sure Shot",
+		"Lock, Stock & Barrel",
 		"Takedown",
-		"Bombardment",
+		"Sure Shot",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimAttackPurple" 
 } 
 

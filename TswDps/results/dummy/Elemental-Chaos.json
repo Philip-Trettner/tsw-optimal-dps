@@ -1,23 +1,23 @@
 {
 	"Augments": [
 		"Focused",
-		"",
 		"Fierce",
-		"",
+		"Inspiring",
 		"Brutal",
-		"Grievous",
 		"Accurate",
+		"Grievous",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
+			"Pen": 203,
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -76,52 +76,57 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		} 
 	],
-	"Left Weapon": 6,
+	"Kickback": "Kickback Pen on Pen (blue)",
+	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Invasive Measures",
-		"Live Wire",
+		"Iron Maiden",
 		"One In The Chamber",
-		"Short Controlled Bursts",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Power Line",
 		"Fire Manifestation",
 		"Amor Fati",
 		"Lightning Manifestation",
-		"Call for Eris",
+		"Prisoner of Fate",
 		"Four Horsemen",
+		"Pulling the Strings",
 		"" 
-	] 
+	],
+	"Stim": "StimPenBlue" 
 } 
 

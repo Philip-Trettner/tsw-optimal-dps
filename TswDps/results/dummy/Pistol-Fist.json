@@ -1,12 +1,12 @@
 {
 	"Augments": [
+		"Brutal",
+		"Curing",
 		"Fierce",
 		"Grievous",
 		"Focused",
-		"",
 		"Accurate",
-		"Brutal",
-		"",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,21 +47,21 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,17 +92,21 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Kickback": "Kickback Pen on Pen (blue)",
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Gnosis",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Thunderstruck" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,14 +118,15 @@
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Hair Trigger",
+		"Prey on the Weak",
+		"Reckless",
+		"Bullet Ballet",
+		"One-Two",
 		"Start & Finish",
-		"Tear Em Up",
 		"Wild at Heart",
 		"Shootout",
-		"See Red",
-		"Reckless",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

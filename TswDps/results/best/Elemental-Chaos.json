@@ -2,57 +2,57 @@
 	"Augments": [
 		"Focused",
 		"Brutal",
+		"Grievous",
+		"Ferocious",
+		"Quickening",
 		"Accurate",
 		"Fierce",
-		"Mercurial",
-		"Inspiring",
-		"Quickening",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
+			"Hit": 367,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 296,
-			"Free": false,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
-		},
-		{
-			"AR": 1033,
-			"Crit": 163,
-			"Crit Power": 156,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 183,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,15 +71,15 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
+			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
@@ -95,13 +95,13 @@
 	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
+		"Brawler",
 		"Fortunate Strike",
-		"Invasive Measures",
 		"Iron Maiden",
-		"Lethality",
+		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Thunderstruck" 
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -115,16 +115,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 3,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Run Rampant",
 		"Lightning Manifestation",
-		"Fire Manifestation",
-		"Call for Eris",
 		"Power Line",
+		"Fire Manifestation",
 		"Amor Fati",
-		"Chaotic Pull",
+		"Suffering and Solace",
+		"Flame Strike",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

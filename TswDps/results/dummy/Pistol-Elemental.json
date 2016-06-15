@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"Accurate",
-		"",
-		"Grievous",
 		"Focused",
+		"Salubrious",
 		"Piercing",
+		"Grievous",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -69,8 +69,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 236,
+			"Hit": 118,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,7 +92,8 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 8,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,14 +103,17 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 6,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 2,
 		"tryToConsumeOnBuffed": false 
 	},
@@ -118,10 +122,11 @@
 		"Start & Finish",
 		"Fire Manifestation",
 		"Lightning Manifestation",
-		"Power Line",
+		"Big 45",
+		"Bullet Ballet",
 		"Flame Strike",
-		"Combust",
 		"" 
-	] 
+	],
+	"Stim": "StimPenBlue" 
 } 
 

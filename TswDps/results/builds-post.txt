@@ -1,0 +1,36 @@
+Blood/Blade: https://gyazo.com/1e461ddcc8b3a19241c5b0b20c65db65 (Magic)
+Blood/Fist: https://gyazo.com/9cb24f2cb3b7b00f0b539cfdbbe42943 
+Blood/Hammer: https://gyazo.com/eccdf48e8d273275024908669b35e03c (Magic)
+Chaos/Blade: https://gyazo.com/e50bcb57bc7eea0b9d6ab7e20c1e9fda (Magic)
+Chaos/Blood: https://gyazo.com/145086e8b87cd2a57aa4c6641f375d65 (Ranged)
+Chaos/Fist: https://gyazo.com/e3deddc77acbf9f5e77526d2b113f385 (Ranged)
+Chaos/Hammer: https://gyazo.com/e4e7ba43d5644a4fcfc781750a911fed (Ranged)
+Blade/Elemental: https://gyazo.com/ec6bb25957dce58342c8557fdfa23e49 (Ranged)
+Blood/Elemental: https://gyazo.com/c9140f4eb0dfd55666f86ca09336faa0 (Ranged)
+Chaos/Elemental: https://gyazo.com/25632de6156acc7cf3615961fda05cd7 (Ranged)
+Fist/Elemental: https://gyazo.com/b42d14a76749d2b4a90e5af1989658bc (Ranged)
+Elemental/Hammer: https://gyazo.com/afd8ca79f280719e8e65d0153d7c3a96 (Ranged)
+Fist/Blade: https://gyazo.com/63009378545f4935b7b5f173f65f8819 (Magic)
+Hammer/Blade: https://gyazo.com/5a877c703004bb08551014aac5099edf (Magic)
+Fist/Hammer: https://gyazo.com/1afb88e60dc6bf6828c97c4fa3003de0 (Magic)
+Pistol/Blade: https://gyazo.com/07fb44b6d3abe4644f6c37ca96c89542 (Magic)
+Blood/Pistol: https://gyazo.com/f556a3ef1b8aaf137bf782bf6b2252d1 (Melee)
+Pistol/Chaos: https://gyazo.com/9fd912527a39d0032e69397e3f1dda94 (Ranged)
+Pistol/Elemental: https://gyazo.com/981ef6c6195d9b3fea936a31876e7044 (Ranged)
+Pistol/Fist: https://gyazo.com/04d4865f99ef6fc81584e0588b140b2a (Melee)
+Pistol/Hammer: https://gyazo.com/a8b93c2fc57c56288f7cf3b453a22167 
+Pistol/Rifle: https://gyazo.com/d94769280eae1fc8545e13bf5167ebfb (Melee)
+Rifle/Blade: https://gyazo.com/aed43fb1398d9d9384eff42343b1dcba (Magic)
+Blood/Rifle: https://gyazo.com/91b75941ae930fa9985c04c15a208a85 (Melee)
+Chaos/Rifle: https://gyazo.com/d778d91a378953d0752a816c957fd41f (Ranged)
+Rifle/Elemental: https://gyazo.com/9d774d5054e04e753c154364fccf18ec (Ranged)
+Fist/Rifle: https://gyazo.com/2d706b5d8e9361df97a38ce193bf5276 (Melee)
+Rifle/Hammer: https://gyazo.com/f68fc244e38c2b1a1873192edad41830 (Magic)
+Blade/Shotgun: https://gyazo.com/264f46ecc0e01e44496406487d5364e9 (Magic)
+Blood/Shotgun: https://gyazo.com/d160b9be9c4c4fa65e1cdecb9d3ae410 
+Chaos/Shotgun: https://gyazo.com/ddfd85921f607e0ca2fe55d8ffc8480b 
+Elemental/Shotgun: https://gyazo.com/1b3745df1394c6df1c8f3d192bc9794f (Ranged)
+Fist/Shotgun: https://gyazo.com/5bb138bd94a6776f717a5b784e760373 
+Hammer/Shotgun: https://gyazo.com/fbbcffec872de60b9fa3bccbbddf3251 
+Pistol/Shotgun: https://gyazo.com/90bbd64031cc5293f13793e8f4513149 
+Rifle/Shotgun: https://gyazo.com/c6ead7a0bb55c7fa84be2d99cb476a8a

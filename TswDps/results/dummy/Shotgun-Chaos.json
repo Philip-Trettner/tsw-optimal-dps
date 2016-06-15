@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
+		"Mercurial",
+		"Inspiring",
+		"Curing",
 		"Grievous",
-		"Fierce",
-		"",
-		"",
-		"Focused",
 		"Accurate",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,20 +39,20 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -89,10 +89,11 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Fortunate Strike",
 		"Gnosis",
@@ -102,7 +103,10 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 5,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
@@ -110,18 +114,19 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Call for Eris",
-		"Raging Bullet",
+		"Shotgun Wedding",
 		"Lock, Stock & Barrel",
 		"Amor Fati",
-		"Shotgun Wedding",
-		"Suffering and Solace",
+		"Four Horsemen",
+		"Pulling the Strings",
+		"Sure Shot",
 		"" 
-	] 
+	],
+	"Stim": "StimPenBlue" 
 } 
 

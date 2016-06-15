@@ -1,12 +1,12 @@
 {
 	"Augments": [
+		"Fierce",
 		"Brutal",
-		"Ferocious",
-		"Inspiring",
 		"Grievous",
 		"Focused",
-		"Piercing",
 		"Accurate",
+		"Ferocious",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -92,23 +92,23 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Rifle",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -119,14 +119,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
-		"Lock & Load",
 		"Three Round Burst",
+		"Bullet Ballet",
 		"Start & Finish",
 		"Fire in the Hole",
 		"Shootout",
+		"Lock & Load",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

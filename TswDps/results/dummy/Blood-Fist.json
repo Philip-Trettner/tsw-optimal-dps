@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"",
-		"Focused",
-		"Precise",
+		"Mercurial",
+		"Grievous",
 		"Accurate",
-		"",
+		"Ferocious",
+		"Invulnerable",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 201,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -92,7 +92,8 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Left Weapon": 4,
+	"Kickback": "Kickback Pen on Pen (purple)",
+	"Left Weapon": "Blood",
 	"Passives": [
 		"Fortunate Strike",
 		"Gnosis",
@@ -102,7 +103,10 @@
 		"One In The Chamber",
 		"Sudden Return" 
 	],
-	"Right Weapon": 2,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -118,10 +122,11 @@
 		"Tear Em Up",
 		"Reckless",
 		"Bloodshot",
-		"Left Hand of Darkness",
+		"Exsanguinate",
 		"See Red",
 		"Cannibalize",
 		"" 
-	] 
+	],
+	"Stim": "StimPenBlue" 
 } 
 

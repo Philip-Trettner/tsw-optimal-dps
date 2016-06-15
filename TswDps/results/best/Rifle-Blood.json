@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Focused",
 		"Fierce",
+		"Focused",
 		"Accurate",
 		"Mercurial",
+		"Curing",
 		"Grievous",
-		"Accelerating",
 		"" 
 	],
 	"Gear": [
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,16 +89,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Rifle",
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return" 
@@ -108,13 +108,13 @@
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 5,
+		"minResourcesForLeftConsumer": 3,
+		"minResourcesForRightConsumer": 4,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -123,8 +123,8 @@
 		"Bloodshot",
 		"Left Hand of Darkness",
 		"Lock & Load",
-		"Three Round Burst",
 		"Cannibalize",
+		"Three Round Burst",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

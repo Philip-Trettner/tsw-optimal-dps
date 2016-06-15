@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Ferocious",
-		"",
 		"Piercing",
-		"",
+		"Curing",
+		"Focused",
+		"Mercurial",
 		"Accurate",
-		"Fierce",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,8 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 4,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Blood",
 	"Passives": [
 		"Brawler",
 		"Elemental Force",
@@ -102,7 +103,10 @@
 		"One In The Chamber",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 3,
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
@@ -115,13 +119,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Molten Steel",
-		"Full Momentum",
 		"Shockwave",
 		"Cannibalize",
+		"Molten Steel",
+		"Full Momentum",
 		"Bone Breaker",
 		"Bloodshot",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

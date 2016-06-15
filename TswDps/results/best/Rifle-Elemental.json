@@ -1,23 +1,23 @@
 {
 	"Augments": [
-		"Brutal",
-		"Accurate",
-		"Focused",
 		"Fierce",
-		"Piercing",
 		"Inspiring",
+		"Accelerating",
+		"Accurate",
 		"Grievous",
+		"Ferocious",
+		"Focused",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -66,45 +66,45 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
-			"Signet": "Issue 1.5%" 
+			"Pen": 0,
+			"Signet": "Execution" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Abuse" 
+			"Pen": 407,
+			"Signet": "Sadism" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Rifle",
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
@@ -115,16 +115,16 @@
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Safety Off",
+		"Anima Charge",
+		"Lock & Load",
 		"Lightning Manifestation",
 		"Fire Manifestation",
-		"Three Round Burst",
 		"Power Line",
-		"Anima Charge",
-		"Flame Strike",
+		"Fire in the Hole",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

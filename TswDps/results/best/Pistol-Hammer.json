@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Ferocious",
-		"Inspiring",
-		"Mercurial",
+		"Accelerating",
 		"Grievous",
-		"Fierce",
 		"Accurate",
+		"Mercurial",
+		"Inspiring",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -48,21 +48,21 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 118,
 			"Pen": 0,
-			"Signet": "Shattering" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback Pen on Pen (purple)",
+	"Kickback": "Kickback Crit on Pen (purple)",
 	"Left Weapon": "Pistol",
 	"Passives": [
 		"Elemental Force",
@@ -101,32 +101,32 @@
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
-		"considerBuffWC": true,
+		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 2,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Shockwave",
-		"Full Momentum",
-		"Stone's Throw",
+		"Dirty Tricks",
 		"Molten Steel",
+		"Bone Breaker",
+		"Stone's Throw",
+		"Full Momentum",
 		"Start & Finish",
-		"Shootout",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

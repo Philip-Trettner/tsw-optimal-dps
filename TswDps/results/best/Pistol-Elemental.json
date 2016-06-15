@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Grievous",
-		"Fierce",
+		"Brutal",
 		"Focused",
-		"Piercing",
+		"Accelerating",
 		"Accurate",
 		"Ferocious",
-		"Inspiring",
+		"Grievous",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -17,15 +17,15 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 156,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -48,30 +48,39 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -81,15 +90,6 @@
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -101,32 +101,32 @@
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Twist The Knife" 
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 3,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Power Line",
-		"Fire Manifestation",
-		"Start & Finish",
-		"Lightning Manifestation",
-		"Flame Strike",
 		"Anima Charge",
+		"Lightning Manifestation",
+		"Fire Manifestation",
+		"Flame Strike",
+		"Start & Finish",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Invulnerable",
-		"Focused",
-		"Accurate",
-		"Fierce",
 		"Inspiring",
 		"Grievous",
+		"Fierce",
+		"Mercurial",
+		"Focused",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Sadism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -92,16 +92,16 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Passives": [
 		"Elemental Force",
-		"Ferocity",
 		"Fortunate Strike",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -119,12 +119,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Tear Em Up",
-		"Raging Bullet",
-		"Sure Shot",
 		"Lock, Stock & Barrel",
+		"Tear Em Up",
 		"Bombardment",
+		"Reckless",
+		"Sure Shot",
+		"Raging Bullet",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

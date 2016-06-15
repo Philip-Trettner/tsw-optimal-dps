@@ -60,6 +60,12 @@ public: // settings
 	// if true, builder is not changed
 	bool fixedBuilder = false;
 
+    // if true, allows for woodcutters usage
+    bool allowWoodcutters = true;
+
+    // if true, also allows split ql11
+    bool allowSplitGlyphs = false;
+
     /// free ratings used for stat optimization
     std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit});
 

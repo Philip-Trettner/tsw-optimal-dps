@@ -2,11 +2,11 @@
 	"Augments": [
 		"Fierce",
 		"Grievous",
-		"Quickening",
-		"Piercing",
 		"Ferocious",
-		"Curing",
+		"Focused",
+		"Inspiring",
 		"Accurate",
+		"Quickening",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Equilibrium" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -120,11 +120,11 @@
 	"Skills": [
 		"Grand Slam",
 		"Bombardment",
-		"Lock, Stock & Barrel",
-		"Raging Bullet",
 		"Molten Steel",
-		"Full Momentum",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
 		"Sure Shot",
+		"Full Momentum",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

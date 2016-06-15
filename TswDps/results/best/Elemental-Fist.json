@@ -1,23 +1,23 @@
 {
 	"Augments": [
 		"Fierce",
+		"Quickening",
 		"Focused",
 		"Accurate",
 		"Invulnerable",
-		"Curing",
-		"Inspiring",
 		"Grievous",
+		"",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -42,18 +42,18 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 367,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 201,
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 0,
@@ -80,28 +80,28 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
+			"Pen": 203,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
-		"Gnosis",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return" 
+		"Sudden Return",
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -123,8 +123,8 @@
 		"Fire Manifestation",
 		"Power Line",
 		"Reckless",
-		"Anima Charge",
 		"Tear Em Up",
+		"",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

@@ -4,9 +4,9 @@
 		"Focused",
 		"Inspiring",
 		"Ferocious",
-		"Grievous",
-		"Mercurial",
 		"Accurate",
+		"Mercurial",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -40,10 +40,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -75,20 +75,20 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -109,22 +109,22 @@
 	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Run Rampant",
-		"Call for Eris",
+		"Four Horsemen",
 		"Lock, Stock & Barrel",
 		"Bombardment",
-		"Raging Bullet",
+		"Takedown",
 		"Amor Fati",
-		"Sure Shot",
+		"Raging Bullet",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

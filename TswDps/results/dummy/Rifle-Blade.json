@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Focused",
 		"Brutal",
-		"",
-		"Ferocious",
-		"",
+		"Focused",
+		"Mercurial",
+		"Grievous",
+		"Accelerating",
 		"Accurate",
 		"Fierce",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -31,7 +31,7 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
+			"Crit Power": 296,
 			"Free": false,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,21 +39,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,8 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 7,
+	"Kickback": "Kickback Pen on Pen (purple)",
+	"Left Weapon": "Rifle",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,7 +103,10 @@
 		"Sudden Return",
 		"Thunderstruck" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,14 +118,15 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Safety Off",
+		"Grass Cutter",
 		"Three Round Burst",
 		"Lock & Load",
 		"Shellshocker",
 		"Steel Echo",
-		"Sling Blade",
+		"Fire in the Hole",
 		"Dancing Blade",
 		"" 
-	] 
+	],
+	"Stim": "StimCritPurple" 
 } 
 

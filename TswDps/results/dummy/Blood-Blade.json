@@ -1,37 +1,37 @@
 {
 	"Augments": [
 		"Fierce",
-		"",
-		"Grievous",
-		"Accurate",
+		"Inspiring",
 		"Ferocious",
+		"Accurate",
+		"Mercurial",
 		"Focused",
-		"Brutal",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,10 +39,10 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -57,29 +57,29 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 201,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
+			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
@@ -92,7 +92,8 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 4,
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Blood",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
@@ -102,9 +103,12 @@
 		"One In The Chamber",
 		"Twist The Knife" 
 	],
-	"Right Weapon": 1,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -122,6 +126,7 @@
 		"Bloodshot",
 		"Binding Wounds",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
 

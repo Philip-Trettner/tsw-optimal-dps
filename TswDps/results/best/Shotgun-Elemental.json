@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Focused",
-		"Accurate",
-		"Inspiring",
-		"Accelerating",
-		"Fierce",
+		"Grievous",
 		"Ferocious",
+		"Accelerating",
+		"Inspiring",
+		"Focused",
+		"Invulnerable",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -21,17 +21,17 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 313,
+			"Crit": 327,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
@@ -101,7 +101,7 @@
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -109,7 +109,7 @@
 	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -118,15 +118,15 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Single Barrel",
+		"Shock",
+		"Raging Bullet",
+		"Power Line",
 		"Fire Manifestation",
 		"Lightning Manifestation",
 		"Anima Charge",
-		"Power Line",
-		"Sure Shot",
 		"Flame Strike",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

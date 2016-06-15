@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Fierce",
-		"Grievous",
 		"Focused",
-		"",
+		"Ferocious",
 		"Accurate",
-		"",
+		"Invulnerable",
+		"Piercing",
+		"Curing",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
@@ -92,19 +92,23 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Left Weapon": 5,
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Chaos",
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
+		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Twist The Knife" 
+		"Sudden Return" 
 	],
-	"Right Weapon": 4,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blood",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -116,12 +120,13 @@
 	"Skills": [
 		"Bloodline",
 		"Bloodshot",
-		"Call for Eris",
 		"Cardiac Arrest",
-		"Amor Fati",
 		"Four Horsemen",
+		"Amor Fati",
+		"Call for Eris",
 		"Cannibalize",
 		"" 
-	] 
+	],
+	"Stim": "StimPenPurple" 
 } 
 

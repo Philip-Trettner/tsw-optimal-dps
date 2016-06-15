@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Accurate",
-		"Ferocious",
-		"Fierce",
-		"Grievous",
 		"Brutal",
-		"",
+		"Grievous",
+		"Fierce",
+		"Accurate",
+		"Inspiring",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -17,14 +17,14 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,20 +89,24 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		} 
 	],
-	"Left Weapon": 9,
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Shotgun",
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Twist The Knife",
-		"Wrecking Crew" 
+		"Twist The Knife" 
 	],
-	"Right Weapon": 6,
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Elemental",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
@@ -114,14 +118,15 @@
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Ignition",
+		"Electrical Bolt",
 		"Lightning Manifestation",
 		"Fire Manifestation",
 		"Raging Bullet",
-		"Power Line",
 		"Flame Strike",
 		"Anima Charge",
+		"Shotgun Wedding",
 		"" 
-	] 
+	],
+	"Stim": "StimCritBlue" 
 } 
 
