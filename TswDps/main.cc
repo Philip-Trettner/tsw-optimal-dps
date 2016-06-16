@@ -23,6 +23,7 @@
 #include "Simulation.hh"
 #include "SkillTable.hh"
 #include "Skills.hh"
+#include "Scenario.hh"
 
 #define DEPLOY 0
 
@@ -554,6 +555,7 @@ int main(int argc, char *argv[])
     Simulation &s = o.refSim;
     int fightTime = ticksFromTimeStr("20s");
     int totalTime = fightTime;
+    // TODO: use Scenario!
 
     std::string settingName = "Unknown";
 
@@ -714,15 +716,16 @@ int main(int argc, char *argv[])
     }
     else if (std::ifstream(scen.toStdString()).good())
     {
+        using namespace jsonxx;
         std::ifstream file(buildName.toStdString());
-        jsonxx::Object o;
+        Object o;
         o.parse(file);
         s.fightFromJson(o);
 
         fightTime = ticksFromJsonObj(o, "Fight Time");
         totalTime = ticksFromJsonObj(o, "Total Time");
 
-        settingName = scen.toStdString();
+        settingName = o.get<String>("Name", scen.toStdString());
     }
     else
     {

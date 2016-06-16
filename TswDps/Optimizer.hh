@@ -64,7 +64,7 @@ public: // settings
     bool allowWoodcutters = true;
 
     // if true, also allows split ql11
-    bool allowSplitGlyphs = false;
+    bool allowSplitGlyphs = true;
 
     /// free ratings used for stat optimization
     std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit});

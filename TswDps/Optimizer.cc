@@ -541,7 +541,10 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                     }
                 }
                 else
+                {
                     b.gear.pieces[idx].free(randomElement(freeRatings));
+                    changed = true;
+                }
             }
             break;
         case BuildChange::Augment:

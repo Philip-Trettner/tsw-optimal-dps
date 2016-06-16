@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Brutal",
-		"",
-		"Fierce",
+		"Piercing",
+		"Curing",
+		"Inspiring",
 		"Ferocious",
-		"Focused",
+		"Grievous",
 		"Precise",
 		"Accurate",
 		"" 
@@ -12,30 +12,30 @@
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Abuse" 
 		},
 		{
-			"AR": 1033,
+			"AR": 0,
 			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Violence" 
+			"Signet": "Coney Island Band" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 313,
-			"Free": false,
+			"Crit Power": 296,
+			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Woodcutters Wrath" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
@@ -53,7 +53,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 664,
@@ -92,18 +92,19 @@
 			"Signet": "Aggression" 
 		} 
 	],
+	"Kickback": "Kickback Crit on Pen (purple)",
 	"Left Weapon": "Fist",
 	"Passives": [
-		"Brawler",
 		"Fortunate Strike",
 		"Invasive Measures",
-		"Lethality",
+		"Iron Maiden",
 		"One In The Chamber",
 		"Sudden Return",
-		"Thunderstruck" 
+		"Thunderstruck",
+		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -112,9 +113,9 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"minResourcesForLeftConsumer": 4,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
@@ -122,9 +123,9 @@
 		"Steel Echo",
 		"Four Seasons",
 		"Dancing Blade",
-		"Balanced Blade",
-		"Binding Wounds",
+		"One-Two",
+		"Wild at Heart",
 		"" 
-	] 
+	],
+	"Stim": "StimAttackPurple" 
 } 
-
