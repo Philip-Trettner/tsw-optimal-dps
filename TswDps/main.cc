@@ -426,8 +426,10 @@ int main(int argc, char *argv[])
 {
 #if DEPLOY
     SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
+    SkillTable::loadVDMTable("Abilities-VDM.tsv");
 #else
     SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
+    SkillTable::loadVDMTable(pathOf(__FILE__) + "/Abilities-VDM.tsv");
 #endif
 
     QCoreApplication app(argc, argv);
@@ -553,12 +555,10 @@ int main(int argc, char *argv[])
 
     Optimizer o;
     Simulation &s = o.refSim;
-    int fightTime = ticksFromTimeStr("20s");
-    int totalTime = fightTime;
-    // TODO: use Scenario!
-
-    std::string settingName = "Unknown";
-
+    Scenario scenario;
+    scenario.fightTimeIn60th = ticksFromTimeStr("20s");;
+    scenario.totalTimeIn60th = scenario.fightTimeIn60th;
+    
     // .. debug only
     if (parser.isSet(oDebug))
     {
@@ -658,17 +658,17 @@ int main(int argc, char *argv[])
     std::cout << std::endl;
     if (scen.toLower() == "raid")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
-        settingName = "Raid/Dungeon Setting";
+        scenario.name = "Raid/Dungeon Setting";
     }
     else if (scen.toLower() == "burst")
     {
         fightTime = totalTime = ticksFromTimeStr("20s");
         s.enemyInfo.allVulnerabilities = true;
-        settingName = "Burst Fight";
+        scenario.name = "Burst Fight";
     }
     else if (scen.toLower() == "budget")
     {
@@ -676,7 +676,7 @@ int main(int argc, char *argv[])
         totalTime = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
-        settingName = "Raid/Dungeon Setting, .9.5 only, no Woodcutters, no NM Raid Drops";
+        scenario.name = "Raid/Dungeon Setting, .9.5 only, no Woodcutters, no NM Raid Drops";
     }
     else if (scen.toLower() == "dummy")
     {
@@ -694,7 +694,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Melee;
-        settingName = "Raid/Dungeon Setting with Melee Vulnerability";
+        scenario.name = "Raid/Dungeon Setting with Melee Vulnerability";
     }
     else if (scen.toLower() == "raid-ranged")
     {
@@ -703,7 +703,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Ranged;
-        settingName = "Raid/Dungeon Setting with Ranged Vulnerability";
+        scenario.name = "Raid/Dungeon Setting with Ranged Vulnerability";
     }
     else if (scen.toLower() == "raid-magic")
     {
@@ -712,7 +712,7 @@ int main(int argc, char *argv[])
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Magic;
-        settingName = "Raid/Dungeon Setting with Magic Vulnerability";
+        scenario.name = "Raid/Dungeon Setting with Magic Vulnerability";
     }
     else if (std::ifstream(scen.toStdString()).good())
     {
@@ -780,6 +780,9 @@ int main(int argc, char *argv[])
         log.logs.push_back(&vlog);
     s.log = loglevel <= 0 ? nullptr : &log;
 
+    // apply scen
+    scenario.apply(s, o);
+
     // ==========================================================================
     // print info
 
@@ -804,7 +807,6 @@ int main(int argc, char *argv[])
 
     if (optimization)
     {
-        o.timePerFight = fightTime;
         o.timePerTest = optTime;
         o.run(optimizerRounds);
 

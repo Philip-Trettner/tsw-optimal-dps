@@ -1,6 +1,8 @@
 #pragma once
 
 #include "common.hh"
+#include "Simulation.hh"
+#include  "Optimizer.hh"
 
 struct Scenario
 {
@@ -25,5 +27,11 @@ struct Scenario
         o << "Fight Time" << toTimeStr(fightTimeIn60th);
         o << "Total Time" << toTimeStr(totalTimeIn60th);
         return o;
+    }
+
+    void apply(Simulation& s, Optimizer& o) const
+    {
+        o.timePerFight = fightTimeIn60th;
+        
     }
 };
