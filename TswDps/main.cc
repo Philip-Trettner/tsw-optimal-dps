@@ -711,6 +711,7 @@ int main(int argc, char *argv[])
         s.lowVarianceMode = true;
         o.allowWoodcutters = false;
         o.usePurpleStims = false;
+        o.useQL11Glyphs = false;
         o.defaultQuality = Gear::TalismanQuality::QL10_9;
         o.raidQuality = Gear::TalismanQuality::QL10_4;
         scenario.name = "Raid/Dungeon Setting (.9.5 only, no Woodcutters, no NM raid drops, no Flappy drops)";
@@ -887,7 +888,7 @@ int main(int argc, char *argv[])
                     // start build
                     Build b;
                     b.rotation = DefaultRotation::create();
-                    b.gear.loadStandardDpsGear(o.defaultQuality);
+                    b.gear.loadEmptyDpsGear(o.defaultQuality);
                     b.gear.leftWeapon = w1;
                     b.gear.rightWeapon = w2;
                     // or continue prev best
