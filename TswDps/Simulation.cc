@@ -252,6 +252,7 @@ void Simulation::simulate(int totalTimeIn60th)
     rotation->reset();
     currentTime = 0;
     kickbackTime = 0;
+    currentWeapon = -1;
     if (buffAt >= INF_TIME)
         dabsTime = INF_TIME;
     else 
@@ -1458,7 +1459,7 @@ void Simulation::advanceTime(int timeIn60th)
         }
         if (dabsTime < delta)
             delta = dabsTime;
-        assert(delta > 0);
+        // assert(delta > 0); CAN happend due to mercurials
 
         // actually advance time
         currentTime += delta;

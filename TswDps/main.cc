@@ -6,6 +6,7 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QCoreApplication>
+#include <QDir>
 
 #include <gtest/gtest.h>
 
@@ -46,10 +47,9 @@ void debugRun()
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * .5 glyphs
      * * "Budget" raid scenario
-     * * Randomize DABS more to reduce aliasing
-     * * Fix four horsemen
-     * * Third Degree
+     * * First blood
      * * Ignite, different casttime
+     * * VDM
      *
      * later: afflictions + signet of corruption
      *
@@ -485,10 +485,14 @@ int main(int argc, char *argv[])
     parser.addOption(oAnaTime);
 
     // .. optimizer
-    QCommandLineOption oOptimize({"o", "optimize"}, "Optimizes the DPS of the given build for a given number of rounds "
-                                                    "(settings are included in the fight scenario)",
-                                 "rounds");
+    QCommandLineOption oOptimize({ "o", "optimize" }, "Optimizes the DPS of the given build for a given number of rounds "
+        "(settings are included in the fight scenario)",
+        "rounds");
     parser.addOption(oOptimize);
+
+    // .. explorer
+    QCommandLineOption oExplore({ "e", "explore" }, "Instead of opening a build, opens an explore json and optimizes builds for various weapon combinations.");
+    parser.addOption(oExplore);
 
     // .. dump build at end
     QCommandLineOption oDumpBuild(
@@ -558,7 +562,7 @@ int main(int argc, char *argv[])
     Scenario scenario;
     scenario.fightTimeIn60th = ticksFromTimeStr("20s");;
     scenario.totalTimeIn60th = scenario.fightTimeIn60th;
-    
+        
     // .. debug only
     if (parser.isSet(oDebug))
     {
@@ -582,78 +586,105 @@ int main(int argc, char *argv[])
         parser.showHelp(-1);
     }
 
+    // .. explore
+    bool explore = parser.isSet(oExplore);
+
     // .. build
     auto buildName = args[0];
     auto buildFile = buildName;
     auto buildIsFile = false;
     Build b;
-    b.gear.loadEmptyDpsGear();              // for weapons and base stats
-    b.rotation = DefaultRotation::create(); // default rot
-    if (parser.isSet(oStart) && !std::ifstream(buildName.toStdString()).good())
+    if (!explore) 
     {
-        buildName = parser.value(oStart);
-        buildIsFile = true;
-        std::cout << "Using start build " << buildName.toStdString() << std::endl;
-    }
-    // .. .. from weapon+weapon
-    if (buildName.contains('+') && !buildName.endsWith(".json"))
-    {
-        Weapon w1 = Weapon::None, w2 = Weapon::None;
-        auto parts = buildName.split('+');
-        auto valid = true;
-        if (parts.length() != 2)
-            valid = false;
+        b.gear.loadEmptyDpsGear();              // for weapons and base stats
+        b.rotation = DefaultRotation::create(); // default rot
+        if (parser.isSet(oStart) && !std::ifstream(buildName.toStdString()).good())
+        {
+            buildName = parser.value(oStart);
+            buildIsFile = true;
+            std::cout << "Using start build " << buildName.toStdString() << std::endl;
+        }
+        // .. .. from weapon+weapon
+        if (buildName.contains('+') && !buildName.endsWith(".json"))
+        {
+            Weapon w1 = Weapon::None, w2 = Weapon::None;
+            auto parts = buildName.split('+');
+            auto valid = true;
+            if (parts.length() != 2)
+                valid = false;
+            else
+            {
+                w1 = parseWeapon(parts[0].toStdString());
+                w2 = parseWeapon(parts[1].toStdString());
+
+                if (w1 == Weapon::None || w2 == Weapon::None || w1 == w2)
+                    valid = false;
+            }
+
+            if (!valid)
+            {
+                std::cerr << "Invalid weapon name/combination '" << buildName << "'" << std::endl;
+                std::cerr << std::endl;
+                std::cerr << "Weapons must be different." << std::endl;
+                std::cerr << std::endl;
+                std::cerr << "Weapon name must be in:" << std::endl;
+                std::cerr << "  Ranged: Pistol, Shotgun, Rifle" << std::endl;
+                std::cerr << "  Melee:  Blade, Hammer, Fist" << std::endl;
+                std::cerr << "  Magic:  Blood, Chaos, Elemental" << std::endl;
+                std::cerr << std::endl;
+                parser.showHelp(-1);
+            }
+            b.gear.leftWeapon = w1;
+            b.gear.rightWeapon = w2;
+
+            // get at least one builder
+            for (auto const &s : Skills::all())
+                if (s.weapon == w1 || s.weapon == w2)
+                    if (s.skilltype == SkillType::Builder)
+                    {
+                        b.skills.skills[0] = s;
+                        break;
+                    }
+        }
+        else if (std::ifstream(buildName.toStdString()).good())
+        {
+            std::ifstream file(buildName.toStdString());
+            jsonxx::Object o;
+            o.parse(file);
+            b.fromJson(o);
+            buildIsFile = true;
+        }
         else
         {
-            w1 = parseWeapon(parts[0].toStdString());
-            w2 = parseWeapon(parts[1].toStdString());
-
-            if (w1 == Weapon::None || w2 == Weapon::None || w1 == w2)
-                valid = false;
-        }
-
-        if (!valid)
-        {
-            std::cerr << "Invalid weapon name/combination '" << buildName << "'" << std::endl;
-            std::cerr << std::endl;
-            std::cerr << "Weapons must be different." << std::endl;
-            std::cerr << std::endl;
-            std::cerr << "Weapon name must be in:" << std::endl;
-            std::cerr << "  Ranged: Pistol, Shotgun, Rifle" << std::endl;
-            std::cerr << "  Melee:  Blade, Hammer, Fist" << std::endl;
-            std::cerr << "  Magic:  Blood, Chaos, Elemental" << std::endl;
+            std::cerr << "Could not open file " << buildName << std::endl;
             std::cerr << std::endl;
             parser.showHelp(-1);
         }
-        b.gear.leftWeapon = w1;
-        b.gear.rightWeapon = w2;
+    }
+    
+    // .. explore
+    auto scen = parser.value(oFight);
+    jsonxx::Object expl;
+    std::string explFile;
+    if (explore) 
+    {
+        explFile = buildName.toStdString();
+        if (!std::ifstream(explFile).good())
+        {
+            std::cout << "Cannot open " << buildName.toStdString() << std::endl;
+            std::cout << std::endl;
+            parser.showHelp(-1);
+        }
 
-        // get at least one builder
-        for (auto const &s : Skills::all())
-            if (s.weapon == w1 || s.weapon == w2)
-                if (s.skilltype == SkillType::Builder)
-                {
-                    b.skills.skills[0] = s;
-                    break;
-                }
-    }
-    else if (std::ifstream(buildName.toStdString()).good())
-    {
+        // load json
         std::ifstream file(buildName.toStdString());
-        jsonxx::Object o;
-        o.parse(file);
-        b.fromJson(o);
-        buildIsFile = true;
-    }
-    else
-    {
-        std::cerr << "Could not open file " << buildName << std::endl;
-        std::cerr << std::endl;
-        parser.showHelp(-1);
+        expl.parse(file);
+
+        // load scenario
+        scen = QString::fromStdString(expl.get<string>("Scenario"));
     }
 
     // .. scenario
-    auto scen = parser.value(oFight);
     std::cout << "Fight Scenario: " << scen.toStdString() << std::endl;
     std::cout << std::endl;
     if (scen.toLower() == "raid")
@@ -666,31 +697,32 @@ int main(int argc, char *argv[])
     }
     else if (scen.toLower() == "burst")
     {
-        fightTime = totalTime = ticksFromTimeStr("20s");
+        scenario.fightTimeIn60th = ticksFromTimeStr("20s");
+        scenario.totalTimeIn60th = ticksFromTimeStr("20s");
         s.enemyInfo.allVulnerabilities = true;
         scenario.name = "Burst Fight";
     }
     else if (scen.toLower() == "budget")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         scenario.name = "Raid/Dungeon Setting, .9.5 only, no Woodcutters, no NM Raid Drops";
     }
     else if (scen.toLower() == "dummy")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.buffAt = INF_TIME;
         s.enemyInfo.dummySetting();
         s.lowVarianceMode = true;
-        settingName = "Testchamber Dummies (sustained)";
+        scenario.name = "Testchamber Dummies (sustained)";
     }
     else if (scen.toLower() == "raid-melee")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Melee;
@@ -698,8 +730,8 @@ int main(int argc, char *argv[])
     }
     else if (scen.toLower() == "raid-ranged")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Ranged;
@@ -707,8 +739,8 @@ int main(int argc, char *argv[])
     }
     else if (scen.toLower() == "raid-magic")
     {
-        fightTime = ticksFromTimeStr("2.5m");
-        totalTime = ticksFromTimeStr("48h");
+        scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
+        scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
         o.forceVulnerability = DmgType::Magic;
@@ -720,12 +752,9 @@ int main(int argc, char *argv[])
         std::ifstream file(buildName.toStdString());
         Object o;
         o.parse(file);
-        s.fightFromJson(o);
-
-        fightTime = ticksFromJsonObj(o, "Fight Time");
-        totalTime = ticksFromJsonObj(o, "Total Time");
-
-        settingName = o.get<String>("Name", scen.toStdString());
+        scenario.loadFromJson(o, scen.toStdString());
+        if (o.has<Object>("Fight"))
+            s.fightFromJson(o.get<Object>("Fight"));
     }
     else
     {
@@ -736,9 +765,9 @@ int main(int argc, char *argv[])
 
     // .. combat time
     if (parser.isSet(oTime))
-        totalTime = ticksFromTimeStr(parser.value(oTime).toStdString());
+        scenario.totalTimeIn60th = ticksFromTimeStr(parser.value(oTime).toStdString());
     if (parser.isSet(oFightTime))
-        fightTime = ticksFromTimeStr(parser.value(oFightTime).toStdString());
+        scenario.fightTimeIn60th = ticksFromTimeStr(parser.value(oFightTime).toStdString());
 
     // .. optimizer
     auto optimizerRounds = 0;
@@ -786,26 +815,165 @@ int main(int argc, char *argv[])
     // ==========================================================================
     // print info
 
-    // initialize sim
-    s.loadBuild(b);
-    s.init();
-
-    // .. print build
-    std::cout << "(Initial) Build:" << std::endl;
-    b.shortDump();
-    std::cout << std::endl;
-
-    // .. skill stats
-    if (parser.isSet(oSkillStats))
+    if (!explore) 
     {
-        s.dumpSkillStats();
+        // initialize sim
+        s.loadBuild(b);
+        s.init();
+
+        // .. print build
+        std::cout << "(Initial) Build:" << std::endl;
+        b.shortDump();
         std::cout << std::endl;
+
+        // .. skill stats
+        if (parser.isSet(oSkillStats))
+        {
+            s.dumpSkillStats();
+            std::cout << std::endl;
+        }
     }
 
     // ==========================================================================
     // do simulation
 
-    if (optimization)
+    if (explore)
+    {
+        using namespace jsonxx;
+
+        while (true)
+        {
+            auto builds = expl.get<Object>("Builds", {});
+
+            // TODO
+            std::cout << "Exploring '" << explFile << "'" << std::endl;
+
+            auto weapons = { Weapon::Blade,     Weapon::Fist,  Weapon::Hammer, Weapon::Blood,  Weapon::Chaos,
+                Weapon::Elemental, Weapon::Rifle, Weapon::Pistol, Weapon::Shotgun };
+            auto resPath = explFile + ".builds";
+            QDir(QString::fromStdString(resPath)).mkpath(".");
+            std::map<Weapon, std::map<Weapon, double>> w2w2dps;
+            std::map<std::string, int> passiveCnt;
+            std::map<Rating, int> statSum;
+            int buildCnt = 0;
+            for (auto w1 : weapons)
+                for (auto w2 : weapons)
+                {
+                    if (w2 >= w1)
+                        break;
+
+                    auto scombi = to_string(w1) + "-" + to_string(w2);
+                    auto bestpath = resPath + "/" + scombi + ".json";
+
+                    auto winfo = builds.get<Object>(scombi, {});
+                    auto gens = (int)winfo.get<Number>("Generations", 0);
+
+                    // start build
+                    Build b;
+                    b.rotation = DefaultRotation::create();
+                    b.gear.loadStandardDpsGear();
+                    b.gear.leftWeapon = w1;
+                    b.gear.rightWeapon = w2;
+                    // or continue prev best
+                    bool cont = false;
+                    {
+                        std::ifstream bfile(bestpath);
+                        if (bfile.good())
+                        {
+                            jsonxx::Object o;
+                            if (o.parse(bfile))
+                            {
+                                b.fromJson(o);
+                                cont = true;
+                            }
+                        }
+                    }
+
+                    // prepare sim
+                    Optimizer tmpO = o;
+                    tmpO.timePerTest = (int)fmin(48 * 3600 * 60., 2 * 60 * 60 * pow(2.0, gens / 300.));
+                    tmpO.silent = true;
+                    auto& s = tmpO.refSim;
+                    s.loadBuild(b);
+
+                    // run optimization
+                    auto newgens = (int)(100 * 2 * 60 * 60. / tmpO.timePerTest);
+                    if (newgens < 1)
+                        newgens = 1;
+                    gens += newgens;
+                    std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << " [" << gens << " gens, " << tmpO.timePerTest / (60 * 3600.f) << " hours per test]" << std::flush;
+                    tmpO.run(newgens);
+
+                    auto const &topbuilds = tmpO.getTopBuilds();
+                    if (topbuilds.empty())
+                    {
+                        std::cout << " ... skipped." << std::endl;
+                        continue;
+                    }
+                    auto maxDPS = topbuilds[0].first;
+                    auto maxBuild = topbuilds[0].second;
+                    w2w2dps[w1][w2] = maxDPS;
+                    w2w2dps[w2][w1] = maxDPS;
+
+                    std::cout << " ... " << maxDPS << std::endl;
+
+                    // update build info
+                    winfo << "Generations" << gens;
+                    winfo << "DPS" << maxDPS;
+                    builds << scombi << winfo;
+
+                    // stats
+                    ++buildCnt;
+                    for (auto const &p : maxBuild.skills.passives)
+                        if (!p.name.empty())
+                            passiveCnt[p.name]++;
+                    {
+                        auto s = maxBuild.gear.gearStats() + maxBuild.gear.pieces[Gear::WeaponLeft].stats;
+                        statSum[Rating::Hit] += s.hitRating;
+                        statSum[Rating::CritPower] += s.critPowerRating;
+                        statSum[Rating::Crit] += s.critRating;
+                        statSum[Rating::Pen] += s.penRating;
+                    }
+                    {
+                        auto s = maxBuild.gear.gearStats() + maxBuild.gear.pieces[Gear::WeaponRight].stats;
+                        statSum[Rating::Hit] += s.hitRating;
+                        statSum[Rating::CritPower] += s.critPowerRating;
+                        statSum[Rating::Crit] += s.critRating;
+                        statSum[Rating::Pen] += s.penRating;
+                    }
+
+                    // save
+                    {
+                        std::ofstream bfile(bestpath);
+                        bfile << maxBuild.toJson().json() << std::endl;
+                    }
+                }
+        
+            // update builds
+            expl << "Builds" << builds;
+
+            // stats
+            Object js;
+            {
+                Object pStat;
+                for (auto const& kvp : passiveCnt)
+                    pStat << kvp.first << kvp.second;
+                js << "Passives" << pStat;
+            }
+            {
+                Object pStats;
+                for (auto const& kvp : statSum)
+                    pStats << to_string(kvp.first) << kvp.second / (2.0 * buildCnt);
+                js << "Stats" << pStats;
+            }
+            expl << "Statistics" << js;
+
+            // save exploration
+            std::ofstream fexpl(explFile);
+            fexpl << expl.json();
+        }
+    }
+    else if (optimization)
     {
         o.timePerTest = optTime;
         o.run(optimizerRounds);
@@ -822,12 +990,14 @@ int main(int argc, char *argv[])
     }
     else if (!analyze) // don't sim if analyze
     {
-        while (s.totalTimeAccum < totalTime)
-            s.simulate(fightTime);
+        while (s.totalTimeAccum < scenario.totalTimeIn60th)
+            s.simulate(scenario.fightTimeIn60th);
     }
 
     // ==========================================================================
     // .. dump results
+
+    assert(!explore && "Should be continuous");
 
     // show sim results
     if (optimization)
@@ -886,7 +1056,7 @@ int main(int argc, char *argv[])
         std::map<std::string, double> dmg;
 
         auto atime = ticksFromTimeStr(parser.value(oAnaTime).toStdString());
-        s.analyzeIndividualContribution(fightTime, atime, dmg);
+        s.analyzeIndividualContribution(scenario.fightTimeIn60th, atime, dmg);
         std::cout << std::endl;
 
         // Analysis json dump
@@ -921,7 +1091,7 @@ int main(int argc, char *argv[])
             s.init();
             s.resetStats();
             while (s.totalTimeAccum < atime)
-                s.simulate(fightTime);
+                s.simulate(scenario.fightTimeIn60th);
             s.log = savlog;
 
             auto const eps = .001;
@@ -966,7 +1136,7 @@ int main(int argc, char *argv[])
             auto builderWeapon = b.skills.skills[0].weapon;
             auto secondWeapon = b.gear.leftWeapon == builderWeapon ? b.gear.rightWeapon : b.gear.leftWeapon;
             oss << "[size=+2][color=#03A9F4]" << to_string(builderWeapon) << "[/color]/[color=#03A9F4]"
-                << to_string(secondWeapon) << "[/color] (" << settingName << ", [color=#D32F2F]" << s.totalDPS()
+                << to_string(secondWeapon) << "[/color] (" << scenario.name << ", [color=#D32F2F]" << s.totalDPS()
                 << " DPS[/color])[/size]" << std::endl;
 
             oss << std::endl;
@@ -1250,9 +1420,9 @@ int main(int argc, char *argv[])
     if (parser.isSet(oDumpScenario))
     {
         auto fname = parser.value(oDumpScenario);
-        auto json = s.fightToJson(); // TODO: from optimizer
-        json << "Fight Time" << toTimeStr(fightTime);
-        json << "Total Time" << toTimeStr(totalTime);
+        // TODO: from optimizer
+        auto json = scenario.saveToJson();
+        json << "Fight" << s.fightToJson();
         if (fname == ".")
             std::cout << json.json() << std::endl;
         else

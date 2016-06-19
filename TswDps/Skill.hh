@@ -14,8 +14,8 @@ struct Skill
 
     Weapon weapon = Weapon::None;
     SubType subtype = SubType::None;
-    DmgType dmgtype;
-    SkillType skilltype;
+    DmgType dmgtype = DmgType::None;
+    SkillType skilltype = SkillType::None;
 
     int timeIn60th = 0;      ///< 60 = 1s, 150 = 2.5s, 0 = no GCD
     int casttimeIn60th = 0;  ///< 0 = no casttime, casttime and CD are parallel

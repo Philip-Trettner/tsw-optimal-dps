@@ -29,9 +29,9 @@ struct Simulation
     Gear gear;
     Stats potionStats;
     EnemyInfo enemyInfo;
-    int buffAt = 5;                  ///< initial buff timing
-    int dabsCDIn60th = 60 * 60;      ///< DABS are fired every x seconds
-    int dabsVarianceIn60th = 5 * 60; ///< DABS may be delayed up to y seconds
+    int buffAt = 5;                   ///< initial buff timing
+    int dabsCDIn60th = 60 * 60;       ///< DABS are fired every x seconds
+    int dabsVarianceIn60th = 20 * 60; ///< DABS may be delayed up to y seconds (20s so that mercurial doesn't alias as much)
 
     // brief stats
     double totalDmg = 0.0f;

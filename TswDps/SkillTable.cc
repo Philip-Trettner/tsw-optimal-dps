@@ -33,6 +33,8 @@ void SkillTable::loadSkillTable(const string &filename)
     {
         QString line = file.readLine();
         QStringList parts = line.split("\t");
+        //auto sline = line.toStdString();
+        //std::cout << sline << std::endl;
 
         if (parts.empty())
             continue; // empty line
@@ -54,6 +56,9 @@ void SkillTable::loadSkillTable(const string &filename)
 
         if (parts.length() > iScaling && parts.length() > iName)
         {
+            assert(iName >= 0);
+            assert(iScaling >= 0);
+
             if (parts[iName].isEmpty() || parts[iScaling].isEmpty())
                 continue; // empty name, scaling
 
@@ -65,7 +70,7 @@ void SkillTable::loadSkillTable(const string &filename)
                 assert(0);
             }
 
-            // std::cout << name << " -> " << dmg << std::endl;
+            //std::cout << name << " -> " << dmg << std::endl;
 
             sName2Scaling[name] = dmg;
         }
@@ -93,8 +98,10 @@ void SkillTable::loadVDMTable(std::string const& filename)
 
     while (!file.atEnd())
     {
-        QString line = file.readLine();
+        QString line = file.readLine().trimmed();
         QStringList parts = line.split("\t");
+        //auto sline = line.toStdString();
+        //std::cout << sline << std::endl;
 
         if (parts.empty())
             continue; // empty line
@@ -105,14 +112,11 @@ void SkillTable::loadVDMTable(std::string const& filename)
             header = parts;
             iID = header.indexOf("VDM");
             iName = header.indexOf("Abilite");
-            assert(iScaling >= 0);
+            assert(iID >= 0);
             assert(iName >= 0);
             first = false;
             continue;
         }
-
-        if (!parts[0].trimmed().isEmpty())
-            continue; // special lines
 
         if (parts.length() > iID && parts.length() > iName)
         {

@@ -6,7 +6,7 @@
 
 TEST(Variance, RandomBuild)
 {
-    std::default_random_engine random(testing::GTEST_FLAG(random_seed));
+    std::default_random_engine random; // (testing::GTEST_FLAG(random_seed));
 
     for (int i = 0; i < 10; ++i)
     {
