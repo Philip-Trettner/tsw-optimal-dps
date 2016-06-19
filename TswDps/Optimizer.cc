@@ -478,16 +478,16 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 switch (type)
                 {
                 case 0: // normal
-                    b.gear.setNeckQL11();
+                    b.gear.setNeckQL11(defaultQuality);
                     break;
                 case 1: // woodcutters
                     if (allowWoodcutters)
                         b.gear.setNeckWoodcutters();
                     else
-                        b.gear.setNeckQL11();
+                        b.gear.setNeckQL11(defaultQuality);
                     break;
                 case 2: // egon
-                    b.gear.setNeckEgon();
+                    b.gear.setNeckEgon(raidQuality);
                     break;
                 }
 
@@ -502,10 +502,10 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 switch (type)
                 {
                 case 0: // normal
-                    b.gear.setFingerQL11();
+                    b.gear.setFingerQL11(defaultQuality);
                     break;
                 case 1: // coney
-                    b.gear.setFingerConey();
+                    b.gear.setFingerConey(raidQuality);
                     break;
                 }
 
@@ -525,7 +525,7 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                 {
                     if (freeRatings.size() == 1 || dice(random) < .5) // split or pure
                     {
-                        b.gear.pieces[idx].free(randomElement(freeRatings));
+                        b.gear.pieces[idx].free(randomElement(freeRatings), useQL11Glyphs);
                     }
                     else
                     {
@@ -536,13 +536,13 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                             r2 = randomElement(freeRatings);
                         } while (r1 == r2);
 
-                        b.gear.pieces[idx].free(r1, r2);
+                        b.gear.pieces[idx].free(r1, r2, useQL11Glyphs);
                         changed = true;
                     }
                 }
                 else
                 {
-                    b.gear.pieces[idx].free(randomElement(freeRatings));
+                    b.gear.pieces[idx].free(randomElement(freeRatings), useQL11Glyphs);
                     changed = true;
                 }
             }
@@ -605,16 +605,23 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             // TODO
             break;
         case BuildChange::Stimulant:
-            b.gear.stimulant = randomElement(std::vector<EffectSlot>({
-                EffectSlot::StimAttackPurple, //
-                EffectSlot::StimCritPurple,   //
-                EffectSlot::StimCritBlue,     //
-                EffectSlot::StimPenPurple,    //
-                EffectSlot::StimPenBlue,      //
-            }));
+            if (usePurpleStims)
+                b.gear.stimulant = randomElement(std::vector<EffectSlot>({
+                    EffectSlot::StimAttackPurple, //
+                    EffectSlot::StimCritPurple,   //
+                    EffectSlot::StimPenPurple,    //
+                }));
+            else
+                b.gear.stimulant = randomElement(std::vector<EffectSlot>({
+                    EffectSlot::StimCritBlue, //
+                    EffectSlot::StimPenBlue,  //
+                }));
             break;
         case BuildChange::Kickback:
-            b.gear.kickback = randomElement(Passives::Kickback::all());
+            if (usePurpleStims)
+                b.gear.kickback = randomElement(Passives::Kickback::allPurple());
+            else
+                b.gear.kickback = randomElement(Passives::Kickback::allBlue());
             break;
         case BuildChange::MinorSignetChange:
         {

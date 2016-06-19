@@ -7,9 +7,9 @@
 
 #include <unordered_set>
 
-void Gear::loadStandardDpsGear()
+void Gear::loadStandardDpsGear(TalismanQuality q)
 {
-    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+    setGear(PrimaryStat::Attack, q);
 
     // Head
     pieces[Head].free(Rating::Hit);
@@ -54,9 +54,9 @@ void Gear::loadStandardDpsGear()
     kickback = Passives::Kickback::CritPowerOnCritPurple();
 }
 
-void Gear::loadEmptyDpsGear()
+void Gear::loadEmptyDpsGear(TalismanQuality q)
 {
-    setGear(PrimaryStat::Attack, TalismanQuality::QL11);
+    setGear(PrimaryStat::Attack, q);
 
     // violences currently don't get optimized except neck
     pieces[MajorLeft].signet = Signets::Major::Violence();
@@ -289,11 +289,11 @@ Stats Gear::splitStatOf(Gear::Slot slot, Rating r, bool ql11)
     return singleStatOf(slot, r, ql11) * 0.5f;
 }
 
-void Gear::setNeckQL11()
+void Gear::setNeckQL11(TalismanQuality q)
 {
     auto &p = pieces[MajorMid];
     p.status = SlotStatus::Free;
-    p.set(PrimaryStat::Attack, TalismanQuality::QL11);
+    p.set(PrimaryStat::Attack, q);
     p.signet = Signets::Major::Violence();
 }
 
@@ -305,27 +305,27 @@ void Gear::setNeckWoodcutters()
     p.signet = Signets::Major::WoodcuttersWrath();
 }
 
-void Gear::setNeckEgon()
+void Gear::setNeckEgon(TalismanQuality q)
 {
     auto &p = pieces[MajorMid];
     p.status = SlotStatus::Free;
-    p.set(PrimaryStat::Attack, TalismanQuality::QL10_9);
+    p.set(PrimaryStat::Attack, q);
     p.signet = Signets::Major::EgonPendant();
 }
 
-void Gear::setFingerQL11()
+void Gear::setFingerQL11(TalismanQuality q)
 {
     auto &p = pieces[MajorLeft];
     p.status = SlotStatus::Free;
-    p.set(PrimaryStat::Attack, TalismanQuality::QL11);
+    p.set(PrimaryStat::Attack, q);
     p.signet = Signets::Major::Violence();
 }
 
-void Gear::setFingerConey()
+void Gear::setFingerConey(TalismanQuality q)
 {
     auto &p = pieces[MajorLeft];
     p.status = SlotStatus::Free;
-    p.set(PrimaryStat::Heal, TalismanQuality::QL10_9);
+    p.set(PrimaryStat::Heal, q);
     p.signet = Signets::Major::ConeyIslandBand();
 }
 

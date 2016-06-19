@@ -1040,6 +1040,17 @@ public:
 
             return e;
         }
+
+        static vector<Effect> all()
+        {
+            return {
+                StimAttackPurple(), //
+                StimCritBlue(),     //
+                StimCritPurple(),   //
+                StimPenBlue(),      //
+                StimPenPurple(),    //
+            };
+        }
     };
 
     struct Kickbacks : private Base
@@ -1103,6 +1114,18 @@ public:
             e.bonusStats.critPowerRating = 425;
 
             return e;
+        }
+
+        static vector<Effect> all()
+        {
+            return {
+                KickbackCritPurple(),      //
+                KickbackCritPowerPurple(), //
+                KickbackPenPurple(),       //
+                KickbackCritBlue(),        //
+                KickbackCritPowerBlue(),   //
+                KickbackPenBlue(),         //
+            };
         }
     };
 

@@ -573,6 +573,7 @@ public:
             s.passive.effectStacks = 10;
             s.animaDeviation = true;
 			s.slotForSupportAug = true;
+            s.appliesVulnerability = DmgType::Ranged;
             return s;
         }
 

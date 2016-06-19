@@ -66,6 +66,9 @@ public: // settings
     // if true, also allows split ql11
     bool allowSplitGlyphs = true;
 
+    // if true, uses purple stims
+    bool usePurpleStims = true;
+
     /// free ratings used for stat optimization
     std::vector<Rating> freeRatings = std::vector<Rating>({Rating::Crit, Rating::CritPower, Rating::Pen, Rating::Hit});
 
@@ -76,6 +79,8 @@ public: // settings
     Gear::TalismanQuality defaultQuality = Gear::TalismanQuality::QL11;
     /// raid item quality (TODO: implement .4 version)
     Gear::TalismanQuality raidQuality = Gear::TalismanQuality::QL10_9;
+    /// glyph quality
+    bool useQL11Glyphs = true;
 
     /// force a certain vulnerability (if none found, returns immediately, leaving zero top builds)
     DmgType forceVulnerability = DmgType::None;

@@ -86,7 +86,7 @@ std::vector<Passive> Passives::all()
 
 std::vector<Passive> Passives::Kickback::all()
 {
-    return {
+    return{
         CritOnCritPurple(), //
         CritOnPenPurple(),  //
         CritOnCritBlue(),   //
@@ -101,5 +101,31 @@ std::vector<Passive> Passives::Kickback::all()
         PenOnPenPurple(),  //
         PenOnCritBlue(),   //
         PenOnPenBlue(),    //
+    };
+}
+std::vector<Passive> Passives::Kickback::allBlue()
+{
+    return{
+        CritOnCritBlue(),   //
+        CritOnPenBlue(),    //
+
+        CritPowerOnCritBlue(),   //
+        CritPowerOnPenBlue(),    //
+
+        PenOnCritBlue(),   //
+        PenOnPenBlue(),    //
+    };
+}
+std::vector<Passive> Passives::Kickback::allPurple()
+{
+    return{
+        CritOnCritPurple(), //
+        CritOnPenPurple(),  //
+
+        CritPowerOnCritPurple(), //
+        CritPowerOnPenPurple(),  //
+
+        PenOnCritPurple(), //
+        PenOnPenPurple(),  //
     };
 }

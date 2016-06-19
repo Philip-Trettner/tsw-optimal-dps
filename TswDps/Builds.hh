@@ -13,7 +13,7 @@ struct Builds
     static Build fromFile(std::string const& filename)
     {
         Build b;
-        b.gear.loadEmptyDpsGear(); // for weapons
+        b.gear.loadEmptyDpsGear(Gear::TalismanQuality::QL11); // for weapons
         b.fromFile(filename);
         return b;
     }
@@ -42,7 +42,7 @@ struct Builds
                     }};
 
         // gear
-        b.gear.loadStandardDpsGear();
+        b.gear.loadStandardDpsGear(Gear::TalismanQuality::QL11);
         
         // hammer ele, i swear, over 9000
         b.gear.leftWeapon = Weapon::Elemental;
@@ -58,7 +58,7 @@ struct Builds
                                        Weapon::Elemental, Weapon::Rifle, Weapon::Pistol, Weapon::Shotgun};
 
         Build b;
-        b.gear.loadEmptyDpsGear();
+        b.gear.loadEmptyDpsGear(Gear::TalismanQuality::QL11);
 
         // weapons
         b.gear.leftWeapon = randomElement(weapons, random);

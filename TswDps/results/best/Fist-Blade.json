@@ -2,9 +2,9 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"Inspiring",
+		"Ferocious",
 		"Invulnerable",
-		"Grievous",
+		"Mercurial",
 		"Precise",
 		"Focused",
 		"" 
@@ -76,10 +76,10 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 173,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 0,
 			"Signet": "Laceration" 
 		},
 		{
@@ -94,6 +94,14 @@
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Fist",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 341 
+		} 
+	},
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",

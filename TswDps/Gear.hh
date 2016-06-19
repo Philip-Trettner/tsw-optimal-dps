@@ -79,9 +79,9 @@ struct Gear
     Passive kickback;
 
     /// default dps gear (for now)
-    void loadStandardDpsGear();
+    void loadStandardDpsGear(TalismanQuality q);
     /// empty dps gear
-    void loadEmptyDpsGear();
+    void loadEmptyDpsGear(TalismanQuality q);
 
     /// sets both weapons
     void setWeapons(Weapon left, Weapon right);
@@ -140,16 +140,16 @@ struct Gear
     static Stats splitStatOf(Slot slot, Rating r, bool ql11);
 
     /// sets neck to QL11 + violence
-    void setNeckQL11();
+    void setNeckQL11(TalismanQuality q);
     /// sets neck to woodcutters
     void setNeckWoodcutters();
     /// sets neck to 10.9 egon
-    void setNeckEgon();
+    void setNeckEgon(TalismanQuality q);
 
     /// sets finger to QL11 + violence
-    void setFingerQL11();
+    void setFingerQL11(TalismanQuality q);
     /// sets finger to Coney
-    void setFingerConey();
+    void setFingerConey(TalismanQuality q);
 };
 
 // custom specialization of std::hash can be injected in namespace std

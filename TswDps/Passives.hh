@@ -695,6 +695,8 @@ public:
         }
 
         static std::vector<Passive> all(); // all kickbacks
+        static std::vector<Passive> allBlue(); // all blue kickbacks
+        static std::vector<Passive> allPurple(); // all purple kickbacks
     };
 
     static Passive empty() { return Passive(); }

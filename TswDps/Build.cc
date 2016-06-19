@@ -143,6 +143,22 @@ jsonxx::Object Build::toJson() const
         b << "Stim" << to_string(gear.stimulant);
     if (!gear.kickback.name.empty())
         b << "Kickback" << gear.kickback.name;
+    {
+        jsonxx::Object m;
+
+        if (gear.stimulant != EffectSlot::Count)
+            for (auto const& e : Effects::Stimulants::all())
+                if (e.slot == gear.stimulant)
+                    m << "Stim" << e.bonusStats.toJson();
+
+        if (!gear.kickback.name.empty())
+            for (auto const& e : Effects::Kickbacks::all())
+                if (e.slot == gear.kickback.effect)
+                    m << "Kickback" << e.bonusStats.toJson();
+
+        b << "Misc" << m;
+    }
+
     return b;
 }
 

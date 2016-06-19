@@ -100,6 +100,8 @@ struct Stats
     jsonxx::Object toJson() const
     {
         jsonxx::Object o;
+        if (attackRating > 0)
+            o << "AR" << attackRating;
         if (hitRating > 0)
             o << "Hit" << hitRating;
         if (penRating > 0)
@@ -116,6 +118,8 @@ struct Stats
     {
         // only overwrites present members
         using namespace jsonxx;
+        if (o.has<Number>("AR"))
+            attackRating = (int)o.get<Number>("AR");
         if (o.has<Number>("Hit"))
             hitRating = (int)o.get<Number>("Hit");
         if (o.has<Number>("Pen"))

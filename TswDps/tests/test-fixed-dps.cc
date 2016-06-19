@@ -37,7 +37,7 @@ TEST(Sanity, FixedDps)
                     Passives::Blade::FortunateStrike(),    //
                     Passives::Blade::SuddenReturn(),       //
                 }};
-    s.gear.loadEmptyDpsGear();
+    s.gear.loadEmptyDpsGear(Gear::TalismanQuality::QL11);
     s.gear.setNeckWoodcutters();
     s.gear.setWeapons(Weapon::Blood, Weapon::Elemental);
 
@@ -78,5 +78,5 @@ TEST(Sanity, FixedDps)
 
     s.simulate(timestr("6h"));
 
-    ASSERT_NEAR(s.totalDPS(), 8500.0, 80);
+    ASSERT_NEAR(s.totalDPS(), 8360.0, 80);
 }

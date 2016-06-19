@@ -40,7 +40,7 @@ void Simulation::resetStats()
 Simulation::Simulation()
 {
     rotation = DefaultRotation::create();
-    gear.loadEmptyDpsGear();
+    gear.loadEmptyDpsGear(Gear::TalismanQuality::QL11);
 }
 
 void Simulation::loadBuild(const Build& b)
@@ -660,7 +660,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         std::cout << "  Non-Coney: " << std::endl;
 
         auto piece = gear.pieces[Gear::MajorLeft];
-        gear.setFingerQL11();
+        gear.setFingerQL11(Gear::TalismanQuality::QL10_9);
 
         init();
         resetStats();
@@ -681,7 +681,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     // QL11 + violence
     {
         auto piece = gear.pieces[Gear::MajorMid];
-        gear.setNeckQL11();
+        gear.setNeckQL11(Gear::TalismanQuality::QL11);
 
         init();
         resetStats();
@@ -719,7 +719,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     // Egon
     {
         auto piece = gear.pieces[Gear::MajorMid];
-        gear.setNeckEgon();
+        gear.setNeckEgon(Gear::TalismanQuality::QL10_9);
 
         init();
         resetStats();
@@ -842,7 +842,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         std::cout.width(9);
         std::cout << std::right << to_string(r) << ": {";
         bool first = true;
-        for (auto o : {-200, -100, -50, 50, 100, 200})
+        for (auto o : {-200, -150, -100, -50, 50, 100, 150, 200})
         {
             if (first)
                 first = false;
@@ -865,7 +865,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
 
             relDmg["Stat " + to_string(r) + " " + to_string(o)] = dps / startDPS;
         }
-        std::cout << "} for {-200, -100, -50, +50, +100, +200}" << std::endl;
+        std::cout << "} for {-200, -150, -100, -50, +50, +150, +100, +200}" << std::endl;
     }
     potionStats = savPot;
 
