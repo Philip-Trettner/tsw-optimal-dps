@@ -898,8 +898,8 @@ int main(int argc, char *argv[])
 
                     // run optimization
                     auto newgens = (int)(100 * 2 * 60 * 60. / tmpO.timePerTest);
-                    if (newgens < 1)
-                        newgens = 1;
+                    if (newgens < 5)
+                        newgens = 5;
                     gens += newgens;
                     std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << " [" << gens << " gens, " << tmpO.timePerTest / (60 * 3600.f) << " hours per test]" << std::flush;
                     tmpO.run(newgens);
