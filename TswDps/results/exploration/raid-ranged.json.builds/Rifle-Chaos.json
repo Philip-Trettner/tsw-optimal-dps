@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Brutal",
+		"Fierce",
+		"Quickening",
+		"Accurate",
+		"Grievous",
+		"Ferocious",
+		"Mercurial",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 407,
+			"Pen": 0,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 367,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Storms" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 203,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Left Weapon": "Rifle",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Chaos",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": true,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 2,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Run Rampant",
+		"Four Horsemen",
+		"Amor Fati",
+		"Pulling the Strings",
+		"Three Round Burst",
+		"Eye of Pandemonium",
+		"Lock & Load",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+

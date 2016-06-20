@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Grievous",
+		"Quickening",
+		"Accurate",
+		"Mercurial",
+		"Inspiring",
+		"Focused",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 168,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 148,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 328,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 972,
+			"Crit": 303,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Swords" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 211,
+			"Pen": 0,
+			"Signet": "Storms" 
+		},
+		{
+			"AR": 625,
+			"Crit": 195,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 181,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Left Weapon": "Chaos",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree",
+		"Thunderstruck" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Run Rampant",
+		"Four Horsemen",
+		"Steel Echo",
+		"Pulling the Strings",
+		"Four Seasons",
+		"Amor Fati",
+		"Binding Wounds",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+

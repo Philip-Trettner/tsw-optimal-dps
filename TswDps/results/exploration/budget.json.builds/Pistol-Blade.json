@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Ferocious",
+		"Inspiring",
+		"Fierce",
+		"Piercing",
+		"Mercurial",
+		"Grievous",
+		"Accurate",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 168,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 148,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 195,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 105,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 195,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 168,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 181,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 363,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Left Weapon": "Pistol",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Pen": 232 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Hair Trigger",
+		"Steel Echo",
+		"Start & Finish",
+		"Bond, Strong Bond",
+		"Four Seasons",
+		"Binding Wounds",
+		"Balanced Blade",
+		"" 
+	],
+	"Stim": "StimPenBlue" 
+} 
+

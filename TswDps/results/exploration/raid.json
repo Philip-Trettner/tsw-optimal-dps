@@ -1,0 +1,171 @@
+{
+	"Builds": {
+		"Blood-Blade": {
+			"DPS": 8426.651695198907,
+			"Generations": 2173 
+		},
+		"Blood-Fist": {
+			"DPS": 8369.721769899157,
+			"Generations": 2173 
+		},
+		"Blood-Hammer": {
+			"DPS": 8678.993604332818,
+			"Generations": 2173 
+		},
+		"Chaos-Blade": {
+			"DPS": 8329.150017494925,
+			"Generations": 2173 
+		},
+		"Chaos-Blood": {
+			"DPS": 8232.825936813355,
+			"Generations": 2173 
+		},
+		"Chaos-Fist": {
+			"DPS": 8435.690649056329,
+			"Generations": 2173 
+		},
+		"Chaos-Hammer": {
+			"DPS": 8583.484206861707,
+			"Generations": 2173 
+		},
+		"Elemental-Blade": {
+			"DPS": 9133.597817420959,
+			"Generations": 2173 
+		},
+		"Elemental-Blood": {
+			"DPS": 9611.651441150241,
+			"Generations": 2173 
+		},
+		"Elemental-Chaos": {
+			"DPS": 9222.734350670709,
+			"Generations": 2173 
+		},
+		"Elemental-Fist": {
+			"DPS": 9338.772519439697,
+			"Generations": 2173 
+		},
+		"Elemental-Hammer": {
+			"DPS": 9655.820384348552,
+			"Generations": 2173 
+		},
+		"Fist-Blade": {
+			"DPS": 8569.192522501628,
+			"Generations": 2173 
+		},
+		"Hammer-Blade": {
+			"DPS": 8628.747933528597,
+			"Generations": 2173 
+		},
+		"Hammer-Fist": {
+			"DPS": 8712.685848176745,
+			"Generations": 2173 
+		},
+		"Pistol-Blade": {
+			"DPS": 7917.200843596835,
+			"Generations": 2173 
+		},
+		"Pistol-Blood": {
+			"DPS": 8326.039925766712,
+			"Generations": 2173 
+		},
+		"Pistol-Chaos": {
+			"DPS": 8125.175436275906,
+			"Generations": 2173 
+		},
+		"Pistol-Elemental": {
+			"DPS": 9441.126513715955,
+			"Generations": 2173 
+		},
+		"Pistol-Fist": {
+			"DPS": 8113.122529487526,
+			"Generations": 2173 
+		},
+		"Pistol-Hammer": {
+			"DPS": 8648.097882393731,
+			"Generations": 2173 
+		},
+		"Pistol-Rifle": {
+			"DPS": 8056.543124752468,
+			"Generations": 2173 
+		},
+		"Rifle-Blade": {
+			"DPS": 8079.10622525194,
+			"Generations": 2173 
+		},
+		"Rifle-Blood": {
+			"DPS": 8340.195012554786,
+			"Generations": 2173 
+		},
+		"Rifle-Chaos": {
+			"DPS": 8308.223495703804,
+			"Generations": 2173 
+		},
+		"Rifle-Elemental": {
+			"DPS": 9247.887156545003,
+			"Generations": 2173 
+		},
+		"Rifle-Fist": {
+			"DPS": 8247.319284706964,
+			"Generations": 2173 
+		},
+		"Rifle-Hammer": {
+			"DPS": 8426.947819342215,
+			"Generations": 2173 
+		},
+		"Shotgun-Blade": {
+			"DPS": 7966.69118966325,
+			"Generations": 2173 
+		},
+		"Shotgun-Blood": {
+			"DPS": 8346.425311065674,
+			"Generations": 2173 
+		},
+		"Shotgun-Chaos": {
+			"DPS": 8224.387195755005,
+			"Generations": 2173 
+		},
+		"Shotgun-Elemental": {
+			"DPS": 8939.096187874688,
+			"Generations": 2173 
+		},
+		"Shotgun-Fist": {
+			"DPS": 8350.511548919678,
+			"Generations": 2173 
+		},
+		"Shotgun-Hammer": {
+			"DPS": 8342.400247278001,
+			"Generations": 2173 
+		},
+		"Shotgun-Pistol": {
+			"DPS": 8084.312509570652,
+			"Generations": 2173 
+		},
+		"Shotgun-Rifle": {
+			"DPS": 8066.979178200616,
+			"Generations": 2173 
+		} 
+	},
+	"Scenario": "raid",
+	"Statistics": {
+		"Passives": {
+			"Brawler": 4,
+			"Elemental Force": 34,
+			"Fortunate Strike": 26,
+			"Gnosis": 1,
+			"Iron Maiden": 36,
+			"Lethality": 6,
+			"Live Wire": 35,
+			"One In The Chamber": 36,
+			"Sudden Return": 34,
+			"Third Degree": 33,
+			"Thunderstruck": 1,
+			"Twist The Knife": 6 
+		},
+		"Stats": {
+			"Crit": 771.3472222222222,
+			"CritPower": 475.5,
+			"Hit": 608.0277777777778,
+			"Pen": 571.7222222222222 
+		} 
+	} 
+} 

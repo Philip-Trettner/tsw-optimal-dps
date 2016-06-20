@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Mercurial",
+		"Focused",
+		"Quickening",
+		"Grievous",
+		"Inspiring",
+		"Accurate",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 407,
+			"Pen": 0,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 156,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 183,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 367,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Shotgun",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"AR": 600 
+		} 
+	},
+	"Passives": [
+		"Brawler",
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Live Wire",
+		"One In The Chamber",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Elemental",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Striker",
+		"Power Line",
+		"Blaze",
+		"Anima Charge",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Fire Manifestation",
+		"" 
+	],
+	"Stim": "StimAttackPurple" 
+} 
+

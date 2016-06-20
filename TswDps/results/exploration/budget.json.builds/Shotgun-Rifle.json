@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Inspiring",
+		"Mercurial",
+		"Focused",
+		"Grievous",
+		"Accurate",
+		"Accelerating",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 336,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 328,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 328,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 105,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 105,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 363,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 363,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Left Weapon": "Shotgun",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Rifle",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Safety Off",
+		"Lock, Stock & Barrel",
+		"Bombardment",
+		"Sure Shot",
+		"Three Round Burst",
+		"Raging Bullet",
+		"Lock & Load",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+

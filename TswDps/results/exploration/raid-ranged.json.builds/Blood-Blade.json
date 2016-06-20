@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Accelerating",
+		"Accurate",
+		"Invulnerable",
+		"Mercurial",
+		"Inspiring",
+		"Grievous",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 407,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 163,
+			"Crit Power": 156,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 210,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Abuse" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Blood",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Pen": 312 
+		} 
+	},
+	"Passives": [
+		"Brawler",
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return" 
+	],
+	"Potion": {
+		"Pen": 100 
+	},
+	"Right Weapon": "Blade",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": true,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 4,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Bloodline",
+		"Steel Echo",
+		"Binding Wounds",
+		"Cannibalize",
+		"Stunning Swirl",
+		"Sling Blade",
+		"Bloodshot",
+		"" 
+	],
+	"Stim": "StimPenPurple" 
+} 
+

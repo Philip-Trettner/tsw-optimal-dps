@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Mercurial",
+		"Piercing",
+		"Curing",
+		"Accurate",
+		"Inspiring",
+		"Grievous",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 168,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 972,
+			"Crit": 303,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Shattering" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 363,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 363,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Left Weapon": "Blood",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Lethality",
+		"Live Wire",
+		"One In The Chamber",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Hammer",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 2,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Bloodline",
+		"Full Momentum",
+		"Molten Steel",
+		"Cannibalize",
+		"Haymaker",
+		"Shockwave",
+		"Bloodshot",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+

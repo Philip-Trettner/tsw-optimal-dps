@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Brutal",
+		"Mercurial",
+		"Accurate",
+		"Quickening",
+		"Invulnerable",
+		"Grievous",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 328,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 148,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 211,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 336,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 336,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Left Weapon": "Elemental",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Hammer",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Shock",
+		"Lightning Manifestation",
+		"Full Momentum",
+		"Fire Manifestation",
+		"Stone's Throw",
+		"Power Line",
+		"Molten Steel",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+

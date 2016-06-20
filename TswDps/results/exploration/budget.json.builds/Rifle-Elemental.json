@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Ferocious",
+		"Mercurial",
+		"Inspiring",
+		"Accurate",
+		"Grievous",
+		"Focused",
+		"Accelerating",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 168,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 303,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 191,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 211,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 168,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback Crit on Crit (blue)",
+	"Left Weapon": "Rifle",
+	"Misc": {
+		"Kickback": {
+			"Crit": 506 
+		},
+		"Stim": {
+			"Pen": 232 
+		} 
+	},
+	"Passives": [
+		"Fever Pitch",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return",
+		"Third Degree" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Elemental",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 2,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Safety Off",
+		"Lightning Manifestation",
+		"Lock & Load",
+		"Fire Manifestation",
+		"Flame Strike",
+		"Fire in the Hole",
+		"Power Line",
+		"" 
+	],
+	"Stim": "StimPenBlue" 
+} 
+

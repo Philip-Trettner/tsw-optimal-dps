@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Focused",
+		"Mercurial",
+		"Grievous",
+		"Accurate",
+		"Curing",
+		"Brutal",
+		"Fierce",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1077,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 972,
+			"Crit": 303,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 191,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 328,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Left Weapon": "Pistol",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 425 
+		},
+		"Stim": {
+			"Crit": 276 
+		} 
+	},
+	"Passives": [
+		"Elemental Force",
+		"Fever Pitch",
+		"Fortunate Strike",
+		"Iron Maiden",
+		"Live Wire",
+		"One In The Chamber",
+		"Sudden Return" 
+	],
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Blood",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": true,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 2,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Bloodline",
+		"Bullet Ballet",
+		"Bloodshot",
+		"Left Hand of Darkness",
+		"Cannibalize",
+		"Start & Finish",
+		"Exsanguinate",
+		"" 
+	],
+	"Stim": "StimCritBlue" 
+} 
+
