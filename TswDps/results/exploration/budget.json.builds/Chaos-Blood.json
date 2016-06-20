@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
+		"Piercing",
 		"Mercurial",
-		"Focused",
-		"Invulnerable",
+		"Inspiring",
+		"Accurate",
+		"Ferocious",
 		"Grievous",
-		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 972,
@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
+			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 164,
 			"Pen": 164,
-			"Signet": "Violence" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 972,
@@ -48,11 +48,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 97,
+			"Crit": 195,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 105,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -66,17 +66,17 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 97,
+			"Crit Power": 95,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 211,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
+			"Crit": 168,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
@@ -84,15 +84,15 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Pen": 181,
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Chaos",
 	"Misc": {
 		"Kickback": {
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
@@ -122,17 +122,17 @@
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 1,
+		"minResourcesForRightConsumer": 2,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Pulling the Strings",
 		"Cannibalize",
-		"Eye of Pandemonium",
 		"Amor Fati",
+		"Call for Eris",
+		"Eye of Pandemonium",
 		"Bloodshot",
-		"Suffering and Solace",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
+		"Focused",
+		"Grievous",
 		"Accelerating",
 		"Inspiring",
 		"Mercurial",
-		"Focused",
-		"Grievous",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -48,11 +48,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
+			"Hit": 236,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -117,7 +117,7 @@
 	"Right Weapon": "Chaos",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
-		"Lock, Stock & Barrel",
-		"Eye of Pandemonium",
 		"Raging Bullet",
 		"Four Horsemen",
-		"Sure Shot",
+		"Amor Fati",
+		"Lock, Stock & Barrel",
+		"Takedown",
+		"Eye of Pandemonium",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

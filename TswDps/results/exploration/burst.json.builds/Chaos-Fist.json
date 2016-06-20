@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Inspiring",
 		"Quickening",
+		"Inspiring",
 		"Invulnerable",
-		"Grievous",
-		"Ferocious",
 		"Accurate",
+		"Ferocious",
+		"Grievous",
 		"" 
 	],
 	"Gear": [

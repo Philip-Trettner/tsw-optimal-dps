@@ -3,8 +3,8 @@
 		"Brutal",
 		"Piercing",
 		"Grievous",
-		"Accurate",
 		"Ferocious",
+		"Accurate",
 		"Inspiring",
 		"Mercurial",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",

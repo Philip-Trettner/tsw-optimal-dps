@@ -1,19 +1,19 @@
 {
 	"Augments": [
-		"Fierce",
-		"Grievous",
-		"Brutal",
-		"Curing",
-		"Accurate",
-		"Inspiring",
 		"Focused",
+		"Accurate",
+		"Grievous",
+		"Fierce",
+		"Piercing",
+		"Ferocious",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
-			"Crit Power": 173,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
+			"AR": 664,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 118,
-			"Signet": "Subway Tokens" 
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -66,37 +66,37 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 105,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Crit (blue)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"CritPower": 644 
 		},
 		"Stim": {
 			"Pen": 312 
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Start & Finish",
 		"Lightning Manifestation",
-		"Anima Charge",
+		"Start & Finish",
 		"Fire Manifestation",
-		"Power Line",
 		"Flame Strike",
+		"Power Line",
+		"Anima Charge",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

@@ -1,23 +1,32 @@
 {
 	"Augments": [
 		"Fierce",
-		"Grievous",
-		"Accurate",
 		"Focused",
-		"Mercurial",
-		"Quickening",
+		"Accurate",
+		"Inspiring",
 		"Ferocious",
+		"Grievous",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -33,18 +42,18 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 328,
+			"Hit": 164,
+			"Pen": 164,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
-			"Crit": 151,
+			"AR": 625,
+			"Crit": 195,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 164,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Violence" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
@@ -53,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Liquidation" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
@@ -62,16 +71,7 @@
 			"Free": true,
 			"Hit": 211,
 			"Pen": 0,
-			"Signet": "Liquidation" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Equilibrium" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 181,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
@@ -116,23 +116,23 @@
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
-		"minResourcesForRightConsumer": 3,
+		"minResourcesForRightConsumer": 4,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Hair Trigger",
 		"Tear Em Up",
-		"Start & Finish",
 		"Wild at Heart",
-		"Bullet Ballet",
 		"Reckless",
-		"Big 45",
+		"One-Two",
+		"Start & Finish",
+		"Bullet Ballet",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

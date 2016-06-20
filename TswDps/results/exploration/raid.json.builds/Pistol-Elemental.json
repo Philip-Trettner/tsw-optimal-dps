@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Grievous",
-		"Ferocious",
+		"Accurate",
 		"Curing",
 		"Piercing",
 		"Accelerating",
-		"Accurate",
+		"Ferocious",
 		"Focused",
 		"" 
 	],

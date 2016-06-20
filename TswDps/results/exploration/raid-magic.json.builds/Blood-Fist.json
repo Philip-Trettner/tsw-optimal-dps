@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
+		"Accelerating",
 		"Focused",
-		"Quickening",
-		"Grievous",
-		"Fierce",
 		"Accurate",
+		"Grievous",
+		"Inspiring",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
+			"AR": 625,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Cannibalize",
-		"Tear Em Up",
 		"Reckless",
+		"Tear Em Up",
+		"Wild at Heart",
 		"Bloodshot",
+		"Cannibalize",
 		"See Red",
-		"One-Two",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

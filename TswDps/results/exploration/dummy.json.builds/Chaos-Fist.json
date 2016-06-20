@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Invulnerable",
+		"Curing",
 		"Inspiring",
 		"Grievous",
-		"Fierce",
 		"Ferocious",
+		"Fierce",
 		"Accurate",
 		"" 
 	],
@@ -99,7 +99,7 @@
 			"Crit": 712 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -131,10 +131,10 @@
 		"Reckless",
 		"Prisoner of Fate",
 		"Four Horsemen",
-		"Call for Eris",
 		"One-Two",
+		"Wild at Heart",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

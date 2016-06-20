@@ -1,32 +1,23 @@
 {
 	"Augments": [
-		"Grievous",
-		"Mercurial",
-		"Focused",
-		"Accurate",
-		"Fierce",
 		"Piercing",
-		"Brutal",
+		"Inspiring",
+		"Accurate",
+		"Mercurial",
+		"Grievous",
+		"Fierce",
+		"Focused",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 0,
+			"Crit": 168,
 			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
-			"Signet": "Sadism" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 148,
-			"Free": true,
-			"Hit": 164,
 			"Pen": 0,
-			"Signet": "Violence" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
@@ -42,7 +33,16 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 164,
+			"Hit": 328,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 164,
 			"Signet": "Violence" 
 		},
@@ -53,46 +53,46 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Flux" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
-			"Signet": "Liquidation" 
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 191,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 211,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 181,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 363,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Hair Trigger",
 		"Anima Charge",
-		"Fire Manifestation",
-		"Power Line",
 		"Start & Finish",
 		"Lightning Manifestation",
+		"Fire Manifestation",
+		"Power Line",
 		"Flame Strike",
 		"" 
 	],

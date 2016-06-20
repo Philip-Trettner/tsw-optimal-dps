@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Mercurial",
+		"Focused",
+		"Grievous",
+		"Quickening",
+		"Accurate",
+		"Accelerating",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 203,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 156,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Abuse" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Left Weapon": "Rifle",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 341 
+		} 
+	},
+	"Passives": [
+		"Ferocity",
+		"Invasive Measures",
+		"Iron Maiden",
+		"Lethality",
+		"Seal The Deal",
+		"Third Degree",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Hammer",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 1,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Safety Off",
+		"Full Momentum",
+		"Shellshocker",
+		"Molten Steel",
+		"Lock & Load",
+		"Three Round Burst",
+		"Stone's Throw",
+		"" 
+	],
+	"Stim": "StimCritPurple" 
+} 
+

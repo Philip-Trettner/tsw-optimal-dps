@@ -1,31 +1,31 @@
 {
 	"Augments": [
-		"Brutal",
+		"Focused",
 		"Mercurial",
 		"Grievous",
-		"Salubrious",
+		"Accurate",
 		"Precise",
 		"Fierce",
-		"Accurate",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
-			"Crit Power": 173,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Opportunism" 
+			"Hit": 203,
+			"Pen": 0,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 183,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -40,11 +40,20 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 156,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -65,21 +74,12 @@
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 203,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		},
 		{
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (blue)",
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -129,10 +129,10 @@
 		"Run Rampant",
 		"Bullet Ballet",
 		"Four Horsemen",
-		"Amor Fati",
-		"Pulling the Strings",
 		"Suffering and Solace",
 		"Call for Eris",
+		"Pulling the Strings",
+		"Amor Fati",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

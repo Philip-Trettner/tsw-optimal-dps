@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
+		"Brutal",
 		"Quickening",
+		"Focused",
 		"Grievous",
-		"Ferocious",
 		"Invulnerable",
-		"Salubrious",
 		"Accurate",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -51,8 +51,8 @@
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
+			"Hit": 118,
+			"Pen": 0,
 			"Signet": "Equilibrium" 
 		},
 		{
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Bloodline",
 		"Cardiac Arrest",
-		"Bloodshot",
 		"Three Round Burst",
-		"Lock & Load",
+		"Bloodshot",
 		"Cannibalize",
 		"Exsanguinate",
+		"Lock & Load",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

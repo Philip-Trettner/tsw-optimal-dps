@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Focused",
+		"Fierce",
 		"Ferocious",
 		"Grievous",
-		"Brutal",
 		"Accurate",
+		"Brutal",
 		"Inspiring",
 		"Quickening",
 		"" 
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Equilibrium" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -107,12 +107,12 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Thunderstruck" 
+		"Sudden Return" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -129,10 +129,10 @@
 		"Grass Cutter",
 		"Steel Echo",
 		"Binding Wounds",
-		"Fire Manifestation",
 		"Power Line",
-		"Anima Charge",
+		"Fire Manifestation",
 		"Sling Blade",
+		"Anima Charge",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

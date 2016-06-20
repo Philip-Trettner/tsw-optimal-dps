@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
+		"Fierce",
 		"Grievous",
-		"Inspiring",
 		"Mercurial",
-		"Accurate",
 		"Ferocious",
-		"Piercing",
+		"Inspiring",
+		"Accurate",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Safety Off",
 		"Shellshocker",
-		"Anima Charge",
 		"Lightning Manifestation",
-		"Fire Manifestation",
 		"Fire in the Hole",
+		"Anima Charge",
+		"Fire Manifestation",
 		"Flame Strike",
 		"" 
 	],

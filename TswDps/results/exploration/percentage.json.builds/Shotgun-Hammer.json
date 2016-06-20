@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Grievous",
+		"Piercing",
+		"Quickening",
+		"Accurate",
+		"Ferocious",
+		"Accelerating",
+		"Mercurial",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 203,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 183,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 183,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 327,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 118,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Shotgun",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"AR": 600 
+		} 
+	},
+	"Passives": [
+		"Brawler",
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Seal The Deal",
+		"Third Degree",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Hammer",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 5,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Grand Slam",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Sure Shot",
+		"Molten Steel",
+		"Full Momentum",
+		"Bombardment",
+		"" 
+	],
+	"Stim": "StimAttackPurple" 
+} 
+

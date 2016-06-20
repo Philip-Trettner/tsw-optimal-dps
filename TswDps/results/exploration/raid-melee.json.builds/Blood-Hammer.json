@@ -3,10 +3,10 @@
 		"Accurate",
 		"Inspiring",
 		"Curing",
-		"Focused",
+		"Grievous",
 		"Mercurial",
 		"Accelerating",
-		"Grievous",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		} 
 	],
 	"Kickback": "Kickback Pen on Crit (purple)",

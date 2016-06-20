@@ -1,37 +1,28 @@
 {
 	"Augments": [
 		"Fierce",
-		"Focused",
-		"Quickening",
+		"Salubrious",
 		"Mercurial",
 		"Grievous",
-		"Accelerating",
+		"Inspiring",
 		"Accurate",
+		"Focused",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
 			"Crit": 0,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
+			"Pen": 363,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
+			"Crit": 151,
 			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 328,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 164,
@@ -39,10 +30,19 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 328,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -53,30 +53,30 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Storms" 
 		},
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 191,
 			"Free": true,
-			"Hit": 211,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Storms" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 328,
+			"Crit": 336,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Rifle",
 	"Misc": {
 		"Kickback": {
@@ -103,8 +103,8 @@
 		} 
 	},
 	"Passives": [
-		"Elemental Force",
 		"Fortunate Strike",
+		"Gnosis",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Pen": 100 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
+		"Lock & Load",
+		"Shellshocker",
 		"Three Round Burst",
 		"Reckless",
-		"Shellshocker",
-		"One-Two",
-		"Lock & Load",
 		"Fire in the Hole",
+		"One-Two",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

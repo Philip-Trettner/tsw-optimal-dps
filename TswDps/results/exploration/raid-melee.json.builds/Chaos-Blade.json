@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Focused",
+		"Brutal",
 		"Inspiring",
 		"Mercurial",
 		"Grievous",
-		"Fierce",
+		"Focused",
 		"Accurate",
 		"Ferocious",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -57,12 +57,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Pen": 118,
+			"Signet": "Distortion" 
 		},
 		{
 			"AR": 664,
@@ -84,12 +84,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
-			"Signet": "Aggression" 
+			"Pen": 203,
+			"Signet": "Sadism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",

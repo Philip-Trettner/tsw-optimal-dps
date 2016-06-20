@@ -6,7 +6,7 @@
 		"Inspiring",
 		"Quickening",
 		"Mercurial",
-		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -49,9 +49,9 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -67,16 +67,16 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 201,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -106,10 +106,10 @@
 		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 

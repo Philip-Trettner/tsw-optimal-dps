@@ -5,7 +5,7 @@
 		"Grievous",
 		"Mercurial",
 		"Accurate",
-		"Precise",
+		"Ferocious",
 		"Focused",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
@@ -130,7 +130,7 @@
 		"Start & Finish",
 		"Bloodshot",
 		"Cannibalize",
-		"Bond, Strong Bond",
+		"Exsanguinate",
 		"Left Hand of Darkness",
 		"Plague",
 		"" 

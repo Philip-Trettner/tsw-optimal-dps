@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
-		"Inspiring",
-		"Focused",
-		"Grievous",
 		"Piercing",
 		"Mercurial",
+		"Grievous",
+		"Accurate",
+		"Quickening",
+		"Accelerating",
 		"" 
 	],
 	"Gear": [
@@ -49,10 +49,10 @@
 		{
 			"AR": 625,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Grand Slam",
+		"Lightning Manifestation",
+		"Stone's Throw",
+		"Molten Steel",
 		"Shockwave",
 		"Full Momentum",
 		"Fire Manifestation",
-		"Molten Steel",
-		"Lightning Manifestation",
-		"Stone's Throw",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -1,41 +1,41 @@
 {
 	"Augments": [
 		"Fierce",
-		"Quickening",
-		"Inspiring",
 		"Mercurial",
 		"Accurate",
+		"Inspiring",
+		"Ferocious",
+		"Focused",
 		"Grievous",
-		"Piercing",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 0,
+			"Crit": 168,
 			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
-			"Signet": "Laceration" 
+			"Pen": 0,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 148,
-			"Free": true,
-			"Hit": 164,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 164,
 			"Pen": 164,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 164,
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -48,51 +48,51 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 105,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
-			"Crit Power": 95,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 625,
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 328,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 211,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 0,
-			"Crit": 336,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
-		},
-		{
-			"AR": 0,
-			"Crit": 336,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Sadism" 
+			"Pen": 363,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
@@ -116,21 +116,21 @@
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,
-		"tryToConsumeOnBuffed": false 
+		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Run Rampant",
+		"Lock, Stock & Barrel",
+		"Takedown",
 		"Amor Fati",
 		"Bombardment",
-		"Lock, Stock & Barrel",
-		"Raging Bullet",
 		"Four Horsemen",
 		"Sure Shot",
 		"" 

@@ -4,7 +4,7 @@
 		"Quickening",
 		"Focused",
 		"Accurate",
-		"Ferocious",
+		"Inspiring",
 		"Mercurial",
 		"Grievous",
 		"" 
@@ -31,16 +31,16 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 296,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 156,
+			"Crit": 163,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 183,
 			"Pen": 0,
@@ -66,8 +66,8 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,

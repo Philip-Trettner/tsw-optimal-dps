@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Grievous",
-		"Mercurial",
 		"Ferocious",
+		"Grievous",
 		"Piercing",
 		"Accurate",
 		"Accelerating",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -85,10 +85,10 @@
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 0,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Rifle",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Three Round Burst",
-		"Shellshocker",
 		"Start & Finish",
+		"Three Round Burst",
+		"Bond, Strong Bond",
 		"Big 45",
-		"Fire in the Hole",
 		"Lock & Load",
+		"Bullet Ballet",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

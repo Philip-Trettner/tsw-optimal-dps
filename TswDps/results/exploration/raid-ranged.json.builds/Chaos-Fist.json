@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Inspiring",
-		"Brutal",
-		"Accurate",
 		"Invulnerable",
-		"Mercurial",
 		"Grievous",
+		"Inspiring",
+		"Mercurial",
+		"Piercing",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
+		"Reckless",
+		"Four Horsemen",
 		"Amor Fati",
+		"Eye of Pandemonium",
 		"Tear Em Up",
 		"Wild at Heart",
-		"Reckless",
-		"Eye of Pandemonium",
-		"Four Horsemen",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

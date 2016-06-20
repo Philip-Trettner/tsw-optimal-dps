@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Mercurial",
-		"Inspiring",
-		"Grievous",
-		"Piercing",
 		"Fierce",
+		"Inspiring",
+		"Piercing",
+		"Mercurial",
 		"Accurate",
+		"Grievous",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -15,8 +15,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 407,
+			"Hit": 203,
+			"Pen": 203,
 			"Signet": "Sadism" 
 		},
 		{
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Storms" 
+			"Signet": "Distortion" 
 		},
 		{
 			"AR": 664,
@@ -76,9 +76,9 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 203,
+			"Hit": 0,
 			"Pen": 203,
 			"Signet": "Laceration" 
 		},
@@ -106,10 +106,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
 		"Amor Fati",
-		"Prisoner of Fate",
 		"Tear Em Up",
+		"Reckless",
+		"Wild at Heart",
+		"Prisoner of Fate",
 		"Four Horsemen",
-		"One-Two",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

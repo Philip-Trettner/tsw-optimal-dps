@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Fierce",
 		"Inspiring",
-		"Grievous",
 		"Quickening",
-		"Mercurial",
+		"Grievous",
+		"Fierce",
 		"Accurate",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -42,17 +42,17 @@
 			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 183,
+			"Hit": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
-			"Crit Power": 100,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 236,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -67,9 +67,9 @@
 		{
 			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 201,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Equilibrium" 
 		},
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Binding Wounds",
 		"Steel Echo",
-		"Bloodshot",
 		"Four Seasons",
-		"Cannibalize",
+		"Bloodshot",
+		"Binding Wounds",
 		"Exsanguinate",
+		"Cannibalize",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Ferocious",
-		"Brutal",
-		"Accurate",
-		"Mercurial",
-		"Grievous",
 		"Piercing",
+		"Mercurial",
+		"Ferocious",
+		"Grievous",
+		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -15,8 +15,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 407,
-			"Pen": 0,
+			"Hit": 203,
+			"Pen": 203,
 			"Signet": "Sadism" 
 		},
 		{
@@ -69,27 +69,27 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 236,
+			"Hit": 236,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Laceration" 
+			"Pen": 407,
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Aggression" 
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
 		"Start & Finish",
-		"Big 45",
 		"Lock & Load",
-		"Three Round Burst",
+		"Big 45",
+		"Bullet Ballet",
 		"Bond, Strong Bond",
+		"Three Round Burst",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

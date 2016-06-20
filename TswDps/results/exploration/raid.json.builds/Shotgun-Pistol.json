@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
-		"Grievous",
-		"Ferocious",
 		"Focused",
 		"Fierce",
+		"Ferocious",
 		"Accurate",
+		"Grievous",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Lock, Stock & Barrel",
-		"Bombardment",
-		"Sure Shot",
-		"Raging Bullet",
 		"Start & Finish",
+		"Raging Bullet",
+		"Sure Shot",
 		"Big 45",
+		"Bombardment",
+		"Lock, Stock & Barrel",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

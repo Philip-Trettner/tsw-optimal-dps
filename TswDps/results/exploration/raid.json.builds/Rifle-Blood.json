@@ -1,7 +1,7 @@
 {
 	"Augments": [
 		"Focused",
-		"Piercing",
+		"Inspiring",
 		"Invulnerable",
 		"Mercurial",
 		"Fierce",
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
@@ -120,7 +120,7 @@
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
-		"consumeIfNotBloodOffering": true,
+		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
@@ -132,9 +132,9 @@
 		"Cannibalize",
 		"Bloodshot",
 		"Three Round Burst",
-		"Left Hand of Darkness",
+		"Exsanguinate",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

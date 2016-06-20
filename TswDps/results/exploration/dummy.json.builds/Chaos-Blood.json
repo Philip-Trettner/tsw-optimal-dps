@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"Focused",
-		"Brutal",
+		"Curing",
+		"Ferocious",
 		"Salubrious",
 		"Grievous",
-		"Curing",
+		"Inspiring",
 		"Accurate",
 		"" 
 	],
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -67,16 +67,16 @@
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -92,14 +92,14 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Crit (blue)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Chaos",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"Pen": 312 
 		} 
 	},
 	"Passives": [
@@ -135,6 +135,6 @@
 		"Pulling the Strings",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

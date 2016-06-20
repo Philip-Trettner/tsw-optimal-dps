@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Ferocious",
-		"Mercurial",
-		"Grievous",
-		"Inspiring",
 		"Accurate",
+		"Inspiring",
 		"Quickening",
+		"Grievous",
+		"Ferocious",
+		"Curing",
 		"" 
 	],
 	"Gear": [
@@ -30,26 +30,26 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 163,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
+			"Hit": 367,
 			"Pen": 0,
 			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 156,
+			"Crit": 163,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 118,
 			"Pen": 0,
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 201,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Grand Slam",
-		"Suffering and Solace",
-		"Full Momentum",
-		"Molten Steel",
-		"Amor Fati",
 		"Chaotic Pull",
+		"Amor Fati",
 		"Shockwave",
+		"Suffering and Solace",
+		"Molten Steel",
+		"Full Momentum",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

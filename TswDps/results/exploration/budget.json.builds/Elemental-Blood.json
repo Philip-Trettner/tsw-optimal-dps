@@ -1,22 +1,22 @@
 {
 	"Augments": [
-		"Ferocious",
-		"Fierce",
-		"Inspiring",
-		"Quickening",
-		"Accurate",
+		"Precise",
+		"Focused",
 		"Mercurial",
 		"Grievous",
+		"Quickening",
+		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 164,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 363,
 			"Signet": "Laceration" 
 		},
 		{
@@ -30,6 +30,15 @@
 		},
 		{
 			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
 			"Crit": 303,
 			"Crit Power": 0,
 			"Free": true,
@@ -38,21 +47,12 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 164,
-			"Pen": 164,
-			"Signet": "Violence" 
-		},
-		{
 			"AR": 625,
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 105,
+			"Hit": 105,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 181,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -123,16 +123,16 @@
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 2,
 		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Fire Manifestation",
-		"Cannibalize",
-		"Anima Charge",
-		"Power Line",
 		"Lightning Manifestation",
 		"Bloodshot",
+		"Cannibalize",
+		"Power Line",
+		"Exsanguinate",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

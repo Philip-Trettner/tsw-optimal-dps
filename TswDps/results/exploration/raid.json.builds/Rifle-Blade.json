@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Grievous",
-		"Piercing",
-		"Focused",
-		"Accurate",
 		"Invulnerable",
-		"Fierce",
+		"Focused",
+		"Piercing",
+		"Ferocious",
 		"Mercurial",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,14 +17,14 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -39,10 +39,10 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 163,
 			"Crit Power": 156,
 			"Free": true,
-			"Hit": 183,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Execution" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Binding Wounds",
-		"Three Round Burst",
-		"Dancing Blade",
 		"Lock & Load",
+		"Three Round Burst",
+		"Binding Wounds",
 		"Steel Echo",
 		"Four Seasons",
+		"Dancing Blade",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

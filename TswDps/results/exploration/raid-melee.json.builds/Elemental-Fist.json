@@ -2,8 +2,8 @@
 	"Augments": [
 		"Fierce",
 		"Inspiring",
-		"Focused",
 		"Accurate",
+		"Focused",
 		"Mercurial",
 		"Grievous",
 		"Ferocious",
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,

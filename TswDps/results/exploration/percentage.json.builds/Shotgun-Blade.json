@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Grievous",
+		"Quickening",
+		"Inspiring",
+		"Mercurial",
+		"Ferocious",
+		"Focused",
+		"Accurate",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 313,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 183,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 367,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 236,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 203,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Left Weapon": "Shotgun",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 341 
+		} 
+	},
+	"Passives": [
+		"Brawler",
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Seal The Deal",
+		"Third Degree",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 4,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Grass Cutter",
+		"Lock, Stock & Barrel",
+		"Steel Echo",
+		"Four Seasons",
+		"Sure Shot",
+		"Binding Wounds",
+		"Raging Bullet",
+		"" 
+	],
+	"Stim": "StimCritPurple" 
+} 
+

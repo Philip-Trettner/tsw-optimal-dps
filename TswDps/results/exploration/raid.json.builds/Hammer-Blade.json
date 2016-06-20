@@ -1,9 +1,9 @@
 {
 	"Augments": [
-		"Piercing",
+		"Brutal",
 		"Accurate",
 		"Inspiring",
-		"Invulnerable",
+		"Curing",
 		"Focused",
 		"Mercurial",
 		"Grievous",
@@ -30,19 +30,19 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 367,
 			"Pen": 0,
 			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 367,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -57,12 +57,12 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Swords" 
 		},
 		{
 			"AR": 664,

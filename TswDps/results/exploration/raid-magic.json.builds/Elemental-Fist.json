@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Inspiring",
 		"Mercurial",
+		"Quickening",
 		"Accelerating",
-		"Piercing",
-		"Grievous",
 		"Invulnerable",
+		"Grievous",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -21,10 +21,10 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -47,30 +47,30 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 664,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Subway Tokens" 
-		},
-		{
-			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 118,
-			"Pen": 118,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 664,
-			"Crit": 210,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Hit": 100 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
@@ -121,18 +121,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 2,
 		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
 		"Lightning Manifestation",
+		"Reckless",
 		"Fire Manifestation",
+		"Anima Charge",
 		"See Red",
 		"Tear Em Up",
-		"Anima Charge",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

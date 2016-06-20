@@ -1,23 +1,23 @@
 {
 	"Augments": [
-		"Fierce",
-		"Grievous",
-		"Quickening",
-		"Accurate",
-		"Mercurial",
+		"Piercing",
+		"Ferocious",
 		"Inspiring",
 		"Focused",
+		"Mercurial",
+		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Sadism" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 972,
@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 0,
+			"AR": 972,
+			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 328,
-			"Signet": "Egon Pendant" 
+			"Pen": 164,
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -48,8 +48,17 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
@@ -62,25 +71,16 @@
 			"Free": true,
 			"Hit": 211,
 			"Pen": 0,
-			"Signet": "Storms" 
-		},
-		{
-			"AR": 625,
-			"Crit": 195,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
+			"Crit": 168,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 181,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (blue)",
@@ -106,10 +106,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
+		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree",
-		"Thunderstruck" 
+		"Third Degree" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Run Rampant",
 		"Four Horsemen",
-		"Steel Echo",
-		"Pulling the Strings",
-		"Four Seasons",
 		"Amor Fati",
+		"Steel Echo",
+		"Four Seasons",
+		"Pulling the Strings",
 		"Binding Wounds",
 		"" 
 	],

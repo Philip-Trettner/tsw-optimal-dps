@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Focused",
+		"Ferocious",
+		"Grievous",
+		"Inspiring",
+		"Curing",
+		"Mercurial",
+		"Accurate",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 203,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 367,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 156,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 362,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Left Weapon": "Elemental",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Pen": 312 
+		} 
+	},
+	"Passives": [
+		"Accuracy",
+		"Brawler",
+		"Elemental Force",
+		"Iron Maiden",
+		"Lethality",
+		"Seal The Deal",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"CritPower": 100 
+	},
+	"Right Weapon": "Hammer",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": false,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 5,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Grand Slam",
+		"Molten Steel",
+		"Blaze",
+		"Full Momentum",
+		"Power Line",
+		"Anima Charge",
+		"Fire Manifestation",
+		"" 
+	],
+	"Stim": "StimPenPurple" 
+} 
+

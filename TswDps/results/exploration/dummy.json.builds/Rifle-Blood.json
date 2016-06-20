@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
+		"Inspiring",
 		"Mercurial",
-		"Accelerating",
 		"Focused",
-		"Quickening",
+		"Accelerating",
 		"Accurate",
 		"Grievous",
 		"" 
@@ -48,10 +48,10 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
@@ -66,10 +66,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -92,14 +92,14 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Rifle",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Red Mist",
-		"Cannibalize",
-		"Fire in the Hole",
 		"Lock & Load",
+		"Red Mist",
+		"Fire in the Hole",
+		"Cannibalize",
 		"Three Round Burst",
 		"Bloodshot",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimAttackPurple" 
 } 
 

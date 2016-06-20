@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Fierce",
-		"Mercurial",
-		"Accurate",
 		"Focused",
-		"Invulnerable",
-		"Ferocious",
+		"Brutal",
+		"Fierce",
+		"Accelerating",
+		"Accurate",
+		"Mercurial",
 		"Grievous",
 		"" 
 	],
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 118,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Tomes" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,11 +112,11 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Hit": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Bullet Ballet",
 		"Start & Finish",
-		"Big 45",
-		"Cannibalize",
 		"Bond, Strong Bond",
+		"Cannibalize",
+		"Big 45",
+		"Bullet Ballet",
 		"Bloodshot",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -4,9 +4,9 @@
 		"Inspiring",
 		"Mercurial",
 		"Grievous",
-		"Accurate",
-		"Fierce",
 		"Accelerating",
+		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 0,
-			"Crit Power": 156,
+			"Crit": 163,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 183,
 			"Pen": 0,
@@ -80,12 +80,12 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Aggression" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
@@ -119,7 +119,7 @@
 		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
-		"considerBuffWC": false,
+		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 1,

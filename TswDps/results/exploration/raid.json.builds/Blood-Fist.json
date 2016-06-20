@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Grievous",
+		"Focused",
+		"Mercurial",
+		"Ferocious",
 		"Salubrious",
 		"Curing",
-		"Ferocious",
-		"Mercurial",
-		"Focused",
+		"Grievous",
 		"Accurate",
 		"" 
 	],
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Fury" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
+		"Go for the Throat",
+		"Tear Em Up",
 		"Reckless",
 		"Cannibalize",
-		"Tear Em Up",
-		"Go for the Throat",
 		"Bloodshot",
-		"Left Hand of Darkness",
+		"Wild at Heart",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

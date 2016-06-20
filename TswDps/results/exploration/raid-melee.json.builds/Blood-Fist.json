@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"Inspiring",
-		"Mercurial",
 		"Quickening",
-		"Fierce",
+		"Curing",
+		"Mercurial",
+		"Focused",
 		"Accurate",
 		"Grievous",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -62,7 +62,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Tomes" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Abuse" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Bloodline",
 		"Reckless",
-		"Cannibalize",
 		"Cardiac Arrest",
+		"Cannibalize",
 		"Tear Em Up",
 		"One-Two",
 		"Bloodshot",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

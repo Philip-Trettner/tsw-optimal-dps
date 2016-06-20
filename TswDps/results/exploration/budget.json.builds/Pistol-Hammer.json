@@ -1,23 +1,32 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
-		"Mercurial",
-		"Brutal",
+		"Focused",
 		"Grievous",
-		"Quickening",
-		"Inspiring",
+		"Mercurial",
+		"Piercing",
+		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
 			"Crit": 0,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 181,
 			"Pen": 181,
 			"Signet": "Sadism" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -30,39 +39,12 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
+			"Crit": 151,
 			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 164,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 625,
-			"Crit": 97,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 105,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
-			"Free": true,
-			"Hit": 105,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
@@ -71,6 +53,24 @@
 			"Free": true,
 			"Hit": 211,
 			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 191,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 211,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -84,22 +84,22 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 168,
+			"Crit": 336,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
+			"Pen": 0,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Kickback": "Kickback CritPower on Pen (blue)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
 			"CritPower": 425 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Pen": 232 
 		} 
 	},
 	"Passives": [
@@ -117,7 +117,7 @@
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
-		"Bullet Ballet",
-		"Shootout",
 		"Molten Steel",
 		"Full Momentum",
 		"Stone's Throw",
+		"Bullet Ballet",
+		"Bond, Strong Bond",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimPenBlue" 
 } 
 

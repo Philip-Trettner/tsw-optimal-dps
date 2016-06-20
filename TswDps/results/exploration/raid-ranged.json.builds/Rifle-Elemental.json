@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Inspiring",
-		"Piercing",
-		"Grievous",
 		"Accurate",
 		"Mercurial",
+		"Focused",
+		"Grievous",
+		"Ferocious",
 		"Fierce",
 		"" 
 	],
@@ -99,17 +99,17 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Lightning Manifestation",
 		"Fire Manifestation",
+		"Lock & Load",
+		"Lightning Manifestation",
 		"Three Round Burst",
 		"Power Line",
-		"Lock & Load",
 		"Flame Strike",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -67,10 +67,10 @@
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{

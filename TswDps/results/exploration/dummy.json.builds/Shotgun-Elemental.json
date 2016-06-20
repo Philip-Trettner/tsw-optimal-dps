@@ -3,10 +3,10 @@
 		"Fierce",
 		"Brutal",
 		"Grievous",
-		"Accurate",
 		"Focused",
-		"Inspiring",
 		"Ferocious",
+		"Accurate",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -116,7 +116,7 @@
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -129,10 +129,10 @@
 		"Single Barrel",
 		"Lightning Manifestation",
 		"Fire Manifestation",
-		"Power Line",
-		"Raging Bullet",
-		"Anima Charge",
 		"Flame Strike",
+		"Raging Bullet",
+		"Power Line",
+		"Anima Charge",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

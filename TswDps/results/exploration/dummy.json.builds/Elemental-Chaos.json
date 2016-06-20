@@ -22,10 +22,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,

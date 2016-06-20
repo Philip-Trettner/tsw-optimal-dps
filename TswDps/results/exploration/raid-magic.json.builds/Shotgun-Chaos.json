@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
+		"Fierce",
 		"Inspiring",
 		"Quickening",
 		"Mercurial",
 		"Grievous",
-		"Fierce",
+		"Ferocious",
 		"Accurate",
 		"" 
 	],
@@ -49,18 +49,18 @@
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 0,
 			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -106,10 +106,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 

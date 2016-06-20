@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Grievous",
 		"Brutal",
-		"Inspiring",
-		"Invulnerable",
-		"Mercurial",
+		"Quickening",
 		"Accurate",
+		"Grievous",
+		"Inspiring",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"Pen": 312 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Molten Steel",
 		"Four Horsemen",
 		"Amor Fati",
+		"Suffering and Solace",
+		"Molten Steel",
 		"Full Momentum",
 		"Eye of Pandemonium",
-		"Suffering and Solace",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

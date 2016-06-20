@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Mercurial",
-		"Grievous",
+		"Piercing",
 		"Focused",
-		"Inspiring",
-		"Ferocious",
+		"Mercurial",
 		"Accurate",
+		"Ferocious",
+		"Accelerating",
 		"" 
 	],
 	"Gear": [
@@ -33,8 +33,8 @@
 			"Crit": 0,
 			"Crit Power": 148,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 164,
+			"Hit": 164,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -51,18 +51,18 @@
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 105,
-			"Signet": "Liquidation" 
+			"Hit": 105,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
-			"Signet": "Distortion" 
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Liquidation" 
 		},
 		{
 			"AR": 625,
@@ -76,20 +76,20 @@
 		{
 			"AR": 0,
 			"Crit": 0,
+			"Crit Power": 164,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
 			"Crit Power": 328,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
-		},
-		{
-			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
-			"Free": true,
-			"Hit": 181,
-			"Pen": 0,
-			"Signet": "Opportunism" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (blue)",
@@ -116,7 +116,7 @@
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
 		"Start & Finish",
-		"Bond, Strong Bond",
+		"Four Horsemen",
 		"Amor Fati",
-		"Pulling the Strings",
-		"Chaotic Pull",
+		"Shootout",
+		"Bond, Strong Bond",
+		"Bullet Ballet",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Precise",
+		"Mercurial",
+		"Accurate",
+		"Fierce",
+		"Quickening",
+		"Focused",
+		"Grievous",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 156,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 296,
+			"Free": false,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 118,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 203,
+			"Signet": "Abuse" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 203,
+			"Signet": "Aggression" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Elemental",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 341 
+		} 
+	},
+	"Passives": [
+		"Brawler",
+		"Elemental Force",
+		"Ferocity",
+		"Iron Maiden",
+		"Seal The Deal",
+		"Third Degree",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Hit": 100 
+	},
+	"Right Weapon": "Fist",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 3,
+		"tryToConsumeOnBuffed": false 
+	},
+	"Skills": [
+		"Prey on the Weak",
+		"Anima Charge",
+		"Power Line",
+		"Fire Manifestation",
+		"Reckless",
+		"Blaze",
+		"Tear Em Up",
+		"" 
+	],
+	"Stim": "StimCritPurple" 
+} 
+

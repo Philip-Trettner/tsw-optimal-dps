@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Quickening",
-		"Focused",
-		"Grievous",
-		"Accurate",
-		"Ferocious",
+		"Brutal",
 		"Mercurial",
+		"Accurate",
+		"Grievous",
+		"Inspiring",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -53,7 +53,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Storms" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Pen": 100 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
 		"Four Horsemen",
-		"Red Mist",
-		"Pulling the Strings",
-		"Three Round Burst",
 		"Lock & Load",
+		"Pulling the Strings",
+		"Red Mist",
+		"Amor Fati",
+		"Three Round Burst",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

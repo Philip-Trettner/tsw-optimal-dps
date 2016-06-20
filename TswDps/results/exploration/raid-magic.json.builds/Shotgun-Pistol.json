@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
 		"Grievous",
+		"Inspiring",
+		"Mercurial",
 		"Accurate",
-		"Ferocious",
-		"Salubrious",
+		"Fierce",
 		"Piercing",
 		"" 
 	],
@@ -47,21 +47,21 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
-			"Crit": 105,
+			"AR": 625,
+			"Crit": 0,
 			"Crit Power": 100,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 118,
 			"Signet": "Shards" 
 		},
 		{
@@ -75,11 +75,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		},
 		{
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Shotgun Wedding",
 		"Start & Finish",
-		"Shootout",
-		"Sure Shot",
 		"Lock, Stock & Barrel",
+		"Shotgun Wedding",
+		"Takedown",
+		"Sure Shot",
 		"Raging Bullet",
 		"" 
 	],

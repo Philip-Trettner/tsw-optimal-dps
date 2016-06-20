@@ -2,10 +2,10 @@
 	"Augments": [
 		"Brutal",
 		"Inspiring",
-		"Accurate",
+		"Fierce",
 		"Mercurial",
 		"Grievous",
-		"Ferocious",
+		"Accurate",
 		"Focused",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -39,19 +39,19 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
+			"Hit": 236,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Sadism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {

@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 118,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",

@@ -2,11 +2,11 @@
 	"Augments": [
 		"Fierce",
 		"Mercurial",
-		"Grievous",
 		"Accurate",
-		"Focused",
+		"Grievous",
+		"Quickening",
 		"Accelerating",
-		"Brutal",
+		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -17,25 +17,25 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Sadism" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 972,
-			"Crit": 151,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 148,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 164,
+			"Hit": 164,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 328,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,16 +71,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Swords" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 181,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 363,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -103,8 +103,8 @@
 		} 
 	},
 	"Passives": [
+		"Elemental Force",
 		"Iron Maiden",
-		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
@@ -117,7 +117,7 @@
 	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -128,8 +128,8 @@
 	"Skills": [
 		"Grass Cutter",
 		"Lightning Manifestation",
-		"Binding Wounds",
 		"Steel Echo",
+		"Binding Wounds",
 		"Fire Manifestation",
 		"Power Line",
 		"Flame Strike",

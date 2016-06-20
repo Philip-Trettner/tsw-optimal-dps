@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Brutal",
-		"Focused",
-		"Curing",
-		"Piercing",
+		"Fierce",
 		"Mercurial",
+		"Salubrious",
+		"Inspiring",
+		"Brutal",
 		"Grievous",
 		"Accurate",
 		"" 
@@ -13,46 +13,46 @@
 		{
 			"AR": 1077,
 			"Crit": 0,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
+			"Pen": 363,
 			"Signet": "Aggression" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 328,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 303,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 148,
+			"Free": true,
 			"Hit": 164,
 			"Pen": 0,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 105,
-			"Pen": 105,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -67,10 +67,10 @@
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 95,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 211,
+			"Hit": 105,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Elemental",
 	"Rotation": {
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Shock",
-		"Fire Manifestation",
-		"Lock, Stock & Barrel",
-		"Power Line",
 		"Lightning Manifestation",
-		"Sure Shot",
+		"Power Line",
+		"Lock, Stock & Barrel",
+		"Fire Manifestation",
+		"Raging Bullet",
 		"Flame Strike",
 		"" 
 	],

@@ -1,23 +1,23 @@
 {
 	"Augments": [
-		"Brutal",
-		"Salubrious",
-		"Curing",
-		"Accurate",
+		"Fierce",
+		"Invulnerable",
+		"Focused",
+		"Ferocious",
 		"Mercurial",
 		"Grievous",
-		"Fierce",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 164,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Pen": 363,
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 972,
@@ -25,6 +25,15 @@
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 328,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -33,63 +42,54 @@
 			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 164,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 303,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 0,
+			"Hit": 164,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
 			"Crit": 0,
+			"Crit Power": 95,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
+			"Hit": 0,
 			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 191,
 			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
-			"Signet": "Equilibrium" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 211,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
+			"Crit": 168,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 181,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 336,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 363,
-			"Signet": "Aggression" 
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (blue)",
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Grass Cutter",
 		"Lock, Stock & Barrel",
-		"Sling Blade",
+		"Raging Bullet",
 		"Steel Echo",
 		"Four Seasons",
-		"Raging Bullet",
 		"Binding Wounds",
+		"Dancing Blade",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

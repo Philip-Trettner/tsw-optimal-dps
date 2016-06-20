@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Inspiring",
 		"Mercurial",
 		"Focused",
-		"Grievous",
-		"Accurate",
 		"Accelerating",
+		"Grievous",
+		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -22,9 +22,9 @@
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 296,
+			"Crit Power": 148,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 164,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -69,8 +69,8 @@
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -78,21 +78,21 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 363,
+			"Hit": 363,
+			"Pen": 0,
 			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 363,
+			"Pen": 181,
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Kickback": "Kickback CritPower on Pen (blue)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
@@ -112,11 +112,11 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Rifle",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Safety Off",
 		"Lock, Stock & Barrel",
-		"Bombardment",
-		"Sure Shot",
-		"Three Round Burst",
 		"Raging Bullet",
 		"Lock & Load",
+		"Three Round Burst",
+		"Bombardment",
+		"Fire in the Hole",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Inspiring",
 		"Mercurial",
-		"Brutal",
 		"Piercing",
+		"Accurate",
+		"Inspiring",
 		"Quickening",
-		"Grievous",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -22,10 +22,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 156,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -40,10 +40,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -92,11 +92,11 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback Crit on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
-			"CritPower": 644 
+			"Crit": 712 
 		},
 		"Stim": {
 			"Crit": 276 
@@ -127,10 +127,10 @@
 	},
 	"Skills": [
 		"Grand Slam",
-		"Full Momentum",
 		"Stone's Throw",
-		"Point Blank",
 		"Raging Bullet",
+		"Point Blank",
+		"Full Momentum",
 		"Lock, Stock & Barrel",
 		"Molten Steel",
 		"" 

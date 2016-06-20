@@ -1,22 +1,22 @@
 {
 	"Augments": [
+		"Focused",
+		"Mercurial",
 		"Grievous",
+		"Inspiring",
+		"Accurate",
 		"Quickening",
 		"Fierce",
-		"Inspiring",
-		"Mercurial",
-		"Focused",
-		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
-			"Crit Power": 173,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 203,
+			"Hit": 203,
+			"Pen": 0,
 			"Signet": "Opportunism" 
 		},
 		{
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
-			"Crit Power": 0,
+			"Crit": 163,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -75,10 +75,10 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 407,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Laceration" 
 		},
@@ -92,14 +92,14 @@
 			"Signet": "Sadism" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Pen (blue)",
+	"Kickback": "Kickback Pen on Pen (purple)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"Pen": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
-		"Raging Bullet",
-		"Lock, Stock & Barrel",
 		"Shotgun Wedding",
 		"Four Horsemen",
-		"Pulling the Strings",
+		"Amor Fati",
+		"Suffering and Solace",
+		"Lock, Stock & Barrel",
+		"Raging Bullet",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

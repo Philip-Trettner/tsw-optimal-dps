@@ -1,0 +1,140 @@
+{
+	"Augments": [
+		"Fierce",
+		"Inspiring",
+		"Ferocious",
+		"Piercing",
+		"Mercurial",
+		"Grievous",
+		"Accurate",
+		"" 
+	],
+	"Gear": [
+		{
+			"AR": 1144,
+			"Crit": 181,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 0,
+			"Signet": "Aggression" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 183,
+			"Pen": 183,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 183,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 1033,
+			"Crit": 163,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 183,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 105,
+			"Crit Power": 100,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
+		},
+		{
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 118,
+			"Signet": "Swords" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 203,
+			"Pen": 0,
+			"Signet": "Sadism" 
+		},
+		{
+			"AR": 0,
+			"Crit": 181,
+			"Crit Power": 173,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Laceration" 
+		} 
+	],
+	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Left Weapon": "Fist",
+	"Misc": {
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"Crit": 341 
+		} 
+	},
+	"Passives": [
+		"Invasive Measures",
+		"Iron Maiden",
+		"Lethality",
+		"Seal The Deal",
+		"Sharp Blades",
+		"Third Degree",
+		"Twist The Knife" 
+	],
+	"Potion": {
+		"Crit": 119 
+	},
+	"Right Weapon": "Blade",
+	"Rotation": {
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": false,
+		"considerBuffFF": false,
+		"considerBuffWC": false,
+		"consumeIfNotBloodOffering": false,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 3,
+		"tryToConsumeOnBuffed": true 
+	},
+	"Skills": [
+		"Delicate Strike",
+		"Reckless",
+		"Tear Em Up",
+		"Steel Echo",
+		"Four Seasons",
+		"Dancing Blade",
+		"Balanced Blade",
+		"" 
+	],
+	"Stim": "StimCritPurple" 
+} 
+

@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"Fierce",
+		"Focused",
+		"Ferocious",
 		"Accelerating",
 		"Accurate",
 		"Mercurial",
-		"Focused",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -85,10 +85,10 @@
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Bombardment",
 		"Raging Bullet",
+		"Three Round Burst",
 		"Lock & Load",
 		"Takedown",
 		"Lock, Stock & Barrel",
-		"Three Round Burst",
+		"Bombardment",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

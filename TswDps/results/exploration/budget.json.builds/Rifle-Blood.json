@@ -1,23 +1,23 @@
 {
 	"Augments": [
 		"Fierce",
+		"Piercing",
+		"Mercurial",
+		"Ferocious",
 		"Accurate",
 		"Grievous",
-		"Ferocious",
-		"Mercurial",
-		"Accelerating",
-		"Piercing",
+		"Inspiring",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
 			"Crit": 168,
-			"Crit Power": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
-			"Signet": "Sadism" 
+			"Pen": 0,
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 972,
@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 972,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 164,
 			"Pen": 164,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -48,12 +48,12 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 195,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Execution" 
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -78,8 +78,8 @@
 			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 181,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 181,
 			"Signet": "Aggression" 
 		},
 		{
@@ -99,7 +99,7 @@
 			"CritPower": 425 
 		},
 		"Stim": {
-			"Pen": 232 
+			"Crit": 276 
 		} 
 	},
 	"Passives": [
@@ -123,18 +123,18 @@
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
 		"Shellshocker",
-		"Bloodshot",
-		"Three Round Burst",
-		"Lock & Load",
 		"Cannibalize",
-		"Exsanguinate",
+		"Three Round Burst",
+		"Fire in the Hole",
+		"Bloodshot",
+		"Lock & Load",
 		"" 
 	],
-	"Stim": "StimPenBlue" 
+	"Stim": "StimCritBlue" 
 } 
 

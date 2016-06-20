@@ -3,10 +3,10 @@
 		"Focused",
 		"Mercurial",
 		"Grievous",
-		"Quickening",
-		"Fierce",
+		"Brutal",
 		"Accurate",
-		"Ferocious",
+		"Inspiring",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -22,10 +22,10 @@
 		{
 			"AR": 1033,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 183,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -92,11 +92,11 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback Pen on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
-			"CritPower": 644 
+			"Pen": 644 
 		},
 		"Stim": {
 			"Pen": 312 
@@ -129,10 +129,10 @@
 		"Hair Trigger",
 		"Bullet Ballet",
 		"Molten Steel",
+		"Stone's Throw",
+		"Haymaker",
 		"Full Momentum",
 		"Bone Breaker",
-		"Haymaker",
-		"Stone's Throw",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Brutal",
-		"Grievous",
+		"Fierce",
 		"Inspiring",
 		"Accurate",
+		"Brutal",
 		"Focused",
-		"Fierce",
+		"Grievous",
 		"Mercurial",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
@@ -30,11 +30,11 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Egon Pendant" 
 		},
 		{
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 0,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Molten Steel",
 		"Full Momentum",
 		"Stone's Throw",
 		"Binding Wounds",
 		"Steel Echo",
+		"Molten Steel",
 		"Four Seasons",
 		"" 
 	],

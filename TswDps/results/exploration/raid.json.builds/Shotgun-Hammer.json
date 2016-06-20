@@ -2,11 +2,11 @@
 	"Augments": [
 		"Fierce",
 		"Invulnerable",
-		"Accurate",
-		"Mercurial",
-		"Curing",
-		"Focused",
 		"Grievous",
+		"Curing",
+		"Mercurial",
+		"Accurate",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -20,13 +20,13 @@
 			"Signet": "Abuse" 
 		},
 		{
-			"AR": 0,
+			"AR": 1033,
 			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 183,
 			"Pen": 0,
-			"Signet": "Coney Island Band" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -84,8 +84,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Grand Slam",
 		"Full Momentum",
-		"Bombardment",
+		"Molten Steel",
 		"Lock, Stock & Barrel",
 		"Stone's Throw",
-		"Sure Shot",
-		"Molten Steel",
+		"Bombardment",
+		"Raging Bullet",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

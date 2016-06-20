@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Grievous",
+		"Focused",
 		"Curing",
 		"Mercurial",
-		"Quickening",
-		"Focused",
+		"Inspiring",
+		"Grievous",
 		"Fierce",
 		"Accurate",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 203,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -135,6 +135,6 @@
 		"Exsanguinate",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

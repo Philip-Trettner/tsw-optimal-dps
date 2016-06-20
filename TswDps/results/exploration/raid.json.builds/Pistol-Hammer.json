@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"Invulnerable",
-		"Precise",
-		"Accelerating",
+		"Inspiring",
 		"Mercurial",
+		"Grievous",
 		"Accurate",
+		"Accelerating",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Molten Steel",
 		"Full Momentum",
+		"Bullet Ballet",
+		"Molten Steel",
 		"Bone Breaker",
 		"Stone's Throw",
-		"Bullet Ballet",
 		"Start & Finish",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimAttackPurple" 
 } 
 

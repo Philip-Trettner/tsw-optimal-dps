@@ -1,10 +1,10 @@
 {
 	"Augments": [
-		"Ferocious",
+		"Focused",
 		"Accurate",
 		"Inspiring",
 		"Accelerating",
-		"Focused",
+		"Piercing",
 		"Fierce",
 		"Grievous",
 		"" 
@@ -21,21 +21,21 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
-			"Crit Power": 156,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
+			"Crit Power": 296,
+			"Free": false,
 			"Hit": 0,
-			"Pen": 367,
-			"Signet": "Egon Pendant" 
+			"Pen": 0,
+			"Signet": "Woodcutters Wrath" 
 		},
 		{
 			"AR": 1033,
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -99,13 +99,13 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
-		"Accuracy",
 		"Elemental Force",
 		"Iron Maiden",
+		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
@@ -126,7 +126,7 @@
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
-		"Electrical Bolt",
+		"Shock",
 		"Takedown",
 		"Lock, Stock & Barrel",
 		"Lightning Manifestation",
@@ -135,6 +135,6 @@
 		"Raging Bullet",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

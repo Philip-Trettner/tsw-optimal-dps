@@ -2,20 +2,20 @@
 	"Augments": [
 		"Brutal",
 		"Accurate",
-		"Mercurial",
-		"Quickening",
-		"Focused",
 		"Grievous",
-		"Ferocious",
+		"Inspiring",
+		"Mercurial",
+		"Fierce",
+		"Focused",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 181,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 203,
 			"Signet": "Sadism" 
 		},
@@ -78,8 +78,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 203,
-			"Pen": 203,
+			"Hit": 0,
+			"Pen": 407,
 			"Signet": "Aggression" 
 		},
 		{
@@ -99,17 +99,17 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Hair Trigger",
 		"Lightning Manifestation",
-		"Fire Manifestation",
+		"Start & Finish",
 		"Anima Charge",
+		"Fire Manifestation",
 		"Flame Strike",
 		"Gun Crazy",
-		"Start & Finish",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

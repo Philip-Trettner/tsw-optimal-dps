@@ -12,8 +12,8 @@
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 0,
-			"Crit Power": 173,
+			"Crit": 181,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
@@ -21,10 +21,10 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
+			"Crit": 0,
 			"Crit Power": 156,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 183,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -48,21 +48,12 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 118,
-			"Pen": 118,
-			"Signet": "Subway Tokens" 
-		},
-		{
-			"AR": 664,
-			"Crit": 105,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
-			"Signet": "Issue 1.5%" 
+			"Pen": 0,
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -70,6 +61,15 @@
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 201,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -92,11 +92,11 @@
 			"Signet": "Sadism" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Pen (purple)",
+	"Kickback": "Kickback Pen on Pen (purple)",
 	"Left Weapon": "Chaos",
 	"Misc": {
 		"Kickback": {
-			"Crit": 712 
+			"Pen": 644 
 		},
 		"Stim": {
 			"Pen": 312 
@@ -129,7 +129,7 @@
 		"Grass Cutter",
 		"Prisoner of Fate",
 		"Amor Fati",
-		"Call for Eris",
+		"Four Horsemen",
 		"Steel Echo",
 		"Dancing Blade",
 		"Pulling the Strings",

@@ -1,6 +1,6 @@
 {
 	"Augments": [
-		"Ferocious",
+		"Fierce",
 		"Quickening",
 		"Accelerating",
 		"Focused",
@@ -76,10 +76,10 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		},
 		{
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Abuse" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Hit": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {

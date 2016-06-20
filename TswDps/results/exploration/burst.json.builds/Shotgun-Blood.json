@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
 		"Focused",
 		"Piercing",
-		"Inspiring",
 		"Grievous",
+		"Inspiring",
+		"Accurate",
 		"Quickening",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Sure Shot",
 		"Bloodshot",
 		"Raging Bullet",
-		"Lock, Stock & Barrel",
 		"Bombardment",
+		"Lock, Stock & Barrel",
+		"Sure Shot",
 		"Cannibalize",
 		"" 
 	],

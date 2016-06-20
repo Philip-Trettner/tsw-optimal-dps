@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Inspiring",
+		"Accelerating",
 		"Focused",
+		"Accurate",
 		"Mercurial",
 		"Grievous",
-		"Accelerating",
-		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -40,10 +40,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 156,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -51,8 +51,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 118,
+			"Hit": 236,
+			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -60,8 +60,8 @@
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,16 +80,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Aggression" 
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback Pen on Crit (purple)",
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Prey on the Weak",
 		"Reckless",
+		"Lock, Stock & Barrel",
 		"Tear Em Up",
+		"One-Two",
 		"Point Blank",
 		"Sure Shot",
-		"Lock, Stock & Barrel",
-		"One-Two",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

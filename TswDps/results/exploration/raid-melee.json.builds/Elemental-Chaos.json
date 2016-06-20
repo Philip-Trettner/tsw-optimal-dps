@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Curing",
-		"Accurate",
-		"Mercurial",
+		"Ferocious",
+		"Brutal",
 		"Inspiring",
 		"Grievous",
-		"Accelerating",
+		"Focused",
+		"Mercurial",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -40,19 +40,19 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,16 +71,7 @@
 			"Free": true,
 			"Hit": 118,
 			"Pen": 118,
-			"Signet": "Equilibrium" 
-		},
-		{
-			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Distortion" 
 		},
 		{
 			"AR": 0,
@@ -90,9 +81,18 @@
 			"Hit": 407,
 			"Pen": 0,
 			"Signet": "Aggression" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 407,
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Run Rampant",
 		"Lightning Manifestation",
-		"Four Horsemen",
-		"Anima Charge",
 		"Amor Fati",
 		"Prisoner of Fate",
 		"Fire Manifestation",
+		"Anima Charge",
+		"Four Horsemen",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

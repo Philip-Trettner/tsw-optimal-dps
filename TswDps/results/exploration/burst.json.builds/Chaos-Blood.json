@@ -2,9 +2,9 @@
 	"Augments": [
 		"Fierce",
 		"Quickening",
-		"Brutal",
 		"Inspiring",
 		"Ferocious",
+		"Brutal",
 		"Accurate",
 		"Grievous",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -80,15 +80,15 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Abuse" 
 		} 
 	],
@@ -112,12 +112,12 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Run Rampant",
 		"Cannibalize",
-		"Suffering and Solace",
 		"Amor Fati",
 		"Eye of Pandemonium",
-		"Four Horsemen",
+		"Suffering and Solace",
+		"Pulling the Strings",
 		"Bloodshot",
 		"" 
 	],

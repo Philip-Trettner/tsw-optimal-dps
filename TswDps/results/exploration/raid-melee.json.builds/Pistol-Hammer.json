@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Mercurial",
-		"Accelerating",
-		"Grievous",
-		"Ferocious",
 		"Fierce",
+		"Grievous",
 		"Accurate",
+		"Inspiring",
+		"Mercurial",
+		"Focused",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -49,10 +49,10 @@
 		{
 			"AR": 625,
 			"Crit": 105,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -117,7 +117,7 @@
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
-		"Full Momentum",
-		"Start & Finish",
 		"Molten Steel",
-		"Stone's Throw",
 		"Haymaker",
+		"Full Momentum",
+		"Bullet Ballet",
+		"Stone's Throw",
+		"Start & Finish",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

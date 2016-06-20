@@ -1,23 +1,23 @@
 {
 	"Augments": [
-		"Focused",
+		"Brutal",
 		"Accurate",
-		"Mercurial",
 		"Grievous",
-		"Fierce",
 		"Ferocious",
 		"Curing",
+		"Mercurial",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 0,
+			"Crit": 168,
 			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
-			"Signet": "Aggression" 
+			"Pen": 0,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 972,
@@ -39,8 +39,8 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
-			"Crit Power": 0,
+			"Crit": 151,
+			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -48,20 +48,20 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
-			"Crit Power": 95,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Equilibrium" 
 		},
 		{
@@ -75,24 +75,24 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 181,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 363,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Hammer",
 	"Misc": {
 		"Kickback": {
@@ -107,8 +107,8 @@
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
+		"Live Wire",
 		"One In The Chamber",
-		"Thunderstruck",
 		"Twist The Knife" 
 	],
 	"Potion": {
@@ -126,13 +126,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Grass Cutter",
+		"Grand Slam",
 		"Steel Echo",
-		"Full Momentum",
-		"Four Seasons",
-		"Binding Wounds",
 		"Molten Steel",
+		"Four Seasons",
 		"Stone's Throw",
+		"Full Momentum",
+		"Binding Wounds",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

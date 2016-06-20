@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accelerating",
 		"Quickening",
 		"Grievous",
 		"Ferocious",
+		"Accelerating",
 		"Mercurial",
 		"Accurate",
 		"" 
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
 		"Lock, Stock & Barrel",
 		"Sure Shot",
 		"Tear Em Up",
 		"Takedown",
+		"Reckless",
 		"Point Blank",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

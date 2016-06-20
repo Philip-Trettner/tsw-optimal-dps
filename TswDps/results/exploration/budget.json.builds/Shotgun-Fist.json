@@ -1,41 +1,23 @@
 {
 	"Augments": [
 		"Piercing",
-		"Accelerating",
+		"Quickening",
 		"Mercurial",
+		"Focused",
+		"Fierce",
 		"Accurate",
 		"Grievous",
-		"Brutal",
-		"Ferocious",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
 			"Crit": 0,
-			"Crit Power": 164,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 181,
-			"Signet": "Aggression" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
-			"Crit Power": 148,
-			"Free": true,
-			"Hit": 164,
-			"Pen": 0,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 972,
-			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 164,
-			"Pen": 164,
-			"Signet": "Violence" 
+			"Hit": 0,
+			"Pen": 363,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 972,
@@ -47,52 +29,70 @@
 			"Signet": "Violence" 
 		},
 		{
+			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 328,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
+			"Crit": 151,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
 			"AR": 625,
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Serration" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 105,
-			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 211,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Equilibrium" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 191,
+			"Free": true,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 363,
+			"Pen": 181,
 			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Pen": 181,
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (blue)",
+	"Kickback": "Kickback CritPower on Pen (blue)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
@@ -117,21 +117,21 @@
 	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
 		"minResourcesForLeftConsumer": 4,
 		"minResourcesForRightConsumer": 4,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
 		"Reckless",
 		"Lock, Stock & Barrel",
-		"Takedown",
 		"Tear Em Up",
 		"Raging Bullet",
+		"Sure Shot",
 		"Bombardment",
 		"" 
 	],

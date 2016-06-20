@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
-		"Salubrious",
 		"Quickening",
-		"Grievous",
+		"Mercurial",
 		"Fierce",
+		"Inspiring",
+		"Grievous",
 		"Accurate",
 		"" 
 	],
@@ -40,28 +40,28 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 156,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 236,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,14 +71,14 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 0,
 			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Abuse" 
 		},
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -117,7 +117,7 @@
 	"Right Weapon": "Blood",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": true,
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Cardiac Arrest",
-		"Cannibalize",
 		"Lock, Stock & Barrel",
+		"Cannibalize",
+		"Raging Bullet",
+		"Point Blank",
 		"Bloodshot",
 		"Sure Shot",
-		"Raging Bullet",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

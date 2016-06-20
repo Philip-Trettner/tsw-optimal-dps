@@ -466,7 +466,7 @@ int main(int argc, char *argv[])
 
     // .. fight scenario
     QCommandLineOption oFight({"f", "fight"}, "Fight scenario ('raid' [default], 'burst', 'dummy', 'raid-melee', "
-                                              "'raid-ranged', 'raid-magic', 'budget', or file)",
+                                              "'raid-ranged', 'raid-magic', 'budget', 'percentage', or file)",
                               "scenario", "raid");
     parser.addOption(oFight);
 
@@ -716,13 +716,21 @@ int main(int argc, char *argv[])
         o.raidQuality = Gear::TalismanQuality::QL10_4;
         scenario.name = "Raid/Dungeon Setting (.9.5 only, no Woodcutters, no NM raid drops, no Flappy drops)";
     }
-    else if (scen.toLower() == "budget")
+    else if (scen.toLower() == "percentage")
     {
         scenario.fightTimeIn60th = ticksFromTimeStr("2.5m");
         scenario.totalTimeIn60th = ticksFromTimeStr("48h");
         s.enemyInfo.allVulnerabilities = true;
         s.lowVarianceMode = true;
-        scenario.name = "Raid/Dungeon Setting, .9.5 only, no Woodcutters, no NM Raid Drops";
+        o.excludeSkillsAndPassives = {
+            "Live Wire",          //
+            "Sudden Return",      //
+            "One In The Chamber", //
+            "Fortunate Strike",   //
+            "Thunderstruck",      //
+            "Gnosis",             //
+        };
+        scenario.name = "Raid/Dungeon Setting, no Proc Passives";
     }
     else if (scen.toLower() == "dummy")
     {

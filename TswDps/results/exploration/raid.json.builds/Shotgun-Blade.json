@@ -6,7 +6,7 @@
 		"Brutal",
 		"Accurate",
 		"Mercurial",
-		"Ferocious",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",

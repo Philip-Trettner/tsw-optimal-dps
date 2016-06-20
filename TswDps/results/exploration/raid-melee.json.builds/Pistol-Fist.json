@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Grievous",
+		"Focused",
 		"Inspiring",
+		"Brutal",
+		"Accurate",
 		"Fierce",
 		"Mercurial",
-		"Focused",
-		"Accurate",
-		"Piercing",
 		"" 
 	],
 	"Gear": [
@@ -48,10 +48,10 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 100,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 118,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
+		"One-Two",
 		"Reckless",
 		"Tear Em Up",
-		"Bullet Ballet",
-		"Start & Finish",
 		"Wild at Heart",
-		"One-Two",
+		"Start & Finish",
+		"Bullet Ballet",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

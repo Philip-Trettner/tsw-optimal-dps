@@ -1,9 +1,9 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accelerating",
+		"Mercurial",
+		"Focused",
 		"Inspiring",
-		"Invulnerable",
 		"Accurate",
 		"Grievous",
 		"Quickening",
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",

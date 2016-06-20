@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
-		"Fierce",
+		"Mercurial",
+		"Focused",
 		"Quickening",
+		"Grievous",
 		"Ferocious",
 		"Accurate",
-		"Mercurial",
-		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Bloodline",
+		"Cannibalize",
 		"Plague",
 		"Lock, Stock & Barrel",
+		"Bloodshot",
 		"Raging Bullet",
 		"Sure Shot",
-		"Cannibalize",
-		"Bloodshot",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimAttackPurple" 
 } 
 

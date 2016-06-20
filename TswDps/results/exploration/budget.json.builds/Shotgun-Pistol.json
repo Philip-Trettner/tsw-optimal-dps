@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Brutal",
-		"Mercurial",
+		"Piercing",
+		"Quickening",
 		"Grievous",
-		"Inspiring",
-		"Ferocious",
 		"Fierce",
+		"Mercurial",
+		"Focused",
 		"Accurate",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
@@ -30,21 +30,39 @@
 		},
 		{
 			"AR": 664,
+			"Crit": 0,
+			"Crit Power": 148,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 164,
+			"Signet": "Egon Pendant" 
+		},
+		{
+			"AR": 972,
 			"Crit": 151,
 			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
-			"Crit": 0,
+			"AR": 625,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 328,
-			"Signet": "Violence" 
+			"Pen": 105,
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 105,
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 625,
@@ -53,25 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Liquidation" 
 		},
 		{
 			"AR": 0,
@@ -80,16 +80,16 @@
 			"Free": true,
 			"Hit": 363,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 168,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 181,
+			"Hit": 363,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (blue)",
@@ -112,12 +112,12 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Pistol",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Takedown",
-		"Raging Bullet",
 		"Lock, Stock & Barrel",
 		"Bullet Ballet",
 		"Start & Finish",
-		"Big 45",
+		"Takedown",
+		"Raging Bullet",
+		"Sure Shot",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

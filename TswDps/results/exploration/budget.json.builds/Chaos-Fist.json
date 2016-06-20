@@ -1,19 +1,19 @@
 {
 	"Augments": [
 		"Fierce",
+		"Quickening",
+		"Piercing",
 		"Inspiring",
-		"Grievous",
-		"Mercurial",
 		"Accurate",
-		"Ferocious",
-		"Precise",
+		"Mercurial",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 336,
-			"Crit Power": 0,
+			"Crit": 168,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -30,6 +30,15 @@
 		},
 		{
 			"AR": 972,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 164,
+			"Pen": 164,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 972,
 			"Crit": 151,
 			"Crit Power": 148,
 			"Free": true,
@@ -38,30 +47,12 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
-			"Crit": 0,
+			"AR": 625,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 328,
-			"Signet": "Violence" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
-			"Free": true,
-			"Hit": 105,
 			"Pen": 105,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
-			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
 			"Signet": "Storms" 
 		},
 		{
@@ -69,26 +60,35 @@
 			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Storms" 
+		},
+		{
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 211,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 181,
+			"Hit": 363,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
+			"Crit": 168,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 181,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 181,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 425 
 		},
 		"Stim": {
-			"Pen": 232 
+			"Crit": 276 
 		} 
 	},
 	"Passives": [
@@ -117,24 +117,24 @@
 	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 3,
+		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
 		"Amor Fati",
-		"Four Horsemen",
-		"Reckless",
-		"Eye of Pandemonium",
 		"One-Two",
+		"Reckless",
 		"Wild at Heart",
+		"Eye of Pandemonium",
+		"Four Horsemen",
 		"" 
 	],
-	"Stim": "StimPenBlue" 
+	"Stim": "StimCritBlue" 
 } 
 

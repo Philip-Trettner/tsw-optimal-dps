@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
+		"Inspiring",
 		"Mercurial",
-		"Curing",
-		"Ferocious",
-		"Grievous",
-		"Quickening",
+		"Brutal",
 		"Accurate",
+		"Quickening",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 236,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Shellshocker",
 		"Reckless",
+		"Shellshocker",
 		"Tear Em Up",
-		"Three Round Burst",
-		"Lock & Load",
 		"One-Two",
+		"Lock & Load",
+		"Three Round Burst",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

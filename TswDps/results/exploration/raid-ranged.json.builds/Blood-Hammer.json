@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Brutal",
-		"Accurate",
-		"Focused",
 		"Inspiring",
+		"Ferocious",
 		"Mercurial",
+		"Accurate",
 		"Accelerating",
 		"Grievous",
 		"" 
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Pen": 100 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
@@ -127,10 +127,10 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Eruption",
-		"Molten Steel",
 		"Full Momentum",
+		"Molten Steel",
 		"Stone's Throw",
+		"Eruption",
 		"Cannibalize",
 		"Bloodshot",
 		"" 

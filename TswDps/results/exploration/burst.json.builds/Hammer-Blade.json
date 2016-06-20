@@ -2,10 +2,10 @@
 	"Augments": [
 		"Focused",
 		"Grievous",
-		"Accurate",
+		"Piercing",
 		"Quickening",
+		"Accurate",
 		"Accelerating",
-		"Ferocious",
 		"Mercurial",
 		"" 
 	],
@@ -67,19 +67,19 @@
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 173,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 0,
 			"Signet": "Abuse" 
 		},
 		{
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Grass Cutter",
 		"Binding Wounds",
-		"Balanced Blade",
-		"Steel Echo",
-		"Full Momentum",
 		"Molten Steel",
+		"Steel Echo",
+		"Balanced Blade",
+		"Full Momentum",
 		"Four Seasons",
 		"" 
 	],

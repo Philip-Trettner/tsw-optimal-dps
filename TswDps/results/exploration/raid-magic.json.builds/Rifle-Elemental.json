@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Accurate",
-		"Accelerating",
-		"Ferocious",
-		"Inspiring",
-		"Grievous",
 		"Focused",
+		"Fierce",
+		"Accelerating",
+		"Grievous",
+		"Inspiring",
+		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -49,10 +49,10 @@
 		{
 			"AR": 664,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{

@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Grievous",
-		"Focused",
-		"Piercing",
-		"Accurate",
 		"Fierce",
+		"Accurate",
+		"Precise",
+		"Grievous",
+		"Ferocious",
 		"Mercurial",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -53,7 +53,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Tomes" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -121,17 +121,17 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
-		"minResourcesForLeftConsumer": 5,
+		"minResourcesForLeftConsumer": 2,
 		"minResourcesForRightConsumer": 1,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
-		"Gun Crazy",
 		"Start & Finish",
 		"Shootout",
 		"Big 45",
 		"Bloodshot",
+		"Gun Crazy",
 		"Cannibalize",
 		"" 
 	],

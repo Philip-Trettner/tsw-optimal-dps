@@ -1,19 +1,19 @@
 {
 	"Augments": [
 		"Fierce",
+		"Mercurial",
+		"Inspiring",
 		"Focused",
 		"Ferocious",
-		"Mercurial",
-		"Grievous",
-		"Accelerating",
 		"Accurate",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 164,
+			"Crit": 336,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -39,10 +39,10 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 328,
 			"Pen": 0,
 			"Signet": "Violence" 
 		},
@@ -57,29 +57,29 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
+			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 181,
-			"Pen": 0,
+			"Pen": 181,
 			"Signet": "Aggression" 
 		},
 		{
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -112,27 +112,27 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 2,
+		"minResourcesForLeftConsumer": 1,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Fire Manifestation",
-		"Power Line",
 		"Lightning Manifestation",
-		"One-Two",
 		"Reckless",
+		"Fire Manifestation",
 		"Flame Strike",
+		"Power Line",
+		"One-Two",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

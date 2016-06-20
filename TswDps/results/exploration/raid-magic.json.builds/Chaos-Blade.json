@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
+			"AR": 664,
 			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,7 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Chaos",
 	"Misc": {
 		"Kickback": {
@@ -121,7 +121,7 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
+		"minResourcesForLeftConsumer": 2,
 		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},

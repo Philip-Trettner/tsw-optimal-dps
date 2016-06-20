@@ -85,10 +85,10 @@
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -112,12 +112,12 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Pistol",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"buildOnlyBeforeMajorBuffs": true,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,

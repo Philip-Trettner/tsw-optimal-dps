@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Brutal",
-		"Accurate",
-		"Precise",
-		"Grievous",
+		"Fierce",
 		"Inspiring",
 		"Mercurial",
+		"Accurate",
+		"Grievous",
+		"Ferocious",
+		"Focused",
 		"" 
 	],
 	"Gear": [
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Safety Off",
+		"Steel Echo",
+		"Lock & Load",
+		"Sling Blade",
+		"Four Seasons",
 		"Binding Wounds",
 		"Three Round Burst",
-		"Steel Echo",
-		"Four Seasons",
-		"Sling Blade",
-		"Lock & Load",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

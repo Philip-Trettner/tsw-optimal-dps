@@ -1,8 +1,8 @@
 {
 	"Augments": [
-		"Accurate",
+		"Brutal",
 		"Inspiring",
-		"Ferocious",
+		"Accurate",
 		"Mercurial",
 		"Grievous",
 		"Accelerating",
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -48,10 +48,10 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 105,
+			"Crit Power": 100,
 			"Free": true,
-			"Hit": 236,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
@@ -66,19 +66,19 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 236,
 			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
-			"Hit": 0,
+			"Hit": 203,
 			"Pen": 0,
 			"Signet": "Abuse" 
 		},
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -121,8 +121,8 @@
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 2,
-		"minResourcesForRightConsumer": 3,
+		"minResourcesForLeftConsumer": 1,
+		"minResourcesForRightConsumer": 5,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
@@ -135,6 +135,6 @@
 		"Dancing Blade",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

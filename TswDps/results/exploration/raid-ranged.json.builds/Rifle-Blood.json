@@ -2,10 +2,10 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"Focused",
 		"Grievous",
-		"Accurate",
+		"Focused",
 		"Mercurial",
+		"Accurate",
 		"Accelerating",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Fury" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -76,19 +76,19 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Pen": 203,
+			"Signet": "Opportunism" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Bloodline",
 		"Plague",
-		"Three Round Burst",
 		"Bloodshot",
-		"Exsanguinate",
+		"Three Round Burst",
 		"Cannibalize",
+		"Exsanguinate",
 		"Lock & Load",
 		"" 
 	],

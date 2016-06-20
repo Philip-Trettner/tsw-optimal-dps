@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Fierce",
-		"Focused",
+		"Accelerating",
 		"Inspiring",
 		"Mercurial",
-		"Accelerating",
+		"Ferocious",
 		"Accurate",
 		"Grievous",
 		"" 
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 183,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 236,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Power Line",
 		"Lightning Manifestation",
 		"Anima Charge",
 		"Reckless",
 		"Fire Manifestation",
+		"Power Line",
 		"Tear Em Up",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

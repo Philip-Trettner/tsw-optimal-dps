@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Mercurial",
-		"Piercing",
 		"Grievous",
-		"Accurate",
-		"Ferocious",
+		"Focused",
 		"Quickening",
+		"Ferocious",
+		"Brutal",
+		"Mercurial",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,17 +89,17 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback Crit on Crit (purple)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
-			"CritPower": 425 
+			"Crit": 712 
 		},
 		"Stim": {
-			"AR": 600 
+			"Pen": 312 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Bullet Ballet",
 		"Raging Bullet",
-		"Start & Finish",
-		"Sure Shot",
-		"Bond, Strong Bond",
 		"Lock, Stock & Barrel",
+		"Sure Shot",
+		"Start & Finish",
+		"Bullet Ballet",
+		"Shootout",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

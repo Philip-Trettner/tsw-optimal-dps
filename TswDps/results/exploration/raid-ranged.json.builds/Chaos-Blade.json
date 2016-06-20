@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Brutal",
-		"Ferocious",
-		"Inspiring",
-		"Grievous",
-		"Mercurial",
 		"Fierce",
+		"Quickening",
+		"Salubrious",
+		"Mercurial",
+		"Grievous",
 		"Accurate",
+		"Brutal",
 		"" 
 	],
 	"Gear": [
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Hit": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -129,12 +129,12 @@
 		"Run Rampant",
 		"Steel Echo",
 		"Amor Fati",
-		"Binding Wounds",
 		"Stunning Swirl",
-		"Four Horsemen",
+		"Binding Wounds",
 		"Sling Blade",
+		"Four Horsemen",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -5,7 +5,7 @@
 		"Focused",
 		"Accurate",
 		"Piercing",
-		"Fierce",
+		"Ferocious",
 		"Mercurial",
 		"" 
 	],
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback Pen on Pen (purple)",
@@ -129,7 +129,7 @@
 		"Safety Off",
 		"Binding Wounds",
 		"Three Round Burst",
-		"Dancing Blade",
+		"Fire in the Hole",
 		"Balanced Blade",
 		"Steel Echo",
 		"Stunning Swirl",

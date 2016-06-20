@@ -1,46 +1,46 @@
 {
 	"Augments": [
 		"Fierce",
-		"Accurate",
-		"Mercurial",
 		"Grievous",
-		"Precise",
-		"Curing",
-		"Piercing",
+		"Accelerating",
+		"Quickening",
+		"Focused",
+		"Mercurial",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
 			"Crit": 168,
-			"Crit Power": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
+			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
-			"Crit": 151,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 164,
-			"Pen": 0,
+			"Pen": 164,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
+			"AR": 664,
 			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 164,
-			"Signet": "Violence" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
-			"Crit Power": 0,
+			"Crit": 151,
+			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -48,8 +48,8 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 105,
 			"Pen": 0,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Cleaving" 
 		},
 		{
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 211,
 			"Pen": 0,
-			"Signet": "Cleaving" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
@@ -80,16 +80,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 363,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 164,
+			"Crit": 168,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (blue)",
@@ -105,18 +105,18 @@
 	"Passives": [
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Lethality",
 		"One In The Chamber",
 		"Sudden Return",
 		"Third Degree",
-		"Thunderstruck" 
+		"Thunderstruck",
+		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": false,
+		"buildOnlyBeforeMajorBuffs": true,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Steel Echo",
-		"Four Seasons",
 		"Exsanguinate",
-		"Dancing Blade",
 		"Cannibalize",
-		"Balanced Blade",
+		"Steel Echo",
+		"Dancing Blade",
+		"Four Seasons",
+		"Sling Blade",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

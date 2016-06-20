@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Mercurial",
 		"Focused",
+		"Mercurial",
+		"Ferocious",
 		"Grievous",
 		"Piercing",
-		"Ferocious",
 		"Accurate",
+		"Fierce",
 		"" 
 	],
 	"Gear": [
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -132,7 +132,7 @@
 		"Dancing Blade",
 		"Start & Finish",
 		"Balanced Blade",
-		"Big 45",
+		"Binding Wounds",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

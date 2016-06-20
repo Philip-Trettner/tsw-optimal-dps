@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -80,16 +80,16 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 407,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
-			"Signet": "Sadism" 
+			"Pen": 203,
+			"Signet": "Fury" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -117,7 +117,7 @@
 	"Right Weapon": "Fist",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": true,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -130,7 +130,7 @@
 		"Reckless",
 		"Bullet Ballet",
 		"Marked",
-		"Wild at Heart",
+		"Tear Em Up",
 		"Shootout",
 		"One-Two",
 		"" 

@@ -1,23 +1,23 @@
 {
 	"Augments": [
 		"Fierce",
-		"Mercurial",
 		"Grievous",
-		"Curing",
+		"Inspiring",
+		"Mercurial",
 		"Focused",
+		"Ferocious",
 		"Accurate",
-		"Accelerating",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 972,
@@ -39,12 +39,21 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
+			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 328,
+			"Hit": 164,
+			"Pen": 0,
 			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 97,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 105,
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
@@ -58,48 +67,39 @@
 		{
 			"AR": 625,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 95,
 			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Equilibrium" 
-		},
-		{
 			"AR": 0,
-			"Crit": 168,
+			"Crit": 336,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 181,
+			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 168,
-			"Crit Power": 164,
+			"Crit": 336,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Rifle",
 	"Misc": {
 		"Kickback": {
 			"CritPower": 425 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Pen": 232 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Shockwave",
 		"Molten Steel",
 		"Full Momentum",
+		"Stone's Throw",
 		"Three Round Burst",
+		"Shellshocker",
 		"Haymaker",
-		"Lock & Load",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimPenBlue" 
 } 
 

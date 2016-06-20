@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Brutal",
+		"Ferocious",
+		"Accelerating",
+		"Grievous",
+		"Precise",
 		"Mercurial",
 		"Accurate",
-		"Quickening",
-		"Invulnerable",
-		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 972,
@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
+			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 148,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 164,
+			"Hit": 328,
 			"Pen": 0,
-			"Signet": "Violence" 
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 972,
@@ -57,30 +57,30 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
-			"Free": true,
-			"Hit": 211,
-			"Pen": 0,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
-			"AR": 0,
-			"Crit": 336,
-			"Crit Power": 0,
+			"AR": 625,
+			"Crit": 0,
+			"Crit Power": 191,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Issue 1.5%" 
+		},
+		{
+			"AR": 0,
+			"Crit": 168,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 181,
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
@@ -103,20 +103,20 @@
 		} 
 	},
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Lethality",
 		"Live Wire",
 		"One In The Chamber",
-		"Sudden Return",
-		"Third Degree" 
+		"Sudden Return" 
 	],
 	"Potion": {
 		"Crit": 119 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
@@ -126,13 +126,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Shock",
-		"Lightning Manifestation",
-		"Full Momentum",
+		"Grand Slam",
 		"Fire Manifestation",
 		"Stone's Throw",
-		"Power Line",
 		"Molten Steel",
+		"Power Line",
+		"Full Momentum",
+		"Lightning Manifestation",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

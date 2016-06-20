@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Inspiring",
-		"Quickening",
 		"Fierce",
-		"Accurate",
-		"Mercurial",
+		"Focused",
+		"Salubrious",
 		"Grievous",
+		"Accurate",
+		"Quickening",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -66,11 +66,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 210,
+			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Fist",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Reckless",
-		"Full Momentum",
-		"Stone's Throw",
 		"Tear Em Up",
-		"Shockwave",
+		"Reckless",
 		"Molten Steel",
+		"Stone's Throw",
+		"Full Momentum",
+		"Shockwave",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

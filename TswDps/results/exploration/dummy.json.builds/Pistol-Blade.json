@@ -2,9 +2,9 @@
 	"Augments": [
 		"Focused",
 		"Mercurial",
-		"Brutal",
-		"Inspiring",
+		"Ferocious",
 		"Grievous",
+		"Brutal",
 		"Fierce",
 		"Accurate",
 		"" 
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,11 +75,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 362,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 0,
 			"Signet": "Aggression" 
 		},
 		{
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Hit": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -128,9 +128,9 @@
 	"Skills": [
 		"Hair Trigger",
 		"Bullet Ballet",
-		"Start & Finish",
 		"Steel Echo",
 		"Dancing Blade",
+		"Start & Finish",
 		"Bond, Strong Bond",
 		"Binding Wounds",
 		"" 

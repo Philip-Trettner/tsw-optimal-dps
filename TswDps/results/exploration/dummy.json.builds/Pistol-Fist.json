@@ -1,9 +1,9 @@
 {
 	"Augments": [
-		"Fierce",
+		"Brutal",
 		"Grievous",
 		"Inspiring",
-		"Brutal",
+		"Fierce",
 		"Ferocious",
 		"Mercurial",
 		"Accurate",
@@ -99,7 +99,7 @@
 			"CritPower": 425 
 		},
 		"Stim": {
-			"AR": 600 
+			"Pen": 312 
 		} 
 	},
 	"Passives": [
@@ -135,6 +135,6 @@
 		"Wild at Heart",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

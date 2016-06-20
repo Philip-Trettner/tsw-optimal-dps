@@ -1,8 +1,8 @@
 {
 	"Augments": [
-		"Accurate",
-		"Accelerating",
 		"Focused",
+		"Inspiring",
+		"Accurate",
 		"Ferocious",
 		"Mercurial",
 		"Quickening",
@@ -24,8 +24,8 @@
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 183,
-			"Pen": 183,
+			"Hit": 367,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
+			"AR": 664,
+			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
-			"Hit": 118,
+			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
@@ -75,8 +75,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 407,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -103,16 +103,16 @@
 		} 
 	},
 	"Passives": [
+		"Brawler",
 		"Elemental Force",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree",
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {

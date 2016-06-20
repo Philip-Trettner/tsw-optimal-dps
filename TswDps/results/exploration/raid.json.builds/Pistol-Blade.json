@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"Ferocious",
-		"Inspiring",
 		"Grievous",
-		"Accurate",
+		"Ferocious",
 		"Mercurial",
+		"Accurate",
+		"Piercing",
 		"Focused",
 		"" 
 	],
@@ -80,26 +80,26 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 0,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Aggression" 
+			"Pen": 0,
+			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Pen (blue)",
+	"Kickback": "Kickback Pen on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"Pen": 644 
 		},
 		"Stim": {
-			"Crit": 276 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -131,10 +131,10 @@
 		"Steel Echo",
 		"Four Seasons",
 		"Bond, Strong Bond",
-		"Sling Blade",
+		"Big 45",
 		"Binding Wounds",
 		"" 
 	],
-	"Stim": "StimCritBlue" 
+	"Stim": "StimCritPurple" 
 } 
 

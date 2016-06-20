@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Mercurial",
-		"Salubrious",
-		"Curing",
-		"Brutal",
-		"Grievous",
+		"Piercing",
+		"Focused",
+		"Inspiring",
 		"Accurate",
+		"Mercurial",
+		"Grievous",
+		"Accelerating",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 972,
@@ -29,13 +29,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 972,
+			"AR": 664,
 			"Crit": 0,
-			"Crit Power": 0,
+			"Crit Power": 148,
 			"Free": true,
 			"Hit": 164,
-			"Pen": 164,
-			"Signet": "Violence" 
+			"Pen": 0,
+			"Signet": "Egon Pendant" 
 		},
 		{
 			"AR": 972,
@@ -57,11 +57,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 95,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -71,15 +71,15 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 211,
-			"Signet": "Equilibrium" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
-			"Crit": 336,
+			"Crit": 168,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 181,
 			"Signet": "Abuse" 
 		},
 		{
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 363,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Shotgun",
 	"Misc": {
 		"Kickback": {
@@ -104,12 +104,12 @@
 	},
 	"Passives": [
 		"Elemental Force",
-		"Fortunate Strike",
 		"Iron Maiden",
 		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Twist The Knife" 
 	],
 	"Potion": {
 		"Crit": 119 
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Bloodline",
-		"Cannibalize",
-		"Lock, Stock & Barrel",
-		"Point Blank",
 		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Sure Shot",
+		"Bombardment",
 		"Bloodshot",
-		"Exsanguinate",
+		"Cannibalize",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

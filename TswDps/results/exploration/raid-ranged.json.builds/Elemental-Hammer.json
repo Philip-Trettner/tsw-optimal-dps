@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Focused",
-		"Accurate",
-		"Curing",
-		"Brutal",
 		"Invulnerable",
 		"Mercurial",
+		"Inspiring",
 		"Grievous",
+		"Curing",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -60,8 +60,8 @@
 			"Crit": 105,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 118,
+			"Hit": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -75,20 +75,20 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 173,
 			"Free": true,
-			"Hit": 203,
+			"Hit": 0,
 			"Pen": 0,
 			"Signet": "Sadism" 
 		},
 		{
 			"AR": 0,
 			"Crit": 181,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -99,7 +99,7 @@
 			"Pen": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -112,12 +112,12 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Hit": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Hammer",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": false,
+		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Grand Slam",
 		"Fire Manifestation",
+		"Lightning Manifestation",
+		"Full Momentum",
+		"Molten Steel",
 		"Stone's Throw",
 		"Power Line",
-		"Full Momentum",
-		"Lightning Manifestation",
-		"Molten Steel",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

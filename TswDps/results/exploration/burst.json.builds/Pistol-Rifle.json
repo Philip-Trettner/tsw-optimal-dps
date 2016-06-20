@@ -1,7 +1,7 @@
 {
 	"Augments": [
 		"Focused",
-		"Quickening",
+		"Curing",
 		"Fierce",
 		"Grievous",
 		"Precise",
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
+			"Pen": 0,
 			"Signet": "Aggression" 
 		} 
 	],

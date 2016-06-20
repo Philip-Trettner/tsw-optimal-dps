@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Quickening",
-		"Grievous",
 		"Inspiring",
+		"Fierce",
 		"Mercurial",
-		"Focused",
+		"Grievous",
+		"Quickening",
 		"Accurate",
 		"" 
 	],
@@ -75,8 +75,8 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
-			"Crit Power": 347,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Pen": 100 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
-		"Four Horsemen",
 		"Lock, Stock & Barrel",
-		"Point Blank",
-		"Raging Bullet",
 		"Sure Shot",
+		"Point Blank",
+		"Four Horsemen",
+		"Amor Fati",
+		"Pulling the Strings",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

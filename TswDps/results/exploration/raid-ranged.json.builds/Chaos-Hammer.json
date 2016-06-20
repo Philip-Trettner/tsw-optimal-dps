@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Fierce",
-		"Quickening",
 		"Focused",
+		"Salubrious",
 		"Grievous",
 		"Accurate",
-		"Accelerating",
+		"Quickening",
 		"Mercurial",
 		"" 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Pen": 312 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
 		"Four Horsemen",
+		"Amor Fati",
 		"Molten Steel",
 		"Bone Breaker",
 		"Full Momentum",
 		"Eye of Pandemonium",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

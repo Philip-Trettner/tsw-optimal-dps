@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Inspiring",
-		"Ferocious",
-		"Accurate",
 		"Focused",
-		"Mercurial",
+		"Accurate",
+		"Inspiring",
 		"Grievous",
+		"Ferocious",
+		"Mercurial",
 		"" 
 	],
 	"Gear": [
@@ -40,20 +40,20 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 0,
+			"Crit Power": 156,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Storms" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Storms" 
 		},
 		{
 			"AR": 0,
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Amor Fati",
 		"Four Horsemen",
 		"Pulling the Strings",
+		"Amor Fati",
+		"Three Round Burst",
 		"Shellshocker",
 		"Lock & Load",
-		"Three Round Burst",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

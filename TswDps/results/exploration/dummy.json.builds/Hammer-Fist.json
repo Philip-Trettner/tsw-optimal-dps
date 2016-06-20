@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Fierce",
-		"Mercurial",
-		"Accelerating",
-		"Inspiring",
-		"Grievous",
-		"Accurate",
+		"Brutal",
 		"Focused",
+		"Inspiring",
+		"Accelerating",
+		"Accurate",
+		"Mercurial",
+		"Grievous",
 		"" 
 	],
 	"Gear": [
@@ -92,14 +92,14 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback Pen on Crit (purple)",
 	"Left Weapon": "Hammer",
 	"Misc": {
 		"Kickback": {
-			"CritPower": 644 
+			"Pen": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Stone's Throw",
-		"Full Momentum",
-		"Reckless",
-		"Shockwave",
-		"One-Two",
 		"Molten Steel",
+		"Reckless",
+		"Full Momentum",
+		"One-Two",
+		"Stone's Throw",
+		"See Red",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimCritPurple" 
 } 
 

@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -39,11 +39,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -112,7 +112,7 @@
 		"Thunderstruck" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {

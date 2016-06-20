@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
-		"Inspiring",
 		"Brutal",
+		"Inspiring",
+		"Focused",
 		"Grievous",
 		"Accurate",
-		"Fierce",
+		"Ferocious",
 		"Mercurial",
 		"" 
 	],
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Pen": 312 
+			"AR": 600 
 		} 
 	},
 	"Passives": [
@@ -135,6 +135,6 @@
 		"Stone's Throw",
 		"" 
 	],
-	"Stim": "StimPenPurple" 
+	"Stim": "StimAttackPurple" 
 } 
 

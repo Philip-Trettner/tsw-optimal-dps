@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Focused",
-		"Mercurial",
-		"Grievous",
-		"Accurate",
-		"Curing",
-		"Brutal",
 		"Fierce",
+		"Ferocious",
+		"Mercurial",
+		"Accurate",
+		"Quickening",
+		"Grievous",
+		"Precise",
 		"" 
 	],
 	"Gear": [
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 303,
+			"Crit": 151,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 164,
 			"Signet": "Violence" 
 		},
 		{
@@ -40,11 +40,20 @@
 		{
 			"AR": 972,
 			"Crit": 151,
+			"Crit Power": 148,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 0,
+			"Signet": "Violence" 
+		},
+		{
+			"AR": 625,
+			"Crit": 195,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 164,
-			"Signet": "Violence" 
+			"Pen": 0,
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
@@ -53,15 +62,6 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Issue 1.5%" 
-		},
-		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -112,27 +112,27 @@
 		"Sudden Return" 
 	],
 	"Potion": {
-		"CritPower": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Blood",
 	"Rotation": {
-		"buildOnlyBeforeMajorBuffs": true,
+		"buildOnlyBeforeMajorBuffs": false,
 		"considerBuffEF": true,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": true,
 		"minResourcesForLeftConsumer": 5,
 		"minResourcesForRightConsumer": 2,
-		"tryToConsumeOnBuffed": true 
+		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
 		"Bloodline",
-		"Bullet Ballet",
-		"Bloodshot",
-		"Left Hand of Darkness",
-		"Cannibalize",
 		"Start & Finish",
-		"Exsanguinate",
+		"Bullet Ballet",
+		"Bond, Strong Bond",
+		"Cannibalize",
+		"Bloodshot",
+		"Shootout",
 		"" 
 	],
 	"Stim": "StimCritBlue" 

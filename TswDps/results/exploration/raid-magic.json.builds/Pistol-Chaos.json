@@ -1,8 +1,8 @@
 {
 	"Augments": [
 		"Grievous",
-		"Inspiring",
 		"Focused",
+		"Inspiring",
 		"Ferocious",
 		"Accurate",
 		"Fierce",
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Pen (purple)",
@@ -127,8 +127,8 @@
 	},
 	"Skills": [
 		"Hair Trigger",
-		"Amor Fati",
 		"Start & Finish",
+		"Amor Fati",
 		"Bond, Strong Bond",
 		"Big 45",
 		"Four Horsemen",

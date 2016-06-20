@@ -5,7 +5,7 @@
 		"Salubrious",
 		"Brutal",
 		"Grievous",
-		"Ferocious",
+		"Fierce",
 		"Accurate",
 		"" 
 	],
@@ -75,11 +75,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 0,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
+			"Hit": 203,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		},
 		{

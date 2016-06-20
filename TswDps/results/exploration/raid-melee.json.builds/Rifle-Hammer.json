@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Brutal",
-		"Mercurial",
 		"Grievous",
 		"Accelerating",
-		"Inspiring",
+		"Mercurial",
 		"Fierce",
+		"Inspiring",
 		"Accurate",
 		"" 
 	],
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Safety Off",
-		"Lock & Load",
 		"Molten Steel",
 		"Shellshocker",
 		"Full Momentum",
 		"Three Round Burst",
+		"Lock & Load",
 		"Stone's Throw",
 		"" 
 	],

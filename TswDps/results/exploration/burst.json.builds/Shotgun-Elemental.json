@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Mercurial",
-		"Focused",
-		"Quickening",
-		"Grievous",
 		"Inspiring",
+		"Quickening",
+		"Mercurial",
 		"Accurate",
+		"Grievous",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Striker",
-		"Power Line",
-		"Blaze",
 		"Anima Charge",
-		"Raging Bullet",
 		"Lock, Stock & Barrel",
+		"Power Line",
 		"Fire Manifestation",
+		"Blaze",
+		"Raging Bullet",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

@@ -2,11 +2,11 @@
 	"Augments": [
 		"Brutal",
 		"Fierce",
-		"Mercurial",
-		"Ferocious",
-		"Accurate",
+		"Grievous",
 		"Focused",
-		"Quickening",
+		"Mercurial",
+		"Accelerating",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -84,11 +84,11 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 203,
 			"Signet": "Laceration" 
 		} 
 	],
@@ -112,7 +112,7 @@
 		"Twist The Knife" 
 	],
 	"Potion": {
-		"Pen": 100 
+		"Crit": 119 
 	},
 	"Right Weapon": "Chaos",
 	"Rotation": {
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Fire Manifestation",
 		"Lightning Manifestation",
-		"Power Line",
+		"Fire Manifestation",
 		"Four Horsemen",
-		"Flame Strike",
+		"Power Line",
 		"Anima Charge",
+		"Flame Strike",
 		"" 
 	],
 	"Stim": "StimAttackPurple" 

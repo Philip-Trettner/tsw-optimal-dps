@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Ferocious",
-		"Inspiring",
 		"Fierce",
-		"Piercing",
+		"Invulnerable",
 		"Mercurial",
 		"Grievous",
+		"Precise",
+		"Ferocious",
 		"Accurate",
 		"" 
 	],
@@ -40,29 +40,29 @@
 		{
 			"AR": 972,
 			"Crit": 151,
-			"Crit Power": 148,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 164,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
-			"Crit": 195,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
+			"Crit": 97,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 105,
+			"Hit": 0,
 			"Pen": 105,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Equilibrium" 
 		},
 		{
 			"AR": 625,
@@ -75,10 +75,10 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 168,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
-			"Hit": 181,
+			"Hit": 363,
 			"Pen": 0,
 			"Signet": "Aggression" 
 		},
@@ -92,14 +92,14 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
 			"CritPower": 425 
 		},
 		"Stim": {
-			"Pen": 232 
+			"Crit": 276 
 		} 
 	},
 	"Passives": [
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Pen": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Hair Trigger",
 		"Steel Echo",
+		"Four Seasons",
 		"Start & Finish",
 		"Bond, Strong Bond",
-		"Four Seasons",
 		"Binding Wounds",
-		"Balanced Blade",
+		"Shootout",
 		"" 
 	],
-	"Stim": "StimPenBlue" 
+	"Stim": "StimCritBlue" 
 } 
 

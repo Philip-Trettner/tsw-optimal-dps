@@ -1,11 +1,11 @@
 {
 	"Augments": [
+		"Fierce",
+		"Accelerating",
 		"Focused",
 		"Grievous",
-		"Ferocious",
-		"Accelerating",
 		"Mercurial",
-		"Fierce",
+		"Brutal",
 		"Accurate",
 		"" 
 	],
@@ -127,11 +127,11 @@
 	},
 	"Skills": [
 		"Prey on the Weak",
-		"Shellshocker",
-		"One-Two",
 		"Reckless",
-		"Lock & Load",
+		"Shellshocker",
 		"Three Round Burst",
+		"Lock & Load",
+		"One-Two",
 		"Fire in the Hole",
 		"" 
 	],

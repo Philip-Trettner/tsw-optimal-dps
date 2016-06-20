@@ -1,8 +1,8 @@
 {
 	"Augments": [
 		"Fierce",
-		"Quickening",
 		"Inspiring",
+		"Quickening",
 		"Grievous",
 		"Brutal",
 		"Ferocious",
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -49,10 +49,10 @@
 		{
 			"AR": 625,
 			"Crit": 105,
-			"Crit Power": 100,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Sadism" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {

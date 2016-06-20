@@ -1,11 +1,11 @@
 {
 	"Augments": [
-		"Focused",
-		"Brutal",
-		"Ferocious",
-		"Precise",
 		"Grievous",
+		"Brutal",
+		"Precise",
+		"Focused",
 		"Mercurial",
+		"Fierce",
 		"Accurate",
 		"" 
 	],
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 236,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -92,7 +92,7 @@
 			"Signet": "Laceration" 
 		} 
 	],
-	"Kickback": "Kickback Pen on Pen (purple)",
+	"Kickback": "Kickback Pen on Crit (purple)",
 	"Left Weapon": "Pistol",
 	"Misc": {
 		"Kickback": {
@@ -112,7 +112,7 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"CritPower": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
@@ -128,10 +128,10 @@
 	"Skills": [
 		"Hair Trigger",
 		"Start & Finish",
+		"Bond, Strong Bond",
 		"Steel Echo",
-		"Shootout",
-		"Binding Wounds",
 		"Four Seasons",
+		"Binding Wounds",
 		"Dancing Blade",
 		"" 
 	],

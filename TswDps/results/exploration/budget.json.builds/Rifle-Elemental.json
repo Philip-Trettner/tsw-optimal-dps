@@ -1,22 +1,22 @@
 {
 	"Augments": [
-		"Ferocious",
+		"Fierce",
 		"Mercurial",
 		"Inspiring",
-		"Accurate",
+		"Brutal",
 		"Grievous",
-		"Focused",
-		"Accelerating",
+		"Ferocious",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1077,
-			"Crit": 168,
+			"Crit": 0,
 			"Crit Power": 164,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 181,
 			"Signet": "Sadism" 
 		},
 		{
@@ -29,39 +29,39 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 972,
 			"Crit": 303,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Egon Pendant" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
 			"Crit": 151,
-			"Crit Power": 0,
+			"Crit Power": 148,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 164,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
 			"AR": 625,
 			"Crit": 97,
-			"Crit Power": 95,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 191,
+			"Crit": 97,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 105,
 			"Signet": "Issue 1.5%" 
 		},
 		{
@@ -80,26 +80,26 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 181,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
 			"Crit": 168,
-			"Crit Power": 164,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Laceration" 
+			"Pen": 181,
+			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback Crit on Crit (blue)",
+	"Kickback": "Kickback CritPower on Crit (blue)",
 	"Left Weapon": "Rifle",
 	"Misc": {
 		"Kickback": {
-			"Crit": 506 
+			"CritPower": 425 
 		},
 		"Stim": {
-			"Pen": 232 
+			"Crit": 276 
 		} 
 	},
 	"Passives": [
@@ -128,13 +128,13 @@
 	"Skills": [
 		"Safety Off",
 		"Lightning Manifestation",
-		"Lock & Load",
-		"Fire Manifestation",
-		"Flame Strike",
-		"Fire in the Hole",
+		"Anima Charge",
 		"Power Line",
+		"Fire Manifestation",
+		"Fire in the Hole",
+		"Flame Strike",
 		"" 
 	],
-	"Stim": "StimPenBlue" 
+	"Stim": "StimCritBlue" 
 } 
 

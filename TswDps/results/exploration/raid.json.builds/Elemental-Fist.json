@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Focused",
-		"Brutal",
-		"Fierce",
-		"Accurate",
 		"Mercurial",
+		"Brutal",
+		"Inspiring",
 		"Ferocious",
+		"Accurate",
 		"Grievous",
 		"" 
 	],
@@ -129,9 +129,9 @@
 		"Prey on the Weak",
 		"Lightning Manifestation",
 		"Fire Manifestation",
-		"Flame Strike",
 		"Reckless",
 		"Power Line",
+		"Flame Strike",
 		"Tear Em Up",
 		"" 
 	],

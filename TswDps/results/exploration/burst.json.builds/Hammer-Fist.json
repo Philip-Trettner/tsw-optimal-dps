@@ -1,12 +1,12 @@
 {
 	"Augments": [
-		"Piercing",
+		"Fierce",
 		"Inspiring",
-		"Curing",
+		"Mercurial",
 		"Ferocious",
-		"Accurate",
-		"Accelerating",
 		"Grievous",
+		"Quickening",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -20,13 +20,13 @@
 			"Signet": "Abuse" 
 		},
 		{
-			"AR": 0,
+			"AR": 1033,
 			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 183,
-			"Signet": "Coney Island Band" 
+			"Signet": "Violence" 
 		},
 		{
 			"AR": 972,
@@ -40,10 +40,10 @@
 		{
 			"AR": 1033,
 			"Crit": 163,
-			"Crit Power": 156,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 203,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -126,13 +126,13 @@
 		"tryToConsumeOnBuffed": false 
 	},
 	"Skills": [
-		"Prey on the Weak",
+		"Grand Slam",
 		"Reckless",
-		"Stone's Throw",
-		"Tear Em Up",
-		"Shockwave",
 		"Full Momentum",
+		"Tear Em Up",
 		"Molten Steel",
+		"Stone's Throw",
+		"Shockwave",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

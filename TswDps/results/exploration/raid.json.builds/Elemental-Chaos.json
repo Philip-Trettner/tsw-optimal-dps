@@ -1,10 +1,10 @@
 {
 	"Augments": [
+		"Brutal",
+		"Mercurial",
+		"Accurate",
 		"Fierce",
 		"Inspiring",
-		"Mercurial",
-		"Brutal",
-		"Accurate",
 		"Invulnerable",
 		"Grievous",
 		"" 
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Sadism" 
 		},
 		{
 			"AR": 1033,
@@ -48,11 +48,11 @@
 		},
 		{
 			"AR": 625,
-			"Crit": 105,
+			"Crit": 0,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 118,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Opportunism" 
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Run Rampant",
-		"Anima Charge",
 		"Lightning Manifestation",
-		"Fire Manifestation",
 		"Power Line",
-		"Amor Fati",
 		"Suffering and Solace",
+		"Anima Charge",
+		"Amor Fati",
+		"Fire Manifestation",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

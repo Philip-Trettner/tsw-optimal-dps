@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Fierce",
-		"Focused",
-		"Mercurial",
-		"Salubrious",
 		"Grievous",
-		"Ferocious",
+		"Mercurial",
 		"Accurate",
+		"Piercing",
+		"Salubrious",
+		"Ferocious",
 		"" 
 	],
 	"Gear": [
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -89,7 +89,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -112,12 +112,12 @@
 		"Third Degree" 
 	],
 	"Potion": {
-		"Crit": 119 
+		"Hit": 100 
 	},
 	"Right Weapon": "Blade",
 	"Rotation": {
 		"buildOnlyBeforeMajorBuffs": false,
-		"considerBuffEF": true,
+		"considerBuffEF": false,
 		"considerBuffFF": false,
 		"considerBuffWC": false,
 		"consumeIfNotBloodOffering": false,
@@ -127,12 +127,12 @@
 	},
 	"Skills": [
 		"Grass Cutter",
-		"Raging Bullet",
-		"Takedown",
-		"Lock, Stock & Barrel",
 		"Point Blank",
-		"Binding Wounds",
+		"Takedown",
 		"Steel Echo",
+		"Raging Bullet",
+		"Lock, Stock & Barrel",
+		"Binding Wounds",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

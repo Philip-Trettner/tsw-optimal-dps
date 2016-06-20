@@ -1,10 +1,10 @@
 {
 	"Augments": [
 		"Fierce",
+		"Quickening",
 		"Inspiring",
-		"Piercing",
+		"Focused",
 		"Invulnerable",
-		"Mercurial",
 		"Accurate",
 		"Grievous",
 		"" 
@@ -128,9 +128,9 @@
 	"Skills": [
 		"Run Rampant",
 		"Amor Fati",
+		"Lock, Stock & Barrel",
 		"Raging Bullet",
 		"Eye of Pandemonium",
-		"Lock, Stock & Barrel",
 		"Takedown",
 		"Four Horsemen",
 		"" 

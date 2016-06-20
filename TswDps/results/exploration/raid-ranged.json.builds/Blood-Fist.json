@@ -1,12 +1,12 @@
 {
 	"Augments": [
 		"Brutal",
+		"Ferocious",
+		"Inspiring",
 		"Grievous",
-		"Piercing",
-		"Accurate",
-		"Quickening",
 		"Mercurial",
 		"Focused",
+		"Accurate",
 		"" 
 	],
 	"Gear": [
@@ -17,15 +17,15 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 1033,
-			"Crit": 327,
+			"Crit": 163,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 0,
+			"Pen": 183,
 			"Signet": "Violence" 
 		},
 		{
@@ -49,10 +49,10 @@
 		{
 			"AR": 625,
 			"Crit": 105,
-			"Crit Power": 0,
+			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Subway Tokens" 
 		},
 		{
@@ -75,12 +75,12 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
-			"Crit Power": 173,
+			"Crit": 362,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Aggression" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -89,10 +89,10 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Fury" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Blood",
 	"Misc": {
 		"Kickback": {
@@ -128,11 +128,11 @@
 	"Skills": [
 		"Bloodline",
 		"Plague",
-		"One-Two",
+		"Cannibalize",
 		"Tear Em Up",
 		"Reckless",
-		"Cannibalize",
 		"Bloodshot",
+		"One-Two",
 		"" 
 	],
 	"Stim": "StimPenPurple" 

@@ -2,7 +2,7 @@
 	"Augments": [
 		"Brutal",
 		"Grievous",
-		"Invulnerable",
+		"Curing",
 		"Focused",
 		"Mercurial",
 		"Fierce",
@@ -106,10 +106,10 @@
 		"Elemental Force",
 		"Fortunate Strike",
 		"Iron Maiden",
-		"Live Wire",
 		"One In The Chamber",
 		"Sudden Return",
-		"Third Degree" 
+		"Third Degree",
+		"Thunderstruck" 
 	],
 	"Potion": {
 		"Crit": 119 

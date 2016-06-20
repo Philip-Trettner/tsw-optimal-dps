@@ -2,18 +2,18 @@
 	"Augments": [
 		"Focused",
 		"Accelerating",
-		"Ferocious",
+		"Fierce",
+		"Brutal",
+		"Accurate",
 		"Grievous",
 		"Inspiring",
-		"Precise",
-		"Accurate",
 		"" 
 	],
 	"Gear": [
 		{
 			"AR": 1144,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 181,
+			"Crit Power": 173,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
@@ -47,21 +47,21 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 625,
-			"Crit": 0,
-			"Crit Power": 100,
+			"AR": 664,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 118,
 			"Pen": 0,
-			"Signet": "Subway Tokens" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 0,
-			"Crit Power": 100,
+			"Crit": 105,
+			"Crit Power": 0,
 			"Free": true,
-			"Hit": 118,
-			"Pen": 0,
+			"Hit": 0,
+			"Pen": 118,
 			"Signet": "Tomes" 
 		},
 		{
@@ -75,24 +75,24 @@
 		},
 		{
 			"AR": 0,
-			"Crit": 362,
-			"Crit Power": 0,
+			"Crit": 0,
+			"Crit Power": 347,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Fury" 
 		},
 		{
 			"AR": 0,
-			"Crit": 0,
+			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 407,
+			"Pen": 203,
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Crit (purple)",
+	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Misc": {
 		"Kickback": {
@@ -121,18 +121,18 @@
 		"considerBuffFF": false,
 		"considerBuffWC": true,
 		"consumeIfNotBloodOffering": false,
-		"minResourcesForLeftConsumer": 1,
-		"minResourcesForRightConsumer": 2,
+		"minResourcesForLeftConsumer": 2,
+		"minResourcesForRightConsumer": 3,
 		"tryToConsumeOnBuffed": true 
 	},
 	"Skills": [
 		"Bloodline",
 		"Lightning Manifestation",
+		"Power Line",
 		"Fire Manifestation",
+		"Contaminate",
 		"Bloodshot",
 		"Cannibalize",
-		"Power Line",
-		"Contaminate",
 		"" 
 	],
 	"Stim": "StimCritPurple" 

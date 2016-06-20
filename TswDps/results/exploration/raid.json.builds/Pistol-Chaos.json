@@ -1,11 +1,11 @@
 {
 	"Augments": [
 		"Grievous",
-		"Focused",
-		"Inspiring",
-		"Mercurial",
 		"Ferocious",
+		"Inspiring",
 		"Precise",
+		"Mercurial",
+		"Focused",
 		"Accurate",
 		"" 
 	],
@@ -47,13 +47,13 @@
 			"Signet": "Violence" 
 		},
 		{
-			"AR": 664,
+			"AR": 625,
 			"Crit": 105,
 			"Crit Power": 100,
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Issue 1.5%" 
+			"Signet": "Subway Tokens" 
 		},
 		{
 			"AR": 664,
@@ -80,16 +80,16 @@
 			"Free": true,
 			"Hit": 203,
 			"Pen": 203,
-			"Signet": "Laceration" 
+			"Signet": "Aggression" 
 		},
 		{
 			"AR": 0,
-			"Crit": 181,
+			"Crit": 0,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 203,
-			"Pen": 0,
-			"Signet": "Aggression" 
+			"Pen": 203,
+			"Signet": "Laceration" 
 		} 
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
@@ -99,7 +99,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"AR": 600 
+			"Crit": 341 
 		} 
 	},
 	"Passives": [
@@ -127,14 +127,14 @@
 	},
 	"Skills": [
 		"The Business",
-		"Four Horsemen",
-		"Amor Fati",
-		"Eye of Pandemonium",
 		"Start & Finish",
-		"Big 45",
+		"Amor Fati",
+		"Shootout",
+		"Eye of Pandemonium",
+		"Four Horsemen",
 		"Bond, Strong Bond",
 		"" 
 	],
-	"Stim": "StimAttackPurple" 
+	"Stim": "StimCritPurple" 
 } 
 
