@@ -309,6 +309,10 @@ void Simulation::simulate(int totalTimeIn60th)
         // 'equip' weapon
         currentWeapon = skillWeaponIdx[idx];
 
+        // trigger certain augments BEFORE CD
+        if (skills.augments[idx].effect != EffectSlot::Count && skills.augments[idx].applyBeforeCD && !isOnCooldown(skills.augments[idx].effect))
+            procEffect(procStat, skills.augments[idx].effect, -1);
+
         // apply CD
         skillCDs[idx] = skill.cooldownIn60th;
 
@@ -331,7 +335,7 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // trigger augments
-        if (skills.augments[idx].effect != EffectSlot::Count && !isOnCooldown(skills.augments[idx].effect))
+        if (skills.augments[idx].effect != EffectSlot::Count && !skills.augments[idx].applyBeforeCD && !isOnCooldown(skills.augments[idx].effect))
             procEffect(procStat, skills.augments[idx].effect, -1);
 
         // non-channeling builders

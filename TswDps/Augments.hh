@@ -101,6 +101,7 @@ struct Augments
         Augment a{"Accelerating"};
         a.slot = AugmentSlot::Support;
         a.effect = EffectSlot::AugAccelerating;
+        a.applyBeforeCD = true;
         return a;
     }
     static Augment Quickening()
@@ -129,6 +130,7 @@ struct Augments
         Augment a{"Mercurial"};
         a.slot = AugmentSlot::Support;
         a.effect = EffectSlot::AugMercurial;
+        a.applyBeforeCD = true;
         return a;
     }
 
