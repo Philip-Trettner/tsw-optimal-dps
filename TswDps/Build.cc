@@ -138,16 +138,13 @@ string Build::VDM() const
             id = SkillTable::vdmID(skills.passives[i].name);
         vdm += "-%" + id + "%";
     }
-    // TODO: augment ID
-    /*
     for (auto i = 0u; i < 7; ++i)
     {
         std::string id = "undefined";
         if (!skills.augments[i].name.empty())
-            id = SkillTable::vdmID(skills.augments[i].name);
+            id = SkillTable::vdmID(skills.augments[i].name + " Augment Resonator");
         vdm += "-%" + id + "%";
     }
-    */
 
     return vdm;
 }
@@ -158,7 +155,7 @@ struct BuildRotationLog : CombatLog
 {
     std::vector<int> skills;
 
-    virtual void logSkill(Simulation* sim, int timeIn60th, int skillIdx)
+    void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override
     {
         skills.push_back(skillIdx);
     }
@@ -297,6 +294,8 @@ void Build::fromJson(const jsonxx::Object& o)
             // remapping
             if (s == "Cannibalize")
                 s = "Cannibalise";
+            if (s == "Big 45")
+                s = "Big Forty Five";
 
             bool found = false;
             for (auto const& sr : allSkills)

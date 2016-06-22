@@ -431,11 +431,13 @@ void explore(ExploreType type, double timeMult)
 int main(int argc, char *argv[])
 {
 #if DEPLOY
-    SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
     SkillTable::loadVDMTable("Abilities-VDM.tsv");
+    SkillTable::loadVDMTable("Augments-VDM.tsv");
+    SkillTable::loadSkillTable("Skill Scaling - Scalings.tsv");
 #else
-    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
     SkillTable::loadVDMTable(pathOf(__FILE__) + "/Abilities-VDM.tsv");
+    SkillTable::loadVDMTable(pathOf(__FILE__) + "/Augments-VDM.tsv");
+    SkillTable::loadSkillTable(pathOf(__FILE__) + "/Skill Scaling - Scalings.tsv");
 #endif
 
     QCoreApplication app(argc, argv);

@@ -129,7 +129,7 @@ public:
 
         static Skill Big45()
         {
-            auto s = skill("Big 45", SkillType::Consumer);
+            auto s = skill("Big Forty Five", SkillType::Consumer);
             s.casttimeIn60th = 90; // TODO: CD passive
             s.timeIn60th = 90;     // TODO: CD passive
             s.cooldownIn60th = 60 * 4;

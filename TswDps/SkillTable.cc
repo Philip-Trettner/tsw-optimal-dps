@@ -73,6 +73,12 @@ void SkillTable::loadSkillTable(const string &filename)
             //std::cout << name << " -> " << dmg << std::endl;
 
             sName2Scaling[name] = dmg;
+
+            // remappings
+            if (name == "Big 45 @1")
+                sName2Scaling["Big Forty Five @1"] = dmg;
+            if (name == "Big 45 @5")
+                sName2Scaling["Big Forty Five @5"] = dmg;
         }
     }
 }
@@ -81,7 +87,9 @@ void SkillTable::loadVDMTable(std::string const& filename)
 {
     QLocale::setDefault(QLocale::English);
 
-    sName2ID.clear();
+    // sName2ID.clear();
+    // NO CLEAR: can load multiple tables
+
     QFile file(QString::fromStdString(filename));
     if (!file.open(QIODevice::ReadOnly))
     {
@@ -111,7 +119,7 @@ void SkillTable::loadVDMTable(std::string const& filename)
         {
             header = parts;
             iID = header.indexOf("VDM");
-            iName = header.indexOf("Abilite");
+            iName = 0; // FIXED header.indexOf("Abilite");
             assert(iID >= 0);
             assert(iName >= 0);
             first = false;
@@ -134,6 +142,9 @@ void SkillTable::loadVDMTable(std::string const& filename)
             // std::cout << name << " -> " << dmg << std::endl;
 
             sName2ID[name] = id;
+
+            if (name == "tear 'em up")
+                sName2ID["tear em up"] = id;
         }
     }
 }
