@@ -583,6 +583,28 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
 
     std::cout << "(" << startDPS << " DPS)" << std::endl << std::endl;
 
+    std::cout << "Variance ";
+    auto minDPS = startDPS;
+    auto maxDPS = startDPS;
+    for (int i = 0; i < 10; ++i)
+    {
+        std::cout.flush();
+
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        if (dps < minDPS) minDPS = dps;
+        if (dps > maxDPS) maxDPS = dps;
+
+        std::cout << ".";
+    }
+
+    auto variance = (maxDPS - minDPS) / maxDPS;
+    std::cout << " " << (variance * 100) << "%" << std::endl;
+    relDmg["Variance"] = variance;
+
     std::cout << "[Damage Breakdown]" << std::endl;
     slog.dump(this);
     std::cout << std::endl;
@@ -976,8 +998,11 @@ void Simulation::fullHit(const Stats& baseStats,
             resetEffect((EffectSlot)slot);
 
         // proc on skill hit
-        if (srcSkill && effect.procOn == ProcOn::SkillHit && effect.affects(dmgtype, skilltype, subtype, weapon))
+        if (srcSkill && effect.procOn == ProcOn::SkillHit && !isOnCooldown(effect.slot) && effect.affects(dmgtype, skilltype, subtype, weapon))
+        {
             procEffectDmg(procStat, effect, dmgScaling);
+            effectLastTick[slot] = currentTime; // CD
+        }
     }
 
     // effects trigger AFTER the hit
@@ -1142,7 +1167,8 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
 
     // actually procced
     assert(effects[slot].slot < EffectSlot::Count && "effect not registerd");
-    effectLastTick[slot] = currentTime;
+    if (!effect.noInitialCooldown)
+        effectLastTick[slot] = currentTime;
     if (effectStacks[slot] < effect.maxStacks)
     {
         effectHitID[slot] = currHitID;

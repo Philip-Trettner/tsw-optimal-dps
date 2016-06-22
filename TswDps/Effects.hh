@@ -911,6 +911,7 @@ public:
             e.procDmgScaling = scaling(e.name);
             e.procOn = ProcOn::SkillHit;
             e.isFullHit = true;
+            e.noInitialCooldown = true;
 
             return e;
         }

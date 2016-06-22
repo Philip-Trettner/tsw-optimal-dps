@@ -175,6 +175,7 @@ struct Effect
     int maxStacks = 1;
     int cooldownIn60th = 60;
     int timeIn60th = 0; // 0 = no stacks, only applies once (for procs)
+    bool noInitialCooldown = false;
 
     bool resetOnPen = false;    //< if true, resets effect on pen
     bool resetOnGlance = false; //< if true, resets effect on glance

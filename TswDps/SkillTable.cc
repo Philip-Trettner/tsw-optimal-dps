@@ -145,6 +145,8 @@ void SkillTable::loadVDMTable(std::string const& filename)
 
             if (name == "tear 'em up")
                 sName2ID["tear em up"] = id;
+            if (name == "black hole")
+                sName2ID["eye of pandemonium"] = id;
         }
     }
 }

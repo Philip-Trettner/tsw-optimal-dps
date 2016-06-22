@@ -48,7 +48,7 @@ void debugRun()
      * * Ignite, different casttime
      * * FAQ
      * * damage breakdown in misc
-     * * check steel echo once-per-sec
+     * * Variance
      *
      * TODO by Mark:
      * * VDM
@@ -56,6 +56,7 @@ void debugRun()
      * * List view in setting
      * * first 20s rotation
      * * setting name in exploration.json
+     * * Attribution: "Builds by ArtificialMind, Website by DijkeMark"
      *
      * later: afflictions + signet of corruption
      *

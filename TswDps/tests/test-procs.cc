@@ -112,3 +112,19 @@ TEST(Procs, MultiplicativeDmg)
         ASSERT_NEAR(2 * blog[bomb].totalDmg, log[bomb].totalDmg, epsdmg);
     }
 }
+
+TEST(SteelEcho, OncePerSec)
+{
+    Simulation s;
+    s.skills = {{Skills::Blade::GrassCutter(), Skills::Blade::SteelEcho(), Skills::Blade::DancingBlade()},
+                {},
+                {}};
+    s.gear.setWeapons(Weapon::Pistol, Weapon::Blade);
+
+    StatLog log;
+    s.log = &log;
+
+    s.simulate(7 * 60);
+
+    ASSERT_EQ(log[EffectSlot::SteelEcho].hits, 3);
+}
