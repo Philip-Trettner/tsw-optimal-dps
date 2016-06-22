@@ -927,6 +927,9 @@ int main(int argc, char *argv[])
                     // check if analyse only
                     if (analyze)
                     {
+                        if (!cont)
+                            continue; // no build
+
                         std::map<std::string, double> dmg;
                         s.analyzeIndividualContribution(tmpO.timePerFight, ticksFromTimeStr("48h"), dmg);
                         jsonxx::Object o;
