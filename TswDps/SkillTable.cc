@@ -123,7 +123,7 @@ void SkillTable::loadVDMTable(std::string const& filename)
             if (parts[iName].isEmpty() || parts[iID].isEmpty())
                 continue; // empty name, scaling
 
-            auto name = parts[iName].toStdString();
+            auto name = parts[iName].toLower().toStdString();
             auto id = parts[iID].toStdString();
             if (sName2ID.count(name))
             {
@@ -147,4 +147,15 @@ float SkillTable::scaling(const string &name)
     }
 
     return (float)sName2Scaling[name];
+}
+
+string SkillTable::vdmID(const string &name)
+{
+    auto n = QString::fromStdString(name).toLower().toStdString(); // :(
+    if (sName2ID.count(n))
+        return sName2ID.at(n);
+
+    std::cerr << "No VDM entry found for " << name << std::endl;
+    assert(0);
+    return "undefined";
 }

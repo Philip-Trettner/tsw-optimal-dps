@@ -43,13 +43,19 @@ void debugRun()
      * TODO:
      *
      * * Team Mercurials
-     * * better gear optimization (total reglyph mutation)
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
-     * * .5 glyphs
-     * * "Budget" raid scenario
      * * First blood
      * * Ignite, different casttime
+     * * FAQ
+     * * damage breakdown in misc
+     * * check steel echo once-per-sec
+     *
+     * TODO by Mark:
      * * VDM
+     * * Stim/KB values?
+     * * List view in setting
+     * * first 20s rotation
+     * * setting name in exploration.json
      *
      * later: afflictions + signet of corruption
      *
@@ -1018,6 +1024,9 @@ int main(int argc, char *argv[])
                 js << "Stats" << pStats;
             }
             expl << "Statistics" << js;
+
+            // meta info
+            expl << "Scenario Description" << scenario.name;
 
             // save exploration
             std::ofstream fexpl(explFile);

@@ -24,6 +24,8 @@ struct Augment
 
     EffectSlot effect = EffectSlot::Count;
 
+    bool applyBeforeCD = false; // if true, applies before CD, TODO: CHECK IF THIS IS ACTUALLY TRUE FOR CASTTIME ABILITIES
+
     bool affectEverything = false;
 
     Augment() = default;

@@ -839,9 +839,9 @@ public:
 
             return e;
         }
-        static Effect Cannibalize()
+        static Effect Cannibalise()
         {
-            auto e = effect("Cannibalize", EffectSlot::Cannibalize);
+            auto e = effect("Cannibalise", EffectSlot::Cannibalise);
 
             e.gainResources = 3;
 

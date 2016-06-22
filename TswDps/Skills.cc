@@ -106,7 +106,7 @@ std::vector<Skill> Skills::all()
         Blood::Exsanguinate(),       //
         Blood::BoilingBlood(),       //
         Blood::CardiacArrest(),      //
-        Blood::Cannibalize(),        //
+        Blood::Cannibalise(),        //
         Blood::Plague(),             //
         Blood::Contaminate(),        //
         Blood::LeftHandOfDarkness(), //
