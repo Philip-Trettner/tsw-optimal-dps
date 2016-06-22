@@ -48,8 +48,6 @@ void debugRun()
      * * First blood
      * * Ignite, different casttime
      * * FAQ
-     * * setting name in exploration.json
-     * * first 20s rotation
      * * damage breakdown in misc
      * * check steel echo once-per-sec
      *
@@ -57,6 +55,8 @@ void debugRun()
      * * VDM
      * * Stim/KB values?
      * * List view in setting
+     * * first 20s rotation
+     * * setting name in exploration.json
      *
      * later: afflictions + signet of corruption
      *
@@ -1022,6 +1022,9 @@ int main(int argc, char *argv[])
                 js << "Stats" << pStats;
             }
             expl << "Statistics" << js;
+
+            // meta info
+            expl << "Scenario Description" << scenario.name;
 
             // save exploration
             std::ofstream fexpl(explFile);
