@@ -2,6 +2,8 @@
 
 #include "SkillTable.hh"
 
+#include "Simulation.hh"
+#include "CombatLog.hh"
 #include "Skills.hh"
 #include "Passives.hh"
 #include "Augments.hh"
@@ -150,6 +152,19 @@ string Build::VDM() const
     return vdm;
 }
 
+namespace {
+
+struct BuildRotationLog : CombatLog
+{
+    std::vector<int> skills;
+
+    virtual void logSkill(Simulation* sim, int timeIn60th, int skillIdx)
+    {
+        skills.push_back(skillIdx);
+    }
+};
+}
+
 jsonxx::Object Build::toJson() const
 {
     jsonxx::Array ss;
@@ -180,21 +195,45 @@ jsonxx::Object Build::toJson() const
         b << "Stim" << to_string(gear.stimulant);
     if (!gear.kickback.name.empty())
         b << "Kickback" << gear.kickback.name;
+
+    // MISC
     {
         jsonxx::Object m;
 
+        // stim
         if (gear.stimulant != EffectSlot::Count)
             for (auto const& e : Effects::Stimulants::all())
                 if (e.slot == gear.stimulant)
                     m << "Stim" << e.bonusStats.toJson();
 
+        // kickback
         if (!gear.kickback.name.empty())
             for (auto const& e : Effects::Kickbacks::all())
                 if (e.slot == gear.kickback.effect)
                     m << "Kickback" << e.bonusStats.toJson();
 
+        // vdm
         m << "VDM" << VDM();
 
+        // rotation
+        {
+            Simulation s;
+            s.loadBuild(*this);
+            BuildRotationLog l;
+            s.log = &l;
+            s.simulate(20 * 60); // 20s
+            // cull builders
+            auto ss = l.skills;
+            while (ss.size() > 10 && skills.skills[ss.back()].skilltype == SkillType::Builder)
+                ss.erase(end(ss) - 1);
+            // add rotation
+            jsonxx::Array a;
+            for (auto const& s : ss)
+                a << skills.skills[s].name;
+            m << "Initial Rotation" << a;
+        }
+
+        // .. fin
         b << "Misc" << m;
     }
 

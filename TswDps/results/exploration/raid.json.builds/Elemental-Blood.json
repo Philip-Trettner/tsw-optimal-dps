@@ -95,6 +95,28 @@
 	"Kickback": "Kickback CritPower on Pen (purple)",
 	"Left Weapon": "Elemental",
 	"Misc": {
+		"Initial Rotation": [
+			"Power Line",
+			"Bloodline",
+			"Bloodline",
+			"Lightning Manifestation",
+			"Contaminate",
+			"Bloodshot",
+			"Bloodshot",
+			"Cannibalise",
+			"Bloodshot",
+			"Bloodline",
+			"Bloodshot",
+			"Bloodline",
+			"Fire Manifestation",
+			"Bloodline",
+			"Bloodshot",
+			"Bloodshot",
+			"Bloodline",
+			"Bloodline",
+			"Bloodshot",
+			"Lightning Manifestation" 
+		],
 		"Kickback": {
 			"CritPower": 644 
 		},
