@@ -88,7 +88,7 @@ public: // settings
 
 public: // tweaks
     /// Number of simulatenously hold builds
-    size_t maxActiveBuilds = 50;
+    size_t maxActiveBuilds = 10;
 
     /// Number of new builds per generation
     int newBuildsPerGen = 60;

@@ -2,7 +2,7 @@
 	"Augments": [
 		"Focused",
 		"Accelerating",
-		"Fierce",
+		"Piercing",
 		"Brutal",
 		"Accurate",
 		"Grievous",
@@ -21,11 +21,11 @@
 		},
 		{
 			"AR": 1033,
-			"Crit": 163,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 183,
+			"Pen": 0,
 			"Signet": "Violence" 
 		},
 		{
@@ -62,33 +62,33 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Tomes" 
+			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 664,
-			"Crit": 105,
+			"Crit": 210,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 118,
+			"Pen": 0,
 			"Signet": "Issue 1.5%" 
 		},
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 347,
-			"Free": true,
-			"Hit": 0,
-			"Pen": 0,
-			"Signet": "Fury" 
-		},
-		{
-			"AR": 0,
-			"Crit": 181,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
+			"Pen": 407,
+			"Signet": "Laceration" 
+		},
+		{
+			"AR": 0,
+			"Crit": 0,
+			"Crit Power": 0,
+			"Free": true,
+			"Hit": 0,
+			"Pen": 407,
 			"Signet": "Aggression" 
 		} 
 	],
@@ -121,7 +121,7 @@
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
+			"Pen": 312 
 		},
 		"VDM": "VDM%-%6943079%-%6863457%-%6863495%-%6863477%-%6943092%-%6943083%-%6943094%-%undefined%-%6307518%-%7080607%-%6943080%-%6863509%-%6942477%-%7080605%-%6943091%-%undefined%" 
 	},
@@ -158,5 +158,5 @@
 		"Cannibalise",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimPenPurple" 
 } 

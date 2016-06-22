@@ -309,6 +309,14 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
     std::uniform_int_distribution<int> randomMinRes(1, 5);
     std::uniform_int_distribution<int> randomRotChance(0, (int)DefaultRotation::Setting::Count - 1);
 
+    auto freeNonHitRating = freeRatings;
+    for (auto it = begin(freeNonHitRating); it != end(freeNonHitRating); ++it)
+        if (*it == Rating::Hit)
+        {
+            freeNonHitRating.erase(it);
+            break;
+        }
+
     auto b = build;
     auto oldRot = std::dynamic_pointer_cast<DefaultRotation>(b.rotation);
     assert(oldRot);
@@ -537,8 +545,8 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
                         } while (r1 == r2);
 
                         b.gear.pieces[idx].free(r1, r2, useQL11Glyphs);
-                        changed = true;
                     }
+                    changed = true;
                 }
                 else
                 {
@@ -703,9 +711,57 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             break;
 
         case BuildChange::ReGlyph:
-            // 643 hit
-            // 603 hit
-            // TODO!
+            // only works for full free
+            changed = false;
+            for (auto idx = 0; idx < b.gear.pieces.size(); ++idx)
+                if (b.gear.pieces[idx].status != Gear::SlotStatus::Free)
+                    changed = true;
+            if (changed)
+                break;
+
+            // random reglyph to crit/pen/crit power
+            for (auto idx = 0; idx < b.gear.pieces.size(); ++idx)
+            {
+
+                if (freeNonHitRating.size() == 1 || dice(random) < .5) // split or pure
+                {
+                    b.gear.pieces[idx].free(randomElement(freeNonHitRating), useQL11Glyphs);
+                }
+                else
+                {
+                    Rating r1, r2;
+                    do
+                    {
+                        r1 = randomElement(freeNonHitRating);
+                        r2 = randomElement(freeNonHitRating);
+                    } while (r1 == r2);
+
+                    b.gear.pieces[idx].free(r1, r2, useQL11Glyphs);
+                }
+            }
+
+            // but fixed hit
+            if (useQL11Glyphs)
+            {
+                // 643 hit
+                if (dice(random) < .5)
+                {
+                    b.gear.pieces[Gear::Head].free(Rating::Hit, useQL11Glyphs);
+                    b.gear.pieces[Gear::MinorLeft].free(Rating::Hit, useQL11Glyphs);
+                }
+                // 603 hit
+                else
+                {
+                    b.gear.pieces[Gear::MajorLeft].free(Rating::Hit, useQL11Glyphs);
+                    b.gear.pieces[Gear::MinorLeft].free(Rating::Hit, useQL11Glyphs);
+                }
+            }
+            else
+            {
+                // 2x major hit
+                b.gear.pieces[Gear::MajorLeft].free(Rating::Hit, useQL11Glyphs);
+                b.gear.pieces[Gear::MajorRight].free(Rating::Hit, useQL11Glyphs);
+            }
             break;
 
         case BuildChange::Count:
