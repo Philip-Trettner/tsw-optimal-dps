@@ -12,7 +12,7 @@ TEST(Sanity, FixedDps)
     Simulation s;
     s.skills = {{
                     Skills::Blood::Bloodline(),                  //
-                    Skills::Blood::Cannibalize(),                //
+                    Skills::Blood::Cannibalise(),                //
                     Skills::Elemental::AnimaCharge(),            //
                     Skills::Elemental::LightningManifestation(), //
                     Skills::Elemental::FireManifestation(),      //

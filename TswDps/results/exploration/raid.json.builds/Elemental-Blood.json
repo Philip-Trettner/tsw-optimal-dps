@@ -100,7 +100,8 @@
 		},
 		"Stim": {
 			"Crit": 341 
-		} 
+		},
+		"VDM": "VDM%-%6943079%-%6863457%-%6863495%-%6863477%-%6943092%-%6943083%-%6943094%-%undefined%-%6307518%-%7080607%-%6943080%-%6863509%-%6942477%-%7080605%-%6943091%-%undefined%" 
 	},
 	"Passives": [
 		"Elemental Force",
@@ -132,9 +133,8 @@
 		"Fire Manifestation",
 		"Contaminate",
 		"Bloodshot",
-		"Cannibalize",
+		"Cannibalise",
 		"" 
 	],
 	"Stim": "StimCritPurple" 
 } 
-

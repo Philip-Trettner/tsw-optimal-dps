@@ -1,5 +1,7 @@
 #include "Build.hh"
 
+#include "SkillTable.hh"
+
 #include "Skills.hh"
 #include "Passives.hh"
 #include "Augments.hh"
@@ -110,7 +112,42 @@ void Build::shortDump() const
         std::cout << std::endl;
     }
 
-    // TODO: potion?
+    std::cout << VDM() << std::endl;
+}
+
+string Build::VDM() const
+{
+    /* VDM%-%abil1%-%abil2%-%abil3%-%abil4%-%abil5%-%abil6%-%abil7%-%auxabil%-
+        %pas1%-%pas2%-%pas3%-%pas4%-%pas5%-%pas6%-%pas7%-%auxpas%-
+        %aug1%-%aug2%-%aug3%-%aug4%-%aug5%-%aug6%-%aug7 */
+
+    std::string vdm = "VDM%";
+    for (auto i = 0u; i < 8; ++i)
+    {
+        std::string id = "undefined";
+        if (!skills.skills[i].name.empty())
+            id = SkillTable::vdmID(skills.skills[i].name);
+        vdm += "-%" + id + "%";
+    }
+    for (auto i = 0u; i < 8; ++i)
+    {
+        std::string id = "undefined";
+        if (i < skills.passives.size() && !skills.passives[i].name.empty())
+            id = SkillTable::vdmID(skills.passives[i].name);
+        vdm += "-%" + id + "%";
+    }
+    // TODO: augment ID
+    /*
+    for (auto i = 0u; i < 7; ++i)
+    {
+        std::string id = "undefined";
+        if (!skills.augments[i].name.empty())
+            id = SkillTable::vdmID(skills.augments[i].name);
+        vdm += "-%" + id + "%";
+    }
+    */
+
+    return vdm;
 }
 
 jsonxx::Object Build::toJson() const
@@ -155,6 +192,8 @@ jsonxx::Object Build::toJson() const
             for (auto const& e : Effects::Kickbacks::all())
                 if (e.slot == gear.kickback.effect)
                     m << "Kickback" << e.bonusStats.toJson();
+
+        m << "VDM" << VDM();
 
         b << "Misc" << m;
     }
@@ -211,11 +250,15 @@ void Build::fromJson(const jsonxx::Object& o)
 
     for (auto i = 0u; i < ss.size(); ++i)
     {
-        auto const& s = ss.get<String>(i);
+        auto s = ss.get<String>(i);
         if (s.empty())
             skills.skills[i] = Skills::empty();
         else
         {
+            // remapping
+            if (s == "Cannibalize")
+                s = "Cannibalise";
+
             bool found = false;
             for (auto const& sr : allSkills)
                 if (sr.name == s)

@@ -702,6 +702,12 @@ Build Optimizer::mutateBuild(const Build& build, const std::vector<Optimizer::Bu
             }
             break;
 
+        case BuildChange::ReGlyph:
+            // 643 hit
+            // 603 hit
+            // TODO!
+            break;
+
         case BuildChange::Count:
             assert(false);
             break;

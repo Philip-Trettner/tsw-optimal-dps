@@ -89,7 +89,7 @@ MAKE_EFFECT_ENUM(
     GunFu,
     LockAndLoad,
     SteelEcho,
-    Cannibalize,
+    Cannibalise,
     AnimaCharge,
     FireInTheHole,
 

@@ -11,6 +11,8 @@ public:
 
     static float scaling(std::string const& name);
 
+    static std::string vdmID(std::string const& name);
+
 private:
     static std::map<std::string, double> sName2Scaling;
     static std::map<std::string, std::string> sName2ID;

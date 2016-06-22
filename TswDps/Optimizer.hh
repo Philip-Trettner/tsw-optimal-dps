@@ -33,6 +33,7 @@ private:
         Potion,
         Stimulant,
         Kickback,
+        ReGlyph,
 
         Count
     };

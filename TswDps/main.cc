@@ -45,11 +45,18 @@ void debugRun()
      * * Team Mercurials
      * * better gear optimization (total reglyph mutation)
      * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
-     * * .5 glyphs
-     * * "Budget" raid scenario
      * * First blood
      * * Ignite, different casttime
+     * * FAQ
+     * * setting name in exploration.json
+     * * first 20s rotation
+     * * damage breakdown in misc
+     * * check steel echo once-per-sec
+     *
+     * TODO by Mark:
      * * VDM
+     * * Stim/KB values?
+     * * List view in setting
      *
      * later: afflictions + signet of corruption
      *

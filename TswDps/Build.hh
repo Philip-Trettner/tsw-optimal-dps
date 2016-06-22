@@ -15,6 +15,8 @@ struct Build
 
     void shortDump() const;
 
+    std::string VDM() const;
+
     jsonxx::Object toJson() const;
     void fromJson(jsonxx::Object const& o);
     void fromFile(std::string const& filename);

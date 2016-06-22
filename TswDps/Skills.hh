@@ -655,11 +655,11 @@ public:
             return s;
         }
 
-        static Skill Cannibalize()
+        static Skill Cannibalise()
         {
-            auto s = skill("Cannibalize", SkillType::None);
+            auto s = skill("Cannibalise", SkillType::None);
             s.passive.trigger = Trigger::FinishActivation;
-            s.passive.effect = EffectSlot::Cannibalize;
+            s.passive.effect = EffectSlot::Cannibalise;
             s.cooldownIn60th = 25 * 60;
             s.slotForDmgAug = false;
             s.slotForSupportAug = true;
@@ -917,6 +917,7 @@ public:
             s.passive.effect = EffectSlot::SteelEcho;
             s.slotForSupportAug = true;
             s.slotForDmgAug = true; // TODO: Affects steel echo proc!
+            // TODO: Can this proc more than once per sec?
             return s;
         }
         static Skill SlingBlade()

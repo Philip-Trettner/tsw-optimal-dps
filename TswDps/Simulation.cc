@@ -664,7 +664,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         std::cout << "  Non-Coney: " << std::endl;
 
         auto piece = gear.pieces[Gear::MajorLeft];
-        gear.setFingerQL11(Gear::TalismanQuality::QL10_9);
+        gear.setFingerQL11(Gear::TalismanQuality::QL11);
 
         init();
         resetStats();
@@ -683,6 +683,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
 
     std::cout << "  Neck: " << std::endl;
     // QL11 + violence
+    if (gear.pieces[Gear::MajorMid].signet.name() != "Violence")
     {
         auto piece = gear.pieces[Gear::MajorMid];
         gear.setNeckQL11(Gear::TalismanQuality::QL11);
@@ -702,6 +703,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         gear.pieces[Gear::MajorMid] = piece;
     }
     // WC
+    if (gear.pieces[Gear::MajorMid].signet.passive.effect != EffectSlot::MothersWrathStacks)
     {
         auto piece = gear.pieces[Gear::MajorMid];
         gear.setNeckWoodcutters();
@@ -721,6 +723,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         gear.pieces[Gear::MajorMid] = piece;
     }
     // Egon
+    if (gear.pieces[Gear::MajorMid].signet.passive.effect != EffectSlot::EgonPendant)
     {
         auto piece = gear.pieces[Gear::MajorMid];
         gear.setNeckEgon(Gear::TalismanQuality::QL10_9);
@@ -1764,7 +1767,7 @@ void Simulation::registerEffects()
     registerEffect(Effects::SkillPassive::TearEmUp());
     registerEffect(Effects::SkillPassive::GunFu());
     registerEffect(Effects::SkillPassive::LockAndLoad());
-    registerEffect(Effects::SkillPassive::Cannibalize());
+    registerEffect(Effects::SkillPassive::Cannibalise());
     registerEffect(Effects::SkillPassive::AnimaCharge());
     registerEffect(Effects::SkillPassive::LockStockBarrel());
     registerEffect(Effects::SkillPassive::LockStockBarrelGain());

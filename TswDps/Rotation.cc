@@ -137,9 +137,9 @@ int DefaultRotation::nextSkill(int timeIn60th, const Simulation& sim)
                     if (sim.resourcesFor(Weapon::Rifle) > 0)
                         continue; // don't L&L on full resources
                     break;
-                case EffectSlot::Cannibalize:
+                case EffectSlot::Cannibalise:
                     if (sim.resourcesFor(Weapon::Blood) > 2)
-                        continue; // don't Cannibalize on full resources
+                        continue; // don't Cannibalise on full resources
                     break;
                 default:
                     break;
