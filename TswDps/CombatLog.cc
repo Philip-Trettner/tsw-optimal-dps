@@ -165,6 +165,57 @@ void StatLog::dump(Simulation *sim)
     }
 }
 
+jsonxx::Object StatLog::dmgBreakdown()
+{
+    jsonxx::Object o;
+
+    auto totalDmg = sim->totalDmg;
+
+    // by source
+    {
+        jsonxx::Object d;
+
+        for (auto const &kvp : dmgStats)
+        {
+            auto const &s = kvp.second;
+
+            jsonxx::Object v;
+            v << "Hits" << s.hits / (double)sim->totalHits;
+            v << "Pens" << s.pens / (double)s.hits;
+            v << "Crits" << s.crits / (double)s.hits;
+            v << "Glances" << s.glances / (double)s.hits;
+            v << "Blocks" << s.blocks / (double)s.hits;
+            v << "Evades" << s.evades / (double)s.hits;
+            v << "Dmg" << s.totalDmg / totalDmg;
+
+            d << kvp.first << v;
+        }
+
+        o << "By Source" << d;
+    }
+
+    // by type
+    {
+        jsonxx::Object d;
+
+        d << "Melee" << dmgOfType[DmgType::Melee] / totalDmg;
+        d << "Magic" << dmgOfType[DmgType::Magic] / totalDmg;
+        d << "Ranged" << dmgOfType[DmgType::Ranged] / totalDmg;
+        d << "Builder" << dmgOfSkill[SkillType::Builder] / totalDmg;
+        d << "Consumer" << dmgOfSkill[SkillType::Consumer] / totalDmg;
+        d << "Elite" << dmgOfSkill[SkillType::Elite] / totalDmg;
+        d << "Burst" << dmgOfSub[SubType::Burst] / totalDmg;
+        d << "Focus" << dmgOfSub[SubType::Focus] / totalDmg;
+        d << "Strike" << dmgOfSub[SubType::Strike] / totalDmg;
+        d << to_string(sim->gear.leftWeapon) << dmgOfWeapon[sim->gear.leftWeapon] / totalDmg;
+        d << to_string(sim->gear.rightWeapon) << dmgOfWeapon[sim->gear.rightWeapon] / totalDmg;
+
+        o << "By Type" << d;
+    }
+
+    return o;
+}
+
 StatLog::DmgStat StatLog::operator[](const Skill &s) const
 {
     if (dmgStats.count(s.name))

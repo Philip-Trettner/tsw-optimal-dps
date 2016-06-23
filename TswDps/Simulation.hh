@@ -12,6 +12,7 @@
 #include "common.hh"
 
 struct CombatLog;
+struct StatLog;
 
 struct Simulation
 {
@@ -67,7 +68,7 @@ struct Simulation
     void dumpBriefReport() const;
 
     /// Analyzes the total dmg increase of each passive
-    void analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg);
+    void analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog* slog = nullptr);
 
     /// next dabs in 60th
     int nextDABS() const { return dabsTime; }

@@ -255,7 +255,7 @@ void Simulation::simulate(int totalTimeIn60th)
     currentWeapon = -1;
     if (buffAt >= INF_TIME)
         dabsTime = INF_TIME;
-    else 
+    else
         dabsTime = buffAt * 60;
     dabsCnt = 0;
     for (auto i = 0; i < SKILL_CNT; ++i)
@@ -310,7 +310,8 @@ void Simulation::simulate(int totalTimeIn60th)
         currentWeapon = skillWeaponIdx[idx];
 
         // trigger certain augments BEFORE CD
-        if (skills.augments[idx].effect != EffectSlot::Count && skills.augments[idx].applyBeforeCD && !isOnCooldown(skills.augments[idx].effect))
+        if (skills.augments[idx].effect != EffectSlot::Count && skills.augments[idx].applyBeforeCD
+            && !isOnCooldown(skills.augments[idx].effect))
             procEffect(procStat, skills.augments[idx].effect, -1);
 
         // apply CD
@@ -335,7 +336,8 @@ void Simulation::simulate(int totalTimeIn60th)
         }
 
         // trigger augments
-        if (skills.augments[idx].effect != EffectSlot::Count && !skills.augments[idx].applyBeforeCD && !isOnCooldown(skills.augments[idx].effect))
+        if (skills.augments[idx].effect != EffectSlot::Count && !skills.augments[idx].applyBeforeCD
+            && !isOnCooldown(skills.augments[idx].effect))
             procEffect(procStat, skills.augments[idx].effect, -1);
 
         // non-channeling builders
@@ -561,7 +563,7 @@ void Simulation::dumpBriefReport() const
     std::cout << "Evades:   " << totalEvades << " (" << totalEvades * 100.f / totalHits << "%)" << std::endl;
 }
 
-void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg)
+void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog *slog)
 {
     auto savMode = lowVarianceMode;
     auto savLog = log;
@@ -571,9 +573,11 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     std::cout << "Build Analysis: ";
     std::cout.flush();
 
-    StatLog slog;
+    StatLog slog2;
+    if (!slog)
+        slog = &slog2;
     auto savlog = log;
-    log = &slog;
+    log = slog;
     init();
     resetStats();
     while (totalTimeAccum < maxTime)
@@ -595,8 +599,10 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
             simulate(fightTime);
         auto dps = totalDPS();
 
-        if (dps < minDPS) minDPS = dps;
-        if (dps > maxDPS) maxDPS = dps;
+        if (dps < minDPS)
+            minDPS = dps;
+        if (dps > maxDPS)
+            maxDPS = dps;
 
         std::cout << ".";
     }
@@ -604,9 +610,10 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     auto variance = (maxDPS - minDPS) / maxDPS;
     std::cout << " " << (variance * 100) << "%" << std::endl;
     relDmg["Variance"] = variance;
+    std::cout << std::endl;
 
     std::cout << "[Damage Breakdown]" << std::endl;
-    slog.dump(this);
+    slog->dump(this);
     std::cout << std::endl;
 
     std::cout << "[Individual Contributions]" << std::endl;
@@ -697,7 +704,7 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         std::cout << "   + ";
         std::cout.width(5);
         std::cout << std::right << std::fixed << std::setprecision(2) << dps * 100. / startDPS - 100.
-            << "% for QL11 + Violence" << std::endl;
+                  << "% for QL11 + Violence" << std::endl;
         relDmg["Finger QL11"] = dps / startDPS;
 
         gear.pieces[Gear::MajorLeft] = piece;
@@ -795,6 +802,48 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
         std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
                   << piece.signet.name() << "' on " << gear.pieceName(i) << std::endl;
         relDmg[piece.signet.name()] = startDPS / dps;
+
+        gear.pieces = allPieces;
+    }
+    std::cout << "  Traditional Signet Distribution: " << std::endl;
+    // "Traditional signet distribution"
+    {
+        auto allPieces = gear.pieces;
+        gear.pieces[Gear::Head].signet = Signets::HeadWeapon::Laceration();
+        gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Abuse();
+        gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Aggression();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << "   - ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << "Laceration-Abuse-Aggression'" << std::endl;
+        relDmg["Laceration-Abuse-Aggression"] = dps / startDPS;
+
+        gear.pieces = allPieces;
+    }
+    {
+        auto allPieces = gear.pieces;
+        gear.pieces[Gear::Head].signet = Signets::HeadWeapon::Laceration();
+        gear.pieces[Gear::WeaponLeft].signet = Signets::HeadWeapon::Aggression();
+        gear.pieces[Gear::WeaponRight].signet = Signets::HeadWeapon::Abuse();
+
+        init();
+        resetStats();
+        while (totalTimeAccum < maxTime)
+            simulate(fightTime);
+        auto dps = totalDPS();
+
+        std::cout << "   - ";
+        std::cout.width(5);
+        std::cout << std::right << std::fixed << std::setprecision(2) << startDPS * 100. / dps - 100. << "% from '"
+                  << "Laceration-Aggression-Abuse'" << std::endl;
+        relDmg["Laceration-Aggression-Abuse"] = dps / startDPS;
 
         gear.pieces = allPieces;
     }
@@ -998,7 +1047,8 @@ void Simulation::fullHit(const Stats& baseStats,
             resetEffect((EffectSlot)slot);
 
         // proc on skill hit
-        if (srcSkill && effect.procOn == ProcOn::SkillHit && !isOnCooldown(effect.slot) && effect.affects(dmgtype, skilltype, subtype, weapon))
+        if (srcSkill && effect.procOn == ProcOn::SkillHit && !isOnCooldown(effect.slot)
+            && effect.affects(dmgtype, skilltype, subtype, weapon))
         {
             procEffectDmg(procStat, effect, dmgScaling);
             effectLastTick[slot] = currentTime; // CD
@@ -1155,6 +1205,9 @@ void Simulation::procEffect(const Stats& procStats, EffectSlot effectSlot, float
         // for effects
         for (auto i = 0; i < (int)EffectSlot::Count; ++i)
         {
+            if (!effects[i].affectedByCooldownReduction)
+                continue;
+
             auto cd = effects[i].cooldownIn60th - (currentTime - effectLastTick[i]);
             cd *= cdMult;
             effectLastTick[i] = currentTime - effects[i].cooldownIn60th + cd;
@@ -1604,7 +1657,6 @@ void Simulation::advanceTime(int timeIn60th)
                 kickbackTime = 20 * 60;
                 if (gear.stimulant != EffectSlot::Count)
                     procEffect(Stats(), gear.stimulant, -1);
-
             }
 
             ++dabsCnt;

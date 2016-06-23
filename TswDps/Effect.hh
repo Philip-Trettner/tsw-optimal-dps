@@ -181,6 +181,8 @@ struct Effect
     bool resetOnGlance = false; //< if true, resets effect on glance
     bool resetOnMax = false;    //< if true, resets effect on max stacks
 
+    bool affectedByCooldownReduction = false; //< if true, this effect's CD is reduced by CD reductions
+
     int triggerOnMaxStacksCnt = 1; // nr of stack gained for triggerOnMaxStacks
     EffectSlot triggerOnMaxStacks
         = EffectSlot::Count; // if < Count, this effects triggers another on gaining max stacks (and looses all stack)

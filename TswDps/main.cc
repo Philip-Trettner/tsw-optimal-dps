@@ -43,19 +43,19 @@ void debugRun()
      * TODO:
      *
      * * Team Mercurials
-     * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * First blood
      * * Ignite, different casttime
      * * FAQ
-     * * damage breakdown in misc
-     * * Variance
      *
      * TODO by Mark:
      * * VDM
+     * * Variance
+     * * Dmg Breakdown
      * * Stim/KB values?
      * * List view in setting
      * * first 20s rotation
      * * setting name in exploration.json
+     * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
      * * Attribution: "Builds by ArtificialMind, Website by DijkeMark"
      *
      * later: afflictions + signet of corruption
@@ -607,7 +607,7 @@ int main(int argc, char *argv[])
     if (!explore)
     {
         b.gear.loadEmptyDpsGear(o.defaultQuality); // for weapons and base stats
-        b.rotation = DefaultRotation::create(); // default rot
+        b.rotation = DefaultRotation::create();    // default rot
         if (parser.isSet(oStart) && !std::ifstream(buildName.toStdString()).good())
         {
             buildName = parser.value(oStart);
@@ -939,11 +939,17 @@ int main(int argc, char *argv[])
                         if (!cont)
                             continue; // no build
 
+                        StatLog slog;
                         std::map<std::string, double> dmg;
-                        s.analyzeIndividualContribution(tmpO.timePerFight, ticksFromTimeStr("48h"), dmg);
+                        s.analyzeIndividualContribution(tmpO.timePerFight, ticksFromTimeStr("48h"), dmg, &slog);
                         jsonxx::Object o;
-                        for (auto const &kvp : dmg)
-                            o << kvp.first << kvp.second;
+                        {
+                            jsonxx::Object d;
+                            for (auto const &kvp : dmg)
+                                d << kvp.first << kvp.second;
+                            o << "Contributions" << d;
+                        }
+                        o << "Breakdown" << slog.dmgBreakdown();
                         std::ofstream afile(resPath + "/" + scombi + ".analysis.json");
                         afile << o.json();
                         std::cout << "Wrote " << resPath + "/" + scombi + ".analysis.json" << std::endl;
@@ -957,8 +963,8 @@ int main(int argc, char *argv[])
                         newgens = 5;
                     newgens += (maxGens - gens) / 2; // catch-up
                     gens += newgens;
-                    std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << " [" << gens-newgens << " + " << newgens << " gens, "
-                              << tmpO.timePerTest / (60 * 3600.f) << " hours per test]" << std::flush;
+                    std::cout << "TESTING " << to_string(w1) << " and " << to_string(w2) << " [" << gens - newgens << " + "
+                              << newgens << " gens, " << tmpO.timePerTest / (60 * 3600.f) << " hours per test]" << std::flush;
                     tmpO.run(newgens);
 
                     auto const &topbuilds = tmpO.getTopBuilds();
@@ -1119,15 +1125,20 @@ int main(int argc, char *argv[])
         std::map<std::string, double> dmg;
 
         auto atime = ticksFromTimeStr(parser.value(oAnaTime).toStdString());
-        s.analyzeIndividualContribution(scenario.fightTimeIn60th, atime, dmg);
+        s.analyzeIndividualContribution(scenario.fightTimeIn60th, atime, dmg, &slog);
         std::cout << std::endl;
 
         // Analysis json dump
         if (parser.isSet(oDumpAnalysis))
         {
             jsonxx::Object o;
-            for (auto const &kvp : dmg)
-                o << kvp.first << kvp.second;
+            {
+                jsonxx::Object d;
+                for (auto const &kvp : dmg)
+                    d << kvp.first << kvp.second;
+                o << "Contributions" << d;
+            }
+            o << "Breakdown" << slog.dmgBreakdown();
 
             auto fname = parser.value(oDumpAnalysis);
             if (fname == ".")
@@ -1158,7 +1169,8 @@ int main(int argc, char *argv[])
             s.log = savlog;
 
             auto const eps = .001;
-            auto incBaseStr = [&](std::string const &name) -> std::string {
+            auto incBaseStr = [&](std::string const &name) -> std::string
+            {
                 if (!dmg.count(name))
                     return "";
 
@@ -1174,7 +1186,8 @@ int main(int argc, char *argv[])
 
                 return out.str();
             };
-            auto incStr = [&](std::string const &name) -> std::string {
+            auto incStr = [&](std::string const &name) -> std::string
+            {
                 if (!dmg.count(name))
                     return "";
 
@@ -1184,13 +1197,15 @@ int main(int argc, char *argv[])
                 return out.str();
             };
             auto dpsAugs = Augments::allDpsAugs();
-            auto augColor = [&](Augment const &a) {
+            auto augColor = [&](Augment const &a)
+            {
                 for (auto const &da : dpsAugs)
                     if (da.name == a.name)
                         return "#D32F2F";
                 return "#FFEB3B";
             };
-            auto signetColor = [&](Signet const &s) {
+            auto signetColor = [&](Signet const &s)
+            {
                 if (s.passive.effect == EffectSlot::MothersWrathStacks)
                     return "#FFEB3B";
                 return "#b82ed0";
@@ -1209,8 +1224,10 @@ int main(int argc, char *argv[])
             auto passives = b.skills.passives;
             while (passives.size() < SKILL_CNT)
                 passives.push_back({});
-            sort(begin(passives), end(passives),
-                 [&](Passive const &l, Passive const &r) { return dmg[l.name] > dmg[r.name]; });
+            sort(begin(passives), end(passives), [&](Passive const &l, Passive const &r)
+                 {
+                     return dmg[l.name] > dmg[r.name];
+                 });
 
             for (auto i = 0; i < SKILL_CNT; ++i)
             {
@@ -1363,7 +1380,8 @@ int main(int argc, char *argv[])
                 for (auto const &kvp : slog.dmgStats)
                     stats.push_back(kvp);
                 sort(begin(stats), end(stats),
-                     [](std::pair<string, StatLog::DmgStat> const &s1, std::pair<string, StatLog::DmgStat> const &s2) -> bool {
+                     [](std::pair<string, StatLog::DmgStat> const &s1, std::pair<string, StatLog::DmgStat> const &s2) -> bool
+                     {
                          return s1.second.totalDmg > s2.second.totalDmg;
                      });
                 auto totalDmg = s.totalDmg;

@@ -132,6 +132,8 @@ struct StatLog : CombatLog
 
     void dump(Simulation* sim);
 
+    jsonxx::Object dmgBreakdown();
+
     DmgStat operator[](Skill const& s) const;
     DmgStat operator[](EffectSlot s) const;
 };
