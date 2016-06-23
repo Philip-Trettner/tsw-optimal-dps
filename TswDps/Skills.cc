@@ -74,6 +74,7 @@ std::vector<Skill> Skills::all()
         Hammer::Eruption(),     //
         Hammer::StonesThrow(),  //
         Hammer::GrandSlam(),    //
+        Hammer::FirstBlood(),   //
 
         Fist::SeeRed(),         //
         Fist::Reckless(),       //
@@ -91,6 +92,7 @@ std::vector<Skill> Skills::all()
         Elemental::ElectricalBolt(),         //
         Elemental::FlameStrike(),            //
         Elemental::HardReset(),              //
+        Elemental::Ignite(),                 //
         Elemental::Ignition(),               //
         Elemental::MoltenEarth(),            //
         Elemental::Overload(),               //

@@ -11,9 +11,9 @@ Pistol	Active
 	Bond, Strong Bond @1	0.23924	239		241	968.6	1%	3%	4	X	10 hits, 3s
 	Bond, Strong Bond @5	0.38120	381		384	968.6	1%	3%	4	X	
 	Area Drone	0.46757	468		471	968.6	1%	3%	4		5 times, 5s
-	Bullet Ballet	0.57974	580		584	968.6	1%	3%	20		10 hits, 2s, MELEE
-	Bullet Ballet @1	0.27597	276		278	968.6	1%	3%			final hit
-	Bullet Ballet @5	1.44836	1448		1459	968.6	1%	3%			final hit
+	Bullet Ballet	0.57974	580		584	968.6	1%	3%	20	X	10 hits, 2s, MELEE
+	Bullet Ballet @1	0.27597	276		278	968.6	1%	3%		X	final hit
+	Bullet Ballet @5	1.44836	1448		1459	968.6	1%	3%		X	final hit
 	Marked	2.17304	2173		2189	968.6	1%	3%	30	X	1.5s
 	Start & Finish 1st	0.30278	303		305	968.6	1%	3%	4	X	1st hit
 	Start & Finish @1	0.92223	922		929	968.6	1%	3%	4	X	2nd hit
@@ -54,8 +54,8 @@ Shotgun	Active
 											
 Rifle	Active										
 	Anima Shot	0.50628	506		510	968.6	1%	3%			
-	Fire in the Hole @1	0.60952	610		614	968.6	1%	3%	4		2 TIMES!!
-	Fire in the Hole @5	1.20813	1208		1217	968.6	1%	3%	4		
+	Fire in the Hole @1	0.60952	610		614	968.6	1%	3%	4	X	2 TIMES!!
+	Fire in the Hole @5	1.20813	1208		1217	968.6	1%	3%	4	X	
 	Safety Off	0.21443	214		216	968.6	1%	3%		X	3x Burst
 	Trigger Happy	0.64427	644		649	968.6	1%	3%		X	
 	Slow the Advance	3.67997	3680		3707	968.6	1%	3%	25		AD, Hindered
@@ -117,8 +117,8 @@ Hammer	Active
 	Raging Volcano Final	2.65848	2658		2678	968.6	1%	3%			
 	Raging Volcano Effect	0.38616	386		389	968.6	1%	3%			on next non-volc hit
 	Epicentre	0.26560	266		266	963	1%	3%	20		4 stacks, 5s dot
-	First Blood	0.62541	625		630	968.6	1%	3%			
-	First Blood First	0.73560	736		741	968.6	1%	3%			
+	First Blood	0.62541	625		630	968.6	1%	3%		X	
+	First Blood First	0.73560	736		741	968.6	1%	3%		X	
 	Passive										
 	Thunderstruck	0.55195	552		556	968.6	1%	3%		X	on crit
 	Tenderising	0.09243	92		94	968.6	2%	3%			on weakened hit
@@ -158,7 +158,7 @@ Blood	Active
 	Passive										
 	Gross Anatomy	0.27597	276		278	968.6	1%	3%			:(
 	Arterial Pulse	0.18365	184		185	968.6	1%	3%			
-	Third Degree	0.30383	304		309	968.6	2%	3%			per sec over 4s
+	Third Degree	0.30383	304		309	968.6	2%	3%		X	per sec over 4s
 	Blood Offering									X	11.5% for blood abilities
 	Torture	0.11012	110		112	968.6	2%	3%			hit after focus
 											
@@ -206,6 +206,8 @@ Elemental	Active
 	Whiteout	0.33156	332		334	968.6	1%	3%	25	X	16x over 8s, 1s, does not proc, affected by additive
 	Hard Reset	4.63695	4637		4671	968.6	1%	3%	35	X	2s, crit, AD
 	Ignition	0.64427	644		649	968.6	1%	3%		X	strike
+	Ignite	0.61185	612		611	960.2	1%	3%			
+	Ignite First	0.70799	708		707	960.2	1%	3%			
 	Fire Manifestation	0.67107	671		676	968.6	1%	3%	10	X	2 res, 1s, 4x over 10s
 	Lightning Manifestation	0.16777	168		169	968.6	1%	3%	15	X	2 res, 1s, 10x over 10s
 	Overload	0.93803	938		954	968.6	2%	3%	20	X	2x + final over 3s, MELEE

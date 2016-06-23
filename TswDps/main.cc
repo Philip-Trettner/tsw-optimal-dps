@@ -43,8 +43,6 @@ void debugRun()
      * TODO:
      *
      * * Team Mercurials
-     * * First blood
-     * * Ignite, different casttime
      * * FAQ
      *
      * TODO by Mark:
@@ -72,7 +70,7 @@ void debugRun()
     const bool continuousExploration = true;
     const double longerTimePerRun = 1.1;
     const auto exploreType = ExploreType::Best;
-    const bool exploration = true;
+    const bool exploration = !true;
     const bool optimization = !true;
 
     const bool dpsTest = !true;

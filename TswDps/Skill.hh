@@ -25,6 +25,7 @@ struct Skill
 
     float dmgScaling;       ///< dmgScaling * combat power = base dmg (at 1 resource for consumers)
     float dmgScaling5 = -1; ///< scaling at 5 resources
+    float dmgScaling0 = -1; ///< if above 0, scaling at 0 resources
 
     bool consumesAnyways = false; ///< if true, this skill consumes resources even if not a consumer (for bullet ballet)
 

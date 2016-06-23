@@ -1,9 +1,9 @@
 {
 	"Augments": [
 		"Brutal",
-		"Fierce",
+		"Grievous",
 		"Ferocious",
-		"Invulnerable",
+		"Quickening",
 		"Mercurial",
 		"Precise",
 		"Focused",
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Abuse" 
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 1033,
@@ -71,7 +71,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 118,
-			"Signet": "Equilibrium" 
+			"Signet": "Swords" 
 		},
 		{
 			"AR": 0,
@@ -80,7 +80,7 @@
 			"Free": true,
 			"Hit": 0,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 0,
@@ -92,15 +92,34 @@
 			"Signet": "Aggression" 
 		} 
 	],
-	"Kickback": "Kickback CritPower on Pen (purple)",
+	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Fist",
 	"Misc": {
+		"Initial Rotation": [
+			"Prey on the Weak",
+			"Prey on the Weak",
+			"Prey on the Weak",
+			"Prey on the Weak",
+			"Prey on the Weak",
+			"Tear Em Up",
+			"Steel Echo",
+			"Reckless",
+			"Four Seasons",
+			"Binding Wounds",
+			"Prey on the Weak",
+			"Tear Em Up",
+			"Binding Wounds",
+			"Prey on the Weak",
+			"Tear Em Up",
+			"Binding Wounds" 
+		],
 		"Kickback": {
 			"CritPower": 644 
 		},
 		"Stim": {
-			"Crit": 341 
-		} 
+			"Pen": 312 
+		},
+		"VDM": "VDM%-%5784459%-%6942572%-%7080574%-%6942579%-%7080571%-%6942570%-%7080584%-%undefined%-%6307518%-%7080607%-%6943080%-%6942477%-%7080605%-%6861862%-%7080596%-%undefined%-%8260157%-%8260120%-%8260142%-%8259980%-%8259966%-%8260147%-%8260126%" 
 	},
 	"Passives": [
 		"Elemental Force",
@@ -132,9 +151,9 @@
 		"Reckless",
 		"Four Seasons",
 		"One-Two",
-		"Dancing Blade",
+		"Binding Wounds",
 		"" 
 	],
-	"Stim": "StimCritPurple" 
+	"Stim": "StimPenPurple" 
 } 
 

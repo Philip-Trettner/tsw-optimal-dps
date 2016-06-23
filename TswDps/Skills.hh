@@ -737,6 +737,15 @@ public:
             s.subtype = SubType::Strike;
             return s;
         }
+        static Skill Ignite()
+        {
+            auto s = skill("Ignite", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            s.dmgScaling = scaling(s.name + " First");
+            return s;
+        }
 
         static Skill Combust()
         {
@@ -996,6 +1005,16 @@ public:
             s.timeIn60th = 60;
             s.hits = 1;
             s.dmgScaling = scaling(s.name);
+            return s;
+        }
+        static Skill FirstBlood()
+        {
+            auto s = skill("First Blood", SkillType::Builder);
+            s.timeIn60th = 60;
+            s.subtype = SubType::Strike;
+            s.hits = 1;
+            s.dmgScaling = scaling(s.name);
+            s.dmgScaling0 = scaling(s.name + " First");
             return s;
         }
         static Skill GrandSlam()

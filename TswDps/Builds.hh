@@ -27,16 +27,16 @@ struct Builds
 
         b.skills = {{
                         // skills
-                Skills::Chaos::HandOfChange(), //
-                Skills::Elemental::LightningManifestation(), //
+                Skills::Hammer::FirstBlood(), //
+                Skills::Hammer::MoltenSteel(), //
                     },
                     {
                         // augs
                     },
                     {
                         // passives
-                        Passives::Pistol::OneInTheChamber(), //
-                        Passives::Elemental::LiveWire(), //
+                        //Passives::Pistol::OneInTheChamber(), //
+                        //Passives::Elemental::LiveWire(), //
                         // Passives::Blood::ThirdDegree(), //
                         // Passives::Shotgun::InvasiveMeasures(), //
                     }};
@@ -45,7 +45,7 @@ struct Builds
         b.gear.loadStandardDpsGear(Gear::TalismanQuality::QL11);
         
         // hammer ele, i swear, over 9000
-        b.gear.leftWeapon = Weapon::Elemental;
+        b.gear.leftWeapon = Weapon::Hammer;
         b.gear.rightWeapon = Weapon::Chaos;
         return b;
     }

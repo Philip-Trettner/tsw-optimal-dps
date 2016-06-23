@@ -1,7 +1,7 @@
 {
 	"Augments": [
 		"Brutal",
-		"Curing",
+		"Mercurial",
 		"Quickening",
 		"Fierce",
 		"Piercing",
@@ -17,7 +17,7 @@
 			"Free": true,
 			"Hit": 407,
 			"Pen": 0,
-			"Signet": "Laceration" 
+			"Signet": "Abuse" 
 		},
 		{
 			"AR": 1033,
@@ -30,11 +30,11 @@
 		},
 		{
 			"AR": 972,
-			"Crit": 0,
+			"Crit": 327,
 			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 367,
+			"Pen": 0,
 			"Signet": "Egon Pendant" 
 		},
 		{
@@ -76,11 +76,11 @@
 		{
 			"AR": 0,
 			"Crit": 0,
-			"Crit Power": 173,
+			"Crit Power": 0,
 			"Free": true,
 			"Hit": 0,
-			"Pen": 203,
-			"Signet": "Abuse" 
+			"Pen": 407,
+			"Signet": "Laceration" 
 		},
 		{
 			"AR": 0,
@@ -94,6 +94,37 @@
 	],
 	"Kickback": "Kickback CritPower on Crit (purple)",
 	"Left Weapon": "Hammer",
+	"Misc": {
+		"Initial Rotation": [
+			"Binding Wounds",
+			"Molten Steel",
+			"Grand Slam",
+			"Grand Slam",
+			"Grand Slam",
+			"Steel Echo",
+			"Four Seasons",
+			"Grand Slam",
+			"Grand Slam",
+			"Binding Wounds",
+			"Molten Steel",
+			"Full Momentum",
+			"Molten Steel",
+			"Grand Slam",
+			"Grand Slam",
+			"Grand Slam",
+			"Grand Slam",
+			"Grand Slam",
+			"Binding Wounds",
+			"Molten Steel" 
+		],
+		"Kickback": {
+			"CritPower": 644 
+		},
+		"Stim": {
+			"AR": 600 
+		},
+		"VDM": "VDM%-%6347501%-%6838807%-%7080574%-%7080584%-%5780051%-%6837799%-%7080571%-%undefined%-%6368910%-%6307518%-%6943080%-%6839136%-%6942477%-%6861862%-%7080596%-%undefined%-%8260157%-%8259966%-%8259980%-%8260131%-%8260152%-%8260126%-%8260120%" 
+	},
 	"Passives": [
 		"Brawler",
 		"Elemental Force",

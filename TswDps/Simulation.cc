@@ -339,12 +339,7 @@ void Simulation::simulate(int totalTimeIn60th)
         if (skills.augments[idx].effect != EffectSlot::Count && !skills.augments[idx].applyBeforeCD
             && !isOnCooldown(skills.augments[idx].effect))
             procEffect(procStat, skills.augments[idx].effect, -1);
-
-        // non-channeling builders
-        if (!skill.channeling && skill.skilltype == SkillType::Builder)
-            addResource(skill.buildPrimaryOnly);
-
-
+        
         // consumers
         int resourcesConsumed = 0;
         bool procBloodOffering = false;
@@ -416,6 +411,9 @@ void Simulation::simulate(int totalTimeIn60th)
             if (resourcesConsumed == 0)
                 scaling = 0; // Bullet Balle @0 resources
         }
+        // special hit on 0 res
+        if (skill.dmgScaling0 > 0 && weaponResources[currentWeapon] == 0)
+            scaling = skill.dmgScaling0;
         // chance to do more dmg (timber)
         if (skill.chanceForScaleInc > 0)
         {
@@ -425,6 +423,10 @@ void Simulation::simulate(int totalTimeIn60th)
                 scaling *= 1 + skill.scaleIncPerc;
         }
         skillLastScaling[idx] = scaling;
+
+        // non-channeling builders
+        if (!skill.channeling && skill.skilltype == SkillType::Builder)
+            addResource(skill.buildPrimaryOnly);
 
         // hits
         auto hits = skill.hits;
