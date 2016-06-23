@@ -45,6 +45,7 @@ void debugRun()
      * * Team Mercurials
      * * Analysis vs .4 egon pendant in budget
      * * Damage histogram
+     * * KB/Stim misc description
      * * FAQ
      *
      * TODO by Mark:
@@ -492,6 +493,11 @@ int main(int argc, char *argv[])
     QCommandLineOption oAnaTime("analysis-time", "Simulation time per evaluation in the analyzer (default 8h)", "time", "8h");
     parser.addOption(oAnaTime);
 
+    QCommandLineOption oMaxActive("max-actives", "Max number of actives (default 7)", "nr", "7");
+    parser.addOption(oMaxActive);
+    QCommandLineOption oMaxPassives("max-passives", "Max number of passives (default 7)", "nr", "7");
+    parser.addOption(oMaxPassives);
+
     // .. optimizer
     QCommandLineOption oOptimize({"o", "optimize"}, "Optimizes the DPS of the given build for a given number of rounds "
                                                     "(settings are included in the fight scenario)",
@@ -570,7 +576,6 @@ int main(int argc, char *argv[])
     Simulation &s = o.refSim;
     Scenario scenario;
     scenario.fightTimeIn60th = ticksFromTimeStr("20s");
-    ;
     scenario.totalTimeIn60th = scenario.fightTimeIn60th;
 
     // .. debug only
@@ -806,6 +811,12 @@ int main(int argc, char *argv[])
         optimizerRounds = parser.value(oOptimize).toInt();
     bool optimization = optimizerRounds > 0;
 
+    int nrActives = parser.value(oMaxActive).toInt();
+    int nrPassives = parser.value(oMaxPassives).toInt();
+
+    o.maxActives = nrActives;
+    o.maxPassives = nrPassives;
+
     // .. threads
     if (parser.isSet(oThreads))
         o.threadOverwrite = parser.value(oThreads).toInt();
@@ -842,7 +853,7 @@ int main(int argc, char *argv[])
 
     // apply scen
     scenario.apply(s, o);
-
+    
     // ==========================================================================
     // print info
 
