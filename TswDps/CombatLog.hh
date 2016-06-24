@@ -93,6 +93,15 @@ struct StatLog : CombatLog
     std::map<Weapon, double> dmgOfWeapon;
     Simulation* sim; // backref
 
+    void clear()
+    {
+        dmgStats.clear();
+        dmgOfType.clear();
+        dmgOfSkill.clear();
+        dmgOfSub.clear();
+        dmgOfWeapon.clear();
+    }
+
     void logHit(Simulation* sim,
                 int timeIn60th,
                 string const& name,

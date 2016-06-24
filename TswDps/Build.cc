@@ -149,16 +149,13 @@ string Build::VDM() const
     return vdm;
 }
 
-namespace {
-
+namespace
+{
 struct BuildRotationLog : CombatLog
 {
     std::vector<int> skills;
 
-    void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override
-    {
-        skills.push_back(skillIdx);
-    }
+    void logSkill(Simulation* sim, int timeIn60th, int skillIdx) override { skills.push_back(skillIdx); }
 };
 }
 
@@ -201,13 +198,51 @@ jsonxx::Object Build::toJson() const
         if (gear.stimulant != EffectSlot::Count)
             for (auto const& e : Effects::Stimulants::all())
                 if (e.slot == gear.stimulant)
-                    m << "Stim" << e.bonusStats.toJson();
+                {
+                    auto bs = e.bonusStats.toJson();
+                    jsonxx::Object o;
+                    for (auto const& kvp : bs.kv_map())
+                    {
+                        o << "Stat" << kvp.first;
+                        o << "Value" << bs.get<jsonxx::Number>(kvp.first);
+                    }
+                    o << "Quality" << (e.name.find("(blue)") != std::string::npos ? "Rare" : "Epic");
+                    m << "Stim" << o;
+                }
 
         // kickback
         if (!gear.kickback.name.empty())
             for (auto const& e : Effects::Kickbacks::all())
                 if (e.slot == gear.kickback.effect)
-                    m << "Kickback" << e.bonusStats.toJson();
+                {
+                    auto bs = e.bonusStats.toJson();
+                    jsonxx::Object o;
+                    switch (gear.kickback.trigger)
+                    {
+                    case Trigger::Hit:
+                        o << "Proc"
+                          << "Hit";
+                        break;
+                    case Trigger::Crit:
+                        o << "Proc"
+                          << "Crit";
+                        break;
+                    case Trigger::Pen:
+                        o << "Proc"
+                          << "Pen";
+                        break;
+                    default:
+                        assert(0 && "Invalid trigger");
+                        break;
+                    }
+                    for (auto const& kvp : bs.kv_map())
+                    {
+                        o << "Stat" << kvp.first;
+                        o << "Value" << bs.get<jsonxx::Number>(kvp.first);
+                    }
+                    o << "Quality" << (e.name.find("(blue)") != std::string::npos ? "Rare" : "Epic");
+                    m << "Kickback" << o;
+                }
 
         // vdm
         m << "VDM" << VDM();
@@ -218,7 +253,7 @@ jsonxx::Object Build::toJson() const
             s.loadBuild(*this);
             BuildRotationLog l;
             s.log = &l;
-            s.simulate(20 * 60); // 20s
+            s.simulate(25 * 60); // 25s
             // cull builders
             auto ss = l.skills;
             while (ss.size() > 10 && skills.skills[ss.back()].skilltype == SkillType::Builder)

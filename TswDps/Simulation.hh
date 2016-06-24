@@ -68,7 +68,7 @@ struct Simulation
     void dumpBriefReport() const;
 
     /// Analyzes the total dmg increase of each passive
-    void analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog* slog = nullptr);
+    void analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog* slog = nullptr, std::map<int, int> *dmgDistri = nullptr, int optimizationTime = -1);
 
     /// next dabs in 60th
     int nextDABS() const { return dabsTime; }

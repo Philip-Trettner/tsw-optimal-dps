@@ -44,13 +44,13 @@ void debugRun()
      *
      * * Team Mercurials
      * * Analysis vs .4 egon pendant in budget
-     * * Damage histogram
-     * * KB/Stim misc description
+     * * Optimization variance
      * * FAQ
      *
      * TODO by Mark:
      * * VDM
      * * Variance
+     * * Damage histogram
      * * Dmg Breakdown
      * * Stim/KB values?
      * * List view in setting
@@ -715,7 +715,7 @@ int main(int argc, char *argv[])
         scenario.fightTimeIn60th = ticksFromTimeStr("25s");
         scenario.totalTimeIn60th = ticksFromTimeStr("25s");
         s.enemyInfo.allVulnerabilities = true;
-        scenario.name = "Burst Fight";
+        scenario.name = "25s Burst Fight";
     }
     else if (scen.toLower() == "budget")
     {
@@ -853,7 +853,7 @@ int main(int argc, char *argv[])
 
     // apply scen
     scenario.apply(s, o);
-    
+
     // ==========================================================================
     // print info
 
@@ -952,7 +952,8 @@ int main(int argc, char *argv[])
 
                         StatLog slog;
                         std::map<std::string, double> dmg;
-                        s.analyzeIndividualContribution(tmpO.timePerFight, ticksFromTimeStr("48h"), dmg, &slog);
+                        std::map<int, int> dmgDis;
+                        s.analyzeIndividualContribution(tmpO.timePerFight, ticksFromTimeStr("48h"), dmg, &slog, &dmgDis, tmpO.timePerTest);
                         jsonxx::Object o;
                         {
                             jsonxx::Object d;
@@ -961,6 +962,16 @@ int main(int argc, char *argv[])
                             o << "Contributions" << d;
                         }
                         o << "Breakdown" << slog.dmgBreakdown();
+                        {
+                            jsonxx::Array d;
+                            for (auto const &kvp : dmgDis)
+                            {
+                                jsonxx::Array k;
+                                k << kvp.first << kvp.second;
+                                d << k;
+                            }
+                            o << "Damage Distribution" << d;
+                        }
                         std::ofstream afile(resPath + "/" + scombi + ".analysis.json");
                         afile << o.json();
                         std::cout << "Wrote " << resPath + "/" + scombi + ".analysis.json" << std::endl;
@@ -1136,7 +1147,8 @@ int main(int argc, char *argv[])
         std::map<std::string, double> dmg;
 
         auto atime = ticksFromTimeStr(parser.value(oAnaTime).toStdString());
-        s.analyzeIndividualContribution(scenario.fightTimeIn60th, atime, dmg, &slog);
+        std::map<int, int> dmgDis;
+        s.analyzeIndividualContribution(scenario.fightTimeIn60th, atime, dmg, &slog, &dmgDis, o.timePerTest);
         std::cout << std::endl;
 
         // Analysis json dump
@@ -1150,6 +1162,16 @@ int main(int argc, char *argv[])
                 o << "Contributions" << d;
             }
             o << "Breakdown" << slog.dmgBreakdown();
+            {
+                jsonxx::Array d;
+                for (auto const &kvp : dmgDis)
+                {
+                    jsonxx::Array k;
+                    k << kvp.first << kvp.second;
+                    d.import(jsonxx::Value(k));
+                }
+                o << "Damage Distribution" << d;
+            }
 
             auto fname = parser.value(oDumpAnalysis);
             if (fname == ".")

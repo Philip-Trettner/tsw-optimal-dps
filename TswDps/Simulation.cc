@@ -339,7 +339,7 @@ void Simulation::simulate(int totalTimeIn60th)
         if (skills.augments[idx].effect != EffectSlot::Count && !skills.augments[idx].applyBeforeCD
             && !isOnCooldown(skills.augments[idx].effect))
             procEffect(procStat, skills.augments[idx].effect, -1);
-        
+
         // consumers
         int resourcesConsumed = 0;
         bool procBloodOffering = false;
@@ -565,7 +565,8 @@ void Simulation::dumpBriefReport() const
     std::cout << "Evades:   " << totalEvades << " (" << totalEvades * 100.f / totalHits << "%)" << std::endl;
 }
 
-void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog *slog)
+void Simulation::analyzeIndividualContribution(
+    int fightTime, int maxTime, std::map<std::string, double>& relDmg, StatLog* slog, std::map<int, int>* dmgDistri, int optimizationTime)
 {
     auto savMode = lowVarianceMode;
     auto savLog = log;
@@ -578,43 +579,133 @@ void Simulation::analyzeIndividualContribution(int fightTime, int maxTime, std::
     StatLog slog2;
     if (!slog)
         slog = &slog2;
-    auto savlog = log;
+    slog->clear();
     log = slog;
     init();
     resetStats();
     while (totalTimeAccum < maxTime)
         simulate(fightTime);
     auto startDPS = totalDPS();
-    log = savlog;
+    auto savTotalDmg = totalDmg;
+    auto savTotalHits = totalHits;
+    auto savTotalAccum = totalTimeAccum;
+    log = nullptr;
 
     std::cout << "(" << startDPS << " DPS)" << std::endl << std::endl;
 
-    std::cout << "Variance ";
-    auto minDPS = startDPS;
-    auto maxDPS = startDPS;
-    for (int i = 0; i < 10; ++i)
     {
-        std::cout.flush();
+        std::cout << "Variance Analysis     ";
+        auto minDPS = startDPS;
+        auto maxDPS = startDPS;
+        auto Edps = startDPS;
+        auto Edps2 = startDPS * startDPS;
+        int n = 1;
+        for (int i = 0; i < 20; ++i)
+        {
+            std::cout.flush();
 
-        resetStats();
-        while (totalTimeAccum < maxTime)
-            simulate(fightTime);
-        auto dps = totalDPS();
+            resetStats();
+            while (totalTimeAccum < maxTime)
+                simulate(fightTime);
+            auto dps = totalDPS();
 
-        if (dps < minDPS)
-            minDPS = dps;
-        if (dps > maxDPS)
-            maxDPS = dps;
+            if (dps < minDPS)
+                minDPS = dps;
+            if (dps > maxDPS)
+                maxDPS = dps;
 
-        std::cout << ".";
+            Edps += dps;
+            Edps2 += dps * dps;
+            ++n;
+
+            std::cout << ".";
+        }
+
+        auto avg = Edps / n;
+        auto dev = sqrt(Edps2 / n - avg * avg);
+
+        auto variance = dev / avg * 3;// (maxDPS - minDPS) / maxDPS;
+        std::cout << " " << (variance * 100) << "%" << std::endl;
+        relDmg["Variance Analysis"] = variance;
     }
 
-    auto variance = (maxDPS - minDPS) / maxDPS;
-    std::cout << " " << (variance * 100) << "%" << std::endl;
-    relDmg["Variance"] = variance;
+    {
+        std::cout << "Variance Optimization ";
+        auto minDPS = startDPS;
+        auto maxDPS = startDPS;
+        auto Edps = startDPS;
+        auto Edps2 = startDPS * startDPS;
+        int n = 1;
+        for (int i = 0; i < 20; ++i)
+        {
+            std::cout.flush();
+
+            resetStats();
+            while (totalTimeAccum < optimizationTime)
+                simulate(fightTime);
+            auto dps = totalDPS();
+
+            if (dps < minDPS)
+                minDPS = dps;
+            if (dps > maxDPS)
+                maxDPS = dps;
+
+            Edps += dps;
+            Edps2 += dps * dps;
+            ++n;
+
+            std::cout << ".";
+        }
+
+        auto avg = Edps / n;
+        auto dev = sqrt(Edps2 / n - avg * avg);
+
+        auto variance = dev / avg * 3;// (maxDPS - minDPS) / maxDPS;
+        std::cout << " " << (variance * 100) << "%" << std::endl;
+        relDmg["Variance Optimization"] = variance;
+        std::cout << std::endl;
+    }
+
+    std::cout << "[Damage Distribution]" << std::endl;
+    std::map<int, int> dmg2cnt;
+    int dmgMaxCnt = 0;
+    int dmgSamples = 0;
+    for (int i = 0; i < 10; ++i)
+    {
+        lowVarianceMode = false; // No low variance!
+        auto accum = 0;
+        while (accum < maxTime)
+        {
+            accum += fightTime;
+            resetStats();
+            simulate(fightTime);
+            auto dps = totalDPS();
+
+            const int step = 250;
+            auto cdps = (int)dps + step / 2;
+            cdps -= cdps % step;
+            dmg2cnt[cdps]++;
+            ++dmgSamples;
+            dmgMaxCnt = std::max(dmgMaxCnt, dmg2cnt[cdps]);
+        }
+        lowVarianceMode = true;
+    }
+    for (auto const& kvp : dmg2cnt)
+    {
+        std::cout.width(5);
+        std::cout << kvp.first << " DPS: ";
+        int length = kvp.second * 50 / dmgMaxCnt;
+        std::cout << std::string(length, '=') << std::endl;
+    }
+    std::cout << "Samples: " << dmgSamples << std::endl;
     std::cout << std::endl;
+    if (dmgDistri)
+        *dmgDistri = dmg2cnt;
 
     std::cout << "[Damage Breakdown]" << std::endl;
+    totalDmg = savTotalDmg;
+    totalHits = savTotalHits;
+    totalTimeAccum = savTotalAccum;
     slog->dump(this);
     std::cout << std::endl;
 
