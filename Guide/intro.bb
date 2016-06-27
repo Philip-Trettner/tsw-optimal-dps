@@ -18,14 +18,10 @@ ArtificialMind's Ultimate Theorycrafted DPS Guide [1.15.2 with Elite Revamp]
 TODO:
 
 Sections:
- * Tables for different settings (raid, burst, vulnerabilities, dummy, percentage)
- * Best Builds (for Raid, Burst, Vulnerabilities, Buffs (individual + combi), Percentage)
- * Statistics
  * The DPS Formula
  * A Combat Simulator + How the builds got made + Explain how to read builds/rotation
  * FAQ + Changelog + Known Issues + pieces of wisdom
  * TODO list
- * One for every weapon combination
 
 ================================================================================
 Content:
@@ -46,6 +42,31 @@ The next step was to automatically switch any aspect of a build, re-evaluate its
 With this mechanic, my program is able to automatically find really high DPS builds for every weapon combination under various situations.
 The results can be found at the website linked above (thanks again, Mark, for setting up the site ;) ).
 
+The rest of this guide is structured as follows:
+* How to Read the Builds
+* The DPS Formula
+* FAQ and Pieces of Wisdom
+* Changelog, Known Issues, Future Work
+
+
+
+
+
+================================================================================
+[size+2][color=#03A9F4]How to Read the Builds[/color][/size]
+
+
+================================================================================
+[size+2][color=#03A9F4]The DPS Formula[/color][/size]
+
+================================================================================
+[size+2][color=#03A9F4]FAQ[/color][/size]
+[size+2][color=#03A9F4]Pieces of Wisdom[/color][/size]
+
+================================================================================
+[size+2][color=#03A9F4]Changelog[/color][/size]
+[size+2][color=#03A9F4]Known Issues[/color][/size]
+[size+2][color=#03A9F4]Future Work[/color][/size]
 
 
 
