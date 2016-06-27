@@ -26,11 +26,11 @@ Sections:
 ================================================================================
 Content:
 
-[size+2][color=#03A9F4]ArtificialMind's Ultimate Theorycrafted DPS Guide[/color][/size]
+[size=+2][color=#03A9F4]ArtificialMind's Ultimate Theorycrafted DPS Guide[/color][/size]
 [i][color=gray]Last Update: June 27th, 2016 (1.15.2 with Elite Revamp)[/color][/i]
 
 
-[size+2][color=#03A9F4]TL;DR: all builds can be found at [url]http://www.markdijkema.nl/projects/tswbuildstatistics[/url][/color][/size]
+[size=+2][color=#03A9F4]TL;DR: all builds can be found at [url]http://www.markdijkema.nl/projects/tswbuildstatistics[/url][/color][/size]
 [i][color=gray](Builds by ArtificialMind, Website by DijkeMark)[/color][/i]
 
 
@@ -43,30 +43,192 @@ With this mechanic, my program is able to automatically find really high DPS bui
 The results can be found at the website linked above (thanks again, Mark, for setting up the site ;) ).
 
 The rest of this guide is structured as follows:
-* How to Read the Builds
-* The DPS Formula
-* FAQ and Pieces of Wisdom
-* Changelog, Known Issues, Future Work
-
-
-
-
-
-================================================================================
-[size+2][color=#03A9F4]How to Read the Builds[/color][/size]
+[list]
+[*] How to Read the Builds
+[*] The DPS Formula
+[*] FAQ
+[*] Changelog, Known Issues, Future Work
+[/list]
 
 
 ================================================================================
-[size+2][color=#03A9F4]The DPS Formula[/color][/size]
+[size=+2][color=#03A9F4]How to Read the Builds[/color][/size]
+[i][color=gray](Or: How to use http://www.markdijkema.nl/projects/tswbuildstatistics)[/color][/i]
+
+
+[size=+1][color=#B2EBF2]Build Types[/color][/size]
+The left pane contains a navigation by build type.
+A build type (or scenario or setting) is the environment used to evaluate the build.
+
+Currently, the following types are implemented and optimized:
+
+[list]
+[*][color=#03A9F4]Raid[/color]: An exposed raid boss with all vulnerabilities applied. Each fight lasts 2.5 minutes with DABS every 60-80 seconds. No SF, no Whip, no Keziah Mason's Ring, no Brace of the Ghoul King.
+[*][color=#03A9F4]Raid Melee/Ranged/Magic[/color]: Same as Raid, but your elite has to apply the proper vulnerability. Useful for setting up a raid.
+[*][color=#03A9F4]Burst[/color]: Same basic setting as Raid, but with 25s fights.
+[*][color=#03A9F4]Dummy[/color]: No expose, no vulnerability applied (except what you might bring on your own), no DABS or other buffs. Each fight lasts 2.5 minutes. Assumes an affliction and a non-expose weaken (for signets and passives).
+[*][color=#03A9F4]Percentage[/color]: Same as Raid, but proc passives are forbidden (Live Wire, Thunderstruck, Sudden Return, One in the Chamber, Gnosis, Fortunate Strike).
+[*][color=#03A9F4]Budget[/color]: Same as Raid, but with 10.9.5 gear, no Woodcutters, no NM raid drops, and no Flappy drops (purple gadgets).
+[/list]
+(Note that all settings except Budget assume full QL11 gear)
+
+
+[size=+1][color=#B2EBF2]Build Type Overview[/color][/size]
+After clicking on a build type, the main content area will show an overview over all Weapon Combinations.
+In both tabular and list form, the DPS of each combination is shown.
+Clicking on the DPS will show you the Build.
+
+Apart from the builds, the overview also contains the Average Glyph Stats for this build type as well as the most used passives.
+
+
+[size=+1][color=#B2EBF2]A Particular Build[/color][/size]
+Clicking on a DPS number in the overview shows you the actual build with a detailed breakdown of (hopefully) all information that you desire.
+
+The analysis of a build actually uses more time than what is allocated for evaluating a build during optimization.
+The two lines after the title show you an approximation of how accurate the analysis/optimization was.
+
+A VDM string is provided so you can conveniently import the build.
+
+
+[size=+1][color=#B2EBF2]Build[/color][/size]
+Probably the most important part of a build are the actives, augments, and passives.
+Each part of the build (except builder) has an associated dps increase, which means how much dps would you lose if you were to not use that active/aug/passive.
+
+Note that especially augments are sometimes silly.
+Like an Invulnerable on Full Momentum without Equilibrium or CiB.
+The reason is that even after optimizing for a long time (and simulating 30h+ fighting), RNG still causes a variance of 0.3-0.4%.
+Most Augments increase your DPS by less (or around) that value, so by sheer RNG, my algorithm could chose the worse setup due to RNG.
+
+
+[size=+1][color=#B2EBF2]Gear[/color][/size]
+Next important part is the gear setup (signets and glyphs).
+The Gear table shows each piece with its signet.
+Every signet is associated with a dps increase as well (which is the dps you'd lose if that slot would be empty).
+The next table shows the overall gear stats (split by weapon if required).
+
+For Neck (and sometimes Finger), alternative signets are shown.
+These are basically Woodcutters, .9 Egon, or QL11 + Violence (depending on what is already equipped).
+Their associated dps is what you'd lose if you would equip that talisman over the recommended one.
+
+My optimization doesn't care if the signets on head/weapon are convenient for you or not.
+Often, Laceration is placed on a weapon and some weird Fury/Sadism/Aggression on head and the other weapon.
+For your convenience, the "Alternative Signet Placement" section shows what would happen if you use a "sane" signet distribution.
+
+
+[size=+1][color=#B2EBF2]Extras[/color][/size]
+The small "Extras" section contains the recommended Potion as well as Stimulant and Kickback.
+Note that with the exception of the "Budget" setting, all Stims and Kickbacks are purple Flappy drops.
+
+
+[size=+1][color=#B2EBF2]Rotation[/color][/size]
+The next two parts are about the Rotation.
+My Rotations are rule-based (something that might change in the future though).
+For your convenience, the first 20-something seconds of each build are shown.
+In the longer settings (all except burst), those initial rotation can be a bit silly because they impact DPS by so little.
+Initial rotations in the burst setting are typically better optimized.
+
+The rules of the rotation should be described properly (we had some iterations on the wording already but suggestions are welcome ;) ).
+One rule that is not explicitly stated is that you should use your cooldowns during DABS and in a buffed state (which - depending on the build - is either Elemental Force or Woodcutters or both).
+Bombardment and Power-Line should be used off cooldown.
+
+
+[size=+1][color=#B2EBF2]Damage Breakdown[/color][/size]
+After the rotation, the next two tables show a breakdown of your damage by source and by type.
+Those are purely informational but can be used to decide which vulnerability is the most important.
+
+
+[size=+1][color=#B2EBF2]Glyph Stat Impact[/color][/size]
+One of my favorite tables, the glyph stat impact show what happens if you change or switch around stats.
+This is super useful to evaluate if your particular glyph setup is "bad" when you plan your gear for multiple builds.
+In most cases, it's fine to switch around 200 crit/pen/cp without more than 0.5% dps impact.
+Often you can even improve the recommended stats by moving some stats around due to all the RNG involved in analysis as well as optimization.
+So take the stats with a grain of salt.
+
+To make this clear again: if you are near (+- 200 stats) the optimal glyph setup, even my 30h+ combat time simulation cannot detect the difference properly.
+If you're wondering if you should reglyph just to switch 100 stats around: Don't do it, it's a waste ;)
+
+Another tip: sometimes the non-builder weapon has silly stats, like 200 less hit or something.
+The impact is probably so low that the optimization doesn't really detect it. So please think for yourself if you see weird weapon splits ;)
+
 
 ================================================================================
-[size+2][color=#03A9F4]FAQ[/color][/size]
-[size+2][color=#03A9F4]Pieces of Wisdom[/color][/size]
+[size=+2][color=#03A9F4]The DPS Formula[/color][/size]
+
 
 ================================================================================
-[size+2][color=#03A9F4]Changelog[/color][/size]
-[size+2][color=#03A9F4]Known Issues[/color][/size]
-[size+2][color=#03A9F4]Future Work[/color][/size]
+[size=+2][color=#03A9F4]FAQ[/color][/size]
+
+[size=+1][color=#B2EBF2]What Stats do you recommend?[/color][/size]
+
+[size=+1][color=#B2EBF2]So ... I have to play Ele/X now?[/color][/size]
+
+[size=+1][color=#B2EBF2]Will I do 9700 DPS in Flappy if I use your blood/ele build?[/color][/size]
+
+
+================================================================================
+[size=+2][color=#03A9F4]Changelog[/color][/size]
+
+[size=+1][color=#B2EBF2]Version 1.0[/color][/size]
+
+[list]
+[*] Initial Release
+[*] Optimizing Combat Simulator for builds after the Elite Revamp
+[*] Build types: 'raid', 'raid-vuln X/Y/Z', 'burst 25s', 'budget', 'percentage', 'dummy'
+[*] Build website at http://www.markdijkema.nl/projects/tswbuildstatistics (by DijkeMark)
+[/list]
+
+
+
+[size=+2][color=#03A9F4]Known Issues[/color][/size]
+
+[list]
+[*] The optimizer can miss some micro-optimizations (e.g. still having weapon-specific minor signets even though they are clearly worse) due to RNG. It's typically minor stuff with less than 1% impact on DPS.
+[*] Similar to the last issue, sometimes Augments are messed up (e.g. a Curing even though neither CiB or Equilibrium is used), because no Augment in that slot would provide more than 0.5% dps (and that potential could be missed due to RNG).
+[*] Power-Line is activated regardless of any ability that may currently be channeling. It's not a huge problem because most builds don't include channels longer than 1s anymore.
+[*] No Evades (see Future Work)
+[*] Skill effects that are triggered on Impaired/Hindered targets are ignored. If your whole raid uses hinders and impairs, the boss will be immune most of the time anyways, so I chose to ignore them for now.
+[*] Double Up (pistol skill passive) and Calamity (chaos skill passive) are not logged (most of the time) by the game and thus don't show up on any DPS meter or ACT parse. I chose to ignore them because - at least for me - non-measurable DPS doesn't really matter.
+[*] Sometimes, builds take pretty long to be optimized and may end up in different states of optimization (discrepancy between raid and raid-vuln). The most drastic I've found is Blade/Elemental in Raid vs Raid-Ranged.
+[*] Destiny is not implemented yet, so blade builds often use Binding Wounds. Do you tank a favor and take Destiny instead ;)
+[/list]
+
+
+
+[size=+2][color=#03A9F4]Future Work[/color][/size]
+
+[size=+1][color=#B2EBF2]Evade Formula[/color][/size]
+Afflictions and Procs cannot be evaded, making it harder to get a proper sample size for reverse engineering the Evade Formula.
+Right now most builds use high hit (500+) anyways, so it's probably not an issue.
+For completionist reasons I would still like to have that formula.
+
+[size=+1][color=#B2EBF2]Physical/Magical Protection[/color][/size]
+Right now I'm assuming that the displayed skill damage is not reduced by the boss.
+It's probably irrelevant for comparing builds, but for completion (and maybe even verification) purposes, knowing the formula and values for protection would be nice.
+
+[size=+1][color=#B2EBF2]Dungeon-specific builds[/color][/size]
+The values for Block Rating and Defense Rating that were used for generating most builds are tailored for Eidolon NM and probably other raids (including elite) as well.
+We all know that you have to run more hit in Facility and that some bosses have more or less block rating.
+Getting the defensive stats of different dungeons/bosses (and verifying other raids) sounds like a valuable addition.
+
+[size=+1][color=#B2EBF2]Better optimizing rotations[/color][/size]
+Currently, rotations are only based around the rules that I described earlier.
+I'm pretty sure that especially for burst fights, some additional tweaking of the rotation might result in more DPS.
+
+[size=+1][color=#B2EBF2]Affliction-based builds[/color][/size]
+I have some afflicts already implemented, but for a full evaluation of affliction-based builds, I'd have to implement more of them and also important passives and signets for them.
+If I recall correctly, Mags already hinted that they might change how afflicts work in order to make them competitive.
+Should such a patch hit Live, I'm sure, I'll update my program ;)
+
+[size=+1][color=#B2EBF2]10.9.5 Raid Setting[/color][/size]
+If desired, I could add a ".9.5 Raid" build type.
+The builds will probably almost identical to the QL11 raid setting, but the stat distribution could be interesting.
+My gut feeling says that you should remove crit/pen/crit power equally when you're not QL11.
+
+[size=+1][color=#B2EBF2]Improve Optimization Algorithm[/color][/size]
+I feel like there is a lot of potential to improve the speed of the optimization and guide it more towards better builds.
+This algorithm is based on [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) and this is a common problem for them as well.
+I have some ideas that I could test in my spare time ;)
+
 
 
 

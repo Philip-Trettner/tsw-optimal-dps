@@ -44,20 +44,10 @@ void debugRun()
      *
      * * Team Mercurials
      * * Analysis vs .4 egon pendant in budget
-     * * Optimization variance
      * * FAQ
      *
      * TODO by Mark:
-     * * VDM
-     * * Variance
      * * Damage histogram
-     * * Dmg Breakdown
-     * * Stim/KB values?
-     * * List view in setting
-     * * first 20s rotation
-     * * setting name in exploration.json
-     * * check if laceration on head makes a difference => make table with signet variations (head, builder, 2ndary)
-     * * Attribution: "Builds by ArtificialMind, Website by DijkeMark"
      *
      * later: afflictions + signet of corruption
      *
