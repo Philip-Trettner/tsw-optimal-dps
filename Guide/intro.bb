@@ -154,15 +154,123 @@ The impact is probably so low that the optimization doesn't really detect it. So
 ================================================================================
 [size=+2][color=#03A9F4]The DPS Formula[/color][/size]
 
+One of the corner stones of the Combat Simulator is a proper formula for DPS.
+
+
+[size=+1][color=#B2EBF2]Combat Power[/color][/size]
+
+This one have been known for quite some while now.
+In some past patch, they made Combat Power scale better once you hit 5k AR.
+
+If you have below 5200 Attack Rating:
+[quote][size=+1]combatPower = (375 - 600 / (exp(attackRating / 1400) + 1)) * (1 + weaponPower / 375)[/size][/quote]
+otherwise
+[quote][size=+1]combatPower = 204.38 + .5471 * weaponPower + (.00008 * weaponPower + .0301) * attackRating[/size][/quote]
+
+
+[size=+1][color=#B2EBF2]Crit Chance[/color][/size]
+
+Crit Chance is also already known because you can just look in your character sheet.
+The approximation I've used is
+[quote][size=+1]crit % = 0.6511 - 1.202 / (exp(critRating / 790.3) + 1)[/size][/quote]
+If the Egon Pendant is active, the formula becomes
+[quote][size=+1]crit % = 0.5514 - 1.003 / (exp(critRating / 790.3) + 1)[/size][/quote]
+
+
+[size=+1][color=#B2EBF2]Crit Power[/color][/size]
+
+Similar to Crit Chance, you can just look this up:
+[quote][size=+1]crit power % = sqrt(5 * critPowerRating + 625) / 100.0[/size][/quote]
+
+
+[size=+1][color=#B2EBF2]Pen and Block Chance[/color][/size]
+
+Now this is more interesting.
+After parsing in the dummy chamber some time and testing in the fight club, it seemed to me that the pen chance depends on "Pen Rating - Block Rating".
+Similarly, block chance depends on "Block Rating - Pen Rating".
+Both have a diminishing returns formula similar to crit rating.
+Additive pen chance (like 15% from Iron Maiden) is added to your pen chance and subtracted from your block chance.
+
+Testing in the fight club allowed me to verify that the point where you get 0% blocked is when your pen rating is about 390 higher than the enemies block.
+With that rule we went into Eidolon NM and checked where that threshold is.
+Turns out, it's 860 pen, meaning Eidolon has about 470 block there.
+If you do this for the test dummies, you'll notice that they have about 100 block.
+Knowing this, I could fit the crit rating formula against pen chance and block chance:
+
+[quote][size=+1]pen % = 0.312787 - 0.426939 / (exp((penRating - enemy.blockRating) / 388.004) + 1)[/size][/quote]
+[quote][size=+1]block % = 0.28291 - 0.362406 / (exp((enemy.blockRating - penRating) / 312.481) + 1[/size][/quote]
+
+If you want to contribute block ratings for other bosses, find the point where you get 0% blocks (without Woodcutters, without Iron Maiden) as close as you can.
+Subtract 390 from your current pen rating and you've found the enemy's block rating.
+
+
+[size=+1][color=#B2EBF2]Glance Chance[/color][/size]
+
+Doing the same as for pen and block, I've checked the hit rating version enemy defense rating.
+
+This gave me the following formula for glance chance:
+[quote][size=+1]glance % = 0.167429 - 0.193239 / (exp((enemy.defenseRating - hitRating) / 150.874) + 1[/size][/quote]
+
+Defense for dummies is 100 and 350 for bosses that have the usual 650 hit cap.
+(Note that I've spent less time with this than with the pen rating, so the enemy defense could be shifted by some amount. The relative difference between dummy and normal bosses is the same though.)
+
+
+[size=+1][color=#B2EBF2]Evade Chance[/color][/size]
+
+Unfortunately, I don't have reversed Evade Chance yet.
+Please see the section in Future Work.
+
+
+[size=+1][color=#B2EBF2]Skill Scaling[/color][/size]
+
+The actual damage of a skill is determined by the current combat power and the skill scaling.
+[quote][size=+1]Base Damage = Combat Power * Skill Scaling[/size][/quote]
+I've captured all skill scalings that are important for me here: https://docs.google.com/spreadsheets/d/1z9b23xHPNQuqmZ5t51SeIMq2rlI6d8mPyWp9BmGNxjc
+
 
 ================================================================================
 [size=+2][color=#03A9F4]FAQ[/color][/size]
 
 [size=+1][color=#B2EBF2]What Stats do you recommend?[/color][/size]
+That depends on the build. But for normal proc builds I would go:
+
+[i]10.9.5 Talismans with Woodcutters:[/i]
+656 hit (two major)
+574 pen (head + minor)
+726 crit (weapons + 2x minor)
+296 crit power (WC only)
+
+[i]10.9.5 Talismans (no WC):[/i]
+656 hit (two major)
+679 pen (head + minor + half a minor)
+628 crit (weapons + one and a half minor)
+296 crit power (WC only)
+
+[i]QL11:[/i]
+643 hit (head + minor)
+603 pen (major + minor)
+689 crit (weapon + major)
+497 crit power (WC + minor)
+
+Those values seem to work well with most builds.
 
 [size=+1][color=#B2EBF2]So ... I have to play Ele/X now?[/color][/size]
 
+Not really.
+
+Elemental with Manifestations and Power-Line is really strong and I've seen some amazing dps with it.
+However, manis are hard to place and you often lose your target and these builds generate more lag than usual.
+So in the end, it's a hard and sometimes annoying way to play but it deals high damage.
+
+Nevertheless, most other builds also deal high dps, so just take whatever you like ;)
+
 [size=+1][color=#B2EBF2]Will I do 9700 DPS in Flappy if I use your blood/ele build?[/color][/size]
+
+No.
+
+That is the sustained damage without downtime and with optimal vulnerability uptime.
+
+Also, as I'll mention in the Future Work section, this DPS does not take enemy protection into account.
 
 
 ================================================================================
