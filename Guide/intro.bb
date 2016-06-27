@@ -24,10 +24,28 @@ Sections:
  * The DPS Formula
  * A Combat Simulator + How the builds got made + Explain how to read builds/rotation
  * FAQ + Changelog + Known Issues + pieces of wisdom
+ * TODO list
  * One for every weapon combination
 
 ================================================================================
 Content:
+
+[size+2][color=#03A9F4]ArtificialMind's Ultimate Theorycrafted DPS Guide[/color][/size]
+[i][color=gray]Last Update: June 27th, 2016 (1.15.2 with Elite Revamp)[/color][/i]
+
+
+[size+2][color=#03A9F4]TL;DR: all builds can be found at [url]http://www.markdijkema.nl/projects/tswbuildstatistics[/url][/color][/size]
+[i][color=gray](Builds by ArtificialMind, Website by DijkeMark)[/color][/i]
+
+
+Now that that's out of the way, welcome to my end-game theorycrafted DPS guide!
+
+I've spent a considerable amount of time writing a combat simulator for TSW that accurately captures all mechanics and effects required for evaluating single-target DPS.
+For that, I've reverse engineered most of the DPS formula.
+The next step was to automatically switch any aspect of a build, re-evaluate its DPS and - if higher - update the original build.
+With this mechanic, my program is able to automatically find really high DPS builds for every weapon combination under various situations.
+The results can be found at the website linked above (thanks again, Mark, for setting up the site ;) ).
+
 
 
 
