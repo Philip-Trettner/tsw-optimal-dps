@@ -172,9 +172,9 @@ otherwise
 
 Crit Chance is also already known because you can just look in your character sheet.
 The approximation I've used is
-[quote][size=+1]crit % = 0.6511 - 1.202 / (exp(critRating / 790.3) + 1)[/size][/quote]
-If the Egon Pendant is active, the formula becomes
 [quote][size=+1]crit % = 0.5514 - 1.003 / (exp(critRating / 790.3) + 1)[/size][/quote]
+If the Egon Pendant is active, the formula becomes
+[quote][size=+1]crit % = 0.6511 - 1.202 / (exp(critRating / 790.3) + 1)[/size][/quote]
 
 
 [size=+1][color=#B2EBF2]Crit Power[/color][/size]
