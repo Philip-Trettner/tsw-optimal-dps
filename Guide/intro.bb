@@ -273,6 +273,20 @@ That is the sustained damage without downtime and with optimal vulnerability upt
 Also, as I'll mention in the Future Work section, this DPS does not take enemy protection into account.
 
 
+[size=+1][color=#B2EBF2]Why Raging Bullet in every Shotgun build?[/color][/size]
+
+Because I simulate it as being close range, so it's better than other shotgun consumer for my simulation.
+It's not possible to get close range for every boss, so either take Sure Shot or Out for a Kill then.
+Out for a Kill gives a penetration buffs for Bombardment when the mob is killed shortly afterwards.
+That is such a corner case that I don't really consider it a benefit of OfaK over Sure Shot.
+
+
+[size=+1][color=#B2EBF2]How do I DABS?[/color][/size]
+
+Take the Pistol/Shotgun build and replace the secondary consumer and Big 45 by DABS.
+If you need the passives, replace Third Degree and Sudden Return or Fortunate Strike.
+
+
 ================================================================================
 [size=+2][color=#03A9F4]Changelog[/color][/size]
 
@@ -309,6 +323,9 @@ Afflictions and Procs cannot be evaded, making it harder to get a proper sample 
 Right now most builds use high hit (500+) anyways, so it's probably not an issue.
 For completionist reasons I would still like to have that formula.
 
+[size=+1][color=#B2EBF2]Enemy Crit Penalty[/color][/size]
+Once we have a better understanding of enemy defense rating (that's still a bit wonky), I can incorporate the enemy crit penalty properly.
+
 [size=+1][color=#B2EBF2]Physical/Magical Protection[/color][/size]
 Right now I'm assuming that the displayed skill damage is not reduced by the boss.
 It's probably irrelevant for comparing builds, but for completion (and maybe even verification) purposes, knowing the formula and values for protection would be nice.
@@ -337,7 +354,8 @@ I feel like there is a lot of potential to improve the speed of the optimization
 This algorithm is based on [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) and this is a common problem for them as well.
 I have some ideas that I could test in my spare time ;)
 
-
+[size=+1][color=#B2EBF2]Comparison with Recommended Stats[/color][/size]
+Add a section to the analysis that shows what would happen if you'd run with the .9.5 or QL11 recommended stats.
 
 
 ================================================================================
