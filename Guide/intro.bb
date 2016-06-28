@@ -244,7 +244,7 @@ That depends on the build. But for normal proc builds I would go:
 656 hit (two major)
 679 pen (head + minor + half a minor)
 628 crit (weapons + one and a half minor)
-296 crit power (WC only)
+296 crit power (major)
 
 [i]QL11:[/i]
 643 hit (head + minor)
