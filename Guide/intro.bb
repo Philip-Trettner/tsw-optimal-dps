@@ -172,9 +172,9 @@ otherwise
 
 Crit Chance is also already known because you can just look in your character sheet.
 The approximation I've used is
-[quote][size=+1]crit % = 0.6511 - 1.202 / (exp(critRating / 790.3) + 1)[/size][/quote]
-If the Egon Pendant is active, the formula becomes
 [quote][size=+1]crit % = 0.5514 - 1.003 / (exp(critRating / 790.3) + 1)[/size][/quote]
+If the Egon Pendant is active, the formula becomes
+[quote][size=+1]crit % = 0.6511 - 1.202 / (exp(critRating / 790.3) + 1)[/size][/quote]
 
 
 [size=+1][color=#B2EBF2]Crit Power[/color][/size]
@@ -244,7 +244,7 @@ That depends on the build. But for normal proc builds I would go:
 656 hit (two major)
 679 pen (head + minor + half a minor)
 628 crit (weapons + one and a half minor)
-296 crit power (WC only)
+296 crit power (major)
 
 [i]QL11:[/i]
 643 hit (head + minor)
@@ -351,7 +351,7 @@ My gut feeling says that you should remove crit/pen/crit power equally when you'
 
 [size=+1][color=#B2EBF2]Improve Optimization Algorithm[/color][/size]
 I feel like there is a lot of potential to improve the speed of the optimization and guide it more towards better builds.
-This algorithm is based on [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) and this is a common problem for them as well.
+This algorithm is based on [url=https://en.wikipedia.org/wiki/Genetic_algorithm]Genetic Algorithms[/url] and this is a common problem for them as well.
 I have some ideas that I could test in my spare time ;)
 
 [size=+1][color=#B2EBF2]Comparison with Recommended Stats[/color][/size]
