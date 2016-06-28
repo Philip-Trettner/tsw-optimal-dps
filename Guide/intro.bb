@@ -334,7 +334,7 @@ My gut feeling says that you should remove crit/pen/crit power equally when you'
 
 [size=+1][color=#B2EBF2]Improve Optimization Algorithm[/color][/size]
 I feel like there is a lot of potential to improve the speed of the optimization and guide it more towards better builds.
-This algorithm is based on [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) and this is a common problem for them as well.
+This algorithm is based on [url=https://en.wikipedia.org/wiki/Genetic_algorithm]Genetic Algorithms[/url] and this is a common problem for them as well.
 I have some ideas that I could test in my spare time ;)
 
 
