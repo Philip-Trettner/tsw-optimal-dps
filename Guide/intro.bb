@@ -284,7 +284,14 @@ That is such a corner case that I don't really consider it a benefit of OfaK ove
 [size=+1][color=#B2EBF2]How do I DABS?[/color][/size]
 
 Take the Pistol/Shotgun build and replace the secondary consumer and Big 45 by DABS.
-If you need the passives, replace Third Degree and Sudden Return or Fortunate Strike.
+If you need the cooldown reduction passives (Breach Party and Calling the Shots), replace Third Degree and Sudden Return or Fortunate Strike.
+
+
+[size=+1][color=#B2EBF2]What about Short Fuse?[/color][/size]
+
+Most Elemental builds have at least one active that is hardly used, so you can replace that by Short Fuse.
+The damage-increasing passive (Final Fuse) is only worth it in Burst fights (as a dps).
+Bufftanks and Healers can of course take Final Fuse.
 
 
 ================================================================================
