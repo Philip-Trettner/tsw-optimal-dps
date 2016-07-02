@@ -45,6 +45,7 @@ void debugRun()
      * * Team Mercurials
      * * Analysis vs .4 egon pendant in budget
      * * FAQ
+     * * Anima Charge is bugged (may be free for 2 consumers)
      *
      * TODO by Mark:
      * * Damage histogram
