@@ -46,6 +46,9 @@ void debugRun()
      * * Analysis vs .4 egon pendant in budget
      * * FAQ
      * * Anima Charge is bugged (may be free for 2 consumers)
+     * * Check different builders
+     * * Add physical protection
+     * * Add enemy crit penalty
      *
      * TODO by Mark:
      * * Damage histogram
