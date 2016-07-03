@@ -49,6 +49,7 @@ void debugRun()
      * * Check different builders
      * * Add physical protection
      * * Add enemy crit penalty
+     * * Add new block/pen formula
      *
      * TODO by Mark:
      * * Damage histogram

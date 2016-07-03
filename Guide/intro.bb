@@ -195,13 +195,22 @@ Testing in the fight club allowed me to verify that the point where you get 0% b
 With that rule we went into Eidolon NM and checked where that threshold is.
 Turns out, it's 860 pen, meaning Eidolon has about 470 block there.
 If you do this for the test dummies, you'll notice that they have about 100 block.
-Knowing this, I could fit the crit rating formula against pen chance and block chance:
+Knowing this, I could fit the crit rating formula against pen chance and block chance and a preliminary formula.
 
-[quote][size=+1]pen % = 0.312787 - 0.426939 / (exp((penRating - enemy.blockRating) / 388.004) + 1)[/size][/quote]
-[quote][size=+1]block % = 0.28291 - 0.362406 / (exp((enemy.blockRating - penRating) / 312.481) + 1[/size][/quote]
+In the thread [url=https://forums.thesecretworld.com/showthread.php?96769-The-curves-of-TSW]The curves of TSW[/url] we were able to further refine and verify that formula.
+Many thanks to Foksie, DumbOx, Elgandir, and more (if you feel left out, hit me up ;) ) for this joint effort!
 
-If you want to contribute block ratings for other bosses, find the point where you get 0% blocks (without Woodcutters, without Iron Maiden) as close as you can.
-Subtract 390 from your current pen rating and you've found the enemy's block rating.
+Elgandir was able to more precisely pinpoint the "block cutoff" point to +392 pen.
+This means you will almost never (<0.1%) be blocked if you have 392 more pen than your enemy's block and you get no blocked hits if you have +393 pen.
+
+We also discovered that if you don't assume that "blocks overwrite pens" you can get a totally symmetric formulation.
+For a given pen chance of P percent points and an enemy block chance of B percent points, out of 100 hits statistically P will be pens and B will be blocks (and 100 - P - B will be normal).
+You cannot penetrate and be blocked simultaneously, but neither "overwrites" the other.
+
+Our new formula is:
+
+[quote][size=+1]pen %   = 0.32 - 0.44 / (exp((penRating - enemy.blockRating) / 400) + 1) + additive Pen % - additive Block %[/size][/quote]
+[quote][size=+1]block % = 0.32 - 0.44 / (exp((enemy.blockRating - penRating) / 400) + 1) - additive Pen % + additive Block %[/size][/quote]
 
 
 [size=+1][color=#B2EBF2]Glance Chance[/color][/size]
@@ -213,6 +222,8 @@ This gave me the following formula for glance chance:
 
 Defense for dummies is 100 and 350 for bosses that have the usual 650 hit cap.
 (Note that I've spent less time with this than with the pen rating, so the enemy defense could be shifted by some amount. The relative difference between dummy and normal bosses is the same though.)
+
+[i]Evidence suggests that this formula needs revision. It is only useful for values around 200-300 of the cutoff point[/i]
 
 
 [size=+1][color=#B2EBF2]Evade Chance[/color][/size]
@@ -297,6 +308,12 @@ Bufftanks and Healers can of course take Final Fuse.
 ================================================================================
 [size=+2][color=#03A9F4]Changelog[/color][/size]
 
+[size=+1][color=#B2EBF2]Version 1.1 (in progress)[/color][/size]
+
+[list]
+[*] New, symmetric pen and block formula (with more data backing, thanks goes to Foksie, DumbOx, Elgandir, and more)
+[/list]
+
 [size=+1][color=#B2EBF2]Version 1.0[/color][/size]
 
 [list]
@@ -319,6 +336,7 @@ Bufftanks and Healers can of course take Final Fuse.
 [*] Double Up (pistol skill passive) and Calamity (chaos skill passive) are not logged (most of the time) by the game and thus don't show up on any DPS meter or ACT parse. I chose to ignore them because - at least for me - non-measurable DPS doesn't really matter.
 [*] Sometimes, builds take pretty long to be optimized and may end up in different states of optimization (discrepancy between raid and raid-vuln). The most drastic I've found is Blade/Elemental in Raid vs Raid-Ranged.
 [*] Destiny is not implemented yet, so blade builds often use Binding Wounds. Do you tank a favor and take Destiny instead ;)
+[*] [b]Anima Charge is bugged currently[/b]. It can occasionally provide a second free consumer in my simulation. Be careful when reading the rotation. (Thanks to Waytoobad for finding this)
 [/list]
 
 
