@@ -50,6 +50,7 @@ void debugRun()
      * * Add physical protection
      * * Add enemy crit penalty
      * * Add new block/pen formula
+     * * Leech DPS/Heal/Hybrid (fix builder to anima shot/burst, force coney?)
      *
      * TODO by Mark:
      * * Damage histogram
