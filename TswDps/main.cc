@@ -51,6 +51,7 @@ void debugRun()
      * * Add enemy crit penalty
      * * Add new block/pen formula
      * * Leech DPS/Heal/Hybrid (fix builder to anima shot/burst, force coney?)
+     * * Check if 1s builder + instant consumer proc twice
      *
      * TODO by Mark:
      * * Damage histogram
